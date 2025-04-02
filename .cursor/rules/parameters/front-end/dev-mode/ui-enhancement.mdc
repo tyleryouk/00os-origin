@@ -1,20 +1,4 @@
-# Front-End Dev-Mode: UI Enhancement Implementation
-
-## Purpose
-
-This file provides guidance for implementing UI enhancements in front-end development. It focuses on improving user interfaces with modern design patterns, accessibility, responsive layouts, and consistent styling.
-
-## Usage as Project-Rule-Parameter
-
-This file contains UI enhancement patterns for front-end development and should be referenced in message-commands when implementing UI improvements:
-
-```
-dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-ui-enhancement.mdc
-```
-
-## Implementation Strategy
-
-The UI enhancement implementation strategy follows a structured approach:
+# workflow: front-end-workflow | pathway: ui-enhancement | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/ui-enhancement.mdc
 
 ### 1. Analysis Phase
 

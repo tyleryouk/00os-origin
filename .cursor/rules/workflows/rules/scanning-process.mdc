@@ -90,7 +90,7 @@ The scanning commands can be integrated into automated scripts for regular valid
 2. **Scheduled Scanning**: Run daily scans to identify accumulated issues
 3. **CI/CD Integration**: Include scanning in continuous integration workflows
 
-For detailed automation implementation, see [scanning-automation.md](scanning-automation.md).
+For detailed automation implementation, see [scanning-automation.md](mdc:scanning-automation.md).
 
 ## Output Interpretation
 
@@ -121,8 +121,8 @@ Action Required:
 ## Related Tools
 
 For validation and verification, see:
-- [validation-script.md](validation-script.md) - For project-rule-parameter validation
-- [scanning-automation.md](scanning-automation.md) - For automated scanning processes
+- [validation-script.md](mdc:validation-script.md) - For project-rule-parameter validation
+- [scanning-automation.md](mdc:scanning-automation.md) - For automated scanning processes
 
 For @ symbol usage rules and proper formatting, see:
 - core/communication/message-commands.md - For guidance on message-command structure

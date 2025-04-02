@@ -13,6 +13,36 @@ The validation script provides automated checking for:
 3. **Naming Consistency**: Checking for consistency in naming patterns
 4. **Path Validity**: Validating file paths are correctly formatted
 
+For detailed validation script patterns, use:
+```typescript
+fetch_rules(["knowledge/rules/patterns/impl/validation-script-patterns"], 
+           "Understanding validation script implementation patterns")
+```
+
+## Validation Logic
+
+For comprehensive validation logic patterns, use:
+```typescript
+fetch_rules(["knowledge/rules/patterns/impl/validation-logic"], 
+           "Understanding validation logic and criteria")
+```
+
+## Implementation Guidance
+
+For detailed implementation guidance, use:
+```typescript
+fetch_rules(["knowledge/rules/guides/validation-implementation"], 
+           "Understanding validation system implementation approaches")
+```
+
+## Error Handling
+
+For error handling patterns, use:
+```typescript
+fetch_rules(["knowledge/rules/patterns/impl/validation-error-handling"], 
+           "Understanding validation error handling and resolution approaches")
+```
+
 ## Script Implementation
 
 The validation script is implemented as a PowerShell script in the 1000xscripts directory:
@@ -124,227 +154,6 @@ For validation requirements that this script checks against, see:
 - core/communication/message-commands.md - For structure guidance 
 - core/communication/syntax-standards.md - For detailed syntax standards
 
-## Verification Steps
+## Conclusion
 
-For verification patterns, use:
-
-## README.md and Knowledge File Validation
-
-The validation script includes additional functionality to verify README.md files are checked and knowledge files have proper USE WHEN headers:
-
-```powershell
-# Additional validation functions for README.md and knowledge files
-
-# Function to check README.md existence in directories
-function Verify-ReadmeExistence {
-    param (
-        [string]$directory
-    )
-    
-    $subdirectories = Get-ChildItem $directory -Directory
-    
-    foreach ($subdir in $subdirectories) {
-        $readmePath = Join-Path $subdir.FullName "README.md"
-        
-        if (-not (Test-Path $readmePath)) {
-            Write-Warning "Missing README.md in directory: $($subdir.FullName)"
-        }
-        
-        # Recursively check subdirectories
-        Verify-ReadmeExistence $subdir.FullName
-    }
-}
-
-# Function to validate USE WHEN headers in knowledge files
-function Validate-UseWhenHeaders {
-    param (
-        [string]$knowledgeRootDir
-    )
-    
-    $knowledgeFiles = Get-ChildItem $knowledgeRootDir -Filter "*.md" -Recurse | 
-                      Where-Object { $_.Name -ne "README.md" }
-    
-    foreach ($file in $knowledgeFiles) {
-        $firstLine = Get-Content $file.FullName -TotalCount 1
-        
-        if (-not ($firstLine -like "# USE WHEN*")) {
-            Write-Error "ERROR: Missing required USE WHEN header in knowledge file: $($file.FullName)"
-        }
-    }
-}
-
-# Function to verify files were modified after checking README.md
-function Verify-ReadmeAccessBeforeModification {
-    param (
-        [string]$directory,
-        [int]$daysToCheck = 7
-    )
-    
-    $recentlyModifiedFiles = Get-ChildItem $directory -Recurse -File | 
-                             Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-$daysToCheck) -and $_.Name -ne "README.md" }
-    
-    foreach ($file in $recentlyModifiedFiles) {
-        $fileDir = Split-Path -Parent $file.FullName
-        $readmePath = Join-Path $fileDir "README.md"
-        
-        if (Test-Path $readmePath) {
-            $readmeLastAccessed = (Get-Item $readmePath).LastAccessTime
-            
-            # Check if README.md was accessed before file modification
-            if ($readmeLastAccessed -lt $file.LastWriteTime.AddHours(-1)) {
-                Write-Warning "File may have been modified without checking README.md first: $($file.FullName)"
-            }
-        }
-    }
-}
-
-# Enhanced validation script execution
-try {
-    Write-Host "Starting comprehensive validation..."
-    
-    # Run standard parameter validation
-    Get-ChildItem $brainDir -Filter *.md -Recurse | ForEach-Object {
-        Check-ParameterReferences $_.FullName
-    }
-    
-    # Verify README.md existence
-    Write-Host "Verifying README.md existence in all directories..."
-    Verify-ReadmeExistence $brainDir
-    
-    # Validate USE WHEN headers in knowledge files
-    Write-Host "Validating USE WHEN headers in knowledge files..."
-    $knowledgeDir = Join-Path $brainDir "knowledge"
-    if (Test-Path $knowledgeDir) {
-        Validate-UseWhenHeaders $knowledgeDir
-    }
-    
-    # Check if files were modified after accessing README.md
-    Write-Host "Checking recent modifications..."
-    Verify-ReadmeAccessBeforeModification $brainDir
-    
-    Write-Host "Comprehensive validation complete"
-} catch {
-    Write-Error "Validation failed: $_"
-}
-```
-
-### README.md Validation Requirements
-
-The README.md validation ensures:
-
-1. **README.md Existence**: Every directory should have a README.md file
-2. **USE WHEN Headers**: All files in the knowledge directory (except README.md) must begin with a USE WHEN header
-3. **Modification Pattern**: Files should be modified only after checking README.md
-
-### USE WHEN Header Format Requirements
-
-For knowledge files, the USE WHEN header must follow this format:
-
-```
-# USE WHEN [action verb in -ing form] [specific task/context], [action verb in -ing form] [related domain], or [action verb in -ing form] [related technology]
-```
-
-Examples of valid USE WHEN headers:
-- `# USE WHEN implementing search functionality, finding code in the codebase, or optimizing search tool usage`
-- `# USE WHEN creating documentation, implementing documentation standards, or organizing knowledge content`
-- `# USE WHEN enhancing system architecture, implementing architectural patterns, or optimizing system organization`
-
-### Integration With Existing Validation
-
-This enhanced validation process integrates with the existing validation workflow:
-
-1. **Standard Parameter Validation**: Original validation for project-rule-parameters
-2. **README.md Verification**: Added check for README.md existence in directories
-3. **USE WHEN Header Validation**: Added check for proper headers in knowledge files
-4. **Modification Pattern Check**: Added verification of README.md access before file modifications
-
-### Usage Instructions
-
-To run the comprehensive validation including README.md checks:
-
-```powershell
-# Navigate to scripts directory
-cd 1000xscripts
-
-# Run the enhanced validation script
-.\Validate-ProjectRuleParameters.ps1
-```
-
-### Validation Output
-
-The enhanced validation produces additional output types:
-
-1. **README.md Warnings**:
-   - Format: `WARNING: Missing README.md in directory: [directory_path]`
-   - Action: Create README.md with appropriate guidance for that directory
-
-2. **USE WHEN Header Errors**:
-   - Format: `ERROR: Missing required USE WHEN header in knowledge file: [file_path]`
-   - Action: Add the required USE WHEN header following the specified format
-
-3. **Modification Pattern Warnings**:
-   - Format: `WARNING: File may have been modified without checking README.md first: [file_path]`
-   - Action: Review file modifications to ensure compliance with directory standards
-
-### README.md Header Validation
-
-README.md header validation is a critical part of the validation process. The system verifies:
-
-1. **Header Existence**: Every planning folder README.md must begin with a workflow header
-2. **Header Format**: The header must follow the `# workflow-type | pathway-type` format
-3. **Workflow Type Match**: The workflow-type must match the implementing workflow, not the target
-4. **Common Confusion Detection**: The system specifically checks for common confusion patterns:
-   - Using "front-end-workflow" when rules-workflow is implementing front-end enhancements
-   - Using "back-end-workflow" when rules-workflow is implementing back-end enhancements
-
-The validation process follows these steps:
-
-```powershell
-# Validate README.md header in planning folder
-function Validate-ReadmeHeader {
-    param (
-        [string]$PlanningFolderPath,
-        [string]$ExpectedWorkflow
-    )
-    
-    $readmePath = Join-Path -Path $PlanningFolderPath -ChildPath "README.md"
-    
-    if (-not (Test-Path $readmePath)) {
-        Write-Error "ERROR: README.md missing in planning folder: $PlanningFolderPath"
-        return $false
-    }
-    
-    $firstLine = Get-Content $readmePath -TotalCount 1
-    $headerPattern = "^# ([a-z-]+) \| ([a-z-]+)$"
-    
-    if (-not ($firstLine -match $headerPattern)) {
-        Write-Error "ERROR: README.md header does not match required format '# workflow-type | pathway-type' in: $readmePath"
-        return $false
-    }
-    
-    $workflowType = $matches[1]
-    $pathwayType = $matches[2]
-    
-    if ($workflowType -ne $ExpectedWorkflow) {
-        # Special check for common confusion patterns
-        if (($workflowType -eq "front-end-workflow" -and $pathwayType -like "*front-end*" -and $ExpectedWorkflow -eq "rules-workflow") -or
-            ($workflowType -eq "back-end-workflow" -and $pathwayType -like "*back-end*" -and $ExpectedWorkflow -eq "rules-workflow")) {
-            Write-Error "CRITICAL ERROR: Workflow type mismatch - header uses '$workflowType' but should be '$ExpectedWorkflow' since this is a $ExpectedWorkflow implementing $pathwayType. The workflow-type must be the workflow PERFORMING the implementation, not the target being affected."
-        } else {
-            Write-Error "ERROR: Workflow type mismatch - header uses '$workflowType' but should be '$ExpectedWorkflow'"
-        }
-        return $false
-    }
-    
-    Write-Verbose "README.md header validated successfully: $firstLine"
-    return $true
-}
-```
-
-This validation is automatically run when:
-1. A planning folder is created or modified
-2. The `Validate-PlanningFolder.ps1` script is executed
-3. The `plan-mode` or `dev-mode` message-commands are issued
-4. The `verify-planning` message-command is executed
-
-The validation script provides clear error messages that explain the specific issue with the README.md header and how to fix it, especially focusing on the common confusion between the implementing workflow and the target being enhanced.
+The validation script plays a critical role in maintaining the integrity of the 1000xbrain cognitive architecture by ensuring consistent project-rule-parameter references. By systematically checking references, extensions, and documentation structure, the validation system helps prevent AI hallucinations, incorrect tool calls, and ensures reliable operation of the message-command system.

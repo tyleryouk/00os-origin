@@ -227,7 +227,7 @@ For detailed syntax guidelines, message-command formats, and validation requirem
 
 Edits to `.md` files in the 1000xbrain directory are automatically synchronized to corresponding `.mdc` Cursor Project Rules.
 
-For detailed synchronization information, see [sync-cursor-rules.md](sync-cursor-rules.md).
+For detailed synchronization information, see [sync-cursor-rules.md](mdc:sync-cursor-rules.md).
 
 ## Implementation Complete Criteria
 

@@ -1,31 +1,10 @@
+# workflow: front-end-workflow | pathway: log-based | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/log-based.mdc
+
 # Front-End Dev-Mode: Log-Based Implementation
 
 ## Purpose
 
 This file provides specialized guidance for log-based implementation in front-end development. It focuses on using log analysis to diagnose and fix issues, implement new features based on log patterns, and verify implementations through log monitoring.
-
-## Usage as Project-Rule-Parameter
-
-This file contains log-based implementation patterns for front-end development and should be referenced as a project-rule-parameter in message-commands when implementing features through log analysis:
-
-```
-dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-log-based.mdc
-```
-
-## Mode Activation
-
-When activated with:
-
-```
-dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-log-based.mdc
-```
-
-This parameter enables:
-- Log-based analysis and diagnosis
-- Log-guided implementation
-- Log verification for implementations
-- Structured log checking sequences
-- Progressive log enhancement
 
 ## Implementation Strategy
 

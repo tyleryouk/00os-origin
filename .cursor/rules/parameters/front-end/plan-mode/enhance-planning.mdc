@@ -1,25 +1,4 @@
-# Enhance Planning: Front-End Workflow
-
-## File Purpose
-
-This file provides an iterative planning enhancement pattern for front-end workflow implementation. It should be used when:
-
-- Planning documentation requires further refinement
-- Additional research and analysis is needed to improve planning accuracy
-- Planning files need optimization before implementation
-- Complex implementation planning requires iterative enhancement
-
-This parameter is designed to work with the `enhance-planning:` message-command, providing a structured approach to progressively improving planning documentation through multiple iterations.
-
-## Usage as Project-Rule-Parameter
-
-This file contains planning enhancement guidance and should be referenced as a project-rule-parameter in message-commands:
-
-```
-enhance-planning: front-end-workflow @parameters/front-end/continuation/enhance-planning.mdc
-```
-
-This message-command can be issued multiple times in sequence to progressively enhance planning files.
+# workflow: front-end-workflow | pathway: enhance-planning | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/enhance-planning.mdc
 
 ## Enhancement Process Overview
 

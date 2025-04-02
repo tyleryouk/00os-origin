@@ -11,6 +11,42 @@ alwaysApply: false
 
 This knowledge guide provides standardization guidelines for project-rule-parameters across all workflows. It should be consulted when creating parameter documentation, establishing parameter conventions, or ensuring consistency in parameter structure and usage.
 
+## Project-Rule-Parameter Content Guidelines
+
+### Core Purpose and Usage
+
+Project-rule-parameters are manual rule types with these essential characteristics:
+
+1. **Detailed Mode-Specific Instructions**: 
+   - Should contain very detailed plan-mode, dev-mode, or direct-mode instructions
+   - Focus exclusively on implementation guidance and knowledge access
+   - Provide specific execution patterns for the associated mode
+
+2. **Explicit Reference Only**: 
+   - Only used when explicitly referenced in a message-command
+   - Not automatically attached to conversations
+   - Loaded on-demand for specific implementation purposes
+
+3. **Filepath Restrictions**:
+   - Should NOT contain any filepaths unless they are used directly in tool calls
+   - Avoid hardcoded paths since filesystem organization often changes
+   - Use relative references when paths are absolutely necessary
+
+4. **Knowledge Access Focus**:
+   - Should contain fetch_rules tool calls to access detailed knowledge
+   - Serve as the bridge between message-commands and the knowledge system
+   - Implement appropriate knowledge access patterns
+
+### Content Do's and Don'ts
+
+| DO | DON'T |
+|----|-------|
+| Include detailed mode-specific instructions | Include static filepath references outside of tool calls |
+| Provide clear knowledge access through fetch_rules | Define file organization structures that may change |
+| Focus on implementation patterns and guidance | Create dependencies on specific file locations |
+| Offer clear usage examples | Include large code blocks that aren't directly usable |
+| Provide knowledge references for detailed content | Duplicate content from knowledge files |
+
 ## Parameter Naming Standards
 
 ### Basic Naming Patterns

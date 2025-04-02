@@ -1,4 +1,4 @@
-# Enhance Requirements: Front-End Workflow
+# workflow: front-end-workflow | pathway: enhance-requirements | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/enhance-requirements.mdc
 
 ## File Purpose
 

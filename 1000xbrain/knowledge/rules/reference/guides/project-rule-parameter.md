@@ -12,6 +12,40 @@ This reference guide provides information about project-rule-parameters and thei
 
 This self-documenting approach makes each parameter file describe itself, eliminating the need for centralized listings while ensuring information is always accurate and up-to-date.
 
+## Content Guidelines
+
+Project-rule-parameters have specific content requirements that ensure they function correctly in the cognitive architecture:
+
+### Core Characteristics
+
+1. **Manual Rule Type**: 
+   - Project-rule-parameters are manual rule types
+   - Only loaded when explicitly referenced in message-commands
+   - Not automatically attached to conversations
+
+2. **Mode-Specific Instructions**:
+   - Should contain very detailed plan-mode, dev-mode, or direct-mode instructions
+   - Focus on implementation guidance specific to the associated mode
+   - Provide execution patterns and knowledge access relevant to the mode
+
+3. **Knowledge Bridge Function**:
+   - Serve as a bridge between message-commands and detailed knowledge
+   - Should include fetch_rules tool calls to access specialized knowledge
+   - Connect high-level commands to detailed implementation knowledge
+
+4. **Filepath Restrictions**:
+   - Should NOT contain filepath references unless used directly in tool calls
+   - Should avoid hardcoded paths since filesystem organization changes frequently
+   - Use relative references when paths are absolutely necessary in tool calls
+
+### Implementation Best Practices
+
+- Focus on detailed implementation instructions, not file organization
+- Provide knowledge access patterns through fetch_rules tool calls
+- Include clear usage examples without hardcoded paths
+- Link to related parameters using the proper @parameter format with .mdc extension
+- Keep implementation details in knowledge files accessed through fetch_rules
+
 ## Project-Rule-Parameter Header Components
 
 The standardized header includes:

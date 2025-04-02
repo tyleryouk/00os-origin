@@ -1,21 +1,4 @@
-# Plan Mode: Front-End UI Enhancement Template
-
-## File Purpose and Relationship
-
-This file provides a specialized planning template for UI/UX enhancements in the GigaSwap project. It is designed for planning UI improvements with a focus on theme integration, component styling, and consistent user experience.
-
-This file complements:
-- **front-end-workflow-reference.md**: Core front-end development workflow
-- **plan-mode-front-end-basic.md**: Basic planning template
-- **component-patterns.md**: Component implementation patterns
-
-## Usage as Project-Rule-Parameter
-
-This file is a Manual rule type and should be referenced as a project-rule-parameter in the plan-mode message-command:
-
-```
-plan-mode: front-end-workflow @parameters/front-end/plan-mode/plan-mode-ui-enhancement.mdc
-```
+# workflow: front-end-workflow | pathway: ui-enhancement | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/ui-enhancement.mdc
 
 ## UI Enhancement Template Structure
 
@@ -33,6 +16,7 @@ planning/
   ├── context-component-styling.md (Component styling analysis)
   ├── implementation-ui-enhancement.md (UI implementation approach)
   ├── implementation-responsive-design.md (Responsive implementation details)
+  ├── implementation-progress.md (Keep track of implementation-progress for dev-mode)
   ├── test-cheatsheet.md (Visual testing scenarios)
   └── README.md (Overview)
 ```
