@@ -1,0 +1,139 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
+# Synchronizing 1000xbrain and Cursor Rules
+
+This file documents the automatic synchronization process between 1000xbrain files (.md) and Cursor Project Rules (.mdc).
+
+For detailed synchronization patterns, use:
+```typescript
+fetch_rules(["knowledge/reference/architecture/brain-files-cursor-rules"], 
+           "Understanding brain-files to cursor-rules synchronization")
+```
+
+## ⚠️ CRITICAL FILE STRUCTURE REQUIREMENTS ⚠️
+
+For file structure standards, use:
+```typescript
+fetch_rules(["knowledge/reference/guides/file-standards"], 
+           "Understanding critical file structure requirements")
+```
+
+All brain-files MUST follow these structure requirements:
+
+1. **NO FRONTMATTER**: Brain-files should NEVER contain frontmatter (the --- enclosed metadata sections). This is strictly prohibited.
+2. **NO RULE TYPE SPECIFICATIONS**: Never add rule_type, description, or globs specifications to brain-files.
+3. **DIRECT CONTENT**: All markdown content must begin directly with headers or text.
+4. **STANDARD MARKDOWN**: Use only standard markdown formatting.
+
+Brain-files are pure markdown content only. All rule type designations, glob patterns, and other configuration metadata are handled exclusively in Cursor Rules (.mdc) files by Tyler through the Cursor Settings UI.
+
+## Automatic Synchronization Process
+
+For synchronization process patterns, use:
+```typescript
+fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+           "Understanding automatic synchronization process")
+```
+
+The 1000xbrain cognitive architecture features a seamless automatic synchronization system:
+
+- Edits to .md files in the 1000xbrain directory are automatically synchronized to corresponding .mdc Cursor Project Rules
+- This integration creates a direct cognitive link between editable brain-files and operational Project Rules
+- When content in 1000xbrain is modified, the cognitive capabilities of 1000xdev are directly enhanced
+- No manual synchronization steps are required
+
+## Critical Requirements
+
+For requirement patterns, use:
+```typescript
+fetch_rules(["knowledge/patterns/impl/basic-patterns"], 
+           "Understanding critical synchronization requirements")
+```
+
+1. **Only Edit .md Files**: Never modify .mdc files directly
+2. **No Frontmatter**: Remove all frontmatter from .md files
+3. **Filename Conventions**: Use lowercase kebab-case for all files
+4. **README.md Exception**: README.md files in 1000xbrain are excluded from synchronization as they serve only as navigation aids for humans
+
+## File Extension Standards
+
+For extension standards, use:
+```typescript
+fetch_rules(["knowledge/reference/guides/file-standards"], 
+           "Understanding file extension standards")
+```
+
+It is critical to maintain clear distinction between file types:
+
+| Extension | Purpose | Can Be Edited | Referenced As |
+|-----------|---------|---------------|--------------|
+| `.md` | Source files in 1000xbrain | ✅ YES | In regular paths |
+| `.mdc` | Cursor Project Rules | 🚫 NO | In project-rule-parameters |
+
+When referencing files in documentation:
+- Use `.md` when referring to source files: `core/identity/global-rules.md`
+- Use `.mdc` when specifying project-rule-parameters: `@parameters/rules/plan-mode.mdc`
+
+## Extension Validation
+
+For validation patterns, use:
+```typescript
+fetch_rules(["knowledge/patterns/tool/basic-patterns"], 
+           "Understanding extension validation requirements")
+```
+
+Always validate correct extension usage:
+
+1. **In Regular Text**: Source files should use .md extension
+2. **In Project-Rule-Parameters**: Always use .mdc extension
+3. **In Message-Commands**: Always use .mdc extension for project-rule-parameters (reflected in each project-rule-parameter's header)
+
+**Example of correct usage**:
+- Source file reference: `Edit the file parameters/rules/plan-mode.md`
+- Project-rule-parameter header: `# workflow: rules-workflow | pathway: basic | message-command: plan-mode | standard-parameter(s): workflow-type | project-rule-parameter-path: parameters/rules/plan-mode.mdc`
+- Project-rule-parameter usage: `plan-mode: rules-workflow @parameters/rules/plan-mode.mdc`
+
+## Common Issues
+
+For issue resolution patterns, use:
+```typescript
+fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+           "Understanding common synchronization issues and solutions")
+```
+
+| Issue | Solution |
+|-------|----------|
+| Inconsistent extensions | Always use .mdc in project-rule-parameters |
+| Reference errors | Wrap @ symbols in backticks |
+| Cognitive integration issues | Ensure correct extension differentiation (.md vs .mdc) |
+
+## ⚠️ Warning ⚠️
+
+For error prevention patterns, use:
+```typescript
+fetch_rules(["knowledge/patterns/impl/basic-patterns"], 
+           "Understanding error prevention in synchronization")
+```
+
+Failure to use correct extensions can cause inconsistencies between edited files and Cursor Rules, potentially leading to AI hallucinations and system errors.
+
+## Automatic Sync Verification
+
+For verification patterns, use:
+```typescript
+fetch_rules(["knowledge/patterns/tool/tool-combinations"], 
+           "Understanding automatic sync verification process")
+```
+
+To verify automatic synchronization works correctly:
+
+1. **Extension Correctness**: References use appropriate extensions (.md vs .mdc)
+2. **Path Validity**: All paths resolve to existing files
+3. **Content Integrity**: Content correctly synchronized from source to rules
+4. **Naming Consistency**: Filenames follow lowercase kebab-case convention
+
+Always run a syntax compliance scan to ensure proper formatting of files in the 1000xbrain directory.
+

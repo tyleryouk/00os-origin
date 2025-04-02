@@ -1,0 +1,695 @@
+# USE WHEN implementing file reading patterns, optimizing file size handling, or managing large file operations
+
+# Tool-Aware File Reading Patterns
+
+## Purpose and Usage
+
+This file contains patterns for implementing tool-aware file reading within the 1000xbrain cognitive architecture. Use these patterns to:
+
+1. Optimize file reading for large documentation files
+2. Maintain context across multiple file reads
+3. Implement intelligent chunking strategies
+4. Balance information density with context preservation
+
+## Constraint-Aware Reading
+
+### Tool Limitations
+
+The `read_file` tool has these constraints:
+
+- **Maximum Lines**: 750 lines per call
+- **Minimum Lines**: 150 lines per call 
+- **Offset Required**: Must specify line offset when not reading entire file
+- **Limit Required**: Must specify line count when not reading entire file
+
+### Detection Patterns
+
+Use these patterns to determine when constraint-aware reading is needed:
+
+```typescript
+// File size detection
+function detectFileSize(filePath) {
+  // Estimate using known file patterns or metadata
+  return estimated_line_count;
+}
+
+// Reading strategy selection
+function selectReadingStrategy(filePath, estimated_line_count) {
+  if (estimated_line_count <= 250) {
+    return {
+      strategy: 'whole_file',
+      params: { should_read_entire_file: true }
+    };
+  } else if (estimated_line_count <= 750) {
+    return {
+      strategy: 'chunked',
+      params: {
+        chunks: [{
+          offset: 0,
+          limit: estimated_line_count
+        }]
+      }
+    };
+  } else {
+    return {
+      strategy: 'multi_chunked',
+      params: {
+        chunks: generateOptimalChunks(estimated_line_count)
+      }
+    };
+  }
+}
+
+// Chunk generation
+function generateOptimalChunks(line_count) {
+  const chunks = [];
+  const chunk_size = 250; // Optimal chunk size for context preservation
+  
+  for (let offset = 0; offset < line_count; offset += chunk_size) {
+    chunks.push({
+      offset: offset,
+      limit: Math.min(chunk_size, line_count - offset)
+    });
+  }
+  
+  return chunks;
+}
+```
+
+### Implementation Patterns
+
+#### Whole File Reading (Small Files)
+
+When working with small files (<=250 lines), use this pattern:
+
+```typescript
+// Small file (<=250 lines)
+read_file("target_file.md", should_read_entire_file=true)
+```
+
+#### Chunked Reading (Medium Files)
+
+For medium files (251-750 lines), use this pattern:
+
+```typescript
+// Medium file (251-750 lines)
+read_file("target_file.md", 0, 750)
+```
+
+#### Multi-Chunked Reading (Large Files)
+
+For large files (>750 lines), use this pattern:
+
+```typescript
+// Large file (>750 lines)
+// First chunk: Beginning of file (essential context)
+read_file("target_file.md", 0, 250)
+
+// Middle chunk: Specific section (target content)
+read_file("target_file.md", 400, 250)
+
+// Final chunk: End of file (completion context)
+read_file("target_file.md", file_size - 250, 250)
+```
+
+## Context Preservation Strategies
+
+### Marker-Based Reading
+
+Use markers to divide files into logical sections:
+
+```typescript
+// Section marker detection
+function findSectionMarkers(fileContent) {
+  const markers = [];
+  const lines = fileContent.split('\n');
+  
+  lines.forEach((line, index) => {
+    if (line.startsWith('## ') || line.startsWith('# ')) {
+      markers.push({
+        line: index,
+        text: line.trim(),
+        level: line.startsWith('# ') ? 1 : 2
+      });
+    }
+  });
+  
+  return markers;
+}
+
+// Section-based chunking
+function generateSectionBasedChunks(markers, file_size) {
+  const chunks = [];
+  
+  for (let i = 0; i < markers.length; i++) {
+    const start = markers[i].line;
+    const end = (i < markers.length - 1) 
+      ? markers[i + 1].line - 1 
+      : file_size - 1;
+    
+    const size = end - start + 1;
+    
+    if (size <= 250) {
+      chunks.push({
+        offset: start,
+        limit: size,
+        section: markers[i].text
+      });
+    } else {
+      // Split large sections into subsections
+      const subsections = Math.ceil(size / 250);
+      for (let j = 0; j < subsections; j++) {
+        const substart = start + (j * 250);
+        const sublimit = Math.min(250, (start + size) - substart);
+        
+        chunks.push({
+          offset: substart,
+          limit: sublimit,
+          section: `${markers[i].text} (part ${j+1}/${subsections})`
+        });
+      }
+    }
+  }
+  
+  return chunks;
+}
+```
+
+### Implementation Pattern
+
+```typescript
+// 1. First scan to find markers
+const file_content = read_file("target_file.md", 0, 250);
+const markers = findSectionMarkers(file_content);
+
+// 2. Generate marker-based reading plan
+const chunks = generateSectionBasedChunks(markers, estimated_file_size);
+
+// 3. Read each relevant section
+for (const chunk of chunks) {
+  if (isRelevantToTask(chunk.section)) {
+    read_file("target_file.md", chunk.offset, chunk.limit);
+  }
+}
+```
+
+## Automatic Split Operations
+
+### Split Detection System
+
+```typescript
+// File size detection pattern
+function detectSplitRequirement(file: string): boolean {
+  const lineCount = getLineCount(file);
+  return lineCount > 250;
+}
+
+// Split point calculation
+function calculateSplitPoints(content: string): number[] {
+  // Find natural break points (headers, section ends)
+  const breakPoints = findNaturalBreaks(content);
+  
+  // Ensure each section is <= 250 lines
+  return optimizeSplitPoints(breakPoints);
+}
+```
+
+### Implementation Pattern
+
+1. **Size Check**:
+   ```typescript
+   // Before reading file
+   if (detectSplitRequirement(file)) {
+     const splitPoints = calculateSplitPoints(content);
+     // Use multiple read_file calls with split points
+   }
+   ```
+
+2. **Context Preservation**:
+   ```typescript
+   // Add context headers at split points
+   function addSplitContext(section: string, totalSections: number): string {
+     return `
+       // Section ${sectionNumber} of ${totalSections}
+       // Previous section: [summary]
+       ${section}
+       // Continues in next section: [preview]
+     `;
+   }
+   ```
+
+3. **Tool Call Optimization**:
+   ```typescript
+   // Batch related reads
+   function batchReadCalls(splitPoints: number[]): ReadOperation[] {
+     return splitPoints.map(point => ({
+       start: point.start,
+       end: point.end,
+       context: point.context
+     }));
+   }
+   ```
+
+### Usage Examples
+
+1. **Basic Split Reading**:
+   ```typescript
+   // Reading a large file
+   const sections = splitFileRead("large-file.md", {
+     maxLines: 250,
+     preserveContext: true
+   });
+   ```
+
+2. **Context-Aware Splitting**:
+   ```typescript
+   // Reading with context preservation
+   const contextualRead = readWithContext("large-file.md", {
+     section: "implementation",
+     requiresContext: true
+   });
+   ```
+
+3. **Tool-Optimized Reading**:
+   ```typescript
+   // Optimized for tool call limits
+   const optimizedRead = batchOptimizedRead("large-file.md", {
+     maxCalls: 25,
+     priorityOrder: ["core", "implementation", "examples"]
+   });
+   ```
+
+## Context Preservation System
+
+### Context Types
+
+1. **Section Context**:
+   ```typescript
+   interface SectionContext {
+     previous: {
+       summary: string;
+       key_points: string[];
+     };
+     current: {
+       scope: string;
+       focus: string[];
+     };
+     next: {
+       preview: string;
+       dependencies: string[];
+     };
+   }
+   ```
+
+2. **Dependency Context**:
+   ```typescript
+   interface DependencyContext {
+     imports: string[];
+     components: string[];
+     external: {
+       name: string;
+       version: string;
+     }[];
+   }
+   ```
+
+3. **Implementation Context**:
+   ```typescript
+   interface ImplementationContext {
+     phase: string;
+     status: 'pending' | 'in-progress' | 'complete';
+     actions: {
+       completed: string[];
+       current: string;
+       next: string[];
+     };
+   }
+   ```
+
+### Context Markers
+
+```markdown
+--- SECTION CONTEXT ---
+Previous: [Brief summary of previous section]
+Current: [Current section focus]
+Next: [Preview of next section]
+
+--- DEPENDENCY CONTEXT ---
+Requires: [List of dependencies]
+Related: [Related components]
+External: [External dependencies]
+
+--- IMPLEMENTATION CONTEXT ---
+Phase: [Current phase]
+Status: [Completion status]
+Next: [Next steps]
+```
+
+### Context Management System
+
+1. **Context Generation**:
+   ```typescript
+   function generateContext(section: string, type: ContextType): Context {
+     switch (type) {
+       case 'section':
+         return {
+           previous: extractPreviousContext(section),
+           current: analyzeCurrentContext(section),
+           next: predictNextContext(section)
+         };
+       case 'dependency':
+         return {
+           imports: extractImports(section),
+           components: findRelatedComponents(section),
+           external: analyzeExternalDeps(section)
+         };
+       case 'implementation':
+         return {
+           phase: determinePhase(section),
+           status: checkStatus(section),
+           actions: planNextActions(section)
+         };
+     }
+   }
+   ```
+
+2. **Context Preservation**:
+   ```typescript
+   function preserveContext(sections: Section[]): Section[] {
+     return sections.map(section => {
+       const sectionContext = generateContext(section.content, 'section');
+       const depContext = generateContext(section.content, 'dependency');
+       const implContext = generateContext(section.content, 'implementation');
+
+       return {
+         ...section,
+         context: {
+           section: sectionContext,
+           dependency: depContext,
+           implementation: implContext
+         }
+       };
+     });
+   }
+   ```
+
+3. **Context Restoration**:
+   ```typescript
+   function restoreContext(section: Section): string {
+     const { section: sCtx, dependency: dCtx, implementation: iCtx } = section.context;
+
+     return `
+       ${formatSectionContext(sCtx)}
+       ${formatDependencyContext(dCtx)}
+       ${formatImplementationContext(iCtx)}
+       ${section.content}
+     `;
+   }
+   ```
+
+### Context Tracking System
+
+1. **Active Context Tracking**:
+   ```typescript
+   class ContextTracker {
+     private activeContext: Map<string, Context> = new Map();
+     private contextHistory: Context[] = [];
+
+     trackContext(file: string, context: Context): void {
+       this.activeContext.set(file, context);
+       this.contextHistory.push(context);
+     }
+
+     getActiveContext(file: string): Context | undefined {
+       return this.activeContext.get(file);
+     }
+
+     getContextHistory(): Context[] {
+       return this.contextHistory;
+     }
+   }
+   ```
+
+2. **Context Verification**:
+   ```typescript
+   function verifyContext(section: Section, requiredContext: string[]): boolean {
+     const { dependency, implementation } = section.context;
+     
+     return requiredContext.every(req => {
+       if (req.startsWith('import:')) {
+         return dependency.imports.includes(req.slice(7));
+       }
+       if (req.startsWith('phase:')) {
+         return implementation.phase === req.slice(6);
+       }
+       return true;
+     });
+   }
+   ```
+
+3. **Context Recovery**:
+   ```typescript
+   async function recoverContext(file: string, missingContext: string[]): Promise<Context> {
+     const recoveryPlan = createRecoveryPlan(missingContext);
+     const recoveredContext = await executeRecoveryPlan(file, recoveryPlan);
+     return recoveredContext;
+   }
+   ```
+
+### Implementation Examples
+
+1. **Basic Context Preservation**:
+   ```typescript
+   // Reading with context preservation
+   const result = await readWithContext("large-file.md", {
+     preserveContext: true,
+     contextTypes: ['section', 'dependency']
+   });
+   ```
+
+2. **Context-Aware Implementation**:
+   ```typescript
+   // Implementing with context awareness
+   const implementation = await implementWithContext({
+     file: "core.md",
+     requiredContext: ['import:react', 'phase:initialization'],
+     contextTracking: true
+   });
+   ```
+
+3. **Context Recovery**:
+   ```typescript
+   // Recovering lost context
+   const recovered = await recoverContext("core.md", [
+     'import:react',
+     'phase:initialization'
+   ]);
+   ```
+
+## Usage in Implementation
+
+Incorporate these patterns into your planning files:
+
+```markdown
+# Implementation Plan
+
+## File Reading Strategy
+
+This implementation uses tool-aware file reading:
+
+- **File Size Analysis**: Dynamically detect file sizes before reading
+- **Chunking Strategy**: Use section-based chunking for large files
+- **Context Preservation**: Extract critical context from each section
+- **Reading Optimization**: Group related sections to minimize tool calls
+- **Split Prevention**: Organize new documentation to avoid exceeding size limits
+```
+
+## Tool Integration Optimization
+
+### Tool Categories
+
+1. **Read Tools**:
+   ```typescript
+   interface ReadToolConfig {
+     maxLines: number;
+     preserveContext: boolean;
+     splitDetection: boolean;
+     contextTypes: string[];
+   }
+   ```
+
+2. **Search Tools**:
+   ```typescript
+   interface SearchToolConfig {
+     semantic: boolean;
+     exact: boolean;
+     contextAware: boolean;
+     maxResults: number;
+   }
+   ```
+
+3. **Edit Tools**:
+   ```typescript
+   interface EditToolConfig {
+     contextPreservation: boolean;
+     splitAware: boolean;
+     verifyChanges: boolean;
+     maxChanges: number;
+   }
+   ```
+
+### Tool Call Patterns
+
+1. **Smart Batching**:
+   ```typescript
+   interface BatchConfig {
+     maxBatchSize: number;
+     priorityLevels: number;
+     contextSharing: boolean;
+   }
+
+   function batchToolCalls<T extends ToolCall>(
+     calls: T[],
+     config: BatchConfig
+   ): BatchedCalls<T> {
+     return {
+       highPriority: prioritizeCalls(calls, config.priorityLevels),
+       sharedContext: enableContextSharing(calls, config.contextSharing),
+       optimizedBatches: createOptimizedBatches(calls, config.maxBatchSize)
+     };
+   }
+   ```
+
+2. **Context-Aware Execution**:
+   ```typescript
+   async function executeWithContext<T extends ToolCall>(
+     call: T,
+     context: Context
+   ): Promise<ToolResult> {
+     const enhancedCall = enhanceWithContext(call, context);
+     const result = await executeTool(enhancedCall);
+     return preserveResultContext(result, context);
+   }
+   ```
+
+3. **Tool Chain Optimization**:
+   ```typescript
+   interface ToolChain {
+     steps: ToolCall[];
+     context: Context;
+     optimization: {
+       parallel: boolean;
+       caching: boolean;
+       contextSharing: boolean;
+     };
+   }
+
+   async function executeToolChain(chain: ToolChain): Promise<ToolResult[]> {
+     const optimizedSteps = optimizeChainSteps(chain.steps);
+     const results = await executeOptimizedSteps(optimizedSteps, chain.context);
+     return results;
+   }
+   ```
+
+### Integration Patterns
+
+1. **Read-Search Integration**:
+   ```typescript
+   async function integratedReadSearch(
+     query: string,
+     config: {
+       read: ReadToolConfig;
+       search: SearchToolConfig;
+     }
+   ): Promise<SearchResult[]> {
+     const searchResults = await performSearch(query, config.search);
+     const enrichedResults = await enrichWithContext(
+       searchResults,
+       config.read
+     );
+     return enrichedResults;
+   }
+   ```
+
+2. **Search-Edit Integration**:
+   ```typescript
+   async function integratedSearchEdit(
+     pattern: string,
+     edit: EditOperation,
+     config: {
+       search: SearchToolConfig;
+       edit: EditToolConfig;
+     }
+   ): Promise<EditResult[]> {
+     const matches = await findMatches(pattern, config.search);
+     const editResults = await applyEdits(matches, edit, config.edit);
+     return editResults;
+   }
+   ```
+
+3. **Read-Edit Integration**:
+   ```typescript
+   async function integratedReadEdit(
+     file: string,
+     edit: EditOperation,
+     config: {
+       read: ReadToolConfig;
+       edit: EditToolConfig;
+     }
+   ): Promise<EditResult> {
+     const content = await readWithConfig(file, config.read);
+     const editResult = await applyEdit(content, edit, config.edit);
+     return editResult;
+   }
+   ```
+
+### Implementation Examples
+
+1. **Optimized Tool Chain**:
+   ```typescript
+   // Example of an optimized tool chain
+   const chain = createToolChain({
+     steps: [
+       { type: 'read', file: 'core.md' },
+       { type: 'search', pattern: 'implementation' },
+       { type: 'edit', operation: updateImplementation }
+     ],
+     optimization: {
+       parallel: true,
+       caching: true,
+       contextSharing: true
+     }
+   });
+   ```
+
+2. **Integrated Search and Edit**:
+   ```typescript
+   // Example of integrated search and edit
+   const results = await integratedSearchEdit(
+     'updateRequired',
+     {
+       type: 'replace',
+       content: 'updated'
+     },
+     {
+       search: { semantic: true, contextAware: true },
+       edit: { splitAware: true, verifyChanges: true }
+     }
+   );
+   ```
+
+3. **Context-Aware Tool Integration**:
+   ```typescript
+   // Example of context-aware integration
+   const result = await executeWithContext(
+     {
+       type: 'read',
+       file: 'implementation.md'
+     },
+     {
+       preserveContext: true,
+       contextTypes: ['section', 'dependency'],
+       splitDetection: true
+     }
+   );
+   ``` 

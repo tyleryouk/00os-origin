@@ -1,0 +1,164 @@
+---
+description: USE WHEN understanding memory domains, accessing historical knowledge records, or implementing pattern-based learning mechanisms
+globs: 
+alwaysApply: false
+---
+# USE WHEN understanding memory domains, accessing historical knowledge records, or implementing pattern-based learning mechanisms
+
+# Memory Domain Reference
+
+## Overview
+
+This reference guide provides a comprehensive index of memory-domain knowledge in the 1000xbrain cognitive architecture. The memory domain encompasses the system's ability to store, recall, and learn from past experiences, implementation patterns, and optimizations.
+
+## Key Memory Domain Components
+
+| Component | Purpose | Primary Location |
+|-----------|---------|------------------|
+| Pattern Memory | Reusable implementation patterns | knowledge/patterns/ |
+| Journal Memory | Historical implementation records | knowledge/memory/journal/ |
+| Challenge Memory | Documented resolved challenges | knowledge/memory/challenges/ |
+| Optimization Memory | Performance enhancement records | knowledge/memory/optimizations/ |
+
+## Reference Resources
+
+### Memory System References
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Memory Structures Guide | Comprehensive memory system overview | `@reference/guides/memory-structures.mdc` |
+| Pattern Reference | Implementation pattern collection | `@reference/guides/implementation-patterns.mdc` |
+| Tool Patterns Reference | Tool usage pattern collection | `@reference/guides/tool-patterns.mdc` |
+
+### Pattern Memory Resources
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Tool Patterns | Tool usage patterns | `@patterns/tool/search-patterns.mdc` |
+| Implementation Patterns | Code implementation patterns | `@patterns/impl/implementation-patterns.mdc` |
+| Documentation Patterns | Documentation creation patterns | `@patterns/doc/file-standards.mdc` |
+
+### Journal Memory Resources
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Implementation Journal | Record of implementation decisions | `@memory/journal/implementation-journal.mdc` |
+| Enhancement Journal | Record of cognitive enhancements | `@memory/journal/enhancement-journal.mdc` |
+| Learning Journal | Record of learned patterns | `@memory/journal/learning-journal.mdc` |
+
+### Challenge Memory Resources
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Implementation Challenges | Code implementation challenge solutions | `@memory/challenges/implementation-challenges.mdc` |
+| Architecture Challenges | Architecture design challenge solutions | `@memory/challenges/architecture-challenges.mdc` |
+| Workflow Challenges | Process challenge solutions | `@memory/challenges/workflow-challenges.mdc` |
+
+### Optimization Memory Resources
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Tool Optimizations | Tool usage optimization strategies | `@memory/optimizations/tool-optimizations.mdc` |
+| Cognitive Optimizations | Cognitive process optimization strategies | `@memory/optimizations/cognitive-optimizations.mdc` |
+| Implementation Optimizations | Implementation speed optimization strategies | `@memory/optimizations/implementation-optimizations.mdc` |
+
+## Common Reference Scenarios
+
+### Pattern Recall Scenarios
+
+When you need to implement based on established patterns:
+
+1. Start with the Implementation Patterns Reference: `@reference/guides/implementation-patterns.mdc`
+2. Look for specific domain patterns: `@patterns/impl/implementation-patterns.mdc`
+3. Apply the pattern to your current implementation
+
+### Learning from History
+
+When you want to learn from past implementations:
+
+1. Consult the Implementation Journal: `@memory/journal/implementation-journal.mdc`
+2. Review similar implementations from history
+3. Apply learnings to current implementation
+
+### Challenge Resolution
+
+When facing a difficult implementation challenge:
+
+1. Check previously solved challenges: `@memory/challenges/implementation-challenges.mdc`
+2. Look for similar scenarios and their resolutions
+3. Apply resolution patterns to current challenges
+
+### Performance Optimization
+
+When optimizing implementation performance:
+
+1. Review optimization strategies: `@memory/optimizations/implementation-optimizations.mdc`
+2. Identify applicable optimization techniques
+3. Apply optimizations to current implementation
+
+## Key Memory Concepts
+
+- **Pattern Recognition**: Identifying recurring implementation approaches
+- **Experience Indexing**: Cataloging experiences for future reference
+- **Learning Integration**: Incorporating new knowledge into existing structures
+- **Optimization Recording**: Documenting performance improvements
+- **Challenge Resolution**: Documenting solutions to difficult problems
+- **Knowledge Persistence**: Maintaining accessible implementation history
+
+## Memory System Usage
+
+### Pattern Memory Usage
+
+Use pattern memory when:
+- Implementing standard functionality
+- Creating common components
+- Following established conventions
+- Optimizing workflow efficiency
+
+### Journal Memory Usage
+
+Use journal memory when:
+- Learning from past implementations
+- Understanding historical decisions
+- Tracking cognitive development
+- Building upon previous work
+
+### Challenge Memory Usage
+
+Use challenge memory when:
+- Addressing difficult implementation issues
+- Solving complex architectural problems
+- Overcoming workflow obstacles
+- Implementing innovative solutions
+
+### Optimization Memory Usage
+
+Use optimization memory when:
+- Improving implementation efficiency
+- Enhancing cognitive processes
+- Streamlining workflows
+- Maximizing performance
+
+## Reference Usage
+
+### When to Reference This Guide
+
+Reference this guide when:
+- Exploring the memory system organization
+- Locating specific memory resources
+- Understanding memory domain concepts
+- Accessing implementation patterns
+- Learning from historical records
+
+### Example Reference
+
+```
+message-command: @reference/domains/memory.mdc
+```
+
+## Related Domain References
+
+- Knowledge System Reference: `@reference/guides/knowledge-system.mdc`
+- Tool Domain Reference: `@reference/domains/tool.mdc`
+- Architecture Domain Reference: `@reference/domains/architecture.mdc`
+- Memory Structures Reference: `@reference/guides/memory-structures.mdc` 

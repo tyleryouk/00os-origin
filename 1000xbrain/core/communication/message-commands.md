@@ -1,0 +1,57 @@
+# Message Commands
+
+## File Purpose and Relationship
+
+This file provides guidance on the core structure and syntax for message-commands in the GigaSwap workflow system. It should be consulted when:
+
+- Understanding the core message-command structure
+- Learning about the flexible project-rule-parameter system
+- Following the simplified two-command workflow pattern
+
+This file complements:
+- `core/identity/global-rules.md`: Core identity and mode concepts
+- `core/modes/mode-transitions.md`: Simplified mode transition process
+- `knowledge/patterns/tool/tool-patterns.md`: Tool call standards and examples
+- `knowledge/guides/fetch-rules.md`: Standardized knowledge access
+
+## Project-Rule-Parameter Header System
+
+The new header system in each project-rule-parameter file provides classification information directly in the file, making centralized tracking unnecessary:
+
+```
+# workflow: rules-workflow | pathway: error-recovery | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-path: parameters/rules/dev-mode/continue-implementation-error-recovery.mdc
+```
+
+This header pattern includes:
+- **workflow**: The workflow type this parameter is designed for
+- **pathway**: The specific use-case pathway
+- **message-command**: The associated message-command
+- **standard-parameter(s)**: Required standard parameters
+- **project-rule-parameter-path**: Full path to the parameter file
+
+This self-documenting approach eliminates the need for global tracking of all message-commands and parameters.
+
+## ⚠️ CRITICAL: Project-Rule-Parameter Extension Requirements ⚠️
+
+When referring to project-rule-parameters:
+
+1. **ALWAYS use .mdc extension**:
+   - CORRECT: `@template-basic.mdc`
+   - INCORRECT: `@template-basic.md`
+
+2. **Rationale**:
+   - 1000xbrain (.md files) are editable source files that AI can modify
+   - Cursor Rules (.mdc files) are the actual rules that get applied
+   - Only Tyler can edit .mdc files through the Cursor Settings UI
+   - Message-commands must reference the actual rules (.mdc), not their source (.md)
+   - The 1000xscripts directory contains synchronization tools to keep 1000xbrain and Cursor Rules in sync
+
+## Message-Command Usage Standards
+
+### Syntax Standards
+
+1. **Kebab-Case Requirement**: All message-commands must use kebab-case format (e.g., `continue-planning`)
+2. **Parameter Separator**: Use colon (`:`) to separate message-commands from parameters
+3. **Parameter Space**: Use space to separate multiple parameters
+4. **Project-Rule Prefix**: Always prefix project-rule parameters with `@` symbol
+5. **Knowledge Access**: Use fetch_rules tool for knowledge directory access

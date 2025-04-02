@@ -1,0 +1,417 @@
+---
+description: 
+globs: 
+alwaysApply: false
+type: manual
+---
+# create-official-documentation project-rule-parameter
+
+## File Purpose and Relationship
+
+This manual Project Rule defines the comprehensive creation protocol for new documentation files in the PolygonExpress project. It should be consulted when:
+
+- Creating new documentation for components, features, or APIs
+- Ensuring documentation meets project format standards 
+- Following a standardized research-to-creation workflow
+- Designing effective component diagrams and examples
+
+This file is designed to be used as a project-rule-parameter with the `create-official-documentation` message-command:
+```
+create-official-documentation: {path} @manual/documentation/create-official-documentation.mdc
+```
+
+This file complements:
+- **documentation-workflow.mdc**: Core documentation workflow process
+- **global-rules.mdc**: Core identity and mode concepts
+- **verify-official-documentation.mdc**: Documentation verification protocol
+
+For specialized guidance, see:
+- **update-documentation-format.mdc**: Format update and standardization guidelines
+
+When information appears to conflict, this file takes precedence for documentation creation standards.
+
+## Parameter Syntax and Usage
+
+### Parameter Types
+
+Documentation creation message-commands accept two distinct types of parameters:
+
+1. **Message-Command Parameters**
+   - Part of the message-command syntax itself
+   - Specified directly after a colon in the message-command
+   - Provides specific file path for creation
+   - Example: `create-official-documentation: official-documentation/front-end/api-client.md`
+
+2. **Project Rule Parameters**
+   - Referenced Project Rules that provide creation guidance
+   - Auto-attached when working with documentation files
+   - Explicitly referenced using @rule-name when needed
+   - Example: `create-official-documentation: official-documentation/front-end/api-client.md @manual/documentation/create-official-documentation.mdc`
+
+### Multiple Parameter Syntax
+
+When a message-command requires both message-command parameters and Project Rule parameters, use this format:
+
+```
+message-command: [message-command-parameter] @[project-rule-parameter]
+```
+
+**Examples:**
+```
+create-official-documentation: official-documentation/front-end/api-client.md @manual/documentation/create-official-documentation.mdc
+create-official-documentation: official-documentation/blockchain/transaction-flow.md @manual/documentation/create-official-documentation.mdc
+```
+
+### Documentation Creation Parameter Format
+
+| Message-Command | Parameter Format | Example | Purpose |
+|-----------------|-----------------|---------|---------|
+| `create-official-documentation` | File path | `create-official-documentation: official-documentation/front-end/api-client.md` | Create new documentation file at specified path |
+
+## 1. Documentation Creation Protocol
+
+### 5-Phase Creation Process
+
+When executing ANY documentation creation message-command, you MUST follow this 5-phase creation process:
+
+#### Phase 1: Research Phase
+```typescript
+# Step 1: Identify content to document
+codebase_search("API client implementation", ["front-end/src/api"])
+grep_search("class ApiClient", false, "*.ts")
+file_search("ApiClient.ts")
+
+# Step 2: Create implementation file list (mental process)
+# - Identify primary implementation files
+# - Note supporting files and dependencies
+# - Map component relationships and hierarchy
+```
+
+#### Phase 2: Implementation Reading Phase
+```typescript
+# Step 1: Read primary implementation files completely
+read_file("front-end/src/api/ApiClient.ts", should_read_entire_file=true)
+read_file("front-end/src/api/endpoints.ts", should_read_entire_file=true)
+
+# Step 2: Read supporting files as needed
+read_file("front-end/src/types/api.ts", should_read_entire_file=true)
+read_file("front-end/src/utils/apiHelpers.ts", should_read_entire_file=true)
+
+# Step 3: Extract key information (mental process)
+# - Identify core functionality and purpose
+# - Catalog interfaces, functions, and patterns
+# - Note error handling and edge cases
+# - Map component relationships for diagrams
+```
+
+#### Phase 3: Format Research Phase
+```typescript
+# Step 1: Read documentation format standards
+read_file("official-documentation/README.md", should_read_entire_file=true)
+
+# Step 2: Review similar documentation for consistent style
+read_file("official-documentation/front-end/components/structure.md", should_read_entire_file=true)
+
+# Step 3: Analyze format requirements (mental process)
+# - Identify required sections
+# - Note component diagram patterns
+# - Observe code example formats
+# - Understand cross-referencing style
+```
+
+#### Phase 4: Creation Phase
+```typescript
+# Step 1: Create complete documentation file in a single operation
+edit_file("official-documentation/front-end/api-client.md",
+          "Create comprehensive API Client documentation",
+          "# API Client\n\n## Purpose\n\nThe API Client provides a centralized interface for all API interactions in the PolygonExpress platform, handling request formatting, error management, and response parsing.\n\n## Component Architecture\n\n```mermaid\ngraph TD\n    ApiClient[API Client] --> Endpoints[API Endpoints]\n    ApiClient --> ErrorHandler[Error Handler]\n    ApiClient --> ResponseParser[Response Parser]\n    \n    Endpoints --> OrdersAPI[Orders API]\n    Endpoints --> UsersAPI[Users API]\n    Endpoints --> AuthAPI[Auth API]\n    \n    subgraph \"Core API Layer\"\n        ApiClient\n        Endpoints\n        ErrorHandler\n        ResponseParser\n    end\n    \n    subgraph \"Domain APIs\"\n        OrdersAPI\n        UsersAPI\n        AuthAPI\n    end\n```\n\n## Core Interfaces\n\n```typescript\ninterface ApiClientConfig {\n  baseUrl: string;\n  timeout: number;\n  retryCount: number;\n}\n\ninterface ApiResponse<T> {\n  data: T;\n  status: number;\n  headers: Record<string, string>;\n}\n\ninterface ApiError {\n  message: string;\n  code: string;\n  status: number;\n  originalError?: unknown;\n}\n```\n\n## Usage Example\n\n```typescript\nimport { apiClient } from '@/api';\n\n// Basic GET request\nconst fetchUsers = async () => {\n  try {\n    const response = await apiClient.get<User[]>('/users');\n    return response.data;\n  } catch (error) {\n    console.error('Failed to fetch users:', error);\n    throw error;\n  }\n};\n\n// POST request with body\nconst createOrder = async (orderData: CreateOrderRequest) => {\n  try {\n    const response = await apiClient.post<Order>('/orders', orderData);\n    return response.data;\n  } catch (error) {\n    console.error('Failed to create order:', error);\n    throw error;\n  }\n};\n```\n\n## Error Handling\n\nThe API Client provides standardized error handling with the following features:\n\n- Automatic retry for network failures (configured via `retryCount`)\n- Consistent error format across all API calls\n- Detailed error information including original error objects\n- HTTP status code categorization\n\n### Error Types\n\n| Status Code Range | Error Category | Retry Strategy |\n|-------------------|----------------|----------------|\n| 400-499 | Client Errors | No retry (except 408) |\n| 500-599 | Server Errors | Automatic retry with backoff |\n| Network | Connection Errors | Automatic retry with backoff |\n\n## Related Components\n\n- [Auth Service](./auth-service.md) - Handles authentication tokens\n- [Orders API](./orders-api.md) - Domain-specific API for orders\n- [API Types](./api-types.md) - Type definitions for API requests and responses")
+
+# Step 2: Verify content organization and formatting (mental process)
+# - Check all required sections are included
+# - Verify component diagram accuracy
+# - Confirm code examples are properly formatted
+# - Ensure cross-references are valid
+```
+
+#### Phase 5: Verification Phase
+```typescript
+# Step 1: Check for any related usages to include
+codebase_search("ApiClient usage examples", ["front-end/src"])
+
+# Step 2: Verify documentation completeness (mental process)
+# - Confirm all key functionality is documented
+# - Validate interface definitions match implementation
+# - Verify error handling documentation is complete
+# - Check for any undocumented edge cases
+
+# Step 3: Generate completion notice (mental process)
+# - Documentation file created
+# - All required sections included
+# - Implementation accurately reflected
+# - Format standards followed
+```
+
+## 2. Documentation Format Standards
+
+### Required Section Structure
+
+All created documentation MUST include these sections in this order:
+
+1. **Title Section**
+   - Level 1 heading with component/feature name
+   - Example: `# API Client`
+
+2. **Purpose Section**
+   - Begins with Level 2 heading: `## Purpose`
+   - Concise description of component's role in the system
+   - Critical functionality overview
+   - 1-3 paragraphs maximum
+
+3. **Component Architecture**
+   - Begins with Level 2 heading: `## Component Architecture`
+   - Mermaid diagram showing component relationships
+   - Subgraphs for logical grouping
+   - Clear directional relationships
+
+4. **Core Interfaces/API Reference**
+   - Begins with Level 2 heading: `## Core Interfaces` or `## API Reference`
+   - TypeScript interfaces or function signatures
+   - Code blocks with proper syntax highlighting
+   - Parameter descriptions for functions
+
+5. **Usage Examples**
+   - Begins with Level 2 heading: `## Usage Examples`
+   - Complete, functional code examples
+   - Common use cases demonstrated
+   - Error handling included
+
+6. **Additional Sections (as needed)**
+   - Error handling patterns
+   - Edge cases
+   - Performance considerations
+   - Configuration options
+
+7. **Related Components**
+   - Begins with Level 2 heading: `## Related Components`
+   - Links to related documentation files
+   - Brief description of relationships
+
+### Component Diagram Requirements
+
+All component diagrams MUST:
+
+1. **Use Mermaid Syntax**
+   - Always wrapped in ```mermaid code blocks
+   - Use graph TD for top-down flow diagrams
+   - Use proper node naming conventions
+
+2. **Show Clear Relationships**
+   - Use arrows to show dependencies and data flow
+   - Label relationships where helpful
+   - Group related components with subgraphs
+
+3. **Follow Visual Standards**
+   - Primary components at the top level
+   - Support services in logical groupings
+   - Consistent naming patterns
+
+4. **Diagram Example:**
+
+```mermaid
+graph TD
+    Component[Main Component] --> SubComponent1[Sub-Component 1]
+    Component --> SubComponent2[Sub-Component 2]
+    
+    SubComponent1 --> Service1[Service 1]
+    SubComponent2 --> Service2[Service 2]
+    
+    subgraph "Component Layer"
+        Component
+        SubComponent1
+        SubComponent2
+    end
+    
+    subgraph "Service Layer"
+        Service1
+        Service2
+    end
+```
+
+### Code Example Standards
+
+Code examples MUST:
+
+1. **Be Complete and Executable**
+   - Contain import statements
+   - Show complete function definitions
+   - Include error handling
+   - Use realistic variable names
+
+2. **Follow TypeScript Best Practices**
+   - Use proper type definitions
+   - Leverage async/await patterns
+   - Follow project coding conventions
+   - Use consistent naming
+
+3. **Demonstrate Common Use Cases**
+   - Show basic operation patterns
+   - Include error handling examples
+   - Demonstrate configuration options
+   - Show both simple and complex scenarios
+
+## 3. Research Optimization Techniques
+
+To create comprehensive documentation efficiently:
+
+### Implementation Map Technique
+
+1. **Primary Implementation Files**
+   - Core files containing main functionality
+   - Interface and type definitions
+   - Must be read completely
+
+2. **Secondary Implementation Files**
+   - Supporting utilities and helpers
+   - Usage examples in the codebase
+   - Can be read selectively
+
+3. **Related Components**
+   - Components that interact with the target
+   - Parent and child relationships
+   - Dependencies and consumers
+
+### Intelligent Pattern Extraction
+
+1. **Interface Extraction**
+   - Identify TypeScript interfaces
+   - Note parameter types and optionality
+   - Document default values
+   - Map nested type relationships
+
+2. **Function Pattern Analysis**
+   - Identify common function patterns
+   - Note error handling approaches
+   - Document async patterns
+   - Highlight parameter requirements
+
+3. **Component Relationship Mapping**
+   - Map parent-child relationships
+   - Document data flow direction
+   - Note dependency injection patterns
+   - Identify composition relationships
+
+## 4. Implementation Examples
+
+### Basic Component Documentation
+
+```typescript
+// Example: Creating documentation for a UI component
+
+// Phase 1: Research
+codebase_search("Button component implementation", ["front-end/src/components"])
+grep_search("export (function|const) Button", false, "*.tsx")
+file_search("Button.tsx")
+
+// Phase 2: Implementation Reading
+read_file("front-end/src/components/Button.tsx", should_read_entire_file=true)
+read_file("front-end/src/components/common/BaseButton.tsx", should_read_entire_file=true)
+read_file("front-end/src/types/components.ts", should_read_entire_file=true)
+
+// Phase 3: Format Research
+read_file("official-documentation/README.md", should_read_entire_file=true)
+read_file("official-documentation/front-end/components/card.md", should_read_entire_file=true)
+
+// Phase 4: Creation
+edit_file("official-documentation/front-end/components/button.md",
+          "Create comprehensive Button component documentation",
+          "# Button Component\n\n## Purpose\n\nThe Button component provides a standardized, accessible button implementation with consistent styling across the PolygonExpress platform. It supports multiple variants, sizes, and states, with built-in loading indicators and icon support.\n\n## Component Architecture\n\n```mermaid\ngraph TD\n    Button[Button] --> BaseButton[BaseButton]\n    Button --> Icon[Icon Component]\n    Button --> Spinner[Loading Spinner]\n    \n    BaseButton --> ButtonStyles[Button Styles]\n    \n    subgraph \"Button Components\"\n        Button\n        BaseButton\n    end\n    \n    subgraph \"Supporting Components\"\n        Icon\n        Spinner\n        ButtonStyles\n    end\n```\n\n## Props Interface\n\n```typescript\ninterface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  /** Button display variant */\n  variant?: 'primary' | 'secondary' | 'text';\n  /** Button size */\n  size?: 'small' | 'medium' | 'large';\n  /** Show loading spinner */\n  isLoading?: boolean;\n  /** Disable the button */\n  disabled?: boolean;\n  /** Start icon component */\n  startIcon?: React.ReactNode;\n  /** End icon component */\n  endIcon?: React.ReactNode;\n  /** Full width button */\n  fullWidth?: boolean;\n}\n```\n\n## Usage Examples\n\n```tsx\nimport { Button } from '@/components';\n\n// Basic usage\n<Button onClick={handleClick}>Click Me</Button>\n\n// Variants and sizes\n<Button variant=\"primary\" size=\"large\">Primary Large</Button>\n<Button variant=\"secondary\" size=\"medium\">Secondary Medium</Button>\n<Button variant=\"text\" size=\"small\">Text Small</Button>\n\n// With icons\n<Button startIcon={<IconSearch />}>Search</Button>\n<Button endIcon={<IconArrowRight />}>Next</Button>\n\n// Loading state\n<Button isLoading={isSubmitting} onClick={handleSubmit}>Submit</Button>\n\n// Disabled state\n<Button disabled={!isValid} onClick={handleSubmit}>Submit</Button>\n\n// Full width\n<Button fullWidth onClick={handleSubmit}>Submit Form</Button>\n```\n\n## Accessibility Features\n\n- Preserves native button accessibility features\n- Maintains focus states for keyboard navigation\n- Loading state announced to screen readers\n- Color contrast meets WCAG AA standards\n- Includes proper aria attributes when needed\n\n## Related Components\n\n- [Icon Component](./icon.md) - Icon system used with buttons\n- [Button Group](./button-group.md) - Container for button groups\n- [Form Controls](./form-controls.md) - Form input elements")
+
+// Phase 5: Verification
+codebase_search("Button component usage", ["front-end/src"])
+```
+
+### Complex API Documentation
+
+```typescript
+// Example: Creating documentation for a complex API
+
+// Phase 1: Research
+codebase_search("OrdersApi implementation", ["front-end/src/api"])
+grep_search("class OrdersApi", false, "*.ts")
+file_search("OrdersApi.ts")
+
+// Phase 2: Implementation Reading
+read_file("front-end/src/api/OrdersApi.ts", should_read_entire_file=true)
+read_file("front-end/src/api/base.ts", should_read_entire_file=true)
+read_file("front-end/src/types/orders.ts", should_read_entire_file=true)
+
+// Phase 3: Format Research
+read_file("official-documentation/README.md", should_read_entire_file=true)
+read_file("official-documentation/front-end/api/users-api.md", should_read_entire_file=true)
+
+// Phase 4: Creation
+edit_file("official-documentation/front-end/api/orders-api.md",
+          "Create comprehensive Orders API documentation",
+          "# Orders API\n\n## Purpose\n\nThe Orders API provides a client interface for interacting with the order management endpoints, allowing applications to create, read, update, and delete orders within the PolygonExpress platform.\n\n## Component Architecture\n\n```mermaid\ngraph TD\n    OrdersApi[Orders API] --> ApiClient[API Client]\n    OrdersApi --> OrderModels[Order Models]\n    \n    ApiClient --> HttpClient[HTTP Client]\n    ApiClient --> AuthService[Auth Service]\n    \n    subgraph \"API Layer\"\n        OrdersApi\n        ApiClient\n    end\n    \n    subgraph \"Supporting Services\"\n        HttpClient\n        AuthService\n        OrderModels\n    end\n```\n\n## API Methods\n\n```typescript\nclass OrdersApi {\n  /**\n   * Fetch all orders for the current user\n   * @returns Promise<Order[]> List of orders\n   * @throws ApiError if request fails\n   */\n  async getOrders(): Promise<Order[]>;\n  \n  /**\n   * Fetch a specific order by ID\n   * @param orderId The unique order identifier\n   * @returns Promise<Order> The order details\n   * @throws ApiError if order not found or request fails\n   */\n  async getOrderById(orderId: string): Promise<Order>;\n  \n  /**\n   * Create a new order\n   * @param orderData The order creation request\n   * @returns Promise<Order> The created order\n   * @throws ApiError if creation fails or validation errors\n   */\n  async createOrder(orderData: CreateOrderRequest): Promise<Order>;\n  \n  /**\n   * Update an existing order\n   * @param orderId The unique order identifier\n   * @param orderData The order update request\n   * @returns Promise<Order> The updated order\n   * @throws ApiError if update fails or validation errors\n   */\n  async updateOrder(orderId: string, orderData: UpdateOrderRequest): Promise<Order>;\n  \n  /**\n   * Cancel an existing order\n   * @param orderId The unique order identifier\n   * @returns Promise<void>\n   * @throws ApiError if cancellation fails\n   */\n  async cancelOrder(orderId: string): Promise<void>;\n}\n```\n\n## Data Models\n\n```typescript\ninterface Order {\n  id: string;\n  userId: string;\n  status: OrderStatus;\n  items: OrderItem[];\n  total: number;\n  createdAt: string;\n  updatedAt: string;\n}\n\nenum OrderStatus {\n  PENDING = 'pending',\n  PROCESSING = 'processing',\n  COMPLETED = 'completed',\n  CANCELLED = 'cancelled'\n}\n\ninterface OrderItem {\n  id: string;\n  productId: string;\n  quantity: number;\n  price: number;\n}\n\ninterface CreateOrderRequest {\n  items: {\n    productId: string;\n    quantity: number;\n  }[];\n}\n\ninterface UpdateOrderRequest {\n  status?: OrderStatus;\n  items?: {\n    productId: string;\n    quantity: number;\n  }[];\n}\n```\n\n## Usage Examples\n\n```typescript\nimport { ordersApi } from '@/api';\n\n// Fetch all orders\nconst fetchOrders = async () => {\n  try {\n    const orders = await ordersApi.getOrders();\n    return orders;\n  } catch (error) {\n    console.error('Failed to fetch orders:', error);\n    throw error;\n  }\n};\n\n// Create a new order\nconst createOrder = async (items) => {\n  try {\n    const newOrder = await ordersApi.createOrder({ items });\n    return newOrder;\n  } catch (error) {\n    console.error('Failed to create order:', error);\n    throw error;\n  }\n};\n```\n\n## Error Handling\n\nThe Orders API handles errors using a standardized pattern:\n\n```typescript\ntry {\n  const order = await ordersApi.getOrderById('non-existent-id');\n} catch (error) {\n  if (error.status === 404) {\n    // Handle not found error\n    showNotFoundMessage();\n  } else if (error.status >= 400 && error.status < 500) {\n    // Handle client errors\n    showValidationError(error.message);\n  } else {\n    // Handle server or network errors\n    showServerError();\n  }\n}\n```\n\n## Related Components\n\n- [API Client](./api-client.md) - Base API client used by all API services\n- [Products API](./products-api.md) - API for product management\n- [Users API](./users-api.md) - API for user management")
+
+// Phase 5: Verification
+codebase_search("OrdersApi usage examples", ["front-end/src"])
+```
+
+## 5. Special Case Handling
+
+### Documentation for Abstract Components
+
+When documenting abstract components or utilities:
+
+1. **Interface Focus**
+   - Emphasize interface definitions
+   - Document extension points
+   - Explain customization options
+   - Provide concrete implementation examples
+
+2. **Composition Patterns**
+   - Document composition patterns
+   - Show how to combine with other components
+   - Demonstrate inheritance patterns
+   - Explain design decisions
+
+### Documentation for Lifecycle Events
+
+When documenting components with lifecycle events:
+
+1. **Lifecycle Diagram**
+   - Create sequence diagram for lifecycle events
+   - Document initialization process
+   - Explain cleanup/teardown procedures
+   - Show conditional branches
+
+2. **Event Ordering**
+   - Document event execution order
+   - Note synchronous vs. asynchronous operations
+   - Explain parent-child event propagation
+   - Document error handling during lifecycle events
+
+### Documentation for Configuration Options
+
+When documenting highly configurable components:
+
+1. **Configuration Table**
+   - Create comprehensive configuration options table
+   - Document default values
+   - Note required vs. optional parameters
+   - Include type information and validation rules
+
+2. **Configuration Examples**
+   - Provide examples for common configurations
+   - Show simple to complex configuration progressions
+   - Document configuration combinations to avoid
+   - Include configuration validation patterns
+
+This comprehensive creation protocol ensures high-quality, consistent documentation that accurately reflects implementation while following standardized format guidelines.
+
+This file is designed to be used as a project-rule-parameter with the `create-official-documentation` message-command:
+```
+create-official-documentation: {path} @manual/documentation/create-official-documentation.mdc
+``` 
+

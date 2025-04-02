@@ -1,0 +1,540 @@
+---
+description: 
+globs: 
+alwaysApply: false
+type: manual
+---
+# documentation-status project-rule-parameter
+
+## File Purpose and Relationship
+
+This manual Project Rule defines the comprehensive status assessment protocol for documentation in the PolygonExpress project. It should be consulted when:
+
+- Assessing documentation coverage and accuracy for a directory
+- Identifying documentation gaps for implemented features
+- Evaluating format compliance across documentation files
+- Generating documentation status reports for review or planning
+
+This file is designed to be used as a project-rule-parameter with the `documentation-status` message-command:
+```
+documentation-status: {directory} @manual/documentation/documentation-status.mdc
+```
+
+This file complements:
+- **documentation-workflow.mdc**: Core documentation workflow process
+- **global-rules.mdc**: Core identity and mode concepts
+- **verify-official-documentation.mdc**: Documentation verification protocol
+
+For specialized guidance, see:
+- **create-official-documentation.mdc**: Documentation creation protocol
+- **update-documentation-format.mdc**: Format update and standardization guidelines
+
+When information appears to conflict, this file takes precedence for documentation status assessment standards.
+
+## Parameter Syntax and Usage
+
+### Parameter Types
+
+Documentation status message-commands accept two distinct types of parameters:
+
+1. **Message-Command Parameters**
+   - Part of the message-command syntax itself
+   - Specified directly after a colon in the message-command
+   - Provide the documentation directory to assess
+   - Example: `documentation-status: official-documentation/front-end`
+
+2. **Project Rule Parameters**
+   - Referenced Project Rules that provide guidance for status assessment
+   - Auto-attached when working with documentation files
+   - Explicitly referenced using @rule-name when needed
+   - Example: `documentation-status: official-documentation/front-end @manual/documentation/documentation-status.mdc`
+
+### Parameter Requirements
+
+| Parameter | Required | Format | Example |
+|---|---|---|---|
+| `directory` | Yes | Path to documentation directory | `official-documentation/front-end` |
+| Project Rule Parameter | Optional | `@manual/documentation/documentation-status.mdc` | `@manual/documentation/documentation-status.mdc` |
+
+### Multiple Parameter Syntax
+
+When a message-command requires both parameter types, use this format:
+```
+documentation-status: [directory] @manual/documentation/documentation-status.mdc
+```
+
+## Status Assessment Process
+
+### 1. Documentation Inventory
+
+The first phase involves creating a complete inventory of all documentation files in the specified directory and its subdirectories.
+
+**Tool Call Sequence**:
+```typescript
+// List all files in the specified directory
+list_dir("[directory]")
+
+// List subdirectories for recursive analysis
+list_dir("[directory]/[subdirectory1]")
+list_dir("[directory]/[subdirectory2]")
+// ... and so on for each subdirectory
+```
+
+**Processing Requirements**:
+- Create a complete list of all markdown files in the directory tree
+- Categorize files by documentation type (component, API, architecture, etc.)
+- Identify last verification date for each file
+
+### 2. Implementation Analysis
+
+The second phase involves identifying all implementation files relevant to the documentation domain.
+
+**Tool Call Sequence**:
+```typescript
+// For front-end documentation
+list_dir("front-end/src/components")
+list_dir("front-end/src/hooks")
+list_dir("front-end/src/contexts")
+// Additional relevant directories
+
+// For back-end documentation
+list_dir("back-end/app/routes")
+list_dir("back-end/app/models")
+list_dir("back-end/app/services")
+// Additional relevant directories
+
+// For API documentation
+grep_search("@router\\.", false, "back-end/app/routes/*.py")
+grep_search("class.*Controller", false, "back-end/app/controllers/*.py")
+// Additional API-related searches
+```
+
+**Processing Requirements**:
+- Create a complete list of all implementation files relevant to the domain
+- Count components, features, APIs, and other implementable units
+- Map implementation files to documentation files
+
+### 3. Coverage Analysis
+
+The third phase calculates documentation coverage metrics based on the inventory and implementation analysis.
+
+**Tool Call Sequence**:
+```typescript
+// Check for component coverage
+grep_search("export (function|const|class) [A-Z][a-zA-Z]*", false, "front-end/src/components/*.tsx")
+
+// Check API endpoint coverage
+grep_search("@router\\.(get|post|put|delete)", false, "back-end/app/routes/*.py")
+
+// Check type definitions coverage
+grep_search("export (interface|type|enum)", false, "front-end/src/types/*.ts")
+```
+
+**Processing Requirements**:
+- Calculate the percentage of implemented components with documentation
+- Identify undocumented components, features, or APIs
+- Assess documentation freshness based on last verification dates
+- Generate a coverage percentage score
+
+### 4. Format Compliance Assessment
+
+The fourth phase evaluates adherence to documentation format standards.
+
+**Tool Call Sequence**:
+```typescript
+// For each documentation file:
+read_file("[documentation_file]", should_read_entire_file=true)
+
+// Check for required sections
+grep_search("^# ", false, "[documentation_file]")
+grep_search("^## Component Architecture", false, "[documentation_file]")
+grep_search("^## Implementation Details", false, "[documentation_file]")
+grep_search("^## Usage Examples", false, "[documentation_file]")
+grep_search("^## Related Components", false, "[documentation_file]")
+grep_search("^## Last Verified", false, "[documentation_file]")
+
+// Check for component diagrams
+grep_search("```mermaid", false, "[documentation_file]")
+```
+
+**Processing Requirements**:
+- Verify presence of all required sections
+- Check for component diagrams
+- Assess code example inclusion
+- Generate a format compliance percentage score
+
+### 5. Documentation Gap Identification
+
+The fifth phase identifies specific documentation gaps that need to be addressed.
+
+**Tool Call Sequence**:
+```typescript
+// For each undocumented component:
+grep_search("export (function|const|class) [A-Z][a-zA-Z]*", false, "front-end/src/components/[component].tsx")
+read_file("front-end/src/components/[component].tsx", should_read_entire_file=true)
+```
+
+**Processing Requirements**:
+- Create a detailed list of undocumented components/features
+- Prioritize gaps based on component usage or importance
+- Generate gap summary with recommendations
+
+### 6. Status Report Generation
+
+The final phase generates a comprehensive status report with metrics and recommendations.
+
+**Tool Call Sequence**:
+Not applicable - this is a mental model processing step.
+
+**Report Structure**:
+- Overall coverage percentage
+- Format compliance percentage
+- Documentation freshness metrics
+- Prioritized list of documentation gaps
+- Recommendations for documentation improvements
+
+## Comprehensive Examples
+
+### Basic Directory Assessment
+
+```
+documentation-status: official-documentation/front-end @manual/documentation/documentation-status.mdc
+```
+
+**Tool Call Sequence**:
+```typescript
+// 1. Documentation Inventory
+list_dir("official-documentation/front-end")
+list_dir("official-documentation/front-end/components")
+list_dir("official-documentation/front-end/hooks")
+
+// 2. Implementation Analysis
+list_dir("front-end/src/components")
+list_dir("front-end/src/hooks")
+grep_search("export (function|const|class) [A-Z][a-zA-Z]*", false, "front-end/src/components/*.tsx")
+grep_search("export const use[A-Z][a-zA-Z]*", false, "front-end/src/hooks/*.ts")
+
+// 3. Coverage Analysis
+// For each component file:
+read_file("official-documentation/front-end/components/Button.md", should_read_entire_file=true)
+read_file("front-end/src/components/Button.tsx", should_read_entire_file=true)
+// Repeat for all components
+
+// 4. Format Compliance Assessment
+grep_search("^# ", false, "official-documentation/front-end/components/*.md")
+grep_search("^## Component Architecture", false, "official-documentation/front-end/components/*.md")
+grep_search("```mermaid", false, "official-documentation/front-end/components/*.md")
+
+// 5. Documentation Gap Identification
+// For undocumented components:
+read_file("front-end/src/components/Tooltip.tsx", should_read_entire_file=true)
+```
+
+**Status Report Output**:
+```
+# Documentation Status Report: front-end
+
+## Overall Metrics
+
+- **Coverage**: 85% (17/20 components documented)
+- **Format Compliance**: 70% (12/17 documents fully compliant)
+- **Freshness**: 60% (10/17 documents verified within last 3 months)
+- **Component Diagrams**: 65% (11/17 documents have proper diagrams)
+- **Usage Examples**: 82% (14/17 documents have complete examples)
+
+## Documentation Gaps
+
+### Undocumented Components
+1. `Tooltip` - Used in 7 other components (High Priority)
+2. `DatePicker` - Used in 3 other components (Medium Priority)
+3. `ProgressIndicator` - Used in 2 other components (Medium Priority)
+
+### Format Compliance Issues
+1. `Modal.md` - Missing Component Architecture section
+2. `Dropdown.md` - Missing Usage Examples section
+3. `WalletConnect.md` - Missing Component Diagram
+4. `useOrders.md` - Missing Implementation Details section
+5. `useAuth.md` - Missing Last Verified section
+
+## Recommendations
+
+1. Create documentation for `Tooltip` component (High Priority)
+2. Update format compliance issues in existing documentation (Medium Priority)
+3. Create documentation for `DatePicker` and `ProgressIndicator` (Medium Priority)
+4. Verify and update outdated documentation (7 files not verified in 3+ months)
+```
+
+### Blockchain Documentation Assessment
+
+```
+documentation-status: official-documentation/blockchain @manual/documentation/documentation-status.mdc
+```
+
+**Tool Call Sequence**:
+```typescript
+// 1. Documentation Inventory
+list_dir("official-documentation/blockchain")
+
+// 2. Implementation Analysis
+list_dir("front-end/src/hooks/wallet")
+list_dir("front-end/src/contexts/Web3Context")
+grep_search("export const use[A-Z][a-zA-Z]*Wallet", false, "front-end/src/hooks/wallet/*.ts")
+
+// 3. Coverage Analysis
+// For each blockchain file:
+read_file("official-documentation/blockchain/wallet-integration.md", should_read_entire_file=true)
+read_file("front-end/src/hooks/wallet/useWallet.ts", should_read_entire_file=true)
+// Repeat for all blockchain files
+
+// 4. Format Compliance Assessment
+grep_search("^# ", false, "official-documentation/blockchain/*.md")
+grep_search("^## Component Architecture", false, "official-documentation/blockchain/*.md")
+grep_search("```mermaid", false, "official-documentation/blockchain/*.md")
+
+// 5. Documentation Gap Identification
+// For undocumented blockchain features:
+read_file("front-end/src/hooks/wallet/useWalletStatus.ts", should_read_entire_file=true)
+```
+
+**Status Report Output**:
+```
+# Documentation Status Report: blockchain
+
+## Overall Metrics
+
+- **Coverage**: 75% (6/8 blockchain features documented)
+- **Format Compliance**: 83% (5/6 documents fully compliant)
+- **Freshness**: 50% (3/6 documents verified within last 3 months)
+- **Component Diagrams**: 67% (4/6 documents have proper diagrams)
+- **Usage Examples**: 100% (6/6 documents have complete examples)
+
+## Documentation Gaps
+
+### Undocumented Features
+1. `useWalletStatus` - Critical for wallet connection state (High Priority)
+2. `NFTVerification` - Used for NFT authentication (Medium Priority)
+
+### Format Compliance Issues
+1. `smart-contracts.md` - Missing Component Architecture section
+
+## Recommendations
+
+1. Create documentation for `useWalletStatus` hook (High Priority)
+2. Update `smart-contracts.md` with Component Architecture section (Medium Priority)
+3. Create documentation for `NFTVerification` (Medium Priority)
+4. Verify and update outdated documentation (3 files not verified in 3+ months)
+```
+
+## Status Metrics Definitions
+
+The documentation status assessment uses these standard metrics:
+
+### 1. Coverage Percentage
+
+**Definition**: The percentage of implemented components, features, or APIs that have corresponding documentation.
+
+**Calculation**:
+```
+Coverage Percentage = (Number of Documented Components / Total Number of Components) × 100
+```
+
+**Thresholds**:
+- **Excellent**: 95-100%
+- **Good**: 85-94%
+- **Adequate**: 70-84%
+- **Needs Improvement**: 50-69%
+- **Inadequate**: Below 50%
+
+### 2. Format Compliance Percentage
+
+**Definition**: The percentage of documentation files that fully comply with the standard format requirements.
+
+**Calculation**:
+```
+Format Compliance Percentage = (Number of Fully Compliant Files / Total Number of Documentation Files) × 100
+```
+
+**Thresholds**:
+- **Excellent**: 95-100%
+- **Good**: 85-94%
+- **Adequate**: 70-84%
+- **Needs Improvement**: 50-69%
+- **Inadequate**: Below 50%
+
+### 3. Freshness Percentage
+
+**Definition**: The percentage of documentation files verified within the last three months.
+
+**Calculation**:
+```
+Freshness Percentage = (Number of Recently Verified Files / Total Number of Documentation Files) × 100
+```
+
+**Thresholds**:
+- **Excellent**: 90-100%
+- **Good**: 75-89%
+- **Adequate**: 60-74%
+- **Needs Improvement**: 40-59%
+- **Inadequate**: Below 40%
+
+### 4. Component Diagram Percentage
+
+**Definition**: The percentage of documentation files that include proper component diagrams.
+
+**Calculation**:
+```
+Component Diagram Percentage = (Number of Files with Diagrams / Total Number of Documentation Files) × 100
+```
+
+**Thresholds**:
+- **Excellent**: 95-100%
+- **Good**: 80-94%
+- **Adequate**: 65-79%
+- **Needs Improvement**: 40-64%
+- **Inadequate**: Below 40%
+
+### 5. Usage Example Percentage
+
+**Definition**: The percentage of documentation files that include complete usage examples.
+
+**Calculation**:
+```
+Usage Example Percentage = (Number of Files with Complete Examples / Total Number of Documentation Files) × 100
+```
+
+**Thresholds**:
+- **Excellent**: 95-100%
+- **Good**: 85-94%
+- **Adequate**: 70-84%
+- **Needs Improvement**: 50-69%
+- **Inadequate**: Below 50%
+
+## Gap Priority Definitions
+
+Documentation gaps are prioritized based on these criteria:
+
+### High Priority Gaps
+
+- Undocumented components used in 5+ other components
+- Undocumented APIs used in production
+- Undocumented authentication or security features
+- Missing documentation for core user workflows
+- Documentation with critical inaccuracies
+
+### Medium Priority Gaps
+
+- Undocumented components used in 2-4 other components
+- Format compliance issues affecting clarity
+- Documentation not verified in 6+ months
+- Missing component diagrams for complex components
+- Missing usage examples for common components
+
+### Low Priority Gaps
+
+- Undocumented utility components used in 0-1 other components
+- Minor format compliance issues
+- Documentation not verified in 3-6 months
+- Missing usage examples for simple components
+- Stylistic inconsistencies
+
+## Tool Call Optimization
+
+To optimize performance during status assessment, follow these guidelines:
+
+### 1. Batched Directory Listing
+
+Instead of listing directories one by one, batch related directories:
+
+```typescript
+// Instead of:
+list_dir("official-documentation/front-end/components")
+list_dir("official-documentation/front-end/hooks")
+list_dir("official-documentation/front-end/contexts")
+
+// Use:
+list_dir("official-documentation/front-end")
+// Then process subdirectories based on results
+```
+
+### 2. Targeted grep Patterns
+
+Use optimized grep patterns that capture multiple related concepts:
+
+```typescript
+// Instead of:
+grep_search("export function", false, "front-end/src/components/*.tsx")
+grep_search("export const", false, "front-end/src/components/*.tsx")
+grep_search("export class", false, "front-end/src/components/*.tsx")
+
+// Use:
+grep_search("export (function|const|class) [A-Z][a-zA-Z]*", false, "front-end/src/components/*.tsx")
+```
+
+### 3. Progressive Sampling
+
+For large directories, use progressive sampling to get a representative assessment:
+
+1. Randomly select 20% of files for detailed analysis
+2. If issues are found, expand to 50% of files
+3. Only analyze 100% of files when necessary for complete accuracy
+
+### 4. Prioritized Component Analysis
+
+Prioritize analysis based on component importance:
+1. Focus first on core components with many dependents
+2. Analyze recently modified components next
+3. Give lowest priority to utility or helper components
+
+## Status Report Format
+
+All documentation status reports must follow this standardized format:
+
+```markdown
+# Documentation Status Report: [domain]
+
+## Overall Metrics
+
+- **Coverage**: [percentage]% ([documented]/[total] components documented)
+- **Format Compliance**: [percentage]% ([compliant]/[total] documents fully compliant)
+- **Freshness**: [percentage]% ([fresh]/[total] documents verified within last 3 months)
+- **Component Diagrams**: [percentage]% ([with_diagrams]/[total] documents have proper diagrams)
+- **Usage Examples**: [percentage]% ([with_examples]/[total] documents have complete examples)
+
+## Documentation Gaps
+
+### Undocumented Components
+1. `[Component1]` - [Usage context] (High Priority)
+2. `[Component2]` - [Usage context] (Medium Priority)
+3. `[Component3]` - [Usage context] (Low Priority)
+
+### Format Compliance Issues
+1. `[Document1.md]` - Missing [section] section
+2. `[Document2.md]` - Missing [section] section
+3. `[Document3.md]` - Missing [element]
+
+## Recommendations
+
+1. [Specific action recommendation] (High Priority)
+2. [Specific action recommendation] (Medium Priority)
+3. [Specific action recommendation] (Medium Priority)
+4. [Specific action recommendation] (Low Priority)
+```
+
+This standardized format ensures consistent reporting across all documentation domains and facilitates trend analysis over time.
+
+## Implementation Notes
+
+The documentation-status message-command is designed to provide objective, metrics-based assessment of documentation quality and completeness. It focuses specifically on:
+
+1. Measuring coverage of implemented features
+2. Assessing format compliance across documentation
+3. Identifying specific gaps that need to be addressed
+4. Providing actionable recommendations prioritized by importance
+
+The results should be used as input for documentation improvement planning, with gaps addressed in priority order.
+
+This file is designed to be used as a project-rule-parameter with the `documentation-status` message-command:
+```
+documentation-status: {directory} @manual/documentation/documentation-status.mdc
+``` 
+

@@ -1,0 +1,136 @@
+# USE WHEN finding tool resources, optimizing tool usage patterns, or selecting appropriate tools for specific tasks
+
+# Tool Domain Reference
+
+## Overview
+
+This domain encompasses all knowledge related to tool usage within the 1000xbrain cognitive architecture. It provides access to patterns, references, and guidelines for effective tool selection, configuration, and application.
+
+## Core Concepts
+
+### Tool Categories
+
+The GigaSwap environment provides these core tool categories:
+
+1. **Search Tools**: For finding and exploring code
+   - `codebase_search`: Semantic search for concepts
+   - `grep_search`: Pattern-based text search
+   - `file_search`: Filename-based search
+   - `list_dir`: Directory exploration
+
+2. **Reading Tools**: For analyzing code content
+   - `read_file`: Reading file content
+
+3. **Editing Tools**: For modifying code
+   - `edit_file`: Making changes to files
+   - `reapply`: Re-applying edits when needed
+   - `delete_file`: Removing files
+
+4. **Terminal Tools**: For executing commands
+   - `run_terminal_cmd`: Running terminal commands
+
+### Tool Selection Principles
+
+Effective tool usage follows these key principles:
+
+1. **Purpose-Driven Selection**: Choose tools based on specific task needs
+2. **Context-First Approach**: Build understanding before making changes
+3. **Incremental Progress**: Use tools in sequence for progressive discovery and implementation
+4. **Pattern Consistency**: Apply consistent patterns when using tools
+5. **Verification Focus**: Verify results after tool application
+
+## Key Knowledge Areas
+
+| Area | Description | Primary Location |
+|------|-------------|------------------|
+| [Tool Patterns](#tool-patterns) | Reusable patterns for tool usage | `knowledge/patterns/tool/` |
+| [Tool References](#tool-references) | Detailed tool documentation | `knowledge/reference/guides/` |
+| [Tool Combinations](#tool-combinations) | Effective tool sequences | `knowledge/patterns/tool/combinations.md` |
+| [Best Practices](#best-practices) | Optimized usage guidelines | `knowledge/reference/guides/tool-best-practices.md` |
+
+## Tool Patterns
+
+Tool patterns provide structured approaches to common tool usage scenarios:
+
+- [Basic Tool Patterns](../../patterns/tool/basic-patterns.md): Core patterns for all tools
+- [Search Patterns](../../patterns/tool/search-patterns.md): Finding and exploring code
+- [Command Patterns](../../patterns/tool/command-patterns.md): Terminal command execution
+- [Reading Patterns](../../patterns/tool/reading-patterns.md): Effective file analysis
+- [Editing Patterns](../../patterns/tool/editing-patterns.md): Code modification approaches
+
+See the [Tool Patterns Quick Reference](../guides/tool-patterns.md) for a concise overview.
+
+## Tool References
+
+Detailed documentation for specific tools:
+
+- [Search Tools Reference](../guides/search-tools.md): Comprehensive guide to search tools
+- [Terminal Command Reference](../guides/terminal-commands.md): Guide to running commands
+- [Editing Tools Reference](../guides/editing-tools.md): Guide to code modification tools
+- [Reading Tools Reference](../guides/reading-tools.md): Guide to file analysis tools
+
+## Tool Combinations
+
+Effective tool combinations for common scenarios:
+
+- **Exploration Sequence**: `list_dir` → `file_search` → `read_file`
+- **Implementation Sequence**: `read_file` → `codebase_search` → `edit_file` → `run_terminal_cmd`
+- **Discovery Sequence**: `codebase_search` → `grep_search` → `read_file`
+- **Verification Sequence**: `edit_file` → `run_terminal_cmd` → `read_file`
+
+See [Tool Combinations](../../patterns/tool/combinations.md) for detailed patterns.
+
+## Best Practices
+
+Key guidelines for effective tool usage:
+
+1. **Start with Context**: Always build understanding before making changes
+2. **Use Progressive Approaches**: Begin broad and narrow down
+3. **Verify Changes**: Always verify the results of your actions
+4. **Follow Patterns**: Use established patterns for common tasks
+5. **Optimize Parameters**: Configure tool parameters appropriately
+
+See [Tool Best Practices](../guides/tool-best-practices.md) for detailed guidelines.
+
+## Tool Usage Framework
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                                                              │
+│                     Tool Usage Framework                      │
+│                                                              │
+│  ┌───────────┐     ┌───────────┐     ┌───────────┐           │
+│  │           │     │           │     │           │           │
+│  │ Select    │     │ Configure │     │ Apply     │           │
+│  │ Tool      │────▶│ Parameters│────▶│ Tool      │           │
+│  │           │     │           │     │           │           │
+│  └───────────┘     └───────────┘     └───────────┘           │
+│        │                                   │                  │
+│        │                                   │                  │
+│        │                                   ▼                  │
+│        │                             ┌───────────┐           │
+│        │                             │           │           │
+│        └─────────────────────────────│ Verify    │           │
+│                                      │ Results   │           │
+│                                      │           │           │
+│                                      └───────────┘           │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
+
+## Common Challenges and Solutions
+
+| Challenge | Solution |
+|-----------|----------|
+| Finding relevant code | Use progressive refinement with `codebase_search` → `grep_search` |
+| Understanding complex files | Use context-first reading pattern with full file examination |
+| Making precise edits | Read file before editing, follow existing patterns |
+| Command execution errors | Use error-recovery pattern with diagnostic approach |
+| Tool selection uncertainty | Consult the tool patterns quick reference |
+
+## Related Knowledge
+
+- [Implementation Patterns](../domains/implementation.md): Patterns for code implementation
+- [Documentation Standards](../guides/documentation-standards.md): Documentation guidelines
+- [Knowledge Organization](../domains/organization.md): Knowledge organization principles
+- [Project Structure](../guides/project-structure.md): Project organization overview 

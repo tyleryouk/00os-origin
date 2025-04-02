@@ -1,0 +1,193 @@
+# Workflow: rules-workflow | Pathway: validation
+
+# Verify Backtick Wrapping
+
+## File Purpose and Relationship
+
+This file defines the process for verifying proper backtick wrapping of @ symbols within the 1000xbrain cognitive architecture. It should be consulted when:
+
+- Ensuring all @ symbols are properly wrapped in backticks
+- Identifying unwrapped @ symbols outside the first 20 lines
+- Verifying examples use proper backtick protection
+- Understanding the backtick wrapping standards
+
+This file complements:
+- **validation-check-references.md**: Reference consistency checking
+- **validation-check-extension-format.md**: Extension format verification
+- **validation-validate-path-format.md**: Path format validation
+- **validation-scan-symbol-usage.md**: @ symbol scanning
+
+## Usage as Project-Rule-Parameter
+
+This file contains the backtick wrapping verification process and should be referenced as a project-rule-parameter when verifying @ symbol protection:
+
+```
+verify-backtick-wrapping: @parameters/rules/dev-mode/validation-verify-backtick-wrapping.mdc
+```
+
+## Command Format
+
+```
+verify-backtick-wrapping: @parameters/rules/dev-mode/validation-verify-backtick-wrapping.mdc
+```
+
+## Required Context
+
+To perform backtick wrapping verification, the following context is required:
+
+1. Access to all 1000xbrain files
+2. Understanding of the @ symbol usage guidelines
+3. Knowledge of backtick wrapping standards
+4. Awareness of exceptions for the first 20 lines
+
+## Process Steps
+
+### 1. @ Symbol Extraction
+
+First, extract all @ symbols from the codebase:
+
+```typescript
+// Find all @ symbols
+grep_search("@", false, "1000xbrain/**/*.md")
+
+// Count total @ symbols
+run_terminal_cmd("Get-ChildItem -Path '1000xbrain' -Recurse -Include '*.md' | Select-String -Pattern '@' -AllMatches | ForEach-Object { $_.Matches } | Measure-Object | Select-Object -ExpandProperty Count", false, false)
+```
+
+### 2. Unwrapped @ Symbol Identification
+
+Identify all unwrapped @ symbols:
+
+```typescript
+// Find unwrapped @ symbols (not preceded by backtick)
+grep_search("@[^`]", false, "1000xbrain/**/*.md")
+
+// Find unwrapped @ symbols (not followed by backtick)
+grep_search("[^`]@", false, "1000xbrain/**/*.md")
+```
+
+### 3. First 20 Lines Exception Verification
+
+Verify acceptable unwrapped @ symbols in the first 20 lines:
+
+```typescript
+// Extract @ symbols in first 20 lines
+run_terminal_cmd("foreach ($file in Get-ChildItem -Path '1000xbrain' -Recurse -Include '*.md') { $content = Get-Content $file.FullName -TotalCount 20; $matches = [regex]::Matches($content, '@'); foreach ($match in $matches) { Write-Output $file.Name + ': @ symbol in first 20 lines' } }", false, false)
+```
+
+### 4. Code Block @ Symbol Verification
+
+Verify @ symbols in code blocks are properly formatted:
+
+```typescript
+// Find code blocks with @ symbols
+grep_search("```.*@", false, "1000xbrain/**/*.md")
+
+// Analyze @ symbol usage in code blocks
+grep_search("```typescript.*@|```bash.*@", false, "1000xbrain/**/*.md")
+```
+
+### 5. Documentation @ Symbol Verification
+
+Verify @ symbols in documentation text are properly wrapped:
+
+```typescript
+// Check documentation sections for unwrapped @ symbols
+grep_search("## .*@|# .*@", false, "1000xbrain/**/*.md")
+
+// Check list items for unwrapped @ symbols
+grep_search("- .*@[^`]|\\* .*@[^`]", false, "1000xbrain/**/*.md")
+```
+
+## Expected Outputs
+
+The backtick wrapping verification process should produce:
+
+1. A count of all @ symbols in the codebase
+2. Identification of unwrapped @ symbols outside the first 20 lines
+3. Verification of proper code block @ symbol usage
+4. Verification of proper documentation @ symbol usage
+
+## Error Handling
+
+Common issues and their resolutions:
+
+| Issue | Resolution |
+|-------|------------|
+| Unwrapped @ symbols | Add backtick wrapping around @ symbols |
+| @ symbols in headers | Remove @ symbols from headers or reword |
+| Incomplete backtick wrapping | Ensure both opening and closing backticks |
+| Multiple unwrapped @ symbols | Use code blocks for multiple @ symbols |
+
+## Backtick Wrapping Examples
+
+### Basic Backtick Wrapping Report
+
+```
+💻 1000xdev [rules-workflow]
+
+Backtick wrapping verification complete.
+
+@ symbol analysis:
+- 247 total @ symbols found
+- 218 properly backtick-wrapped @ symbols
+- 29 unwrapped @ symbols identified
+
+Location breakdown:
+- 22 unwrapped @ symbols in first 20 lines (acceptable)
+- 7 unwrapped @ symbols outside first 20 lines (issues)
+
+Issue types:
+- 4 unwrapped @ symbols in regular text
+- 2 unwrapped @ symbols in headers
+- 1 unwrapped @ symbol in list item
+
+Backtick wrapping verification revealed 7 issues that need to be addressed.
+```
+
+### Detailed Backtick Wrapping Issues Report
+
+```
+💻 1000xdev [rules-workflow]
+
+Detailed backtick wrapping issues:
+
+Unwrapped @ symbols in regular text:
+- knowledge/rules/analyze-related-rules.md: "For more details, see @parameters/rules/implementation-workflow.md" (line 142)
+- workflows/rules-workflow/rules-workflow-cheatsheet.md: "Refer to @parameters/rules/template-basic.md for more" (line 89)
+
+Unwrapped @ symbols in headers:
+- workflows/rules-workflow/scanning-process.md: "## @ Symbol Scanning Process" (acceptable usage)
+- workflows/rules-workflow/rules-audit-process.md: "### Unwrapped @ symbols" (should reword)
+
+Unwrapped @ symbols in list items:
+- core/communication/symbol-guidelines.md: "- Never use @symbols in headers or file names" (line 78)
+
+Implementation recommendations:
+- Wrap all @ symbols in backticks in regular text
+- Reword headers to avoid @ symbols
+- Fix unwrapped @ symbols in list items
+- Document any exceptions to the backtick wrapping rules
+```
+
+## Automated Backtick Wrapping Verification
+
+For more efficient backtick wrapping verification, the following tool sequence can be used:
+
+```typescript
+// 1. Find all @ symbols
+grep_search("@", false, "1000xbrain/**/*.md")
+
+// 2. Find unwrapped @ symbols
+grep_search("@[^`]|[^`]@", false, "1000xbrain/**/*.md")
+
+// 3. Check first 20 lines exception
+run_terminal_cmd("foreach ($file in Get-ChildItem -Path '1000xbrain' -Recurse -Include '*.md') { $content = Get-Content $file.FullName -TotalCount 20; $matches = [regex]::Matches($content, '@'); foreach ($match in $matches) { Write-Output $file.Name + ': @ symbol in first 20 lines' } }", false, false)
+
+// 4. Document verification results
+edit_file("planning/feature-name/backtick-verification-results.md", 
+          "Document backtick wrapping verification results",
+          "# Backtick Wrapping Verification Results\n\n...")
+```
+
+This backtick wrapping verification process ensures that all @ symbols are properly protected with backticks, preventing parsing issues and enhancing system reliability. 

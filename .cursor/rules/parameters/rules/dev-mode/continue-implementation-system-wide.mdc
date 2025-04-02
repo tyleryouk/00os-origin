@@ -1,0 +1,128 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Continue Implementation: System-Wide Protocol
+
+## File Purpose and Relationship
+
+This file defines the protocol for continuing a system-wide implementation within the rules-workflow. It should be used when:
+
+- Continuing implementation of system-wide changes
+- Resuming a system-wide implementation after interruption
+- Maintaining implementation momentum across multiple system components
+- Restoring context for large-scale system modifications
+
+This protocol ensures consistent handling of system-wide implementations.
+
+## Project Rule Parameter
+
+Loyal to: continue-implementation: @parameters/rules/continue-implementation-system-wide.mdc
+
+## Call Pattern
+
+Message-Command: continue-implementation
+Standard-Parameters: none
+Example: `continue-implementation: @continue-implementation-system-wide.mdc`
+
+## Relation to Cognitive Architecture
+
+This file is part of the rules-workflow knowledge component within the 1000xbrain cognitive architecture. It complements:
+
+- `fetch_rules(["knowledge/patterns/impl/implementation-patterns"])`: System-wide implementation patterns
+- `@parameters/rules/dev-mode-system-wide.mdc`: System-wide development protocol
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation status checking
+- `fetch_rules(["knowledge/reference/guides/knowledge-system"])`: System-wide planning protocol
+
+## Standard Parameter Combinations
+
+This project-rule-parameter supports the following combinations:
+
+1. Basic System-Wide Continuation:
+   ```
+   continue-implementation: @parameters/rules/continue-implementation-system-wide.mdc
+   ```
+
+2. With Recovery Point:
+   ```
+   continue-implementation: recovery-point @parameters/rules/continue-implementation-system-wide.mdc
+   ```
+
+## Parameter Relationships
+
+- Loyal to: continue-implementation: @parameters/rules/continue-implementation-system-wide.mdc
+- Requires: dev-mode-system-wide.md for implementation context
+- Enhances: continue-planning.md for seamless workflow transitions
+
+## Tool Call Sequence
+
+When this parameter is used, follow this exact sequence:
+
+```typescript
+// 1. Read implementation progress
+read_file("[planning_folder_path]/implementation-progress.md", should_read_entire_file=true)
+
+// 2. Read system-wide implementation plan
+read_file("[planning_folder_path]/implementation-[feature]-system-wide.md", should_read_entire_file=true)
+
+// 3. Analyze system component states
+// Check all affected system components to verify current state
+
+// 4. Report system-wide state and continuation plan
+// "System-wide implementation is at phase X, affecting components: [list]"
+// "Continuing to Phase Y: [Phase Description]"
+// "Components to be modified: [list]"
+
+// 5. Continue implementation based on determined state
+// Either proceed to next phase or resume current phase
+```
+
+## System-Wide State Detection
+
+1. **Progress Analysis**:
+   - Check implementation-progress.md for system-wide phase status
+   - Verify state of all affected system components
+
+2. **Component State Verification**:
+   - Examine each affected system component
+   - Verify component modifications match reported progress
+   - Ensure system-wide consistency
+
+3. **Continuation Point Determination**:
+   - If a phase is complete, continue to next system-wide phase
+   - If phase is incomplete, continue from current component
+   - If interrupted, resume from appropriate system point
+
+## Mode Handling
+
+When this parameter is used:
+
+- Always respond with: 💻 1000xdev [rules-workflow]
+- Maintain dev-mode throughout system-wide implementation
+- Use consistent mode indicators across all components
+
+## Response Format
+
+```
+💻 1000xdev [rules-workflow]: Continuing system-wide implementation from Phase X to Phase Y.
+
+System Components Status:
+- Component 1: [Status]
+- Component 2: [Status]
+- Component 3: [Status]
+
+Next Steps:
+1. [Component-specific action]
+2. [System-wide verification]
+3. [Integration check]
+
+[Proceeds with implementation]
+```
+
+## Implementation Considerations
+
+- Always maintain system-wide consistency
+- Update all affected components in the correct order
+- Verify system integrity after each phase
+- Document all system-wide changes in implementation-progress.md 

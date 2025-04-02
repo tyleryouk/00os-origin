@@ -1,0 +1,327 @@
+# Verify Documentation
+
+## File Purpose and Relationship
+
+This file defines the process for verifying the completeness and correctness of front-end documentation. It should be consulted when:
+
+- Confirming that all components, hooks, and features are properly documented
+- Validating API documentation
+- Ensuring proper README files exist for all key directories
+- Verifying that usage examples are provided
+- Confirming type definitions are documented
+- Checking for proper JSDoc comments
+
+This file complements:
+- **verify-implementation.md**: Implementation completeness verification
+- **component-validation.md**: Component structure and quality validation
+- **hook-validation.md**: Hook implementation validation
+- **state-validation.md**: State management validation
+
+## Usage as Project-Rule-Parameter
+
+This file contains the verification process for front-end documentation completeness and should be referenced as a project-rule-parameter when comprehensive documentation verification is needed:
+
+```
+verify-documentation: front-end @parameters/front-end/helpers/verification/verify-documentation.mdc
+```
+
+## Command Format
+
+```
+verify-documentation: [target-directory-or-component] @parameters/front-end/helpers/verification/verify-documentation.mdc
+```
+
+## Required Context
+
+To perform front-end documentation verification, the following context is required:
+
+1. Access to the component, hook, and feature files
+2. Access to README files and documentation
+3. Understanding of documentation requirements and standards
+4. Knowledge of the codebase structure
+
+## Process Steps
+
+### 1. Component Documentation Verification
+
+Verify the documentation of React components:
+
+```typescript
+// List components in the feature directory
+run_terminal_cmd("Get-ChildItem -Path 'front-end/src/components/FeatureName' -Recurse -Include '*.tsx' | Where-Object { !$_.Name.Contains('.test.') } | ForEach-Object { $_.Name }", false, false)
+
+// Check JSDoc comments for components
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export|function|const)", false, "front-end/src/components/FeatureName/**/*.tsx")
+
+// Check prop interface documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*interface [A-Za-z]+Props", false, "front-end/src/components/FeatureName/**/*.tsx")
+
+// Check for README documentation
+read_file("front-end/src/components/FeatureName/README.md", should_read_entire_file=true)
+```
+
+### 2. Hook Documentation Verification
+
+Verify the documentation of custom hooks:
+
+```typescript
+// List hooks in the hooks directory
+run_terminal_cmd("Get-ChildItem -Path 'front-end/src/hooks' -Recurse -Include 'use*.ts' | Where-Object { !$_.Name.Contains('.test.') } | ForEach-Object { $_.Name }", false, false)
+
+// Check JSDoc comments for hooks
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export|function) use[A-Z]", false, "front-end/src/hooks/**/*.ts")
+
+// Check hook parameter documentation
+grep_search("@param", false, "front-end/src/hooks/**/*.ts")
+
+// Check hook return documentation
+grep_search("@returns", false, "front-end/src/hooks/**/*.ts")
+
+// Check for README documentation
+read_file("front-end/src/hooks/README.md", should_read_entire_file=true)
+```
+
+### 3. State Management Documentation Verification
+
+Verify the documentation of state management:
+
+```typescript
+// Check Redux/RTK slice documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*export const [a-zA-Z]+Slice", false, "front-end/src/store/**/*.ts")
+
+// Check selector documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*export const select", false, "front-end/src/store/**/*.ts")
+
+// Check action documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export const [a-zA-Z]+Action|reducers:)", false, "front-end/src/store/**/*.ts")
+
+// Check for README documentation
+read_file("front-end/src/store/README.md", should_read_entire_file=true)
+```
+
+### 4. API Documentation Verification
+
+Verify the documentation of API integrations:
+
+```typescript
+// Check API client documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*export (const|class|interface|type) [A-Za-z]+", false, "front-end/src/api/**/*.ts")
+
+// Check API method documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export |async )?(function|const) [a-zA-Z]+", false, "front-end/src/api/**/*.ts")
+
+// Check API type documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export |declare )?(interface|type) [A-Za-z]+", false, "front-end/src/api/**/*.ts")
+
+// Check for README documentation
+read_file("front-end/src/api/README.md", should_read_entire_file=true)
+```
+
+### 5. Type Documentation Verification
+
+Verify the documentation of TypeScript types:
+
+```typescript
+// Check type definition documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export |declare )?(interface|type) [A-Za-z]+", false, "front-end/src/types/**/*.ts")
+
+// Check enum documentation
+grep_search("^\\/\\*\\*[\\s\\S]*?\\*\\/\\s*(export |declare )?enum [A-Za-z]+", false, "front-end/src/**/*.ts")
+
+// Check for README documentation
+read_file("front-end/src/types/README.md", should_read_entire_file=true)
+```
+
+### 6. Usage Example Verification
+
+Verify the presence of usage examples:
+
+```typescript
+// Check for component examples
+grep_search("@example", false, "front-end/src/components/**/*.tsx")
+
+// Check for hook examples
+grep_search("@example", false, "front-end/src/hooks/**/*.ts")
+
+// Check for API usage examples
+grep_search("@example", false, "front-end/src/api/**/*.ts")
+```
+
+### 7. README Documentation Verification
+
+Verify the completeness of README files:
+
+```typescript
+// Check root README
+read_file("front-end/README.md", should_read_entire_file=true)
+
+// Check directory READMEs
+list_dir("front-end/src")
+grep_search("README\\.md", false, "front-end/src/**/")
+
+// Check for required README sections
+grep_search("## (Usage|Installation|API|Props|Examples)", false, "front-end/src/**/README.md")
+```
+
+### 8. Storybook Documentation Verification (if applicable)
+
+Verify Storybook documentation if used:
+
+```typescript
+// Check for story files
+run_terminal_cmd("Get-ChildItem -Path 'front-end/src' -Recurse -Include '*.stories.tsx' | ForEach-Object { $_.Name }", false, false)
+
+// Check story documentation
+grep_search("meta =|Meta =|StoryObj|Story =", false, "front-end/src/**/*.stories.tsx")
+
+// Check for story parameters
+grep_search("parameters: {", false, "front-end/src/**/*.stories.tsx")
+
+// Check for story args documentation
+grep_search("args: {", false, "front-end/src/**/*.stories.tsx")
+```
+
+## Expected Outputs
+
+The verification process should produce:
+
+1. A documentation verification report
+2. A list of components with missing or incomplete documentation
+3. A list of hooks with missing or incomplete documentation
+4. A list of directories with missing README files
+5. Recommendations for documentation improvements
+
+## Error Handling
+
+Common documentation issues and their resolutions:
+
+| Issue | Resolution |
+|-------|------------|
+| Missing JSDoc comments | Add proper JSDoc comments with @param, @returns, etc. |
+| Incomplete prop documentation | Document all props with types and descriptions |
+| Missing README files | Create README files for all key directories |
+| Missing usage examples | Add @example sections to JSDoc comments |
+| Outdated documentation | Update documentation to match current implementation |
+| Missing type definitions | Add proper type definitions with documentation |
+
+## Documentation Verification Report
+
+Create a comprehensive documentation verification report:
+
+```typescript
+// Create documentation verification report
+edit_file("front-end/verification-reports/documentation-verification.md",
+          "Create documentation verification report",
+          "# Documentation Verification Report\n\n## Component Documentation\n\n| Component | JSDoc | Props | README | Examples |\n|-----------|-------|-------|--------|----------|\n| ComponentA | ✅ | ✅ | ✅ | ✅ |\n| ComponentB | ✅ | ⚠️ | ✅ | ❌ |\n| ComponentC | ❌ | ❌ | ✅ | ❌ |\n\n## Hook Documentation\n\n| Hook | JSDoc | Params | Returns | Examples |\n|------|-------|--------|---------|----------|\n| useFeatureA | ✅ | ✅ | ✅ | ✅ |\n| useFeatureB | ✅ | ✅ | ⚠️ | ❌ |\n\n## State Management Documentation\n\n| Item | JSDoc | README | Examples |\n|------|-------|--------|----------|\n| Slices | ✅ | ✅ | ✅ |\n| Actions | ✅ | ✅ | ⚠️ |\n| Selectors | ⚠️ | ✅ | ❌ |\n\n## API Documentation\n\n| Item | JSDoc | Types | Examples |\n|------|-------|-------|----------|\n| Client | ✅ | ✅ | ✅ |\n| Methods | ⚠️ | ✅ | ⚠️ |\n| Types | ✅ | ✅ | ✅ |\n\n## README Documentation\n\n| Directory | README | Completeness | Quality |\n|-----------|--------|--------------|--------|\n| root | ✅ | ✅ | ✅ |\n| components | ✅ | ✅ | ✅ |\n| hooks | ✅ | ⚠️ | ⚠️ |\n| store | ❌ | ❌ | ❌ |\n| api | ✅ | ✅ | ⚠️ |\n\n## Storybook Documentation\n\n| Component | Stories | Args | Parameters |\n|-----------|---------|------|------------|\n| Button | ✅ | ✅ | ✅ |\n| Card | ✅ | ⚠️ | ✅ |\n| Modal | ❌ | ❌ | ❌ |\n\n## Documentation Issues\n\n1. ComponentC is missing JSDoc comments and prop documentation\n2. useFeatureB is missing return type documentation and examples\n3. Selectors in state management need better JSDoc documentation\n4. API methods need more complete documentation\n5. Store directory is missing a README file\n6. Modal component is missing Storybook documentation\n\n## Recommendations\n\n1. Add JSDoc comments to ComponentC\n2. Document all props in ComponentB\n3. Add usage examples to all hooks\n4. Complete Storybook documentation for Modal component\n5. Create README for store directory\n6. Improve API method documentation with examples\n\n## Verification Status\n\nPartial Pass - Documentation needs improvement in several areas")
+```
+
+## Example Verification Response
+
+### Complete Documentation Verification
+
+```
+💻 1000xdev [front-end-workflow]
+
+Documentation verification complete for Feature Name.
+
+Component documentation:
+- All components have complete JSDoc comments
+- All component props are documented
+- All component directories have README files
+- All components have usage examples
+
+Hook documentation:
+- All hooks have complete JSDoc comments
+- All hook parameters and return types are documented
+- All hooks have usage examples in documentation
+- Hooks directory has comprehensive README
+
+State management documentation:
+- Slice definitions, actions, and selectors are documented
+- Redux store has complete README documentation
+- Usage examples provided for all store functionality
+- Type definitions are complete and documented
+
+API documentation:
+- API methods fully documented with parameters and return types
+- API error handling documented
+- API types comprehensively documented
+- API README provides usage guidance
+
+README documentation:
+- All key directories have README files
+- READMEs include installation, usage, and examples sections
+- Main README provides comprehensive project overview
+- Code examples are clear and complete
+
+Storybook documentation:
+- All components have story files
+- Story args and parameters are documented
+- Component variants demonstrated in stories
+- Accessibility information included in story documentation
+
+Documentation is complete and follows best practices. No significant issues found.
+```
+
+### Incomplete Documentation Verification
+
+```
+💻 1000xdev [front-end-workflow]
+
+Documentation verification complete for Feature Name.
+
+Component documentation:
+- 5/8 components have complete JSDoc comments
+- 6/8 components have documented props
+- 4/8 component directories have README files
+- 3/8 components have usage examples
+
+Hook documentation:
+- 3/5 hooks have complete JSDoc comments
+- 4/5 hooks have documented parameters
+- 2/5 hooks have documented return types
+- 1/5 hooks have usage examples
+
+State management documentation:
+- Slice definitions partially documented
+- Actions missing documentation in userSlice.ts
+- Selectors missing comprehensive documentation
+- Store directory missing README file
+
+API documentation:
+- API methods partially documented
+- API error handling documentation incomplete
+- API types well documented
+- API README missing usage examples
+
+README documentation:
+- 3/5 key directories have README files
+- Existing READMEs missing examples section
+- Main README needs more detailed setup instructions
+- Code examples outdated in some READMEs
+
+Storybook documentation:
+- 4/8 components have story files
+- Story args documentation incomplete
+- Component variants not fully demonstrated
+- Accessibility information missing
+
+Documentation issues:
+- ComponentC and ComponentE missing JSDoc comments
+- useAuthHook and useApiHook need better documentation
+- Store selectors need complete documentation
+- API error handling documentation needs improvement
+- Missing README files in store and utils directories
+
+Recommendations:
+1. Add JSDoc comments to all components
+2. Document all hook parameters and return types
+3. Create README files for all key directories
+4. Add usage examples to all documented items
+5. Complete Storybook documentation for all components
+6. Update outdated documentation to match implementation
+
+Documentation needs significant improvement before release.
+```
+
+This verification process ensures that front-end documentation is complete, accurate, and follows best practices. It focuses on JSDoc comments, README files, type definitions, examples, and Storybook documentation to provide a comprehensive assessment of documentation quality. 

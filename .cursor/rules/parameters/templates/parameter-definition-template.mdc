@@ -1,0 +1,69 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Parameter Definition Template
+
+## Overview
+[Brief description of the parameter's purpose and scope]
+
+## USE WHEN
+- [Primary use case 1]
+- [Primary use case 2]
+- [Primary use case 3]
+
+## Parameter Details
+- **Name**: [Parameter name]
+- **Type**: [Parameter type: standard-parameter | project-rule-parameter]
+- **Format**: [Format specification]
+- **Required**: [Yes/No]
+
+## Validation Rules
+```typescript
+// Validation schema
+{
+  type: "[string | number | boolean]",
+  pattern: "[regex pattern if applicable]",
+  required: [true/false],
+  constraints: [
+    // List of constraints
+  ]
+}
+```
+
+## Examples
+### Valid Usage
+```typescript
+// Example 1
+message-command: parameter-value
+
+// Example 2
+message-command: parameter-value @project-rule.mdc
+```
+
+### Invalid Usage
+```typescript
+// Example 1 - [Explanation]
+message-command: invalid-value
+
+// Example 2 - [Explanation]
+message-command: @invalid-format
+```
+
+## Integration Points
+- [Integration point 1]
+- [Integration point 2]
+- [Integration point 3]
+
+## Related Parameters
+- [Related parameter 1]
+- [Related parameter 2]
+
+## Notes
+- [Important note 1]
+- [Important note 2]
+
+## Version History
+- **1.0.0**: Initial template
+- [Version]: [Changes] 

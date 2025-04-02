@@ -1,0 +1,217 @@
+# Continue Planning Protocol
+
+## File Purpose and Relationship
+
+This file defines the protocol for continuing an interrupted rules-workflow planning process. It should be used when:
+
+- A planning session was interrupted due to connection issues or other reasons
+- Planning folder files already exist and have partial content
+- The planning process needs to be resumed from its current state
+
+This process is distinct from `plan-mode: rules-workflow`, which initiates a new planning process.
+
+## Relation to Cognitive Architecture
+
+This file is part of the rules-workflow knowledge component within the 1000xbrain cognitive architecture. It complements:
+
+- `fetch_rules(["knowledge/patterns/impl/implementation-patterns"])`: Main workflow definition
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation status checking
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation resumption
+- `fetch_rules(["knowledge/reference/guides/knowledge-system"])`: Planning completion protocol
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation completion protocol
+
+## Tool Call Sequence
+
+When the `continue-planning: rules-workflow @parameters/rules/continue-planning.mdc` message-command is received, follow this exact sequence:
+
+```typescript
+// 1. List planning folder files
+list_dir("[planning_folder_path]")
+
+// 2. Read requirements.md
+read_file("[planning_folder_path]/requirements.md", should_read_entire_file=true)
+
+// 3. Check for context files
+if (file_exists("[planning_folder_path]/context-rules.md")) {
+    read_file("[planning_folder_path]/context-rules.md", should_read_entire_file=true)
+}
+if (file_exists("[planning_folder_path]/context-rules-workflow.md")) {
+    read_file("[planning_folder_path]/context-rules-workflow.md", should_read_entire_file=true)
+}
+
+// 4. Check for implementation plan
+if (file_exists("[planning_folder_path]/implementation-rules.md")) {
+    read_file("[planning_folder_path]/implementation-rules.md", should_read_entire_file=true)
+}
+
+// 5. Analyze current state
+// Determine which planning steps have been completed
+// Identify what remains to be done
+
+// 6. Report current state
+// "Planning is currently at stage X: [description]"
+// "Next steps: [list of remaining steps]"
+
+// 7. Continue planning from current state
+// Create or update required files
+```
+
+## State Detection Process
+
+1. **Requirements Analysis**:
+   - If requirements.md is empty or minimal: Send `requirements-ready: @parameters/rules/requirements-ready.mdc`
+   - If requirements are detailed: Proceed to context file creation
+
+2. **Context File Analysis**:
+   - If context-rules.md does not exist: Create it
+   - If context-rules-workflow.md does not exist: Create it
+   - If both exist but are incomplete: Complete them
+   - If both are complete: Proceed to implementation planning
+
+3. **Implementation Planning**:
+   - If implementation-rules.md does not exist: Create it
+   - If implementation-rules.md exists but is incomplete: Complete it
+   - If implementation is fully planned: Proceed to verification
+
+4. **Verification Status**:
+   - If implementation is fully planned but not verified: Send `verify-planning: @parameters/rules/verify-planning.mdc`
+   - If verification is complete: Send `planning-document-complete: @parameters/rules/planning-document-complete.mdc`
+
+## Mode Handling
+
+When `continue-planning: rules-workflow @parameters/rules/continue-planning.mdc` is received:
+
+- Always respond with the plan-mode indicator: 📋 1000xdev [rules-workflow]
+- If currently in dev-mode, automatically transition to plan-mode
+- Use the appropriate mode indicator for all subsequent responses
+- Maintain plan-mode throughout the planning resumption process
+
+## Response Format
+
+The response should follow this format:
+
+```
+📋 1000xdev [rules-workflow]
+
+Planning is currently at stage X: [description].
+
+I've analyzed the planning folder and found:
+- requirements.md: [status]
+- context-rules.md: [status]
+- context-rules-workflow.md: [status]
+- implementation-rules.md: [status]
+
+Next steps:
+1. [Step 1]
+2. [Step 2]
+3. [Step 3]
+
+I'll now continue the planning process from this point.
+
+[Proceeds with next planning action]
+```
+
+## Usage Examples
+
+### Scenario 1: Requirements Complete, Context Files Partial
+
+```
+Tyler: continue-planning: rules-workflow @parameters/rules/continue-planning.mdc
+
+📋 1000xdev [rules-workflow]
+
+Planning is currently at stage 2: Context Analysis.
+
+I've analyzed the planning folder and found:
+- requirements.md: Complete
+- context-rules.md: Complete
+- context-rules-workflow.md: Started but incomplete
+- implementation-rules.md: Not started
+
+Next steps:
+1. Complete context-rules-workflow.md
+2. Create implementation-rules.md
+3. Send planning-document-complete
+
+I'll now continue the planning process from this point.
+
+[Proceeds to complete the remaining planning steps]
+```
+
+### Scenario 2: All Files Complete, Ready for Implementation
+
+```
+Tyler: continue-planning: rules-workflow @parameters/rules/continue-planning.mdc
+
+📋 1000xdev [rules-workflow]
+
+Planning is currently at stage 4: Planning Complete.
+
+I've analyzed the planning folder and found:
+- requirements.md: Complete
+- context-rules.md: Complete
+- context-rules-workflow.md: Complete
+- implementation-rules.md: Complete
+
+All planning documents are complete and ready for implementation. The planning process is finished and ready for direct mode transition.
+
+planning-document-complete: @parameters/rules/planning-document-complete.mdc
+```
+
+### Scenario 3: Requirements Minimal, Early Planning Stage
+
+```
+Tyler: continue-planning: rules-workflow @parameters/rules/continue-planning.mdc
+
+📋 1000xdev [rules-workflow]
+
+Planning is currently at stage 1: Requirements Analysis.
+
+I've analyzed the planning folder and found:
+- requirements.md: Minimal, needs enhancement
+- context-rules.md: Not started
+- context-rules-workflow.md: Not started
+- implementation-rules.md: Not started
+
+Next steps:
+1. Enhance requirements.md with additional details
+2. Create context-rules.md
+3. Create context-rules-workflow.md
+4. Create implementation-rules.md
+
+I'll now proceed with enhancing the requirements.
+
+[Proceeds with requirements-ready: @parameters/rules/requirements-ready.mdc]
+```
+
+## Completion Criteria
+
+The continue-planning process is considered successful when:
+
+1. The planning folder state has been accurately analyzed
+2. The current planning stage has been correctly identified
+3. All remaining planning steps have been clearly outlined
+4. Planning has resumed from the appropriate point without loss of context
+5. The mode indicator (📋 1000xdev [rules-workflow]) is properly maintained
+
+## Command Structure
+
+The continue-planning message-command follows this format:
+
+```
+continue-planning: rules-workflow @parameters/rules/continue-planning.mdc
+```
+
+Where:
+- `continue-planning:` is the message-command
+- `rules-workflow` is the standard-parameter
+- `@parameters/rules/continue-planning.mdc` is the project-rule-parameter
+
+## Implementation Benefits
+
+- Provides seamless recovery from connection interruptions
+- Avoids the need to restart planning from scratch
+- Automatically adjusts to the current state of the planning folder
+- Maintains proper mode indicators throughout the recovery process
+- Creates continuous workflow even after interruptions 
+

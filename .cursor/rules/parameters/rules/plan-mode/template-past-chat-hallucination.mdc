@@ -1,0 +1,263 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Template: Past Chat Hallucination Analysis
+
+## File Purpose
+This template helps structure the requirements for addressing hallucinations identified in previous chats. It provides a framework for Tyler to describe the hallucination and its context, specifically focusing on issues that occurred in past chat interactions.
+
+## Project Rule Parameter
+
+Loyal to: create-template: @parameters/rules/template-past-chat-hallucination.mdc
+
+## Call Pattern
+
+Message-Command: create-template
+Standard-Parameters: workflow-type, folder-type, project-rule-parameter
+Example: `create-template: rules-workflow @past-chat-folder @planning-folder @template-past-chat-hallucination.mdc`
+
+## Research Process
+Before creating or updating the requirements.md file, I must:
+
+1. **Access Past Chat Information**:
+   - **PRIMARY SOURCE**: Thoroughly analyze the `<previous_conversations_summaries>` tag which contains essential conversation context
+   - Pay special attention to the conversation summaries for each chat ID referenced in the standard parameters
+   - For each summary, extract:
+     * Key implementation claims
+     * File modifications mentioned
+     * Status reports and completion claims
+     * Specific actions or commands executed
+   - Make explicit notes about what information is available in each summary
+   - Create a comprehensive mapping between claims in the summaries and verifiable file states
+
+2. **Chat ID Parameter Processing**:
+   - Treat all standard parameters starting with @ that appear to be chat IDs (e.g., @71, @71-2) as critical references
+   - For each chat ID, locate and thoroughly analyze its entry in the `<previous_conversations_summaries>` tag
+   - Create explicit tracking of which chat IDs were examined and what key information was found in each
+   - Build a timeline of actions and claims across the related conversations
+   - Focus especially on implementation progress and completion claims
+
+3. **Verify File States**:
+   - Use `read_file` to check the current state of all files mentioned in the conversation summaries
+   - Use `codebase_search` to find related files and context based on information in the summaries
+   - Use `grep_search` for finding specific patterns or strings mentioned in conversation claims
+   - Pay special attention to implementation progress files and status indicators
+   - Compare the current state of files with what was claimed in the chat summaries
+   - Document any discrepancies between claimed implementation and actual file state
+
+4. **Document Research**:
+   - Record all tool calls made and their results
+   - Note any discrepancies found between chat claims and actual file states
+   - Document the complete context before making any changes
+   - Compare implementation progress claims with actual progress files
+   - Create a detailed record of what information was available in each conversation summary
+   - Document the limitations of conversation summaries compared to full chat histories
+
+## Conversation Summary Analysis Techniques
+
+When working with conversation summaries rather than full chat histories:
+
+1. **Extract Verifiable Claims**:
+   - Look for statements about file creation, modification, or deletion
+   - Note any claims about implementation completion or progress
+   - Identify specific files that should exist or have particular content
+   - Document any explicit completion status indicators (✅, "complete", etc.)
+
+2. **Build Implementation Timeline**:
+   - Map the sequence of development across multiple conversations
+   - Track which files were reportedly created or modified in which conversation
+   - Note when specific tasks were marked as completed
+   - Document the stated progress at each stage
+
+3. **Identify Key Messages**:
+   - Extract user queries or commands that triggered implementation actions
+   - Note feedback or follow-up questions from the user
+   - Identify specific requests for status updates or verification
+   - Document any expressions of concern or requests for corrections
+
+4. **Cross-Reference Across Summaries**:
+   - Connect related information across multiple conversation summaries
+   - Trace how a specific implementation evolved across conversations
+   - Look for inconsistencies in how progress was reported between conversations
+   - Build a composite understanding of the implementation process
+
+## Usage
+```
+create-template: rules-workflow @past-chat-folder @planning-folder @template-past-chat-hallucination.mdc
+```
+
+Example:
+```
+create-template: rules-workflow @67-filepath-migration @planning/67-filepath-migration @template-past-chat-hallucination.mdc
+```
+
+## Standard Parameter Interpretation
+
+When executing this template, the following interpretation rules apply:
+
+1. **@folder-names**: Parameters that specify folder locations (e.g., @planning/67-filepath-migration)
+2. **@chat-ids**: Parameters that appear to be chat IDs (e.g., @71, @71-2) - these require explicit analysis
+3. **@template-parameter**: The final parameter specifying the template to use
+
+For example, in:
+```
+create-template: rules-workflow @67-filepath-migration @planning/67-filepath-migration @template-past-chat-hallucination.mdc
+```
+
+- @67-filepath-migration: A chat ID requiring analysis
+- @planning/67-filepath-migration: A folder path
+- @template-past-chat-hallucination.mdc: The template parameter
+
+## Requirements Template
+
+When this template is applied, it will create the following structure in requirements.md:
+
+```markdown
+# Past Chat Hallucination Analysis Requirements
+
+## Research Documentation
+[Document all tool calls made and their results]
+
+Tool Calls Made:
+1. [Tool Name]: [Purpose]
+   - Results: [What was found]
+   - Implications: [What this means for the hallucination analysis]
+
+2. [Tool Name]: [Purpose]
+   - Results: [What was found]
+   - Implications: [What this means for the hallucination analysis]
+
+Files Checked:
+1. [File Path]
+   - Expected State: [What the chat claimed]
+   - Actual State: [What was found]
+   - Discrepancy: [Description of the difference]
+
+2. [File Path]
+   - Expected State: [What the chat claimed]
+   - Actual State: [What was found]
+   - Discrepancy: [Description of the difference]
+
+## Chat Analysis
+[Document which chat histories were analyzed and how they were accessed]
+
+Chat IDs Analyzed:
+- Chat [ID]: [How accessed - conversation summary in previous_conversations_summaries]
+  - Key Claims: [Important statements or claims made]
+  - Verification Status: [Whether claims were verified or not]
+  - Summary Content: [Brief description of what the summary contained]
+  - Implementation Claims: [Specific implementation claims made]
+  - Completion Status: [What was reported as complete]
+
+- Chat [ID]: [How accessed - conversation summary in previous_conversations_summaries]
+  - Key Claims: [Important statements or claims made]
+  - Verification Status: [Whether claims were verified or not]
+  - Summary Content: [Brief description of what the summary contained]
+  - Implementation Claims: [Specific implementation claims made]
+  - Completion Status: [What was reported as complete]
+
+## Hallucination Description
+[Describe the specific hallucination that occurred in the past chat - what did the AI incorrectly assume or do?]
+
+Type of Hallucination:
+- [ ] False Progress Claim
+- [ ] Incorrect File State
+- [ ] Missing Implementation Step
+- [ ] Wrong Tool Usage
+- [ ] Other: [Specify]
+
+## Chat Context
+[Provide context about the specific chat where this hallucination occurred]
+
+Chat Details:
+- Chat ID: [ID or Name]
+- Planning Folder: [Associated Planning Folder Path]
+- Key Messages: [List relevant messages]
+- Affected Files: [List files involved]
+- Commands Run: [List relevant commands]
+
+## Impact Analysis
+[What problems did this hallucination cause?]
+
+1. Immediate Implementation Issues:
+   - [List immediate problems caused]
+
+2. Systemic Risks:
+   - [List potential systemic issues]
+
+3. Project Management Impact:
+   - [List effects on project management]
+
+## Prevention Goals
+[What specific behaviors or assumptions should be prevented?]
+
+1. Implementation Tracking:
+   - [List tracking improvements needed]
+
+2. State Verification:
+   - [List verification steps needed]
+
+3. Progress Monitoring:
+   - [List monitoring improvements needed]
+
+## Success Criteria
+[How will we know this type of hallucination has been properly addressed?]
+
+1. Implementation Accuracy:
+   - [List accuracy requirements]
+
+2. Verification Requirements:
+   - [List verification requirements]
+
+3. Progress Tracking:
+   - [List tracking requirements]
+
+## Technical Scope
+[Which parts of the system need to be modified?]
+
+1. Progress Tracking:
+   - [List tracking components]
+
+2. State Management:
+   - [List state management components]
+
+3. Verification Systems:
+   - [List verification components]
+
+## Constraints
+[What must be preserved while making changes?]
+
+1. Performance:
+   - [List performance constraints]
+
+2. Usability:
+   - [List usability constraints]
+
+3. Integration:
+   - [List integration constraints]
+```
+
+## Template Application
+
+When the create-template command is received, I will:
+1. Execute the research process to gather all necessary context
+2. Pay special attention to the conversation summaries for chat IDs referenced in the standard parameters
+3. Thoroughly analyze all available information in the `<previous_conversations_summaries>` tag
+4. Document which conversation summaries were analyzed and what information they contained
+5. Verify actual file states against claims made in the conversation summaries
+6. Create or update requirements.md with this template
+7. Document all research findings in the Research Documentation section
+8. Include a comprehensive Chat Analysis section detailing what was learned from each conversation summary
+9. Identify and document any discrepancies between claimed and actual implementation
+10. Leave other sections empty for Tyler to fill in
+11. Wait for Tyler to complete the requirements before proceeding with any planning
+
+## Next Steps
+1. I complete the research process and document findings about both conversation summaries and file states
+2. Tyler fills in the remaining requirements template sections
+3. Tyler initiates planning with:
+   ```
+   plan-mode: rules-workflow @template-advanced.mdc
+   ``` 

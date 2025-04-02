@@ -1,0 +1,489 @@
+---
+description: USE WHEN implementing planning strategies, optimizing planning patterns, or enhancing documentation structure
+globs: 
+alwaysApply: false
+---
+# USE WHEN implementing planning strategies, optimizing planning patterns, or enhancing documentation structure
+
+# Planning Patterns Guide
+
+## Overview
+
+This guide provides comprehensive documentation for the new planning patterns implemented in the system-wide plan-mode enhancement. These patterns enable more effective planning for large documentation files, intelligent folder structuring, and optimized tool usage.
+
+## Tool-Aware File Reading Patterns
+
+### When to Use
+
+Use these patterns when:
+- Working with large documentation files (>250 lines)
+- Needing to maintain context across multiple file reads
+- Implementing documentation with clear section boundaries
+- Optimizing tool calls for complex planning tasks
+
+### Implementation Approaches
+
+#### Size-Based Reading Strategy
+
+```typescript
+// Before reading a file, check its size
+function checkFileSize(file: string): ReadingStrategy {
+  const estimatedSize = estimateFileSize(file);
+  
+  if (estimatedSize <= 250) {
+    return {
+      strategy: 'whole_file',
+      params: { should_read_entire_file: true }
+    };
+  } else if (estimatedSize <= 750) {
+    return {
+      strategy: 'single_chunk',
+      params: { offset: 0, limit: estimatedSize }
+    };
+  } else {
+    return {
+      strategy: 'multi_chunk',
+      params: calculateOptimalChunks(estimatedSize)
+    };
+  }
+}
+
+// Read file with appropriate strategy
+async function readWithStrategy(file: string): Promise<string> {
+  const strategy = checkFileSize(file);
+  
+  if (strategy.strategy === 'whole_file') {
+    return read_file(file, should_read_entire_file=true);
+  } else if (strategy.strategy === 'single_chunk') {
+    return read_file(file, strategy.params.offset, strategy.params.limit);
+  } else {
+    // Multi-chunk reading
+    const chunks = [];
+    for (const chunk of strategy.params) {
+      chunks.push(await read_file(file, chunk.offset, chunk.limit));
+    }
+    return combineChunks(chunks);
+  }
+}
+```
+
+#### Section-Based Reading Strategy
+
+```typescript
+// Read file by logical sections
+async function readBySection(file: string, targetSection: string): Promise<string> {
+  // First scan to find sections
+  const initialContent = await read_file(file, 0, 250);
+  const sections = findSections(initialContent);
+  
+  // Locate target section
+  const targetSectionInfo = sections.find(s => s.title.includes(targetSection));
+  if (!targetSectionInfo) {
+    return initialContent; // Section not found in first chunk
+  }
+  
+  // Read target section
+  return read_file(file, targetSectionInfo.startLine, targetSectionInfo.lineCount);
+}
+```
+
+### Usage Examples
+
+#### In Implementation Plans
+
+```markdown
+## File Reading Strategy
+
+This implementation will use tool-aware file reading:
+
+1. **Size Analysis**: Analyze file size before reading
+2. **Intelligent Chunking**: Use section-based chunking for files > 250 lines
+3. **Context Preservation**: Add context headers at chunk boundaries
+4. **Reading Optimization**: Batch related sections to minimize tool calls
+```
+
+#### In Task Implementation
+
+```typescript
+// Example usage in task implementation
+async function implementFeature(file: string): Promise<void> {
+  // 1. Check file size
+  const strategy = checkFileSize(file);
+  
+  // 2. Read file with appropriate strategy
+  const content = await readWithStrategy(file);
+  
+  // 3. Implement feature
+  // ...implementation code...
+}
+```
+
+## Context Preservation System
+
+### When to Use
+
+Use context preservation when:
+- Working with files split across multiple chunks
+- Needing to maintain semantic relationships between sections
+- Implementing complex features that span multiple files
+- Tracking dependencies across system components
+
+### Implementation Approaches
+
+#### Basic Context Preservation
+
+```typescript
+// Add context headers to file chunks
+function addContextHeaders(chunk: string, context: Context): string {
+  return `
+--- SECTION CONTEXT ---
+Previous: ${context.previous}
+Current: ${context.current}
+Next: ${context.next}
+
+${chunk}
+`;
+}
+
+// Read with context preservation
+async function readWithContext(file: string): Promise<string> {
+  const strategy = checkFileSize(file);
+  
+  if (strategy.strategy === 'whole_file') {
+    return read_file(file, should_read_entire_file=true);
+  } else {
+    // Multi-chunk reading with context
+    const chunks = [];
+    let prevChunk = '';
+    
+    for (const chunk of strategy.params) {
+      const content = await read_file(file, chunk.offset, chunk.limit);
+      
+      // Add context information
+      const context = {
+        previous: summarize(prevChunk),
+        current: `Lines ${chunk.offset}-${chunk.offset + chunk.limit}`,
+        next: chunk === strategy.params[strategy.params.length - 1] ? 
+              'End of file' : `Next ${strategy.params[chunk + 1].limit} lines`
+      };
+      
+      chunks.push(addContextHeaders(content, context));
+      prevChunk = content;
+    }
+    
+    return chunks.join('\n\n');
+  }
+}
+```
+
+#### Advanced Context Tracking
+
+```typescript
+class ContextTracker {
+  private contexts: Map<string, Context> = new Map();
+  
+  trackContext(file: string, context: Context): void {
+    this.contexts.set(file, context);
+  }
+  
+  getContext(file: string): Context | undefined {
+    return this.contexts.get(file);
+  }
+  
+  updateContext(file: string, updates: Partial<Context>): void {
+    const current = this.contexts.get(file) || {};
+    this.contexts.set(file, { ...current, ...updates });
+  }
+}
+
+// Implementation with context tracking
+async function implementWithContextTracking(files: string[]): Promise<void> {
+  const tracker = new ContextTracker();
+  
+  for (const file of files) {
+    const content = await readWithStrategy(file);
+    const context = extractContext(content);
+    tracker.trackContext(file, context);
+    
+    // Implement changes with context awareness
+    // ...implementation code...
+    
+    // Update context after changes
+    tracker.updateContext(file, { status: 'modified' });
+  }
+}
+```
+
+### Usage Examples
+
+#### In Planning Documentation
+
+```markdown
+## Context Management Strategy
+
+This implementation will use context preservation:
+
+1. **Context Extraction**: Extract section, dependency, and implementation context
+2. **Context Tracking**: Track context across multiple files
+3. **Context Restoration**: Restore context when working with file chunks
+4. **Context Verification**: Verify required context before making changes
+```
+
+#### In Tool Calls
+
+```typescript
+// Example usage in tool calls
+async function enhancedImplementation(file: string): Promise<void> {
+  // Read file with context preservation
+  const { content, context } = await readWithContextTracking(file);
+  
+  // Verify required context
+  if (!hasRequiredContext(context, ['section:implementation', 'dependency:core'])) {
+    // Missing required context
+    await recoverContext(file, ['section:implementation', 'dependency:core']);
+  }
+  
+  // Implement with context awareness
+  // ...implementation code...
+}
+```
+
+## Tool Integration Optimization
+
+### When to Use
+
+Use tool integration optimization when:
+- Working with complex implementations requiring multiple tool calls
+- Needing to minimize the number of tool calls
+- Implementing features that span multiple files or systems
+- Optimizing implementation workflow for efficiency
+
+### Implementation Approaches
+
+#### Tool Call Batching
+
+```typescript
+// Batch related tool calls
+function batchToolCalls<T extends ToolCall>(calls: T[]): BatchedCalls<T> {
+  // Group calls by type
+  const byType = groupBy(calls, 'type');
+  
+  // Optimize each group
+  const optimized = {};
+  for (const [type, typeCalls] of Object.entries(byType)) {
+    optimized[type] = optimizeCalls(typeCalls);
+  }
+  
+  return {
+    batches: createBatches(optimized),
+    sequence: determineSequence(optimized)
+  };
+}
+
+// Execute batched calls
+async function executeBatchedCalls(batched: BatchedCalls<ToolCall>): Promise<ToolResult[]> {
+  const results = [];
+  
+  for (const batch of batched.sequence) {
+    if (batch.parallel) {
+      // Execute calls in parallel
+      const batchResults = await Promise.all(
+        batch.calls.map(call => executeToolCall(call))
+      );
+      results.push(...batchResults);
+    } else {
+      // Execute calls in sequence
+      for (const call of batch.calls) {
+        const result = await executeToolCall(call);
+        results.push(result);
+      }
+    }
+  }
+  
+  return results;
+}
+```
+
+#### Tool Chain Optimization
+
+```typescript
+// Create optimized tool chain
+function createToolChain(steps: ToolCall[]): ToolChain {
+  return {
+    steps: optimizeSteps(steps),
+    context: createSharedContext(steps),
+    optimization: {
+      parallel: canExecuteParallel(steps),
+      caching: canEnableCaching(steps),
+      contextSharing: canShareContext(steps)
+    }
+  };
+}
+
+// Execute optimized tool chain
+async function executeToolChain(chain: ToolChain): Promise<ToolResult[]> {
+  const results = [];
+  
+  // Apply optimizations
+  const optimizedSteps = applyOptimizations(chain.steps, chain.optimization);
+  
+  // Execute optimized steps
+  for (const step of optimizedSteps) {
+    const result = await executeToolCall(step, chain.context);
+    results.push(result);
+    
+    // Update shared context
+    updateSharedContext(chain.context, result);
+  }
+  
+  return results;
+}
+```
+
+### Usage Examples
+
+#### In Planning Documentation
+
+```markdown
+## Tool Integration Strategy
+
+This implementation will use tool integration optimization:
+
+1. **Tool Call Batching**: Batch related tool calls to minimize API usage
+2. **Context Sharing**: Share context between related tool calls
+3. **Call Sequencing**: Optimize the sequence of tool calls for efficiency
+4. **Parallel Execution**: Execute independent calls in parallel when possible
+```
+
+#### In Implementation Code
+
+```typescript
+// Example usage in implementation
+async function optimizedImplementation(feature: string): Promise<void> {
+  // Create tool chain
+  const chain = createToolChain([
+    { type: 'read', file: 'feature.md' },
+    { type: 'search', pattern: feature },
+    { type: 'read', file: 'implementation.md' },
+    { type: 'edit', file: 'implementation.md', changes: [...] }
+  ]);
+  
+  // Execute optimized chain
+  const results = await executeToolChain(chain);
+  
+  // Process results
+  // ...implementation code...
+}
+```
+
+## Integrated Usage
+
+### Planning Workflow with New Patterns
+
+1. **Initial Assessment**:
+   - Analyze documentation complexity
+   - Determine file size requirements
+   - Plan folder structure based on complexity
+
+2. **Tool-Aware Planning**:
+   - Create implementation plan with tool-aware reading strategies
+   - Define context preservation approach
+   - Outline tool integration optimization
+
+3. **Implementation Preparation**:
+   - Prepare file splitting strategy if needed
+   - Set up context tracking system
+   - Create optimized tool chains
+
+4. **Execution and Verification**:
+   - Implement with tool-aware patterns
+   - Verify context preservation
+   - Optimize tool usage during implementation
+
+### Example: Planning a System-Wide Enhancement
+
+```markdown
+# Implementation Plan: System-Wide Enhancement
+
+## Tool-Aware Implementation Strategy
+
+This implementation will use the following planning patterns:
+
+### File Reading Strategy
+- File size analysis before reading
+- Section-based chunking for large files
+- Context preservation across chunks
+
+### Context Management
+- Track section, dependency, and implementation context
+- Verify context before changes
+- Recover context when needed
+
+### Tool Integration
+- Batch related tool calls
+- Share context between calls
+- Optimize call sequence for efficiency
+
+## Implementation Phases
+
+1. **Phase 1**: File Structure Analysis
+   - Use tool-aware reading to analyze current file structure
+   - Identify files requiring splitting
+   - Plan optimal split points
+
+2. **Phase 2**: Context-Aware Implementation
+   - Implement changes with context preservation
+   - Track context across modified files
+   - Verify context integrity after changes
+
+3. **Phase 3**: Tool-Optimized Verification
+   - Verify changes using optimized tool chains
+   - Batch verification operations
+   - Share context across verification steps
+```
+
+## Best Practices
+
+1. **Chunk Size Optimization**:
+   - Keep chunks <= 250 lines for optimal readability
+   - Ensure chunks align with logical section boundaries
+   - Preserve context across chunk boundaries
+
+2. **Context Management**:
+   - Always track section, dependency, and implementation context
+   - Update context when files are modified
+   - Verify required context before making changes
+
+3. **Tool Call Efficiency**:
+   - Batch related tool calls to minimize API usage
+   - Share context between related calls
+   - Optimize call sequence for maximum efficiency
+
+4. **Documentation Standards**:
+   - Include tool-aware reading strategies in implementation plans
+   - Document context preservation approach
+   - Outline tool integration optimization
+
+## Troubleshooting
+
+### Common Issues and Solutions
+
+1. **Lost Context After Splitting**:
+   - Use context markers at split points
+   - Implement context tracking system
+   - Add explicit cross-references between split files
+
+2. **Inefficient Tool Call Patterns**:
+   - Analyze tool call sequence
+   - Batch related calls
+   - Share context between calls
+   - Optimize for parallel execution when possible
+
+3. **Incomplete File Reading**:
+   - Verify file size before reading
+   - Use appropriate reading strategy based on size
+   - Implement section-based reading for targeted content
+
+## Summary
+
+The new planning patterns implemented in the system-wide plan-mode enhancement provide powerful tools for working with large documentation files, maintaining context across multiple file reads, and optimizing tool usage. By incorporating these patterns into your planning workflow, you can create more effective, efficient implementations that handle complex documentation requirements with ease. 

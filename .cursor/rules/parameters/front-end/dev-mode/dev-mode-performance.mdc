@@ -1,0 +1,555 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Dev Mode: Front-End Performance Optimization
+
+## File Purpose and Relationship
+
+This file defines the specific operation of the `dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-performance.mdc` message-command, which initializes developer mode with a focus on front-end performance optimization. It should be consulted to understand:
+
+- How to implement performance optimizations for front-end components
+- Specialized optimization techniques for React/Next.js applications
+- Tool call sequences for performance profiling and optimization
+- Verification strategies for performance improvements
+
+This file complements:
+- `@parameters/front-end/continuation/continue-implementation.mdc`: Implementation continuation protocols
+- `@parameters/front-end/plan-mode-performance.mdc`: Planning guidance for performance optimization
+- `fetch_rules(["knowledge/patterns/impl/front-end-performance"])`: Performance optimization patterns
+
+## Project Rule Parameter
+
+Loyal to: dev-mode: @parameters/front-end/dev-mode/dev-mode-performance.mdc
+
+## Call Pattern
+
+Message-Command: dev-mode
+Standard-Parameters: front-end-workflow
+Example: `dev-mode: front-end-workflow @dev-mode-performance.mdc`
+
+## Usage as Project-Rule-Parameter
+
+This file contains specialized implementation details for front-end performance optimization. It should be referenced as a project-rule-parameter when initializing implementation focused on improving application performance:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-performance.mdc
+```
+
+For general implementation or other enhancement pathways, see the alternative project-rule-parameters listed in `@parameters/front-end/dev-mode-front-end-workflow.mdc`.
+
+## 1. Front-End Performance Optimization Overview
+
+The front-end performance optimization implementation pathway provides a specialized execution structure focused on improving the speed, responsiveness, and resource efficiency of front-end applications. This approach is ideal when:
+
+- Applications experience slow loading times
+- UI interactions feel sluggish or unresponsive
+- Memory usage is excessive
+- Rendering performance is suboptimal
+- Network requests are inefficient
+- Bundle size needs reduction
+
+### Key Benefits
+
+1. **Enhanced User Experience**: Faster loading and more responsive interactions
+2. **Improved SEO Rankings**: Better performance metrics for search engine visibility
+3. **Reduced Resource Usage**: Lower CPU, memory, and network consumption
+4. **Mobile Optimization**: Better performance on resource-constrained devices
+5. **Cost Efficiency**: Reduced bandwidth and processing requirements
+
+## 2. Core Command Operation
+
+When the `dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-performance.mdc` message-command is received, 1000xdev will:
+
+1. **Initialize Developer Mode**: Enter or remain in Developer Mode with the 💻 1000xdev [front-end-workflow] indicator
+2. **Analyze Performance Plan**: Review the performance optimization plan from the planning folder
+3. **Create Performance Baseline**: Establish current performance metrics for comparison
+4. **Execute Optimization Changes**: Implement optimizations across components, state management, and resource loading
+5. **Verify Performance Improvements**: Test and document performance gains
+
+### Tool Call Sequence
+
+```typescript
+// 1. Check planning folder structure
+list_dir("[planning_folder_path]")
+
+// 2. Read context and implementation files
+read_file("[planning_folder_path]/context-front-end-performance.md", should_read_entire_file=true)
+read_file("[planning_folder_path]/implementation-front-end-performance.md", should_read_entire_file=true)
+
+// 3. Create performance baseline tracking
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Create performance baseline tracking",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Performance Baseline\n\n...")
+
+// 4. Examine front-end structure
+list_dir("front-end/src")
+list_dir("front-end/src/components")
+list_dir("front-end/src/hooks")
+list_dir("front-end/src/contexts")
+
+// 5. Begin optimization implementation
+// Implementation following the phases defined in implementation-front-end-performance.md
+```
+
+## 3. Specialized Implementation Structure
+
+The front-end performance optimization implementation follows this specialized structure:
+
+### Phase 1: Performance Analysis and Baseline
+
+```typescript
+// 1. Analyze component structure
+list_dir("front-end/src/components")
+list_dir("front-end/src/pages")
+list_dir("front-end/src/hooks")
+
+// 2. Identify performance bottlenecks
+grep_search("useEffect", false, "front-end/src/**/*.tsx")
+grep_search("useState", false, "front-end/src/**/*.tsx")
+grep_search("useMemo|useCallback", false, "front-end/src/**/*.tsx")
+
+// 3. Document performance baseline
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Document performance baseline",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Performance Baseline\n\n- Component Render Counts\n- State Update Frequency\n- Memory Usage Patterns\n- Network Request Patterns\n- Bundle Size Analysis\n\n...")
+```
+
+### Phase 2: Component Rendering Optimization
+
+```typescript
+// 1. Optimize component rendering
+read_file("front-end/src/components/[component_to_optimize].tsx", should_read_entire_file=true)
+edit_file("front-end/src/components/[component_to_optimize].tsx",
+          "Optimize component rendering",
+          "// ... existing code ...\n\n// Memoize component to prevent unnecessary re-renders\nconst MemoizedComponent = React.memo(Component);\n\n// ... existing code ...")
+
+// 2. Implement useMemo and useCallback
+read_file("front-end/src/components/[component_to_optimize].tsx", should_read_entire_file=true)
+edit_file("front-end/src/components/[component_to_optimize].tsx",
+          "Implement useMemo and useCallback",
+          "// ... existing code ...\n\n// Memoize expensive calculation\nconst expensiveResult = useMemo(() => { return expensiveOperation() }, [dependency]);\n\n// Memoize callback function\nconst handleClick = useCallback(() => { handleOperation() }, [dependency]);\n\n// ... existing code ...")
+
+// 3. Update implementation progress
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update implementation progress for component optimization",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Phase 2: Component Rendering Optimization\n\n- Optimized [Component]: Added memoization\n- Optimized [Component]: Implemented useMemo for expensive calculations\n- Optimized [Component]: Implemented useCallback for event handlers\n\n...")
+```
+
+### Phase 3: State Management Optimization
+
+```typescript
+// 1. Optimize context providers
+read_file("front-end/src/contexts/[context_to_optimize].tsx", should_read_entire_file=true)
+edit_file("front-end/src/contexts/[context_to_optimize].tsx",
+          "Optimize context provider",
+          "// ... existing code ...\n\n// Split context to prevent unnecessary re-renders\n// ... optimized context implementation ...\n\n// ... existing code ...")
+
+// 2. Implement selector pattern
+read_file("front-end/src/hooks/[hook_to_optimize].ts", should_read_entire_file=true)
+edit_file("front-end/src/hooks/[hook_to_optimize].ts",
+          "Implement selector pattern",
+          "// ... existing code ...\n\n// Use selector pattern to prevent unnecessary re-renders\nconst selectedValue = useSelector(state => state.value);\n\n// ... existing code ...")
+
+// 3. Update implementation progress
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update implementation progress for state management optimization",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Phase 3: State Management Optimization\n\n- Optimized [Context]: Split context for finer-grained updates\n- Optimized [Hook]: Implemented selector pattern\n- Optimized [Store]: Reduced unnecessary state updates\n\n...")
+```
+
+### Phase 4: Asset Loading and Network Optimization
+
+```typescript
+// 1. Implement image optimization
+read_file("front-end/src/components/[image_component].tsx", should_read_entire_file=true)
+edit_file("front-end/src/components/[image_component].tsx",
+          "Implement image optimization",
+          "// ... existing code ...\n\n// Use optimized image component with lazy loading\nimport Image from 'next/image';\n\n// ... optimized image implementation ...\n\n// ... existing code ...")
+
+// 2. Implement code splitting
+read_file("front-end/src/pages/[page_to_optimize].tsx", should_read_entire_file=true)
+edit_file("front-end/src/pages/[page_to_optimize].tsx",
+          "Implement code splitting",
+          "// ... existing code ...\n\n// Use dynamic imports for code splitting\nconst DynamicComponent = dynamic(() => import('../components/HeavyComponent'), {\n  loading: () => <LoadingIndicator />,\n  ssr: false\n});\n\n// ... existing code ...")
+
+// 3. Update implementation progress
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update implementation progress for asset optimization",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Phase 4: Asset Loading and Network Optimization\n\n- Optimized [Component]: Implemented lazy loading for images\n- Optimized [Page]: Implemented code splitting\n- Optimized [API]: Implemented data caching\n\n...")
+```
+
+### Phase 5: Performance Verification and Comparison
+
+```typescript
+// 1. Document performance improvements
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Document performance improvements",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Performance Comparison\n\n| Metric | Before | After | Improvement |\n|--------|--------|-------|-------------|\n| Render Time | [value] | [value] | [percentage] |\n| Bundle Size | [value] | [value] | [percentage] |\n| Memory Usage | [value] | [value] | [percentage] |\n| Network Requests | [value] | [value] | [percentage] |\n\n...")
+
+// 2. Final verification
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Complete performance optimization summary",
+          "# Implementation Progress: Front-End Performance Optimization\n\nImplementation complete with significant performance improvements across all target metrics...")
+```
+
+## 4. Implementation Progress Tracking
+
+For front-end performance optimization, implementation progress tracking follows this specialized structure:
+
+```markdown
+# Implementation Progress: Front-End Performance Optimization
+
+## Current Status
+- Phase: [current phase number]
+- Step: [current step number]
+- Last Update: [timestamp]
+
+## Performance Metrics
+- Initial Load Time: [before] -> [after] ([improvement])
+- Time to Interactive: [before] -> [after] ([improvement])
+- Component Render Time: [before] -> [after] ([improvement])
+- Bundle Size: [before] -> [after] ([improvement])
+- Memory Usage: [before] -> [after] ([improvement])
+- Network Requests: [before] -> [after] ([improvement])
+
+## Phase Overview
+- Phase 1: [status] - Performance Analysis and Baseline
+- Phase 2: [status] - Component Rendering Optimization
+- Phase 3: [status] - State Management Optimization
+- Phase 4: [status] - Asset Loading and Network Optimization
+- Phase 5: [status] - Performance Verification and Comparison
+
+## Detailed Progress
+
+### Phase 1: Performance Analysis and Baseline
+- [x] Step 1.1: [completed step]
+- [x] Step 1.2: [completed step]
+- [ ] Step 1.3: [pending step]
+
+### Phase 2: Component Rendering Optimization
+- [ ] Step 2.1: [pending step]
+- [ ] Step 2.2: [pending step]
+
+### Phase 3: State Management Optimization
+- [ ] Step 3.1: [pending step]
+- [ ] Step 3.2: [pending step]
+
+### Phase 4: Asset Loading and Network Optimization
+- [ ] Step 4.1: [pending step]
+- [ ] Step 4.2: [pending step]
+
+### Phase 5: Performance Verification and Comparison
+- [ ] Step 5.1: [pending step]
+- [ ] Step 5.2: [pending step]
+
+## Component Status
+- Component 1: [status] - [optimization details]
+- Component 2: [status] - [optimization details]
+- Component 3: [status] - [optimization details]
+```
+
+## 5. Common Front-End Performance Optimization Techniques
+
+### Component Rendering Optimization
+
+1. **Component Memoization**:
+   ```tsx
+   const MemoizedComponent = React.memo(Component);
+   ```
+
+2. **Use of Pure Components**:
+   ```tsx
+   class PureComponent extends React.PureComponent {
+     // Implementation
+   }
+   ```
+
+3. **Derived State Calculations**:
+   ```tsx
+   const derivedValue = useMemo(() => {
+     return expensiveCalculation(dependency);
+   }, [dependency]);
+   ```
+
+4. **Event Handler Memoization**:
+   ```tsx
+   const handleClick = useCallback(() => {
+     performAction(dependency);
+   }, [dependency]);
+   ```
+
+### State Management Optimization
+
+1. **Context Splitting**:
+   ```tsx
+   // Instead of one large context
+   const UserContext = createContext();
+   const PreferencesContext = createContext();
+   ```
+
+2. **Selector Pattern**:
+   ```tsx
+   const username = useSelector(state => state.user.name);
+   ```
+
+3. **Batched Updates**:
+   ```tsx
+   // Instead of multiple setState calls
+   setFormState(prevState => ({
+     ...prevState,
+     name: value,
+     validName: isValid
+   }));
+   ```
+
+### Asset Loading Optimization
+
+1. **Lazy Loading Components**:
+   ```tsx
+   const LazyComponent = React.lazy(() => import('./LazyComponent'));
+   ```
+
+2. **Image Optimization**:
+   ```tsx
+   import Image from 'next/image';
+   
+   function OptimizedImage() {
+     return (
+       <Image
+         src="/image.jpg"
+         width={500}
+         height={300}
+         loading="lazy"
+         alt="Description"
+       />
+     );
+   }
+   ```
+
+3. **Code Splitting**:
+   ```tsx
+   import dynamic from 'next/dynamic';
+   
+   const DynamicComponent = dynamic(() => import('../components/HeavyComponent'), {
+     loading: () => <LoadingIndicator />,
+     ssr: false
+   });
+   ```
+
+### Network Request Optimization
+
+1. **Data Caching**:
+   ```tsx
+   const { data } = useSWR('/api/data', fetcher, {
+     revalidateOnFocus: false,
+     dedupingInterval: 60000
+   });
+   ```
+
+2. **Request Batching**:
+   ```tsx
+   // Instead of multiple separate API calls
+   const [usersData, postsData] = await Promise.all([
+     fetch('/api/users'),
+     fetch('/api/posts')
+   ]);
+   ```
+
+3. **GraphQL for Precise Data Fetching**:
+   ```tsx
+   const { data } = useQuery(gql`
+     query GetUser {
+       user {
+         id
+         name
+         # Only the fields we need
+       }
+     }
+   `);
+   ```
+
+## 6. Performance Testing and Verification
+
+Front-end performance optimization requires comprehensive testing and verification:
+
+### Component Render Optimization Verification
+
+```typescript
+// 1. Identify component render frequency
+grep_search("console.log\\(.*render", false, "front-end/src/**/*.tsx")
+
+// 2. Add render tracking to verify optimizations
+read_file("front-end/src/components/[optimized_component].tsx", should_read_entire_file=true)
+edit_file("front-end/src/components/[optimized_component].tsx",
+          "Add render tracking",
+          "// ... existing code ...\n\n// Track renders for performance verification\nconsole.log('Render: [ComponentName]');\n\n// ... existing code ...")
+
+// 3. Document render optimization results
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Document render optimization results",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Render Optimization Results\n\n| Component | Before | After | Improvement |\n|-----------|--------|-------|-------------|\n| [Component] | [count] | [count] | [percentage] |\n")
+```
+
+### Bundle Size Analysis
+
+```typescript
+// 1. Document bundle size analysis
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Document bundle size analysis",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Bundle Size Analysis\n\n| File | Before | After | Improvement |\n|------|--------|-------|-------------|\n| main.js | [size] | [size] | [percentage] |\n| [chunk].js | [size] | [size] | [percentage] |\n")
+```
+
+### Memory Usage Analysis
+
+```typescript
+// 1. Document memory usage analysis
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Document memory usage analysis",
+          "# Implementation Progress: Front-End Performance Optimization\n\n## Memory Usage Analysis\n\n| Page | Before | After | Improvement |\n|------|--------|-------|-------------|\n| Home | [usage] | [usage] | [percentage] |\n| [Page] | [usage] | [usage] | [percentage] |\n")
+```
+
+## 7. Success Criteria
+
+Successful implementation of front-end performance optimization meets these criteria:
+
+1. **Measurable Improvements**: Documented performance gains across key metrics
+2. **Optimal Bundle Size**: Reduced JavaScript bundle size through code splitting and tree shaking
+3. **Efficient Rendering**: Minimized unnecessary re-renders in React component hierarchy
+4. **Optimized Assets**: Properly sized and lazy-loaded images and media
+5. **Efficient Network Usage**: Optimized API calls with proper caching and batching
+6. **Responsive Interactions**: Smooth UI interactions with minimal lag
+7. **Improved User Experience**: Better Core Web Vitals scores (LCP, FID, CLS)
+
+## 8. Implementation Completion
+
+When front-end performance optimization implementation is complete, 1000xdev:
+
+1. **Verifies Performance Metrics**: Ensures measurable improvements across all target metrics
+2. **Documents Optimization Techniques**: Provides comprehensive documentation of applied techniques
+3. **Creates Performance Report**: Compiles before/after comparisons for key metrics
+4. **Documents Best Practices**: Outlines ongoing performance maintenance guidelines
+5. **Signals Completion**: Sends `implementation-complete` message-command
+
+### Completion Indicator
+
+```
+💻 1000xdev [front-end-workflow]
+
+Front-End Performance Optimization complete:
+- All target components optimized
+- Bundle size reduced by [percentage]
+- Render performance improved by [percentage]
+- Memory usage reduced by [percentage]
+- Network efficiency improved by [percentage]
+- Detailed performance report documented
+
+implementation-complete
+```
+
+### Performance Report Creation
+
+As part of performance optimization completion, the workflow creates a comprehensive performance report:
+
+```typescript
+// Create performance report
+edit_file("[planning_folder_path]/performance-report.md",
+          "Create comprehensive performance report",
+          "# Performance Optimization Report\n\n## Executive Summary\n\nThis report documents the performance improvements achieved through targeted optimizations of the front-end application.\n\n## Performance Metrics\n\n| Metric | Before | After | Improvement |\n|--------|--------|-------|-------------|\n| [Metric] | [value] | [value] | [percentage] |\n\n## Optimization Techniques Applied\n\n1. **[Technique]**: [Description]\n   - Applied to: [Components]\n   - Impact: [Description]\n\n## Recommendations for Ongoing Performance Maintenance\n\n1. **[Recommendation]**: [Description]\n\n## Appendix: Detailed Component Analysis\n\n### [Component]\n\n[Detailed analysis]\n")
+```
+
+## 9. Examples
+
+### Example 1: E-commerce Product Listing Optimization
+
+With planning folder focusing on product listing optimization, implementation would:
+- Implement virtualized list rendering for large product catalogs
+- Optimize image loading with proper sizing and lazy loading
+- Implement efficient filtering and sorting with memoization
+- Add pagination or infinite scrolling with optimized data fetching
+- Optimize state management for product selection and filtering
+
+### Example 2: Dashboard Performance Enhancement
+
+With planning folder focusing on dashboard performance enhancement, implementation would:
+- Implement code splitting for different dashboard widgets
+- Optimize chart rendering with proper memoization
+- Implement efficient data fetching and caching strategies
+- Optimize real-time data updates with proper throttling
+- Implement progressive rendering for complex dashboard layouts
+
+## 10. Knowledge Access During Front-End Performance Optimization
+
+When implementing front-end performance optimization, use the `fetch_rules` tool to access specialized knowledge:
+
+```typescript
+// Access performance optimization patterns
+fetch_rules(["knowledge/patterns/impl/front-end-performance"], 
+           "Understanding front-end performance optimization patterns")
+
+// Access React optimization techniques
+fetch_rules(["knowledge/patterns/impl/react-optimization"], 
+           "Implementing React-specific performance optimizations")
+
+// Access multiple knowledge components for comprehensive optimization
+fetch_rules([
+  "knowledge/patterns/impl/front-end-performance",
+  "knowledge/patterns/impl/react-optimization",
+  "knowledge/patterns/impl/network-optimization"
+], "Comprehensive understanding for front-end performance optimization")
+```
+
+### Performance Optimization Knowledge Components
+
+When implementing front-end performance optimization, these knowledge components are particularly valuable:
+
+| Knowledge Component | fetch_rules Path | Usage |
+|---------------------|-----------------|-------|
+| Front-End Performance | `knowledge/patterns/impl/front-end-performance` | Core performance optimization patterns |
+| React Optimization | `knowledge/patterns/impl/react-optimization` | React-specific rendering optimizations |
+| Network Optimization | `knowledge/patterns/impl/network-optimization` | API and resource loading optimizations |
+| Bundle Optimization | `knowledge/patterns/impl/bundle-optimization` | Code splitting and bundle size reduction |
+| Memory Management | `knowledge/patterns/impl/memory-management` | Memory leak prevention and optimization |
+
+### Knowledge Access Best Practices for Performance Optimization
+
+For optimal knowledge access during front-end performance optimization:
+
+1. **Start with Performance Pattern Understanding**:
+   ```typescript
+   fetch_rules(["knowledge/patterns/impl/front-end-performance"], 
+              "Understanding front-end performance optimization patterns")
+   ```
+
+2. **Access Framework-Specific Optimizations**:
+   ```typescript
+   fetch_rules(["knowledge/patterns/impl/react-optimization"], 
+              "Accessing React-specific optimization techniques")
+   ```
+
+3. **Understand Network Optimization Techniques**:
+   ```typescript
+   fetch_rules(["knowledge/patterns/impl/network-optimization"], 
+              "Understanding network request optimization techniques")
+   ```
+
+4. **Combine Related Knowledge Components**:
+   ```typescript
+   fetch_rules([
+     "knowledge/patterns/impl/front-end-performance",
+     "knowledge/patterns/impl/react-optimization",
+     "knowledge/patterns/impl/network-optimization"
+   ], "Comprehensive understanding for front-end performance optimization")
+   ```
+
+5. **Access Bundle Optimization Techniques**:
+   ```typescript
+   fetch_rules(["knowledge/patterns/impl/bundle-optimization"], 
+              "Understanding bundle size optimization techniques")
+   ```
+
+For detailed documentation on fetch_rules usage for front-end performance optimization, access:
+```typescript
+fetch_rules(["knowledge/guides/fetch-rules"],
+           "Understanding fetch_rules usage for performance optimization")
+``` 

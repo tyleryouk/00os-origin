@@ -1,0 +1,546 @@
+# Fix Component Issues Helper
+
+## File Purpose
+
+This file provides standardized patterns and workflows for fixing common React component issues in the front-end workflow. It should be consulted when:
+
+- Component implementation encounters errors
+- Component has TypeScript type issues
+- Component rendering is incorrect
+- Component performance needs improvement
+- Component has accessibility issues
+- Component has integration problems with other components
+
+## Usage as Project-Rule-Parameter
+
+This file contains component issue resolution guidance and should be referenced as a project-rule-parameter in message-commands:
+
+```
+fix-component-issues: @parameters/front-end/helpers/recovery/fix-component-issues.mdc
+```
+
+For more general recovery guidance, see:
+- `recover-implementation.md`: General implementation recovery
+- `recover-from-errors.md`: Error-specific recovery strategies
+
+## Component Issue Resolution Process
+
+### 1. Identify Component Issues
+
+Begin by identifying the specific issues affecting the component:
+
+```typescript
+// 1. Check TypeScript errors
+run_terminal_cmd("cd front-end && npm run type-check -- --pretty", false, false)
+
+// 2. Check linting errors
+run_terminal_cmd("cd front-end && npm run lint -- front-end/src/components/[ComponentName].tsx", false, false)
+
+// 3. Check console errors
+run_terminal_cmd("cd front-end && npm run dev", false, true)
+
+// 4. Check test failures
+run_terminal_cmd("cd front-end && npm test -- --findRelatedTests src/components/[ComponentName].tsx", false, false)
+
+// 5. Check component code for potential issues
+grep_search("TODO|FIXME|@ts-ignore", false, "front-end/src/components/[ComponentName].tsx")
+grep_search("undefined|null|NaN", false, "front-end/src/components/[ComponentName].tsx")
+```
+
+### 2. Analyze Component Structure
+
+Analyze the component structure to understand its design and potential issues:
+
+```typescript
+// 1. Read component implementation
+read_file("front-end/src/components/[ComponentName].tsx", should_read_entire_file=true)
+
+// 2. Analyze component props
+grep_search("interface.*Props|type.*Props", true, "front-end/src/components/[ComponentName].tsx")
+
+// 3. Check component dependencies
+grep_search("import.*from", false, "front-end/src/components/[ComponentName].tsx")
+
+// 4. Examine component usage
+grep_search("import.*[ComponentName]", false, "front-end/src/**/*.tsx")
+grep_search("<[ComponentName]", false, "front-end/src/**/*.tsx")
+
+// 5. Check component hooks
+grep_search("use[A-Z]|useState|useEffect|useContext", false, "front-end/src/components/[ComponentName].tsx")
+```
+
+### 3. Fix Common Component Issues
+
+Apply fixes for identified issues based on their type:
+
+#### TypeScript Type Issues
+
+```typescript
+// 1. Fix prop interface issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component prop type issues",
+          "// ... existing code ...
+
+/**
+ * Props for the [ComponentName] component
+ */
+export interface [ComponentName]Props {
+  // Fixed prop type: Added proper type definition
+  data: Array<{
+    id: string;
+    name: string;
+    value: number;
+  }>;
+  
+  // Fixed prop type: Made optional with default in component
+  onSelect?: (id: string) => void;
+  
+  // Fixed prop type: Added proper generic type
+  options: Record<string, unknown>;
+}
+
+// ... existing code ...")
+
+// 2. Fix component implementation type issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component implementation type issues",
+          "// ... existing code ...
+
+// Fixed: Added proper type annotation
+const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+// Fixed: Added type guard for nullable value
+const handleSelection = (item: ItemType | null) => {
+  if (item === null) {
+    return;
+  }
+  
+  setSelectedItem(item.id);
+  
+  // Fixed: Added null check for optional callback
+  if (onSelect) {
+    onSelect(item.id);
+  }
+};
+
+// ... existing code ...")
+```
+
+#### Component Rendering Issues
+
+```typescript
+// 1. Fix conditional rendering issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component conditional rendering issues",
+          "// ... existing code ...
+
+// Fixed: Added proper null/undefined check before rendering
+return (
+  <div className=\"container\">
+    <h2>{title}</h2>
+    
+    {/* Fixed: Added proper conditional rendering */}
+    {items && items.length > 0 ? (
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    ) : (
+      <p>No items available</p>
+    )}
+    
+    {/* Fixed: Proper conditional for optional content */}
+    {footerContent && (
+      <footer>{footerContent}</footer>
+    )}
+  </div>
+);
+
+// ... existing code ...")
+
+// 2. Fix key prop issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component key prop issues",
+          "// ... existing code ...
+
+// Fixed: Added unique key prop to mapped elements
+return (
+  <div>
+    {items.map((item, index) => (
+      // Fixed: Using unique ID as key instead of index
+      <ItemComponent 
+        key={item.id} 
+        item={item} 
+        onSelect={handleSelect} 
+      />
+    ))}
+  </div>
+);
+
+// ... existing code ...")
+```
+
+#### Component Performance Issues
+
+```typescript
+// 1. Fix re-rendering issues with memoization
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component performance issues with memoization",
+          "// ... existing code ...
+import React, { useState, useEffect, useCallback, memo } from 'react';
+
+// ... existing code ...
+
+// Fixed: Memoize callback function to prevent unnecessary recreation
+const handleItemClick = useCallback((id: string) => {
+  setSelectedId(id);
+  if (onSelect) {
+    onSelect(id);
+  }
+}, [onSelect]);
+
+// Fixed: Memoize expensive calculation
+const processedItems = useMemo(() => {
+  return items.map(item => ({
+    ...item,
+    processed: processItem(item)
+  }));
+}, [items]);
+
+// ... existing code ...
+
+// Fixed: Export memoized component to prevent unnecessary re-renders
+export const [ComponentName] = memo([ComponentName]Component);
+
+// ... existing code ...")
+
+// 2. Fix expensive operations
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix expensive operations in component",
+          "// ... existing code ...
+
+// Fixed: Moved expensive operation outside of render
+// Before: const filteredItems = items.filter(item => complexFilter(item));
+
+// After: Use useMemo
+const filteredItems = useMemo(() => {
+  return items.filter(item => complexFilter(item));
+}, [items]);
+
+// ... existing code ...")
+```
+
+#### Component State Management Issues
+
+```typescript
+// 1. Fix state update issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component state update issues",
+          "// ... existing code ...
+
+// Fixed: Use functional state update for derived state
+// Before: setCount(count + 1);
+// After: Use functional update to ensure latest value
+setCount(prevCount => prevCount + 1);
+
+// Fixed: Batch related state updates
+const handleItemUpdate = (item) => {
+  // Update multiple related states together
+  setItems(prevItems => [...prevItems, item]);
+  setItemCount(prevCount => prevCount + 1);
+  setIsModified(true);
+};
+
+// ... existing code ...")
+
+// 2. Fix effect dependency issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component effect dependency issues",
+          "// ... existing code ...
+
+// Fixed: Added proper effect dependencies
+// Before: useEffect(() => { ... }, [])
+// After: Include all dependencies
+useEffect(() => {
+  // Effect logic using items and filter
+  const filteredItems = items.filter(filter);
+  setFilteredItems(filteredItems);
+  
+  if (onFilter) {
+    onFilter(filteredItems);
+  }
+}, [items, filter, onFilter]); // Fixed: Added all dependencies
+
+// ... existing code ...")
+```
+
+#### Component Accessibility Issues
+
+```typescript
+// Fix accessibility issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component accessibility issues",
+          "// ... existing code ...
+
+// Fixed: Added proper aria attributes
+return (
+  <div 
+    role=\"region\"
+    aria-labelledby=\"component-title\"
+  >
+    <h2 id=\"component-title\">{title}</h2>
+    
+    {/* Fixed: Added proper button role and keyboard handling */}
+    <div
+      role=\"button\"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleClick();
+        }
+      }}
+    >
+      {buttonText}
+    </div>
+    
+    {/* Fixed: Added proper list semantics */}
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>
+          <span>{item.name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+// ... existing code ...")
+```
+
+### 4. Verify Fixed Issues
+
+Verify that the fixes have resolved the component issues:
+
+```typescript
+// 1. Run type checking to verify type fixes
+run_terminal_cmd("cd front-end && npm run type-check", false, false)
+
+// 2. Run linting to verify code quality fixes
+run_terminal_cmd("cd front-end && npm run lint -- front-end/src/components/[ComponentName].tsx", false, false)
+
+// 3. Run tests to verify functional fixes
+run_terminal_cmd("cd front-end && npm test -- --findRelatedTests src/components/[ComponentName].tsx", false, false)
+
+// 4. Check component rendering to verify visual fixes
+run_terminal_cmd("cd front-end && npm run storybook", false, true)
+
+// 5. Check accessibility to verify a11y fixes
+run_terminal_cmd("cd front-end && npm run test:a11y", false, false)
+```
+
+### 5. Document Fixes
+
+Document the issues found and fixes applied:
+
+```typescript
+// Update implementation progress document with fixes
+edit_file("planning/feature-name/implementation-progress.md",
+          "Update implementation progress with component fixes",
+          "// ... existing content ...
+
+## Component Issue Resolution: [date]
+
+### Issues Identified and Fixed
+
+| Issue | Component | Fix Applied |
+|-------|-----------|------------|
+| [Issue description] | [ComponentName] | [Description of fix] |
+| [Issue description] | [ComponentName] | [Description of fix] |
+| [Issue description] | [ComponentName] | [Description of fix] |
+
+### Verification Results
+
+- All TypeScript errors resolved
+- Linting issues fixed
+- Tests passing
+- Component renders correctly
+- Accessibility requirements met
+
+// ... existing content ...")
+```
+
+## Complete Component Issues Fix Tool Sequence
+
+```typescript
+// Component Issues Fix Complete Sequence
+// 1. Identify component issues
+run_terminal_cmd("cd front-end && npm run type-check -- --pretty", false, false)
+run_terminal_cmd("cd front-end && npm run lint -- front-end/src/components/[ComponentName].tsx", false, false)
+run_terminal_cmd("cd front-end && npm test -- --findRelatedTests src/components/[ComponentName].tsx", false, false)
+
+// 2. Analyze component structure
+read_file("front-end/src/components/[ComponentName].tsx", should_read_entire_file=true)
+grep_search("interface.*Props|type.*Props", true, "front-end/src/components/[ComponentName].tsx")
+grep_search("import.*from", false, "front-end/src/components/[ComponentName].tsx")
+
+// 3. Fix identified issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix component issues",
+          "// ... issue fixes ...")
+
+// 4. Verify fixes
+run_terminal_cmd("cd front-end && npm run type-check", false, false)
+run_terminal_cmd("cd front-end && npm run lint -- front-end/src/components/[ComponentName].tsx", false, false)
+run_terminal_cmd("cd front-end && npm test -- --findRelatedTests src/components/[ComponentName].tsx", false, false)
+
+// 5. Document fixes
+edit_file("planning/feature-name/implementation-progress.md",
+          "Document component fixes",
+          "// ... documentation of fixes ...")
+```
+
+## Common Component Issues and Fixes
+
+### TypeScript Issues
+
+| Issue | Fix Pattern |
+|-------|-------------|
+| Missing prop types | Add proper interface or type definition |
+| Any type usage | Replace with specific types or generics |
+| Optional prop handling | Add proper `?` modifier and null checks |
+| Type assertions | Replace with proper type guards |
+| Generic component types | Add proper generic type parameters |
+
+### Rendering Issues
+
+| Issue | Fix Pattern |
+|-------|-------------|
+| Missing key prop | Add unique key to list items |
+| Conditional rendering bugs | Add proper checks before rendering |
+| Rendering null/undefined | Add fallback or default values |
+| CSS class inconsistencies | Use consistent class naming patterns |
+| SVG rendering issues | Add proper SVG attributes and viewBox |
+
+### Performance Issues
+
+| Issue | Fix Pattern |
+|-------|-------------|
+| Excessive re-renders | Use React.memo, useCallback, useMemo |
+| Large component size | Split into smaller components |
+| Expensive calculations | Move to useMemo hook |
+| Frequent state updates | Batch state updates |
+| Render optimization | Implement virtualization for long lists |
+
+### State Management Issues
+
+| Issue | Fix Pattern |
+|-------|-------------|
+| Stale closures | Use functional updates |
+| Missing effect dependencies | Add all required dependencies |
+| Prop drilling | Use context or composition |
+| Complex state logic | Extract to custom hooks |
+| Race conditions | Use cleanup functions in effects |
+
+### Accessibility Issues
+
+| Issue | Fix Pattern |
+|-------|-------------|
+| Missing ARIA attributes | Add proper role, aria-* attributes |
+| Keyboard navigation | Add keyboard event handlers |
+| Color contrast | Adjust colors for proper contrast |
+| Focus management | Implement proper focus handling |
+| Screen reader compatibility | Add proper alt text and labels |
+
+## Testing Component Fixes
+
+### Unit Test Fixes
+
+```typescript
+// Add or fix component unit tests
+edit_file("front-end/src/components/__tests__/[ComponentName].test.tsx",
+          "Fix component unit tests",
+          "import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { [ComponentName] } from '../[ComponentName]';
+
+describe('[ComponentName]', () => {
+  // Fixed: Test with required props
+  test('renders correctly with required props', () => {
+    render(<[ComponentName] data={[]} options={{}} />);
+    expect(screen.getByRole('region')).toBeInTheDocument();
+  });
+
+  // Fixed: Test conditional rendering
+  test('renders items when provided', () => {
+    const testData = [
+      { id: '1', name: 'Item 1', value: 10 },
+      { id: '2', name: 'Item 2', value: 20 },
+    ];
+    
+    render(<[ComponentName] data={testData} options={{}} />);
+    expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    expect(screen.getByText('Item 1')).toBeInTheDocument();
+  });
+
+  // Fixed: Test interaction handling
+  test('calls onSelect when item is clicked', () => {
+    const handleSelect = jest.fn();
+    const testData = [{ id: '1', name: 'Item 1', value: 10 }];
+    
+    render(
+      <[ComponentName] 
+        data={testData} 
+        options={{}}
+        onSelect={handleSelect}
+      />
+    );
+    
+    fireEvent.click(screen.getByText('Item 1'));
+    expect(handleSelect).toHaveBeenCalledWith('1');
+  });
+});")
+```
+
+### Integration Test Fixes
+
+```typescript
+// Add or fix component integration tests
+edit_file("front-end/src/tests/integration/[feature].test.tsx",
+          "Fix component integration tests",
+          "import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { [ParentComponent] } from 'components/[ParentComponent]';
+import { AppProvider } from 'contexts/AppContext';
+
+describe('[Feature] Integration', () => {
+  // Fixed: Test component integration with parent
+  test('integrates with parent component correctly', async () => {
+    render(
+      <AppProvider>
+        <[ParentComponent] />
+      </AppProvider>
+    );
+    
+    // Verify child component rendered within parent
+    expect(screen.getByTestId('child-component')).toBeInTheDocument();
+    
+    // Test interaction between components
+    fireEvent.click(screen.getByText('Trigger Action'));
+    
+    await waitFor(() => {
+      expect(screen.getByText('Action Result')).toBeInTheDocument();
+    });
+  });
+});")
+```
+
+## Related Documentation
+
+- Component Development Standards
+- TypeScript Best Practices
+- React Performance Optimization Guide
+- Accessibility Requirements
+- Testing Standards 

@@ -1,0 +1,214 @@
+# Finalize Implementation
+
+## File Purpose and Relationship
+
+This file defines the process for finalizing implementation changes within the rules workflow. It should be consulted when:
+
+- Completing the implementation phase
+- Performing final validation before completion
+- Creating implementation documentation
+- Preparing for transition to planning mode
+
+This file complements:
+- **validate-changes.md**: Implementation change validation
+- **verify-implementation.md**: Implementation completeness verification
+- **check-references.md**: Reference consistency verification
+
+This file is related to:
+- **core/modes/plan-mode.md**: General planning mode operations
+- **mode-transitions.md**: Mode transition protocols
+- **continue-implementation.md**: Implementation continuation protocol
+- **implementation-complete.md**: Implementation completion protocol
+
+## Usage as Project-Rule-Parameter
+
+This file contains the finalization process for implementation and should be referenced as a project-rule-parameter when completing implementation work:
+
+```
+finalize-implementation: @knowledge/rules/finalize-implementation.mdc
+```
+
+## Command Format
+
+```
+finalize-implementation: @knowledge/rules/finalize-implementation.mdc
+```
+
+## Required Context
+
+To perform implementation finalization, the following context is required:
+
+1. Access to all implemented files
+2. Verification results from previous validation steps
+3. Understanding of successful implementation criteria
+4. Knowledge of the transition process to planning mode
+
+## Process Steps
+
+### 1. Implementation Review
+
+First, review the entire implementation to ensure completeness:
+
+```typescript
+// List all implemented files
+list_dir("1000xbrain/knowledge/rules")
+
+// Check recently modified files
+run_terminal_cmd("Get-ChildItem -Path '1000xbrain' -Recurse -Include '*.md' | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-7) } | Sort-Object LastWriteTime", false, false)
+```
+
+### 2. Final Verification
+
+Perform a comprehensive final verification of all implemented components:
+
+```typescript
+// Check for missing sections in implemented files
+grep_search("^## File Purpose and Relationship|^## Usage as Project-Rule-Parameter|^## Command Format|^## Required Context|^## Process Steps|^## Expected Outputs|^## Error Handling", false, "IMPLEMENTED_FILES")
+
+// Check for proper reference format
+grep_search("@knowledge/rules/[a-z0-9-]+\\.mdc", false, "IMPLEMENTED_FILES")
+
+// Check for unwrapped @ symbols
+grep_search("@[^`]", false, "IMPLEMENTED_FILES")
+```
+
+### 3. Implementation Documentation
+
+Create or update implementation documentation:
+
+```typescript
+// Create implementation summary
+edit_file("1000xbrain/workflows/rules-workflow/implementation-summary.md", 
+          "Create implementation summary documentation",
+          "# Implementation Summary\n\n...")
+
+// Document any limitations or known issues
+edit_file("1000xbrain/workflows/rules-workflow/known-issues.md", 
+          "Document any known issues or limitations",
+          "# Known Issues\n\n...")
+```
+
+### 4. Implementation Report Creation
+
+Create a comprehensive implementation report:
+
+```typescript
+// Create implementation report
+edit_file("1000xbrain/workflows/rules-workflow/implementation-report.md", 
+          "Create detailed implementation report",
+          "# Implementation Report\n\n## Implemented Components\n\n...")
+```
+
+### 5. Implementation Complete Signal
+
+Prepare the implementation complete signal:
+
+```typescript
+// Verify all requirements are met
+read_file("planning/feature-name/requirements.md", should_read_entire_file=true)
+
+// Send implementation complete signal
+// implementation-complete
+```
+
+## Expected Outputs
+
+The finalization process should produce:
+
+1. A final verification report confirming implementation completeness
+2. Implementation documentation summarizing the changes
+3. A comprehensive implementation report
+4. The implementation-complete signal
+
+## Error Handling
+
+Common issues and their resolutions:
+
+| Issue | Resolution |
+|-------|------------|
+| Incomplete requirements | Complete any missing implementation components |
+| Documentation gaps | Add missing documentation sections |
+| Reference issues | Fix any remaining reference inconsistencies |
+| Unwrapped @ symbols | Wrap all @ symbols in backticks |
+| Missing sections | Add any missing standard sections to files |
+
+## Finalization Examples
+
+### Basic Finalization Report
+
+```
+💻 1000xdev [rules-workflow]
+
+Implementation finalization complete.
+
+Files implemented:
+- 12 new files created
+- 5 existing files modified
+- All requirements fulfilled
+
+Final verification:
+- All files include required sections
+- All references follow proper format
+- All @ symbols properly backtick-wrapped
+- All referenced files exist
+
+Documentation created:
+- Implementation summary
+- Known issues document (none identified)
+- Comprehensive implementation report
+
+implementation-complete
+```
+
+### Finalization with Remaining Issues
+
+```
+💻 1000xdev [rules-workflow]
+
+Implementation finalization review complete.
+
+Files implemented:
+- 12 new files created
+- 5 existing files modified
+- 1 file with issues remaining
+
+Remaining issues:
+- check-references.md missing Error Handling section
+- 2 unwrapped @ symbols in scan-message-commands.md
+- 1 reference to non-existent file in rules-workflow-cheatsheet.md
+
+Required corrections:
+- Add Error Handling section to check-references.md
+- Wrap @ symbols in backticks in scan-message-commands.md
+- Fix reference in rules-workflow-cheatsheet.md
+
+Implementation cannot be finalized until these issues are resolved.
+```
+
+## Automated Finalization
+
+For more efficient finalization, the following tool sequence can be used:
+
+```typescript
+// 1. Review implemented files
+list_dir("1000xbrain/knowledge/rules")
+
+// 2. Perform final verification
+grep_search("^## File Purpose and Relationship|^## Usage as Project-Rule-Parameter|^## Command Format|^## Required Context|^## Process Steps|^## Expected Outputs|^## Error Handling", false, "IMPLEMENTED_FILES")
+grep_search("@[^`]", false, "IMPLEMENTED_FILES")
+
+// 3. Create implementation documentation
+edit_file("1000xbrain/workflows/rules-workflow/implementation-summary.md", 
+          "Create implementation summary documentation",
+          "# Implementation Summary\n\n...")
+
+// 4. Create implementation report
+edit_file("1000xbrain/workflows/rules-workflow/implementation-report.md", 
+          "Create detailed implementation report",
+          "# Implementation Report\n\n## Implemented Components\n\n...")
+
+// 5. Verify completion readiness
+read_file("planning/feature-name/requirements.md", should_read_entire_file=true)
+```
+
+This finalization process ensures that the implementation is complete, meets all requirements, is properly documented, and is ready for transition to planning mode. 

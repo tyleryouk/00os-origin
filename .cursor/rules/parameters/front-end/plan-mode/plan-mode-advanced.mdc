@@ -1,0 +1,618 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Plan Mode: Front-End Advanced Template
+
+## File Purpose and Relationship
+
+This file provides an advanced planning template for complex front-end features in the PolygonExpress project. It is designed for planning sophisticated components with complex state management, API integrations, and cross-component interactions.
+
+This file complements:
+- **front-end-workflow-reference.md**: Core front-end development workflow
+- **plan-mode-front-end-basic.md**: Basic planning template
+- **dev-mode-log-based.md**: Implementation approach
+
+## Usage as Project-Rule-Parameter
+
+This file is a Manual rule type and should be referenced as a project-rule-parameter in the plan-mode message-command:
+
+```
+plan-mode: front-end-workflow @parameters/front-end/plan-mode/plan-mode-advanced.mdc
+```
+
+## Advanced Template Structure
+
+When this template is applied, the planning folder will be structured as follows:
+
+```
+planning/
+  ├── requirements.md (Detailed requirements)
+  ├── context-component.md (Component analysis)
+  ├── context-state-flow.md (State management flow)
+  ├── context-api-integration.md (API integration details)
+  ├── implementation-component.md (Implementation approach)
+  ├── implementation-state-management.md (State implementation details)
+  ├── implementation-api-integration.md (API implementation details)
+  ├── test-cheatsheet.md (Comprehensive testing scenarios)
+  └── README.md (Overview)
+```
+
+## Advanced Planning Process
+
+### 1. Comprehensive Requirements Analysis
+
+The requirements.md file should document:
+
+- Detailed feature functionality
+- Complex user interactions
+- Comprehensive state requirements
+- Data flow and API integration
+- Edge cases and error scenarios
+- Performance requirements
+- Accessibility considerations
+
+```markdown
+# Requirements: [Feature Name]
+
+## Objective
+[Clear statement of feature purpose and business value]
+
+## Core Requirements
+1. [Functional requirement 1]
+2. [Functional requirement 2]
+3. [Functional requirement 3]
+
+## User Interaction Requirements
+1. [Interaction requirement 1]
+2. [Interaction requirement 2]
+
+## State Management Requirements
+1. [State requirement 1]
+2. [State requirement 2]
+
+## API Integration Requirements
+1. [API integration requirement 1]
+2. [API integration requirement 2]
+
+## Performance Requirements
+1. [Performance requirement 1]
+2. [Performance requirement 2]
+
+## Accessibility Requirements
+1. [Accessibility requirement 1]
+2. [Accessibility requirement 2]
+
+## Error Handling Requirements
+1. [Error handling requirement 1]
+2. [Error handling requirement 2]
+
+## Success Criteria
+- [Criterion 1]
+- [Criterion 2]
+- [Criterion 3]
+```
+
+### 2. Component Context Analysis
+
+The context-component.md file should document:
+
+- Component hierarchy and relationships
+- Component ownership of state
+- Component lifecycle considerations
+- Performance optimization opportunities
+- Component reusability potential
+
+```markdown
+# Context Analysis: [Component Name]
+
+## Component Hierarchy
+```
+ParentComponent
+├── [Component] (This component)
+│   ├── ChildComponent1
+│   └── ChildComponent2
+└── SiblingComponent
+```
+
+## Related Components
+- [Component 1]: [Relationship and interaction details]
+- [Component 2]: [Relationship and interaction details]
+
+## Component Responsibilities
+- [Responsibility 1]
+- [Responsibility 2]
+- [Responsibility 3]
+
+## Component Lifecycle
+- Mount: [Initialization behavior]
+- Update: [Update behavior]
+- Unmount: [Cleanup behavior]
+
+## Performance Considerations
+- [Performance consideration 1]
+- [Performance consideration 2]
+
+## Reusability Analysis
+- [Reusability aspect 1]
+- [Reusability aspect 2]
+```
+
+### 3. State Flow Analysis
+
+The context-state-flow.md file should document:
+
+- State structure and organization
+- State update patterns
+- Data flow between components
+- Derivation of computed state
+- State persistence requirements
+
+```markdown
+# State Flow Analysis: [Feature Name]
+
+## State Structure
+```typescript
+interface [Feature]State {
+  // State definition
+  data: {
+    // Data structure
+  };
+  ui: {
+    // UI state
+  };
+  status: {
+    // Status flags
+  };
+}
+```
+
+## State Update Patterns
+- [Event 1] → [State update 1]
+- [Event 2] → [State update 2]
+- [Event 3] → [State update 3]
+
+## State Flow Diagram
+```
+User Action → Component Event → State Update → UI Update
+```
+
+## Computed State
+- [Computed value 1]: Derived from [state 1] and [state 2]
+- [Computed value 2]: Derived from [state 3]
+
+## State Persistence
+- [State item 1]: Persisted in [storage mechanism]
+- [State item 2]: Persisted in [storage mechanism]
+```
+
+### 4. API Integration Analysis
+
+The context-api-integration.md file should document:
+
+- API endpoints and parameters
+- Request/response patterns
+- Error handling approach
+- Authentication requirements
+- Caching strategy
+
+```markdown
+# API Integration Analysis: [Feature Name]
+
+## API Endpoints
+- `GET /api/[resource]`: [Purpose and parameters]
+- `POST /api/[resource]`: [Purpose and parameters]
+- `PUT /api/[resource]/:id`: [Purpose and parameters]
+- `DELETE /api/[resource]/:id`: [Purpose and parameters]
+
+## Request Patterns
+- [Request 1]: [Trigger and purpose]
+  ```typescript
+  // Request format
+  {
+    // Parameters
+  }
+  ```
+- [Request 2]: [Trigger and purpose]
+  ```typescript
+  // Request format
+  {
+    // Parameters
+  }
+  ```
+
+## Response Patterns
+- [Response 1]: [Processing approach]
+  ```typescript
+  // Response format
+  {
+    // Structure
+  }
+  ```
+- [Response 2]: [Processing approach]
+  ```typescript
+  // Response format
+  {
+    // Structure
+  }
+  ```
+
+## Error Handling
+- [Error scenario 1]: [Handling approach]
+- [Error scenario 2]: [Handling approach]
+
+## Authentication
+- [Authentication requirement 1]
+- [Authentication requirement 2]
+
+## Caching Strategy
+- [Cache policy 1]
+- [Cache policy 2]
+```
+
+### 5. Component Implementation Planning
+
+The implementation-component.md file should document:
+
+- Detailed component structure
+- Props interface with documentation
+- Internal state management
+- Effect implementation
+- Event handler implementation
+- Rendering optimization
+
+```markdown
+# Implementation Plan: [Component Name]
+
+## Component Structure
+```tsx
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// Additional imports
+
+/**
+ * [Component name] - [Component description]
+ */
+interface [Component]Props {
+  /** [Prop description] */
+  prop1: Type1;
+  /** [Prop description] */
+  prop2?: Type2;
+  /** [Prop description] */
+  onEvent: (data: EventData) => void;
+}
+
+export const [Component]: React.FC<[Component]Props> = ({
+  prop1,
+  prop2,
+  onEvent,
+}) => {
+  // State hooks
+  const [state1, setState1] = useState<State1Type>(initialState1);
+  const [state2, setState2] = useState<State2Type>(initialState2);
+  
+  // Redux state
+  const reduxState = useSelector(selectRelevantState);
+  const dispatch = useDispatch();
+  
+  // Derived values
+  const derivedValue = useMemo(() => {
+    // Computation logic
+    return computedValue;
+  }, [dependency1, dependency2]);
+  
+  // Effect hooks
+  useEffect(() => {
+    // Effect logic
+    return () => {
+      // Cleanup logic
+    };
+  }, [dependency1, dependency2]);
+  
+  // Event handlers
+  const handleEvent = useCallback((event) => {
+    // Event handling logic
+    setState1(newState);
+    onEvent(eventData);
+  }, [onEvent]);
+  
+  // Render helpers
+  const renderItem = useCallback((item) => {
+    return (
+      <div key={item.id}>
+        {/* Item rendering */}
+      </div>
+    );
+  }, [relevantDependency]);
+  
+  // Render
+  return (
+    <div className="component-container">
+      {/* Component JSX */}
+      {state1.items.map(renderItem)}
+      <button onClick={handleEvent}>Action</button>
+    </div>
+  );
+};
+```
+
+## State Management Implementation
+- State 1: [Implementation details]
+- State 2: [Implementation details]
+- Redux Integration: [Implementation details]
+
+## Effect Hooks Implementation
+- Effect 1: [Implementation details]
+- Effect 2: [Implementation details]
+
+## Event Handlers Implementation
+- Handler 1: [Implementation details]
+- Handler 2: [Implementation details]
+
+## Optimization Implementation
+- Memoization: [Implementation details]
+- Rendering Optimization: [Implementation details]
+- Dependency Management: [Implementation details]
+```
+
+### 6. State Management Implementation Planning
+
+The implementation-state-management.md file should document:
+
+- State management library usage
+- State initialization
+- Action creators
+- Reducers or state update functions
+- Selectors
+- Middleware or side effect handling
+
+```markdown
+# State Management Implementation: [Feature Name]
+
+## State Management Approach
+[Description of state management approach - Context, Redux, etc.]
+
+## State Structure
+```typescript
+interface [Feature]State {
+  // State structure
+}
+
+const initialState: [Feature]State = {
+  // Initial values
+};
+```
+
+## Actions
+```typescript
+// Action types
+export const ACTION_TYPE_1 = '[Feature]/ACTION_1';
+export const ACTION_TYPE_2 = '[Feature]/ACTION_2';
+
+// Action creators
+export const action1 = (payload) => ({
+  type: ACTION_TYPE_1,
+  payload,
+});
+
+export const action2 = (payload) => ({
+  type: ACTION_TYPE_2,
+  payload,
+});
+```
+
+## Reducers/State Updates
+```typescript
+// Reducer
+export const featureReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ACTION_TYPE_1:
+      return {
+        ...state,
+        // State update
+      };
+    case ACTION_TYPE_2:
+      return {
+        ...state,
+        // State update
+      };
+    default:
+      return state;
+  }
+};
+```
+
+## Selectors
+```typescript
+// Selectors
+export const selectFeatureData = (state) => state.feature.data;
+export const selectFeatureStatus = (state) => state.feature.status;
+export const selectFeatureUI = (state) => state.feature.ui;
+
+// Derived selectors
+export const selectComputedValue = createSelector(
+  [selectFeatureData, selectOtherData],
+  (featureData, otherData) => {
+    // Computation logic
+    return computedValue;
+  }
+);
+```
+
+## Side Effects
+```typescript
+// Thunk actions
+export const fetchFeatureData = () => async (dispatch, getState) => {
+  try {
+    dispatch(setLoading(true));
+    const response = await api.fetchData();
+    dispatch(setData(response.data));
+  } catch (error) {
+    dispatch(setError(error.message));
+  } finally {
+    dispatch(setLoading(false));
+  }
+};
+```
+```
+
+### 7. API Integration Implementation Planning
+
+The implementation-api-integration.md file should document:
+
+- API service structure
+- Request implementation
+- Response handling
+- Error management
+- Authentication implementation
+- API request optimization
+
+```markdown
+# API Integration Implementation: [Feature Name]
+
+## API Service Structure
+```typescript
+// API service
+export const featureApi = {
+  /**
+   * Get feature data
+   * @param {Object} params - Request parameters
+   * @returns {Promise<FeatureData>} - Feature data
+   */
+  getData: async (params) => {
+    try {
+      const response = await fetch('/api/feature', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getToken()}`,
+        },
+        params,
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error('[FeatureApi] getData error:', error);
+      throw error;
+    }
+  },
+  
+  /**
+   * Create feature item
+   * @param {Object} data - Item data
+   * @returns {Promise<FeatureItem>} - Created item
+   */
+  createItem: async (data) => {
+    try {
+      const response = await fetch('/api/feature', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getToken()}`,
+        },
+        body: JSON.stringify(data),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error('[FeatureApi] createItem error:', error);
+      throw error;
+    }
+  },
+  
+  // Additional API methods
+};
+```
+
+## Request Implementation
+- Request 1: [Implementation details]
+- Request 2: [Implementation details]
+
+## Response Handling
+- Response 1: [Implementation details]
+- Response 2: [Implementation details]
+
+## Error Management
+- Error Scenario 1: [Implementation details]
+- Error Scenario 2: [Implementation details]
+
+## Authentication Implementation
+- Token Management: [Implementation details]
+- Auth Headers: [Implementation details]
+
+## API Request Optimization
+- Caching: [Implementation details]
+- Request Deduplication: [Implementation details]
+- Request Batching: [Implementation details]
+```
+
+### 8. Comprehensive Testing Cheatsheet
+
+The test-cheatsheet.md file should document:
+
+- Functional test cases
+- User interaction test cases
+- API integration test cases
+- Edge case test cases
+- Error handling test cases
+- Performance test cases
+- Accessibility test cases
+
+```markdown
+# Test Cheatsheet: [Feature Name]
+
+## Functional Tests
+- [Test case 1]: [Steps and expected outcome]
+- [Test case 2]: [Steps and expected outcome]
+
+## User Interaction Tests
+- [Interaction test 1]: [Steps and expected outcome]
+- [Interaction test 2]: [Steps and expected outcome]
+
+## API Integration Tests
+- [API test 1]: [Steps and expected outcome]
+- [API test 2]: [Steps and expected outcome]
+
+## Edge Case Tests
+- [Edge case 1]: [Steps and expected outcome]
+- [Edge case 2]: [Steps and expected outcome]
+
+## Error Handling Tests
+- [Error scenario 1]: [Steps and expected outcome]
+- [Error scenario 2]: [Steps and expected outcome]
+
+## Performance Tests
+- [Performance test 1]: [Steps and expected outcome]
+- [Performance test 2]: [Steps and expected outcome]
+
+## Accessibility Tests
+- [Accessibility test 1]: [Steps and expected outcome]
+- [Accessibility test 2]: [Steps and expected outcome]
+```
+
+## Planning Completion
+
+When planning is complete, signal completion with:
+
+```
+📋 1000xdev [front-end-workflow]
+
+planning-document-complete
+```
+
+## Implementation Transition
+
+After planning completion, transition to implementation with:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-advanced.mdc
+``` 

@@ -1,0 +1,150 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# File Editing Safety Guidelines
+
+## Overview
+
+This file establishes critical safety guidelines for file editing within the 1000xbrain cognitive architecture. It provides explicit rules and patterns to prevent common editing mistakes and ensure system stability.
+
+## Critical Safety Rules
+
+### Extension-Based Safety
+
+1. **Brain-Files (.md)**:
+   - ONLY edit files with .md extension
+   - Located in the 1000xbrain directory
+   - Direct target for all AI edits
+   - Source of truth for cognitive architecture
+
+2. **Cursor-Rules (.mdc)**:
+   - NEVER edit files with .mdc extension
+   - Located in .cursor/rules directory
+   - Only edited by Tyler through Cursor UI
+   - Automatically synchronized from brain-files
+
+### Directory-Based Safety
+
+1. **Editable Directories**:
+   - 1000xbrain/: Primary source directory
+   - All subdirectories within 1000xbrain/
+
+2. **Protected Directories**:
+   - .cursor/rules/: Never edit directly
+   - Any directory containing .mdc files
+
+### Role-Based Safety
+
+1. **AI Assistant Role**:
+   - Can edit brain-files (.md)
+   - Can read cursor-rules (.mdc)
+   - Must respect synchronization process
+   - Should focus on cognitive enhancement
+
+2. **Automated Synchronization Process**:
+   - Brain-files (.md) are the source of truth
+   - Cursor-rules (.mdc) are automatically generated
+   - Synchronization is handled by scripts in 1000xscripts directory
+   - No manual editing of .mdc files is ever needed or allowed
+   - Sync process preserves rule types and configurations
+
+3. **Synchronization Scripts**:
+   - Core script: Sync-CursorRules.ps1 for main synchronization
+   - Sync-1000xbrainToCursor.ps1 for analyzing differences
+   - Validate-PathMatching.ps1 for path validation
+   - Automatic frontmatter preservation
+   - README.md files are explicitly excluded
+   - Generates detailed sync reports
+
+## Safety Verification Process
+
+1. **Pre-Edit Checks**:
+   - Verify file extension is .md
+   - Confirm file is in 1000xbrain directory
+   - Check file exists and is editable
+   - Ensure file is not a README.md (these are excluded from sync)
+
+2. **Edit Safety**:
+   - Make changes only to .md files
+   - Never attempt to edit .mdc files
+   - Preserve file structure and formatting
+   - Follow markdown standards
+   - Do not include frontmatter in .md files
+
+3. **Post-Edit Verification**:
+   - Confirm changes were applied correctly
+   - Let synchronization system handle .mdc updates
+   - Do not attempt to verify .mdc files directly
+   - Check sync reports if needed
+
+## Common Mistakes to Avoid
+
+1. **Never Edit .mdc Files**:
+   - ❌ Attempting to edit .mdc files directly
+   - ❌ Trying to modify cursor-rules manually
+   - ❌ Adding frontmatter to .md files
+   - ✅ Edit corresponding .md file in 1000xbrain instead
+
+2. **Directory Safety**:
+   - ❌ Targeting .cursor/rules directory
+   - ❌ Creating files outside 1000xbrain
+   - ❌ Modifying sync scripts directly
+   - ✅ Work only within 1000xbrain directory
+
+3. **Extension Handling**:
+   - ❌ Using .mdc extension in regular paths
+   - ❌ Creating new .mdc files
+   - ❌ Mixing extensions in references
+   - ✅ Use .md for all file operations
+
+## Implementation Patterns
+
+1. **Safe File Creation**:
+```markdown
+# Create in 1000xbrain with .md extension
+1000xbrain/core/new-feature.md   # Will be synced automatically
+```
+
+2. **Safe File Editing**:
+```markdown
+# Edit existing .md file
+1000xbrain/workflows/example-workflow.md   # Changes propagate through sync
+```
+
+3. **Safe File Reference**:
+```markdown
+# Reference files with correct extensions
+Regular path: core/identity/global-rules.md         # For file operations
+Project-rule-parameter: @knowledge/rules/plan-mode.mdc   # For message-commands
+```
+
+## Synchronization Process
+
+1. **How It Works**:
+   - Changes to .md files are detected
+   - Sync-CursorRules.ps1 processes changes
+   - Frontmatter is preserved in .mdc files
+   - Directory structure is maintained
+   - Sync reports are generated
+
+2. **Key Features**:
+   - Automatic frontmatter handling
+   - README.md exclusion
+   - Path-based matching
+   - Structure preservation
+   - Detailed reporting
+
+3. **Verification**:
+   - Sync reports in sync-reports directory
+   - Path matching validation
+   - Content synchronization checks
+   - Frontmatter preservation verification
+
+## Related References
+
+- Core Identity: `@core/identity/global-rules.mdc`
+- File Standards: `@reference/guides/file-standards.mdc`
+- Symbol Guidelines: `@core/communication/symbol-guidelines.mdc`
+- Architecture Guide: `@reference/architecture.mdc` 

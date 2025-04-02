@@ -1,0 +1,108 @@
+# Direct Implementation Continuation
+
+## Purpose
+
+This file defines the direct implementation continuation strategy for implementations started with the `no-planning-folder` message-command. It provides the framework for resuming direct implementations that were interrupted or need additional work phases.
+
+## Usage Context
+
+Use this project rule parameter when continuing an implementation that was started with the `no-planning-folder` command:
+
+```
+continue-implementation: @parameters/rules/direct-implementation-continuation.mdc
+```
+
+## Continuation Process
+
+The direct implementation continuation process follows these key steps:
+
+### 1. Context Recovery
+
+Before continuing implementation, recover the context of the previous work:
+
+- Review implementation progress from previous session
+- Identify the last completed step or component
+- Review tool call history to understand what was already researched
+- Check any error logs or issues that may have interrupted the previous session
+
+### 2. Minimal Research Resumption
+
+Perform additional targeted research as needed:
+
+- Focus only on areas that weren't covered in the initial research
+- Refresh understanding of critical components
+- Identify any new requirements or considerations
+- Check for any relevant updates to the codebase since the previous session
+
+### 3. Implementation Continuation
+
+Resume implementation from the appropriate point:
+
+- Continue with the next logical step in the implementation
+- Follow the same patterns and conventions established earlier
+- Focus on completing remaining components
+- Address any issues that caused the previous implementation to pause
+- Ensure seamless integration with already implemented parts
+
+### 4. Verification Process
+
+After completing the implementation, verify the changes:
+
+- Verify the entire implementation, not just the continuation part
+- Run type checking if applicable
+- Execute relevant tests
+- Verify that the implementation meets all requirements from the original prompt
+- Check for any linting issues or inconsistencies
+
+## Key Advantages
+
+This continuation approach offers several advantages:
+
+1. **Efficiency**: Minimizes duplicate work by resuming from previous progress
+2. **Consistency**: Maintains consistent implementation patterns throughout
+3. **Completeness**: Ensures all requirements are addressed
+4. **Verification**: Provides comprehensive verification of the complete implementation
+
+## Tool Call Sequence for Continuation
+
+```typescript
+// 1. Progress Assessment
+grep_search("previous implementation markers")
+read_file("previously modified files")
+
+// 2. Targeted Research
+codebase_search("specific missing information")
+read_file("files needed for continuation")
+
+// 3. Implementation Continuation
+edit_file("target file", "Continue implementation", "// continuation code")
+
+// 4. Verification
+run_terminal_cmd("run type checking or tests")
+```
+
+## Common Continuation Scenarios
+
+The direct implementation continuation is useful in these scenarios:
+
+1. Implementation interrupted by errors or issues
+2. Phased implementation where intentional pauses were planned
+3. Implementation that needed additional feature requirements
+4. Continuation after receiving feedback or review comments
+5. Implementation that required additional research or context
+
+## Related Project Rule Parameters
+
+- `@parameters/rules/direct-implementation.mdc`: Initial direct implementation
+- `@parameters/rules/context-first-implementation.mdc`: Context-focused initial implementation
+- `@parameters/rules/continue-implementation.mdc`: General implementation continuation
+
+## Completion Signal
+
+When the implementation is fully complete, send:
+
+```
+implementation-complete
+```
+
+This signals that the continuation is complete and the feature has been successfully implemented. 

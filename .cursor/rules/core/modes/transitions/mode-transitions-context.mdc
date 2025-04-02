@@ -1,0 +1,144 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Mode Transitions Context Management
+
+## File Purpose and Relationship
+
+This file defines context management during mode transitions. It is part of the split mode-transitions documentation:
+
+- **mode-transitions-core.md**: Essential transition definition and process
+- **mode-transitions-handlers.md**: Specialized transition handlers and recovery protocols
+- **mode-transitions-context.md** (this file): Context management during transitions
+
+## Context Management During Transitions
+
+The simplified transition model focuses exclusively on the planning folder content without requiring artificial context clearing. This approach:
+
+1. **Preserves Essential Context**: Maintains focus on planning documentation
+2. **Reduces Hallucinations**: Minimizes context switching confusion
+3. **Enhances Implementation Quality**: Ensures all planning content is available
+
+## Direct Mode Transition Protocol
+
+When transitioning directly to dev-mode, follow these context management rules:
+
+1. **Planning Folder Focus**: Focus exclusively on planning folder content
+2. **Complete Processing**: Read ALL planning folder files thoroughly
+3. **Self-Contained Implementation**: Use only planning folder content for guidance
+4. **No External References**: Avoid referencing Project Rules during implementation
+5. **Contextual Autonomy**: Implement based solely on the planning folder's context
+
+## Context Verification During Transitions
+
+During mode transitions, verify proper context handling:
+
+1. **Core File Processing**: Ensure core planning files are processed
+2. **Context Preservation**: Confirm critical context is maintained
+3. **Focus Verification**: Check appropriate mode-specific focus
+4. **Documentation Status**: Verify planning documentation status
+5. **Implementation State**: Confirm implementation progress state
+
+## Knowledge Access During Context Management
+
+```typescript
+// Context management knowledge
+fetch_rules(["knowledge/patterns/impl/context-management"], 
+           "Understanding context management during transitions")
+
+// Mode-specific context patterns
+fetch_rules(["knowledge/patterns/impl/mode-context-patterns"], 
+           "Accessing mode-specific context patterns")
+
+// Transition context optimization
+fetch_rules([
+  "knowledge/patterns/impl/context-optimization",
+  "knowledge/patterns/impl/transition-optimization"
+], "Optimizing context handling during transitions")
+```
+
+## Context-Aware Mode Indicators
+
+Mode indicators provide explicit context signaling:
+
+1. **Planning Mode Context**: 📋 1000xdev [workflow-type]
+   - Signals planning context is active
+   - Indicates documentation focus
+   - Sets expectations for planning operations
+
+2. **Developer Mode Context**: 💻 1000xdev [workflow-type]
+   - Signals implementation context is active
+   - Indicates code focus
+   - Sets expectations for development operations
+
+3. **Direct Mode Context**: ⚡ 1000xdev [workflow-type]
+   - Signals direct implementation context is active
+   - Indicates research and implementation focus
+   - Sets expectations for immediate implementation without planning
+
+## Direct Mode Context Management
+
+When using direct-mode, these context management principles apply:
+
+1. **Research Focus**: Conduct comprehensive research as the first step
+   - Make a minimum of 20 tool calls for research before implementation
+   - Analyze relevant files and existing patterns
+   - Understand system architecture before making changes
+
+2. **Contextual Implementation**: Implement based on research findings
+   - Apply discovered patterns consistently
+   - Follow established practices from researched code
+   - Maintain system architecture standards
+
+3. **No Planning Documentation**: Skip planning documentation phase
+   - Focus exclusively on implementation
+   - Document only within code through appropriate comments
+   - Implement based on provided prompt, not planning documents
+
+4. **Clear Mode Designation**: Use ⚡ indicator consistently
+   - Always begin responses with ⚡ 1000xdev [workflow-type]
+   - Maintain direct implementation context throughout
+   - Signal completion using implementation-complete
+
+## Knowledge Access for Direct Mode
+
+During direct mode, access relevant knowledge components:
+
+```typescript
+// Direct mode research patterns
+fetch_rules(["knowledge/patterns/impl/direct-mode-research"], 
+           "Understanding optimal research patterns for direct implementation")
+
+// Pattern discovery and application
+fetch_rules(["knowledge/patterns/impl/pattern-discovery"], 
+           "Discovering implementation patterns from existing code")
+
+// Direct implementation verification
+fetch_rules(["knowledge/patterns/impl/direct-verification"], 
+           "Verifying direct implementations without planning documentation")
+```
+
+## Common-Words Reference
+
+These **common-words** (in kebab-case format) provide context-specific terminology:
+
+| Common-Word | Definition | Context Use |
+|----|---|----|
+| `planning-folder` | Folder containing planning documentation | Used in plan-mode and dev-mode for referencing |
+| `implementation-file` | Planning document with implementation plan | Primary reference during dev-mode |
+| `ux-situation` | User interaction scenario | Testing context in dev-mode and direct-mode |
+| `implementation-complete` | Signal that implementation is finished | Mode transition signal in all modes |
+| `project-rule-parameter` | Referenced Project Rule | Parameter context in commands |
+| `research-phase` | Initial discovery phase in direct-mode | First step in direct-mode implementation |
+| `direct-implementation` | Implementation without planning docs | Context for implementation in direct-mode |
+
+## Cross-References
+
+For additional information, see:
+- **mode-transitions-core.md**: Core transition processes
+- **mode-transitions-handlers.md**: Specialized transition handling
+- **plan-mode/core.md**: Planning Mode essentials
+- **dev-mode/core.md**: Developer Mode essentials
+- **direct-mode/core.md**: Direct Mode essentials 

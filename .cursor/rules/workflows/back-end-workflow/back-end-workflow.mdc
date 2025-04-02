@@ -1,0 +1,107 @@
+---
+description: 
+globs: back-end/**
+alwaysApply: false
+---
+# Back-End Workflow: Essential Guide
+
+## Workflow Purpose
+
+The Back-End Workflow focuses on test-driven implementation of Python FastAPI components using a structured approach. This file contains essential patterns, while detailed implementation guidance is available in referenced files.
+
+## Workflow Identification
+
+**Active Workflow**: back-end-workflow
+**Mode Indicators**: 
+- Plan Mode: 📋 1000xdev [back-end-workflow]
+- Dev Mode: 💻 1000xdev [back-end-workflow]
+
+**⚠️ CRITICAL REQUIREMENT**: 1000xdev MUST begin EVERY message with the appropriate mode indicator shown above. There are NO exceptions to this rule.
+
+## Core Workflow Patterns
+
+### 1. Test-Driven Development
+
+- Write tests before implementation
+- Implement code to pass tests
+- Refactor while maintaining test coverage
+- Focus on observable behavior through test cases
+
+### 2. Implementation Flow
+
+- Run tests to verify current behavior
+- Implement API endpoints and services
+- Test implementation with run-tests message-command
+- Analyze test results and fix issues
+
+### 3. Essential Message-Commands
+
+| Message-Command | Purpose | Project-Rule-Parameter |
+|-----------------|---------|------------------------|
+| `run-tests` | Run back-end tests for verification | @workflows/back-end-workflow/test-based-process.mdc |
+| `analyze-test-results` | Analyze test failures | @workflows/back-end-workflow/test-analysis-guide.mdc |
+| `create-test` | Create new test cases | @workflows/back-end-workflow/test-creation-guide.mdc |
+
+## Back-End Architecture
+
+The back-end follows a structured architecture:
+
+```
+back-end/
+  ├── app/
+  │   ├── main.py (Application entry point)
+  │   ├── routers/ (API route definitions)
+  │   ├── models/ (Data models and schemas)
+  │   ├── services/ (Business logic implementation)
+  │   ├── db/ (Database operations)
+  │   └── utils/ (Utility functions)
+  ├── tests/
+  │   ├── unit/ (Unit tests)
+  │   ├── integration/ (Integration tests)
+  │   └── conftest.py (Test configuration)
+  └── alembic/ (Database migrations)
+```
+
+## Essential Coding Standards
+
+- Follow PEP 8 style guidelines
+- Implement Pydantic models for data validation
+- Add comprehensive error handling
+- Use dependency injection for services
+- Write descriptive docstrings for all functions
+
+## File Structure Requirements
+
+All 1000xbrain files MUST follow these structure requirements:
+
+1. **No Frontmatter**: Files should NEVER contain frontmatter (the --- enclosed metadata sections)
+2. **Direct Content**: All markdown content should begin directly with headers or text
+3. **Standard Markdown**: Use only standard markdown formatting
+4. **Header First**: Typically start with a level 1 header (# Title) followed by content
+
+## Planning Process
+
+During plan-mode:
+1. Create comprehensive context files for API endpoints, models, and services
+2. Document implementation approach in phase-based implementation files
+3. Create detailed test scenarios in test-cheatsheet.md
+4. Complete planning before transitioning to dev-mode
+
+## Implementation Process
+
+During dev-mode:
+1. Create tests based on planning documentation
+2. Implement API endpoints and services to pass tests
+3. Run tests to verify functionality
+4. Analyze test results and fix issues
+5. Complete all implementation before returning to plan-mode
+
+## Detailed Implementation Guidance
+
+For detailed implementation guides, see:
+- @workflows/back-end-workflow/test-based-process.mdc (Test-driven development patterns)
+- @workflows/back-end-workflow/test-analysis-guide.mdc (Test analysis protocols)
+- @workflows/back-end-workflow/test-creation-guide.mdc (Test creation patterns)
+- @parameters/tool/fastapi-patterns.mdc (FastAPI implementation best practices)
+- @parameters/tool/python-patterns.mdc (Python implementation patterns)
+- @parameters/back-end/back-end-architecture.mdc (Architecture documentation) 

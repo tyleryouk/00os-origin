@@ -1,0 +1,180 @@
+# USE WHEN contributing to file standards, following contribution guidelines, or maintaining documentation consistency
+
+# File Formatting and Structure Standards
+
+## Overview
+
+This file documents the standardized formatting and structure requirements for all files in the 1000xbrain cognitive architecture. Following these standards ensures consistency, readability, and proper functioning of the brain-files.
+
+## ⚠️ CRITICAL: NO FRONTMATTER ALLOWED ⚠️
+
+The most important rule for all brain-files is:
+
+**NEVER add frontmatter to any brain-file.**
+
+1. **NO FRONTMATTER**: Brain-files should NEVER contain frontmatter (the --- enclosed metadata sections). This is strictly prohibited.
+2. **NO RULE TYPE SPECIFICATIONS**: Never add rule_type, description, or globs specifications to brain-files.
+3. **DIRECT CONTENT**: All markdown content must begin directly with headers or text.
+4. **STANDARD MARKDOWN**: Use only standard markdown formatting.
+
+Brain-files are pure markdown content only. All rule type designations, glob patterns, and other configuration metadata are handled exclusively in Cursor Rules (.mdc) files by Tyler through the Cursor Settings UI.
+
+## Basic File Structure
+
+All 1000xbrain files should follow this basic structure:
+
+```markdown
+# Title: Clear and Descriptive
+
+## Overview
+
+Brief introduction explaining the file's purpose and cognitive impact.
+
+## Main Section 1
+
+Content organized into logical sections with clear headers.
+
+## Main Section 2
+
+More content with appropriate formatting.
+
+## Relationship to Other Components
+
+How this file relates to other parts of the cognitive architecture.
+```
+
+## Header Structure
+
+Use a consistent header structure:
+
+1. **Level 1 Header**: File title (only one per file)
+2. **Level 2 Headers**: Main sections
+3. **Level 3 Headers**: Subsections
+4. **Level 4 Headers**: Further subdivisions if needed
+
+## Content Organization
+
+Organize content consistently:
+
+1. **Overview First**: Begin with an overview section
+2. **Logical Progression**: Organize content in a logical sequence
+3. **Relationship Section**: Include relationships to other components
+4. **Examples**: Provide clear examples where appropriate
+5. **Implementation Guidance**: Include specific implementation details
+
+## Formatting Standards
+
+Apply these formatting standards consistently:
+
+1. **Code Blocks**: Use triple backticks with language specification
+2. **Inline Code**: Use single backticks for inline code
+3. **Lists**: Use ordered lists for sequential steps, unordered for general items
+4. **Tables**: Use markdown tables for structured information
+5. **Bold and Italic**: Use bold for emphasis, italic for secondary emphasis
+6. **Blockquotes**: Use for important notes or quotes
+
+## Brain-File to Cursor-Rule Relationship
+
+Maintain clear distinction between brain-files and cursor-rules:
+
+1. **Brain-Files (.md)**: Editable source files in the 1000xbrain directory
+2. **Cursor-Rules (.mdc)**: Applied rules in the .cursor/rules directory
+3. **Reference Format**: Always refer to brain-files with .md extension in normal text
+4. **Project-Rule-Parameter Format**: Always use .mdc extension in project-rule-parameters
+
+## Example: Well-Formatted File
+
+```markdown
+# Feature Implementation Guide
+
+## Overview
+
+This file provides comprehensive guidance for implementing the XYZ feature.
+
+## Implementation Steps
+
+1. **Analyze Requirements**: Understand the feature's purpose and scope
+2. **Design Approach**: Determine the optimal implementation strategy
+3. **Implement Core Functionality**: Create the essential components first
+4. **Add Supporting Features**: Enhance with additional capabilities
+5. **Test Functionality**: Verify correct operation
+
+## Code Examples
+
+```typescript
+// Example implementation
+function implementFeature() {
+  const feature = new Feature();
+  feature.initialize();
+  return feature;
+}
+```
+
+## Relationship to Other Components
+
+This feature integrates with:
+- Component A through the XYZ interface
+- Component B using the ABC pattern
+- Component C for extended functionality
+```
+
+## File Naming Conventions
+
+Follow these naming conventions:
+
+1. **Lowercase**: All filenames should be lowercase
+2. **Kebab-Case**: Use hyphens to separate words (e.g., `file-name.md`)
+3. **Descriptive Names**: Use clear, descriptive names
+4. **Extensions**: Always use `.md` extension for brain-files
+5. **No Spaces**: Never use spaces in filenames
+
+## Document Types and Standards
+
+Different document types have specific standards:
+
+### Implementation Guides
+
+- Begin with clear overview and purpose
+- Include step-by-step implementation instructions
+- Provide code examples
+- Include verification steps
+
+### Reference Documents
+
+- Organize content for quick reference
+- Use tables for structured information
+- Include cross-references to related content
+- Provide clear examples
+
+### Workflow Definitions
+
+- Begin with workflow purpose
+- Define mode indicators
+- Include file identification patterns
+- Provide communication standards
+
+## Cross-Referencing Standards
+
+- Use relative paths when referring to other files
+- Wrap @ symbols in backticks when used in documentation
+- Use fully qualified paths for clarity
+- Clearly distinguish between brain-files and cursor-rules
+
+## Checklist for Brain-Files
+
+Before finalizing any brain-file, ensure it:
+
+- ✅ Has NO frontmatter
+- ✅ Begins with a single level 1 header
+- ✅ Contains an overview section
+- ✅ Uses consistent header structure
+- ✅ Follows formatting standards
+- ✅ Uses appropriate naming conventions
+- ✅ Includes relationships to other components
+- ✅ Wraps @ symbols in backticks where needed
+- ✅ Distinguishes between .md files and .mdc references
+- ✅ Contains only markdown content (no YAML, etc.)
+
+## Updating Standards
+
+These standards are maintained in the knowledge/reference/contributions directory and may be enhanced over time. All updates should maintain backward compatibility and focus on improved clarity, consistency, and cognitive effectiveness. 

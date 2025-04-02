@@ -1,0 +1,520 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Message Command List
+
+## Overview
+
+This document provides a comprehensive reference for all message-commands available in the PolygonExpress workflow system. Message-commands are the primary means of communication between Tyler and 1000xdev, following a consistent format and organized by function.
+
+## Message-Command Structure
+
+All message-commands follow a consistent structure:
+
+```
+message-command: standard-parameter @project-rule-parameter.mdc
+```
+
+For example:
+```
+plan-mode: rules-workflow @template-basic.mdc
+```
+
+## Activation Commands
+
+### plan-mode
+
+Activates Planning Mode with the 📋 indicator for documentation creation and planning.
+
+**Syntax**: `plan-mode: workflow-type @optional-template.mdc`
+
+**Parameters**:
+- `workflow-type`: The type of workflow to engage (rules-workflow, front-end-workflow, etc.)
+- `@optional-template.mdc`: Optional project rule parameter for specific planning templates
+
+**Examples**:
+```
+plan-mode: rules-workflow
+plan-mode: front-end-workflow @parameters/rules/plan-mode/template-basic.mdc
+plan-mode: back-end-workflow @parameters/rules/plan-mode/template-advanced.mdc
+```
+
+**Enhanced Capabilities**:
+
+With the system-wide plan-mode enhancement, plan-mode now supports:
+
+1. **Tool-Aware File Size Management**:
+   ```
+   plan-mode: rules-workflow @parameters/rules/plan-mode/template-file-size-aware.mdc
+   ```
+   Activates planning mode with intelligence for handling large documentation files efficiently.
+
+2. **Context-Aware Planning**:
+   ```
+   plan-mode: rules-workflow @parameters/rules/plan-mode/template-context-aware.mdc
+   ```
+   Enables planning with enhanced context preservation across multiple files and sections.
+
+3. **Tool-Optimized Planning**:
+   ```
+   plan-mode: rules-workflow @parameters/rules/plan-mode/template-tool-optimized.mdc
+   ```
+   Starts planning with focus on optimizing tool usage patterns.
+
+### dev-mode
+
+Activates Developer Mode with the 💻 indicator for code implementation and testing.
+
+**Syntax**: `dev-mode: workflow-type @optional-strategy.mdc`
+
+**Parameters**:
+- `workflow-type`: The type of workflow to engage (rules-workflow, front-end-workflow, etc.)
+- `@optional-strategy.mdc`: Optional project rule parameter for specific implementation strategies
+
+**Examples**:
+```
+dev-mode: front-end-workflow
+dev-mode: back-end-workflow @parameters/rules/dev-mode/log-based-implementation.mdc
+dev-mode: rules-workflow @parameters/rules/dev-mode/system-wide-implementation.mdc
+```
+
+**Enhanced Capabilities**:
+
+With the system-wide enhancement, dev-mode now supports:
+
+1. **Context-Aware Implementation**:
+   ```
+   dev-mode: rules-workflow @parameters/rules/dev-mode/context-aware-implementation.mdc
+   ```
+   Activates implementation mode with enhanced context tracking and preservation.
+
+2. **Tool-Optimized Implementation**:
+   ```
+   dev-mode: rules-workflow @parameters/rules/dev-mode/tool-optimized-implementation.mdc
+   ```
+   Starts implementation with focus on optimizing tool usage patterns.
+
+### direct-mode
+
+Activates Direct Mode with the ⚡ indicator for immediate implementation without planning.
+
+**Syntax**: `direct-mode: workflow-type @optional-strategy.mdc`
+
+**Parameters**:
+- `workflow-type`: The type of workflow to engage (rules-workflow, front-end-workflow, etc.)
+- `@optional-strategy.mdc`: Optional project rule parameter for specific implementation strategies
+
+**Followed By**:
+- The command must be followed by a `prompt:` line containing implementation details
+
+**Examples**:
+```
+direct-mode: front-end-workflow
+
+prompt: Create a new component for user profile display
+```
+
+```
+direct-mode: back-end-workflow @parameters/rules/direct-mode/direct-implementation.mdc
+
+prompt: Implement user authentication endpoint with JWT tokens
+```
+
+**Enhanced Capabilities**:
+
+The direct-mode command includes these built-in capabilities:
+
+1. **Automatic Research Mode**:
+   Makes a minimum of R20 tool calls to research and understand the codebase before making any changes, including:
+   - Code search for similar implementations
+   - Directory structure analysis
+   - File reading to understand patterns
+   - Dependency analysis
+
+2. **Context-First Implementation**:
+   ```
+   direct-mode: rules-workflow @parameters/rules/direct-mode/context-first-implementation.mdc
+   ```
+   Performs extensive context building before implementation to ensure changes fit existing patterns.
+
+3. **Direct Implementation**:
+   ```
+   direct-mode: front-end-workflow @parameters/rules/direct-mode/direct-implementation.mdc
+   ```
+   Focuses on immediate implementation with streamlined verification.
+
+## Continuation Commands
+
+### continue-planning
+
+Continues a planning process with specific guidance.
+
+**Syntax**: `continue-planning: @specific-path.mdc`
+
+**Parameters**:
+- `@specific-path.mdc`: Project rule parameter for specific continuation guidance
+
+**Examples**:
+```
+continue-planning: @parameters/rules/plan-mode/template-advanced.mdc
+continue-planning: @parameters/rules/plan-mode/subsystem-enhancement.mdc
+```
+
+**Enhanced Capabilities**:
+
+With the system-wide enhancement, continue-planning now supports:
+
+1. **Tool-Aware Continuation**:
+   ```
+   continue-planning: @parameters/rules/plan-mode/tool-aware-continuation.mdc
+   ```
+   Continues planning with intelligence for handling large documentation files.
+
+2. **Context-Aware Continuation**:
+   ```
+   continue-planning: @parameters/rules/plan-mode/context-aware-continuation.mdc
+   ```
+   Continues planning with enhanced context preservation capabilities.
+
+### continue-implementation
+
+Continues an implementation process with specific guidance.
+
+**Syntax**: `continue-implementation: @specific-path.mdc`
+
+**Parameters**:
+- `@specific-path.mdc`: Project rule parameter for specific continuation guidance
+
+**Examples**:
+```
+continue-implementation: @parameters/rules/helpers/recovery/error-recovery.mdc
+continue-implementation: @parameters/rules/helpers/implementation/feature-completion.mdc
+```
+
+**Enhanced Capabilities**:
+
+With the system-wide enhancement, continue-implementation now supports:
+
+1. **System-Wide Continuation**:
+   ```
+   continue-implementation: @parameters/rules/dev-mode/continue-implementation-system-wide.mdc
+   ```
+   Continues implementation of system-wide changes with enhanced context awareness.
+
+2. **Context-Aware Continuation**:
+   ```
+   continue-implementation: @parameters/rules/dev-mode/context-aware-implementation.mdc
+   ```
+   Continues implementation with enhanced context tracking and preservation.
+
+3. **Tool-Optimized Continuation**:
+   ```
+   continue-implementation: @parameters/rules/dev-mode/tool-optimized-implementation.mdc
+   ```
+   Continues implementation with focus on optimizing tool usage patterns.
+
+## Status Commands
+
+### planning-document-complete
+
+Signals that planning documentation is complete.
+
+**Syntax**: `planning-document-complete`
+
+**Parameters**: None
+
+**Example**:
+```
+planning-document-complete
+```
+
+### implementation-complete
+
+Signals that implementation is complete.
+
+**Syntax**: `implementation-complete`
+
+**Parameters**: None
+
+**Example**:
+```
+implementation-complete
+```
+
+## New Planning Patterns
+
+The system-wide plan-mode enhancement introduces new planning patterns that can be accessed through message-commands and project-rule-parameters.
+
+### Tool-Aware File Reading
+
+These patterns optimize file reading for large documentation files and maintain context across multiple file reads.
+
+**Access Via**:
+```
+plan-mode: rules-workflow @parameters/rules/helpers/implementation/tool-aware-file-reading.mdc
+```
+
+**Key Capabilities**:
+- Size-based reading strategies for files of different sizes
+- Section-based reading for targeted content access
+- Context preservation across file chunks
+- Tool call optimization for efficient file reading
+
+### Context Preservation System
+
+These patterns enable maintaining context across multiple file reads, tracking dependencies across system components, and preserving semantic relationships.
+
+**Access Via**:
+```
+plan-mode: rules-workflow @parameters/rules/helpers/implementation/context-preservation-system.mdc
+```
+
+**Key Capabilities**:
+- Basic context preservation with markers
+- Advanced context tracking across multiple files
+- Context verification before making changes
+- Context recovery for missing information
+
+### Tool Integration Optimization
+
+These patterns optimize tool usage for complex implementations, minimize the number of tool calls, and improve implementation efficiency.
+
+**Access Via**:
+```
+plan-mode: rules-workflow @parameters/rules/helpers/implementation/tool-integration-optimization.mdc
+```
+
+**Key Capabilities**:
+- Tool call batching for related operations
+- Tool chain optimization for efficient sequences
+- Context sharing between related tool calls
+- Parallel execution of independent operations
+
+## Recommended Message-Command Sequences
+
+### For System-Wide Enhancements
+
+1. **Initial Planning**:
+   ```
+   plan-mode: rules-workflow @parameters/rules/plan-mode/system-wide-planning.mdc
+   ```
+
+2. **Implementation**:
+   ```
+   dev-mode: rules-workflow @parameters/rules/dev-mode/system-wide-implementation.mdc
+   ```
+
+3. **Continuation if Needed**:
+   ```
+   continue-implementation: @parameters/rules/dev-mode/continue-implementation-system-wide.mdc
+   ```
+
+4. **Completion**:
+   ```
+   implementation-complete
+   ```
+
+### For Context-Aware Development
+
+1. **Initial Planning**:
+   ```
+   plan-mode: rules-workflow @parameters/rules/plan-mode/context-aware-planning.mdc
+   ```
+
+2. **Implementation**:
+   ```
+   dev-mode: rules-workflow @parameters/rules/dev-mode/context-aware-implementation.mdc
+   ```
+
+3. **Continuation if Needed**:
+   ```
+   continue-implementation: @parameters/rules/dev-mode/context-aware-continuation.mdc
+   ```
+
+4. **Completion**:
+   ```
+   implementation-complete
+   ```
+
+### For Direct Implementation (No Planning)
+
+1. **Direct Activation**:
+   ```
+   direct-mode: front-end-workflow @parameters/rules/direct-mode/direct-implementation.mdc
+   
+   prompt: Implement feature with specific requirements
+   ```
+
+2. **Continuation if Needed**:
+   ```
+   continue-implementation: @parameters/rules/helpers/recovery/direct-implementation-continuation.mdc
+   ```
+
+3. **Completion**:
+   ```
+   implementation-complete
+   ```
+
+### For Tool-Optimized Development
+
+1. **Initial Planning**:
+   ```
+   plan-mode: rules-workflow @parameters/rules/plan-mode/tool-optimized-planning.mdc
+   ```
+
+2. **Implementation**:
+   ```
+   dev-mode: rules-workflow @parameters/rules/dev-mode/tool-optimized-implementation.mdc
+   ```
+
+3. **Continuation if Needed**:
+   ```
+   continue-implementation: @parameters/rules/dev-mode/tool-optimized-continuation.mdc
+   ```
+
+4. **Completion**:
+   ```
+   implementation-complete
+   ```
+
+## Best Practices
+
+1. **Clear Parameter Specification**:
+   - Always specify workflow type in activation commands
+   - Use appropriate project-rule-parameters for specialized tasks
+
+2. **Transition Management**:
+   - Use direct transitions between modes: plan-mode → dev-mode
+   - Complete all planning before switching to dev-mode
+   - Complete all implementation before signaling completion
+
+3. **Project-Rule Parameter Selection**:
+   - Choose parameters that match your task needs
+   - Use system-wide parameters for large-scale changes
+   - Use context-aware parameters for complex implementations
+   - Use tool-optimized parameters for efficiency-critical tasks
+
+4. **Sequential Command Usage**:
+   - Follow the recommended command sequences
+   - Avoid mixing planning and implementation in the same mode
+   - Use continue commands for complex tasks that need additional guidance
+
+## Mode Transitions
+
+Mode transitions follow a simple pattern:
+
+1. Start in Planning Mode: `plan-mode: workflow-type`
+2. Complete planning and document it: `planning-document-complete`
+3. Transition to Developer Mode: `dev-mode: workflow-type`
+4. Complete implementation: `implementation-complete`
+
+Alternatively, for direct implementation without planning:
+
+1. Use Direct Implementation: `direct-mode: workflow-type`
+2. Provide implementation details in the prompt
+3. Complete implementation: `implementation-complete`
+
+## Related Documentation
+
+- **mode-transitions.md**: Detailed mode transition protocols
+- **plan-mode-core.md**: Core planning mode operations
+- **dev-mode-core.md**: Core developer mode operations
+- **knowledge/guides/planning-patterns.md**: Comprehensive documentation on new planning patterns
+
+## Subsystem-Specific Commands
+
+| Command | Purpose | Format | Validation |
+|---------|---------|--------|------------|
+| `continue-implementation` | Continue subsystem implementation | `continue-implementation: subsystem-name @parameters/rules/continue-implementation-subsystem.mdc` | Requires subsystem-name |
+| `continue-implementation` | Continue with recovery point | `continue-implementation: subsystem-name recovery-point @parameters/rules/continue-implementation-subsystem.mdc` | Requires subsystem-name and recovery-point |
+| `implementation-status` | Request subsystem status | `implementation-status: subsystem-name` | Requires subsystem-name |
+
+## Query Commands
+
+| Command | Purpose | Format | Validation |
+|---------|---------|--------|------------|
+| `list-message-commands` | Display available message commands | `list-message-commands: @message-command-list.mdc` | Optional project-rule-parameter |
+| `show-message-command-format` | Show format for specific command | `show-message-command-format: command-name @message-command-format.mdc` | Requires command-name |
+| `implementation-status` | Request current implementation status | `implementation-status` | No parameters required |
+
+## Subsystem Implementation Workflow
+
+Subsystem-specific implementations follow a specialized workflow:
+
+1. **Subsystem Continuation Initiation**:
+   ```
+   continue-implementation: subsystem-name @parameters/rules/continue-implementation-subsystem.mdc
+   ```
+   This focuses implementation specifically on the named subsystem.
+
+2. **Subsystem State Analysis**:
+   The system will analyze the current state of the subsystem implementation and report:
+   - Current implementation phase
+   - Completed components
+   - In-progress components
+   - Pending components
+
+3. **Subsystem-Specific Implementation**:
+   Implementation continues focused specifically on the named subsystem, without affecting other subsystems.
+
+4. **Subsystem Recovery**:
+   If implementation was interrupted, use:
+   ```
+   continue-implementation: subsystem-name recovery-point @parameters/rules/continue-implementation-subsystem.mdc
+   ```
+   This recovers from a specific point in the implementation.
+
+5. **Subsystem Status Reporting**:
+   Get status of a specific subsystem with:
+   ```
+   implementation-status: subsystem-name
+   ```
+
+## Validation Rules
+
+1. **Format Requirements**:
+   - Commands must be in kebab-case (lowercase with hyphens)
+   - Commands must end with a colon when parameters are present
+   - Parameters must be space-separated
+
+2. **Parameter Types**:
+   - Standard parameters: Lowercase, no special characters
+   - Project-rule parameters: Start with @ and end with .mdc
+   - Subsystem names: Match actual subsystem names in the system
+
+3. **Validation Levels**:
+   - Basic: Command format and existence
+   - Standard: Parameter combination validation
+   - Strict: Call pattern validation
+
+4. **Error Categories**:
+   - Format errors: Invalid command syntax
+   - Parameter errors: Invalid parameter combinations
+   - Loyalty errors: Project-rule parameter usage violations
+   - Pattern errors: Call pattern violations
+   - Subsystem errors: Invalid subsystem references
+
+## Usage Notes
+
+1. **Parameter Order**:
+   - Standard parameters come before project-rule parameters
+   - Multiple project-rule parameters must follow defined patterns
+   - Subsystem names must be valid subsystem identifiers
+
+2. **Validation Modes**:
+   - Default: Warns about pattern violations
+   - Strict: Enforces all validation rules
+
+3. **Subsystem Implementation**:
+   - Focuses exclusively on the named subsystem
+   - Maintains separation from other subsystems
+   - Updates implementation-progress.md with subsystem-specific status
+   - Provides subsystem-specific recovery points
+
+4. **Error Recovery**:
+   - Invalid commands return detailed error messages
+   - Warnings provided for non-critical issues
+   - Pattern suggestions included in warning messages
+   - Subsystem recovery options provided when applicable 

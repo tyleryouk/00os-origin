@@ -1,0 +1,158 @@
+# USE WHEN creating documentation files, following formatting standards, or maintaining consistent file structure
+
+# File Standards Reference Guide
+
+## Overview
+
+This reference guide provides comprehensive standards for file formatting, structure, and naming conventions in the 1000xbrain cognitive architecture. It ensures consistency, readability, and proper functioning of brain-files when used as a reference.
+
+## Core File Requirements
+
+### Critical Rules
+
+- **NO FRONTMATTER**: Brain-files must never contain frontmatter (the --- enclosed metadata sections)
+- **NO RULE TYPE SPECIFICATIONS**: Never add rule_type, description, or globs specifications to brain-files
+- **DIRECT CONTENT**: All markdown content must begin directly with headers or text
+- **STANDARD MARKDOWN**: Use only standard markdown formatting
+
+### File Structure Template
+
+```markdown
+# Title: Clear and Descriptive
+
+## Overview
+
+Brief introduction explaining the file's purpose and cognitive impact.
+
+## Main Section 1
+
+Content organized into logical sections with clear headers.
+
+## Main Section 2
+
+More content with appropriate formatting.
+
+## Relationship to Other Components
+
+How this file relates to other parts of the cognitive architecture.
+```
+
+## Header Structure Standards
+
+| Header Level | Purpose | Usage |
+|--------------|---------|-------|
+| Level 1 (#) | File title | Only one per file, descriptive and clear |
+| Level 2 (##) | Main sections | Primary content divisions |
+| Level 3 (###) | Subsections | Secondary content divisions |
+| Level 4 (####) | Detail areas | Further subdivision when needed |
+
+## Content Organization Standards
+
+1. **Overview First**: Begin with an overview section that explains purpose
+2. **Logical Progression**: Organize content in a clear, logical sequence
+3. **Relationship Section**: Include how file relates to other components
+4. **Examples**: Provide clear, practical examples where appropriate
+5. **Implementation Guidance**: Include specific implementation details
+
+## Formatting Guidelines
+
+### Code Blocks
+
+```typescript
+// Use triple backticks with language specification
+function exampleCode() {
+  return "Format code consistently";
+}
+```
+
+### Other Elements
+
+- **Inline Code**: Use single backticks for `inline code`
+- **Lists**: Use ordered lists for sequential steps, unordered for general items
+- **Tables**: Use markdown tables for structured information
+- **Emphasis**: Use **bold** for primary emphasis, *italic* for secondary emphasis
+- **Blockquotes**: Use > for important notes or quotes
+
+## File Naming Conventions
+
+| Rule | Description | Example |
+|------|-------------|---------|
+| Lowercase | All filenames should be lowercase | ✅ `file-name.md` ❌ `File-Name.md` |
+| Kebab-Case | Use hyphens to separate words | ✅ `tool-patterns.md` ❌ `tool_patterns.md` |
+| Descriptive | Use clear, descriptive names | ✅ `implementation-guide.md` ❌ `guide1.md` |
+| Extensions | Always use `.md` extension | ✅ `reference.md` ❌ `reference.txt` |
+| No Spaces | Never use spaces in filenames | ✅ `file-standards.md` ❌ `file standards.md` |
+
+## Brain-File to Cursor-Rule Relationship
+
+- **Brain-Files (.md)**: Editable source files in the 1000xbrain directory
+- **Cursor-Rules (.mdc)**: Applied rules in the .cursor/rules directory
+- **Reference Format**: Always refer to brain-files with .md extension in normal text
+- **Project-Rule-Parameter Format**: Always use .mdc extension in project-rule-parameters
+
+## Document Type Standards
+
+### Implementation Guides
+
+- Begin with clear overview and purpose
+- Include step-by-step implementation instructions
+- Provide code examples
+- Include verification steps
+
+### Reference Documents
+
+- Organize content for quick reference
+- Use tables for structured information
+- Include cross-references to related content
+- Provide clear examples
+
+### Workflow Definitions
+
+- Begin with workflow purpose
+- Define mode indicators
+- Include file identification patterns
+- Provide communication standards
+
+## Symbol Usage Standards
+
+- Wrap @ symbols in backticks when used in documentation text
+- Use relative paths when referring to other files
+- Use fully qualified paths for clarity
+- Clearly distinguish between brain-files (.md) and cursor-rules (.mdc)
+
+## Quality Checklist
+
+Before finalizing any brain-file, ensure it:
+
+- ✅ Has NO frontmatter
+- ✅ Begins with a single level 1 header
+- ✅ Contains an overview section
+- ✅ Uses consistent header structure
+- ✅ Follows formatting standards
+- ✅ Uses appropriate naming conventions
+- ✅ Includes relationships to other components
+- ✅ Wraps @ symbols in backticks where needed
+- ✅ Distinguishes between .md files and .mdc references
+- ✅ Contains only markdown content (no YAML, etc.)
+
+## Reference Usage
+
+### When to Reference This Guide
+
+Reference this guide when:
+- Creating new brain-files
+- Updating existing brain-files
+- Standardizing content across multiple files
+- Ensuring consistent documentation style
+
+### Example Reference
+
+```
+message-command: @reference/guides/file-standards.mdc
+```
+
+## Related References
+
+- Architecture Guide: `@reference/architecture.mdc`
+- Cognitive Enhancement: `@guides/cognitive-enhancement.mdc`
+- Knowledge System: `@reference/guides/knowledge-system.mdc` 

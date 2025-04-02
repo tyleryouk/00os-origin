@@ -1,0 +1,817 @@
+# Recover From Errors Helper
+
+## File Purpose
+
+This file provides standardized patterns and workflows for recovering from specific error types in front-end implementation. It should be consulted when:
+
+- Implementation encounters specific, known error types
+- Error patterns need specialized recovery strategies
+- Debugging complex error situations
+- Implementing error resilience patterns
+- Recovering from runtime errors in production
+
+## Usage as Project-Rule-Parameter
+
+This file contains error recovery guidance and should be referenced as a project-rule-parameter in message-commands:
+
+```
+recover-from-errors: @parameters/front-end/helpers/recovery/recover-from-errors.mdc
+```
+
+For more general recovery guidance, see:
+- `recover-implementation.md`: General implementation recovery
+- `fix-component-issues.md`: Component-specific issue fixes
+
+## Error Recovery Process
+
+### 1. Error Identification and Analysis
+
+Begin by identifying and analyzing the specific error:
+
+```typescript
+// 1. Analyze error logs
+run_terminal_cmd("cd front-end && cat logs/error.log | tail -n 50", false, false)
+
+// 2. Check browser console errors
+run_terminal_cmd("cd front-end && npm run dev", false, true)
+
+// 3. Analyze TypeScript errors
+run_terminal_cmd("cd front-end && npm run type-check", false, false)
+
+// 4. Analyze test failures
+run_terminal_cmd("cd front-end && npm test", false, false)
+
+// 5. Check runtime errors in production
+run_terminal_cmd("cd front-end && npm run build && npm run start", false, true)
+```
+
+### 2. Categorize Error Type
+
+Determine the specific category of the error for targeted recovery:
+
+```typescript
+// Analyze error patterns to categorize
+grep_search("TypeError|ReferenceError|SyntaxError", false, "logs/error.log")
+grep_search("Uncaught.*Error", false, "logs/error.log")
+grep_search("Failed to compile", false, "logs/build.log")
+
+// Check specific known error patterns
+grep_search("Cannot read properties of (undefined|null)", false, "logs/error.log")
+grep_search("Maximum update depth exceeded", false, "logs/error.log")
+grep_search("Invalid hook call", false, "logs/error.log")
+grep_search("Memory leak.*useEffect", false, "logs/error.log")
+```
+
+### 3. Apply Error-Specific Recovery Strategies
+
+Apply recovery strategies based on the specific error type:
+
+#### Type Errors (undefined/null)
+
+```typescript
+// 1. Identify source of type error
+grep_search("Cannot read properties of (undefined|null)", true, "logs/error.log")
+
+// 2. Fix null/undefined access issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix null/undefined access errors",
+          "// ... existing code ...
+
+// ERROR: Cannot read properties of undefined (reading 'property')
+// FIX: Add null check and provide fallback
+// Before: const value = data.property;
+// After: Add optional chaining and nullish coalescing
+const value = data?.property ?? defaultValue;
+
+// ERROR: TypeError: Cannot read properties of null (reading 'length')
+// FIX: Add explicit null check before accessing properties
+// Before: if (items.length > 0) { ... }
+// After: Add null check
+if (items && items.length > 0) {
+  // Access items safely
+}
+
+// ... existing code ...")
+
+// 3. Verify fix resolves the issue
+run_terminal_cmd("cd front-end && npm run type-check", false, false)
+run_terminal_cmd("cd front-end && npm test -- --findRelatedTests src/components/[ComponentName].tsx", false, false)
+```
+
+#### React Hook Errors
+
+```typescript
+// 1. Identify hook rule violations
+grep_search("Invalid hook call", true, "logs/error.log")
+
+// 2. Fix hook rule violations
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix React hook rule violations",
+          "// ... existing code ...
+
+// ERROR: Invalid hook call. Hooks can only be called inside of the body of a function component.
+// FIX: Move hook inside component body
+// Before:
+// const useOutsideComponent = () => {
+//   const [state, setState] = useState(false); // Invalid hook location
+//   return state;
+// };
+
+// After: Move hooks inside component or create proper custom hook
+function useOutsideComponent() {
+  const [state, setState] = useState(false); // Valid hook location
+  return state;
+}
+
+// ERROR: React Hook \"useEffect\" is called conditionally
+// FIX: Remove conditional hook call
+// Before:
+// if (condition) {
+//   useEffect(() => { ... }, []); // Invalid conditional hook
+// }
+
+// After: Move condition inside hook
+useEffect(() => {
+  if (condition) {
+    // Effect logic
+  }
+}, [condition]); // Add condition to dependencies
+
+// ... existing code ...")
+
+// 3. Verify hook errors are resolved
+run_terminal_cmd("cd front-end && npm run lint", false, false)
+run_terminal_cmd("cd front-end && npm run dev", false, true)
+```
+
+#### Infinite Re-render Errors
+
+```typescript
+// 1. Identify infinite update loops
+grep_search("Maximum update depth exceeded", true, "logs/error.log")
+
+// 2. Fix infinite re-render issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix infinite re-render issues",
+          "// ... existing code ...
+
+// ERROR: Maximum update depth exceeded
+// FIX: Add proper dependency array to useEffect
+// Before:
+// useEffect(() => {
+//   setData(processData(data)); // Causes infinite loop
+// }); // Missing dependency array
+
+// After: Add dependency array with proper dependencies
+useEffect(() => {
+  setData(processData(data));
+}, [data]); // Only runs when data changes
+
+// ERROR: Maximum update depth exceeded in state update
+// FIX: Fix state update in render
+// Before:
+// function Component() {
+//   const [count, setCount] = useState(0);
+//   setCount(count + 1); // Causes infinite loop - updating state during render
+//   return <div>{count}</div>;
+// }
+
+// After: Move state update to effect or event handler
+function Component() {
+  const [count, setCount] = useState(0);
+  
+  // Only update once after mount
+  useEffect(() => {
+    setCount(prevCount => prevCount + 1);
+  }, []);
+  
+  return <div>{count}</div>;
+}
+
+// ... existing code ...")
+
+// 3. Verify infinite loop is resolved
+run_terminal_cmd("cd front-end && npm run dev", false, true)
+```
+
+#### Memory Leak Errors
+
+```typescript
+// 1. Identify memory leak warnings
+grep_search("Memory leak.*useEffect", true, "logs/error.log")
+
+// 2. Fix memory leak issues
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix memory leak issues",
+          "// ... existing code ...
+
+// ERROR: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application.
+// FIX: Add cleanup function to useEffect
+// Before:
+// useEffect(() => {
+//   const subscription = subscribeToData(data => {
+//     setData(data); // Potential memory leak if component unmounts
+//   });
+// }, []);
+
+// After: Add proper cleanup
+useEffect(() => {
+  let isMounted = true;
+  const subscription = subscribeToData(data => {
+    if (isMounted) { // Only update state if component is still mounted
+      setData(data);
+    }
+  });
+  
+  // Return cleanup function
+  return () => {
+    isMounted = false;
+    subscription.unsubscribe();
+  };
+}, []);
+
+// ... existing code ...")
+
+// 3. Verify memory leak is resolved
+run_terminal_cmd("cd front-end && npm run test -- --findRelatedTests src/components/[ComponentName].tsx", false, false)
+```
+
+#### API/Network Errors
+
+```typescript
+// 1. Identify API errors
+grep_search("fetch.*failed|api.*error|network.*error", true, "logs/error.log")
+
+// 2. Fix API error handling
+edit_file("front-end/src/services/api.ts",
+          "Enhance API error handling",
+          "// ... existing code ...
+
+// ERROR: Uncaught error in API call
+// FIX: Add proper error handling for API calls
+// Before:
+// export const fetchData = async () => {
+//   const response = await fetch('/api/data');
+//   const data = await response.json();
+//   return data;
+// };
+
+// After: Add proper error handling
+export const fetchData = async () => {
+  try {
+    const response = await fetch('/api/data');
+    
+    if (!response.ok) {
+      // Handle HTTP error responses
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(`API error: ${response.status} - ${errorData.message || response.statusText}`);
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    // Log error for debugging
+    console.error('API fetch error:', error);
+    
+    // Rethrow with more context
+    throw new Error(`Failed to fetch data: ${error.message}`);
+  }
+};
+
+// ... existing code ...")
+
+// 3. Implement API error boundary in component
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Add API error boundary to component",
+          "// ... existing code ...
+
+// Add error state handling for API calls
+const [data, setData] = useState(null);
+const [error, setError] = useState(null);
+const [isLoading, setIsLoading] = useState(false);
+
+useEffect(() => {
+  const fetchApiData = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const result = await api.fetchData();
+      setData(result);
+    } catch (err) {
+      setError(err.message);
+      // Optionally report to error tracking service
+      errorReporting.captureError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  fetchApiData();
+}, []);
+
+// Render based on API states
+return (
+  <div>
+    {isLoading && <LoadingSpinner />}
+    {error && <ErrorMessage message={error} retry={() => fetchApiData()} />}
+    {!isLoading && !error && data && <DataDisplay data={data} />}
+  </div>
+);
+
+// ... existing code ...")
+
+// 4. Verify API error handling works
+run_terminal_cmd("cd front-end && npm test -- --findRelatedTests src/services/api.ts src/components/[ComponentName].tsx", false, false)
+```
+
+#### Build/Compilation Errors
+
+```typescript
+// 1. Identify build errors
+run_terminal_cmd("cd front-end && npm run build", false, false)
+
+// 2. Fix import/export errors
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix import/export errors",
+          "// ... existing code ...
+
+// ERROR: Cannot find module './MissingComponent' or its corresponding type declarations.
+// FIX: Correct import path or create missing component
+// Before: import { MissingComponent } from './MissingComponent';
+// After: Correct import path
+import { ExistingComponent as MissingComponent } from './ExistingComponent';
+
+// ERROR: Module not found: Error: Can't resolve 'missing-package'
+// FIX: Install missing dependency or use available alternative
+// Before: import { feature } from 'missing-package';
+// After: Use alternative or install dependency
+import { similarFeature as feature } from 'available-package';
+
+// ... existing code ...")
+
+// 3. Fix type errors that prevent build
+edit_file("front-end/src/types/index.ts",
+          "Fix type errors preventing build",
+          "// ... existing code ...
+
+// ERROR: Type 'string | undefined' is not assignable to type 'string'
+// FIX: Update type definition or add type guard
+// Before:
+// type StrictString = string;
+// const processValue = (value?: string): StrictString => value;
+
+// After: Add type guard and default value
+type StrictString = string;
+const processValue = (value?: string): StrictString => value || '';
+
+// ... existing code ...")
+
+// 4. Verify build succeeds
+run_terminal_cmd("cd front-end && npm run build", false, false)
+```
+
+### 4. Implement Error Prevention
+
+Add error prevention measures to avoid similar errors in the future:
+
+```typescript
+// 1. Add error boundary component
+edit_file("front-end/src/components/ErrorBoundary.tsx",
+          "Create error boundary component",
+          "import React, { Component, ErrorInfo, ReactNode } from 'react';
+
+interface ErrorBoundaryProps {
+  fallback?: ReactNode;
+  onError?: (error: Error, errorInfo: ErrorInfo) => void;
+  children: ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error: Error | null;
+}
+
+/**
+ * Error Boundary component to catch and handle errors in child components
+ */
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: null
+    };
+  }
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return {
+      hasError: true,
+      error
+    };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    // Log error to error reporting service
+    console.error('Error caught by ErrorBoundary:', error, errorInfo);
+    
+    // Call custom error handler if provided
+    if (this.props.onError) {
+      this.props.onError(error, errorInfo);
+    }
+  }
+
+  render(): ReactNode {
+    if (this.state.hasError) {
+      // Render fallback UI if provided, otherwise default error message
+      return this.props.fallback || (
+        <div className=\"error-boundary-fallback\">
+          <h2>Something went wrong.</h2>
+          <details>
+            <summary>Error details</summary>
+            <pre>{this.state.error?.toString()}</pre>
+          </details>
+          <button 
+            onClick={() => this.setState({ hasError: false, error: null })}
+          >
+            Try again
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}")
+
+// 2. Add type guards utility
+edit_file("front-end/src/utils/typeGuards.ts",
+          "Create type guards utility",
+          "/**
+ * Type guards utility for safer TypeScript usage
+ */
+
+/**
+ * Check if value is defined (not null or undefined)
+ */
+export function isDefined<T>(value: T | null | undefined): value is T {
+  return value !== null && value !== undefined;
+}
+
+/**
+ * Check if value is a non-empty string
+ */
+export function isNonEmptyString(value: unknown): value is string {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
+/**
+ * Check if value is a valid number
+ */
+export function isValidNumber(value: unknown): value is number {
+  return typeof value === 'number' && !isNaN(value) && isFinite(value);
+}
+
+/**
+ * Check if value is a valid array
+ */
+export function isArray<T>(value: unknown): value is T[] {
+  return Array.isArray(value);
+}
+
+/**
+ * Check if value is a valid record object
+ */
+export function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+/**
+ * Safely access nested object properties
+ */
+export function safeGet<T>(
+  obj: unknown, 
+  path: string, 
+  defaultValue: T
+): T {
+  if (!isRecord(obj)) return defaultValue;
+  
+  const keys = path.split('.');
+  let current: unknown = obj;
+  
+  for (const key of keys) {
+    if (!isRecord(current) || !(key in current)) {
+      return defaultValue;
+    }
+    current = current[key];
+  }
+  
+  return (current as unknown as T) ?? defaultValue;
+}")
+
+// 3. Use error boundary in parent component
+edit_file("front-end/src/components/[ParentComponent].tsx",
+          "Add error boundary to parent component",
+          "// ... existing code ...
+import { ErrorBoundary } from './ErrorBoundary';
+
+// Wrap child components with error boundary
+return (
+  <div className=\"parent-component\">
+    <h1>Parent Component</h1>
+    
+    <ErrorBoundary
+      fallback={<div>Error in Component A. Please try again.</div>}
+      onError={(error) => {
+        console.error('ComponentA error:', error);
+        // Report to error tracking service
+        reportError(error);
+      }}
+    >
+      <ComponentA data={data} />
+    </ErrorBoundary>
+    
+    <ErrorBoundary
+      fallback={<div>Error in Component B. Please try again.</div>}
+    >
+      <ComponentB data={data} />
+    </ErrorBoundary>
+  </div>
+);
+// ... existing code ...")
+
+// 4. Add defensive programming to API service
+edit_file("front-end/src/services/api.ts",
+          "Add defensive programming to API service",
+          "// ... existing code ...
+import { isDefined, isRecord, isArray } from '../utils/typeGuards';
+
+/**
+ * Enhanced API service with error handling and type validation
+ */
+export const api = {
+  // Fetch data with enhanced error handling and type validation
+  async fetchData() {
+    try {
+      const response = await fetch('/api/data');
+      
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status} - ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      
+      // Validate response format
+      if (!isArray(data)) {
+        throw new Error('Invalid API response format: expected array');
+      }
+      
+      // Transform and validate each item
+      return data.map(item => {
+        if (!isRecord(item)) {
+          // Log warning but provide fallback object
+          console.warn('Invalid item in API response', item);
+          return { id: 'unknown', name: 'Unknown Item', error: true };
+        }
+        
+        // Ensure required fields with defaults
+        return {
+          id: String(item.id ?? 'unknown'),
+          name: isNonEmptyString(item.name) ? item.name : 'Unnamed Item',
+          value: isValidNumber(item.value) ? item.value : 0
+        };
+      });
+    } catch (error) {
+      console.error('API error:', error);
+      // Rethrow for component handling
+      throw error;
+    }
+  }
+};
+// ... existing code ...")
+```
+
+### 5. Document Error Recovery Process
+
+Document the error recovery process for future reference:
+
+```typescript
+// Update implementation progress with error recovery documentation
+edit_file("planning/feature-name/implementation-progress.md",
+          "Document error recovery process",
+          "// ... existing content ...
+
+## Error Recovery: [date]
+
+### Error Analysis
+
+| Error Type | Component/File | Error Message | Root Cause |
+|------------|----------------|---------------|------------|
+| [Error type] | [File path] | [Error message] | [Identified cause] |
+
+### Recovery Actions
+
+1. **[Error Type 1] Fixes**:
+   - [Description of fix]
+   - [Files modified]
+   - [Verification method]
+
+2. **[Error Type 2] Fixes**:
+   - [Description of fix]
+   - [Files modified]
+   - [Verification method]
+
+### Error Prevention Measures
+
+1. **Added Error Boundaries**:
+   - Created ErrorBoundary component
+   - Applied to key component subtrees
+   - Implemented custom error reporting
+
+2. **Enhanced Type Safety**:
+   - Added type guard utilities
+   - Implemented defensive programming patterns
+   - Enhanced API service with validation
+
+### Error Recovery Verification
+
+- All identified errors have been fixed
+- Application builds successfully
+- Tests are passing
+- Manual testing confirms error conditions are handled gracefully
+
+// ... existing content ...")
+```
+
+## Complete Error Recovery Tool Sequence
+
+```typescript
+// Complete Error Recovery Tool Sequence
+// 1. Identify and analyze errors
+run_terminal_cmd("cd front-end && cat logs/error.log | tail -n 50", false, false)
+run_terminal_cmd("cd front-end && npm run type-check", false, false)
+run_terminal_cmd("cd front-end && npm test", false, false)
+
+// 2. Categorize error types
+grep_search("TypeError|ReferenceError|SyntaxError", false, "logs/error.log")
+grep_search("Cannot read properties of (undefined|null)", false, "logs/error.log")
+grep_search("Maximum update depth exceeded", false, "logs/error.log")
+
+// 3. Fix specific error types
+edit_file("front-end/src/components/[ComponentName].tsx",
+          "Fix specific error types",
+          "// ... error fixes ...")
+
+// 4. Implement error prevention
+edit_file("front-end/src/components/ErrorBoundary.tsx",
+          "Create error boundary component",
+          "// ... error boundary implementation ...")
+edit_file("front-end/src/utils/typeGuards.ts",
+          "Create type guards utility",
+          "// ... type guards implementation ...")
+
+// 5. Verify error fixes
+run_terminal_cmd("cd front-end && npm run build", false, false)
+run_terminal_cmd("cd front-end && npm test", false, false)
+run_terminal_cmd("cd front-end && npm run dev", false, true)
+
+// 6. Document error recovery
+edit_file("planning/feature-name/implementation-progress.md",
+          "Document error recovery process",
+          "// ... error recovery documentation ...")
+```
+
+## Common Error Types and Recovery Strategies
+
+### TypeScript/Type Errors
+
+| Error | Recovery Strategy |
+|-------|------------------|
+| Cannot read properties of undefined | Add optional chaining (`?.`) and nullish coalescing (`??`) |
+| Type 'X' is not assignable to type 'Y' | Add proper type guards and type assertions |
+| No overload matches this call | Fix function parameter types to match defined signatures |
+| Property does not exist on type | Add missing properties to interface or use proper type casting |
+| Object is possibly undefined | Add null checks before accessing properties |
+
+### React Errors
+
+| Error | Recovery Strategy |
+|-------|------------------|
+| Invalid hook call | Move hooks to top level of component, fix conditional hook usage |
+| Maximum update depth exceeded | Fix infinite loops in effects, add proper dependency arrays |
+| Cannot update a component while rendering | Move state updates to effects or event handlers |
+| Memory leak in component | Add cleanup functions to useEffect hooks |
+| Each child should have a unique key | Add unique key prop to mapped elements |
+
+### Build/Compile Errors
+
+| Error | Recovery Strategy |
+|-------|------------------|
+| Module not found | Fix import paths, install missing dependencies |
+| Cannot find module | Fix typos in import paths, create missing files |
+| Unexpected token | Fix syntax errors, ensure correct syntax for the environment |
+| Cannot use JSX | Add jsx configuration to tsconfig, install necessary dependencies |
+| Unknown property on DOM element | Fix incorrect attribute names in JSX elements |
+
+### Runtime Errors
+
+| Error | Recovery Strategy |
+|-------|------------------|
+| API fetch errors | Add proper try/catch, implement retry logic |
+| Cross-origin errors | Configure CORS headers, use proxy middleware |
+| LocalStorage access errors | Add feature detection, handle private browsing mode |
+| JSON parsing errors | Add try/catch for JSON.parse, validate response format |
+| Code-splitting chunk loading errors | Add error boundaries, implement chunk loading retry |
+
+## Error Prevention Patterns
+
+### Defensive Programming
+
+```typescript
+// Type guard usage
+import { isDefined, isArray } from '../utils/typeGuards';
+
+// Before: direct property access
+const count = data.items.length;
+
+// After: defensive access with type guards
+const count = isDefined(data) && isArray(data.items) ? data.items.length : 0;
+```
+
+### Error Boundaries
+
+```typescript
+// Component-level error boundaries
+<ErrorBoundary fallback={<ErrorFallback />}>
+  <ComponentThatMightError />
+</ErrorBoundary>
+
+// Feature-level error boundaries
+<ErrorBoundary>
+  <FeatureModule />
+</ErrorBoundary>
+
+// Route-level error boundaries
+<ErrorBoundary>
+  <Route path="/feature" component={FeatureComponent} />
+</ErrorBoundary>
+```
+
+### Safe Data Access
+
+```typescript
+// Safe data access with utility functions
+import { safeGet } from '../utils/typeGuards';
+
+// Before: unsafe nested access
+const userName = user.profile.details.name;
+
+// After: safe access with default value
+const userName = safeGet(user, 'profile.details.name', 'Unknown User');
+```
+
+### API Error Handling
+
+```typescript
+// Comprehensive API error handling
+const fetchData = async () => {
+  try {
+    const response = await fetch('/api/data');
+    
+    // Handle HTTP errors
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => ({}));
+      throw new Error(`API error: ${response.status} - ${errorBody.message || response.statusText}`);
+    }
+    
+    // Handle unexpected response format
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+      throw new Error('Invalid response format: expected array');
+    }
+    
+    return data;
+  } catch (error) {
+    // Handle network errors
+    if (error.name === 'AbortError') {
+      throw new Error('Request was aborted');
+    }
+    
+    if (error.name === 'TypeError' && error.message.includes('NetworkError')) {
+      throw new Error('Network error - please check your connection');
+    }
+    
+    // Rethrow with additional context
+    console.error('API error details:', error);
+    throw error;
+  }
+};
+```
+
+## Related Documentation
+
+- TypeScript Error Handling Guide
+- React Error Boundary Patterns
+- API Error Handling Best Practices
+- Defensive Programming Techniques
+- Error Tracking and Monitoring 

@@ -1,0 +1,122 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Verify Script Enhancement Message-Command
+
+## File Purpose and Relationship
+
+This file provides detailed documentation for the `verify-script-enhancement` message-command, which is used to verify script enhancement plans in the scripts-workflow. It defines the parameters, execution protocol, and expected outcomes for this command. This file should be consulted when:
+
+- Verifying script enhancement planning is complete
+- Ensuring all required elements are included in the enhancement plan
+- Checking that the enhancement approach is sound
+- Validating that the plan addresses all requirements
+
+This file is part of a related set:
+- **workflows/scripts-workflow/scripts-workflow.md**: Core workflow definition
+- **workflows/scripts-workflow/enhancement-process.md**: Detailed enhancement process
+- **knowledge/scripts/update-script.md**: Documentation for actual script updates
+
+## Message-Command Format
+
+**Correct Format**: `verify-script-enhancement: @knowledge/scripts/verify-script-enhancement.mdc`
+
+The `verify-script-enhancement` message-command must be used with the following parameters:
+
+- **Project-Rule-Parameter**: Required, must be `@knowledge/scripts/verify-script-enhancement.mdc`
+- **Standard-Parameter**: None, this command takes no standard parameters
+
+## Execution Protocol
+
+When the `verify-script-enhancement` message-command is received, 1000xdev must:
+
+1. **Planning Analysis**: Thoroughly analyze all script enhancement planning documents
+2. **Requirements Verification**: Verify that the plan addresses all requirements
+3. **Approach Validation**: Validate that the proposed enhancement approach is sound
+4. **Testing Plan Check**: Ensure a comprehensive testing plan is included
+5. **Documentation Plan Verification**: Verify plans for documentation updates
+6. **Confirmation**: Provide detailed confirmation of verification results
+7. **Issue Identification**: Highlight any issues or concerns with the plan
+
+## Verification Checklist
+
+The verification process includes checking for these critical elements:
+
+### 1. Enhancement Requirements
+
+- [ ] Clear definition of enhancement objectives
+- [ ] Specific identification of scripts to be enhanced
+- [ ] Detailed description of current limitations or issues
+- [ ] Specific requirements for the enhancement
+- [ ] Success criteria for the enhancement
+
+### 2. Impact Analysis
+
+- [ ] Assessment of impact on dependent scripts
+- [ ] Identification of potential breaking changes
+- [ ] Plan for maintaining backward compatibility
+- [ ] Analysis of performance implications
+
+### 3. Implementation Approach
+
+- [ ] Clear implementation strategy
+- [ ] Step-by-step enhancement plan
+- [ ] Code modification details
+- [ ] Error handling approach
+- [ ] Appropriate use of PowerShell best practices
+
+### 4. Testing Strategy
+
+- [ ] Comprehensive testing plan
+- [ ] Test cases for new functionality
+- [ ] Regression testing approach
+- [ ] Plan for verifying backward compatibility
+- [ ] Performance testing if applicable
+
+### 5. Documentation Updates
+
+- [ ] Plan for updating in-script documentation
+- [ ] Strategy for updating external documentation
+- [ ] Examples of new or changed functionality
+- [ ] Instructions for users of the enhanced script
+
+## Implementation Effects
+
+The `verify-script-enhancement` command produces the following implementation effects:
+
+1. **Verification Report**: Produces a detailed verification report on the enhancement plan
+2. **Issue Identification**: Identifies any gaps or issues in the plan
+3. **Improvement Suggestions**: Offers suggestions for improving the plan if needed
+4. **Readiness Assessment**: Provides a clear assessment of readiness for implementation
+
+## Common Errors and Solutions
+
+| Error | Cause | Solution |
+|----|----|----|
+| Incomplete requirements | Missing specific enhancement details | Add detailed requirements with specific objectives |
+| Inadequate testing plan | Testing approach not comprehensive | Develop more thorough testing strategy |
+| Missing impact analysis | Impact on other scripts not assessed | Add analysis of effects on dependent scripts |
+| Unclear implementation steps | Implementation approach too vague | Provide more specific implementation details |
+| Documentation plan missing | No plan for documentation updates | Add specific documentation update strategy |
+
+## Verification
+
+A successful `verify-script-enhancement` execution is verified when:
+
+1. All checklist items have been addressed
+2. Any identified issues have been resolved
+3. The plan is comprehensive and actionable
+4. The approach is sound and follows best practices
+5. Testing strategy is adequate for the enhancement
+
+## Next Steps
+
+After successful verification, the workflow typically proceeds to:
+
+1. Implementation using `update-script: @knowledge/scripts/update-script.mdc`
+2. Testing according to the verified testing plan
+3. Documentation updates as specified in the plan 
+

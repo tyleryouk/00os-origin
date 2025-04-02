@@ -1,0 +1,128 @@
+# Context-First Implementation
+
+## Purpose
+
+This file defines the context-first implementation strategy for the `no-planning-folder` message-command, emphasizing thorough context building before making any code changes. It specifies a rigorous research and analysis process to ensure a deep understanding of the codebase before proceeding with implementation.
+
+## Usage Context
+
+Use this project rule parameter when implementing complex features without a planning folder, especially when working in unfamiliar areas of the codebase or when the implementation touches multiple subsystems:
+
+```
+no-planning-folder: workflow-type @parameters/rules/context-first-implementation.mdc
+
+prompt: [implementation details]
+```
+
+## Implementation Process
+
+The context-first implementation process follows these key steps with an emphasis on thorough context building:
+
+### 1. Enhanced Research Phase
+
+Perform at least 30 tool calls to build a comprehensive understanding of the codebase:
+
+- Conduct at least 8 `codebase_search` operations for semantic understanding
+- Use `list_dir` to map the directory structure comprehensively
+- Read at least 10 key files with `read_file` to understand patterns and relationships
+- Use `grep_search` extensively to identify dependencies and usages
+- Analyze all relevant configuration, test files, and documentation
+
+### 2. Comprehensive Context Building
+
+After the enhanced research phase, create a detailed mental model:
+
+- Document key files, components, functions, and their relationships
+- Create a dependency graph of affected components
+- Identify all patterns that must be followed for consistency
+- Note potential side effects and integration challenges
+- Document data flow through the affected subsystems
+
+### 3. Context-Aware Implementation Strategy
+
+Implement the feature with full context awareness:
+
+- Start with the most isolated components and work outward
+- Follow all identified patterns rigorously
+- Ensure each change integrates seamlessly with existing code
+- Add comprehensive error handling and type safety
+- Maintain consistent naming and code style
+- Update or create tests for all changes
+
+### 4. Thorough Verification Process
+
+After implementation, verify changes against the built context:
+
+- Verify type safety across all modified components
+- Run all relevant tests
+- Verify integration with dependent components
+- Ensure consistent error handling
+- Check for any edge cases identified during context building
+
+## Key Advantages
+
+The context-first implementation approach offers several advantages:
+
+1. **Minimized Risk**: Reduces the chance of introducing bugs or inconsistencies
+2. **Pattern Consistency**: Ensures perfect alignment with existing code patterns
+3. **Holistic Integration**: Creates changes that integrate seamlessly
+4. **Edge Case Handling**: Identifies and addresses potential issues before they occur
+
+## Extended Tool Call Sequence
+
+Follow this comprehensive tool call sequence for context-first implementation:
+
+```typescript
+// 1. Initial Domain Mapping
+codebase_search("domain understanding query")
+list_dir("key directories")
+grep_search("domain-specific patterns")
+
+// 2. Component Analysis
+read_file("key component files")
+codebase_search("component relationships")
+grep_search("component usage patterns")
+
+// 3. Pattern Identification
+read_file("similar implementation files")
+codebase_search("implementation patterns")
+grep_search("pattern occurrences")
+
+// 4. Dependency Analysis
+grep_search("imports and dependencies")
+read_file("configuration files")
+list_dir("test directories")
+
+// 5. Implementation (only after comprehensive context)
+edit_file("target file", "Implement with full context awareness")
+
+// 6. Verification
+run_terminal_cmd("type checking")
+run_terminal_cmd("test execution")
+```
+
+## Common Use Cases
+
+The context-first implementation approach is ideal for:
+
+1. Complex feature additions that touch multiple subsystems
+2. Changes in core, high-impact components
+3. Performance optimizations with potential side effects
+4. Features requiring integration with multiple existing components
+5. Implementations in unfamiliar or complex areas of the codebase
+
+## Related Project Rule Parameters
+
+- `@parameters/rules/direct-implementation.mdc`: Simpler implementation with less context building
+- `@parameters/rules/direct-implementation-continuation.mdc`: Continue direct implementation
+- `@parameters/rules/dev-mode-subsystem.mdc`: Subsystem-specific implementation
+
+## Completion Signal
+
+When the implementation is complete, send:
+
+```
+implementation-complete
+```
+
+This signals that the context-first implementation process is finished and the feature has been successfully implemented with full context awareness. 

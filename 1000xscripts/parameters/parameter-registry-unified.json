@@ -1,0 +1,166 @@
+{
+    "schemaVersion":  "2.0",
+    "lastUpdated":  "2025-04-01T17:59:38Z",
+    "parameters":  {
+                       "workflows":  {
+                                         "front-end":  {
+                                                           "parameters":  {
+                                                                              "template-basic":  {
+                                                                                                     "messageCommand":  "plan-mode",
+                                                                                                     "standardParameters":  [
+                                                                                                                                "workflow-type"
+                                                                                                                            ],
+                                                                                                     "relatedParameters":  [
+
+                                                                                                                           ],
+                                                                                                     "category":  "plan-mode",
+                                                                                                     "description":  "Basic template for front-end workflow planning",
+                                                                                                     "mdcPath":  "parameters/front-end/plan-mode/template-basic.mdc",
+                                                                                                     "usageExamples":  [
+                                                                                                                           "plan-mode: front-end-workflow @alias:front-end:template-basic"
+                                                                                                                       ],
+                                                                                                     "path":  "parameters/front-end/plan-mode/template-basic.md"
+                                                                                                 }
+                                                                          }
+                                                       },
+                                         "rules-workflow":  {
+                                                                "parameters":  {
+                                                                                   "plan-mode-rules-workflow-enhancement":  {
+                                                                                                                                "messageCommand":  "plan-mode",
+                                                                                                                                "standardParameters":  [
+                                                                                                                                                           "workflow-type"
+                                                                                                                                                       ],
+                                                                                                                                "relatedParameters":  [
+                                                                                                                                                          "dev-mode-rules-workflow-enhancement"
+                                                                                                                                                      ],
+                                                                                                                                "category":  "plan-mode",
+                                                                                                                                "description":  "Specialized planning for enhancing rules-workflow documentation",
+                                                                                                                                "mdcPath":  "parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.mdc",
+                                                                                                                                "usageExamples":  [
+                                                                                                                                                      "plan-mode: rules-workflow @parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.mdc"
+                                                                                                                                                  ],
+                                                                                                                                "path":  "parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.md"
+                                                                                                                            },
+                                                                                   "dev-mode-rules-workflow-enhancement":  {
+                                                                                                                               "messageCommand":  "dev-mode",
+                                                                                                                               "standardParameters":  [
+                                                                                                                                                          "workflow-type"
+                                                                                                                                                      ],
+                                                                                                                               "relatedParameters":  [
+                                                                                                                                                         "plan-mode-rules-workflow-enhancement"
+                                                                                                                                                     ],
+                                                                                                                               "category":  "dev-mode",
+                                                                                                                               "description":  "Implementation of rules-workflow enhancements",
+                                                                                                                               "mdcPath":  "parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.mdc",
+                                                                                                                               "usageExamples":  [
+                                                                                                                                                     "dev-mode: rules-workflow @parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.mdc"
+                                                                                                                                                 ],
+                                                                                                                               "path":  "parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.md"
+                                                                                                                           },
+                                                                                   "template-advanced":  {
+                                                                                                             "messageCommand":  "plan-mode",
+                                                                                                             "standardParameters":  [
+                                                                                                                                        "workflow-type"
+                                                                                                                                    ],
+                                                                                                             "relatedParameters":  [
+                                                                                                                                       "template-basic"
+                                                                                                                                   ],
+                                                                                                             "category":  "plan-mode",
+                                                                                                             "description":  "Advanced template with detailed sections",
+                                                                                                             "mdcPath":  "parameters/rules/plan-mode/template-advanced.mdc",
+                                                                                                             "usageExamples":  [
+                                                                                                                                   "plan-mode: rules-workflow @parameters/rules/plan-mode/template-advanced.mdc",
+                                                                                                                                   "create-template: rules-workflow @parameters/rules/plan-mode/template-advanced.mdc"
+                                                                                                                               ],
+                                                                                                             "path":  "parameters/rules/plan-mode/template-advanced.md"
+                                                                                                         },
+                                                                                   "template-basic":  {
+                                                                                                          "messageCommand":  "plan-mode",
+                                                                                                          "standardParameters":  [
+                                                                                                                                     "workflow-type"
+                                                                                                                                 ],
+                                                                                                          "relatedParameters":  [
+                                                                                                                                    "template-advanced"
+                                                                                                                                ],
+                                                                                                          "category":  "plan-mode",
+                                                                                                          "description":  "Basic template for simple requirements",
+                                                                                                          "mdcPath":  "parameters/rules/plan-mode/template-basic.mdc",
+                                                                                                          "usageExamples":  [
+                                                                                                                                "plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.mdc",
+                                                                                                                                "create-template: rules-workflow @parameters/rules/plan-mode/template-basic.mdc"
+                                                                                                                            ],
+                                                                                                          "path":  "parameters/rules/plan-mode/template-basic.md"
+                                                                                                      }
+                                                                               }
+                                                            },
+                                         "rules":  {
+                                                       "parameters":  {
+                                                                          "plan-mode-rules-workflow-enhancement":  {
+                                                                                                                       "messageCommand":  "plan-mode",
+                                                                                                                       "standardParameters":  [
+                                                                                                                                                  "workflow-type"
+                                                                                                                                              ],
+                                                                                                                       "relatedParameters":  [
+                                                                                                                                                 "dev-mode-rules-workflow-enhancement"
+                                                                                                                                             ],
+                                                                                                                       "category":  "plan-mode",
+                                                                                                                       "description":  "Specialized planning for enhancing rules-workflow documentation",
+                                                                                                                       "mdcPath":  "parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.mdc",
+                                                                                                                       "usageExamples":  [
+                                                                                                                                             "plan-mode: rules-workflow @alias:rules:plan-mode-rules-workflow-enhancement"
+                                                                                                                                         ],
+                                                                                                                       "path":  "parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.md"
+                                                                                                                   },
+                                                                          "dev-mode-rules-workflow-enhancement":  {
+                                                                                                                      "messageCommand":  "dev-mode",
+                                                                                                                      "standardParameters":  [
+                                                                                                                                                 "workflow-type"
+                                                                                                                                             ],
+                                                                                                                      "relatedParameters":  [
+                                                                                                                                                "plan-mode-rules-workflow-enhancement"
+                                                                                                                                            ],
+                                                                                                                      "category":  "dev-mode",
+                                                                                                                      "description":  "Implementation of rules-workflow enhancements",
+                                                                                                                      "mdcPath":  "parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.mdc",
+                                                                                                                      "usageExamples":  [
+                                                                                                                                            "dev-mode: rules-workflow @alias:rules:dev-mode-rules-workflow-enhancement"
+                                                                                                                                        ],
+                                                                                                                      "path":  "parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.md"
+                                                                                                                  },
+                                                                          "template-advanced":  {
+                                                                                                    "messageCommand":  "plan-mode",
+                                                                                                    "standardParameters":  [
+                                                                                                                               "workflow-type"
+                                                                                                                           ],
+                                                                                                    "relatedParameters":  [
+                                                                                                                              "template-basic"
+                                                                                                                          ],
+                                                                                                    "category":  "plan-mode",
+                                                                                                    "description":  "Advanced template for rules workflow planning",
+                                                                                                    "mdcPath":  "parameters/rules/plan-mode/template-advanced.mdc",
+                                                                                                    "usageExamples":  [
+                                                                                                                          "plan-mode: rules-workflow @alias:rules:template-advanced"
+                                                                                                                      ],
+                                                                                                    "path":  "parameters/rules/plan-mode/template-advanced.md"
+                                                                                                },
+                                                                          "template-basic":  {
+                                                                                                 "messageCommand":  "plan-mode",
+                                                                                                 "standardParameters":  [
+                                                                                                                            "workflow-type"
+                                                                                                                        ],
+                                                                                                 "relatedParameters":  [
+                                                                                                                           "template-advanced"
+                                                                                                                       ],
+                                                                                                 "category":  "plan-mode",
+                                                                                                 "description":  "Basic template for rules workflow planning",
+                                                                                                 "mdcPath":  "parameters/rules/plan-mode/template-basic.mdc",
+                                                                                                 "usageExamples":  [
+                                                                                                                       "plan-mode: rules-workflow @alias:rules:template-basic"
+                                                                                                                   ],
+                                                                                                 "path":  "parameters/rules/plan-mode/template-basic.md"
+                                                                                             }
+                                                                      }
+                                                   }
+                                     }
+                   }
+}

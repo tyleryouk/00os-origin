@@ -1,0 +1,62 @@
+# Template: Advanced Requirements Structure
+
+## File Purpose
+This template provides a comprehensive structure for Tyler to write requirements for complex enhancements. It focuses solely on giving structure to the initial requirements.md file.
+
+## Usage
+```
+create-template: rules-workflow @template-advanced.mdc
+```
+
+## Requirements Template
+
+When this template is applied, it will create the following structure in requirements.md:
+
+```markdown
+# [Feature Name] Requirements
+
+## Objective
+[What is the goal of this enhancement?]
+
+## Success Criteria
+[What specific, measurable outcomes will indicate success?]
+
+## Functional Requirements
+[What functional changes or new capabilities are needed?]
+
+## Technical Requirements
+[What specific technical changes or implementations are needed?]
+
+## Constraints
+[What limitations, dependencies, or requirements must be considered?]
+
+## Stakeholders
+[Who are the key stakeholders and what are their interests?]
+
+## Related Enhancements
+[What other enhancements or systems are affected?]
+
+## Risk Considerations
+[What potential risks need to be addressed?]
+```
+
+## Template Application
+
+When the create-template command is received, I will:
+1. Create or update requirements.md with this template
+2. Leave all sections empty for Tyler to fill in
+3. Wait for Tyler to complete the requirements before proceeding with any planning
+
+## Next Steps
+1. Tyler fills in the requirements template with enhancement details
+2. Once requirements are complete, Tyler initiates planning with:
+   ```
+   plan-mode: rules-workflow @template-advanced.mdc
+   ```
+
+## Use Cases
+- Complex system enhancements
+- Cross-system changes
+- Major feature additions
+- High-risk modifications
+- Multi-phase implementations

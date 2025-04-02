@@ -1,0 +1,74 @@
+# Scripts Workflow Reference Guide
+
+## Purpose and Usage
+
+This reference guide maps message-commands to their corresponding project-rule-parameters for the scripts workflow. Use this guide to:
+
+1. Find the correct project-rule-parameter for a specific message-command
+2. Understand the purpose of each specialized workflow tool
+3. Access detailed implementation guidance through project-rule-parameters
+
+## Message-Command to Project-Rule-Parameter Mapping
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|-----------------|------------------------|---------|
+| `verify-script-enhancement` | @workflows/scripts-workflow/script-verification.mdc | Verify script enhancement plans |
+| `update-script` | @workflows/scripts-workflow/script-update.mdc | Update existing scripts following best practices |
+| `create-script` | @workflows/scripts-workflow/script-creation.mdc | Create new scripts following standards |
+| `sync-verification` | @workflows/scripts-workflow/sync-verification.mdc | Verify synchronization between brain-files and cursor-rules |
+| `script-test` | @workflows/scripts-workflow/script-testing.mdc | Test script functionality with different scenarios |
+
+## Usage Examples
+
+### Script Verification Workflow
+
+```
+verify-script-enhancement: 1000xscripts/Sync-CognitiveArchitecture.ps1 @workflows/scripts-workflow/script-verification.mdc
+```
+
+This message-command verifies the enhancement plan for the Sync-CognitiveArchitecture.ps1 script using the guidance in script-verification.mdc.
+
+### Script Update Workflow
+
+```
+update-script: 1000xscripts/Fix-PathMatchingAndSync.ps1 @workflows/scripts-workflow/script-update.mdc
+```
+
+This message-command provides guidance for updating the Fix-PathMatchingAndSync.ps1 script using the patterns in script-update.mdc.
+
+### Script Creation Workflow
+
+```
+create-script: 1000xscripts/maintenance-scripts/Verify-RuleConsistency.ps1 @workflows/scripts-workflow/script-creation.mdc
+```
+
+This message-command provides guidance for creating a new rule consistency verification script using the patterns in script-creation.mdc.
+
+## Combined Tools and Project-Rule-Parameters
+
+Certain complex workflows benefit from combining tools from different sources:
+
+### Scripts with PowerShell Tools
+
+```
+create-script: 1000xscripts/utility-scripts/Convert-BrainFilesToRules.ps1 @workflows/scripts-workflow/script-creation.mdc @parameters/tool/powershell-patterns.mdc
+```
+
+This combines script creation patterns with PowerShell-specific patterns.
+
+### Scripts with Logging Tools
+
+```
+update-script: 1000xscripts/Sync-FrontmatterAndContent.ps1 @workflows/scripts-workflow/script-update.mdc @parameters/tool/logging-patterns.mdc
+```
+
+This combines script update patterns with logging implementation techniques.
+
+## File Structure Requirements
+
+All 1000xbrain files referenced as project-rule-parameters MUST follow these structure requirements:
+
+1. **No Frontmatter**: Files should NEVER contain frontmatter (the --- enclosed metadata sections)
+2. **Direct Content**: All markdown content should begin directly with headers or text
+3. **Standard Markdown**: Use only standard markdown formatting
+4. **Header First**: Typically start with a level 1 header (# Title) followed by content 

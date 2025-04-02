@@ -1,0 +1,666 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Plan Mode: Front-End UI Enhancement Template
+
+## File Purpose and Relationship
+
+This file provides a specialized planning template for UI/UX enhancements in the PolygonExpress project. It is designed for planning UI improvements with a focus on theme integration, component styling, and consistent user experience.
+
+This file complements:
+- **front-end-workflow-reference.md**: Core front-end development workflow
+- **plan-mode-front-end-basic.md**: Basic planning template
+- **component-patterns.md**: Component implementation patterns
+
+## Usage as Project-Rule-Parameter
+
+This file is a Manual rule type and should be referenced as a project-rule-parameter in the plan-mode message-command:
+
+```
+plan-mode: front-end-workflow @parameters/front-end/plan-mode/plan-mode-ui-enhancement.mdc
+```
+
+## UI Enhancement Template Structure
+
+When this template is applied, the planning folder will be structured as follows:
+
+```
+planning/
+  ├── requirements.md (UI/UX requirements)
+  ├── images/ (Screenshot folder - provided by Tyler)
+  │   ├── current-ui.png (Example: Current UI screenshots)
+  │   ├── reference-designs.png (Example: Reference designs from other sites)
+  │   └── mockups.png (Example: Design mockups or wireframes)
+  ├── context-ui-analysis.md (Existing UI analysis)
+  ├── context-theme-integration.md (Theme system analysis)
+  ├── context-component-styling.md (Component styling analysis)
+  ├── implementation-ui-enhancement.md (UI implementation approach)
+  ├── implementation-responsive-design.md (Responsive implementation details)
+  ├── test-cheatsheet.md (Visual testing scenarios)
+  └── README.md (Overview)
+```
+
+## Special Image-Based Planning Process
+
+This UI enhancement planning mode is specialized for visual analysis and design implementation. Tyler Youk will start the process by:
+
+1. Creating and populating the initial `requirements.md` file with specific UI/UX objectives
+2. Providing screenshots and reference images in the `images/` folder (or a subfolder structure of his preference)
+3. Describing what each image represents in the `requirements.md` file
+
+The images will typically include:
+- Screenshots of the current locally hosted front-end application UI
+- Reference designs from other websites that should be emulated
+- Design mockups or wireframes for the enhanced UI
+- UI component examples that showcase desired styling
+
+Using these visual references, you will be able to conduct a more accurate analysis of:
+- Current UI structure and styling
+- Design patterns and components
+- Color schemes and typography
+- Layout and responsive design patterns
+- Interactive element styling (buttons, forms, etc.)
+- Visual consistency across the application
+
+This image-based approach enables more precise planning and implementation of UI enhancements by providing concrete visual context beyond text descriptions alone.
+
+## UI Enhancement Planning Process
+
+### 1. UI/UX Requirements Analysis
+
+The requirements.md file should document:
+
+- Visual design requirements
+- User interaction enhancements
+- Accessibility improvements
+- Responsive design requirements
+- Animation requirements
+- Brand alignment requirements
+- Theme consistency requirements
+- References to specific images provided in the images/ folder
+
+```markdown
+# UI/UX Requirements: [Feature/Component Name]
+
+## Objective
+[Clear statement of UI/UX enhancement purpose and user experience goals]
+
+## Image References
+- **current-ui-1.png**: Shows the current navigation bar implementation
+- **reference-design-1.png**: Example of desired navigation bar styling from [website]
+- **mockup-1.png**: Wireframe of proposed navigation bar enhancement
+
+## Visual Design Requirements
+1. [Visual requirement 1]
+2. [Visual requirement 2]
+3. [Visual requirement 3]
+
+## User Interaction Requirements
+1. [Interaction requirement 1]
+2. [Interaction requirement 2]
+
+## Accessibility Requirements
+1. [Accessibility requirement 1]
+2. [Accessibility requirement 2]
+
+## Responsive Design Requirements
+1. [Mobile-specific requirement]
+2. [Tablet-specific requirement]
+3. [Desktop-specific requirement]
+
+## Animation Requirements
+1. [Animation requirement 1]
+2. [Animation requirement 2]
+
+## Brand Alignment Requirements
+1. [Brand alignment requirement 1]
+2. [Brand alignment requirement 2]
+
+## Theme Integration Requirements
+1. [Theme integration requirement 1]
+2. [Theme integration requirement 2]
+
+## Success Criteria
+- [Visual criterion 1]
+- [Interaction criterion 2]
+- [Accessibility criterion 3]
+- [Responsive design criterion 4]
+```
+
+### 2. Existing UI Analysis
+
+The context-ui-analysis.md file should document:
+
+- Current UI component structure
+- UI component hierarchy
+- Design inconsistencies
+- Visual patterns
+- User flow analysis
+- UI performance considerations
+- Detailed analysis of the provided UI screenshots
+
+```markdown
+# UI Analysis: [Feature/Component Name]
+
+## Image-Based Analysis
+- **current-ui-1.png**: [Detailed analysis of current implementation, noting styling patterns, structure, and issues]
+- **reference-design-1.png**: [Analysis of reference design elements that should be incorporated]
+- **mockup-1.png**: [Analysis of how the mockup improves upon the current design]
+
+## Current UI Structure
+[Description of the current UI structure and components]
+
+## UI Component Hierarchy
+```
+ParentComponent
+├── [Component] (Target component)
+│   ├── ChildComponent1
+│   └── ChildComponent2
+└── SiblingComponent
+```
+
+## Design Pattern Analysis
+- [Pattern 1]: [Usage and consistency analysis]
+- [Pattern 2]: [Usage and consistency analysis]
+
+## Visual Inconsistencies
+- [Inconsistency 1]: [Description and impact]
+- [Inconsistency 2]: [Description and impact]
+
+## User Flow Analysis
+1. [Flow step 1]: [Current UI experience]
+2. [Flow step 2]: [Current UI experience]
+3. [Flow step 3]: [Current UI experience]
+
+## Performance Considerations
+- [Performance issue 1]: [Description and impact]
+- [Performance issue 2]: [Description and impact]
+
+## Screenshot Analysis
+[Include references to screenshots in the planning folder]
+- Screenshot 1: [Description of current UI state]
+- Screenshot 2: [Description of current UI state]
+```
+
+### 3. Theme System Analysis
+
+The context-theme-integration.md file should document:
+
+- Current theme structure
+- Theme variables and usage
+- Color palette analysis
+- Typography system
+- Spacing system
+- Component theming patterns
+- Dark mode considerations
+- Visual analysis based on provided screenshots
+
+```markdown
+# Theme System Analysis
+
+## Visual Theme Analysis
+- **current-ui-header.png**: [Analysis of color usage, typography, and spacing in the header]
+- **current-ui-content.png**: [Analysis of the content area theme implementation]
+- **reference-design-theme.png**: [Analysis of theme elements from reference design]
+
+## Theme Structure
+```typescript
+// Current theme structure
+const theme = {
+  colors: {
+    // Color definitions
+    primary: '#...',
+    secondary: '#...',
+    // Additional colors
+  },
+  typography: {
+    // Typography definitions
+    fontFamily: '...',
+    fontSize: {
+      // Font size scale
+    },
+    fontWeight: {
+      // Font weight scale
+    },
+  },
+  spacing: {
+    // Spacing scale
+  },
+  breakpoints: {
+    // Responsive breakpoints
+  },
+  // Additional theme properties
+};
+```
+
+## Color Palette Analysis
+- Primary colors: [Usage and consistency analysis]
+- Secondary colors: [Usage and consistency analysis]
+- Accent colors: [Usage and consistency analysis]
+- Semantic colors: [Usage and consistency analysis]
+- Background colors: [Usage and consistency analysis]
+- Text colors: [Usage and consistency analysis]
+
+## Typography System Analysis
+- Font families: [Usage and consistency analysis]
+- Font sizes: [Usage and consistency analysis]
+- Font weights: [Usage and consistency analysis]
+- Line heights: [Usage and consistency analysis]
+- Text styles: [Usage and consistency analysis]
+
+## Spacing System Analysis
+- Spacing scale: [Usage and consistency analysis]
+- Margins: [Usage and consistency analysis]
+- Paddings: [Usage and consistency analysis]
+- Gaps: [Usage and consistency analysis]
+
+## Component Theming Patterns
+- [Component 1]: [Theming approach]
+- [Component 2]: [Theming approach]
+- [Component 3]: [Theming approach]
+
+## Dark Mode Implementation
+- [Implementation approach]
+- [Key considerations]
+- [Current limitations]
+```
+
+### 4. Component Styling Analysis
+
+The context-component-styling.md file should document:
+
+- Styling methodology
+- CSS-in-JS implementation
+- Style import patterns
+- Common style patterns
+- Style inheritance
+- Style overrides
+- Responsive styling approach
+- Visual analysis of component styling from provided screenshots
+
+```markdown
+# Component Styling Analysis: [Component Name]
+
+## Visual Component Analysis
+- **current-component-1.png**: [Analysis of current component styling and structure]
+- **reference-component-1.png**: [Analysis of reference component styling to adopt]
+- **mockup-component-1.png**: [Analysis of proposed component styling changes]
+
+## Styling Methodology
+[Description of the styling approach used in the project - CSS-in-JS, module CSS, etc.]
+
+## Style Definition Pattern
+```typescript
+// Style definition pattern
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // Base styles
+  },
+  container: {
+    // Container styles
+  },
+  // Additional style definitions
+}));
+
+// Usage pattern
+const Component = () => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <div className={classes.container}>
+        {/* Component content */}
+      </div>
+    </div>
+  );
+};
+```
+
+## Style Import Analysis
+```typescript
+// Common import pattern
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Button } from '@material-ui/core';
+import clsx from 'clsx';
+```
+
+## Common Style Patterns
+- Layout patterns: [Description and usage]
+- Typography patterns: [Description and usage]
+- Color usage patterns: [Description and usage]
+- Animation patterns: [Description and usage]
+
+## Style Inheritance
+- [Parent component]: [Style inheritance approach]
+- [Child component]: [Style inheritance approach]
+
+## Style Overrides
+- [Override pattern 1]: [Description and usage]
+- [Override pattern 2]: [Description and usage]
+
+## Responsive Styling
+- [Breakpoint approach]: [Description and implementation]
+- [Media query usage]: [Description and implementation]
+- [Responsive utility usage]: [Description and implementation]
+```
+
+### 5. UI Enhancement Implementation Planning
+
+The implementation-ui-enhancement.md file should document:
+
+- Styling approach
+- Theme integration
+- Component modifications
+- Style improvements
+- Animation implementation
+- Accessibility enhancements
+- Implementation approach based on provided screenshots and mockups
+
+```markdown
+# UI Enhancement Implementation: [Component Name]
+
+## Visual Implementation Approach
+- **current-ui-1.png** → **mockup-1.png**: [Specific styling changes needed to transform current UI to match mockup]
+- **reference-design-1.png**: [Specific elements to incorporate from reference design]
+
+## Styling Approach
+[Description of the styling approach for this enhancement]
+
+## Component Modifications
+```tsx
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Button } from '@material-ui/core';
+import clsx from 'clsx';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing(2),
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: theme.palette.background.paper,
+    // Enhanced styling
+    boxShadow: theme.shadows[2],
+    transition: theme.transitions.create(['box-shadow', 'transform'], {
+      duration: theme.transitions.duration.shorter,
+    }),
+    '&:hover': {
+      boxShadow: theme.shadows[4],
+      transform: 'translateY(-2px)',
+    },
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: theme.spacing(2),
+  },
+  title: {
+    fontWeight: theme.typography.fontWeightMedium,
+    color: theme.palette.text.primary,
+  },
+  content: {
+    // Content styling
+  },
+  actions: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: theme.spacing(2),
+  },
+  // Additional style definitions
+}));
+
+export const EnhancedComponent: React.FC<Props> = (props) => {
+  const classes = useStyles();
+  const { title, children, onAction } = props;
+  
+  return (
+    <div className={classes.root}>
+      <div className={classes.header}>
+        <Typography variant="h6" className={classes.title}>
+          {title}
+        </Typography>
+      </div>
+      <div className={classes.content}>
+        {children}
+      </div>
+      <div className={classes.actions}>
+        <Button 
+          variant="contained" 
+          color="primary"
+          onClick={onAction}
+        >
+          Action
+        </Button>
+      </div>
+    </div>
+  );
+};
+```
+
+## Theme Integration
+- Theme variables: [Usage details]
+- Color application: [Implementation details]
+- Typography application: [Implementation details]
+- Spacing application: [Implementation details]
+
+## Animation Implementation
+- Transition effects: [Implementation details]
+- Interactive states: [Implementation details]
+- Loading states: [Implementation details]
+
+## Accessibility Enhancements
+- Keyboard navigation: [Implementation details]
+- Screen reader support: [Implementation details]
+- Color contrast improvements: [Implementation details]
+- Focus states: [Implementation details]
+```
+
+### 6. Responsive Design Implementation Planning
+
+The implementation-responsive-design.md file should document:
+
+- Responsive layout approach
+- Breakpoint implementation
+- Mobile-specific optimizations
+- Tablet-specific optimizations
+- Desktop-specific optimizations
+- Responsive testing approach
+- Mobile/tablet/desktop considerations based on provided UI screenshots
+
+```markdown
+# Responsive Design Implementation: [Component Name]
+
+## Visual Responsive Analysis
+- **mobile-current-ui-1.png** → **mobile-mockup-1.png**: [Mobile-specific styling changes]
+- **tablet-current-ui-1.png** → **tablet-mockup-1.png**: [Tablet-specific styling changes]
+- **desktop-current-ui-1.png** → **desktop-mockup-1.png**: [Desktop-specific styling changes]
+
+## Responsive Layout Approach
+[Description of the responsive approach for this component]
+
+## Breakpoint Implementation
+```tsx
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing(2),
+    
+    // Responsive styling
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(3),
+    },
+    
+    [theme.breakpoints.up('lg')]: {
+      maxWidth: 1200,
+      margin: '0 auto',
+    },
+  },
+  
+  content: {
+    width: '100%',
+    
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
+    
+    [theme.breakpoints.up('md')]: {
+      width: '60%',
+    },
+  },
+  
+  sidebar: {
+    width: '100%',
+    marginTop: theme.spacing(2),
+    
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+      marginTop: 0,
+      marginLeft: theme.spacing(2),
+    },
+    
+    [theme.breakpoints.up('md')]: {
+      width: '40%',
+    },
+  },
+}));
+```
+
+## Mobile Optimization (< 600px)
+- Layout changes: [Implementation details]
+- Touch targets: [Implementation details]
+- Content prioritization: [Implementation details]
+- Performance optimizations: [Implementation details]
+
+## Tablet Optimization (600px - 960px)
+- Layout changes: [Implementation details]
+- Content organization: [Implementation details]
+- Interactive elements: [Implementation details]
+
+## Desktop Optimization (> 960px)
+- Layout changes: [Implementation details]
+- Advanced features: [Implementation details]
+- Content density: [Implementation details]
+
+## Responsive Testing
+- Viewport testing: [Testing approach]
+- Device testing: [Testing approach]
+- Content behavior testing: [Testing approach]
+```
+
+### 7. Visual Testing Cheatsheet
+
+The test-cheatsheet.md file should document:
+
+- Visual appearance tests
+- Responsive behavior tests
+- Animation tests
+- Accessibility tests
+- Browser compatibility tests
+- User interaction tests
+- Theme consistency tests
+- Visual appearance comparison tests with provided screenshots
+
+```markdown
+# Visual Testing Cheatsheet: [Component Name]
+
+## Visual Comparison Tests
+- **Current UI vs Enhanced UI**: Compare current-ui-1.png with the implemented UI
+- **Enhanced UI vs Mockup**: Verify implementation matches mockup-1.png
+- **Reference Design Elements**: Verify reference elements from reference-design-1.png were incorporated
+
+## Visual Appearance Tests
+- [Visual test 1]: [Steps and expected outcome]
+- [Visual test 2]: [Steps and expected outcome]
+
+## Responsive Behavior Tests
+- [Mobile test]: [Steps and expected outcome]
+- [Tablet test]: [Steps and expected outcome]
+- [Desktop test]: [Steps and expected outcome]
+
+## Animation Tests
+- [Animation test 1]: [Steps and expected outcome]
+- [Animation test 2]: [Steps and expected outcome]
+
+## Accessibility Tests
+- [Keyboard navigation test]: [Steps and expected outcome]
+- [Screen reader test]: [Steps and expected outcome]
+- [Color contrast test]: [Steps and expected outcome]
+
+## Browser Compatibility Tests
+- [Chrome test]: [Steps and expected outcome]
+- [Firefox test]: [Steps and expected outcome]
+- [Safari test]: [Steps and expected outcome]
+- [Edge test]: [Steps and expected outcome]
+
+## User Interaction Tests
+- [Hover state test]: [Steps and expected outcome]
+- [Active state test]: [Steps and expected outcome]
+- [Focus state test]: [Steps and expected outcome]
+
+## Theme Consistency Tests
+- [Light theme test]: [Steps and expected outcome]
+- [Dark theme test]: [Steps and expected outcome]
+```
+
+## Implementation Strategy
+
+### UI Enhancement Approach
+
+1. **Visual Research**:
+   - Analyze provided screenshots of existing UI components
+   - Study reference designs and mockups from other websites
+   - Identify theme variables and patterns from visual assets
+   - Understand brand guidelines and visual language
+
+2. **Prototype Planning**:
+   - Analyze differences between current UI and desired outcome
+   - Plan animation and interaction enhancements based on references
+   - Define responsive behavior with visual breakpoints
+
+3. **Implementation Strategy**:
+   - Apply theme-consistent styling matching reference designs
+   - Enhance component with proper styling to match mockups
+   - Implement responsive behavior for all device sizes
+   - Add animations and transitions as shown in references
+   - Ensure accessibility compliance
+
+4. **Testing and Refinement**:
+   - Test across browser and device sizes
+   - Compare implementation visually with provided screenshots
+   - Validate against accessibility guidelines
+   - Refine based on visual consistency
+
+### Key Styling Principles
+
+1. **Theme-First Approach**: Always use theme variables for colors, spacing, typography
+2. **Responsive by Default**: Design for mobile first, then enhance for larger screens
+3. **Accessibility Compliant**: Ensure proper contrast, focus states, and keyboard navigation
+4. **Performance Optimized**: Minimize style recalculations and layout shifts
+5. **Animation with Purpose**: Use animations to enhance usability, not for decoration
+6. **Visual Reference Fidelity**: Ensure implementation matches provided visual references
+
+## Planning Completion
+
+When planning is complete, signal completion with:
+
+```
+📋 1000xdev [front-end-workflow]
+
+planning-document-complete
+```
+
+## Implementation Transition
+
+After planning completion, transition to implementation with:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-ui-enhancement.mdc
+``` 

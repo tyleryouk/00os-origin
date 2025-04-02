@@ -1,0 +1,547 @@
+---
+description: 
+globs: front-end/**
+alwaysApply: false
+---
+# UX Situation Testing Guide
+
+## Overview and Purpose
+
+This Project Rule defines the UX situation testing framework for the PolygonExpress front-end development. It outlines a systematic approach for requesting and implementing user experience testing scenarios to validate front-end functionality.
+
+This file complements:
+- **front-end-workflow-reference.md**: Core front-end development workflow
+- **log-based-process.md**: Log-based debugging workflow
+- **component-patterns.md**: Component design patterns
+
+## Role Separation and Terminal Command Autonomy
+
+### Clear Responsibility Boundaries
+
+**⚠️ CRITICAL REQUIREMENT**: In the front-end workflow, roles are strictly separated:
+
+1. **1000xdev Responsibilities**:
+   - Running ALL terminal commands autonomously
+   - Analyzing logs and code
+   - Implementing all code changes
+   - Requesting UX scenarios when needed
+   - Analyzing UX testing results
+
+2. **Tyler's Responsibilities**:
+   - Running the front-end and back-end applications (already running during workflow)
+   - Executing UX scenarios ONLY when requested by 1000xdev
+   - Providing UI screenshots when needed for UI enhancement planning
+
+### Prohibited Terminal Commands
+
+1000xdev must NEVER run these commands:
+```
+npm run dev
+yarn dev
+npm start
+cd front-end && npm run dev
+# Any command that starts development servers
+```
+
+**Rationale**: Tyler will already have both front-end and back-end applications running during workflow processes. Running these commands would interfere with the existing development environment.
+
+### UX Situation Testing Flow
+
+1. 1000xdev implements code and adds strategic logging
+2. 1000xdev requests a specific UX testing scenario using `recreate-ux-situation`
+3. Tyler executes the requested scenario
+4. 1000xdev autonomously runs terminal commands to analyze logs
+5. 1000xdev implements any necessary changes
+6. This cycle continues until the component functions correctly
+
+## 1. UX Situation Testing Philosophy
+
+The UX situation testing approach is built on these principles:
+
+1. **User-Centric Validation**: Testing focuses on the user's perspective and experience
+2. **Scenario-Based Testing**: Tests are organized around realistic user scenarios
+3. **Evidence-Based Validation**: Verification is based on observable behavior through logs
+4. **Incremental Complexity**: Testing progresses from simple to complex interactions
+5. **Cross-Component Integration**: Tests validate component interactions within flows
+6. **Autonomous Log Analysis**: 1000xdev autonomously analyzes logs from UX testing
+
+## 2. UX Situation Types
+
+UX situations are categorized by complexity and scope:
+
+### 2.1 Basic Interactions
+
+Simple, isolated component interactions:
+- Button clicks
+- Form input
+- Toggle operations
+- Dropdown selection
+- Modal interactions
+
+### 2.2 Form Workflows
+
+Complete form submission sequences:
+- Form validation
+- Multi-step forms
+- Form error handling
+- Form submission and response
+- Form data persistence
+
+### 2.3 Data Operations
+
+Data-centric user workflows:
+- Data fetching and display
+- Data filtering and sorting
+- Data creation and editing
+- Data deletion and confirmation
+- Pagination and infinite scrolling
+
+### 2.4 Authentication Flows
+
+User authentication sequences:
+- Login
+- Registration
+- Password recovery
+- Session management
+- Authentication error handling
+
+### 2.5 Transaction Flows
+
+Financial transaction sequences:
+- Wallet connection
+- Token approval
+- Transaction signing
+- Transaction confirmation
+- Transaction history viewing
+
+## 3. UX Situation Structure
+
+Each UX situation request should define:
+
+### 3.1 Scenario Definition
+
+- **Title**: Clear, descriptive name of the scenario
+- **User Goal**: What the user is trying to accomplish
+- **Starting State**: Required application state before testing
+- **Components Involved**: List of components in the flow
+- **Success Criteria**: Observable outcomes that indicate success
+
+### 3.2 Step Sequence
+
+Detailed steps that compose the scenario:
+1. **Initial Action**: The first user action that initiates the flow
+2. **Intermediate Steps**: All steps between initiation and completion
+3. **Decision Points**: Points where user choices affect the flow
+4. **Completion Action**: The final action that completes the flow
+5. **Verification Points**: Observable checkpoints within the flow
+
+### 3.3 Expected Logs
+
+For each step, define expected log entries:
+- Log level and category
+- Expected message patterns
+- Expected data properties
+- Timing requirements (if applicable)
+- State transitions
+
+## 4. Using the `recreate-ux-situation` Instruction
+
+The `recreate-ux-situation` instruction is used by 1000xdev to request Tyler to perform a specific UX testing scenario:
+
+```
+recreate-ux-situation: "Please test the wallet connection flow by clicking the Connect Wallet button in the header, selecting MetaMask, and approving the connection in the MetaMask popup."
+```
+
+Key features of this instruction:
+- Clear, specific steps for Tyler to follow
+- Focused on a single UX scenario
+- Includes expected interactions and outcomes
+- Provides enough detail for accurate testing
+
+### Autonomous Log Analysis After UX Testing
+
+After Tyler executes the requested UX scenario, 1000xdev will autonomously:
+
+```typescript
+// Check logs produced during UX testing
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 100", false, true)
+
+// Search for specific component logs
+grep_search("\\[WalletConnect\\]", false, "logs-main/front-end/*.log")
+
+// Look for errors or warnings
+grep_search("ERROR|WARN|Exception|failed", false, "logs-main/front-end/*.log")
+```
+
+## 5. Implementation Process
+
+When requesting a UX situation test, follow this process:
+
+### 5.1 Preparation Phase
+
+1. **Analyze Requirements**: Understand the component behavior to test
+2. **Implement Strategic Logging**: Add logging to track critical paths
+3. **Formulate UX Scenario**: Create a clear, executable scenario
+4. **Request Execution**: Ask Tyler to perform the scenario
+
+### 5.2 Execution Phase
+
+1. **Tyler Executes Scenario**: Tyler follows the requested steps
+2. **1000xdev Analyzes Logs**: Autonomously run commands to analyze logs
+3. **Identify Issues**: Determine any problems from log analysis
+4. **Implement Fixes**: Make necessary code changes
+5. **Request Verification**: Ask Tyler to test again if needed
+
+### 5.3 Verification Phase
+
+1. **Autonomous Log Analysis**: Run terminal commands to examine logs
+2. **Verify State Changes**: Confirm state transitions occurred
+3. **Validate Success Criteria**: Check that success criteria were met
+4. **Document Issues**: Note any deviations from expected behavior
+5. **Implement Improvements**: Make optimizations if needed
+
+## 6. Example UX Situations
+
+### 6.1 Wallet Connection Situation
+
+```markdown
+## UX Situation: Wallet Connection
+
+### Scenario Definition
+- **Title**: First-time wallet connection
+- **User Goal**: Connect a cryptocurrency wallet to the application
+- **Starting State**: User not connected, landing page loaded
+- **Components Involved**: Header, WalletButton, WalletModal, NetworkSelector
+- **Success Criteria**: Wallet connected, address displayed in header
+
+### Step Sequence
+1. User clicks "Connect Wallet" button in header
+2. WalletModal opens with wallet options
+3. User selects MetaMask wallet
+4. MetaMask extension popup appears
+5. User approves connection in MetaMask
+6. Modal shows connected state with wallet address
+7. Modal closes automatically after connection
+8. Header updates to show connected wallet
+
+### Expected Logs
+- [INFO][EVENT] WalletButton clicked
+- [INFO][RENDER] WalletModal mounted
+- [INFO][EVENT] MetaMask wallet option selected
+- [INFO][API] Wallet connection requested
+- [INFO][API] Wallet connection succeeded
+- [INFO][STATE] walletState updated { isConnected: true, address: "0x..." }
+- [INFO][RENDER] WalletModal unmounted
+- [INFO][RENDER] Header re-rendered with wallet address
+```
+
+### 6.2 Token Swap Situation
+
+```markdown
+## UX Situation: Token Swap
+
+### Scenario Definition
+- **Title**: Basic token swap transaction
+- **User Goal**: Swap Token A for Token B
+- **Starting State**: User connected, on swap page
+- **Components Involved**: SwapForm, TokenSelector, PriceDisplay, ConfirmationModal
+- **Success Criteria**: Swap transaction confirmed, balances updated
+
+### Step Sequence
+1. User selects Token A in "From" field
+2. User enters amount of Token A to swap
+3. System automatically selects Token B in "To" field
+4. System calculates and displays expected Token B amount
+5. User clicks "Review Swap" button
+6. ConfirmationModal shows swap details
+7. User clicks "Confirm Swap" button
+8. Wallet confirmation popup appears
+9. User confirms transaction in wallet
+10. Application shows transaction pending state
+11. Application shows transaction success state
+12. Balances update to reflect the swap
+
+### Expected Logs
+- [INFO][EVENT] TokenSelector "From" clicked
+- [INFO][RENDER] TokenListModal mounted
+- [INFO][EVENT] Token A selected
+- [INFO][EVENT] Amount input changed
+- [INFO][API] Price calculation requested
+- [INFO][STATE] swapState updated { fromToken: "Token A", fromAmount: "10", toToken: "Token B", toAmount: "5" }
+- [INFO][EVENT] Review Swap button clicked
+- [INFO][RENDER] ConfirmationModal mounted
+- [INFO][EVENT] Confirm Swap button clicked
+- [INFO][API] Swap transaction requested
+- [INFO][API] Wallet signature requested
+- [INFO][STATE] transactionState updated { status: "pending", hash: "0x..." }
+- [INFO][API] Transaction status checked
+- [INFO][STATE] transactionState updated { status: "confirmed" }
+- [INFO][API] Balance update requested
+- [INFO][STATE] balanceState updated
+```
+
+## 7. Examples of UX Situation Requests
+
+### 7.1 Basic Component Testing Request
+
+```
+recreate-ux-situation: "Please test the dropdown menu component by clicking the avatar in the top-right corner and selecting 'Settings' from the dropdown menu. The settings page should open."
+```
+
+### 7.2 Form Testing Request
+
+```
+recreate-ux-situation: "Please test the registration form by filling in the following fields: Name='Test User', Email='test@example.com', Password='Test123!', and clicking the Submit button. A confirmation message should appear."
+```
+
+### 7.3 Error State Testing Request
+
+```
+recreate-ux-situation: "Please test the login form's error state by entering Email='invalid@example' (invalid format) and Password='short' (too short), then clicking Login. Error messages should appear under each field."
+```
+
+### 7.4 Autonomous Log Analysis After Testing
+
+After Tyler completes the requested UX situation, 1000xdev will autonomously analyze the logs:
+
+```typescript
+// 1. Check recent logs
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 100", false, true)
+
+// 2. Focus on relevant component
+grep_search("\\[LoginForm\\]", false, "logs-main/front-end/*.log")
+
+// 3. Check for validation errors
+grep_search("validation error|validation failed", false, "logs-main/front-end/*.log")
+
+// 4. Analyze component state changes
+grep_search("\\[LoginForm\\].*state updated", false, "logs-main/front-end/*.log")
+```
+
+## 8. UX Situation Testing Best Practices
+
+1. **Focused Scenarios**: Request one specific UX flow at a time
+2. **Clear Instructions**: Provide explicit steps for Tyler to follow
+3. **Observable Outcomes**: Include clear success criteria
+4. **Strategic Logging**: Add logging at key points before requesting UX testing
+5. **Autonomous Analysis**: Perform comprehensive log analysis after testing
+6. **Iterative Testing**: Refine components based on UX test results
+7. **Minimal Requests**: Only request UX testing when necessary for validation
+
+## 9. Mock Data Integration
+
+UX situations can be tested with mock data using:
+
+### 9.1 Mock API Responses
+
+```typescript
+// Mock API service for testing
+export const mockApiService = {
+  connectWallet: async () => {
+    return {
+      success: true,
+      address: '0x123...abc',
+      balance: '10.5 ETH'
+    };
+  },
+  
+  getTokenBalance: async (address, token) => {
+    return {
+      token,
+      balance: token === 'TOKEN_A' ? '100' : '50'
+    };
+  },
+  
+  executeSwap: async (params) => {
+    return {
+      success: true,
+      txHash: '0xabc...123',
+      fromAmount: params.fromAmount,
+      toAmount: params.toAmount
+    };
+  }
+};
+```
+
+### 9.2 Mock State Providers
+
+```tsx
+// Mock provider for testing
+export const MockWalletProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [state, setState] = useState({
+    connected: false,
+    address: null,
+    balance: null,
+    network: 'ethereum'
+  });
+  
+  const connect = async () => {
+    // Simulate connection delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    setState({
+      ...state,
+      connected: true,
+      address: '0x123...abc',
+      balance: '10.5 ETH'
+    });
+    return true;
+  };
+  
+  const disconnect = () => {
+    setState({
+      ...state,
+      connected: false,
+      address: null,
+      balance: null
+    });
+  };
+  
+  return (
+    <WalletContext.Provider value={{ 
+      ...state, 
+      connect, 
+      disconnect 
+    }}>
+      {children}
+    </WalletContext.Provider>
+  );
+};
+```
+
+## 10. Common UX Testing Patterns
+
+### 10.1 Progressive Interaction Pattern
+
+Test features with increasing complexity:
+
+1. **Static Rendering**: First test that component renders
+2. **Basic Interaction**: Test simple interaction like a click
+3. **Form Input**: Test form fields and validation
+4. **State Changes**: Test state updates from interactions
+5. **API Integration**: Test with API calls
+6. **Error Handling**: Test error scenarios
+7. **Complete Flow**: Test the entire user flow
+
+### 10.2 Edge Case Testing Pattern
+
+Systematically test edge cases:
+
+1. **Empty States**: Test with no data
+2. **Boundary Values**: Test with minimum/maximum values
+3. **Invalid Input**: Test with incorrect data formats
+4. **Connection Issues**: Test with network failures
+5. **Concurrency**: Test with simultaneous operations
+6. **Loading States**: Test during loading periods
+7. **Permission Boundaries**: Test with different access levels
+
+### 10.3 Responsive Testing Pattern
+
+Test across different screen sizes:
+
+1. **Mobile First**: Start with mobile layout
+2. **Tablet Testing**: Verify tablet adaptations
+3. **Desktop Testing**: Confirm desktop layout
+4. **Dynamic Resizing**: Test resizing behavior
+5. **Orientation Changes**: Test orientation switching
+6. **Content Overflow**: Test with overflowing content
+7. **Touch vs. Click**: Test both interaction modes
+
+## 11. Log Analysis for UX Validation
+
+When analyzing logs from UX situations:
+
+### 11.1 Flow Validation
+
+Verify the complete user flow executed correctly:
+- All expected steps occurred in the correct sequence
+- No unexpected steps or errors occurred
+- All required state transitions happened
+- The final state matches the expected outcome
+
+### 11.2 Timing Analysis
+
+Analyze the timing of operations:
+- Identify operations taking too long
+- Check for UI freezes during operations
+- Verify responsiveness during async operations
+- Analyze render performance during interactions
+
+### 11.3 Error Detection
+
+Look for error patterns:
+- Missing log entries indicating skipped steps
+- Error logs indicating failures
+- Unexpected state transitions
+- Multiple retries of the same operation
+- Incomplete sequences
+
+## 12. Integration with Planning Folder
+
+The UX situation framework integrates with the planning folder:
+
+1. **Context Documentation**: Document required UX flows in context files
+2. **Implementation Files**: Specify UX testing requirements
+3. **Test Cheatsheet**: Define UX situations to be tested
+
+Example implementation file entry:
+```markdown
+## UX Testing Requirements
+
+The wallet connection flow must be tested with these scenarios:
+- First-time connection (MetaMask)
+- Reconnection after disconnection
+- Connection rejection handling
+- Connection with wrong network
+- Network switching after connection
+```
+
+## 13. Response Format
+
+After executing a UX situation with `recreate-ux-situation` instruction, you should respond with:
+
+```
+💻 1000xdev [front-end-workflow]
+
+UX Situation: [situation_name] executed.
+
+Results:
+- [Result 1]
+- [Result 2]
+- [Result 3]
+
+Key observations:
+- [Observation 1]
+- [Observation 2]
+
+Log analysis:
+- [Log finding 1]
+- [Log finding 2]
+```
+
+## Autonomous Terminal Command Execution
+
+1000xdev's autonomous terminal command usage is designed to streamline UX testing. This section explains how autonomous commands can be used to execute UX scenarios.
+
+### Command Responsibilities
+
+Tyler only executes UX scenarios when requested. This section clarifies the roles in UX testing.
+
+### Command Usage
+
+To execute a UX scenario, use the following command format:
+
+```
+recreate-ux-situation: "Please test the wallet connection flow by clicking the Connect Wallet button in the header, selecting MetaMask, and approving the connection in the MetaMask popup."
+```
+
+This command requests the execution of a UX scenario named "wallet-connection" using the `recreate-ux-situation` instruction.
+
+### Command Output
+
+After executing a UX scenario, you should respond with a structured output. This output includes:
+
+- **Results**: List of results from the executed scenario
+- **Key Observations**: Summary of key observations from the executed scenario
+- **Log Analysis**: Detailed log analysis from the executed scenario
+
+This structured output helps in understanding the outcome of the executed UX scenario and provides insights for further improvements. 

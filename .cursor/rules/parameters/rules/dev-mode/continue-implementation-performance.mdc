@@ -1,0 +1,114 @@
+# Continue Implementation: Performance Protocol
+
+## File Purpose and Relationship
+
+This file defines the protocol for continuing performance-focused implementation within the rules-workflow. It should be used when:
+
+- Continuing implementation of performance enhancements
+- Resuming performance optimization after interruption
+- Maintaining implementation momentum for performance-critical changes
+- Restoring context for performance-related modifications
+
+This protocol ensures consistent handling of performance-focused implementations.
+
+## Relation to Cognitive Architecture
+
+This file is part of the rules-workflow knowledge component within the 1000xbrain cognitive architecture. It complements:
+
+- `fetch_rules(["knowledge/patterns/impl/implementation-patterns"])`: Performance implementation patterns
+- `@parameters/rules/dev-mode-performance.mdc`: Performance development protocol
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation status checking
+- `fetch_rules(["knowledge/reference/guides/knowledge-system"])`: Performance planning protocol
+
+## Standard Parameter Combinations
+
+This project-rule-parameter supports the following combinations:
+
+1. Basic Performance Continuation:
+   ```
+   continue-implementation: performance-target @parameters/rules/continue-implementation-performance.mdc
+   ```
+
+2. With Recovery Point:
+   ```
+   continue-implementation: performance-target recovery-point @parameters/rules/continue-implementation-performance.mdc
+   ```
+
+## Parameter Relationships
+
+- Loyal to: continue-implementation: @parameters/rules/continue-implementation-performance.mdc
+- Requires: dev-mode-performance.md for implementation context
+- Enhances: continue-planning.md for seamless workflow transitions
+
+## Tool Call Sequence
+
+When this parameter is used, follow this exact sequence:
+
+```typescript
+// 1. Read implementation progress
+read_file("[planning_folder_path]/implementation-progress.md", should_read_entire_file=true)
+
+// 2. Read performance implementation plan
+read_file("[planning_folder_path]/implementation-[feature]-performance.md", should_read_entire_file=true)
+
+// 3. Analyze performance metrics
+// Check current performance metrics and optimization targets
+
+// 4. Report performance state and continuation plan
+// "Performance implementation is at phase X for [target]"
+// "Current metrics: [metrics]"
+// "Target metrics: [targets]"
+// "Continuing to Phase Y: [Phase Description]"
+
+// 5. Continue implementation based on determined state
+// Either proceed to next phase or resume current phase
+```
+
+## Performance State Detection
+
+1. **Progress Analysis**:
+   - Check implementation-progress.md for performance phase status
+   - Verify current performance metrics against targets
+
+2. **Optimization State Verification**:
+   - Examine each performance target
+   - Verify optimization progress
+   - Ensure consistent measurement methodology
+
+3. **Continuation Point Determination**:
+   - If a phase is complete, continue to next optimization phase
+   - If phase is incomplete, continue from current target
+   - If interrupted, resume from appropriate optimization point
+
+## Mode Handling
+
+When this parameter is used:
+
+- Always respond with: 💻 1000xdev [rules-workflow]
+- Maintain dev-mode throughout performance implementation
+- Use consistent mode indicators across optimization phases
+
+## Response Format
+
+```
+💻 1000xdev [rules-workflow]: Continuing performance implementation for [target] from Phase X to Phase Y.
+
+Performance Metrics:
+- Current: [metrics]
+- Target: [targets]
+- Progress: [percentage]
+
+Next Steps:
+1. [Optimization action]
+2. [Performance verification]
+3. [Impact assessment]
+
+[Proceeds with implementation]
+```
+
+## Implementation Considerations
+
+- Focus on measurable performance improvements
+- Maintain baseline measurements for comparison
+- Verify performance impact after each phase
+- Document all optimization changes in implementation-progress.md 

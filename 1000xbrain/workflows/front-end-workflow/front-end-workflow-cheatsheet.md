@@ -1,0 +1,89 @@
+# FRONT-END-Workflow Cheatsheet
+
+## PLAN-MODE project-rule-parameters
+
+| project-rule-parameter | message-command | standard-parameters |
+|------------------------|-----------------|---------------------|
+| `@parameters/front-end/plan-mode/plan-mode-advanced.mdc` | plan-mode | workflow-type |
+| `@parameters/front-end/plan-mode/plan-mode-error-recovery.mdc` | plan-mode | workflow-type |
+| `@parameters/front-end/plan-mode/plan-mode-front-end-basic.mdc` | plan-mode | workflow-type |
+| `@parameters/front-end/plan-mode/plan-mode-log-based.mdc` | plan-mode | workflow-type |
+| `@parameters/front-end/plan-mode/plan-mode-ui-enhancement.mdc` | plan-mode | workflow-type |
+| `@parameters/front-end/plan-mode/template-advanced.mdc` | create-template | workflow-type |
+| `@parameters/front-end/plan-mode/template-basic.mdc` | create-template | workflow-type |
+| `@parameters/front-end/plan-mode/template-error-recovery.mdc` | create-template | workflow-type |
+| `@parameters/front-end/plan-mode/template-log-based.mdc` | create-template | workflow-type |
+| `@parameters/front-end/plan-mode/template-ui-enhancement.mdc` | create-template | workflow-type |
+
+## DEV-MODE project-rule-parameters
+
+| project-rule-parameter | message-command | standard-parameters |
+|------------------------|-----------------|---------------------|
+| `@parameters/front-end/dev-mode/dev-mode-advanced.mdc` | dev-mode | workflow-type |
+| `@parameters/front-end/dev-mode/dev-mode-error-recovery.mdc` | dev-mode | workflow-type |
+| `@parameters/front-end/dev-mode/dev-mode-front-end-basic.mdc` | dev-mode | workflow-type |
+| `@parameters/front-end/dev-mode/dev-mode-log-based.mdc` | dev-mode | workflow-type |
+| `@parameters/front-end/dev-mode/dev-mode-performance.mdc` | dev-mode | front-end-workflow |
+| `@parameters/front-end/dev-mode/dev-mode-subsystem.mdc` | dev-mode | workflow-type |
+| `@parameters/front-end/dev-mode/dev-mode-system-wide.mdc` | dev-mode | front-end-workflow |
+| `@parameters/front-end/dev-mode/dev-mode-ui-enhancement.mdc` | dev-mode | workflow-type |
+
+## CONTINUATION project-rule-parameters
+
+| project-rule-parameter | message-command | standard-parameters |
+|------------------------|-----------------|---------------------|
+| `@parameters/front-end/continuation/continue-implementation-advanced.mdc` | continue-implementation | none |
+| `@parameters/front-end/continuation/continue-implementation-basic.mdc` | continue-implementation | none |
+| `@parameters/front-end/continuation/continue-implementation-error-recovery.mdc` | continue-implementation | none |
+| `@parameters/front-end/continuation/continue-implementation-log-based.mdc` | continue-implementation | none |
+| `@parameters/front-end/continuation/continue-implementation-ui-enhancement.mdc` | continue-implementation | none |
+| `@parameters/front-end/continuation/enhance-planning.mdc` | continue-planning | none |
+| `@parameters/front-end/continuation/enhance-requirements.mdc` | continue-planning | none |
+| `@parameters/front-end/continuation/recovery-strategy-advanced.mdc` | recovery-strategy-advanced | none |
+| `@parameters/front-end/continuation/recovery-strategy-basic.mdc` | recovery-strategy-basic | none |
+| `@parameters/front-end/continuation/recovery-strategy-error-recovery.mdc` | recovery-strategy-error-recovery | none |
+| `@parameters/front-end/continuation/recovery-strategy-log-based.mdc` | recovery-strategy-log-based | none |
+
+## HELPERS project-rule-parameters
+
+
+### ANALYSIS Commands
+
+| project-rule-parameter | message-command |
+|------------------------|-----------------|
+| `@parameters/front-end/helpers/analysis/analyze-accessibility.mdc` | analyze-accessibility |
+| `@parameters/front-end/helpers/analysis/analyze-api-integration.mdc` | analyze-api-integration |
+| `@parameters/front-end/helpers/analysis/analyze-performance.mdc` | analyze-performance |
+
+### FINALIZATION Commands
+
+| project-rule-parameter | message-command |
+|------------------------|-----------------|
+| `@parameters/front-end/helpers/finalization/component-finalization.mdc` | component-finalization |
+| `@parameters/front-end/helpers/finalization/documentation-finalization.mdc` | documentation-finalization |
+| `@parameters/front-end/helpers/finalization/implementation-finalization.mdc` | implementation-finalization |
+
+### RECOVERY Commands
+
+| project-rule-parameter | message-command |
+|------------------------|-----------------|
+| `@parameters/front-end/helpers/recovery/direct-implementation-continuation.mdc` | direct-implementation-continuation |
+| `@parameters/front-end/helpers/recovery/fix-component-issues.mdc` | fix-component-issues |
+| `@parameters/front-end/helpers/recovery/recover-from-errors.mdc` | recover-from-errors |
+| `@parameters/front-end/helpers/recovery/recover-implementation.mdc` | recover-implementation |
+
+### VALIDATION Commands
+
+| project-rule-parameter | message-command |
+|------------------------|-----------------|
+| `@parameters/front-end/helpers/validation/component-validation.mdc` | component-validation |
+| `@parameters/front-end/helpers/validation/hook-validation.mdc` | hook-validation |
+| `@parameters/front-end/helpers/validation/state-validation.mdc` | state-validation |
+
+### VERIFICATION Commands
+
+| project-rule-parameter | message-command |
+|------------------------|-----------------|
+| `@parameters/front-end/helpers/verification/verify-documentation.mdc` | verify-documentation |
+| `@parameters/front-end/helpers/verification/verify-implementation.mdc` | verify-implementation |
+

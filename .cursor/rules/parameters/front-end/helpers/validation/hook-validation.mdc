@@ -1,0 +1,245 @@
+# Hook Validation
+
+## File Purpose and Relationship
+
+This file defines the process for validating React hooks within the front-end workflow. It should be consulted when:
+
+- Verifying that hook implementations meet established standards
+- Ensuring hooks follow best practices for performance and maintainability
+- Checking for proper dependency array management
+- Confirming proper state management and side effect handling
+- Verifying test coverage for custom hooks
+
+This file complements:
+- **component-validation.md**: Component implementation validation
+- **state-validation.md**: State management validation
+- **explore-hooks.md**: Hook exploration and analysis
+- **fix-component-issues.md**: Component and hook issue resolution
+
+## Usage as Project-Rule-Parameter
+
+This file contains the validation process for React hooks and should be referenced as a project-rule-parameter when comprehensive hook validation is needed:
+
+```
+validate-hook: front-end/src/hooks/useCustomHook.ts @parameters/front-end/helpers/validation/hook-validation.mdc
+```
+
+## Command Format
+
+```
+validate-hook: [hook-path] @parameters/front-end/helpers/validation/hook-validation.mdc
+```
+
+## Required Context
+
+To perform hook validation, the following context is required:
+
+1. Access to the hook source file
+2. Access to the hook test file(s)
+3. Understanding of the hook's purpose and requirements
+4. Knowledge of React hook rules and established patterns
+
+## Process Steps
+
+### 1. Hook Structure Validation
+
+First, validate the basic structure of the hook:
+
+```typescript
+// Read the hook file
+read_file("front-end/src/hooks/useExample.ts", should_read_entire_file=true)
+
+// Check hook naming pattern
+grep_search("export (const|function) use[A-Z]", false, "front-end/src/hooks/useExample.ts")
+
+// Check proper exports
+grep_search("export (default|const|function) use[A-Z]", false, "front-end/src/hooks/useExample.ts")
+```
+
+### 2. Hook Rules Compliance
+
+Verify compliance with React hook rules:
+
+```typescript
+// Check for conditional hook calls
+grep_search("if.*use[A-Z]|\\?.*use[A-Z]", false, "front-end/src/hooks/useExample.ts")
+
+// Check for hooks in loops
+grep_search("for.*use[A-Z]|while.*use[A-Z]|forEach.*use[A-Z]|map.*use[A-Z]", false, "front-end/src/hooks/useExample.ts")
+
+// Check for hooks not called at top level
+grep_search("function [^u][^s][^e].*{.*use[A-Z]", false, "front-end/src/hooks/useExample.ts")
+```
+
+### 3. Dependency Array Validation
+
+Check for proper dependency array management:
+
+```typescript
+// Check for dependency arrays in useEffect
+grep_search("useEffect\\([^,]+, \\[[^\\]]*\\]\\)", false, "front-end/src/hooks/useExample.ts")
+
+// Check for dependency arrays in useMemo and useCallback
+grep_search("use(Memo|Callback)\\([^,]+, \\[[^\\]]*\\]\\)", false, "front-end/src/hooks/useExample.ts")
+
+// Check for missing dependencies
+grep_search("useEffect\\([^,]+,[^\\[]*\\[\\]\\)", false, "front-end/src/hooks/useExample.ts")
+```
+
+### 4. Performance Optimization Validation
+
+Check for performance optimizations:
+
+```typescript
+// Check for memoization
+grep_search("useMemo|useCallback", false, "front-end/src/hooks/useExample.ts")
+
+// Check for state batching
+grep_search("useState\\([^)]+\\);[\\s\\n]*useState", false, "front-end/src/hooks/useExample.ts")
+
+// Check for expensive calculations in render
+grep_search("const [a-zA-Z0-9_]+ = [^;]+;(?!.*useMemo)", false, "front-end/src/hooks/useExample.ts")
+```
+
+### 5. Type Safety Verification
+
+Verify type safety and proper type definitions:
+
+```typescript
+// Check for proper return type
+grep_search("function use[A-Z][a-zA-Z0-9_]*\\(.*\\): [A-Za-z<>\\[\\]{}|, ]+", false, "front-end/src/hooks/useExample.ts")
+
+// Check for typed parameters
+grep_search("function use[A-Z][a-zA-Z0-9_]*\\([a-zA-Z0-9_]+: [A-Za-z<>\\[\\]{}|, ]+", false, "front-end/src/hooks/useExample.ts")
+
+// Check for generic types
+grep_search("function use[A-Z][a-zA-Z0-9_]*<[A-Z][a-zA-Z0-9_]*>", false, "front-end/src/hooks/useExample.ts")
+```
+
+### 6. Cleanup Handling Validation
+
+Check for proper cleanup in useEffect:
+
+```typescript
+// Check for return function in useEffect
+grep_search("useEffect\\([^{]*{[^}]*return[^}]*}", false, "front-end/src/hooks/useExample.ts")
+
+// Check for event listener cleanup
+grep_search("addEventListener[^}]*return [^}]*removeEventListener", false, "front-end/src/hooks/useExample.ts")
+
+// Check for subscription cleanup
+grep_search("subscribe[^}]*return [^}]*unsubscribe", false, "front-end/src/hooks/useExample.ts")
+```
+
+### 7. Test Coverage Verification
+
+Verify test coverage for the hook:
+
+```typescript
+// Read test file
+read_file("front-end/src/hooks/useExample.test.ts", should_read_entire_file=true)
+
+// Check for proper test setup
+grep_search("import |renderHook|act|waitFor", false, "front-end/src/hooks/useExample.test.ts")
+
+// Check test coverage
+grep_search("test\\(|it\\(|describe\\(", false, "front-end/src/hooks/useExample.test.ts")
+
+// Check assertions
+grep_search("expect\\(", false, "front-end/src/hooks/useExample.test.ts")
+```
+
+## Expected Outputs
+
+The validation process should produce:
+
+1. A hook validation report
+2. A list of any React hook rules violations
+3. Recommendations for improvements
+4. Validation status (Pass/Fail/Partial)
+
+## Error Handling
+
+Common hook issues and their resolutions:
+
+| Issue | Resolution |
+|-------|------------|
+| Conditional hook calls | Move hooks outside conditionals |
+| Missing dependencies | Add required dependencies to dependency arrays |
+| No cleanup function | Add return function to useEffect for cleanup |
+| Type safety issues | Add proper TypeScript types for params and returns |
+| Performance issues | Use useMemo/useCallback for expensive operations |
+| No test coverage | Add comprehensive tests for hook behaviors |
+
+## Validation Report Creation
+
+Create a comprehensive validation report:
+
+```typescript
+// Create validation report
+edit_file("validation-reports/useExample-validation.md",
+          "Create hook validation report",
+          "# Hook Validation: useExample\n\n## Structure Validation\n- Hook Naming: ✅\n- Proper Exports: ✅\n- File Organization: ✅\n\n## Hook Rules Compliance\n- No Conditional Calls: ✅\n- No Hooks in Loops: ✅\n- Top-Level Calls Only: ✅\n\n## Dependency Array Validation\n- Dependency Arrays Present: ✅\n- Proper Dependencies: ❌\n- No Empty Arrays for Dependencies: ⚠️\n\n## Performance Optimization\n- Memoization: ❌\n- State Batching: ✅\n- Expensive Calculations: ⚠️\n\n## Type Safety\n- Return Type: ✅\n- Parameter Types: ✅\n- Generic Types: ❌\n\n## Cleanup Handling\n- Cleanup Functions: ❌\n- Event Listener Cleanup: ❌\n- Subscription Cleanup: N/A\n\n## Test Coverage\n- Basic Tests: ✅\n- Edge Cases: ❌\n- Cleanup Testing: ❌\n\n## Recommendations\n\n1. Add missing dependencies to useEffect dependency array\n2. Add cleanup function to useEffect\n3. Use useMemo for expensive calculations\n4. Implement generic types for better reusability\n5. Add tests for edge cases and cleanup functions\n\n## Validation Status\n\nPartial Pass - Improvements needed in dependency management and cleanup handling")
+```
+
+## Automated Hook Validation
+
+For more efficient validation of multiple hooks, the following tool sequence can be used:
+
+```typescript
+// 1. Get list of hooks
+run_terminal_cmd("Get-ChildItem -Path 'front-end/src/hooks' -Filter 'use*.ts' | ForEach-Object { $_.Name }", false, false)
+
+// 2. Loop through hooks and validate
+// Note: This would be implemented in a script, shown here for reference
+run_terminal_cmd("foreach ($hook in (Get-ChildItem -Path 'front-end/src/hooks' -Filter 'use*.ts')) { Write-Output \"Validating $($hook.Name)...\" }", false, false)
+
+// 3. Create consolidated report
+edit_file("front-end/validation-reports/hook-validation-summary.md",
+          "Create hook validation summary",
+          "# Hook Validation Summary\n\n## Overview\n\n| Hook | Structure | Rules Compliance | Dependency Arrays | Performance | Type Safety | Cleanup | Test Coverage | Status |\n|-----------|-----------|------------|------------|--------------|--------------|---------------|--------|--------|\n| useAuth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Pass |\n| useForm | ✅ | ✅ | ⚠️ | ✅ | ✅ | ⚠️ | ✅ | Partial |\n| useAPI | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ⚠️ | Fail |\n\n## Recommendations Summary\n\n- Fix dependency arrays in 2 hooks\n- Add cleanup functions to 3 hooks\n- Improve performance optimizations in 2 hooks\n- Enhance test coverage for 1 hook")
+```
+
+## Common Hook Anti-Patterns
+
+Look for these common anti-patterns during validation:
+
+1. **Missing Dependencies**:
+   ```typescript
+   // Bad - dependencies don't match values used in effect
+   useEffect(() => {
+     console.log(count);
+   }, []); // Missing 'count' dependency
+   ```
+
+2. **Overusing useState**:
+   ```typescript
+   // Bad - should use useReducer instead
+   const [isLoading, setIsLoading] = useState(false);
+   const [error, setError] = useState(null);
+   const [data, setData] = useState(null);
+   ```
+
+3. **Not Using Cleanup Functions**:
+   ```typescript
+   // Bad - no cleanup function
+   useEffect(() => {
+     window.addEventListener('resize', handleResize);
+   }, [handleResize]); // Missing cleanup
+   ```
+
+4. **Expensive Calculations Without Memoization**:
+   ```typescript
+   // Bad - expensive calculation on every render
+   const sortedItems = items.sort((a, b) => a.name.localeCompare(b.name));
+   ```
+
+5. **Hooks Inside Callbacks**:
+   ```typescript
+   // Bad - hook inside callback
+   const handleClick = () => {
+     const [count, setCount] = useState(0); // Error - hook inside callback
+   };
+   ```
+
+This validation process ensures that React hooks adhere to established rules, follow best practices, and maintain high quality throughout the front-end codebase. 

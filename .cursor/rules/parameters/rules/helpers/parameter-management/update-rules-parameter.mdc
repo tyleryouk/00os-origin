@@ -1,0 +1,175 @@
+# Update Rules Parameter
+
+## File Purpose and Relationship
+
+This file serves as a project-rule-parameter for updating existing project-rule-parameters in the rules-workflow. It provides a structured approach to planning, implementing, and verifying parameter updates to ensure system integrity and reference consistency.
+
+## Usage as Project-Rule-Parameter
+
+```
+update-rules-parameter: name="parameter-name" property="value"
+```
+
+Updateable properties:
+- `description`: Parameter description
+- `path`: Parameter file path
+- `category`: Parameter category
+- `message-command`: Associated message command
+- `standard-parameters`: Comma-separated list of standard parameters
+- `usage-examples`: Comma-separated list of usage examples
+- `related-parameters`: Comma-separated list of related parameter names
+
+Multiple properties can be updated in a single command:
+```
+update-rules-parameter: name="parameter-name" description="Updated description" category="new-category"
+```
+
+## Planning Workflow
+
+### 1. Update Justification
+
+When planning to update a project-rule-parameter, document:
+
+1. **Update Reason**: Clear justification for parameter update
+2. **Current State**: Present parameter configuration
+3. **Desired State**: Target parameter configuration
+4. **Impact Assessment**: Effect on dependent components
+
+### 2. Property Analysis
+
+Analyze:
+1. **Property Dependencies**: How properties interact with each other
+2. **Reference Impact**: How property changes affect references
+3. **Documentation Requirements**: Documentation updates needed
+4. **Registration Requirements**: Registry updates needed
+
+### 3. Transition Planning
+
+Plan:
+1. **Update Sequence**: Order of property updates
+2. **Reference Handling**: How to update any affected references
+3. **Documentation Updates**: Changes needed to documentation
+4. **Verification Approach**: How to verify successful update
+
+## Implementation Workflow
+
+### 1. Parameter Update
+
+```
+update-rules-parameter: name="parameter-name" property="value"
+```
+
+This command will:
+1. Verify the parameter exists in the registry
+2. Update the specified properties in the unified registry
+3. Handle any reference updates if needed
+4. Verify update consistency
+
+### 2. Path Updates
+
+When updating the `path` property:
+1. The system verifies the new path exists or creates it
+2. Registry entries are updated with the new path
+3. References are updated to use the new path
+4. A verification report is generated
+
+### 3. Category Updates
+
+When updating the `category` property:
+1. The system verifies the category exists
+2. Category-specific validation rules are applied
+3. Registry entries are updated with the new category
+4. The parameter is moved to the appropriate organization structure
+
+## Verification Workflow
+
+### 1. Registry Verification
+
+Verify that:
+1. Parameter properties are updated in the unified registry
+2. Registry maintains its integrity
+3. Related parameters remain properly linked
+4. Registry contains all required properties
+
+### 2. Reference Verification
+
+Verify that:
+1. References to the parameter remain valid
+2. Path changes are properly handled in references
+3. Usage examples are updated if needed
+4. Documentation references are consistent
+
+### 3. Property Consistency Verification
+
+Verify that:
+1. Property values are consistent with each other
+2. Category and message-command are properly aligned
+3. Standard parameters align with message-command
+4. Usage examples reflect actual usage
+
+## Implementation Details
+
+The `update-rules-parameter` command uses:
+
+1. The `Update-UnifiedParameter.ps1` script for registry operations
+2. Property validation rules to ensure consistency
+3. Reference resolution through the unified registry
+4. Automatic validation through the verification system
+
+## Property Validation Rules
+
+The system applies these validation rules:
+
+1. **Path Validation**: Ensures the path exists or can be created
+2. **Category Validation**: Ensures the category exists and is appropriate
+3. **Message-Command Validation**: Ensures the message-command is valid
+4. **Standard Parameters**: Validates against allowed parameters
+5. **Related Parameters**: Verifies related parameters exist
+
+## Execution Process
+
+When you use this command:
+
+1. The system validates the requested property changes
+2. Updates are applied to the registry
+3. Reference updates are performed if needed
+4. Verification confirms successful updates
+5. A confirmation message displays the updated parameter details
+
+## Reference Handling
+
+When updating properties that affect references:
+
+1. **Path Updates**: References are updated to use the new path
+2. **Category Updates**: References are organized according to the new category
+3. **Message-Command Updates**: Usage examples are updated
+
+## Error Handling
+
+If an error occurs:
+
+1. A clear error message is displayed
+2. The system maintains the parameter in its previous state
+3. Suggestions for resolving the issue are provided
+4. A rollback is performed if partial changes were made
+
+## Sample Update Scenarios
+
+### Basic Property Update
+```
+update-rules-parameter: name="template-basic" description="Updated description for basic template"
+```
+
+### Multiple Property Update
+```
+update-rules-parameter: name="template-advanced" description="Updated description" category="implementation" message-command="implement"
+```
+
+### Path Update with Reference Migration
+```
+update-rules-parameter: name="parameter-name" path="parameters/rules/new-category/parameter-name.md"
+```
+
+## File Standard Notice
+
+This file follows the standard project-rule-parameter format with appropriate sections for usage documentation. USE WHEN updating project-rule-parameters in rules-workflow, modifying parameter properties, changing parameter categorization, or maintaining parameter documentation.

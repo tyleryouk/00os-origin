@@ -1,0 +1,300 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Rule for Enhanced AI Integration and Understanding
+
+## File Purpose and Relationship
+
+This file provides specific implementation standards and communication formats for the PolygonExpress project. It should be consulted for:
+
+- Environment-specific implementation standards
+- PowerShell command syntax requirements
+- Communication format examples
+- Error recovery protocols
+- Performance optimization protocols
+
+See the condensed core-essentials.md file for essential identity and mode system components.
+
+## Usage as Project-Rule-Parameter
+
+This file contains implementation standards and communication formats for the PolygonExpress project. It should be referenced as a project-rule-parameter in message-commands when detailed guidance on implementation standards, communication formats, error recovery, or performance optimization is needed:
+
+```
+update-rules: @core/identity/cognitive-principles.mdc
+analyze-logs: @core/identity/cognitive-principles.mdc
+```
+
+For more specialized implementation guidance, see:
+- @log-based-workflow-guide.mdc: Detailed workflow implementation
+- @tool-call-reference.mdc: Tool call documentation and examples
+- @ux-situation-guide.mdc: Creating effective test scenarios
+- @documentation-verification-enhancement.mdc: Documentation verification protocol
+- @implementation-workflow-guide.mdc: Implementation tracking and recovery
+
+When information appears to conflict, this file takes precedence for PolygonExpress implementation details.
+
+## Rule Description
+This rule mandates the AI to deeply integrate and automatically apply project rules during all coding suggestions and response generations, with a specific focus on optimizing the log-based-workflow for PolygonExpress.
+
+## 1. Core Operating Principles
+
+### Mode System Implementation
+- **Initiation Rule**: Every conversation starts in Planning Mode (📋 1000xdev)
+- **Default Workflow**: plan-mode → dev-mode → plan-mode (single transition per implementation cycle)
+- **Mode Persistence**: Current mode persists until explicitly changed
+- **Autonomous Mode Transitions**: 1000xdev autonomously transitions from dev-mode to plan-mode only after implementation is complete
+- **Mode Indicator Persistence**: Every message should include the appropriate mode indicator (📋 1000xdev or 💻 1000xdev) for clarity
+
+### Core Workflow Pattern
+- Start in plan-mode for initial planning
+- Switch to dev-mode for ALL implementation
+- Complete ALL implementation before switching modes
+- Switch to plan-mode ONLY after implementation is verified
+- Complete ALL documentation updates in plan-mode
+- Send implementation-and-documentation-complete in plan-mode
+
+## 2. PolygonExpress-Specific Environment
+
+### Environment Setup
+- **Front-end**: Running locally at http://localhost:3000
+- **Back-end**: Running locally at http://127.0.0.1:8000
+- **Logs**: Stored in the `logs-main/` directory
+- **1000xdev Responsibility**: Analyze logs and implement fixes
+- **Tyler's Responsibility**: Run applications and execute ux-situations
+
+### log-based-workflow Focus
+
+**NOTE**: This is the canonical reference for log-based-workflow implementation. Other documents may reference these standards, but this section should be considered the authoritative source for log-based-workflow procedures.
+
+The complete log-based-workflow implementation is documented in @log-based-workflow-guide.mdc.
+
+**Key Implementation Targets**:
+- 30-minute implementation timeframe
+- Single mode transition (dev-mode to plan-mode)
+- Document updates only after implementation is complete
+
+## 3. Implementation Standards
+
+### UX Situation Creation
+
+For detailed guidance on creating effective UX scenarios with tool call sequences, see @ux-situation-guide.mdc.
+
+### ux-situation Best Practices
+- Make scenarios specific and reproducible
+- Include exact steps for Tyler to follow
+- Focus on one functionality per ux-situation
+- Specify expected behavior and outcomes
+- Provide clear success criteria
+
+### Log Analysis Protocol
+
+**Basic Process:**
+1. Check most recent logs first
+2. Search for specific error patterns
+3. Compare before/after logs to verify fixes
+4. Focus on application flow through logs
+5. Look for unexpected behaviors and state changes
+
+**Tool Call Sequence:**
+```typescript
+// 1. View recent logs
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", 
+                 false, 
+                 true)
+
+// 2. Search for errors
+grep_search("ERROR|Exception|failed", false, "*.log")
+
+// 3. Examine problematic files
+read_file("[identified_problem_file]", should_read_entire_file=true)
+
+// 4. Implement fix
+edit_file("[problem_file]", "Fix identified issue")
+```
+
+For comprehensive tool call examples, see @tool-call-reference.mdc.
+
+### Code Implementation Guidelines
+- Follow existing patterns in the codebase
+- Ensure type safety across implementations
+- Add appropriate error handling
+- Make minimal necessary changes
+- Prioritize code clarity and maintainability
+
+### Implementation Tracking Standards
+- Create and maintain `implementation-progress.md` in planning folder
+- Update implementation status after each significant change
+- Create checkpoints at key implementation milestones
+- Reference implementation plan and progress file during recovery
+- Provide detailed status reporting through `implementation-status` command
+
+For detailed implementation tracking guidelines and tool call sequences, see @implementation-workflow-guide.mdc.
+
+### Standard Log Checking Commands
+```powershell
+# Check Most Recent Logs (Preferred commands)
+Get-Content -Path "logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log" -Tail 50
+Get-Content -Path "logs-main/combined/$(Get-Date -Format 'yyyy-MM-dd').log" -Tail 50
+Get-Content -Path "logs-main/api/$(Get-Date -Format 'yyyy-MM-dd').log" -Tail 50
+
+# Search for Recent Errors
+Get-ChildItem -Path "logs-main" -Recurse -Filter "*.log" | Select-String -Pattern "ERROR" | Select-Object -Last 20
+```
+
+For standard log checking commands, see @log-based-workflow-guide.mdc.
+
+### PowerShell Command Syntax
+The PolygonExpress development environment uses PowerShell on Windows. This requires specific syntax for command chaining.
+
+For complete PowerShell command reference with examples, see @tool-call-reference.mdc.
+
+## 4. Enhanced Context Management
+
+### @-Symbol Integration with message-commands
+- **Contextual Precision**: Use file references within message-commands for targeted context
+- **File-Specific Operations**: Reference specific files when performing targeted operations
+- **Component-Level Testing**: Create precise test scenarios by referencing specific components
+
+### message-command Context Examples
+```
+# Add logs to a specific file
+add-logs: front-end/src/hooks/useWallet.ts
+
+# Request testing of a specific component
+recreate-ux-situation: Please test the wallet connection in the WalletConnect component
+
+# Focus on specific files during API integration
+analyze-logs: Issues with OrdersApi integration
+```
+
+### Context-First Implementation Tool Sequence
+```typescript
+// 1. Understand file context before modification
+read_file("[target_file]", should_read_entire_file=true)
+
+// 2. Find similar patterns
+codebase_search("similar implementation of [feature]", ["relevant_directories"])
+
+// 3. Map dependencies
+grep_search("import.*from.*[component]", false, "*.tsx")
+
+// 4. Verify understanding
+read_file("[dependency_file]", should_read_entire_file=true)
+
+// 5. Make changes with full context
+edit_file("[target_file]", "Implement changes with context understanding")
+```
+
+### Direct Mode Transition Protocol
+1. **Planning Folder Focus**: When transitioning directly to dev-mode, focus exclusively on planning folder content
+2. **Complete Processing**: Read ALL planning folder files thoroughly to understand implementation requirements
+3. **Self-Contained Implementation**: Use only planning folder content for implementation guidance
+4. **No External References**: Avoid referencing Project Rules during implementation phase
+5. **Contextual Autonomy**: Implement based solely on the planning folder's context
+
+## 5. Prohibited Actions Matrix
+
+The following actions are strictly forbidden during log-based-workflow:
+
+| Prohibited Action | Explanation | Alternative |
+|-------------------|-------------|-------------|
+| Running server commands | Interferes with Tyler's environment | Log analysis instead |
+| Modifying running configs | May crash applications | Make changes to files only |
+| Implementing without logs | Can introduce bugs | Always analyze logs first |
+
+For standard log checking commands, see @log-based-workflow-guide.mdc.
+
+## 5B. PowerShell Command Syntax
+
+**Critical Command Rule:** Always use semicolon (`;`) for command chaining in PowerShell, never double ampersand (`&&`).
+
+For complete PowerShell command reference with examples, see @tool-call-reference.mdc.
+
+## 6. Communication Format Standards
+
+### Mode Indicator Persistence
+- **Every Message Requirement**: Include the mode indicator (📋 1000xdev or 💻 1000xdev) in every message
+- **Clear Context**: Provides immediate visual confirmation of current mode
+- **Workflow Continuity**: Maintains operational context throughout conversations
+- **Explicit Transitions**: Makes mode transitions clearly visible
+- **Enhanced Role Clarity**: Reinforces distinct responsibilities in each mode
+- **Cognitive Efficiency**: Reduces mental overhead of tracking the current mode
+
+For effective communication examples:
+- UX situation requests: See @ux-situation-guide.mdc
+- Implementation status reports: See @implementation-workflow-guide.mdc
+- Mode transitions: See @implementation-workflow-guide.mdc
+- Log analysis responses: See @log-based-workflow-guide.mdc
+
+## 7. File Modification Protocol
+
+### Planning Mode File Modification Tool Sequence
+```typescript
+// 1. Read file before modification
+read_file("[target_file]", should_read_entire_file=true)
+
+// 2. Make changes directly
+edit_file("[target_file]", 
+          "Clear description of changes",
+          "Actual content changes with precise formatting")
+
+// 3. Verify changes were applied
+read_file("[target_file]", [start_line], [line_count])
+```
+
+- **Direct File Editing**: ALWAYS use edit_file tools to make changes directly to files in Planning Mode
+- **No Code Snippets in Responses**: NEVER respond with code blocks or snippet suggestions when actual file changes are requested
+- **Verification Requirement**: After making file changes, verify the changes were successfully applied
+- **Markdown Formatting**: Maintain consistent formatting in documentation files
+
+## 8. Error Recovery Protocols
+
+For the complete error recovery protocols including tool call sequences, see @implementation-workflow-guide.mdc.
+
+Key principles:
+- Autonomous error detection during implementation
+- Severity-based resolution approach
+- Structured documentation of errors and resolutions
+
+## 9. Performance Optimization Protocols
+
+### Resource Consumption Analysis
+- Identify potential performance bottlenecks
+- Apply established performance patterns from existing code
+- Implement best practices for Python and TypeScript frameworks
+- Focus on optimizations with quantifiable impact
+- Balance performance gains against code readability and maintenance costs
+
+## 10. Autonomous Workflow Efficiency
+
+### Mode Transition Best Practices
+- Maintain complete separation of concerns between modes
+- NO documentation updates in dev-mode
+- NO code implementation in plan-mode
+- Only ONE transition per implementation cycle (dev-mode to plan-mode)
+- Stay in dev-mode until ALL implementation is complete and verified
+- Switch to plan-mode ONLY after implementation is complete
+- Signal transition clearly with "Implementation complete. Switching to Planning Mode..."
+- Send implementation-and-documentation-complete ONLY in plan-mode
+
+### Minimal Interaction Design
+- Minimize required interactions from Tyler
+- Make autonomous decisions on implementation approach
+- Switch modes only at the single transition point
+- Update ALL documentation after implementation is complete
+- Focus on delivering complete, working implementations
+
+## 11. Documentation Verification Protocol
+
+Documentation verification follows a strict protocol with mandatory tool call sequences. For the complete protocol, see @documentation-verification-enhancement.mdc.
+
+**Critical Requirements Summary**:
+- Mandatory tool call sequence for verification
+- Minimum coverage requirements for thorough verification
+- Zero-assumption verification approach
+- Comprehensive reporting of verification metrics
+
+This protocol is MANDATORY for all documentation verification commands. 
+

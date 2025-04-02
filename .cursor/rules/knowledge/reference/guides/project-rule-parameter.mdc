@@ -1,0 +1,174 @@
+---
+description: USE WHEN configuring project rule parameters, creating message-commands, or using parameter references
+globs: 
+alwaysApply: false
+---
+# USE WHEN configuring project rule parameters, creating message-commands, or using parameter references
+
+# Project Rule Parameter Reference Guide
+
+## Overview
+
+This reference guide provides information about project-rule-parameters and their new self-documenting header system. Each project-rule-parameter now includes a standardized header that explicitly defines its relationship to message-commands:
+
+```
+# workflow: rules-workflow | pathway: error-recovery | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-path: parameters/rules/dev-mode/continue-implementation-error-recovery.mdc
+```
+
+This self-documenting approach makes each parameter file describe itself, eliminating the need for centralized listings while ensuring information is always accurate and up-to-date.
+
+## Project-Rule-Parameter Header Components
+
+The standardized header includes:
+
+- **workflow**: The workflow type this parameter is designed for (e.g., rules-workflow)
+- **pathway**: The specific use-case pathway (e.g., error-recovery)
+- **message-command**: The associated message-command (e.g., dev-mode)
+- **standard-parameter(s)**: Required standard parameters (or "none" if not applicable)
+- **project-rule-parameter-path**: Full path to the parameter file
+
+## Core Directory Parameters
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `plan-mode` | `@core/modes/plan-mode.mdc` | Enter Planning Mode |
+| `dev-mode` | `@core/modes/dev-mode.mdc` | Direct transition to Developer Mode |
+
+## Knowledge Directory Parameters
+
+### Reference Parameters
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `reference-index` | `@reference/index.mdc` | Central reference index |
+| `reference-architecture` | `@reference/architecture.mdc` | Architecture reference |
+| `reference-knowledge-system` | `@reference/guides/knowledge-system.mdc` | Knowledge system reference |
+| `reference-file-standards` | `@reference/guides/file-standards.mdc` | File standards reference |
+| `reference-terminology` | `@reference/guides/terminology-standards.mdc` | Terminology standards reference |
+| `reference-tool-patterns` | `@reference/guides/tool-patterns.mdc` | Tool patterns reference |
+
+### Pattern Parameters
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `patterns-search` | `@patterns/tool/search-patterns.mdc` | Search patterns |
+| `patterns-command` | `@patterns/tool/command-patterns.mdc` | Command patterns |
+| `patterns-tools` | `@patterns/tool/tool-combinations.mdc` | Tool combinations |
+| `patterns-implementation` | `@patterns/impl/implementation-patterns.mdc` | Implementation patterns |
+| `patterns-documentation` | `@patterns/doc/file-standards.mdc` | Documentation patterns |
+
+### Guide Parameters
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `guides-architecture` | `@guides/architecture.mdc` | Architecture implementation guide |
+| `guides-cognitive-enhancement` | `@guides/cognitive-enhancement.mdc` | Cognitive enhancement guide |
+
+## Shortcut Reference Parameters
+
+### Tool Domain Shortcuts
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `tool-patterns` | `@tool/patterns.mdc` | Tool patterns reference |
+| `tool-search` | `@tool/search.mdc` | Search tools reference |
+| `tool-combinations` | `@tool/combinations.mdc` | Tool combinations reference |
+
+### Architecture Domain Shortcuts
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `architecture` | `@architecture.mdc` | Architecture reference |
+| `architecture-guide` | `@architecture/guide.mdc` | Architecture implementation guide |
+| `cognitive-enhancement` | `@architecture/cognitive.mdc` | Cognitive enhancement guide |
+
+### Reference System Shortcuts
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `reference` | `@reference.mdc` | Reference system index |
+| `reference-knowledge` | `@reference/knowledge.mdc` | Knowledge system reference |
+| `reference-files` | `@reference/files.mdc` | File standards reference |
+| `reference-documents` | `@reference/documents.mdc` | Document types reference |
+
+## Workflow-Specific Parameters
+
+### Front-End Workflow
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `analyze-logs` | `@workflows/front-end-workflow/log-analysis-guide.mdc` | Front-end log analysis |
+| `recreate-ux-situation` | `@workflows/front-end-workflow/ux-situation-guide.mdc` | UX testing protocols |
+| `add-logs` | `@workflows/front-end-workflow/add-logs-guide.mdc` | Front-end logging protocols |
+
+### Back-End Workflow
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `run-tests` | `@workflows/back-end-workflow/test-execution-guide.mdc` | Test execution protocols |
+| `analyze-test-results` | `@workflows/back-end-workflow/test-analysis-guide.mdc` | Test result analysis |
+| `create-test` | `@workflows/back-end-workflow/test-creation-guide.mdc` | Test creation protocols |
+
+### Documentation Workflow
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `verify-official-documentation` | `@workflows/documentation-workflow/verification-guide.mdc` | Documentation verification |
+| `create-new-official-documentation` | `@workflows/documentation-workflow/creation-guide.mdc` | Documentation creation |
+
+### Rules Workflow
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|--------|-----------|---------|
+| `verify-planning` | `@workflows/rules-workflow/verification-guide.mdc` | Rule planning verification |
+| `update-rules` | `@workflows/rules-workflow/update-guide.mdc` | Rule update protocols |
+| `sync-cursor-rules` | `@workflows/rules-workflow/sync-guide.mdc` | Rule syncing procedures |
+
+## Combined Parameter Usage
+
+Multiple project-rule-parameters can be combined in a single message-command for comprehensive guidance:
+
+| Purpose | Combined Parameters | Example |
+|---------|---------------------|---------|
+| Documentation Creation | `@reference/files.mdc @patterns/doc/file-standards.mdc` | `message-command: @reference/files.mdc @patterns/doc/file-standards.mdc` |
+| Tool Implementation | `@tool/patterns.mdc @patterns/tool/search-patterns.mdc` | `message-command: @tool/patterns.mdc @patterns/tool/search-patterns.mdc` |
+| Architecture Enhancement | `@architecture.mdc @guides/cognitive-enhancement.mdc` | `message-command: @architecture.mdc @guides/cognitive-enhancement.mdc` |
+| System Understanding | `@reference.mdc @maps/domains.mdc` | `message-command: @reference.mdc @maps/domains.mdc` |
+
+## Reference Usage Guidelines
+
+1. **Correct Format**: Always use the full path with .mdc extension when referencing project-rule-parameters
+2. **Message-Command Matching**: The project-rule-parameter should typically match the message-command name
+3. **Multiple Parameters**: When using multiple project-rule-parameters, separate with spaces
+4. **Workflow Specificity**: Use workflow-specific parameters for domain-specific tasks
+5. **Shortcut Usage**: Use shortcut references for frequently accessed parameters
+
+## When to Reference This Guide
+
+Reference this guide when:
+- Understanding the new self-documenting header system for project-rule-parameters
+- Creating new project-rule-parameters and need header format guidance
+- Determining which parameters to include in message-commands
+- Understanding the relationship between message-commands and parameters
+- Finding shortcut references for frequently used parameters
+
+## Example Header
+
+Here's an example header for a project-rule-parameter file:
+
+```
+# workflow: rules-workflow | pathway: error-recovery | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-path: parameters/rules/dev-mode/continue-implementation-error-recovery.mdc
+```
+
+## Example Reference
+
+```
+message-command: @reference/guides/project-rule-parameter.mdc
+```
+
+## Related References
+
+- Knowledge Reference Index: `@reference/index.mdc`
+- Shortcut References: `@reference/shortcut-references.mdc`
+- Document Types Map: `@reference/maps/document-types.mdc`
+- Terminology Standards: `@reference/guides/terminology-standards.mdc` 

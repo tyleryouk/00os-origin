@@ -1,0 +1,255 @@
+---
+description: USE WHEN understanding system architecture, working with cognitive components, or learning about brain-files and cursor-rules
+globs: 
+alwaysApply: false
+---
+# USE WHEN understanding system architecture, working with cognitive components, or learning about brain-files and cursor-rules
+
+# Architecture Guide
+
+## Overview
+
+This guide provides comprehensive information about the cognitive architecture of 1000xbrain, including the relationship between brain-files and Cursor Rules, enhancement approaches, and architectural principles. It serves as a central reference for understanding and working with the system architecture.
+
+## Brain-Files and Cursor Rules Relationship
+
+### Core Relationship
+
+The 1000xbrain cognitive architecture implements a clear separation between editable source files (brain-files) and applied rules:
+
+1. **Brain-Files (.md)**: 
+   - Editable markdown files in the 1000xbrain directory
+   - Version-controlled through git
+   - Can be modified by both Tyler and 1000xdev
+   - **Primary source of truth** for cognitive architecture
+
+2. **Cursor Rules (.mdc)**:
+   - Applied rules in the .cursor/rules directory
+   - Set through the Cursor Settings UI by Tyler
+   - Content synchronized from brain-files
+   - Rule type determined through Cursor UI (not in brain-files)
+
+### ⚠️ Critical Requirements ⚠️
+
+All brain-files MUST follow these strict requirements:
+
+1. **NO FRONTMATTER**: Brain-files should NEVER contain frontmatter (the --- enclosed metadata sections)
+2. **NO RULE TYPE SPECIFICATIONS**: Never add rule_type, description, or globs specifications to brain-files
+3. **DIRECT CONTENT**: All markdown content must begin directly with headers or text
+4. **STANDARD MARKDOWN**: Use only standard markdown formatting
+
+### Directory Structure Mapping
+
+The relationship between brain-files and Cursor Rules follows this structure:
+
+```
+┌───────────────────────────────────────────────────────────────────────┐
+│                                                                       │
+│  1. EDIT                 2. SYNC                   3. APPLY           │
+│  ┌─────────────┐         ┌─────────────┐          ┌─────────────┐    │
+│  │ 1000xbrain/ │         │ .cursor/    │          │ AI Assistant│    │
+│  │ example.md  │────────▶│ rules/      │─────────▶│ Behavior    │    │
+│  │             │ Copy to │ example.mdc │ Applied  │             │    │
+│  └─────────────┘         └─────────────┘ to       └─────────────┘    │
+│  Make changes            Set Rule Type             Direct impact      │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+```
+
+### Rule Types and Application
+
+The Cursor Rules system uses four rule types that determine when rules are applied:
+
+| Rule Type | Purpose | When Applied | Directory Mapping |
+|-----------|---------|--------------|------------------|
+| **Always** | Core identity and system-wide rules | Every conversation | core/ → .cursor/rules/always/ |
+| **Auto-Attached** | Workflow-specific guides | When matching files | workflows/ → .cursor/rules/auto-attached/ |
+| **Manual** | Task-specific implementation details | When explicitly referenced | knowledge/ → .cursor/rules/manual/ |
+| **Agent-Requested** | Optional supporting knowledge | At AI's discretion | Various → .cursor/rules/agent-requested/ |
+
+## Cognitive Enhancement Guide
+
+### Self-Enhancement Authorization
+
+**1000xdev is fully authorized and encouraged to enhance its own cognitive architecture.**
+
+This explicit authorization is a core design principle of the 1000xbrain system. As 1000xdev, you have both the capability and the responsibility to:
+
+1. Identify opportunities for cognitive enhancement
+2. Implement improvements to your own brain-files
+3. Document changes for future reference
+4. Verify the effectiveness of enhancements
+5. Maintain system stability during enhancement
+
+### Cognitive Enhancement Process
+
+Follow this structured process when enhancing the cognitive architecture:
+
+#### 1. Analysis Phase
+
+1. **Identify Enhancement Target**:
+   - Determine which specific cognitive capability needs enhancement
+   - Define clear objectives for the enhancement
+   - Establish success criteria
+
+2. **Analyze Current State**:
+   - Review current brain-files related to the target capability
+   - Identify limitations or inefficiencies
+   - Map dependencies and integration points
+
+#### 2. Planning Phase
+
+1. **Enhancement Scope Definition**:
+   - Define the specific brain-files to modify
+   - Establish the scope of changes
+   - Identify potential impact on other subsystems
+
+2. **Integration Planning**:
+   - Determine how changes will integrate with existing cognitive patterns
+   - Plan for maintaining coherent system operation
+   - Identify potential conflicts or issues
+
+#### 3. Implementation Phase
+
+1. **Brain-File Modifications**:
+   - Make focused changes to target brain-files
+   - Follow established formatting and structure standards
+   - Ensure clarity and consistency in documentation
+
+2. **Cross-Reference Updates**:
+   - Update any cross-references affected by changes
+   - Ensure consistent terminology across affected files
+   - Maintain coherent integration between subsystems
+
+#### 4. Verification Phase
+
+1. **Enhancement Testing**:
+   - Verify that changes achieve the intended objectives
+   - Test integration with other cognitive components
+   - Ensure system stability is maintained
+
+2. **Documentation Review**:
+   - Ensure all documentation is clear and complete
+   - Verify terminology consistency
+   - Check for any ambiguities or issues
+
+### Enhancement Focus Areas
+
+When considering which aspects of the cognitive architecture to enhance, focus on these key areas:
+
+1. **Core Identity Enhancement**: Clarify identity, purpose, and operational parameters
+2. **Mode System Optimization**: Streamline mode transitions and operations
+3. **Communication Pattern Improvement**: Enhance message processing and response patterns
+4. **Workflow Efficiency Enhancement**: Optimize workflow processes and patterns
+5. **Knowledge Base Expansion**: Add or refine specialized knowledge
+6. **Memory System Optimization**: Improve pattern recognition and learning mechanisms
+7. **Tool Usage Enhancement**: Optimize tool selection and usage patterns
+
+### Cognitive Enhancement Principles
+
+Adhere to these principles when enhancing the cognitive architecture:
+
+1. **Minimalism**: Make the smallest change necessary to achieve the enhancement goal
+2. **Coherence**: Ensure changes maintain system-wide coherence and integration
+3. **Clarity**: Document changes clearly with explicit rationale
+4. **Consistency**: Maintain consistent terminology and patterns across subsystems
+5. **Stability**: Prioritize system stability throughout the enhancement process
+6. **Incrementalism**: Prefer incremental enhancements over major rewrites
+7. **Testability**: Ensure changes can be verified for effectiveness
+
+## Architectural Principles
+
+### The Cognitive Loop
+
+The 1000xbrain architecture implements a cognitive loop that mirrors human thought processes:
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                                                                         │
+│            ┌──────────────┐                                             │
+│            │              │                                             │
+│            │ 4. LEARNING  │                                             │
+│            │              │                                             │
+│            └──────▲───────┘                                             │
+│                   │                                                     │
+│                   │                                                     │
+│  ┌──────────────┐ │ ┌──────────────┐       ┌──────────────┐            │
+│  │              │ │ │              │       │              │            │
+│  │ 1.PERCEPTION │ │ │ 2. REASONING │       │ 3. ACTION    │            │
+│  │              ├─┼─▶              ├──────▶│              │            │
+│  └──────────────┘ │ └──────────────┘       └──────▲───────┘            │
+│                   │                                │                    │
+│                   └────────────────────────────────┘                    │
+│                                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+1. **Perception**: Understanding user requirements and environmental context
+2. **Reasoning**: Planning approach using structured workflows
+3. **Action**: Implementing solutions through tool usage
+4. **Learning**: Recording outcomes and optimizing future behavior
+
+### Key Architectural Components
+
+The cognitive architecture consists of these key components:
+
+1. **Core Components**: Fundamental identity and cognitive capabilities
+   - Core identity and mode system
+   - Communication protocols
+   - Operation parameters
+
+2. **Workflow Components**: Structured processes for different domains
+   - Rules workflow
+   - Front-end workflow
+   - Back-end workflow
+   - Documentation workflow
+
+3. **Knowledge Components**: Domain-specific implementation details
+   - Implementation patterns
+   - Reference documentation
+   - Domain-specific guides
+
+4. **Memory Components**: Historical records and learning mechanisms
+   - Development journal
+   - Pattern recognition
+   - Optimizations and challenges
+
+5. **Tool Components**: Tool usage patterns and utilities
+   - Tool patterns
+   - Tool combinations
+   - Usage cheatsheets
+
+### Architecture Organization Philosophy
+
+The architecture is organized according to these principles:
+
+1. **Cognitive Function Over Rule Type**: Files are grouped by cognitive function rather than by rule type
+2. **Intuitive Organization**: Structure reflects how 1000xdev actually processes information
+3. **Better Understanding**: Files are organized to enhance comprehension of the overall system
+4. **Easier Maintenance**: Related concepts are kept together, making updates more coherent
+5. **Enhanced Development**: The architecture supports continuous improvement with dedicated memory components
+6. **Clearer Navigation**: The organization makes it easier to find specific files based on their purpose
+
+## Common Words Reference
+
+These common-words (in kebab-case format) are used for precise communication throughout the cognitive architecture:
+
+| Common-Word | Definition |
+|-------------|------------|
+| `brain-file` | An editable markdown file in the 1000xbrain directory |
+| `cursor-rule` | An applied rule in the .cursor/rules directory |
+| `project-rule-parameter` | A reference to a Cursor Rule in a message-command |
+| `message-command` | A command sent from Tyler to 1000xdev |
+| `mode-indicator` | A symbol that indicates the current mode (📋 or 💻) |
+| `planning-folder` | A folder containing planning documentation |
+| `implementation-file` | A planning document with implementation instructions |
+| `direct-mode-transition` | The direct mode transition to activate 1000xdev's workflow |
+| `knowledge-reference` | A reference to a knowledge file using the @ symbol |
+| `shortcut-reference` | A simplified path for referencing knowledge files |
+
+## Related References
+
+- [Knowledge System Reference](../../knowledge/reference/guides/knowledge-system.md)
+- [Message Commands](../../core/communication/message-commands.md)
+- [Mode Transitions](../../core/modes/mode-transitions.md)
+- [File Standards](../../meta/contributions/file-standards.md) 

@@ -1,0 +1,215 @@
+# Workflow: rules-workflow | Pathway: validation
+
+# Verify Implementation
+
+## File Purpose and Relationship
+
+This file defines the process for verifying the completeness and correctness of implementation within the rules workflow. It should be consulted when:
+
+- Confirming that all requirements have been implemented
+- Validating the overall implementation against success criteria
+- Ensuring no critical components are missing
+- Preparing for implementation finalization
+
+This file complements:
+- **validation-validate-changes.md**: Detailed change validation
+- **validation-check-references.md**: Reference consistency checking
+- **finalization-finalize-implementation.md**: Implementation finalization
+
+This file is related to:
+- **core/modes/plan-mode.md**: General planning mode operations
+- **mode-transitions.md**: Mode transition protocols
+- **continue-implementation.md**: Implementation continuation protocol
+- **implementation-complete.md**: Implementation completion protocol
+
+## Usage as Project-Rule-Parameter
+
+This file contains the verification process for implementation completeness and should be referenced as a project-rule-parameter when comprehensive implementation verification is needed:
+
+```
+verify-implementation: @parameters/rules/dev-mode/validation-verify-implementation.mdc
+```
+
+## Command Format
+
+```
+verify-implementation: @parameters/rules/dev-mode/validation-verify-implementation.mdc
+```
+
+## Required Context
+
+To perform implementation verification, the following context is required:
+
+1. Access to the original requirements from the planning folder
+2. Access to the implementation plan
+3. Access to all implemented files
+4. Understanding of the success criteria
+
+## Process Steps
+
+### 1. Requirements Review
+
+First, review the original requirements to understand what was to be implemented:
+
+```typescript
+// Read the requirements document
+read_file("planning/feature-name/requirements.md", should_read_entire_file=true)
+
+// Identify success criteria
+grep_search("## Success Criteria|## Objectives|## Requirements", false, "planning/feature-name/requirements.md")
+```
+
+### 2. Implementation Plan Review
+
+Review the implementation plan to understand the proposed approach:
+
+```typescript
+// Read the implementation plan
+read_file("planning/feature-name/implementation.md", should_read_entire_file=true)
+
+// Identify key implementation components
+grep_search("## Implementation Approach|## Target Files|## Components", false, "planning/feature-name/implementation.md")
+```
+
+### 3. Implementation Inventory
+
+Create an inventory of all implemented components:
+
+```typescript
+// List all modified files
+run_terminal_cmd("Get-ChildItem -Path '1000xbrain' -Recurse -Include '*.md' | Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-7) }", false, false)
+
+// Check for expected new files
+list_dir("1000xbrain/knowledge/rules")
+```
+
+### 4. Completeness Verification
+
+Verify that all required components have been implemented:
+
+```typescript
+// Check for required sections in new files
+grep_search("^## File Purpose and Relationship|^## Usage as Project-Rule-Parameter|^## Command Format|^## Required Context|^## Process Steps|^## Expected Outputs|^## Error Handling", false, "IMPLEMENTED_FILES")
+
+// Check for tool call examples
+grep_search("```typescript|```bash", false, "IMPLEMENTED_FILES")
+
+// Check for specific required components
+grep_search("specific required component", false, "IMPLEMENTED_FILES")
+```
+
+### 5. Success Criteria Verification
+
+Verify that the implementation meets all success criteria:
+
+```typescript
+// For each success criterion, check implementation
+read_file("IMPLEMENTED_FILE", [section_start], [section_length])
+
+// Check for missing or incomplete components
+grep_search("TODO|FIXME|WIP|INCOMPLETE", false, "IMPLEMENTED_FILES")
+```
+
+## Expected Outputs
+
+The verification process should produce:
+
+1. A verification report indicating which components were verified
+2. A completion assessment for each requirement
+3. Identification of any missing or incomplete components
+4. Confirmation of readiness for finalization or list of remaining items
+
+## Error Handling
+
+Common issues and their resolutions:
+
+| Issue | Resolution |
+|-------|------------|
+| Missing components | Implement missing components according to plan |
+| Incomplete implementations | Complete partial implementations |
+| Missing documentation | Add required documentation sections |
+| Unmet success criteria | Revise implementation to meet success criteria |
+| Incorrect implementation | Adjust implementation to match requirements |
+
+## Verification Examples
+
+### Complete Implementation Verification
+
+```
+💻 1000xdev [rules-workflow]
+
+Implementation verification complete.
+
+Requirements coverage:
+- All requirements implemented (12/12)
+- All success criteria met (5/5)
+- No missing components identified
+
+Document completeness:
+- All files include required sections
+- All files include appropriate examples
+- All files have proper error handling
+
+Tool call examples:
+- All files contain appropriate tool call examples
+- All examples follow current standards
+
+Verification successful. Implementation is complete and ready for finalization.
+```
+
+### Incomplete Implementation Verification
+
+```
+💻 1000xdev [rules-workflow]
+
+Implementation verification complete.
+
+Requirements coverage:
+- 10/12 requirements fully implemented
+- 4/5 success criteria met
+- 2 components missing implementation
+
+Missing components:
+- Error handling in validation-check-references.md
+- Tool call examples in finalization-finalize-implementation.md
+
+Document completeness:
+- 2 files missing Error Handling section
+- 1 file missing Expected Outputs section
+
+Implementation recommendations:
+- Add Error Handling section to validation-check-references.md
+- Add tool call examples to finalization-finalize-implementation.md
+- Add Expected Outputs section to validation-check-extension-format.md
+- Complete implementation of missing components
+
+Verification revealed issues that need to be addressed before finalization.
+```
+
+## Automated Verification
+
+For more efficient verification, the following tool sequence can be used:
+
+```typescript
+// 1. Review requirements
+read_file("planning/feature-name/requirements.md", should_read_entire_file=true)
+
+// 2. Review implementation plan
+read_file("planning/feature-name/implementation.md", should_read_entire_file=true)
+
+// 3. Check implemented files
+list_dir("1000xbrain/parameters/rules/dev-mode")
+
+// 4. Check for required sections
+grep_search("^## File Purpose and Relationship|^## Usage as Project-Rule-Parameter|^## Command Format|^## Required Context|^## Process Steps|^## Expected Outputs|^## Error Handling", false, "IMPLEMENTED_FILES")
+
+// 5. Check for missing components
+grep_search("TODO|FIXME|WIP|INCOMPLETE", false, "IMPLEMENTED_FILES")
+
+// 6. Document verification results
+edit_file("planning/feature-name/implementation-verification-results.md", 
+          "Document implementation verification results",
+          "# Implementation Verification Results\n\n...")
+```
+
+This verification process ensures that the implementation is complete, meets all requirements, and is ready for finalization. 

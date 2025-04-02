@@ -1,0 +1,179 @@
+# workflow: [workflow-type] | pathway: [pathway-name] | message-command: [message-command] | standard-parameter(s): [standard-parameter] | project-rule-parameter-path: [project-rule-parameter-path]
+
+# Verify Context Files
+
+## File Purpose and Relationship
+
+This file defines the verification process for context files within the rules workflow. It should be consulted when verifying context files against official documentation to ensure alignment and consistency. The verification process ensures that context files accurately reflect the content of official documentation and provide sufficient guidance for implementation.
+
+This file complements:
+- **core/modes/plan-mode.md**: General planning mode operations
+- **validation-verify-planning.md**: Planning verification process
+- **workflows/rules-workflow/rules-workflow.md**: Overall rules workflow
+- **message-commands-reference.md**: Comprehensive message-command documentation
+
+## Usage as Project-Rule-Parameter
+
+This file contains the verification process for context files and should be referenced as a project-rule-parameter in message-commands when verification against official documentation is needed:
+
+```
+verify-context-files: @official-documentation/rules-integration.md @parameters/rules/dev-mode/validation-verify-context-files.mdc
+```
+
+## Command Format
+
+```
+verify-context-files: [documentation-file] @parameters/rules/dev-mode/validation-verify-context-files.mdc
+```
+
+Where:
+- `[documentation-file]` is the path to the official documentation file to verify against
+- `@parameters/rules/dev-mode/validation-verify-context-files.mdc` is this project-rule-parameter
+
+## Required Context
+
+To perform context file verification, the following context is required:
+
+1. Access to the official documentation file specified
+2. Access to the context files in the planning folder
+3. Understanding of the current implementation requirements
+
+## Process Steps
+
+### 1. Documentation Analysis
+
+First, analyze the official documentation file to understand its structure and content:
+
+```typescript
+// Read the official documentation file
+read_file("[documentation-file]", should_read_entire_file=true)
+```
+
+### 2. Context Files Identification
+
+Identify all context files that need to be verified:
+
+```typescript
+// List context files in the planning folder
+list_dir("planning/[feature-name]")
+
+// Focus on context files (typically named context-*.md)
+grep_search("^# ", false, "planning/[feature-name]/context-*.md")
+```
+
+### 3. Content Comparison
+
+For each context file, compare its content with the official documentation:
+
+```typescript
+// Read context file
+read_file("planning/[feature-name]/context-[specific].md", should_read_entire_file=true)
+
+// Compare key sections with official documentation
+codebase_search("key concept from context file", ["official-documentation"])
+```
+
+### 4. Accuracy Verification
+
+Verify the accuracy of the information in the context files:
+
+```typescript
+// Check for inconsistencies or outdated information
+grep_search("specific term or pattern", false, "planning/[feature-name]/context-*.md")
+```
+
+### 5. Completeness Check
+
+Ensure all necessary information from the official documentation is included in the context files:
+
+```typescript
+// Identify missing information
+codebase_search("important concept from documentation", ["planning/[feature-name]"])
+```
+
+## Expected Outputs
+
+The verification process should produce:
+
+1. A verification report indicating which context files were verified
+2. A list of any inconsistencies or issues found
+3. Recommendations for updates or improvements to the context files
+
+## Error Handling
+
+Common issues and their resolutions:
+
+| Issue | Resolution |
+|-------|------------|
+| Missing context files | Create missing context files with essential information |
+| Outdated information | Update context files with current information from documentation |
+| Inconsistent information | Reconcile inconsistencies and standardize content |
+| Incomplete coverage | Add missing key concepts from the official documentation |
+
+## Verification Examples
+
+### Basic Verification
+
+```
+📋 1000xdev [rules-workflow]
+
+Verification of context files against official documentation complete.
+
+Context files verified:
+- planning/feature-name/context-overview.md
+- planning/feature-name/context-implementation.md
+
+Findings:
+- All key concepts from documentation are included
+- Information is accurate and up-to-date
+- No inconsistencies found
+
+Verification successful.
+```
+
+### Verification with Issues
+
+```
+📋 1000xdev [rules-workflow]
+
+Verification of context files against official documentation complete.
+
+Context files verified:
+- planning/feature-name/context-overview.md
+- planning/feature-name/context-implementation.md
+
+Issues found:
+- Missing information on new syntax standards in context-implementation.md
+- Outdated implementation examples in context-implementation.md
+
+Recommendations:
+- Update context-implementation.md with current syntax standards
+- Replace outdated examples with current implementation patterns
+
+Verification revealed issues that need to be addressed.
+```
+
+## Automated Verification
+
+For more efficient verification, the following tool sequence can be used:
+
+```typescript
+// 1. Read the official documentation
+read_file("[documentation-file]", should_read_entire_file=true)
+
+// 2. List all context files
+list_dir("planning/[feature-name]")
+
+// 3. For each context file, perform verification
+read_file("planning/[feature-name]/context-[specific].md", should_read_entire_file=true)
+
+// 4. Search for key terms in both documentation and context files
+grep_search("key term", false, "[documentation-file] planning/[feature-name]/context-*.md")
+
+// 5. Update context files if needed
+edit_file("planning/[feature-name]/context-[specific].md", 
+         "Update information to match official documentation",
+         "# Updated Content\n\n...")
+```
+
+This verification process ensures that context files accurately reflect the official documentation and provide a solid foundation for implementation. 

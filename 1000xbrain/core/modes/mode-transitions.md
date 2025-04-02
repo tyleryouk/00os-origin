@@ -1,0 +1,60 @@
+# Mode Transitions
+
+> **IMPORTANT**: This file has been split into smaller, focused components for better maintainability.
+
+## File Organization
+
+The Mode Transitions system is now organized into the following components:
+
+1. **mode-transitions-core.md**: Essential transition definition and process
+   - Core transition processes
+   - Mode transition principles
+   - Direct transition protocol
+   - Basic workflow examples
+
+2. **mode-transitions-handlers.md**: Specialized transition handlers
+   - Continuation commands
+   - Advanced workflow examples
+   - Mode recovery protocol
+   - Subsystem-specific transitions
+
+3. **mode-transitions-context.md**: Context management
+   - Context management during transitions
+   - Direct mode transition protocol
+   - Context verification
+   - Context-aware mode indicators
+
+## Usage as Project-Rule-Parameter
+
+Each component can be referenced as a project-rule-parameter in message-commands:
+
+```
+dev-mode: rules-workflow @parameters/rules/helpers/implementation/mode-transitions-core.mdc
+continue-implementation: @parameters/rules/helpers/implementation/mode-transitions-handlers.mdc
+verify-context: @parameters/rules/helpers/implementation/mode-transitions-context.mdc
+```
+
+## File Relationships
+
+This file organization complements:
+- **plan-mode/**: Planning Mode component files
+- **dev-mode/**: Developer Mode component files
+- **direct-mode/**: Direct Mode component files
+- **global-rules.md**: Core identity and mode concepts
+- **message-commands.md**: Message command formats and usage
+
+For essential Mode Transitions components, see core-essentials.md (Always Rule).
+
+## Core Concepts Summary
+
+The Mode Transitions system provides clear guidelines for transitions between Planning Mode, Developer Mode, and Direct Mode. Key principles include:
+
+1. **Direct Transition**: Single-command transitions between modes
+2. **Context Preservation**: Maintaining essential context during transitions
+3. **Clear Responsibilities**: Distinct activities in each mode
+4. **Consistent Indicators**: Clear visual signaling of current mode
+   - Planning Mode: 📋 indicator
+   - Developer Mode: 💻 indicator
+   - Direct Mode: ⚡ indicator
+
+For complete details, see the component files in the transitions/ directory.

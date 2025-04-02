@@ -1,0 +1,700 @@
+---
+description: USE WHEN implementing basic code structures, applying fundamental patterns, or establishing implementation foundations
+globs: 
+alwaysApply: false
+---
+# USE WHEN implementing basic code structures, applying fundamental patterns, or establishing implementation foundations
+
+# Basic Implementation Patterns
+
+## Overview
+
+This document provides fundamental patterns for effective implementation in the 1000xbrain cognitive architecture. These patterns represent the core approach to code implementation, system integration, and optimization across different contexts.
+
+## Pattern: Incremental Implementation Pattern
+
+### Overview
+Pattern for implementing changes in small, manageable increments.
+
+### Context
+Use this pattern when implementing complex features or making significant changes to existing code.
+
+### Pattern Structure
+
+```
+┌────────────────────────────────────────────────────────┐
+│                                                        │
+│             Incremental Implementation Pattern          │
+│                                                        │
+│  ┌───────────┐     ┌───────────┐     ┌───────────┐     │
+│  │           │     │           │     │           │     │
+│  │ Decompose │     │ Implement │     │ Verify    │     │
+│  │ Task      │────▶│ Single    │────▶│ and       │     │
+│  │           │     │ Component │     │ Integrate │     │
+│  └───────────┘     └───────────┘     └───────────┘     │
+│        │                                    │           │
+│        └────────────────────────────────────┘           │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+```
+
+### Implementation Guide
+
+1. **Decompose Task**:
+   - Break the overall task into smaller, manageable components
+   - Identify dependencies between components
+   - Prioritize components based on dependencies and importance
+
+2. **Implement Single Component**:
+   - Focus on implementing one component at a time
+   - Follow existing code patterns and conventions
+   - Keep changes minimal and focused
+
+3. **Verify and Integrate**:
+   - Test the implemented component
+   - Integrate with existing code
+   - Verify the integration doesn't break existing functionality
+
+4. **Repeat for Next Component**:
+   - Move to the next component in the sequence
+   - Maintain awareness of what has been implemented
+   - Adjust approach based on learnings from previous components
+
+### Examples
+
+```typescript
+// IMPLEMENTATION TASK: Add user profile feature
+// INCREMENTAL APPROACH:
+
+// Step 1: Implement basic profile data structure
+edit_file("models/user.js", "Add profile fields to user model", `
+// ... existing code ...
+class User {
+  // ... existing code ...
+  profile = {
+    bio: '',
+    location: '',
+    website: '',
+    socialLinks: []
+  }
+  // ... existing code ...
+}
+// ... existing code ...
+`)
+
+// Verify step 1
+run_terminal_cmd("npm run test:models", false)
+
+// Step 2: Implement profile update methods
+edit_file("controllers/user.js", "Add profile update methods", `
+// ... existing code ...
+updateProfile(userId, profileData) {
+  // Validate profile data
+  this.validateProfileData(profileData);
+  
+  // Update user profile
+  return this.userRepository.updateProfile(userId, profileData);
+}
+
+validateProfileData(profileData) {
+  // Validation logic
+  if (profileData.website && !isValidUrl(profileData.website)) {
+    throw new Error('Invalid website URL');
+  }
+  // Other validations
+}
+// ... existing code ...
+`)
+
+// Verify step 2
+run_terminal_cmd("npm run test:controllers", false)
+
+// Continue with additional incremental steps...
+```
+
+### Related Patterns
+- [Pattern Matching Implementation Pattern](#pattern-pattern-matching-implementation-pattern)
+- [Test-Driven Implementation Pattern](test-driven.md)
+
+## Pattern: Pattern Matching Implementation Pattern
+
+### Overview
+Pattern for implementing new code by matching existing code patterns.
+
+### Context
+Use this pattern when adding features or making changes that should be consistent with existing code.
+
+### Pattern Structure
+
+```
+┌────────────────────────────────────────────────────────┐
+│                                                        │
+│          Pattern Matching Implementation Pattern        │
+│                                                        │
+│  ┌───────────┐     ┌───────────┐     ┌───────────┐     │
+│  │           │     │           │     │           │     │
+│  │ Identify  │     │ Extract   │     │ Apply     │     │
+│  │ Similar   │────▶│ Pattern   │────▶│ Pattern   │     │
+│  │ Feature   │     │           │     │           │     │
+│  └───────────┘     └───────────┘     └───────────┘     │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+```
+
+### Implementation Guide
+
+1. **Identify Similar Feature**:
+   - Find existing code that implements a similar feature
+   - Ensure the code follows current best practices
+   - Note context and integration points
+
+2. **Extract Pattern**:
+   - Identify the core implementation pattern
+   - Note naming conventions, method structure, and error handling
+   - Understand the pattern's integration with other components
+
+3. **Apply Pattern**:
+   - Adapt the pattern to the new feature requirements
+   - Maintain consistency with the existing pattern
+   - Preserve all key aspects (error handling, validation, etc.)
+
+### Examples
+
+```typescript
+// IMPLEMENTATION TASK: Add order cancellation feature
+// PATTERN MATCHING APPROACH:
+
+// Step 1: Identify similar feature (order completion)
+read_file("services/order.js", should_read_entire_file=true)
+
+// Step 2: Extract pattern from order completion
+// From existing code:
+// 
+// completeOrder(orderId) {
+//   // Validate order exists
+//   const order = this.orderRepository.findById(orderId);
+//   if (!order) {
+//     throw new OrderNotFoundError(orderId);
+//   }
+//   
+//   // Validate order can be completed
+//   if (order.status !== OrderStatus.PROCESSING) {
+//     throw new InvalidOrderStateError(orderId, order.status, OrderStatus.PROCESSING);
+//   }
+//   
+//   // Update order status
+//   order.status = OrderStatus.COMPLETED;
+//   order.completedAt = new Date();
+//   
+//   // Save and return updated order
+//   return this.orderRepository.save(order);
+// }
+
+// Step 3: Apply pattern to cancellation feature
+edit_file("services/order.js", "Add order cancellation feature following existing patterns", `
+// ... existing code ...
+cancelOrder(orderId) {
+  // Validate order exists
+  const order = this.orderRepository.findById(orderId);
+  if (!order) {
+    throw new OrderNotFoundError(orderId);
+  }
+  
+  // Validate order can be cancelled
+  if (order.status !== OrderStatus.PROCESSING && order.status !== OrderStatus.PENDING) {
+    throw new InvalidOrderStateError(orderId, order.status, [OrderStatus.PROCESSING, OrderStatus.PENDING]);
+  }
+  
+  // Update order status
+  order.status = OrderStatus.CANCELLED;
+  order.cancelledAt = new Date();
+  
+  // Save and return updated order
+  return this.orderRepository.save(order);
+}
+// ... existing code ...
+`)
+```
+
+### Related Patterns
+- [Incremental Implementation Pattern](#pattern-incremental-implementation-pattern)
+- [Code Convention Compliance Pattern](convention-compliance.md)
+
+## Pattern: Component Integration Pattern
+
+### Overview
+Pattern for effectively integrating new components with existing systems.
+
+### Context
+Use this pattern when adding new components that need to interact with existing system components.
+
+### Pattern Structure
+
+```
+┌────────────────────────────────────────────────────────┐
+│                                                        │
+│               Component Integration Pattern             │
+│                                                        │
+│  ┌───────────┐     ┌───────────┐     ┌───────────┐     │
+│  │           │     │           │     │           │     │
+│  │ Identify  │     │ Design    │     │ Implement │     │
+│  │ Integration│────▶│ Interface │────▶│ and       │     │
+│  │ Points    │     │           │     │ Connect   │     │
+│  └───────────┘     └───────────┘     └───────────┘     │
+│                                          │             │
+│                      ┌──────────────────┘             │
+│                      │                                │
+│                      ▼                                │
+│                 ┌───────────┐                         │
+│                 │           │                         │
+│                 │ Test      │                         │
+│                 │ Integration│                         │
+│                 │           │                         │
+│                 └───────────┘                         │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+```
+
+### Implementation Guide
+
+1. **Identify Integration Points**:
+   - Determine where the new component needs to interact with existing components
+   - Identify data exchanges and control flows
+   - Note existing integration patterns in the system
+
+2. **Design Interface**:
+   - Define clear interface boundaries
+   - Determine data formats and protocols
+   - Design error handling and fallback mechanisms
+
+3. **Implement and Connect**:
+   - Implement the new component
+   - Implement integration points
+   - Connect to existing components
+
+4. **Test Integration**:
+   - Test component in isolation
+   - Test integration with existing components
+   - Verify error handling and edge cases
+
+### Examples
+
+```typescript
+// IMPLEMENTATION TASK: Add payment gateway integration
+// COMPONENT INTEGRATION APPROACH:
+
+// Step 1: Identify integration points
+read_file("services/payment.js", should_read_entire_file=true)
+read_file("services/order.js", offset=100, limit=200)
+
+// Step 2: Design payment gateway interface
+edit_file("interfaces/paymentGateway.js", "Create payment gateway interface", `
+/**
+ * Payment Gateway Interface
+ * Defines the contract for payment gateway implementations
+ */
+class PaymentGatewayInterface {
+  /**
+   * Process a payment
+   * @param {Object} paymentDetails - Payment details
+   * @param {string} paymentDetails.amount - Payment amount
+   * @param {string} paymentDetails.currency - Payment currency
+   * @param {Object} paymentDetails.source - Payment source information
+   * @returns {Promise<Object>} - Payment result
+   */
+  async processPayment(paymentDetails) {
+    throw new Error('Method not implemented');
+  }
+
+  /**
+   * Refund a payment
+   * @param {string} paymentId - ID of the payment to refund
+   * @param {Object} refundDetails - Refund details
+   * @returns {Promise<Object>} - Refund result
+   */
+  async refundPayment(paymentId, refundDetails) {
+    throw new Error('Method not implemented');
+  }
+
+  /**
+   * Get payment status
+   * @param {string} paymentId - ID of the payment
+   * @returns {Promise<Object>} - Payment status
+   */
+  async getPaymentStatus(paymentId) {
+    throw new Error('Method not implemented');
+  }
+}
+
+module.exports = PaymentGatewayInterface;
+`)
+
+// Step 3: Implement concrete payment gateway
+edit_file("services/stripePaymentGateway.js", "Implement Stripe payment gateway", `
+const PaymentGatewayInterface = require('../interfaces/paymentGateway');
+const stripe = require('stripe')(process.env.STRIPE_API_KEY);
+
+class StripePaymentGateway extends PaymentGatewayInterface {
+  async processPayment(paymentDetails) {
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: this.convertAmount(paymentDetails.amount),
+        currency: paymentDetails.currency.toLowerCase(),
+        payment_method: paymentDetails.source.id,
+        confirmation_method: 'manual',
+        confirm: true,
+      });
+      
+      return {
+        success: paymentIntent.status === 'succeeded',
+        paymentId: paymentIntent.id,
+        status: paymentIntent.status,
+        details: paymentIntent
+      };
+    } catch (error) {
+      throw new PaymentProcessingError(error.message, error);
+    }
+  }
+
+  async refundPayment(paymentId, refundDetails) {
+    try {
+      const refund = await stripe.refunds.create({
+        payment_intent: paymentId,
+        amount: refundDetails.amount ? this.convertAmount(refundDetails.amount) : undefined
+      });
+      
+      return {
+        success: refund.status === 'succeeded',
+        refundId: refund.id,
+        status: refund.status,
+        details: refund
+      };
+    } catch (error) {
+      throw new RefundProcessingError(error.message, error);
+    }
+  }
+
+  async getPaymentStatus(paymentId) {
+    try {
+      const paymentIntent = await stripe.paymentIntents.retrieve(paymentId);
+      
+      return {
+        paymentId: paymentIntent.id,
+        status: paymentIntent.status,
+        amount: this.formatAmount(paymentIntent.amount, paymentIntent.currency),
+        currency: paymentIntent.currency
+      };
+    } catch (error) {
+      throw new PaymentNotFoundError(paymentId, error);
+    }
+  }
+
+  convertAmount(amount) {
+    // Convert from dollars to cents for Stripe
+    return Math.round(parseFloat(amount) * 100);
+  }
+
+  formatAmount(amount, currency) {
+    // Convert from cents to dollars
+    return (amount / 100).toFixed(2);
+  }
+}
+
+class PaymentProcessingError extends Error {
+  constructor(message, originalError) {
+    super(`Payment processing failed: ${message}`);
+    this.originalError = originalError;
+    this.name = 'PaymentProcessingError';
+  }
+}
+
+class RefundProcessingError extends Error {
+  constructor(message, originalError) {
+    super(`Refund processing failed: ${message}`);
+    this.originalError = originalError;
+    this.name = 'RefundProcessingError';
+  }
+}
+
+class PaymentNotFoundError extends Error {
+  constructor(paymentId, originalError) {
+    super(`Payment with ID ${paymentId} not found`);
+    this.paymentId = paymentId;
+    this.originalError = originalError;
+    this.name = 'PaymentNotFoundError';
+  }
+}
+
+module.exports = StripePaymentGateway;
+`)
+
+// Step 4: Connect to payment service
+edit_file("services/payment.js", "Integrate payment gateway", `
+// ... existing code ...
+constructor(paymentGateway) {
+  this.paymentGateway = paymentGateway;
+}
+
+async processOrderPayment(order) {
+  // Validate order
+  if (!order || !order.id) {
+    throw new InvalidOrderError('Order is required');
+  }
+
+  // Prepare payment details
+  const paymentDetails = {
+    amount: order.total,
+    currency: order.currency || 'USD',
+    source: order.paymentSource,
+    orderId: order.id
+  };
+
+  // Process payment through gateway
+  const paymentResult = await this.paymentGateway.processPayment(paymentDetails);
+  
+  // Update order with payment information
+  order.paymentId = paymentResult.paymentId;
+  order.paymentStatus = paymentResult.status;
+  
+  return paymentResult;
+}
+// ... existing code ...
+`)
+
+// Step 5: Update dependency injection
+edit_file("config/services.js", "Configure payment gateway", `
+// ... existing code ...
+const PaymentService = require('../services/payment');
+const StripePaymentGateway = require('../services/stripePaymentGateway');
+
+// Initialize payment gateway
+const paymentGateway = new StripePaymentGateway();
+
+// Initialize payment service with gateway
+const paymentService = new PaymentService(paymentGateway);
+
+module.exports = {
+  // ... existing code ...
+  paymentService
+};
+// ... existing code ...
+`)
+```
+
+### Related Patterns
+- [Interface Definition Pattern](interface-definition.md)
+- [Dependency Injection Pattern](dependency-injection.md)
+
+## Pattern: Error Handling Implementation Pattern
+
+### Overview
+Pattern for implementing robust error handling throughout the codebase.
+
+### Context
+Use this pattern when implementing features that need to handle various error conditions.
+
+### Pattern Structure
+
+```
+┌────────────────────────────────────────────────────────┐
+│                                                        │
+│           Error Handling Implementation Pattern         │
+│                                                        │
+│  ┌───────────┐     ┌───────────┐     ┌───────────┐     │
+│  │           │     │           │     │           │     │
+│  │ Identify  │     │ Implement │     │ Propagate │     │
+│  │ Error     │────▶│ Error     │────▶│ or        │     │
+│  │ Scenarios │     │ Detection │     │ Handle    │     │
+│  └───────────┘     └───────────┘     └───────────┘     │
+│                                                        │
+└────────────────────────────────────────────────────────┘
+```
+
+### Implementation Guide
+
+1. **Identify Error Scenarios**:
+   - Determine what can go wrong during execution
+   - Categorize errors by type and severity
+   - Identify specific error conditions
+
+2. **Implement Error Detection**:
+   - Add validation to detect error conditions early
+   - Use appropriate error detection mechanisms
+   - Create specific error types for different conditions
+
+3. **Propagate or Handle**:
+   - Determine whether to handle errors locally or propagate
+   - Implement appropriate error handling strategies
+   - Ensure errors are communicated appropriately
+
+### Examples
+
+```typescript
+// IMPLEMENTATION TASK: Add user registration with error handling
+// ERROR HANDLING APPROACH:
+
+// Step 1: Define custom error types
+edit_file("errors/userErrors.js", "Create user-related error types", `
+class UserError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'UserError';
+  }
+}
+
+class UserValidationError extends UserError {
+  constructor(message, validationErrors) {
+    super(message);
+    this.name = 'UserValidationError';
+    this.validationErrors = validationErrors;
+  }
+}
+
+class UserExistsError extends UserError {
+  constructor(email) {
+    super(`User with email ${email} already exists`);
+    this.name = 'UserExistsError';
+    this.email = email;
+  }
+}
+
+class UserCreationError extends UserError {
+  constructor(message, originalError) {
+    super(`Error creating user: ${message}`);
+    this.name = 'UserCreationError';
+    this.originalError = originalError;
+  }
+}
+
+module.exports = {
+  UserError,
+  UserValidationError,
+  UserExistsError,
+  UserCreationError
+};
+`)
+
+// Step 2: Implement service with error handling
+edit_file("services/user.js", "Implement user registration with error handling", `
+// ... existing code ...
+const { UserValidationError, UserExistsError, UserCreationError } = require('../errors/userErrors');
+
+async registerUser(userData) {
+  try {
+    // Validate user data
+    const validationErrors = this.validateUserData(userData);
+    if (validationErrors.length > 0) {
+      throw new UserValidationError('Invalid user data', validationErrors);
+    }
+    
+    // Check if user already exists
+    const existingUser = await this.userRepository.findByEmail(userData.email);
+    if (existingUser) {
+      throw new UserExistsError(userData.email);
+    }
+    
+    // Create user
+    const user = await this.userRepository.create({
+      ...userData,
+      password: await this.passwordService.hashPassword(userData.password),
+      createdAt: new Date()
+    });
+    
+    // Additional steps (send verification email, etc.)
+    await this.sendVerificationEmail(user);
+    
+    return user;
+  } catch (error) {
+    // Propagate known errors
+    if (error instanceof UserError) {
+      throw error;
+    }
+    
+    // Wrap and propagate unknown errors
+    throw new UserCreationError(error.message, error);
+  }
+}
+
+validateUserData(userData) {
+  const errors = [];
+  
+  if (!userData.email) {
+    errors.push({ field: 'email', message: 'Email is required' });
+  } else if (!this.isValidEmail(userData.email)) {
+    errors.push({ field: 'email', message: 'Email is invalid' });
+  }
+  
+  if (!userData.password) {
+    errors.push({ field: 'password', message: 'Password is required' });
+  } else if (userData.password.length < 8) {
+    errors.push({ field: 'password', message: 'Password must be at least 8 characters' });
+  }
+  
+  if (!userData.name) {
+    errors.push({ field: 'name', message: 'Name is required' });
+  }
+  
+  return errors;
+}
+
+isValidEmail(email) {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+}
+// ... existing code ...
+`)
+
+// Step 3: Implement controller with error handling
+edit_file("controllers/user.js", "Implement controller with error handling", `
+// ... existing code ...
+const { UserValidationError, UserExistsError } = require('../errors/userErrors');
+
+async registerUser(req, res, next) {
+  try {
+    const userData = req.body;
+    const user = await this.userService.registerUser(userData);
+    
+    // Return success response
+    res.status(201).json({
+      success: true,
+      message: 'User registered successfully',
+      data: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      }
+    });
+  } catch (error) {
+    // Handle specific error types
+    if (error instanceof UserValidationError) {
+      return res.status(400).json({
+        success: false,
+        message: error.message,
+        errors: error.validationErrors
+      });
+    }
+    
+    if (error instanceof UserExistsError) {
+      return res.status(409).json({
+        success: false,
+        message: error.message
+      });
+    }
+    
+    // Pass other errors to the global error handler
+    next(error);
+  }
+}
+// ... existing code ...
+`)
+```
+
+### Related Patterns
+- [Validation Implementation Pattern](validation.md)
+- [Logging Implementation Pattern](logging.md)
+
+## Related Knowledge
+
+- [Memory Knowledge Domain](../../reference/domains/memory.md): Comprehensive implementation knowledge
+- [Tool Patterns](../tool/basic-patterns.md): Patterns for effective tool usage
+- [Implementation Guides](../../reference/guides/implementation-guide.md): Detailed implementation guidance 

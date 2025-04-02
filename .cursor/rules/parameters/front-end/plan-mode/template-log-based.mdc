@@ -1,0 +1,77 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Template: Front-End Log-Based Development
+
+## File Purpose and Relationship
+
+This file provides a specialized template for log-based front-end development requirements in the PolygonExpress project. It focuses solely on giving structure to the initial requirements.md file for features that will use strategic logging.
+
+## Usage as Project-Rule-Parameter
+
+This file is a Manual rule type and should be referenced as a project-rule-parameter in the plan-mode message-command:
+
+```
+plan-mode: front-end-workflow @parameters/front-end/plan-mode/template-log-based.mdc
+```
+
+## Requirements Template
+
+When this template is applied, it will create the following structure in requirements.md:
+
+```markdown
+# Log-Based Feature Requirements
+
+## Objective
+[What is the purpose of this feature?]
+
+## Functional Requirements
+[What functionality should this feature provide?]
+
+## State Management Requirements
+[What state needs to be managed and tracked?]
+
+## Logging Strategy Requirements
+[What events, state changes, and interactions should be logged?]
+
+Key logging points:
+- [Log point 1]: [Description and purpose]
+- [Log point 2]: [Description and purpose]
+- [Log point 3]: [Description and purpose]
+
+## Verification Points
+[What specific state transitions or interactions need verification through logs?]
+
+## Log Format Requirements
+[What information should each log entry contain?]
+
+## Debug Mode Requirements
+[What additional information should be included in debug mode logs?]
+
+## Performance Considerations
+[How should logging impact performance?]
+
+## Success Criteria
+[How will we know this feature is implemented correctly through log analysis?]
+```
+
+## Template Application
+
+When the template is applied, I will:
+1. Create or update requirements.md with this template
+2. Leave all sections empty for completion
+3. Wait for the requirements to be completed before proceeding with any planning
+
+## Next Steps
+1. Complete the requirements template with log-based feature details
+2. Once requirements are complete, proceed with planning the implementation approach
+
+## Use Cases
+- Complex state management features
+- Features requiring detailed debugging
+- User interaction tracking
+- API interaction verification
+- Performance monitoring
+- Error tracking and diagnostics 

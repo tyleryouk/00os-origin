@@ -1,0 +1,272 @@
+# Continue Implementation Protocol
+
+## File Purpose and Relationship
+
+This file defines the protocol for continuing a rules-workflow implementation, whether proceeding to the next phase or resuming after an interruption. It should be used when:
+
+- Transitioning from one implementation phase to the next
+- Resuming an implementation that was interrupted
+- Maintaining implementation momentum across multiple phases
+- Restoring context after a break in the implementation process
+
+This protocol provides a unified approach to implementation continuity and progress.
+
+## Relation to Cognitive Architecture
+
+This file is part of the rules-workflow knowledge component within the 1000xbrain cognitive architecture. It complements:
+
+- `fetch_rules(["knowledge/patterns/impl/implementation-patterns"])`: Main workflow definition
+- `@parameters/rules/continue-planning.mdc`: Planning continuation protocol
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation status checking protocol
+- `fetch_rules(["knowledge/reference/guides/knowledge-system"])`: Planning completion protocol
+- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation completion protocol
+
+## Tool Call Sequence
+
+When the `continue-implementation: @parameters/rules/continue-implementation.mdc` message-command is received, follow this exact sequence:
+
+```typescript
+// 1. Read implementation progress file if it exists
+read_file("[planning_folder_path]/implementation-progress.md", should_read_entire_file=true)
+
+// 2. Read implementation plan
+read_file("[planning_folder_path]/implementation-[feature]-[type].md", should_read_entire_file=true)
+
+// 3. Analyze modified files to determine current state
+// Check files mentioned in the implementation plan to verify current phase
+
+// 4. Report current state and continuation plan
+// "Implementation is currently at phase X, step Y"
+// "Continuing to Phase Z: [Phase Description]"
+// "Continuing implementation from this point"
+
+// 5. Continue implementation based on determined state
+// Either proceed to the next phase or resume the current phase
+```
+
+## State Detection Process
+
+1. **Progress File Analysis**:
+   - Check implementation-progress.md for current phase and step
+   - If file doesn't exist, determine state from implementation plan and file modifications
+
+2. **Implementation Plan Analysis**:
+   - Use implementation file to understand the phase structure
+   - Identify completed phases and determine the next phase to implement
+
+3. **File State Verification**:
+   - Examine the actual state of files being modified
+   - Verify that file modifications match the reported progress
+
+4. **Continuation Determination**:
+   - If a phase is complete, continue to the next phase
+   - If a phase is incomplete, continue from the current step
+   - If implementation was interrupted, resume from the appropriate point
+
+## Mode Handling
+
+When `continue-implementation: @parameters/rules/continue-implementation.mdc` is received:
+
+- Always respond with the dev-mode indicator: 💻 1000xdev [rules-workflow]
+- If currently in plan-mode, automatically transition to dev-mode
+- Use the appropriate mode indicator for all responses
+
+## Response Format
+
+The response should follow this format:
+
+```
+💻 1000xdev [rules-workflow]: Continuing implementation from Phase X: [Phase Description] to Phase Y: [Phase Description].
+
+I've analyzed the current state and found:
+- Phase 1 ([Description]): Complete
+- Phase 2 ([Description]): Complete
+- Phase 3 ([Description]): In progress (Step 2 of 4)
+- Phase 4 ([Description]): Not started
+
+I'll now continue implementing Phase 3, starting from Step 3: [Step Description].
+
+[Proceeds with implementation]
+```
+
+## Continuation Logic
+
+The implementation continuation process follows this logic:
+
+1. **State Assessment**:
+   - Determine the current implementation phase and step
+   - Verify the completion status of each phase
+   - Identify the next step to be implemented
+
+2. **Context Restoration**:
+   - Review the implementation plan to understand the overall structure
+   - Read relevant source files to restore context
+   - Understand the current implementation state before continuing
+
+3. **Continuation Determination**:
+   - If the current phase is complete, proceed to the next phase
+   - If the current phase is incomplete, continue from the current step
+   - If a step was partially completed, complete it before moving on
+
+4. **Progress Tracking**:
+   - Update the implementation-progress.md file as implementation continues
+   - Mark steps as completed when finished
+   - Update the current phase and step in the status section
+
+## Phased Implementation Handling
+
+This command supports the phased implementation pattern:
+
+1. **Phase Structure Recognition**:
+   - Identify the distinct phases in the implementation plan
+   - Recognize phase boundaries and completion criteria
+
+2. **Phase Transition**:
+   - Handle the transition between phases smoothly
+   - Verify that all requirements for the next phase are met
+
+3. **Phase Initialization**:
+   - Initialize any phase-specific resources or context
+   - Set up appropriate environment for the new phase
+
+4. **Phase Completion**:
+   - Verify that each phase is fully complete before moving to the next
+   - Ensure no loose ends remain from the previous phase
+
+## Recovery Handling
+
+When used for recovery after interruption:
+
+1. **Context Recovery**:
+   - Analyze the planning folder to understand the implementation scope
+   - Read relevant files to recover the mental context
+
+2. **Implementation State Determination**:
+   - Identify the last completed action
+   - Determine the next action to take
+
+3. **Recovery Validation**:
+   - Verify that all previously reported steps actually completed
+   - Correct any discrepancies before continuing
+
+4. **Forward Progress**:
+   - Resume implementation from the correct point
+   - Maintain momentum through clear phase and step tracking
+
+## Usage Examples
+
+### Example 1: Continuing to the Next Phase
+
+```
+Tyler: continue-implementation: @parameters/rules/continue-implementation.mdc
+
+💻 1000xdev [rules-workflow]: Continuing implementation from Phase 2: Documentation Process Removal (Complete) to Phase 3: Recovery Process Implementation.
+
+I've analyzed the current state and found:
+- Phase 1 (Project-Rule-Parameter Standardization): Complete
+- Phase 2 (Documentation Process Removal): Complete
+- Phase 3 (Recovery Process Implementation): Not started
+- Phase 4 (README.md Integration): Not started
+
+I'll now begin implementing Phase 3, starting with Step 1: Creating the recovery protocol structure.
+
+[Proceeds with implementation]
+```
+
+### Example 2: Resuming After Interruption
+
+```
+Tyler: continue-implementation: @parameters/rules/continue-implementation.mdc
+
+💻 1000xdev [rules-workflow]: Continuing implementation from Phase 3: Recovery Process Implementation.
+
+I've analyzed the current state and found:
+- Phase 1 (Project-Rule-Parameter Standardization): Complete
+- Phase 2 (Documentation Process Removal): Complete
+- Phase 3 (Recovery Process Implementation): In progress (Step 2 of 4)
+- Phase 4 (README.md Integration): Not started
+
+I'll continue implementing from Phase 3, Step 2: Creating implementation-status.md file.
+
+[Proceeds with implementation]
+```
+
+## Implementation Considerations
+
+- If no implementation-progress.md file exists, create one based on the implementation plan and current state
+- Always verify file modifications before continuing implementation
+- Update the implementation-progress.md file immediately upon continuing
+
+## File Creation Logic
+
+If no implementation-progress.md file exists but implementation has started, create one with this template:
+
+```markdown
+# Implementation Progress
+
+## Current Status
+- Phase: [Determined from file analysis]
+- Step: [Determined from file analysis]
+- Last update: [Current timestamp]
+
+## Phase Plan
+[Extract phases from implementation plan file]
+
+## Detailed Progress
+[Create sections based on implementation plan file]
+[Mark steps as completed based on file analysis]
+```
+
+## Recovery Without Progress File
+
+If neither implementation-progress.md nor a specific implementation plan file exists:
+
+1. Examine planning folder contents
+2. Read README.md to understand the purpose of the implementation
+3. Check if any implementation has actually started
+4. Create an implementation-progress.md file based on available information
+5. Report the uncertain state and seek clarification if needed
+
+## Completion Criteria
+
+The continue-implementation process is considered successful when:
+
+1. The implementation state has been accurately analyzed
+2. The current implementation phase and step have been correctly identified
+3. Implementation has continued from the appropriate point
+4. The implementation-progress.md file has been updated to reflect the current state
+5. The mode indicator (💻 1000xdev [rules-workflow]) is properly maintained
+6. Progress is made according to the implementation plan
+
+## Automatic Follow-Up Requirements Creation
+
+As implementation nears completion through the continue-implementation process, the workflow automatically handles follow-up requirements creation:
+
+1. **Completion Detection**: When the implementation is in its final phase with few remaining steps, begin planning for follow-up
+2. **Follow-Up Analysis**: Analyze the current implementation to identify logical next enhancements
+3. **Automatic Folder Creation**: Create the next sequential planning folder without requiring manual intervention
+4. **Requirements Document**: Generate an initial requirements.md file with findings from the current implementation
+
+This automatic process applies to all rules-workflow implementations being continued, supporting the continuous development flow by seamlessly transitioning from one enhancement cycle to the next.
+
+### Tool Call Sequence for Follow-Up Creation
+
+```typescript
+// 1. Determine if implementation is nearing completion
+read_file("[planning_folder_path]/implementation-progress.md", should_read_entire_file=true)
+// Analyze progress to determine if in final phase with few steps remaining
+
+// 2. If nearing completion, identify the next logical focus
+list_dir("planning")
+// Analyze implementation to determine appropriate follow-up focus
+
+// 3. Create the next sequential requirements folder
+run_terminal_cmd("mkdir planning/{next-number}-{follow-up-focus}", false)
+
+// 4. Create the initial requirements document
+edit_file("planning/{next-number}-{follow-up-focus}/requirements.md",
+          "Create follow-up requirements based on implementation findings",
+          "# Requirements: {follow-up-focus}\n\n[Requirements content based on current implementation findings]")
+```
+
+This ensures that even when implementations are continued after interruptions, the system still maintains the automatic follow-up creation capability. 

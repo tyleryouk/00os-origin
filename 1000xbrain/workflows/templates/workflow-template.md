@@ -1,0 +1,60 @@
+# Workflow Documentation Template
+
+## Overview
+[Brief description of the workflow and its purpose]
+
+## Workflow Type
+- **Name**: [Workflow type name]
+- **Domain**: [Domain area]
+- **Purpose**: [Primary purpose]
+
+## Parameters
+### Required Parameters
+[List of required parameters with descriptions]
+
+### Optional Parameters
+[List of optional parameters with descriptions]
+
+## Parameter Sequence
+1. [First parameter in sequence]
+2. [Second parameter in sequence]
+3. [Additional parameters...]
+
+## Validation Rules
+### Parameter Validation
+[Description of parameter validation rules]
+
+### Sequence Validation
+[Description of sequence validation rules]
+
+## Integration Points
+### System Components
+[List of system components this workflow integrates with]
+
+### Knowledge Components
+[List of knowledge components used in this workflow]
+
+## Examples
+### Basic Usage
+```typescript
+[Basic usage example with explanation]
+```
+
+### Advanced Usage
+```typescript
+[Advanced usage example with explanation]
+```
+
+### Error Handling
+```typescript
+[Error handling example with explanation]
+```
+
+## Notes
+[Important notes and considerations]
+
+## Related Workflows
+[List of related workflows with brief explanations]
+
+## Version History
+[Version history with changes] 

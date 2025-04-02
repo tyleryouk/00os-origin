@@ -1,0 +1,199 @@
+# Cross-Workflow Parameter Manager
+
+## File Purpose and Relationship
+
+This file serves as a project-rule-parameter for managing project-rule-parameters across all workflows in the cognitive architecture. It provides a structured approach to adding, removing, updating, and verifying parameters through the alias-based parameter management system.
+
+## Usage as Project-Rule-Parameter
+
+```
+manage-parameters: add workflow="workflow-type" name="parameter-name" path="parameters/workflow/category/parameter-name.md" description="Parameter description" category="category" message-command="message-command" standard-parameters="param1,param2"
+manage-parameters: remove workflow="workflow-type" name="parameter-name"
+manage-parameters: update workflow="workflow-type" name="parameter-name" description="Updated description"
+manage-parameters: verify workflow="workflow-type"
+manage-parameters: convert-refs
+```
+
+## Workflow Requirements
+
+**⚠️ CRITICAL: All parameter management MUST use this automated system rather than manual file editing to ensure consistency across all references.**
+
+### Automation Process
+
+When a `manage-parameters` message-command is received, the AI assistant should follow these steps:
+
+1. Identify the operation (add, remove, update, verify, convert-refs)
+2. Execute the appropriate PowerShell script from the `1000xscripts/parameters/` directory
+3. Report the results back to the user
+
+### Available Operations
+
+#### Add Parameter
+
+```
+manage-parameters: add workflow="workflow-type" name="parameter-name" path="parameters/workflow/category/parameter-name.md" description="Parameter description" category="category" message-command="message-command" standard-parameters="param1,param2"
+```
+
+Optional parameters:
+- `usage-examples`: Comma-separated list of usage examples
+- `related-parameters`: Comma-separated list of related parameter names
+
+Executes:
+```powershell
+./1000xscripts/parameters/Manage-AllParameters.ps1 -Operation add -Workflow "workflow-type" -Name "parameter-name" -Path "parameters/workflow/category/parameter-name.md" -Description "Parameter description" -Category "category" -MessageCommand "message-command" -StandardParameters "param1","param2"
+```
+
+#### Remove Parameter
+
+```
+manage-parameters: remove workflow="workflow-type" name="parameter-name"
+```
+
+Executes:
+```powershell
+./1000xscripts/parameters/Manage-AllParameters.ps1 -Operation remove -Workflow "workflow-type" -Name "parameter-name"
+```
+
+#### Update Parameter
+
+```
+manage-parameters: update workflow="workflow-type" name="parameter-name" [property="value"]
+```
+
+Updateable properties:
+- `description`: Parameter description
+- `path`: Parameter file path
+- `category`: Parameter category
+- `message-command`: Associated message command
+- `standard-parameters`: Comma-separated list of standard parameters
+- `usage-examples`: Comma-separated list of usage examples
+- `related-parameters`: Comma-separated list of related parameter names
+
+Executes:
+```powershell
+./1000xscripts/parameters/Manage-AllParameters.ps1 -Operation update -Workflow "workflow-type" -Name "parameter-name" -Description "Updated description"
+```
+
+#### Verify Parameters
+
+```
+manage-parameters: verify workflow="workflow-type"
+```
+
+Executes:
+```powershell
+./1000xscripts/parameters/Manage-AllParameters.ps1 -Operation verify -Workflow "workflow-type"
+```
+
+#### Convert References
+
+```
+manage-parameters: convert-refs
+```
+
+Converts all filepath-based references to alias format:
+
+Executes:
+```powershell
+./1000xscripts/parameters/Manage-AllParameters.ps1 -Operation convert-refs
+```
+
+## Implementation Guidelines
+
+1. The registry file is located at `1000xscripts/parameters/alias-registry.json`
+2. All script calls should be made from the project root directory
+3. When adding a new parameter, always check that the parameter file exists
+4. When updating a parameter path, verify that the new path exists
+5. Run the verification tool periodically to ensure consistency
+
+## Error Handling
+
+If an error occurs during script execution:
+
+1. Clearly report the error to the user
+2. Suggest possible solutions based on the error
+3. Offer to retry the operation with corrected parameters if appropriate
+
+## Workflow-Specific Considerations
+
+### rules-workflow
+
+- Parameters are typically stored in `parameters/rules/` directory
+- Used primarily for cognitive architecture management
+- Usually integrates with knowledge components
+
+### front-end-workflow
+
+- Parameters are typically stored in `parameters/front-end/` directory
+- Used primarily for UI component implementation
+- Often references React/NextJS patterns
+
+### back-end-workflow
+
+- Parameters are typically stored in `parameters/back-end/` directory
+- Used primarily for API implementation
+- Often references FastAPI patterns
+
+## Examples
+
+### Adding a New Parameter
+
+```
+manage-parameters: add workflow="rules-workflow" name="template-advanced" path="parameters/rules/plan-mode/template-advanced.md" description="Advanced template for rules workflow planning" category="plan-mode" message-command="plan-mode" standard-parameters="workflow-type"
+```
+
+### Removing a Parameter
+
+```
+manage-parameters: remove workflow="rules-workflow" name="template-advanced"
+```
+
+### Updating a Parameter
+
+```
+manage-parameters: update workflow="rules-workflow" name="template-advanced" description="Updated description for advanced template"
+```
+
+### Verifying Parameters
+
+```
+manage-parameters: verify workflow="rules-workflow"
+```
+
+### Converting Old References
+
+```
+manage-parameters: convert-refs
+```
+
+## Advantages of the Alias System
+
+### 1. Path Independence
+
+References use aliases instead of file paths:
+- `@alias:rules:template-basic` instead of `@parameters/rules/plan-mode/template-basic.mdc`
+- Even if the file moves, the alias remains valid
+
+### 2. Workflow Isolation
+
+Clear workflow namespacing prevents confusion between parameters with the same name:
+- `@alias:rules:template-basic` vs `@alias:front-end:template-basic`
+- Makes it obvious which workflow a parameter belongs to
+
+### 3. Automatic Reference Management
+
+When parameters are updated:
+- Aliases are automatically resolved to current paths
+- References are automatically updated across all files
+- No manual grep/search needed to update references
+
+### 4. Migration Path
+
+The system provides a smooth migration path:
+- Automatic conversion of old references to new alias format
+- Backward compatibility with existing file paths
+- Gradual adoption without breaking existing code
+
+## File Standard Notice
+
+This file follows the standard project-rule-parameter format with appropriate sections for usage documentation. USE WHEN implementing cross-workflow parameter management operations, automating parameter registry updates, or verifying parameter references throughout the codebase. 

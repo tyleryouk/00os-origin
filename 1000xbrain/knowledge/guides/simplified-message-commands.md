@@ -1,0 +1,189 @@
+# Simplified Message-Command System Guide
+
+## Overview
+
+This guide explains the simplified message-command system implemented in the 1000xdev cognitive architecture. The system has been streamlined to use only three primary commands (plan-mode, dev-mode, direct-mode) that indicate which mode 1000xdev should operate in, with all implementation details abstracted to project-rule-parameters.
+
+## Core Message-Commands
+
+### Three Primary Commands
+
+1. **plan-mode**: Activates Planning Mode (📋)
+   - Focus on documentation and planning
+   - Indicated by 📋 emoji in responses
+   - Example: `plan-mode: rules-workflow`
+
+2. **dev-mode**: Activates Developer Mode (💻)
+   - Focus on code implementation and testing
+   - Indicated by 💻 emoji in responses
+   - Example: `dev-mode: front-end-workflow`
+
+3. **direct-mode**: Activates Direct Mode (⚡)
+   - Focus on immediate implementation with research
+   - Indicated by ⚡ emoji in responses
+   - Example: `direct-mode: back-end-workflow`
+
+### Message-Command Structure
+
+All message-commands follow this simple structure:
+
+```
+message-command: workflow-type @optional-project-rule-parameter.mdc
+```
+
+Where:
+- **message-command** is one of the three primary commands
+- **workflow-type** specifies the type of workflow
+- **@optional-project-rule-parameter.mdc** provides detailed implementation guidance (optional)
+
+## Implementation Abstraction
+
+### Key Concepts
+
+1. **Command Simplification**: Only three primary commands to indicate mode
+2. **Implementation Abstraction**: Implementation details moved to project-rule-parameters
+3. **On-Demand Loading**: Detailed implementation knowledge only loaded when explicitly referenced
+4. **Cognitive Efficiency**: Core system remains focused on essential mode concepts
+
+### Benefits of Abstraction
+
+1. **Reduced Cognitive Load**: Core system focuses only on essential concepts
+2. **Simplified Communication**: Clear indication of mode without complexity
+3. **Flexible Evolution**: Implementation details can evolve independently
+4. **Context Efficiency**: Detailed knowledge loaded only when needed
+
+## Project-Rule-Parameters
+
+### Purpose and Format
+
+Project-rule-parameters provide detailed implementation guidance abstracted from the core system:
+
+```
+message-command: workflow-type @project-rule-parameter.mdc
+```
+
+Example:
+```
+dev-mode: front-end-workflow @implementation-strategy.mdc
+```
+
+### When to Use Project-Rule-Parameters
+
+Project-rule-parameters should be used when:
+- Specific implementation guidance is needed
+- Custom implementation strategies are required
+- Special handling for particular workflows is needed
+- Advanced features or options are required
+
+### Project-Rule-Parameter Extension Requirements
+
+When referring to project-rule-parameters:
+
+1. **ALWAYS use .mdc extension**:
+   - CORRECT: `@template-basic.mdc`
+   - INCORRECT: `@template-basic.md`
+
+2. **Rationale**:
+   - 1000xbrain (.md files) are editable source files that AI can modify
+   - Cursor Rules (.mdc files) are the actual rules that get applied
+   - Only Tyler can edit .mdc files through the Cursor Settings UI
+   - Message-commands must reference the actual rules (.mdc), not their source (.md)
+
+## Mode Indicators
+
+### Purpose
+
+Mode indicators provide clear visual signals about which mode 1000xdev is currently operating in. Every message from 1000xdev must begin with the appropriate mode indicator:
+
+```
+emoji 1000xdev [workflow-type]
+```
+
+### Mode-Specific Indicators
+
+| Mode | Indicator | Example |
+|------|-----------|---------|
+| Planning Mode | 📋 1000xdev [workflow-type] | 📋 1000xdev [rules-workflow] |
+| Developer Mode | 💻 1000xdev [workflow-type] | 💻 1000xdev [front-end-workflow] |
+| Direct Mode | ⚡ 1000xdev [workflow-type] | ⚡ 1000xdev [back-end-workflow] |
+
+### Indicator Rules
+
+1. **Mandatory Inclusion**: Every message must begin with a mode indicator
+2. **Mode Matching**: Indicator must match the current mode
+3. **Format Consistency**: Always use the standard format: emoji + 1000xdev + [workflow-type]
+4. **No Substitutions**: Never use different emojis or formats
+
+## Direct Mode Prompt
+
+The direct-mode command is typically followed by a prompt that provides implementation details:
+
+```
+direct-mode: back-end-workflow
+
+prompt: Implement a new authentication endpoint using JWT tokens
+```
+
+After receiving this command and prompt, 1000xdev:
+1. Enters Direct Mode (⚡)
+2. Conducts research before implementation (minimum 20 tool calls)
+3. Implements based on the prompt
+4. Provides concise progress updates
+
+## Practical Usage Examples
+
+### Basic Mode Activation
+
+```
+# Activate Planning Mode for rules workflow
+plan-mode: rules-workflow
+
+# Activate Developer Mode for front-end workflow
+dev-mode: front-end-workflow
+
+# Activate Direct Mode for back-end workflow with prompt
+direct-mode: back-end-workflow
+
+prompt: Implement new authentication feature
+```
+
+### Using Project-Rule-Parameters
+
+```
+# Planning Mode with template
+plan-mode: rules-workflow @template-basic.mdc
+
+# Developer Mode with implementation strategy
+dev-mode: front-end-workflow @log-based-implementation.mdc
+
+# Direct Mode with implementation strategy
+direct-mode: back-end-workflow @direct-implementation.mdc
+
+prompt: Implement new database model
+```
+
+## Relationship to Knowledge System
+
+The simplified message-command system complements the knowledge access system:
+
+1. **Different Purpose**:
+   - Message-commands: Control mode and workflow
+   - Knowledge system: Provide detailed implementation guidance
+
+2. **Different Access Method**:
+   - Message-commands: Used in messages from the user
+   - Knowledge: Accessed via fetch_rules by 1000xdev
+
+3. **When to Use**:
+   - Message-commands: For mode transitions and workflow control
+   - Knowledge: For detailed implementation patterns and guides
+
+## Best Practices
+
+1. **Clear Mode Selection**: Use the appropriate mode for the task at hand
+2. **Minimal Parameters**: Include only necessary project-rule-parameters
+3. **Proper Workflow Type**: Specify the correct workflow type for the task
+4. **Clear Prompts**: For direct-mode, provide clear and specific prompts
+5. **Consistent Format**: Follow the standard message-command format
+
+This simplified message-command system streamlines communication while maintaining all necessary functionality through the abstraction of implementation details to project-rule-parameters and the knowledge system. 

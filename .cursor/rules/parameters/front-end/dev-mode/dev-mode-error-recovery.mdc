@@ -1,0 +1,635 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Front-End Dev-Mode: Error Recovery Implementation
+
+## Purpose
+
+This file provides specialized guidance for error recovery in front-end development. It focuses on identifying, diagnosing, and fixing critical errors in front-end applications, with emphasis on systematic error recovery patterns, fallback mechanisms, and robust error handling.
+
+## Usage as Project-Rule-Parameter
+
+This file contains error recovery implementation patterns for front-end development and should be referenced as a project-rule-parameter in message-commands when implementing error recovery features:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-error-recovery.mdc
+```
+
+## Mode Activation
+
+When activated with:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-error-recovery.mdc
+```
+
+This parameter enables:
+- Comprehensive error diagnosis capabilities
+- Structured error recovery workflows
+- Fallback implementation patterns
+- Graceful degradation approaches
+- Error boundary implementations
+- Retry mechanism strategies
+
+## Implementation Strategy
+
+The error recovery implementation strategy follows a structured approach:
+
+### 1. Error Diagnosis Phase
+
+Begin by identifying and diagnosing the specific errors to be addressed:
+
+```typescript
+// 1. Access error handling patterns
+fetch_rules(["knowledge/patterns/impl/error-handling"], 
+           "Understanding error handling patterns for front-end")
+
+// 2. Check error logs
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"ERROR|Exception|failed\" | Select-Object -Last 20", false)
+
+// 3. Analyze component errors
+grep_search("throw|catch|Error|try", false, "*.tsx")
+
+// 4. Check error boundary implementations
+codebase_search("error boundary implementation", ["front-end/src/components"])
+
+// 5. Examine API error handling
+grep_search("catch.*error|onError|handleError", false, "*.tsx")
+```
+
+### 2. Implementation of Error Boundaries
+
+Create or enhance error boundaries to catch and handle component errors:
+
+```typescript
+// 1. Create/update error boundary component
+edit_file("front-end/src/components/ErrorBoundary.tsx", 
+          "Implement/enhance error boundary component",
+          "// Error boundary component implementation\n" +
+          "import React, { Component, ErrorInfo } from 'react';\n\n" +
+          "interface ErrorBoundaryProps {\n" +
+          "  fallback?: React.ReactNode;\n" +
+          "  onError?: (error: Error, errorInfo: ErrorInfo) => void;\n" +
+          "  children: React.ReactNode;\n" +
+          "}\n\n" +
+          "interface ErrorBoundaryState {\n" +
+          "  hasError: boolean;\n" +
+          "  error: Error | null;\n" +
+          "}\n\n" +
+          "class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {\n" +
+          "  constructor(props: ErrorBoundaryProps) {\n" +
+          "    super(props);\n" +
+          "    this.state = { hasError: false, error: null };\n" +
+          "  }\n\n" +
+          "  static getDerivedStateFromError(error: Error) {\n" +
+          "    return { hasError: true, error };\n" +
+          "  }\n\n" +
+          "  componentDidCatch(error: Error, errorInfo: ErrorInfo) {\n" +
+          "    console.error('ErrorBoundary caught an error', error, errorInfo);\n" +
+          "    this.props.onError?.(error, errorInfo);\n" +
+          "  }\n\n" +
+          "  render() {\n" +
+          "    if (this.state.hasError) {\n" +
+          "      return this.props.fallback || (\n" +
+          "        <div className=\"error-boundary-fallback\">\n" +
+          "          <h2>Something went wrong.</h2>\n" +
+          "          <details>\n" +
+          "            <summary>Error Details</summary>\n" +
+          "            <pre>{this.state.error?.toString()}</pre>\n" +
+          "          </details>\n" +
+          "        </div>\n" +
+          "      );\n" +
+          "    }\n\n" +
+          "    return this.props.children;\n" +
+          "  }\n" +
+          "}\n\n" +
+          "export default ErrorBoundary;")
+
+// 2. Apply error boundary to component tree
+edit_file("front-end/src/App.tsx", 
+          "Apply error boundary to component tree",
+          "// ... existing code ...\n" +
+          "import ErrorBoundary from './components/ErrorBoundary';\n" +
+          "// ... existing code ...\n\n" +
+          "// Wrap components with error boundary\n" +
+          "<ErrorBoundary>\n" +
+          "  <MainComponent />\n" +
+          "</ErrorBoundary>\n" +
+          "// ... existing code ...")
+```
+
+### 3. API Error Handling Implementation
+
+Enhance API error handling with robust error management:
+
+```typescript
+// 1. Create/enhance API error handling utility
+edit_file("front-end/src/utils/apiErrorHandling.ts", 
+          "Implement API error handling utility",
+          "// API error handling utility\n" +
+          "import { AxiosError } from 'axios';\n\n" +
+          "export interface ApiError {\n" +
+          "  status: number;\n" +
+          "  message: string;\n" +
+          "  code?: string;\n" +
+          "  details?: any;\n" +
+          "}\n\n" +
+          "export function handleApiError(error: unknown): ApiError {\n" +
+          "  console.error('API Error:', error);\n" +
+          "  \n" +
+          "  if (error instanceof AxiosError) {\n" +
+          "    const status = error.response?.status || 500;\n" +
+          "    const message = error.response?.data?.message || error.message || 'Unknown API error';\n" +
+          "    const code = error.response?.data?.code;\n" +
+          "    const details = error.response?.data?.details;\n" +
+          "    \n" +
+          "    return { status, message, code, details };\n" +
+          "  }\n" +
+          "  \n" +
+          "  if (error instanceof Error) {\n" +
+          "    return {\n" +
+          "      status: 500,\n" +
+          "      message: error.message || 'Unknown error',\n" +
+          "    };\n" +
+          "  }\n" +
+          "  \n" +
+          "  return {\n" +
+          "    status: 500,\n" +
+          "    message: 'Unknown error occurred',\n" +
+          "  };\n" +
+          "}")
+
+// 2. Implement API client with error handling
+edit_file("front-end/src/api/apiClient.ts", 
+          "Enhance API client with error handling",
+          "// ... existing code ...\n\n" +
+          "import { handleApiError } from '../utils/apiErrorHandling';\n\n" +
+          "// Enhanced API method with error handling\n" +
+          "async function fetchWithErrorHandling<T>(url: string, options?: RequestInit): Promise<T> {\n" +
+          "  try {\n" +
+          "    const response = await fetch(url, options);\n" +
+          "    \n" +
+          "    if (!response.ok) {\n" +
+          "      throw new Error(`API error: ${response.status} ${response.statusText}`);\n" +
+          "    }\n" +
+          "    \n" +
+          "    return await response.json();\n" +
+          "  } catch (error) {\n" +
+          "    const formattedError = handleApiError(error);\n" +
+          "    throw formattedError;\n" +
+          "  }\n" +
+          "}\n" +
+          "// ... existing code ...")
+```
+
+### 4. Form Validation Error Handling
+
+Implement robust form validation error handling:
+
+```typescript
+// 1. Create/enhance form error handling
+edit_file("front-end/src/utils/formErrorHandling.ts", 
+          "Implement form error handling utility",
+          "// Form error handling utility\n" +
+          "export interface FormFieldError {\n" +
+          "  field: string;\n" +
+          "  message: string;\n" +
+          "}\n\n" +
+          "export interface FormErrors {\n" +
+          "  fields: Record<string, string>;\n" +
+          "  general?: string;\n" +
+          "}\n\n" +
+          "export function validateField(field: string, value: any, rules: Record<string, any>): string | null {\n" +
+          "  // Implementation of field validation logic\n" +
+          "  if (rules.required && (!value || value.toString().trim() === '')) {\n" +
+          "    return `${field} is required`;\n" +
+          "  }\n" +
+          "  \n" +
+          "  if (rules.minLength && value && value.length < rules.minLength) {\n" +
+          "    return `${field} must be at least ${rules.minLength} characters`;\n" +
+          "  }\n" +
+          "  \n" +
+          "  // Add more validation rules as needed\n" +
+          "  \n" +
+          "  return null;\n" +
+          "}\n\n" +
+          "export function validateForm(formData: Record<string, any>, validationRules: Record<string, any>): FormErrors {\n" +
+          "  const errors: FormErrors = { fields: {} };\n" +
+          "  \n" +
+          "  Object.keys(validationRules).forEach(field => {\n" +
+          "    const value = formData[field];\n" +
+          "    const fieldRules = validationRules[field];\n" +
+          "    const error = validateField(field, value, fieldRules);\n" +
+          "    \n" +
+          "    if (error) {\n" +
+          "      errors.fields[field] = error;\n" +
+          "    }\n" +
+          "  });\n" +
+          "  \n" +
+          "  return errors;\n" +
+          "}")
+
+// 2. Apply form error handling to component
+edit_file("front-end/src/components/Form.tsx", 
+          "Implement form with error handling",
+          "// ... existing code ...\n" +
+          "import { validateForm, FormErrors } from '../utils/formErrorHandling';\n" +
+          "// ... existing code ...\n\n" +
+          "const [formData, setFormData] = useState({});\n" +
+          "const [errors, setErrors] = useState<FormErrors>({ fields: {} });\n\n" +
+          "const handleSubmit = (e: React.FormEvent) => {\n" +
+          "  e.preventDefault();\n" +
+          "  \n" +
+          "  const validationRules = {\n" +
+          "    // Define validation rules for form fields\n" +
+          "    name: { required: true, minLength: 3 },\n" +
+          "    email: { required: true, email: true },\n" +
+          "    // Add more fields as needed\n" +
+          "  };\n" +
+          "  \n" +
+          "  const formErrors = validateForm(formData, validationRules);\n" +
+          "  \n" +
+          "  if (Object.keys(formErrors.fields).length > 0) {\n" +
+          "    setErrors(formErrors);\n" +
+          "    return;\n" +
+          "  }\n" +
+          "  \n" +
+          "  // Proceed with form submission\n" +
+          "}\n" +
+          "// ... existing code ...\n\n" +
+          "// Display field error\n" +
+          "{errors.fields.name && <div className=\"error-message\">{errors.fields.name}</div>}\n" +
+          "// ... existing code ...")
+```
+
+### 5. Retry Mechanism Implementation
+
+Implement retry logic for API calls and operations:
+
+```typescript
+// 1. Create retry utility
+edit_file("front-end/src/utils/retryUtils.ts", 
+          "Implement retry utility function",
+          "// Retry utility function\n" +
+          "export interface RetryOptions {\n" +
+          "  maxRetries?: number;\n" +
+          "  delay?: number;\n" +
+          "  backoff?: boolean;\n" +
+          "  shouldRetry?: (error: any) => boolean;\n" +
+          "  onRetry?: (error: any, retryCount: number) => void;\n" +
+          "}\n\n" +
+          "export async function withRetry<T>(\n" +
+          "  operation: () => Promise<T>,\n" +
+          "  options: RetryOptions = {}\n" +
+          "): Promise<T> {\n" +
+          "  const {\n" +
+          "    maxRetries = 3,\n" +
+          "    delay = 1000,\n" +
+          "    backoff = true,\n" +
+          "    shouldRetry = () => true,\n" +
+          "    onRetry = () => {}\n" +
+          "  } = options;\n\n" +
+          "  let lastError: any;\n" +
+          "  \n" +
+          "  for (let retryCount = 0; retryCount <= maxRetries; retryCount++) {\n" +
+          "    try {\n" +
+          "      return await operation();\n" +
+          "    } catch (error) {\n" +
+          "      lastError = error;\n" +
+          "      \n" +
+          "      const isLastAttempt = retryCount === maxRetries;\n" +
+          "      if (isLastAttempt || !shouldRetry(error)) {\n" +
+          "        break;\n" +
+          "      }\n" +
+          "      \n" +
+          "      onRetry(error, retryCount);\n" +
+          "      \n" +
+          "      const waitTime = backoff ? delay * Math.pow(2, retryCount) : delay;\n" +
+          "      await new Promise(resolve => setTimeout(resolve, waitTime));\n" +
+          "    }\n" +
+          "  }\n" +
+          "  \n" +
+          "  throw lastError;\n" +
+          "}")
+
+// 2. Apply retry logic to API client
+edit_file("front-end/src/api/apiClient.ts", 
+          "Apply retry logic to API client",
+          "// ... existing code ...\n" +
+          "import { withRetry } from '../utils/retryUtils';\n" +
+          "// ... existing code ...\n\n" +
+          "// API method with retry capability\n" +
+          "async function fetchWithRetry<T>(url: string, options?: RequestInit): Promise<T> {\n" +
+          "  return withRetry(\n" +
+          "    () => fetchWithErrorHandling<T>(url, options),\n" +
+          "    {\n" +
+          "      maxRetries: 3,\n" +
+          "      delay: 1000,\n" +
+          "      backoff: true,\n" +
+          "      shouldRetry: (error) => {\n" +
+          "        // Retry on network errors or 5xx server errors\n" +
+          "        return error.status >= 500 || error.message.includes('network');\n" +
+          "      },\n" +
+          "      onRetry: (error, retryCount) => {\n" +
+          "        console.log(`Retrying request (${retryCount}/3) after error:`, error.message);\n" +
+          "      }\n" +
+          "    }\n" +
+          "  );\n" +
+          "}\n" +
+          "// ... existing code ...")
+```
+
+### 6. Graceful Degradation Implementation
+
+Implement graceful degradation for components:
+
+```typescript
+// 1. Create component with fallback content
+edit_file("front-end/src/components/FeatureWithFallback.tsx", 
+          "Implement component with graceful degradation",
+          "// Component with graceful degradation\n" +
+          "import React, { useState, useEffect } from 'react';\n" +
+          "import { fetchData } from '../api/apiClient';\n" +
+          "import ErrorBoundary from './ErrorBoundary';\n\n" +
+          "interface FeatureProps {\n" +
+          "  id: string;\n" +
+          "}\n\n" +
+          "function FeatureContent({ id }: FeatureProps) {\n" +
+          "  const [data, setData] = useState<any>(null);\n" +
+          "  const [loading, setLoading] = useState(true);\n" +
+          "  const [error, setError] = useState<any>(null);\n\n" +
+          "  useEffect(() => {\n" +
+          "    const loadData = async () => {\n" +
+          "      try {\n" +
+          "        setLoading(true);\n" +
+          "        const result = await fetchData(id);\n" +
+          "        setData(result);\n" +
+          "        setError(null);\n" +
+          "      } catch (err) {\n" +
+          "        console.error('Failed to load feature data:', err);\n" +
+          "        setError(err);\n" +
+          "      } finally {\n" +
+          "        setLoading(false);\n" +
+          "      }\n" +
+          "    };\n\n" +
+          "    loadData();\n" +
+          "  }, [id]);\n\n" +
+          "  if (loading) {\n" +
+          "    return <div className=\"loading\">Loading...</div>;\n" +
+          "  }\n\n" +
+          "  if (error) {\n" +
+          "    // Graceful degradation - show fallback content\n" +
+          "    return (\n" +
+          "      <div className=\"feature-fallback\">\n" +
+          "        <h3>Feature Unavailable</h3>\n" +
+          "        <p>We're unable to load this feature right now. Here's alternative content:</p>\n" +
+          "        <div className=\"fallback-content\">\n" +
+          "          {/* Static fallback content */}\n" +
+          "          <p>Here's some helpful information while we fix the issue.</p>\n" +
+          "        </div>\n" +
+          "        <button onClick={() => window.location.reload()}>Try Again</button>\n" +
+          "      </div>\n" +
+          "    );\n" +
+          "  }\n\n" +
+          "  return (\n" +
+          "    <div className=\"feature-content\">\n" +
+          "      {/* Render actual feature content with data */}\n" +
+          "      <h2>{data.title}</h2>\n" +
+          "      <div>{data.content}</div>\n" +
+          "    </div>\n" +
+          "  );\n" +
+          "}\n\n" +
+          "function FeatureWithFallback(props: FeatureProps) {\n" +
+          "  return (\n" +
+          "    <ErrorBoundary\n" +
+          "      fallback={\n" +
+          "        <div className=\"error-fallback\">\n" +
+          "          <h3>Something Went Wrong</h3>\n" +
+          "          <p>We're experiencing technical difficulties with this feature.</p>\n" +
+          "          <div className=\"fallback-content\">\n" +
+          "            {/* Static fallback content */}\n" +
+          "          </div>\n" +
+          "        </div>\n" +
+          "      }\n" +
+          "    >\n" +
+          "      <FeatureContent {...props} />\n" +
+          "    </ErrorBoundary>\n" +
+          "  );\n" +
+          "}\n\n" +
+          "export default FeatureWithFallback;")
+```
+
+### 7. Global Error Handling
+
+Implement global error handling:
+
+```typescript
+// 1. Create global error handler
+edit_file("front-end/src/utils/globalErrorHandler.ts", 
+          "Implement global error handler",
+          "// Global error handler\n" +
+          "let prevOnError: OnErrorEventHandler = window.onerror;\n" +
+          "let prevOnUnhandledRejection: ((event: PromiseRejectionEvent) => void) | null = null;\n\n" +
+          "export interface ErrorHandlerOptions {\n" +
+          "  captureUnhandledRejections?: boolean;\n" +
+          "  logErrors?: boolean;\n" +
+          "  sendToAnalytics?: boolean;\n" +
+          "  showErrorDialog?: boolean;\n" +
+          "}\n\n" +
+          "export function setupGlobalErrorHandler(options: ErrorHandlerOptions = {}) {\n" +
+          "  const {\n" +
+          "    captureUnhandledRejections = true,\n" +
+          "    logErrors = true,\n" +
+          "    sendToAnalytics = true,\n" +
+          "    showErrorDialog = false\n" +
+          "  } = options;\n\n" +
+          "  // Save previous handlers\n" +
+          "  prevOnError = window.onerror;\n" +
+          "  \n" +
+          "  // Set up global error handler\n" +
+          "  window.onerror = function(message, source, lineno, colno, error) {\n" +
+          "    handleError(error || new Error(message as string));\n" +
+          "    \n" +
+          "    // Call previous handler if it exists\n" +
+          "    if (prevOnError) {\n" +
+          "      return prevOnError(message, source, lineno, colno, error);\n" +
+          "    }\n" +
+          "    \n" +
+          "    return false;\n" +
+          "  };\n\n" +
+          "  // Handle unhandled promise rejections\n" +
+          "  if (captureUnhandledRejections) {\n" +
+          "    prevOnUnhandledRejection = (event: PromiseRejectionEvent) => {\n" +
+          "      event.preventDefault();\n" +
+          "      handleError(event.reason);\n" +
+          "    };\n" +
+          "    \n" +
+          "    window.addEventListener('unhandledrejection', prevOnUnhandledRejection);\n" +
+          "  }\n\n" +
+          "  function handleError(error: any) {\n" +
+          "    if (logErrors) {\n" +
+          "      console.error('Global error caught:', error);\n" +
+          "    }\n" +
+          "    \n" +
+          "    if (sendToAnalytics) {\n" +
+          "      // Send to analytics service\n" +
+          "      try {\n" +
+          "        // Implement analytics reporting\n" +
+          "        // Example: analyticsService.reportError(error);\n" +
+          "      } catch (e) {\n" +
+          "        console.error('Failed to send error to analytics:', e);\n" +
+          "      }\n" +
+          "    }\n" +
+          "    \n" +
+          "    if (showErrorDialog) {\n" +
+          "      // Show error dialog to user\n" +
+          "      // This should be implemented based on your UI framework\n" +
+          "    }\n" +
+          "  }\n" +
+          "}\n\n" +
+          "export function teardownGlobalErrorHandler() {\n" +
+          "  // Restore previous handlers\n" +
+          "  window.onerror = prevOnError;\n" +
+          "  \n" +
+          "  if (prevOnUnhandledRejection) {\n" +
+          "    window.removeEventListener('unhandledrejection', prevOnUnhandledRejection);\n" +
+          "    prevOnUnhandledRejection = null;\n" +
+          "  }\n" +
+          "}")
+
+// 2. Apply global error handler
+edit_file("front-end/src/index.tsx", 
+          "Set up global error handler",
+          "// ... existing code ...\n" +
+          "import { setupGlobalErrorHandler } from './utils/globalErrorHandler';\n" +
+          "// ... existing code ...\n\n" +
+          "// Set up global error handling\n" +
+          "setupGlobalErrorHandler({\n" +
+          "  captureUnhandledRejections: true,\n" +
+          "  logErrors: true,\n" +
+          "  sendToAnalytics: process.env.NODE_ENV === 'production',\n" +
+          "  showErrorDialog: process.env.NODE_ENV === 'development'\n" +
+          "});\n\n" +
+          "// ... existing code ...")
+```
+
+## Common-Usage Scenarios
+
+This parameter is optimized for these common scenarios:
+
+1. **Critical Error Recovery**: Implementing recovery mechanisms for severe errors
+2. **API Failure Handling**: Creating robust API error handling and fallbacks
+3. **Form Error Management**: Implementing comprehensive form validation error handling
+4. **Graceful Degradation**: Ensuring components fail gracefully with fallback content
+5. **Error Reporting**: Setting up error logging and reporting mechanisms
+
+## Tool Sequence Examples
+
+### Error Boundary Implementation
+
+```typescript
+// 1. Check existing error boundaries
+grep_search("class.*extends.*ErrorBoundary|getDerivedStateFromError|componentDidCatch", false, "*.tsx")
+
+// 2. Create error boundary if none exists
+edit_file("front-end/src/components/ErrorBoundary.tsx", 
+          "Create error boundary component",
+          "// Error boundary component implementation...")
+
+// 3. Apply error boundaries to key components
+edit_file("front-end/src/App.tsx", 
+          "Apply error boundaries to component tree",
+          "// ... existing code ...\n" +
+          "// Wrap component with error boundary\n" +
+          "// ... existing code ...")
+
+// 4. Create fallback components
+edit_file("front-end/src/components/Fallback.tsx", 
+          "Create fallback component",
+          "// Fallback component implementation...")
+```
+
+### API Error Handling
+
+```typescript
+// 1. Examine current API error handling
+grep_search("catch|error|try", false, "src/api/*.ts")
+
+// 2. Create enhanced error handling
+edit_file("front-end/src/utils/apiErrorHandling.ts", 
+          "Create API error handling utility",
+          "// API error handling utility implementation...")
+
+// 3. Update API client
+edit_file("front-end/src/api/apiClient.ts", 
+          "Update API client with error handling",
+          "// ... existing code ...\n" +
+          "// Enhanced error handling implementation\n" +
+          "// ... existing code ...")
+
+// 4. Create retry mechanism
+edit_file("front-end/src/utils/retryUtils.ts", 
+          "Create retry utility",
+          "// Retry utility implementation...")
+
+// 5. Update components to handle errors
+edit_file("front-end/src/components/DataComponent.tsx", 
+          "Update component with error handling",
+          "// ... existing code ...\n" +
+          "// Error handling implementation\n" +
+          "// ... existing code ...")
+```
+
+## Recovery Points
+
+When continuing an interrupted implementation, these recovery points can be used:
+
+1. **Error Diagnosis Complete**: Errors identified, ready for implementation
+2. **Error Boundaries Implemented**: Error boundaries in place, ready for API error handling
+3. **API Error Handling Complete**: API error handling implemented, ready for form validation
+4. **Form Validation Complete**: Form validation implemented, ready for retry mechanisms
+5. **Retry Mechanisms Implemented**: Retry logic in place, ready for graceful degradation
+6. **Graceful Degradation Complete**: Fallback mechanisms implemented, ready for global error handling
+7. **Implementation Complete**: All error recovery mechanisms implemented and verified
+
+## Related Parameters
+
+- `plan-mode-error-recovery.md`: Planning for error recovery
+- `dev-mode-log-based.md`: Log-based error diagnosis
+- `continue-implementation-error-recovery.md`: Continue error recovery implementation
+- `analyze-logs.md`: Log analysis for error identification
+
+## Implementation Progress Tracking
+
+Use this parameter with implementation progress tracking:
+
+```typescript
+// Update implementation progress
+edit_file("planning/feature-name/implementation-progress.md",
+          "Update implementation progress with error recovery details",
+          "// ... existing content ...\n\n" +
+          "## Error Recovery Implementation\n\n" +
+          "- Error Boundaries: ✅ Implemented\n" +
+          "- API Error Handling: ✅ Implemented\n" +
+          "- Form Validation: ✅ Implemented\n" +
+          "- Retry Mechanisms: ✅ Implemented\n" +
+          "- Graceful Degradation: ✅ Implemented\n" +
+          "- Global Error Handling: ✅ Implemented\n\n" +
+          "## Remaining Tasks\n\n" +
+          "- [Any remaining tasks]\n\n" +
+          "// ... existing content ...")
+```
+
+## Completion Criteria
+
+The error recovery implementation is complete when:
+
+1. **Error Boundaries**: Components are wrapped with appropriate error boundaries
+2. **API Error Handling**: Robust API error handling is implemented
+3. **Form Validation**: Comprehensive form validation is in place
+4. **Retry Mechanisms**: Appropriate retry logic is implemented
+5. **Graceful Degradation**: Components fail gracefully with fallback content
+6. **Global Error Handling**: Global error handlers are in place
+7. **Documentation**: Error recovery mechanisms are properly documented 

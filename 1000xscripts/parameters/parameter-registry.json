@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "lastUpdated": "2023-04-01",
+  "parameters": {
+    "template-basic": {
+      "path": "parameters/rules/plan-mode/template-basic.md",
+      "description": "Basic template for simple requirements",
+      "category": "plan-mode",
+      "usageExamples": [
+        "plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.mdc",
+        "create-template: rules-workflow @parameters/rules/plan-mode/template-basic.mdc"
+      ],
+      "relatedParameters": ["template-advanced"]
+    },
+    "template-advanced": {
+      "path": "parameters/rules/plan-mode/template-advanced.md",
+      "description": "Advanced template with detailed sections",
+      "category": "plan-mode",
+      "usageExamples": [
+        "plan-mode: rules-workflow @parameters/rules/plan-mode/template-advanced.mdc",
+        "create-template: rules-workflow @parameters/rules/plan-mode/template-advanced.mdc"
+      ],
+      "relatedParameters": ["template-basic"]
+    },
+    "plan-mode-rules-workflow-enhancement": {
+      "path": "parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.md",
+      "description": "Specialized planning for enhancing rules-workflow documentation",
+      "category": "plan-mode",
+      "usageExamples": [
+        "plan-mode: rules-workflow @parameters/rules/plan-mode/plan-mode-rules-workflow-enhancement.mdc"
+      ],
+      "relatedParameters": ["dev-mode-rules-workflow-enhancement"]
+    },
+    "dev-mode-rules-workflow-enhancement": {
+      "path": "parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.md",
+      "description": "Implementation of rules-workflow enhancements",
+      "category": "dev-mode",
+      "usageExamples": [
+        "dev-mode: rules-workflow @parameters/rules/dev-mode/dev-mode-rules-workflow-enhancement.mdc"
+      ],
+      "relatedParameters": ["plan-mode-rules-workflow-enhancement"]
+    }
+  }
+} 

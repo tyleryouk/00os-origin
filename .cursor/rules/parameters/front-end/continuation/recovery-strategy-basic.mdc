@@ -1,0 +1,355 @@
+# Recovery Strategy: Basic Front-End Workflow
+
+## File Purpose
+
+This file provides basic recovery strategies for front-end development tasks. It should be used when:
+
+- Implementation encounters common issues that need resolution
+- Basic error patterns need to be addressed
+- Implementation was interrupted and needs to be resumed
+- Simple UI or state management issues occur
+- Standard API integration problems arise
+
+This parameter is designed to work with recovery-focused message-commands, providing structured approaches to recovering from common implementation issues.
+
+## Usage as Project-Rule-Parameter
+
+This file contains basic recovery strategies and should be referenced as a project-rule-parameter in message-commands:
+
+```
+recovery-strategy: @parameters/front-end/continuation/recovery-strategy-basic.mdc
+```
+
+For other recovery approaches, see:
+- `recovery-strategy-advanced.md`: For complex architectural recovery
+- `recovery-strategy-log-based.md`: For log-driven recovery approaches
+- `recovery-strategy-error-recovery.md`: For critical error situations
+
+## Basic Recovery Process Overview
+
+The basic recovery process follows these key steps:
+
+1. **Issue Identification and Assessment**
+   - Identify the specific implementation issue
+   - Assess the severity and scope
+   - Determine affected components
+   - Locate relevant code sections
+
+2. **Recovery Strategy Selection**
+   - Select appropriate recovery pattern
+   - Identify minimal required changes
+   - Plan step-by-step recovery approach
+   - Prepare verification methods
+
+3. **Recovery Implementation**
+   - Apply targeted fixes
+   - Make minimal necessary changes
+   - Implement standard error handling
+   - Add validation as needed
+
+4. **Recovery Verification**
+   - Test fixed functionality
+   - Verify component behavior
+   - Confirm issue resolution
+   - Document recovery approach
+
+## Issue Identification and Assessment
+
+Begin by identifying and assessing the implementation issue:
+
+```typescript
+// 1. Review implementation progress to identify reported issues
+read_file("[planning_folder_path]/implementation-progress.md", should_read_entire_file=true)
+
+// 2. Check component implementation
+read_file("[component_file_path]", should_read_entire_file=true)
+
+// 3. Check component styles if relevant
+read_file("[component_style_path]", should_read_entire_file=true)
+
+// 4. Check relevant API integration
+grep_search("fetch|axios|api\\.", false, "[component_file_path]")
+
+// 5. Check state management
+grep_search("useState|useReducer|useContext", false, "[component_file_path]")
+```
+
+## Common Issue Categories
+
+### 1. Prop Handling Issues
+- Missing props validation
+- Incorrect prop types
+- Default prop values missing
+- Optional props handling
+
+### 2. State Management Issues
+- Incorrect initial state
+- Missing state updates
+- Improper state dependencies
+- Unnecessary re-renders
+
+### 3. API Integration Issues
+- Missing error handling
+- Incorrect data parsing
+- Loading state handling
+- API timeout issues
+
+### 4. UI Rendering Issues
+- Conditional rendering bugs
+- CSS class conflicts
+- Layout inconsistencies
+- Responsive design issues
+
+### 5. Event Handling Issues
+- Missing event handlers
+- Event propagation issues
+- Form submission problems
+- Keyboard accessibility
+
+## Basic Recovery Strategies
+
+### 1. Prop Validation Recovery
+
+```typescript
+// Before: Missing prop validation
+const Component = ({ data, onAction }) => {
+  return (
+    <div>
+      <h2>{data.title}</h2>
+      <button onClick={onAction}>Action</button>
+    </div>
+  );
+};
+
+// After: With prop validation
+import PropTypes from 'prop-types';
+
+const Component = ({ data, onAction }) => {
+  // Add default value and null check
+  const title = data?.title || 'Untitled';
+  
+  return (
+    <div>
+      <h2>{title}</h2>
+      <button onClick={onAction || (() => {})}>Action</button>
+    </div>
+  );
+};
+
+// PropTypes validation
+Component.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+  }),
+  onAction: PropTypes.func,
+};
+
+// Default props
+Component.defaultProps = {
+  data: { title: 'Untitled' },
+  onAction: () => {},
+};
+```
+
+### 2. State Management Recovery
+
+```typescript
+// Before: Problematic state management
+const [items, setItems] = useState([]);
+
+const addItem = (newItem) => {
+  items.push(newItem); // Direct mutation!
+  setItems(items);
+};
+
+// After: Correct state handling
+const [items, setItems] = useState([]);
+
+const addItem = (newItem) => {
+  setItems(prevItems => [...prevItems, newItem]); // Immutable update
+};
+```
+
+### 3. API Integration Recovery
+
+```typescript
+// Before: Error-prone API call
+const fetchData = async () => {
+  setLoading(true);
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  setData(data);
+  setLoading(false);
+};
+
+// After: With basic error handling
+const fetchData = async () => {
+  setLoading(true);
+  setError(null);
+  
+  try {
+    const response = await fetch(apiUrl);
+    
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    setData(data);
+  } catch (error) {
+    console.error('API error:', error);
+    setError('Failed to load data');
+  } finally {
+    setLoading(false);
+  }
+};
+```
+
+### 4. UI Rendering Recovery
+
+```typescript
+// Before: Problematic conditional rendering
+return (
+  <div>
+    {isLoading && <Spinner />}
+    {data.items.map(item => (
+      <Item key={item.id} {...item} />
+    ))}
+  </div>
+);
+
+// After: Safe conditional rendering
+return (
+  <div>
+    {isLoading && <Spinner />}
+    {!isLoading && !data && <div>No data available</div>}
+    {!isLoading && data && data.items && (
+      <>
+        {data.items.length === 0 ? (
+          <div>No items found</div>
+        ) : (
+          data.items.map(item => (
+            <Item key={item?.id || `item-${Math.random()}`} {...item} />
+          ))
+        )}
+      </>
+    )}
+  </div>
+);
+```
+
+### 5. Event Handling Recovery
+
+```typescript
+// Before: Problematic event handling
+const handleSubmit = () => {
+  // Missing event.preventDefault()
+  // Form will reload page
+  submitData(formData);
+};
+
+// After: Correct event handling
+const handleSubmit = (event) => {
+  event.preventDefault(); // Prevent page reload
+  
+  // Validate before submitting
+  if (!formData.name || !formData.email) {
+    setError('Please fill all required fields');
+    return;
+  }
+  
+  submitData(formData);
+};
+```
+
+## Recovery Implementation
+
+Apply recovery strategies systematically:
+
+```typescript
+// 1. Understand the component with the issue
+read_file("[component_file_path]", should_read_entire_file=true)
+
+// 2. Implement basic recovery strategy
+edit_file("[component_file_path]",
+          "Apply basic recovery strategy",
+          "// ... existing code ...\n\n// Recovery fix: [describe fix]\n// ... implementation code ...")
+
+// 3. Add basic validation if needed
+edit_file("[component_file_path]",
+          "Add basic validation",
+          "// ... existing code ...\n\n// Add validation\nif (!data) {\n  return <div>No data available</div>;\n}\n\n// ... existing code ...")
+
+// 4. Update implementation progress
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update implementation progress with recovery details",
+          "// ... existing content ...\n\n## Recovery Progress (Date: [current_date])\n\n### Issues Resolved\n- Fixed: [issue_1] with [approach]\n- Fixed: [issue_2] with [approach]\n- Implemented: Basic validation for [component]\n\n// ... existing content ...")
+```
+
+## Recovery Verification
+
+Verify that recovery strategies have resolved the issues:
+
+```typescript
+// 1. Run tests to verify fixes
+run_terminal_cmd("cd front-end && npm run test -- --testPathPattern=[component_name]", false)
+
+// 2. Check for type errors
+run_terminal_cmd("cd front-end && npm run type-check", false)
+
+// 3. Create UX situation to verify fix
+edit_file("[planning_folder_path]/recovery-verification-ux-situation.md",
+          "Create UX situation to verify recovery",
+          "# Recovery Verification UX Situation\n\n## Steps to Verify\n\n1. Navigate to [page]\n2. Interact with [component]\n3. Verify [expected behavior]\n\n## Expected Behavior\n\n- Component should render correctly\n- Interactions should work as expected\n- No errors should occur")
+```
+
+## Common Recovery Patterns by Issue Type
+
+| Issue | Recovery Pattern |
+|-------|-----------------|
+| Missing prop validation | Add PropTypes or TypeScript interfaces |
+| Null/undefined errors | Add null checks and default values |
+| State mutation issues | Use immutable update patterns |
+| API error handling | Add try/catch and loading/error states |
+| Event handler issues | Prevent default actions and add validation |
+| Key prop warnings | Implement proper and unique key strategies |
+| Conditional rendering | Add explicit checks for all conditions |
+| CSS conflicts | Use CSS modules or scoped class names |
+| Form submission | Add validation and prevent default submission |
+
+## Completion Signaling
+
+When recovery is complete:
+
+```
+💻 1000xdev [front-end-workflow]
+
+Basic recovery implementation complete:
+
+Issues Resolved:
+- Fixed [count] prop handling issues
+- Resolved [count] state management problems
+- Implemented [count] API error handling improvements
+- Fixed [count] UI rendering issues
+- Resolved [count] event handling problems
+
+Recovery Strategies:
+- Added prop validation and default props
+- Implemented immutable state updates
+- Enhanced error handling for API calls
+- Improved conditional rendering safety
+- Added event handler validation
+
+Verification:
+- All identified issues have been resolved
+- Tests are passing for recovered components
+
+implementation-complete
+```
+
+## Related References
+
+- **Front-End-Workflow**: `workflows/front-end-workflow.md`
+- **Error Handling Patterns**: `parameters/front-end/helpers/error-handling.md`
+- **Prop Validation**: `parameters/front-end/helpers/prop-validation.md`
+- **State Management**: `parameters/front-end/helpers/state-management.md` 

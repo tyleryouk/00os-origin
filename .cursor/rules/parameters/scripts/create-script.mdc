@@ -1,0 +1,190 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Create Script Message-Command
+
+## File Purpose and Relationship
+
+This file provides detailed documentation for the `create-script` message-command, which is used to create new PowerShell scripts in the scripts-workflow. It defines the parameters, execution protocol, and expected outcomes for this command. This file should be consulted when:
+
+- Creating new automation scripts
+- Understanding script structure requirements
+- Following script creation standards
+- Implementing proper documentation and error handling
+- Placing scripts in the appropriate directory
+
+This file is part of a related set:
+- **workflows/scripts-workflow/scripts-workflow.md**: Core workflow definition
+- **workflows/scripts-workflow/creation-process.md**: Detailed creation process
+- **knowledge/scripts/script-test.md**: Documentation for testing scripts
+
+## Message-Command Format
+
+**Correct Format**: `create-script: script-path.ps1 @knowledge/scripts/create-script.mdc`
+
+The `create-script` message-command must be used with the following parameters:
+
+- **Standard-Parameter**: Required, must specify the path for the new script
+- **Project-Rule-Parameter**: Required, must be `@knowledge/scripts/create-script.mdc`
+
+## Execution Protocol
+
+When the `create-script` message-command is received, 1000xdev must:
+
+1. **Script Planning**: Review the requirements for the new script
+2. **Directory Selection**: Ensure the script is placed in the appropriate directory
+3. **Script Creation**: Create the script with proper structure and documentation
+4. **Error Handling Implementation**: Implement comprehensive error handling
+5. **Documentation Inclusion**: Include thorough documentation
+6. **Parameter Definition**: Define proper parameters with validation
+7. **Implementation Report**: Provide a detailed report of the created script
+
+## Implementation Guidelines
+
+The script creation process follows these guidelines:
+
+### 1. Script Structure Standards
+
+- Begin with a comprehensive header comment section
+- Include a proper param() block with appropriate validation
+- Implement function definitions for modular functionality
+- Follow the standard script body structure
+- Include proper error handling and logging
+
+### 2. Header Section
+
+Every script must begin with a standardized header section:
+
+```powershell
+<#
+.SYNOPSIS
+    Brief description of the script's purpose.
+
+.DESCRIPTION
+    Detailed description of what the script does, its functionality,
+    and how it contributes to the cognitive architecture.
+
+.PARAMETER ParameterName
+    Description of each parameter, including its purpose, type, and any default values.
+
+.EXAMPLE
+    .\Script-Name.ps1 -Parameter Value
+    Description of what this example does.
+
+.NOTES
+    File Name      : Script-Name.ps1
+    Author         : 1000xdev
+    Prerequisite   : PowerShell 5.1 or later
+    Created Date   : YYYY-MM-DD
+#>
+```
+
+### 3. Parameters Section
+
+Parameters should be defined using the `param()` block:
+
+```powershell
+param(
+    [Parameter(Mandatory=$true, HelpMessage="Description of the parameter")]
+    [ValidateNotNullOrEmpty()]
+    [string]$RequiredParameter,
+    
+    [Parameter(Mandatory=$false)]
+    [switch]$DryRun = $false,
+    
+    [Parameter(Mandatory=$false)]
+    [switch]$Force = $false
+)
+```
+
+### 4. Error Handling Requirements
+
+- Use try-catch blocks for operations that might fail
+- Implement proper cleanup in finally blocks
+- Include a `-DryRun` parameter for scripts that modify files
+- Include a `-Force` parameter for operations that should normally prompt for confirmation
+- Provide informative error messages
+
+### 5. Coding Standards
+
+- Use Pascal Case for function and script names (e.g., `Get-FileContent`)
+- Use camel case for variable names (e.g., `$fileContent`)
+- Use descriptive names that clearly indicate purpose
+- Include comments for complex logic
+- Follow consistent indentation and formatting
+
+## Implementation Effects
+
+The `create-script` command produces the following implementation effects:
+
+1. **Script Creation**: Creates a new script with the specified functionality
+2. **Documentation Inclusion**: Includes comprehensive documentation
+3. **Error Handling Implementation**: Implements proper error handling
+4. **Parameter Definition**: Defines appropriate parameters with validation
+5. **Implementation Report**: Provides a detailed report of the script creation
+6. **Testing Guidance**: Suggests testing procedures for the new script
+
+## Common Errors and Solutions
+
+| Error | Cause | Solution |
+|----|----|----|
+| Incomplete header | Missing essential documentation | Add all required documentation sections |
+| Missing parameters | Required parameters not defined | Add all necessary parameters with validation |
+| Inadequate error handling | Error handling not comprehensive | Implement try-catch blocks for all operations |
+| Invalid directory placement | Script placed in wrong directory | Move script to the appropriate directory |
+| Parameter validation missing | Parameters not properly validated | Add appropriate validation attributes |
+
+## Parameter Requirements
+
+### Standard-Parameter
+
+The standard-parameter specifies the path for the new script:
+
+- Must be a valid path for a PowerShell script (.ps1 extension)
+- Should include the appropriate directory based on script purpose
+- Example: `1000xscripts/utility-scripts/New-ScriptName.ps1`
+
+### Project-Rule-Parameter
+
+The project-rule-parameter `@knowledge/scripts/create-script.mdc` provides the detailed execution instructions for the `create-script` message-command. This parameter:
+
+- Must be explicitly included with the message-command
+- Must use the exact format with .mdc extension
+- References the corresponding Cursor Project Rule
+- Contains the implementation details for the script creation process
+
+## Directory Placement Guidelines
+
+New scripts should be placed in the appropriate directory based on their purpose:
+
+1. **frontmatter-scripts/**: Scripts related to frontmatter management
+2. **rules-scripts/**: Scripts for Cursor Rules management
+3. **maintenance-scripts/**: Scripts for system maintenance
+4. **report-scripts/**: Scripts that generate reports
+5. **utility-scripts/**: General utility scripts
+
+Scripts that orchestrate multiple operations across categories may be placed in the root directory.
+
+## Verification
+
+A successful `create-script` execution is verified when:
+
+1. The script has been created with proper structure
+2. Documentation is comprehensive and clear
+3. Error handling is properly implemented
+4. Parameters are defined with appropriate validation
+5. The script follows coding standards
+6. The script is placed in the appropriate directory
+
+## Next Steps
+
+After script creation, the workflow typically proceeds to:
+
+1. Testing the new script using `script-test: @knowledge/scripts/script-test.mdc`
+2. Verifying integration with existing scripts
+3. Documenting the new script in SCRIPTS-SUMMARY.md
+4. Adding to the README.md if appropriate 
+

@@ -1,0 +1,325 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Front-End Dev-Mode: Log-Based Implementation
+
+## Purpose
+
+This file provides specialized guidance for log-based implementation in front-end development. It focuses on using log analysis to diagnose and fix issues, implement new features based on log patterns, and verify implementations through log monitoring.
+
+## Usage as Project-Rule-Parameter
+
+This file contains log-based implementation patterns for front-end development and should be referenced as a project-rule-parameter in message-commands when implementing features through log analysis:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-log-based.mdc
+```
+
+## Mode Activation
+
+When activated with:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-log-based.mdc
+```
+
+This parameter enables:
+- Log-based analysis and diagnosis
+- Log-guided implementation
+- Log verification for implementations
+- Structured log checking sequences
+- Progressive log enhancement
+
+## Implementation Strategy
+
+The log-based implementation strategy follows a structured approach:
+
+### 1. Log Analysis Phase
+
+Begin by analyzing logs to understand current behavior, identify issues, and establish baselines:
+
+```typescript
+// 1. Check most recent front-end logs
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", false)
+
+// 2. Check most recent API logs
+run_terminal_cmd("Get-Content -Path \"logs-main/api/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", false)
+
+// 3. Check combined logs for error patterns
+run_terminal_cmd("Get-Content -Path \"logs-main/combined/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50 | Select-String -Pattern 'ERROR|WARN|FATAL'", false)
+
+// 4. Search for specific feature logs
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"[feature-name]\" | Select-Object -Last 20", false)
+
+// 5. Get error logs across all files
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"ERROR\" | Select-Object -Last 20", false)
+```
+
+### 2. Problem Identification Phase
+
+Identify specific issues or requirements based on log analysis:
+
+```typescript
+// 1. Identify related components
+codebase_search("component related to [log-pattern]", ["front-end/src/components"])
+
+// 2. Locate error source
+grep_search("[error-message-from-logs]", false, "*.tsx")
+
+// 3. Understand error context
+read_file("[identified-file].tsx", should_read_entire_file=true)
+
+// 4. Examine state handling
+grep_search("useState|useReducer|useContext.*[related-state]", false, "*.tsx")
+
+// 5. Check API integration
+grep_search("api\\.[method-name]|fetch\\(['\"][endpoint]['\"]", false, "*.tsx")
+```
+
+### 3. Implementation Phase
+
+Implement changes based on log analysis findings:
+
+```typescript
+// 1. Add logging to component for better visibility
+edit_file("front-end/src/components/Feature.tsx", 
+          "Add enhanced logging to component",
+          "// ... existing code ...\n" +
+          "console.log('[Feature] Rendering with props:', props);\n" +
+          "// ... existing code ...")
+
+// 2. Fix identified issue
+edit_file("front-end/src/components/Feature.tsx", 
+          "Fix issue identified in logs",
+          "// ... existing code ...\n" +
+          "// Fixed error: [description of fix]\n" +
+          "// ... updated implementation ...")
+
+// 3. Enhance error handling
+edit_file("front-end/src/utils/errorHandling.ts", 
+          "Enhance error handling based on logs",
+          "// ... existing code ...\n" +
+          "// Added better error capture for [scenario]\n" +
+          "// ... implementation ...")
+
+// 4. Improve API error management
+edit_file("front-end/src/api/apiClient.ts", 
+          "Improve API error handling",
+          "// ... existing code ...\n" +
+          "// Enhanced error handling for API calls\n" +
+          "// ... implementation ...")
+```
+
+### 4. Log-Enhanced Testing
+
+Create or enhance tests based on log patterns:
+
+```typescript
+// 1. Create test for identified scenario
+edit_file("front-end/src/components/__tests__/Feature.test.tsx", 
+          "Add test for scenario identified in logs",
+          "// ... existing code ...\n" +
+          "test('should handle [scenario from logs] correctly', () => {\n" +
+          "  // Test implementation based on log analysis\n" +
+          "});\n" +
+          "// ... existing code ...")
+
+// 2. Create error case test
+edit_file("front-end/src/utils/__tests__/errorHandling.test.ts", 
+          "Add test for error case from logs",
+          "// ... existing code ...\n" +
+          "test('should handle [error-case] correctly', () => {\n" +
+          "  // Test implementation for error scenario\n" +
+          "});\n" +
+          "// ... existing code ...")
+```
+
+### 5. Verification Through Logs
+
+Verify the implementation by checking updated logs:
+
+```typescript
+// 1. Request UX situation to generate new logs
+console.log("recreate-ux-situation: Please test the fixed feature by [specific steps]")
+
+// 2. Check logs after fix
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", false)
+
+// 3. Verify error is resolved
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"[previous-error]\" | Select-Object -Last 20", false)
+
+// 4. Validate expected behavior in logs
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"[expected-success-pattern]\" | Select-Object -Last 20", false)
+```
+
+## Common Log Analysis Patterns
+
+### Error Diagnosis Sequence
+
+```typescript
+// 1. Find error instances
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"ERROR\" | Select-Object -Last 20", false)
+
+// 2. Examine error context (lines before/after)
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-Object -First 50 -Skip ([matched-line-number] - 5)", false)
+
+// 3. Track request flow
+run_terminal_cmd("Get-Content -Path \"logs-main/combined/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"[request-id]\"", false)
+
+// 4. Check component rendering sequence
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"render|mounted|useEffect\"", false)
+
+// 5. Analyze state changes
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"state|update|changed\"", false)
+```
+
+### API Integration Debugging
+
+```typescript
+// 1. Check API requests
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"api|fetch|axios|request\"", false)
+
+// 2. Check API responses
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"response|received|data\"", false)
+
+// 3. Match requests with backend logs
+run_terminal_cmd("Get-Content -Path \"logs-main/api/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"[endpoint]\"", false)
+
+// 4. Check error status codes
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"status.*4[0-9]{2}|status.*5[0-9]{2}\"", false)
+
+// 5. Examine payload issues
+run_terminal_cmd("Get-Content -Path \"logs-main/combined/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"payload|body|data\" -Context 0,5", false)
+```
+
+### Performance Analysis
+
+```typescript
+// 1. Check rendering times
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"render time|rendering took|performance\"", false)
+
+// 2. Identify slow operations
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"slow|delay|took [0-9]+ms\" | Sort-Object -Descending { [regex]::Match($_, '\\d+').Value -as [int] }", false)
+
+// 3. Check memory usage patterns
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"memory|heap|garbage collection\"", false)
+
+// 4. Analyze component re-renders
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"re-render|unnecessary render|render count\"", false)
+```
+
+## Common-Usage Scenarios
+
+This parameter is optimized for these common scenarios:
+
+1. **Bug Fixing**: Using logs to diagnose and fix existing issues
+2. **Performance Optimization**: Identifying and resolving performance bottlenecks
+3. **API Integration Troubleshooting**: Fixing issues with API requests and responses
+4. **State Management Debugging**: Resolving issues with component state
+5. **User Interaction Problems**: Fixing issues related to user interactions
+
+## Tool Sequence Examples
+
+### Diagnose and Fix Component Error
+
+```typescript
+// 1. Check error logs
+run_terminal_cmd("Get-ChildItem -Path \"logs-main\" -Recurse -Filter \"*.log\" | Select-String -Pattern \"ERROR.*Component\" | Select-Object -Last 20", false)
+
+// 2. Identify affected component
+grep_search("Component.*render|return", false, "*.tsx")
+
+// 3. Examine component implementation
+read_file("front-end/src/components/Component.tsx", should_read_entire_file=true)
+
+// 4. Fix the issue
+edit_file("front-end/src/components/Component.tsx", 
+          "Fix component error identified in logs",
+          "// ... existing code ...\n" +
+          "// Fixed error: [description]\n" +
+          "// ... updated implementation ...")
+
+// 5. Verify the fix
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", false)
+```
+
+### Resolve API Integration Issue
+
+```typescript
+// 1. Check API error logs
+run_terminal_cmd("Get-Content -Path \"logs-main/combined/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"api.*error|fetch.*failed\" -Context 2,2", false)
+
+// 2. Examine API implementation
+read_file("front-end/src/api/apiClient.ts", should_read_entire_file=true)
+
+// 3. Check component using the API
+grep_search("useEffect.*api\\.[method-name]", false, "*.tsx")
+
+// 4. Fix API integration
+edit_file("front-end/src/api/apiClient.ts", 
+          "Fix API integration issue",
+          "// ... existing code ...\n" +
+          "// Fixed API issue: [description]\n" +
+          "// ... updated implementation ...")
+
+// 5. Fix component implementation
+edit_file("front-end/src/components/Feature.tsx", 
+          "Update component to handle API correctly",
+          "// ... existing code ...\n" +
+          "// Updated API handling: [description]\n" +
+          "// ... updated implementation ...")
+
+// 6. Verify with logs
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", false)
+```
+
+## Recovery Points
+
+When continuing an interrupted implementation, these recovery points can be used:
+
+1. **Log Analysis Complete**: Logs analyzed, issues identified, ready for implementation
+2. **Problem Identified**: Specific issues located in code, ready for fixes
+3. **Implementation Started**: Initial changes made, further changes needed
+4. **Testing Phase**: Implementation complete, testing in progress
+5. **Verification In Progress**: Fixes implemented, verification through logs in progress
+
+## Related Parameters
+
+- `plan-mode-log-based.md`: Planning for log-based implementation
+- `watch-logs.md`: Helper for log watching
+- `analyze-logs.md`: Helper for log analysis
+- `add-logs.md`: Helper for log enhancement
+- `continue-implementation-log-based.md`: Continue a log-based implementation
+
+## Implementation Progress Tracking
+
+Use this parameter with implementation progress tracking to manage log-based implementations:
+
+```typescript
+// Update implementation progress
+edit_file("planning/feature-name/implementation-progress.md",
+          "Update implementation progress with log analysis findings",
+          "// ... existing content ...\n\n" +
+          "## Log Analysis Summary\n\n" +
+          "- Issues Identified: [count]\n" +
+          "- Components Affected: [list]\n" +
+          "- Critical Errors: [count]\n" +
+          "- Fixed Issues: [count]\n\n" +
+          "## Implementation Status\n\n" +
+          "- [component]: Fixed [issue description]\n" +
+          "- [component]: Added logging for [scenario]\n" +
+          "- [component]: Enhanced error handling\n\n" +
+          "// ... existing content ...")
+```
+
+## Completion Criteria
+
+The log-based implementation is complete when:
+
+1. **Error Resolution**: All identified errors in logs are resolved
+2. **Log Verification**: New logs show correct behavior
+3. **Test Coverage**: Tests for identified scenarios are created and passing
+4. **Enhanced Logging**: Appropriate logging is added for future diagnosis
+5. **Documentation**: Issues and their resolutions are documented 

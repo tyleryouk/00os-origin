@@ -1,0 +1,155 @@
+---
+description: 
+type: manual
+---
+# Documentation Workflow Reference
+
+## Overview
+Reference guide for documentation workflow patterns and usage.
+
+## Common Patterns
+
+### Documentation Creation
+1. Use appropriate template
+2. Follow standards
+3. Include examples
+4. Verify content
+5. Update references
+
+### Documentation Updates
+1. Review current content
+2. Identify changes needed
+3. Update content
+4. Verify changes
+5. Update references
+
+### Documentation Verification
+1. Check format
+2. Verify content
+3. Test examples
+4. Check references
+5. Validate links
+
+## Tool Integration
+
+### Required Tools
+- @parameters/tool/markdown-patterns.mdc (Markdown best practices)
+- @parameters/tool/code-example-patterns.mdc (Code example patterns)
+
+### Tool Usage
+1. Use markdown patterns
+2. Follow documentation patterns
+3. Apply standards
+4. Verify content
+5. Update references
+
+## Best Practices
+
+### Content
+1. Be clear and concise
+2. Use appropriate format
+3. Include examples
+4. Verify accuracy
+5. Update regularly
+
+### Format
+1. Follow standards
+2. Use templates
+3. Check formatting
+4. Verify structure
+5. Test readability
+
+### Maintenance
+1. Review regularly
+2. Update content
+3. Check references
+4. Verify links
+5. Test examples
+
+## Success Criteria
+
+### Documentation Quality
+1. Clear content
+2. Proper format
+3. Accurate information
+4. Working examples
+5. Valid references
+
+### Documentation Maintenance
+1. Regular updates
+2. Current content
+3. Working links
+4. Valid references
+5. Tested examples
+
+### Documentation Standards
+1. Follow templates
+2. Apply patterns
+3. Use standards
+4. Verify format
+5. Test readability
+
+## Message-Command to Project-Rule-Parameter Mapping
+
+| Message-Command | Project-Rule-Parameter | Purpose |
+|-----------------|------------------------|---------|
+| `verify-official-documentation` | @workflows/documentation-workflow/documentation-verification.mdc | Verify documentation against implementation |
+| `create-official-documentation` | @workflows/documentation-workflow/documentation-creation.mdc | Create new documentation following standards |
+| `update-documentation-format` | @workflows/documentation-workflow/format-standardization.mdc | Update format to match documentation standards |
+| `documentation-status` | @workflows/documentation-workflow/documentation-status.mdc | Report on documentation coverage and accuracy |
+| `create-template` | @workflows/documentation-workflow/template-creation.mdc | Create documentation templates by type |
+
+## Usage Examples
+
+### Documentation Verification Workflow
+
+```
+verify-official-documentation: official-documentation/front-end/wallet-integration.md @workflows/documentation-workflow/documentation-verification.mdc
+```
+
+This message-command verifies the wallet integration documentation against implementation using the guidance in documentation-verification.mdc.
+
+### Documentation Creation Workflow
+
+```
+create-official-documentation: official-documentation/back-end/transaction-api.md @workflows/documentation-workflow/documentation-creation.mdc
+```
+
+This message-command provides guidance for creating new transaction API documentation using the patterns in documentation-creation.mdc.
+
+### Format Standardization Workflow
+
+```
+update-documentation-format: official-documentation/blockchain/wallet.md @workflows/documentation-workflow/format-standardization.mdc
+```
+
+This message-command updates the wallet documentation format using the guidance in format-standardization.mdc.
+
+## Combined Tools and Project-Rule-Parameters
+
+Certain complex workflows benefit from combining tools from different sources:
+
+### Documentation with Markdown Tools
+
+```
+create-official-documentation: official-documentation/architecture/system-overview.md @workflows/documentation-workflow/documentation-creation.mdc @parameters/tool/markdown-patterns.mdc
+```
+
+This combines documentation creation patterns with markdown-specific patterns.
+
+### Documentation with Code Examples
+
+```
+create-official-documentation: official-documentation/front-end/api-client.md @workflows/documentation-workflow/documentation-creation.mdc @parameters/tool/code-example-patterns.mdc
+```
+
+This combines documentation creation patterns with code example formatting techniques.
+
+## File Structure Requirements
+
+All 1000xbrain files referenced as project-rule-parameters MUST follow these structure requirements:
+
+1. **No Frontmatter**: Files should NEVER contain frontmatter (the --- enclosed metadata sections)
+2. **Direct Content**: All markdown content should begin directly with headers or text
+3. **Standard Markdown**: Use only standard markdown formatting
+4. **Header First**: Typically start with a level 1 header (# Title) followed by content 

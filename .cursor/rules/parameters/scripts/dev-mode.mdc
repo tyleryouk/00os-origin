@@ -1,0 +1,112 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Dev-Mode Message-Command for Scripts Workflow
+
+## File Purpose and Relationship
+
+This file provides the detailed protocol for the `dev-mode: scripts-workflow` message-command, which enables direct transition from planning to implementation in the scripts-workflow. It should be consulted when:
+
+- Implementing scripts workflow enhancements
+- Understanding mode transition requirements
+- Troubleshooting mode transition issues
+- Creating new scripts or updating existing ones
+
+This file complements:
+- **knowledge/scripts/plan-mode.md**: Planning Mode initialization
+- **knowledge/scripts/continue-implementation.md**: Implementation continuation guidance
+
+## Command Purpose and Function
+
+The `dev-mode: scripts-workflow` message-command serves as the direct transition mechanism from Planning Mode to Developer Mode. Its specific purposes are:
+
+1. **Mode Transition**: Initiates Developer Mode for script implementation
+2. **Context Preservation**: Maintains planning context during transition
+3. **Implementation Contract**: Establishes autonomous implementation authority
+4. **Tool Access**: Provides access to implementation tools
+5. **Workflow Selection**: Activates scripts-workflow-specific patterns
+
+## Implementation Protocol
+
+When the `dev-mode: scripts-workflow` message-command is received, 1000xdev must:
+
+1. **Switch to Developer Mode**: Change mode indicator to 💻 1000xdev [scripts-workflow]
+2. **Focus on Planning Documentation**: Ensure understanding of the implementation requirements
+3. **Load Script Patterns**: Apply scripts-workflow-specific implementation patterns
+4. **Execute Initial Scan**: Analyze current scripts directory structure
+5. **Prepare for Implementation**: Set up development environment
+
+## Implementation Effects
+
+The `dev-mode: scripts-workflow` command produces the following implementation effects:
+
+1. **Mode Change**: Switches to Developer Mode (💻 1000xdev [scripts-workflow])
+2. **Tool Activation**: Activates code editing and testing tools
+3. **Focus Shift**: Transitions from planning to implementation
+4. **Pattern Application**: Applies script-specific implementation patterns
+5. **Permission Grant**: Authorizes autonomous implementation
+
+## Usage Rules
+
+The `dev-mode: scripts-workflow` message-command has specific rules regarding its use:
+
+1. **Planning Completion**: Must only be used after planning is complete
+2. **Mode Indicator**: Responses must use 💻 1000xdev [scripts-workflow]
+3. **No Documentation Updates**: No documentation updates allowed in Developer Mode
+4. **Implementation Purpose**: Must be used exclusively for implementation
+
+## Response Requirements
+
+The response to the `dev-mode: scripts-workflow` command must:
+
+1. **Include Mode Indicator**: Begin with 💻 1000xdev [scripts-workflow]
+2. **Acknowledge Transition**: Confirm transition to Developer Mode
+3. **Reference Implementation Plan**: Mention key aspects of the implementation plan
+4. **Indicate Action**: Describe initial implementation steps
+5. **Follow Tool Sequence**: Use appropriate tool sequence for implementation
+
+## Continuation Pattern
+
+After the `dev-mode: scripts-workflow` command, the workflow proceeds to:
+
+1. **Implementation**: Create or modify scripts per planning requirements
+2. **Testing**: Test script functionality
+3. **Verification**: Verify implementation meets requirements
+4. **Completion**: Signal implementation completion with `implementation-complete`
+
+## Command Variations
+
+| Command Variation | Purpose | Example |
+|-------------------|---------|---------|
+| Basic transition | Simple mode switch | `dev-mode: scripts-workflow` |
+| With project-rule-parameter | Enhanced guidance | `dev-mode: scripts-workflow @knowledge/scripts/dev-mode.mdc` |
+| With multiple parameters | Specialized implementation | `dev-mode: scripts-workflow @knowledge/scripts/dev-mode.mdc @knowledge/scripts/script-patterns.mdc` |
+
+## Common Issues and Resolutions
+
+| Issue | Symptoms | Resolution |
+|-------|----------|------------|
+| Incomplete planning | Missing implementation details | Return to plan-mode and complete planning |
+| Pattern mismatch | Inconsistent implementation | Review script patterns in planning documentation |
+| Scope confusion | Unclear implementation boundaries | Focus on planning folder requirements |
+
+## Example Response
+
+```
+💻 1000xdev [scripts-workflow]
+
+Transitioning to Developer Mode for scripts-workflow implementation.
+
+Based on the planning documentation, I will:
+1. Update the synchronization script to handle frontmatter extraction
+2. Add error handling for path matching edge cases
+3. Implement validation for synchronization results
+
+Starting with an analysis of the current script structure before making changes.
+```
+
+This transition directly enables implementation based on completed planning documentation. 
+

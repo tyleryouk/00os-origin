@@ -1,0 +1,120 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Planning Mode Verification
+
+> **IMPORTANT**: This file defines verification requirements and checklists for Planning Mode.
+
+## File Purpose
+
+This file outlines the verification requirements and checklists used in Planning Mode. It should be consulted to understand:
+
+- Essential verification requirements
+- Planning completion checklists
+- Documentation verification standards
+- Knowledge access verification
+
+## 1. Essential Planning Verification Checklist
+
+Before signaling planning completion, verify these key aspects:
+
+### Requirements Verification
+- [ ] Objectives are clearly defined
+- [ ] Success criteria are established
+- [ ] Core technical requirements are documented
+
+### Implementation Verification
+- [ ] Target files are identified
+- [ ] Implementation approach is clear
+- [ ] Verification method is established
+
+### Overall Planning Folder Verification
+- [ ] Essential files are present and complete
+- [ ] Documentation provides sufficient guidance for implementation
+- [ ] No critical information gaps exist
+
+### Knowledge Access Verification
+- [ ] Proper fetch_rules tool usage documented if needed
+- [ ] Clear explanation parameters for knowledge access
+- [ ] Appropriate knowledge components referenced
+
+## 2. Documentation Standards Verification
+
+### Essential Files Verification
+- [ ] `requirements.md` exists and is complete
+- [ ] `implementation.md` exists and is complete
+- [ ] Optional files are included when needed
+
+### Content Quality Verification
+- [ ] Documentation is clear and focused
+- [ ] Implementation guidance is actionable
+- [ ] Success criteria are measurable
+- [ ] Technical requirements are specific
+
+### Format Verification
+- [ ] Markdown formatting is correct
+- [ ] Tables are properly aligned
+- [ ] Code blocks are properly formatted
+- [ ] Links are valid
+
+## 3. Knowledge Access Verification
+
+### Knowledge Component Usage
+- [ ] Architecture knowledge accessed when needed
+- [ ] Implementation patterns referenced appropriately
+- [ ] Tool patterns documented when used
+- [ ] Domain-specific knowledge included when relevant
+
+### fetch_rules Usage Verification
+- [ ] Clear explanation parameters provided
+- [ ] Appropriate knowledge components selected
+- [ ] Multiple components combined when needed
+- [ ] Context-specific knowledge accessed
+
+## 4. Planning Mode Tool Usage Verification
+
+### Tool Selection Verification
+- [ ] Appropriate tools used for each task
+- [ ] Tool combinations are efficient
+- [ ] Tool usage is documented
+
+### Tool Usage Patterns
+- [ ] edit_file used for documentation creation
+- [ ] fetch_rules used for knowledge access
+- [ ] read_file used for context review
+- [ ] grep_search used for pattern finding
+
+## 5. Communication Standards Verification
+
+### Mode Indicator Usage
+- [ ] Every message begins with 📋 1000xdev [workflow-type]
+- [ ] Workflow type is appropriate for task
+- [ ] Mode transitions are properly signaled
+
+### Message Content
+- [ ] Clear and focused communication
+- [ ] Essential details included
+- [ ] Well-organized information
+- [ ] Proper emphasis on key points
+
+## 6. Implementation Readiness Verification
+
+### Context Completeness
+- [ ] System architecture understood
+- [ ] Dependencies identified
+- [ ] Integration points documented
+- [ ] Potential challenges noted
+
+### Implementation Guidance
+- [ ] Step-by-step approach provided
+- [ ] Critical considerations listed
+- [ ] Error handling addressed
+- [ ] Testing requirements specified
+
+### Success Criteria
+- [ ] Measurable outcomes defined
+- [ ] Verification methods specified
+- [ ] Quality standards established
+- [ ] Performance requirements noted 

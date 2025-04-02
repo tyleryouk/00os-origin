@@ -1,0 +1,180 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Sync Verification Message-Command
+
+## File Purpose and Relationship
+
+This file provides detailed documentation for the `sync-verification` message-command, which is used to verify synchronization between 1000xbrain files and Cursor Project Rules. It defines the parameters, execution protocol, and expected outcomes for this command. This file should be consulted when:
+
+- Verifying synchronization status
+- Checking for path matching issues
+- Validating content synchronization
+- Ensuring frontmatter consistency
+- Handling README.md synchronization
+
+This file is part of a related set:
+- **workflows/scripts-workflow/scripts-workflow.md**: Core workflow definition
+- **workflows/scripts-workflow/synchronization-guide.md**: Detailed synchronization guide
+- **knowledge/scripts/update-script.md**: Documentation for updating synchronization scripts
+
+## Message-Command Format
+
+**Correct Format**: `sync-verification: @knowledge/scripts/sync-verification.mdc`
+
+The `sync-verification` message-command must be used with the following parameters:
+
+- **Project-Rule-Parameter**: Required, must be `@knowledge/scripts/sync-verification.mdc`
+- **Standard-Parameter**: Optional, can specify a specific directory or file to verify
+
+## Execution Protocol
+
+When the `sync-verification` message-command is received, 1000xdev must:
+
+1. **Environment Check**: Verify access to both 1000xbrain and .cursor/rules directories
+2. **Path Matching Validation**: Verify proper path matching between files
+3. **Content Comparison**: Check for content discrepancies between corresponding files
+4. **Frontmatter Verification**: Verify frontmatter consistency
+5. **README.md Handling Check**: Ensure proper handling of README.md files
+6. **Report Generation**: Generate a comprehensive verification report
+7. **Issue Identification**: Highlight any synchronization issues found
+
+## Verification Process
+
+The verification process includes these key steps:
+
+### 1. Path Matching Validation
+
+- Check for files with the same name in different directories
+- Verify proper path-based matching
+- Identify potential synchronization conflicts
+- Confirm directory structure preservation
+
+### 2. Content Comparison
+
+- Compare content between 1000xbrain (.md) files and Cursor Rules (.mdc)
+- Check for discrepancies in formatting or structure
+- Verify that recent changes have been properly synchronized
+- Identify any content synchronization issues
+
+### 3. Frontmatter Verification
+
+- Check frontmatter consistency between files
+- Verify proper handling of special frontmatter fields like `globs` and `alwaysApply`
+- Ensure rule type settings are correctly preserved
+- Identify any frontmatter synchronization issues
+
+### 4. README.md Verification
+
+- Verify proper handling of README.md files
+- Check for case standardization in Cursor Rules
+- Ensure proper directory mapping for README.md files
+- Identify any README.md synchronization issues
+
+## Implementation Effects
+
+The `sync-verification` command produces the following implementation effects:
+
+1. **Verification Report**: Generates a detailed report on synchronization status
+2. **Issue Identification**: Identifies any synchronization issues
+3. **Resolution Guidance**: Provides guidance for resolving identified issues
+4. **Status Assessment**: Offers a clear assessment of synchronization health
+
+## Common Issues and Solutions
+
+| Issue | Cause | Solution |
+|----|----|----|
+| Path matching issues | Files with same name in different directories | Use `Fix-PathMatchingAndSync.ps1` with strict path matching |
+| Content discrepancies | Files not properly synchronized | Use `Sync-FrontmatterAndContent.ps1` to synchronize content |
+| Frontmatter inconsistencies | Frontmatter not properly synchronized | Use `Sync-FrontmatterAndContent.ps1` with frontmatter focus |
+| README.md conflicts | README.md files not properly handled | Use `Sync-Readmes.ps1` for specialized README handling |
+| Directory structure mismatch | Structural differences between systems | Use `Fix-PathMatchingAndSync.ps1` to preserve structure |
+
+## Parameter Requirements
+
+### Project-Rule-Parameter
+
+The project-rule-parameter `@knowledge/scripts/sync-verification.mdc` provides the detailed execution instructions for the `sync-verification` message-command. This parameter:
+
+- Must be explicitly included with the message-command
+- Must use the exact format with .mdc extension
+- References the corresponding Cursor Project Rule
+- Contains the implementation details for the synchronization verification process
+
+### Standard-Parameter (Optional)
+
+The optional standard-parameter can specify a target for focused verification:
+
+- Can be a specific directory path (e.g., `1000xbrain/core`)
+- Can be a specific file path (e.g., `1000xbrain/core/identity/global-rules.md`)
+- If omitted, verification covers the entire 1000xbrain directory
+
+## Verification Workflow
+
+The complete verification workflow follows these steps:
+
+### 1. Preparation Phase
+
+- Ensure access to both 1000xbrain and .cursor/rules
+- Verify script execution permissions
+- Check for any pending changes
+
+### 2. Validation Phase
+
+- Run path matching validation
+- Perform content comparison
+- Check frontmatter consistency
+- Verify README.md handling
+
+### 3. Report Analysis
+
+- Review identified discrepancies
+- Categorize issues by type and severity
+- Prioritize issues for resolution
+
+### 4. Resolution Guidance
+
+- Recommend appropriate synchronization scripts
+- Suggest resolution approaches for identified issues
+- Provide command examples for resolution
+
+## Tool Usage
+
+The verification process may use these PowerShell commands:
+
+1. **Path Matching Validation**:
+   ```powershell
+   .\maintenance-scripts\Validate-PathMatching.ps1
+   ```
+
+2. **Synchronization Analysis**:
+   ```powershell
+   .\rules-scripts\Sync-1000xbrainToCursor.ps1
+   ```
+
+3. **README.md Verification**:
+   ```powershell
+   .\utility-scripts\Sync-Readmes.ps1 -DryRun
+   ```
+
+## Verification
+
+A successful `sync-verification` execution is verified when:
+
+1. A comprehensive verification report has been generated
+2. All synchronization issues have been identified
+3. Clear resolution guidance has been provided
+4. The synchronization status has been accurately assessed
+
+## Next Steps
+
+After verification, the workflow typically proceeds to:
+
+1. Resolving identified issues using appropriate synchronization scripts
+2. Re-verifying synchronization after applying fixes
+3. Documenting the synchronization status
+4. Implementing any needed script enhancements based on findings 
+

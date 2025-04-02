@@ -1,0 +1,409 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Dev Mode: Front-End Basic Implementation
+
+## File Purpose and Relationship
+
+This file provides implementation guidance for basic front-end components in the PolygonExpress project. It is designed to complement the basic planning template, focusing on implementing straightforward components with minimal state and dependencies.
+
+This file complements:
+- **front-end-workflow-reference.md**: Core front-end development workflow
+- **plan-mode-front-end-basic.md**: Basic planning template
+- **dev-mode-log-based.md**: Log-based implementation patterns
+
+## Usage as Project-Rule-Parameter
+
+This file is a Manual rule type and should be referenced as a project-rule-parameter in the dev-mode message-command:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-front-end-basic.mdc
+```
+
+## Basic Implementation Process
+
+The basic implementation follows a straightforward approach:
+
+1. **Component Setup**: Create the component file and structure
+2. **State Implementation**: Add minimal state management
+3. **Event Handlers**: Implement basic event handling
+4. **Styling**: Apply component styling
+5. **Testing**: Verify component functionality
+
+### Component Setup Implementation
+
+```typescript
+// Tool sequence for component setup
+// 1. Review the implementation plan
+read_file("planning/implementation-component.md", should_read_entire_file=true)
+
+// 2. Create the component file
+edit_file("front-end/src/components/ComponentName/index.tsx",
+          "Create basic component",
+          "import React from 'react';
+import styles from './styles.module.css';
+
+interface ComponentNameProps {
+  // Props as defined in planning
+  label?: string;
+  onClick?: () => void;
+}
+
+export const ComponentName: React.FC<ComponentNameProps> = ({
+  label = 'Default Label',
+  onClick
+}) => {
+  // Basic component implementation
+  return (
+    <div className={styles.container}>
+      <h3 className={styles.heading}>{label}</h3>
+      {onClick && (
+        <button className={styles.button} onClick={onClick}>
+          Click me
+        </button>
+      )}
+    </div>
+  );
+};
+")
+
+// 3. Create the stylesheet
+edit_file("front-end/src/components/ComponentName/styles.module.css",
+          "Create component styles",
+          "/* Component styles */
+.container {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0060df;
+}
+")
+```
+
+### Basic State Implementation
+
+```typescript
+// Tool sequence for basic state implementation
+// 1. Enhance component with basic state
+edit_file("front-end/src/components/ComponentName/index.tsx",
+          "Add basic state management",
+          "import React, { useState } from 'react';
+import styles from './styles.module.css';
+
+interface ComponentNameProps {
+  // Props as defined in planning
+  label?: string;
+  initialCount?: number;
+  onClick?: () => void;
+}
+
+export const ComponentName: React.FC<ComponentNameProps> = ({
+  label = 'Default Label',
+  initialCount = 0,
+  onClick
+}) => {
+  // Basic state
+  const [count, setCount] = useState(initialCount);
+  
+  // Basic handler
+  const handleIncrement = () => {
+    console.log('[ComponentName] Incrementing count');
+    setCount(prevCount => prevCount + 1);
+  };
+  
+  // Basic effect
+  React.useEffect(() => {
+    console.log('[ComponentName] Component mounted with count:', count);
+    
+    return () => {
+      console.log('[ComponentName] Component unmounting');
+    };
+  }, [count]);
+  
+  return (
+    <div className={styles.container}>
+      <h3 className={styles.heading}>{label}</h3>
+      <div className={styles.counter}>
+        <p>Count: {count}</p>
+        <button className={styles.button} onClick={handleIncrement}>
+          Increment
+        </button>
+      </div>
+      {onClick && (
+        <button className={styles.button} onClick={onClick}>
+          Custom Action
+        </button>
+      )}
+    </div>
+  );
+};
+")
+```
+
+### Event Handling Implementation
+
+```typescript
+// Tool sequence for event handling implementation
+// 1. Add form handling to component
+edit_file("front-end/src/components/ComponentName/index.tsx",
+          "Add form handling",
+          "import React, { useState, useCallback } from 'react';
+import styles from './styles.module.css';
+
+interface ComponentNameProps {
+  // Props as defined in planning
+  label?: string;
+  initialCount?: number;
+  onSubmit?: (data: { name: string; count: number }) => void;
+}
+
+export const ComponentName: React.FC<ComponentNameProps> = ({
+  label = 'Default Label',
+  initialCount = 0,
+  onSubmit
+}) => {
+  // Component state
+  const [count, setCount] = useState(initialCount);
+  const [name, setName] = useState('');
+  
+  // Event handlers
+  const handleIncrement = useCallback(() => {
+    console.log('[ComponentName] Incrementing count');
+    setCount(prevCount => prevCount + 1);
+  }, []);
+  
+  const handleNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('[ComponentName] Name changed to:', e.target.value);
+    setName(e.target.value);
+  }, []);
+  
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('[ComponentName] Form submitted with:', { name, count });
+    onSubmit?.({ name, count });
+  }, [name, count, onSubmit]);
+  
+  return (
+    <div className={styles.container}>
+      <h3 className={styles.heading}>{label}</h3>
+      
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
+          <label htmlFor=\"name\">Name:</label>
+          <input
+            id=\"name\"
+            type=\"text\"
+            value={name}
+            onChange={handleNameChange}
+            className={styles.input}
+            placeholder=\"Enter your name\"
+          />
+        </div>
+        
+        <div className={styles.formGroup}>
+          <label htmlFor=\"count\">Count:</label>
+          <div className={styles.counter}>
+            <span>{count}</span>
+            <button
+              type=\"button\"
+              onClick={handleIncrement}
+              className={styles.button}
+            >
+              +
+            </button>
+          </div>
+        </div>
+        
+        <button type=\"submit\" className={styles.submitButton}>
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
+")
+
+// 2. Update styles for form elements
+edit_file("front-end/src/components/ComponentName/styles.module.css",
+          "Add form styles",
+          "/* Component styles */
+.container {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0060df;
+}
+
+.submitButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.submitButton:hover {
+  background-color: #218838;
+}
+")
+```
+
+### Component Integration
+
+```typescript
+// Tool sequence for component integration
+// 1. Create a page component that uses our component
+edit_file("front-end/src/pages/ExamplePage.tsx",
+          "Create page with component integration",
+          "import React from 'react';
+import { ComponentName } from '../components/ComponentName';
+
+export const ExamplePage: React.FC = () => {
+  const handleSubmit = (data: { name: string; count: number }) => {
+    console.log('[ExamplePage] Received data from component:', data);
+    // Handle the submitted data
+  };
+  
+  return (
+    <div className=\"page-container\">
+      <h1>Example Page</h1>
+      <p>This page demonstrates our basic component.</p>
+      
+      <div className=\"component-container\">
+        <ComponentName
+          label=\"User Information\"
+          initialCount={5}
+          onSubmit={handleSubmit}
+        />
+      </div>
+    </div>
+  );
+};
+")
+```
+
+### Testing and Verification
+
+```typescript
+// Tool sequence for testing
+// 1. Check logs for component initialization
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 20", false, true)
+
+// 2. Create a UX situation to test the component
+recreate_ux_situation: "Please test the ComponentName component by navigating to /example and filling out the form. Enter your name and click the + button a few times, then submit the form."
+
+// 3. Check logs to verify form submission
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 20 | Select-String -Pattern 'ComponentName|ExamplePage'", false, true)
+```
+
+## Basic Implementation Verification
+
+Before signaling implementation completion, verify:
+
+1. **Component Structure**:
+   - Component renders correctly
+   - Props are properly handled
+   - Default values work as expected
+
+2. **State Management**:
+   - Basic state initialized correctly
+   - State updates work properly
+   - Side effects execute as expected
+
+3. **Event Handling**:
+   - Form inputs work correctly
+   - Buttons trigger appropriate actions
+   - Form submission works
+
+4. **Styling**:
+   - Component appears as designed
+   - Responsive behavior works correctly
+   - Interactive elements have appropriate styling
+
+5. **Logs and Testing**:
+   - Component lifecycle logs appear correctly
+   - Event handling logs show proper behavior
+   - No console errors
+
+Once all items are verified, signal completion with:
+
+```
+💻 1000xdev [front-end-workflow]
+
+Implementation complete:
+- Basic component structure implemented
+- State management functioning correctly
+- Event handling implemented
+- Component styling applied
+- Integration with parent page completed
+
+implementation-complete
+``` 

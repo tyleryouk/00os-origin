@@ -1,0 +1,395 @@
+---
+description: 
+globs: 
+alwaysApply: false
+type: manual
+---
+# Create Template
+
+## File Purpose and Relationship
+
+This manual Project Rule defines the specific standards, procedures, and tool call sequences for handling the `create-template` message-command in the documentation workflow of the PolygonExpress project. It should be consulted when:
+
+- Creating standardized documentation templates
+- Establishing structure for new component documentation
+- Initializing API endpoint documentation
+- Developing architecture and workflow documentation templates
+- Ensuring consistent documentation format across the project
+
+This file is designed to be used as a project-rule-parameter with the `create-template` message-command:
+```
+create-template: {doc-type} @manual/documentation/create-template.mdc
+```
+
+This file complements:
+- **documentation-workflow.mdc**: Core documentation workflow processes
+- **create-official-documentation.mdc**: Process for creating documentation from templates
+- **verify-official-documentation.mdc**: Process for verifying documentation accuracy
+
+When information appears to conflict, this file takes precedence for documentation template creation standards.
+
+## 1. Template Creation Approach
+
+The documentation template creation process follows a type-specific approach designed to maximize completeness, consistency, and implementation accuracy:
+
+### Template Creation Philosophy
+
+1. **Type-Specific Structure**: Tailor template structure to documentation type
+2. **Comprehensive Sections**: Include all required sections based on documentation standards
+3. **Guided Content**: Provide clear guidance for completing each section
+4. **Implementation-First**: Structure templates to encourage verification against actual code
+5. **Cross-Reference Support**: Build in proper linking to related documentation
+
+## 2. Required Tool Call Sequence
+
+You MUST follow this specific tool call sequence when creating documentation templates:
+
+### Step 1: Determine Template Type
+
+```
+list_dir("official-documentation")
+```
+
+Check existing documentation structure to identify appropriate domain and relationships.
+
+### Step 2: Create Template Based on Document Type
+
+For Component Documentation:
+```
+edit_file("official-documentation/[domain]/[component-name].md",
+          "Create standardized component documentation template",
+          "# [Component Name]\n\n## Purpose\n\n[Brief description of the component's role in the system.]\n\n## Component Architecture\n\n```mermaid\ngraph TD\n    Component[Component Name] --> SubComponent1[Sub-Component 1]\n    Component --> SubComponent2[Sub-Component 2]\n```\n\n[Brief explanation of the architectural relationships.]\n\n## Implementation Details\n\n### Key Functions/Methods\n\n| Function | Purpose | Parameters | Return Value |\n|---|---|---|---|\n| `functionName` | [Description] | `param1`: type - description | Return type - description |\n\n### Interfaces/Types\n\n```typescript\ninterface ComponentProps {\n  // Interface definition\n}\n```\n\n## Usage Examples\n\n### Basic Usage\n\n```typescript\n// Example code showing basic usage\n```\n\n### Advanced Usage\n\n```typescript\n// Example code showing advanced usage\n```\n\n## Related Components\n\n- [Component 1](../path/to/component1.md) - Relationship description\n- [Component 2](../path/to/component2.md) - Relationship description\n\n## Last Verified\n\n[YYYY-MM-DD] - Verified against commit [hash] by [verifier]")
+```
+
+For API Documentation:
+```
+edit_file("official-documentation/[domain]/[api-name].md",
+          "Create standardized API documentation template",
+          "# [API Name]\n\n## Purpose\n\n[Brief description of the API's purpose and role in the system.]\n\n## API Architecture\n\n```mermaid\nsequenceDiagram\n    Client->>+Server: API Request\n    Server-->>-Client: API Response\n```\n\n[Brief explanation of the API flow and architecture.]\n\n## Endpoints\n\n### `[HTTP Method] /api/[endpoint-path]`\n\n**Purpose**: [Description of what this endpoint does]\n\n#### Request\n\n**Headers**:\n\n| Header | Required | Description |\n|---|---|---|\n| `Authorization` | Yes/No | [Description] |\n\n**Parameters**:\n\n| Parameter | Type | Required | Description |\n|---|---|---|---|\n| `paramName` | string | Yes/No | [Description] |\n\n**Body**:\n\n```json\n{\n  \"property\": \"value\"\n}\n```\n\n#### Response\n\n**Status Codes**:\n\n| Status | Description |\n|---|---|\n| 200 | [Success description] |\n| 400 | [Error description] |\n\n**Response Body**:\n\n```json\n{\n  \"property\": \"value\"\n}\n```\n\n## Data Models\n\n### `[ModelName]`\n\n| Property | Type | Description |\n|---|---|---|\n| `property` | string | [Description] |\n\n## Error Handling\n\n| Error Code | Meaning | Resolution |\n|---|---|---|\n| `ERROR_CODE` | [Description] | [How to resolve] |\n\n## Usage Examples\n\n### Basic Request\n\n```typescript\n// Example code showing basic API usage\n```\n\n## Related APIs\n\n- [API 1](../path/to/api1.md) - Relationship description\n- [API 2](../path/to/api2.md) - Relationship description\n\n## Last Verified\n\n[YYYY-MM-DD] - Verified against commit [hash] by [verifier]")
+```
+
+For Architecture Documentation:
+```
+edit_file("official-documentation/[domain]/[architecture-name].md",
+          "Create standardized architecture documentation template",
+          "# [Architecture Name]\n\n## Purpose\n\n[Brief description of this architectural component and its role in the system.]\n\n## System Architecture\n\n```mermaid\ngraph TD\n    System[System Name] --> Component1[Component 1]\n    System --> Component2[Component 2]\n    Component1 --> Subcomponent1[Subcomponent 1.1]\n    Component2 --> Subcomponent2[Subcomponent 2.1]\n```\n\n[Explanation of the architectural relationships and data flow.]\n\n## Key Components\n\n### [Component 1]\n\n**Purpose**: [Brief description]\n\n**Responsibilities**:\n- [Responsibility 1]\n- [Responsibility 2]\n\n**Implementation Location**: `[path/to/implementation]`\n\n### [Component 2]\n\n**Purpose**: [Brief description]\n\n**Responsibilities**:\n- [Responsibility 1]\n- [Responsibility 2]\n\n**Implementation Location**: `[path/to/implementation]`\n\n## Data Flow\n\n```mermaid\nsequenceDiagram\n    Component1->>+Component2: Action\n    Component2-->>-Component1: Response\n```\n\n[Explanation of the data flow between components.]\n\n## Design Decisions\n\n### [Decision 1]\n\n**Context**: [What led to this decision]\n\n**Options Considered**:\n1. [Option 1]\n2. [Option 2]\n\n**Decision**: [What was decided]\n\n**Rationale**: [Why this decision was made]\n\n## Cross-Cutting Concerns\n\n### Security\n\n[How security is handled in this architecture]\n\n### Performance\n\n[Performance considerations for this architecture]\n\n## Evolution & Maintenance\n\n[Guidelines for evolving and maintaining this architecture]\n\n## Related Architecture Documents\n\n- [Architecture 1](../path/to/architecture1.md) - Relationship description\n- [Architecture 2](../path/to/architecture2.md) - Relationship description\n\n## Last Verified\n\n[YYYY-MM-DD] - Verified against commit [hash] by [verifier]")
+```
+
+For Workflow Documentation:
+```
+edit_file("official-documentation/[domain]/[workflow-name].md",
+          "Create standardized workflow documentation template",
+          "# [Workflow Name]\n\n## Purpose\n\n[Brief description of this workflow and its role in the system.]\n\n## Workflow Diagram\n\n```mermaid\ngraph TD\n    Start[Start] --> Step1[Step 1]\n    Step1 --> Decision{Decision Point}\n    Decision -->|Yes| Step2A[Step 2A]\n    Decision -->|No| Step2B[Step 2B]\n    Step2A --> End[End]\n    Step2B --> End\n```\n\n[Explanation of the workflow steps and decision points.]\n\n## Workflow Steps\n\n### Step 1: [Step Name]\n\n**Description**: [What happens in this step]\n\n**Actor**: [Who/what performs this step (User, System, API)]\n\n**Implementation**: `[path/to/implementation]`\n\n**Input**: [What input is required]\n\n**Output**: [What output is produced]\n\n### Step 2: [Step Name]\n\n**Description**: [What happens in this step]\n\n**Actor**: [Who/what performs this step (User, System, API)]\n\n**Implementation**: `[path/to/implementation]`\n\n**Input**: [What input is required]\n\n**Output**: [What output is produced]\n\n## Decision Points\n\n### [Decision Point Name]\n\n**Condition**: [What determines the decision outcome]\n\n**Options**:\n- [Option 1]: [Result of this option]\n- [Option 2]: [Result of this option]\n\n**Implementation**: `[path/to/implementation]`\n\n## Error Handling\n\n### [Error Scenario 1]\n\n**Cause**: [What causes this error]\n\n**Handling**: [How the error is handled]\n\n**Recovery**: [How the workflow recovers]\n\n## Edge Cases\n\n### [Edge Case 1]\n\n**Scenario**: [Description of the edge case]\n\n**Handling**: [How this edge case is handled]\n\n## Related Workflows\n\n- [Workflow 1](../path/to/workflow1.md) - Relationship description\n- [Workflow 2](../path/to/workflow2.md) - Relationship description\n\n## Last Verified\n\n[YYYY-MM-DD] - Verified against commit [hash] by [verifier]")
+```
+
+For Cross-Cutting Documentation:
+```
+edit_file("official-documentation/[domain]/[cross-cutting-name].md",
+          "Create standardized cross-cutting documentation template",
+          "# [Cross-Cutting Concern Name]\n\n## Purpose\n\n[Brief description of this cross-cutting concern and its impact across the system.]\n\n## System Impact Diagram\n\n```mermaid\ngraph TD\n    CrossCutting[Cross-Cutting Concern] --> Component1[Component 1]\n    CrossCutting --> Component2[Component 2]\n    CrossCutting --> Component3[Component 3]\n```\n\n[Explanation of how this concern affects different parts of the system.]\n\n## Implementation Approach\n\n**Pattern**: [Name of the pattern or approach used]\n\n**Key Principles**:\n- [Principle 1]\n- [Principle 2]\n\n## Component Integration\n\n### Front-end Integration\n\n**Implementation**: `[path/to/implementation]`\n\n**Usage Pattern**:\n```typescript\n// Example code showing integration pattern\n```\n\n### Back-end Integration\n\n**Implementation**: `[path/to/implementation]`\n\n**Usage Pattern**:\n```python\n# Example code showing integration pattern\n```\n\n## Configuration\n\n| Configuration | Default | Description |\n|---|---|---|\n| `configName` | `defaultValue` | [Description] |\n\n## Testing Approach\n\n[How this cross-cutting concern should be tested]\n\n## Performance Implications\n\n[Performance considerations related to this concern]\n\n## Security Considerations\n\n[Security implications related to this concern]\n\n## Related Documentation\n\n- [Document 1](../path/to/document1.md) - Relationship description\n- [Document 2](../path/to/document2.md) - Relationship description\n\n## Last Verified\n\n[YYYY-MM-DD] - Verified against commit [hash] by [verifier]")
+```
+
+## 3. Template Structure by Documentation Type
+
+The template structure varies by documentation type to capture relevant information for each domain:
+
+### Component Documentation Structure
+
+1. **Title and Purpose**
+   - Component name and brief description
+   - Role in the system and key responsibilities
+
+2. **Component Architecture**
+   - Mermaid diagram showing relationships
+   - Explanation of component structure
+
+3. **Implementation Details**
+   - Key functions/methods with parameters and return values
+   - Interfaces/Types with TypeScript definitions
+
+4. **Usage Examples**
+   - Basic and advanced usage code examples
+   - Implementation notes and best practices
+
+5. **Related Components**
+   - Links to related documentation
+   - Explanation of relationships
+
+6. **Last Verified**
+   - Verification date and reference information
+
+### API Documentation Structure
+
+1. **Title and Purpose**
+   - API name and brief description
+   - Role in the system and primary function
+
+2. **API Architecture**
+   - Sequence diagram showing request/response flow
+   - Explanation of API structure
+
+3. **Endpoints**
+   - HTTP methods and paths
+   - Request parameters, headers, and body
+   - Response status codes and formats
+
+4. **Data Models**
+   - Model definitions with properties and types
+   - Validation requirements
+
+5. **Error Handling**
+   - Error codes and meanings
+   - Resolution approaches
+
+6. **Usage Examples**
+   - Example requests and responses
+   - Implementation notes
+
+7. **Related APIs**
+   - Links to related APIs
+   - Explanation of relationships
+
+8. **Last Verified**
+   - Verification date and reference information
+
+### Architecture Documentation Structure
+
+1. **Title and Purpose**
+   - Architecture name and brief description
+   - Role in the system and scope
+
+2. **System Architecture**
+   - Component diagram showing system structure
+   - Explanation of architectural design
+
+3. **Key Components**
+   - Component descriptions and responsibilities
+   - Implementation locations
+
+4. **Data Flow**
+   - Sequence diagram showing communication patterns
+   - Explanation of interactions
+
+5. **Design Decisions**
+   - Key architectural decisions
+   - Context, options, and rationale
+
+6. **Cross-Cutting Concerns**
+   - Security, performance, and other considerations
+   - Implementation approaches
+
+7. **Evolution & Maintenance**
+   - Guidelines for maintaining the architecture
+   - Future development considerations
+
+8. **Related Architecture Documents**
+   - Links to related architecture documentation
+   - Explanation of relationships
+
+9. **Last Verified**
+   - Verification date and reference information
+
+### Workflow Documentation Structure
+
+1. **Title and Purpose**
+   - Workflow name and brief description
+   - Role in the system and when it occurs
+
+2. **Workflow Diagram**
+   - Flow diagram showing steps and decision points
+   - Explanation of workflow progression
+
+3. **Workflow Steps**
+   - Detailed description of each step
+   - Actors, inputs, and outputs
+   - Implementation references
+
+4. **Decision Points**
+   - Conditions and options
+   - Implementation details
+
+5. **Error Handling**
+   - Error scenarios and recovery approaches
+   - Implementation details
+
+6. **Edge Cases**
+   - Unusual scenarios and handling
+   - Implementation details
+
+7. **Related Workflows**
+   - Links to related workflow documentation
+   - Explanation of relationships
+
+8. **Last Verified**
+   - Verification date and reference information
+
+### Cross-Cutting Documentation Structure
+
+1. **Title and Purpose**
+   - Cross-cutting concern name and brief description
+   - System-wide impact and importance
+
+2. **System Impact Diagram**
+   - Component diagram showing affected areas
+   - Explanation of impact scope
+
+3. **Implementation Approach**
+   - Pattern or approach used
+   - Key principles and design decisions
+
+4. **Component Integration**
+   - Front-end and back-end integration patterns
+   - Implementation references and examples
+
+5. **Configuration**
+   - Configuration options and defaults
+   - Implementation guidance
+
+6. **Testing, Performance, and Security**
+   - Specific considerations for the concern
+   - Best practices and guidelines
+
+7. **Related Documentation**
+   - Links to related documentation
+   - Explanation of relationships
+
+8. **Last Verified**
+   - Verification date and reference information
+
+## 4. Template Creation Guidelines
+
+### General Guidelines for All Templates
+
+1. **Placeholder Text**
+   - Use bracketed placeholders: `[placeholder text]`
+   - Include descriptive guidance in placeholders
+   - For code blocks, include commented guidance
+
+2. **Mermaid Diagrams**
+   - Include appropriate diagram type for each documentation type
+   - Use meaningful node names
+   - Follow PolygonExpress visual style
+
+3. **Reference Sections**
+   - Include empty but structured reference sections
+   - Provide guidance on proper cross-linking format
+   - Explain relationship description format
+
+4. **Code Examples**
+   - Include language-specific syntax highlighting
+   - Use realistic but simplified examples
+   - Include proper error handling patterns
+
+### Type-Specific Guidelines
+
+#### Component Documentation Guidelines
+
+1. **Component Naming**
+   - Use PascalCase for component names
+   - Be specific about component purpose
+   - Follow PolygonExpress naming conventions
+
+2. **Interface Definitions**
+   - Include comprehensive prop interfaces
+   - Document each property with type and purpose
+   - Include optional/required status
+
+3. **Usage Examples**
+   - Show proper import patterns
+   - Demonstrate common configuration options
+   - Include error handling examples
+
+#### API Documentation Guidelines
+
+1. **Endpoint Specification**
+   - Use proper HTTP method terminology
+   - Document all path parameters
+   - Include authentication requirements
+
+2. **Request/Response Format**
+   - Use consistent JSON formatting
+   - Document all possible response status codes
+   - Include error response formats
+
+3. **Data Validation**
+   - Document validation rules
+   - Include constraints and requirements
+   - Note required vs. optional fields
+
+#### Architecture Documentation Guidelines
+
+1. **Component Relationships**
+   - Show clear hierarchical structure
+   - Document dependencies and direction
+   - Explain communication patterns
+
+2. **Design Decision Documentation**
+   - Focus on key architectural decisions
+   - Document alternatives considered
+   - Explain trade-offs and rationale
+
+3. **Implementation Mapping**
+   - Link architecture concepts to actual code
+   - Document primary implementation files
+   - Explain how architecture guides implementation
+
+## 5. Template Customization
+
+The template creation process allows for customization based on specific documentation needs:
+
+### Component Template Variations
+
+1. **UI Component Template**
+   - Enhanced props documentation
+   - Style customization options
+   - Accessibility considerations
+
+2. **Hook Component Template**
+   - State management details
+   - Side effect documentation
+   - Dependency tracking explanation
+
+3. **Context Provider Template**
+   - Context structure documentation
+   - Provider pattern explanation
+   - Consumer usage patterns
+
+### API Template Variations
+
+1. **REST API Template**
+   - Resource-oriented structure
+   - CRUD operation mapping
+   - URL structure guidelines
+
+2. **GraphQL API Template**
+   - Schema definitions
+   - Query/Mutation structure
+   - Resolver implementation guidance
+
+3. **Internal API Template**
+   - Service boundaries
+   - Interface contracts
+   - Error handling patterns
+
+## 6. Template Creation Output
+
+After creating the documentation template, you MUST provide a brief report with this format:
+
+```
+# Documentation Template Created
+
+Template has been created at [file path] with the following structure:
+- Title and Purpose
+- [Template-specific sections]
+- Last Verified
+
+The template includes specific guidance for completing each section and follows the standard structure for [doc-type] documentation.
+```
+
+This project rule establishes the standards for creating consistent documentation templates in the PolygonExpress documentation workflow.
+
+This file is designed to be used as a project-rule-parameter with the `create-template` message-command:
+```
+create-template: {doc-type} @manual/documentation/create-template.mdc
+``` 
+

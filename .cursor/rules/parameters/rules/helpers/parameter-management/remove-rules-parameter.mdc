@@ -1,0 +1,143 @@
+# Remove Rules Parameter
+
+## File Purpose and Relationship
+
+This file serves as a project-rule-parameter for removing project-rule-parameters from the rules-workflow. It provides a structured approach to planning, implementing, and verifying parameter removal to ensure system integrity and reference consistency.
+
+## Usage as Project-Rule-Parameter
+
+```
+remove-rules-parameter: name="parameter-name"
+```
+
+Optional parameters:
+- `delete-file`: If set to true, deletes the parameter file (defaults to false)
+- `update-references`: If set to true, attempts to update references to this parameter (defaults to true)
+
+## Planning Workflow
+
+### 1. Removal Justification
+
+When planning to remove a project-rule-parameter, document:
+
+1. **Removal Reason**: Clear justification for parameter removal
+2. **Usage Analysis**: Current usage of the parameter
+3. **Impact Assessment**: Effect on dependent components
+4. **Migration Path**: Plan for users of this parameter
+
+### 2. Reference Analysis
+
+Perform:
+1. **Reference Scan**: Identify all references to the parameter
+2. **Dependency Mapping**: Map all components that depend on this parameter
+3. **Replacement Identification**: Determine alternative parameters if needed
+4. **Documentation Updates**: Plan documentation changes
+
+### 3. Migration Planning
+
+Plan:
+1. **Reference Updates**: How to update existing references
+2. **User Communication**: How to inform users of the change
+3. **Transition Period**: Whether a transition period is needed
+4. **Validation Approach**: How to verify successful removal
+
+## Implementation Workflow
+
+### 1. Parameter Removal
+
+```
+remove-rules-parameter: name="parameter-name"
+```
+
+This command will:
+1. Verify the parameter exists in the registry
+2. Check for references to the parameter
+3. Remove the parameter from the unified registry
+4. Optionally remove the parameter file
+
+### 2. Reference Updates
+
+If `update-references` is enabled:
+1. The system will scan for references to the parameter
+2. References will be marked as deprecated with comments
+3. A report of affected files will be generated
+
+### 3. Verification
+
+After removal:
+1. Verify the parameter is removed from the registry
+2. Check that references are properly handled
+3. Confirm system integrity is maintained
+
+## Verification Workflow
+
+### 1. Registry Verification
+
+Verify that:
+1. Parameter is removed from the unified registry
+2. Related parameters are updated
+3. Registry maintains its integrity
+
+### 2. Reference Verification
+
+Verify that:
+1. References to the parameter are properly handled
+2. Deprecated references are marked
+3. Documentation is updated
+
+### 3. System Integrity Verification
+
+Verify that:
+1. System functionality is maintained
+2. No errors occur related to the removed parameter
+3. Other parameters continue to function correctly
+
+## Implementation Details
+
+The `remove-rules-parameter` command uses:
+
+1. The `Remove-UnifiedParameter.ps1` script for registry operations
+2. Reference scanning tools to identify parameter usage
+3. Dependency analysis to check for impacts
+4. Registry integrity verification
+
+## Execution Process
+
+When you use this command:
+
+1. The system performs a reference analysis to identify usage
+2. The parameter is removed from the unified registry
+3. References are handled according to the update-references setting
+4. Verification confirms successful removal
+5. A report is generated showing affected components
+
+## Reference Handling Options
+
+The system provides several options for handling references:
+
+1. **Mark as Deprecated**: Add deprecation comments (default)
+2. **Update to Alternative**: Replace with an alternative parameter if specified
+3. **Remove References**: Remove references entirely if requested
+4. **Manual Handling**: Generate a report for manual updates
+
+## Impact Analysis
+
+Before removing a parameter, the system performs an impact analysis:
+
+1. **Usage Count**: How many files reference this parameter
+2. **Criticality**: Whether the parameter is used in critical components
+3. **Dependent Parameters**: Other parameters that reference this one
+4. **Documentation Impact**: Documentation that needs updating
+
+## Error Handling
+
+If an error occurs:
+
+1. A clear error message is displayed
+2. The system maintains the parameter in a consistent state
+3. Suggestions for resolving the issue are provided
+4. A rollback is performed if partial changes were made
+
+## File Standard Notice
+
+This file follows the standard project-rule-parameter format with appropriate sections for usage documentation. USE WHEN removing project-rule-parameters from rules-workflow, planning parameter deprecation, handling reference cleanup, or managing parameter lifecycle operations.

@@ -1,0 +1,67 @@
+---
+description: USE WHEN standardizing terminology, ensuring consistent communication, or implementing common-words formats
+globs: 
+alwaysApply: false
+---
+# USE WHEN standardizing terminology, ensuring consistent communication, or implementing common-words formats
+
+# Common-Words Quick Reference
+
+## File Terms
+
+- **brain-files**: Markdown (.md) files in 1000xbrain directory (editable source)
+- **cursor-rules**: Cursor Project Rule (.mdc) files in .cursor/rules directory
+- **context-file**: Specific context file in planning folder
+- **context-files**: All active context files in the Context Pills
+- **official-documentation-file**: File in the @official-documentation folder
+- **official-documentation-files**: Files in the @official-documentation folder
+- **implementation-file**: Planning document with implementation requirements and plans
+- **implementation-files**: Planning documents with implementation requirements and plans
+- **codebase-file**: Relevant codebase file
+- **codebase-files**: Relevant codebase files
+
+## Rule Type Terms
+
+- **Always rules**: Applied to every conversation regardless of context
+- **Auto-Attached rules**: Attached when matching files are referenced
+- **Manual rules**: Explicitly referenced with @ symbol as project-rule-parameters
+- **Agent-Requested rules**: Loaded at AI's discretion (not currently used)
+
+## Parameter Terms
+
+- **message-command-parameter**: Parameter specified after colon in message-command
+- **standard-parameter**: Basic parameter that modifies message-command behavior
+- **project-rule-parameter**: Referenced Project Rule with @ symbol and .mdc extension
+
+## Workflow Terms
+
+- **log-based-workflow**: Implementation-specific log-based workflow process in dev-mode
+- **test-based-workflow**: Implementation-specific test-based workflow process in dev-mode
+- **ux-situation**: User interaction scenario for front-end testing
+- **log-based**: Process of logging during autonomous implementation
+- **documentation-verification**: Process of verifying and updating documentation
+- **documentation-creation**: Process of creating new documentation
+- **documentation-discrepancy**: Mismatch between documentation and actual code
+- **verification-workflow**: Workflow for verifying documentation accuracy
+- **implementation-complete**: Signal from AI that all implementation tasks are finished
+
+## Relationship Terms
+
+- **syncing process**: Transfer of content from brain-files to cursor-rules
+- **rule type setting**: Process of configuring rule types in Cursor UI
+
+## Usage as Project-Rule-Parameter
+
+This file can be referenced as:
+
+```
+verify-terminology: @parameters/reference/architecture/common-words-reference.mdc
+```
+
+## Recommended Practices
+
+1. **Consistent Usage**: Use common-words consistently across all documentation
+2. **Kebab-Case Format**: Always format common-words in kebab-case (words separated by hyphens)
+3. **Clear Definitions**: Ensure terms have clear, non-overlapping definitions
+4. **Proper Context**: Use terminology in the appropriate communication context
+5. **Documentation Updates**: Add new terms to Common-Words Reference sections when created

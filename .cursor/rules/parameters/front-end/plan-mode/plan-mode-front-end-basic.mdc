@@ -1,0 +1,204 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Plan Mode: Front-End Basic Template
+
+## File Purpose and Relationship
+
+This file provides a basic planning template for front-end development in the PolygonExpress project. It is designed for planning straightforward components with minimal state and dependencies.
+
+This file complements:
+- **front-end-workflow.md**: Core front-end development workflow
+- **dev-mode-front-end-log-based.md**: Implementation approach
+
+## Usage as Project-Rule-Parameter
+
+This file is a Manual rule type and should be referenced as a project-rule-parameter in the plan-mode message-command:
+
+```
+plan-mode: front-end-workflow @parameters/front-end/plan-mode/plan-mode-front-end-basic.mdc
+```
+
+## Template Structure
+
+When this template is applied, the planning folder will be structured as follows:
+
+```
+planning/
+  ├── requirements.md (Initial requirements)
+  ├── context-component.md (Component analysis)
+  ├── implementation-component.md (Implementation approach)
+  ├── test-cheatsheet.md (Testing scenarios)
+  └── README.md (Overview)
+```
+
+## Planning Process
+
+### 1. Requirements Analysis
+
+The requirements.md file should document:
+
+- Core component functionality
+- User interaction patterns
+- Visual design requirements
+- Integration points with other components
+- Success criteria
+
+```markdown
+# Requirements: [Component Name]
+
+## Objective
+[Clear statement of component purpose]
+
+## Core Requirements
+1. [Functional requirement 1]
+2. [Functional requirement 2]
+3. [Functional requirement 3]
+
+## Technical Requirements
+1. [Technical requirement 1]
+2. [Technical requirement 2]
+
+## Visual Requirements
+1. [Visual requirement 1]
+2. [Visual requirement 2]
+
+## Success Criteria
+- [Criterion 1]
+- [Criterion 2]
+- [Criterion 3]
+```
+
+### 2. Component Context Analysis
+
+The context-component.md file should document:
+
+- Related existing components
+- State management approach
+- Event handling patterns
+- API interactions
+- Rendering logic
+
+```markdown
+# Context Analysis: [Component Name]
+
+## Related Components
+- [Component 1]: [Relationship]
+- [Component 2]: [Relationship]
+
+## State Management
+- [State variable 1]: [Purpose]
+- [State variable 2]: [Purpose]
+
+## Event Handling
+- [Event 1]: [Handling approach]
+- [Event 2]: [Handling approach]
+
+## API Interactions
+- [API endpoint 1]: [Interaction pattern]
+- [API endpoint 2]: [Interaction pattern]
+
+## Rendering Logic
+- [Condition 1]: [Rendering outcome]
+- [Condition 2]: [Rendering outcome]
+```
+
+### 3. Implementation Planning
+
+The implementation-component.md file should document:
+
+- Component structure
+- Props interface
+- Hook implementation
+- Styling approach
+- Testing strategy
+
+```markdown
+# Implementation Plan: [Component Name]
+
+## Component Structure
+```tsx
+import React, { useState, useEffect } from 'react';
+
+interface [Component]Props {
+  // Props definition
+}
+
+export const [Component]: React.FC<[Component]Props> = ({ 
+  // Props destructuring
+}) => {
+  // State hooks
+  
+  // Effect hooks
+  
+  // Event handlers
+  
+  // Render
+  return (
+    // JSX structure
+  );
+};
+```
+
+## Hooks Implementation
+- `useState`: [Implementation details]
+- `useEffect`: [Implementation details]
+- `useCallback`: [Implementation details]
+
+## Styling Approach
+- [Styling technique]
+- [Key style considerations]
+
+## Testing Strategy
+- [Test 1]: [Testing approach]
+- [Test 2]: [Testing approach]
+```
+
+### 4. Testing Cheatsheet
+
+The test-cheatsheet.md file should document:
+
+- User interactions to test
+- Expected behavior
+- Edge cases
+- Error scenarios
+
+```markdown
+# Test Cheatsheet: [Component Name]
+
+## Basic Functionality Tests
+- [Test scenario 1]
+- [Test scenario 2]
+
+## Edge Case Tests
+- [Edge case 1]
+- [Edge case 2]
+
+## Error Handling Tests
+- [Error scenario 1]
+- [Error scenario 2]
+
+## Performance Tests
+- [Performance scenario 1]
+- [Performance scenario 2]
+```
+
+## Planning Completion
+
+When planning is complete, signal completion with:
+
+```
+📋 1000xdev [front-end-workflow]
+
+planning-document-complete
+```
+
+## Implementation Transition
+
+After planning completion, transition to implementation with:
+
+```
+dev-mode: front-end-workflow @parameters/front-end/dev-mode/dev-mode-front-end-basic.mdc
+``` 

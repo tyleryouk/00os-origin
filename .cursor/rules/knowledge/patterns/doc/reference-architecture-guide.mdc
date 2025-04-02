@@ -1,0 +1,275 @@
+---
+description: USE WHEN using standardized patterns for organizing references within the cognitive architecture
+globs: 
+alwaysApply: false
+---
+# USE WHEN using standardized patterns for organizing references within the cognitive architecture
+
+# Reference Architecture Guide
+
+## File Purpose and Relationship
+
+This file provides standardized patterns for organizing references within the cognitive architecture. It establishes clear guidelines for creating, formatting, and managing references between components to ensure clear hierarchical relationships and minimize reference resolution issues. It should be used when:
+
+- Creating new documentation that references other components
+- Restructuring existing reference patterns
+- Optimizing fetch_rules usage
+- Implementing a hierarchical documentation structure
+
+This file is part of the documentation patterns in the knowledge/patterns/doc directory and complements the information-chunking-guide.md and standard-file-template.md.
+
+## Reference Fundamentals
+
+### Core Reference Principles
+
+1. **Explicit References**: All references should be explicit and clearly identified
+2. **Minimal Reference Depth**: Limit reference chains to 2-3 levels
+3. **Hierarchical Organization**: Organize references in clear hierarchical relationships
+4. **Single Source of Truth**: Establish authoritative sources for key concepts
+5. **Reference Validation**: Ensure all references point to valid, existing resources
+
+### Reference Types
+
+The cognitive architecture uses these standard reference types:
+
+1. **Explicit File References**: Direct references to other files
+   - Location: Primarily in the first 20 lines of a file
+   - Format: `@file-name.md`
+   - Purpose: Establish formal relationships between files
+
+2. **Project-Rule-Parameters**: References used in message-commands
+   - Location: Within message-command examples
+   - Format: ``@parameters/rules/file-name.mdc`` (wrapped in backticks)
+   - Purpose: Provide execution guidance for message-commands
+
+3. **Knowledge Component References**: References to specialized knowledge
+   - Location: Within fetch_rules calls
+   - Format: `fetch_rules(["knowledge/path/to/component"])`
+   - Purpose: Access specialized knowledge components
+
+4. **In-Text References**: References to concepts or files within text
+   - Location: Throughout documentation
+   - Format: File names wrapped in backticks or proper formatting
+   - Purpose: Guide readers to related information
+
+### Reference Format Standards
+
+Format references consistently according to these standards:
+
+1. **File References**: Always use the correct extension
+   - For brain-files (to edit): Use `.md` extension
+   - For message-command parameters: Use `.mdc` extension
+
+2. **Symbol Protection**: Always protect @ symbols
+   - Wrap in backticks when in regular text: ``@file-name.mdc``
+   - Allow unwrapped only in first 20 lines for cross-references
+
+3. **Path Accuracy**: Use correct paths
+   - Standard directories: core, workflows, parameters, knowledge
+   - Proper subdirectory structure
+   - Accurate file names
+
+4. **Reference Distinction**: Clearly distinguish reference types
+   - Use appropriate formatting for each reference type
+   - Provide context for what is being referenced
+   - Use consistent terminology across references
+
+## Reference Architecture Implementation
+
+### Hierarchical Reference Structure
+
+Implement a clear hierarchy in your reference structure:
+
+1. **Primary References**: Core files that establish key concepts
+   - Directly referenced by many other files
+   - Minimal references to other files
+   - Establish fundamental concepts
+   - Example: `core/identity/global-rules.md`
+
+2. **Secondary References**: Files that build on primary references
+   - Reference primary files for core concepts
+   - Establish domain-specific concepts
+   - Example: `workflows/rules-workflow.md`
+
+3. **Tertiary References**: Files that implement specific functionality
+   - Reference secondary files for domain concepts
+   - Focus on specific implementation details
+   - Example: `workflows/rules-workflow/validation-script.md`
+
+Example of hierarchical documentation reference flow:
+```
+core/identity/global-rules.md → workflows/rules-workflow.md → workflows/rules-workflow/validation-script.md
+```
+
+### Direct Reference Patterns
+
+Create efficient direct references with these patterns:
+
+1. **Top-of-File Cross-References**:
+   ```markdown
+   @core/identity/global-rules.md
+   @workflows/rules-workflow.md
+   ```
+
+2. **In-Text File References**:
+   ```markdown
+   For more information, see `core/identity/global-rules.md`.
+   ```
+
+3. **Knowledge Component References**:
+   ```markdown
+   ```typescript
+   fetch_rules(["knowledge/guides/architecture"], 
+              "Understanding system architecture")
+   ```
+   ```
+
+4. **Message-Command References**:
+   ```markdown
+   Use the command `verify-planning: @parameters/rules/verify-planning.mdc`
+   ```
+
+### Reference Consolidation
+
+Consolidate references to reduce complexity:
+
+1. **Group Related References**: Place related references together
+   ```markdown
+   ## Related Files
+   - `core/identity/global-rules.md`: Core identity
+   - `core/modes/mode-transitions.md`: Mode transitions
+   - `core/communication/message-commands.md`: Communication
+   ```
+
+2. **Use Reference Sections**: Create dedicated reference sections
+   ```markdown
+   ## Reference Links
+   
+   ### Core Components
+   - `core/identity/global-rules.md`
+   - `core/modes/mode-transitions.md`
+   
+   ### Implementation Components
+   - `workflows/rules-workflow.md`
+   - `workflows/rules-workflow/validation-script.md`
+   ```
+
+3. **Implement Knowledge Access Consolidation**: Group related fetch_rules calls
+   ```typescript
+   // Consolidated knowledge access
+   fetch_rules([
+     "knowledge/guides/architecture",
+     "knowledge/patterns/impl/implementation-patterns"
+   ], "Understanding architecture and implementation patterns")
+   ```
+
+### fetch_rules Optimization
+
+Optimize fetch_rules calls with these patterns:
+
+1. **Explicit Purpose**: Always provide a clear explanation
+   ```typescript
+   fetch_rules(["knowledge/guides/architecture"], 
+              "Understanding system architecture for implementation")
+   ```
+
+2. **Grouped Access**: Combine related knowledge components
+   ```typescript
+   fetch_rules([
+     "knowledge/patterns/tool/search-patterns",
+     "knowledge/patterns/tool/command-patterns"
+   ], "Understanding tool usage patterns")
+   ```
+
+3. **Strategic Placement**: Position fetch_rules calls where needed
+   ```typescript
+   // At the beginning of implementation sections
+   fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+              "Understanding implementation patterns before starting")
+   ```
+
+4. **Progressive Knowledge Access**: Access knowledge in logical sequence
+   ```typescript
+   // First, understand architecture
+   fetch_rules(["knowledge/guides/architecture"], 
+              "Understanding system architecture")
+   
+   // Then, access implementation patterns
+   fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+              "Understanding implementation approaches")
+   ```
+
+## Reference Management Best Practices
+
+### File Cross-Reference Optimization
+
+1. **Direct Reference Chains**: Create direct paths to frequently referenced files
+2. **Reference Consolidation**: Consolidate related references to reduce complexity
+3. **Hierarchical Organization**: Maintain clear parent-child relationships
+4. **Single Source of Truth**: Establish one authoritative file for key concepts
+
+### @ Symbol Protection
+
+To prevent reference resolution issues:
+
+1. **Backtick Wrapping**: Always wrap @ symbols in backticks in regular text
+   ```markdown
+   Use `@parameters/rules/verify-planning.mdc` for verification.
+   ```
+
+2. **Code Block Usage**: Use code blocks for multiple references
+   ```markdown
+   ```
+   @parameters/rules/verify-planning.mdc
+   @parameters/rules/validate-changes.mdc
+   ```
+   ```
+
+3. **Extension Clarity**: Maintain clear distinction between .md and .mdc
+   ```markdown
+   Edit the file `core/identity/global-rules.md` (brain-file).
+   
+   Use parameter `@parameters/rules/verify-planning.mdc` (project-rule-parameter).
+   ```
+
+4. **Minimize @ Usage**: Limit use of @ symbols to essential references
+
+### Reference Validation
+
+Implement these validation practices:
+
+1. **Path Verification**: Verify all referenced paths exist
+2. **Extension Validation**: Confirm proper extensions are used
+3. **Backtick Validation**: Ensure @ symbols are properly wrapped
+4. **Link Validation**: Check that all references resolve correctly
+
+### Reference Evolution
+
+Follow these patterns when updating references:
+
+1. **Reference Preservation**: Maintain existing reference patterns when possible
+2. **Chain Repair**: Fix broken reference chains immediately
+3. **Format Standardization**: Update references to follow current standards
+4. **Reference Cleanup**: Remove obsolete or unnecessary references
+
+## Verification and Validation
+
+### Reference Quality Checklist
+
+Verify references meet these criteria:
+
+1. **Accuracy**: Points to the correct, existing file
+2. **Format Compliance**: Follows proper formatting standards
+3. **Extension Correctness**: Uses appropriate extension (.md or .mdc)
+4. **Symbol Protection**: Properly protects @ symbols with backticks
+5. **Hierarchy Adherence**: Follows hierarchical reference structure
+
+### Reference Architecture Validation
+
+Validate the overall reference architecture:
+
+1. **Hierarchy Verification**: Confirm clear hierarchical relationships
+2. **Depth Analysis**: Ensure reference chains are not too deep
+3. **Resolution Testing**: Verify all references resolve correctly
+4. **Consistency Check**: Confirm consistent reference patterns
+5. **fetch_rules Optimization**: Verify efficient knowledge access patterns 

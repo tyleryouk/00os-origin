@@ -1,0 +1,273 @@
+# Recovery Strategy: Advanced Front-End Workflow
+
+## File Purpose
+
+This file provides advanced recovery strategies for complex front-end development tasks. It should be used when:
+
+- Complex architectural implementations encounter issues
+- Component hierarchy problems need resolution
+- Advanced state management requires recovery
+- API integration architecture needs repair
+- Performance issues require advanced solutions
+
+This parameter is designed for recovering from complex implementation issues that affect architectural integrity.
+
+## Usage as Project-Rule-Parameter
+
+This file contains advanced recovery strategies and should be referenced as:
+
+```
+recovery-strategy: @parameters/front-end/continuation/recovery-strategy-advanced.mdc
+```
+
+For other recovery approaches, see:
+- `recovery-strategy-basic.md`: For simpler implementation issues
+- `recovery-strategy-log-based.md`: For diagnostic recovery approaches
+- `recovery-strategy-error-recovery.md`: For critical error situations
+
+## Advanced Recovery Process Overview
+
+1. **Architectural Analysis**
+   - Analyze component hierarchy
+   - Map state management flow
+   - Identify dependency issues
+   - Locate architectural bottlenecks
+
+2. **Comprehensive Recovery Planning**
+   - Design systemic recovery approach
+   - Plan staged implementation
+   - Establish verification checkpoints
+   - Create rollback mechanisms
+
+3. **Architectural Recovery Implementation**
+   - Apply structural fixes
+   - Rebuild state management patterns
+   - Enhance component interfaces
+   - Optimize performance bottlenecks
+
+4. **Advanced Recovery Verification**
+   - Test component integration
+   - Verify state synchronization
+   - Validate API interactions
+   - Confirm performance improvements
+
+## Architectural Analysis
+
+Begin with thorough analysis of the architectural issues:
+
+```typescript
+// 1. Review component hierarchy
+codebase_search("export const [A-Z]", ["front-end/src/components"])
+
+// 2. Analyze state management patterns
+grep_search("useContext|createContext|Provider", false, "front-end/src/**/*.tsx")
+
+// 3. Map component dependencies
+grep_search("import.*from", false, "front-end/src/components/**/*.tsx")
+
+// 4. Identify API integration architecture
+grep_search("fetch|axios|api|useQuery", false, "front-end/src/**/*.tsx")
+```
+
+## Advanced Recovery Strategies
+
+### 1. Component Hierarchy Recovery
+
+```typescript
+// Before: Problematic component hierarchy with prop drilling
+const ParentComponent = () => {
+  const [data, setData] = useState([]);
+  // Passing data through multiple levels
+  return <MiddleComponent data={data} setData={setData} />;
+};
+
+// After: With context-based architecture
+const DataContext = createContext(null);
+
+const DataProvider = ({ children }) => {
+  const [data, setData] = useState([]);
+  return (
+    <DataContext.Provider value={{ data, setData }}>
+      {children}
+    </DataContext.Provider>
+  );
+};
+
+const ParentComponent = () => {
+  return (
+    <DataProvider>
+      <MiddleComponent />
+    </DataProvider>
+  );
+};
+
+const ChildComponent = () => {
+  const { data, setData } = useContext(DataContext);
+  // Now directly accessing data without prop drilling
+};
+```
+
+### 2. State Management Recovery
+
+```typescript
+// Before: Complex state with multiple useState calls
+const Component = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
+  const [filters, setFilters] = useState({});
+  // Complex state interactions...
+};
+
+// After: With reducer pattern
+const initialState = {
+  loading: false,
+  error: null,
+  data: [],
+  selectedId: null,
+  filters: {},
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_START':
+      return { ...state, loading: true, error: null };
+    case 'FETCH_SUCCESS':
+      return { ...state, loading: false, data: action.payload };
+    case 'FETCH_ERROR':
+      return { ...state, loading: false, error: action.payload };
+    case 'SELECT_ITEM':
+      return { ...state, selectedId: action.payload };
+    case 'UPDATE_FILTERS':
+      return { ...state, filters: { ...state.filters, ...action.payload } };
+    default:
+      return state;
+  }
+};
+
+const Component = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  // Simplified state management with actions
+};
+```
+
+### 3. Performance Recovery Strategy
+
+```typescript
+// Before: Performance issues with excessive rerenders
+const Component = ({ data, onAction }) => {
+  // Recreated on every render
+  const processData = () => {
+    return data.map(item => ({ ...item, processed: true }));
+  };
+  
+  // New function reference on every render
+  const handleClick = () => {
+    onAction(data);
+  };
+  
+  return (
+    <>
+      {processData().map(item => (
+        <Item key={item.id} item={item} onClick={handleClick} />
+      ))}
+    </>
+  );
+};
+
+// After: With performance optimizations
+const Component = ({ data, onAction }) => {
+  // Memoized data processing
+  const processedData = useMemo(() => {
+    return data.map(item => ({ ...item, processed: true }));
+  }, [data]);
+  
+  // Memoized callback
+  const handleClick = useCallback(() => {
+    onAction(data);
+  }, [data, onAction]);
+  
+  return (
+    <>
+      {processedData.map(item => (
+        <Item key={item.id} item={item} onClick={handleClick} />
+      ))}
+    </>
+  );
+};
+
+// Prevent child components from unnecessary rerenders
+const Item = memo(({ item, onClick }) => {
+  return <div onClick={onClick}>{item.name}</div>;
+});
+```
+
+## Advanced Recovery Implementation
+
+Apply architectural recovery systematically:
+
+```typescript
+// 1. Analyze component architecture
+read_file("[component_file_path]", should_read_entire_file=true)
+
+// 2. Implement context architecture
+edit_file("[context_file_path]",
+          "Create context architecture for recovery",
+          "import React, { createContext, useContext, useReducer } from 'react';\n\n// Create context\nexport const DataContext = createContext(null);\n\n// Initial state\nconst initialState = {\n  // state definition\n};\n\n// Reducer\nconst reducer = (state, action) => {\n  switch (action.type) {\n    // action handlers\n  }\n};\n\n// Provider\nexport const DataProvider = ({ children }) => {\n  const [state, dispatch] = useReducer(reducer, initialState);\n  \n  return (\n    <DataContext.Provider value={{ state, dispatch }}>\n      {children}\n    </DataContext.Provider>\n  );\n};\n\n// Hook\nexport const useData = () => {\n  const context = useContext(DataContext);\n  if (!context) {\n    throw new Error('useData must be used within DataProvider');\n  }\n  return context;\n};")
+
+// 3. Update implementation progress
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update implementation progress with architectural recovery",
+          "// ... existing content ...\n\n## Architectural Recovery Progress\n\n### Structure Improvements\n- Implemented context architecture\n- Refactored component hierarchy\n- Enhanced state management pattern\n\n// ... existing content ...")
+```
+
+## Advanced Recovery Verification
+
+```typescript
+// 1. Test component integration
+run_terminal_cmd("cd front-end && npm run test -- --testPathPattern=[component_name]", false)
+
+// 2. Create verification documentation
+edit_file("[planning_folder_path]/architectural-verification.md",
+          "Document architectural verification",
+          "# Architectural Verification\n\n## Component Hierarchy\n- Verified proper parent-child relationships\n- Confirmed context is properly provided\n- Checked component composition\n\n## State Management\n- Verified state flow between components\n- Confirmed reducer actions work correctly\n- Tested state synchronization\n\n## Performance\n- Checked render optimizations\n- Verified memoization is working\n- Confirmed reduced re-renders")
+```
+
+## Common Advanced Recovery Patterns
+
+| Issue | Recovery Strategy |
+|-------|------------------|
+| Component structure issues | Implement component composition |
+| Prop drilling | Convert to context architecture |
+| Complex state management | Implement reducer pattern |
+| Performance bottlenecks | Add memoization and code splitting |
+| API architecture | Create centralized API layer |
+
+## Completion Signaling
+
+```
+💻 1000xdev [front-end-workflow]
+
+Advanced recovery implementation complete:
+
+Architectural Improvements:
+- Refactored component hierarchy to improve composition
+- Implemented context architecture to eliminate prop drilling
+- Enhanced state management with reducer pattern
+- Optimized performance with memoization strategies
+- Centralized API integration for better error handling
+
+Verification:
+- Component integration tests passing
+- State management verified across component boundaries
+- Performance metrics improved
+
+implementation-complete
+```
+
+## Related References
+
+- **Front-End-Workflow**: `workflows/front-end-workflow.md`
+- **Component Architecture**: `parameters/front-end/helpers/component-architecture.md`
+- **State Management**: `parameters/front-end/helpers/state-management.md` 

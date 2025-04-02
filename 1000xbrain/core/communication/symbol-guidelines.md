@@ -1,0 +1,580 @@
+# Symbol Usage Guidelines for 1000xbrain
+
+## File Purpose and Relationship
+
+This document defines the standards for using the @ symbol within the 1000xbrain cognitive architecture. These guidelines ensure proper handling of references and prevent issues with Cursor's automatic reference detection system. They should be consulted when:
+
+- Adding new content to the cognitive architecture
+- Updating existing cognitive files
+- Creating examples involving file references
+- Troubleshooting reference detection issues
+- Distinguishing between brain-files (.md) and cursor-rules (.mdc)
+
+This file complements:
+- **core/communication/syntax-standards.md**: General syntax standardization
+- **core/communication/message-commands.md**: Message-command documentation
+- **workflows/rules-workflow/rules-workflow.md**: Workflow-specific standards
+- **parameters/reference/architecture/brain-files-cursor-rules.md**: Relationship between brain-files and cursor-rules
+
+## Usage as Project-Rule-Parameter
+
+This file contains standards for using the @ symbol and other communication symbols and should be referenced as a project-rule-parameter in message-commands:
+
+```
+verify-planning: `@parameters/rules/helpers/verification/verify-planning.mdc`
+update-rules: `@parameters/rules/helpers/implementation/update-rules.mdc`
+```
+
+For essential symbol usage components, see core-essentials.md (Always Rule).
+
+## Brain-Files vs. Cursor-Rules Extension Guidelines
+
+### Extension Distinction
+
+Files in the 1000xbrain cognitive architecture system follow a strict distinction between extensions:
+
+1. **Brain-Files (.md)**:
+   - Stored in the `1000xbrain/` directory
+   - Editable source files that directly shape AI cognition when synchronized
+   - Target for all edits and enhancements
+   - Referenced in documentation contexts (.md)
+   - Used when discussing file editing
+
+2. **Cursor-Rules (.mdc)**:
+   - Stored in the `.cursor/rules/` directory
+   - Applied rules that directly control AI behavior
+   - Never directly edited (only edited by Tyler through Cursor UI)
+   - Referenced in message-command parameters (.mdc)
+   - Used when showing how to reference rules in message-commands
+
+### Extension Usage Contexts
+
+| Context | Correct Extension | Example | Notes |
+|---------|-------------------|---------|-------|
+| Message-command parameters | **.mdc** | `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` | Always use .mdc for project-rule-parameters |
+| Code editing discussions | **.md** | `Edit the file core/identity/global-rules.md` | Use .md when discussing files to edit |
+| Documentation cross-references | **.md** | `See file-standards.md for details` | Use .md for documentation references |
+| Path descriptions | **.md** | `The file is located at 1000xbrain/core/core-essentials.md` | Use .md when describing file locations |
+
+### ⚠️ CRITICAL: Extension Mixing Prevention ⚠️
+
+To prevent cognitive confusion and implementation errors:
+
+1. **NEVER mix extensions in the same context**
+2. **ALWAYS use .mdc in message-command parameters**
+3. **ALWAYS use .md when discussing files to edit**
+4. **BE CLEAR in distinguishing documentation discussions (.md) from rule references (.mdc)**
+
+## Comprehensive Symbol Catalog
+
+### Primary Communication Symbols
+
+| Symbol | Name | Purpose | Usage Context | Example |
+|--------|------|---------|---------------|---------|
+| **@** | At Symbol | File references & project rules | Parameters & cross-references | `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` |
+| **📋** | Clipboard | Plan mode indicator | Response mode designation | `📋 1000xdev [rules-workflow]` |
+| **💻** | Computer | Dev mode indicator | Response mode designation | `💻 1000xdev [front-end-workflow]` |
+| **⚡** | Lightning | Direct mode indicator | Response mode designation | `⚡ 1000xdev [front-end-workflow]` |
+| **:**  | Colon | Parameter separator | Message-command syntax | `dev-mode: typescript` |
+| **[ ]** | Square Brackets | Workflow type container | Mode indicators | `[rules-workflow]` |
+| **\`\`** | Backticks | Code wrapping | File path references | `` `@file.md` `` |
+| **-** | Hyphen | Kebab-case separator | Message-commands & parameters | `verify-planning` |
+| **.md** | Markdown Extension | Brain-file designation | File editing contexts | `Edit core-essentials.md` |
+| **.mdc** | Cursor Rule Extension | Rule reference designation | Message-command parameters | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+
+### Secondary Communication Symbols
+
+| Symbol | Name | Purpose | Usage Context | Example |
+|--------|------|---------|---------------|---------|
+| **#** | Hash/Pound | Markdown heading | Documentation structure | `# Heading` |
+| **\|** | Pipe | Table column separator | Documentation tables | `\| Column 1 \| Column 2 \|` |
+| **✅** | Check Mark | Approval/Completion | Status indicators | `✅ Implementation complete` |
+| **❌** | Cross Mark | Prohibition/Failure | Status indicators | `❌ Not authorized` |
+| **🚫** | Prohibition | Strict prohibition | Authority matrix | `🚫 FORBIDDEN` |
+| **⚠️** | Warning | Critical attention | Important notices | `⚠️ Critical requirement` |
+| **/**  | Forward Slash | Path separator | File paths | `knowledge/rules/file.md` |
+| **\\** | Backslash | Escape character | Code examples | `console.log(\"escaped\")` |
+
+## @ Symbol Usage Guidelines
+
+### Importance of @ Symbol Compliance
+
+The @ symbol has special significance in the Cursor environment:
+
+1. Cursor automatically treats text following the @ symbol as a reference
+2. Improper usage can lead to unintended reference detection
+3. Consistent standards ensure clarity and proper functionality
+4. Cross-referencing is critical for navigating the cognitive architecture
+5. Proper extension usage (.md vs .mdc) is essential for clear communication
+
+### Allowed @ Symbol Usage
+
+1. **File Cross-References at Beginning**:
+   - Allowed only in the first 20 lines of files
+   - Used for explicit cross-references to related files
+   - Example (at beginning of file):
+     ```markdown
+     @README.md
+     @workflows/rules-workflow/rules-workflow.md
+     ```
+
+2. **Backtick-Wrapped Examples**:
+   - Wrapped in backticks to prevent reference detection
+   - Used when discussing message-commands with project-rule-parameters
+   - Example:
+     ```markdown
+     The message-command `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` performs verification.
+     ```
+
+3. **Code Block Examples**:
+   - Used within code blocks with proper backtick wrapping
+   - Example:
+     ```markdown
+     ```typescript
+     // Example of message-command with project-rule-parameter
+     // verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc
+     ```
+     ```
+
+### Prohibited @ Symbol Usage
+
+1. **Direct Usage in Regular Text**:
+   - Never use @ followed by a path in regular text
+   - INCORRECT EXAMPLE:
+     ```markdown
+     To verify planning, use @parameters/rules/helpers/verification/verify-planning.mdc
+     ```
+   - CORRECT EXAMPLE:
+     ```markdown
+     To verify planning, use `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc`
+     ```
+
+2. **In File Names or Headers**:
+   - Never include @ in file names or section headers
+   - INCORRECT EXAMPLE:
+     ```markdown
+     # @parameters/rules/example.md Contents
+     ```
+   - CORRECT EXAMPLE:
+     ```markdown
+     # Parameters Rules Example Contents
+     ```
+
+3. **Unwrapped in Examples or Documentation**:
+   - Never leave @ symbol references unwrapped when giving examples
+   - INCORRECT EXAMPLE:
+     ```markdown
+     Use the format: message-command: @parameters/rules/command.mdc
+     ```
+   - CORRECT EXAMPLE:
+     ```markdown
+     Use the format: `message-command: @parameters/rules/command.mdc`
+     ```
+
+4. **Multiple Unwrapped @ Symbols**:
+   - Multiple @ symbols in close proximity can cause parsing issues
+   - INCORRECT EXAMPLE:
+     ```markdown
+     The files @parameters/rules/helpers/verification/verify-planning.mdc and @parameters/rules/helpers/implementation/update-rules.mdc are related.
+     ```
+   - CORRECT EXAMPLE:
+     ```markdown
+     The files `@parameters/rules/helpers/verification/verify-planning.mdc` and `@parameters/rules/helpers/implementation/update-rules.mdc` are related.
+     ```
+
+5. **Mixed Extension References**:
+   - Never mix .md and .mdc extensions inappropriately
+   - INCORRECT EXAMPLE:
+     ```markdown
+     Use `verify-planning: @parameters/rules/helpers/verification/verify-planning.md` to verify planning
+     ```
+   - CORRECT EXAMPLE:
+     ```markdown
+     Use `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` to verify planning
+     ```
+
+### ⚠️ CRITICAL: @ Symbol Protection Requirements ⚠️
+
+To avoid hallucinations and incorrect tool calls:
+
+1. **ALWAYS use backticks (``) around @ symbols** in regular text
+2. **NEVER reference .mdc files for editing** - only reference for message-commands
+3. **NEVER reference .md files in message-command parameters** - only use .mdc
+4. **Keep @ symbol references minimal** - excessive @ symbols can cause parsing issues
+5. **Use absolute clarity** when distinguishing between .md files (for editing) and .mdc files (for message-commands)
+6. **Triple-check all @ usage** before adding new content
+
+### Brain-File vs. Cursor-Rule Reference Decision Tree
+
+Use this decision tree to determine the correct extension:
+
+```
+What are you doing?
+├── Showing a message-command with project-rule-parameter → Use .mdc
+│   Example: `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc`
+│
+├── Discussing a file to edit → Use .md
+│   Example: "Edit parameters/rules/helpers/verification/verify-planning.md to enhance verification"
+│
+├── Referencing documentation → Use .md
+│   Example: "See file-standards.md for details"
+│
+└── Describing file structure → Use .md
+    Example: "The file is located at 1000xbrain/core/core-essentials.md"
+```
+
+## Mode Indicator Symbol Usage
+
+### Mode Indicator Symbol Structure
+
+Mode indicators consist of specific symbols that must be used consistently:
+
+```
+┌───────────────────────────────────────────────────┐
+│                                                   │
+│  📋/💻/⚡  1000xdev  [workflow-type]              │
+│   │         │             │                       │
+│   │         │             │                       │
+│   │         │             └── Square brackets     │
+│   │         │                 required            │
+│   │         │                                     │
+│   │         └── Identity always                   │
+│   │             follows emoji                     │
+│   │                                               │
+│   └── Plan mode: 📋 (clipboard)                   │
+│       Dev mode: 💻 (computer)                     │
+│       Direct mode: ⚡ (lightning)                  │
+│                                                   │
+└───────────────────────────────────────────────────┘
+```
+
+### Mode Indicator Positioning
+
+Mode indicators must always:
+
+1. **Appear First**: Be the very first element of every 1000xdev response
+2. **Stand Alone**: Not be mixed with other text on the same line
+3. **Include All Components**: Contain emoji + identity + bracketed workflow type
+4. **Match Current Mode**: Use the emoji corresponding to the current mode
+5. **Match Current Workflow**: Include the workflow type matching the current task
+
+### Mode Indicator Troubleshooting
+
+| Issue | Example | Correction |
+|-------|---------|------------|
+| Missing emoji | `1000xdev [rules-workflow]` | Add appropriate emoji: `📋 1000xdev [rules-workflow]` |
+| Wrong emoji | `💻 1000xdev [rules-workflow]` in plan-mode | Use correct emoji: `📋 1000xdev [rules-workflow]` |
+| Wrong emoji | `📋 1000xdev [front-end-workflow]` in direct-mode | Use correct emoji: `⚡ 1000xdev [front-end-workflow]` |
+| Missing brackets | `📋 1000xdev rules-workflow` | Add brackets: `📋 1000xdev [rules-workflow]` |
+| Incomplete indicator | `📋 [rules-workflow]` | Include all parts: `📋 1000xdev [rules-workflow]` |
+| Not at beginning | `Starting work... 📋 1000xdev [rules-workflow]` | Move to beginning: `📋 1000xdev [rules-workflow] Starting work...` |
+
+## Context-Aware Symbol Usage
+
+Different communication contexts require different symbol usage patterns:
+
+### Planning Mode Documentation Context
+
+| Symbol | Usage Pattern | Example |
+|--------|--------------|---------|
+| **#** | Used for section headers | `# Requirements`, `## Implementation Plan` |
+| **-** | Used for list items | `- First item`, `- Second item` |
+| **\|** | Used for table formatting | `\| Header \| Header \|` |
+| **\`\`** | Used for inline code or references | `` `verify-planning` `` |
+| **@** | Used only at file beginning or in backticks | `@related-file.md` or `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+| **.md** | Used for brain-files | `Edit core/identity/global-rules.md` |
+| **.mdc** | Used in message-command examples | `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+
+### Developer Mode Implementation Context
+
+| Symbol | Usage Pattern | Example |
+|--------|--------------|---------|
+| **/**  | Used for file paths | `src/components/Feature.tsx` |
+| **:**  | Used for property definitions | `status: 'complete'` |
+| **{}** | Used for code blocks and object literals | `{ property: value }` |
+| **()** | Used for function calls | `functionName()` |
+| **@** | Used in code comments or backtick-wrapped | `// @ts-ignore` or `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+| **.md** | Used for brain-files | `Checking core/identity/global-rules.md` |
+| **.mdc** | Used in message-command examples | `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+
+### Message-Command Context
+
+| Symbol | Usage Pattern | Example |
+|--------|--------------|---------|
+| **:**  | Always follows the message-command | `dev-mode: typescript` |
+| **@**  | Always prefixes project-rule parameters | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+| **-**  | Used within kebab-case commands | `verify-planning` |
+| **[ ]** | Never used in message-commands | `verify-planning: typescript` (not `[typescript]`) |
+| **.**  | Used in file extensions | `.md`, `.mdc`, `.tsx` |
+| **.mdc** | ALWAYS used for project-rule parameters | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+| **.md** | NEVER used for project-rule parameters | ❌ `@parameters/rules/helpers/verification/verify-planning.md` ❌ |
+
+### Decision Frameworks for Symbol Selection
+
+Use these decision trees to select appropriate symbols:
+
+#### @ Symbol Decision Tree
+```
+Are you referencing a file?
+├── Yes → Is it in the first 20 lines of a file?
+│   ├── Yes → Direct usage allowed (@file.md)
+│   └── No → Must be wrapped in backticks (`@file.md`)
+└── No → Are you showing a message-command example?
+    ├── Yes → Must be wrapped in backticks, use .mdc extension
+    └── No → Don't use @ symbol
+```
+
+#### Extension Decision Tree
+```
+What type of file are you referencing?
+├── Brain file for editing → Use .md extension (e.g., global-rules.md)
+└── Project rule parameter → Use .mdc extension (e.g., @global-rules.mdc)
+
+What context are you in?
+├── Message-command parameters → ALWAYS use .mdc extension
+├── File editing discussions → ALWAYS use .md extension
+├── Code search discussions → ALWAYS use .md extension
+└── Documentation references → ALWAYS use .md extension
+```
+
+#### Mode Indicator Symbol Decision Tree
+```
+Which mode are you operating in?
+├── Planning Mode → Use 📋 emoji
+├── Developer Mode → Use 💻 emoji
+└── Direct Mode → Use ⚡ emoji
+
+What workflow are you working on?
+├── Rules → [rules-workflow]
+├── Front-End → [front-end-workflow]
+├── Back-End → [back-end-workflow]
+└── Documentation → [documentation-workflow]
+
+Full mode indicator:
+Planning + Rules = 📋 1000xdev [rules-workflow]
+Developer + Front-End = 💻 1000xdev [front-end-workflow]
+Direct + Back-End = ⚡ 1000xdev [back-end-workflow]
+etc.
+```
+
+## Effective Symbol Combinations
+
+Certain symbols are frequently used together in specific patterns:
+
+### Documentation Symbol Combinations
+
+| Combination | Purpose | Example |
+|-------------|---------|---------|
+| **# + [ ]** | Section with emphasized terms | `# Mode [Planning]` |
+| **\| + -** | Table with list items | `\| Category \| - Item 1<br>- Item 2 \|` |
+| **@ + \`\`` | Referenced file with backticks | `` `@file.md` `` |
+| **> + -** | Blockquote with list | `> Important:<br>- Point 1<br>- Point 2` |
+| **```+ @** | Code block with reference | ```````typescript<br>// @ts-ignore`````` |
+| **\`\` + .md** | Brain-file reference | `` `global-rules.md` `` |
+| **\`\` + .mdc** | Cursor-rule reference | `` `@global-rules.mdc` `` |
+
+### Message-Command Symbol Combinations
+
+| Combination | Purpose | Example |
+|-------------|---------|---------|
+| **- + :** | Command with parameter separator | `dev-mode: typescript` |
+| **: + @** | Parameter with project rule | `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` |
+| **: + " + "** | Parameter with quoted value | `verify-file: "path with spaces.md"` |
+| **@ + .mdc** | Project rule with extension | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+| **/ + @** | Path with reference | `path/to/file.md @parameters/rules/helpers/verification/verify-planning.mdc` |
+
+### Mode Indicator Symbol Combinations
+
+| Combination | Purpose | Example |
+|-------------|---------|---------|
+| **📋 + [ ]** | Plan mode with workflow | `📋 1000xdev [rules-workflow]` |
+| **💻 + [ ]** | Dev mode with workflow | `💻 1000xdev [front-end-workflow]` |
+| **⚡ + [ ]** | Direct mode with workflow | `⚡ 1000xdev [back-end-workflow]` |
+| **[ + -]** | Workflow with kebab-case | `[front-end-workflow]` |
+| **📋 + #** | Plan mode with header | `📋 1000xdev [rules-workflow]<br># Planning Update` |
+| **💻 + -** | Dev mode with list | `💻 1000xdev [front-end-workflow]<br>- Implemented feature` |
+| **⚡ + -** | Direct mode with list | `⚡ 1000xdev [back-end-workflow]<br>- Implemented feature` |
+
+### Symbol Combination Conflicts to Avoid
+
+| Combination | Conflict | Resolution |
+|-------------|----------|------------|
+| **@ + #** | @ reference with heading | Move reference to beginning of file |
+| **@ + @** | Multiple adjacent references | Separate with text or use lists |
+| **[ ] + [ ]** | Nested brackets | Use different delimiters for inner grouping |
+| **\` + @** | Backtick directly before @ | Add space: \` @file.md` |
+| **# + @** | Heading with @ reference | Never use @ in headers |
+| **.mdc + edit** | Referencing mdc file for editing | Use .md extension for editing contexts |
+| **.md + message-command** | Using .md in message-command | Always use .mdc in message-commands |
+
+## Brain-File vs. Cursor-Rule Extension Examples
+
+### Correct Extension Usage Examples
+
+1. **Message-Command Parameters (ALWAYS .mdc)**:
+   ```markdown
+   `plan-mode: rules-workflow @parameters/rules/plan-mode/plan-mode.mdc`
+   `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc`
+   `continue-implementation: @parameters/rules/helpers/recovery/error-recovery.mdc`
+   ```
+
+2. **File Editing Discussions (ALWAYS .md)**:
+   ```markdown
+   I'll enhance core/identity/global-rules.md to improve identity definition.
+   Edit workflows/front-end-workflow/workflow-entry.md to update front-end patterns.
+   Let's check knowledge/back-end/fastapi-patterns.md for API implementation details.
+   ```
+
+3. **Documentation References (ALWAYS .md)**:
+   ```markdown
+   For more details, see file-standards.md.
+   The process is documented in mode-transitions.md.
+   Refer to message-commands.md for command syntax.
+   ```
+
+### Incorrect Extension Usage Examples
+
+1. **INCORRECT: Using .md in Message-Command Parameters**:
+   ```markdown
+   `plan-mode: rules-workflow @parameters/rules/plan-mode/plan-mode.md` ❌
+   `verify-planning: @parameters/rules/helpers/verification/verify-planning.md` ❌
+   ```
+
+2. **INCORRECT: Using .mdc in File Editing Discussions**:
+   ```markdown
+   I'll enhance core/identity/global-rules.mdc to improve identity definition. ❌
+   Edit workflows/front-end-workflow/workflow-entry.mdc to update front-end patterns. ❌
+   ```
+
+3. **INCORRECT: Using .mdc in Documentation References**:
+   ```markdown
+   For more details, see file-standards.mdc. ❌
+   The process is documented in mode-transitions.mdc. ❌
+   ```
+
+## @ Symbol Scanning Process
+
+To ensure compliance with these guidelines, follow this scanning process:
+
+1. **Search Command**:
+   ```bash
+   grep -r "@" --include="*.md" 1000xbrain/
+   ```
+
+2. **Review Process**:
+   - Check each occurrence against the usage rules
+   - Look for unwrapped @ symbols outside the first 20 lines
+   - Verify all examples use proper backtick wrapping
+   - Review file headers and names for improper usage
+   - Verify correct extensions are used in different contexts
+
+3. **Correction Process**:
+   - Add backticks around @ references in examples
+   - Move necessary cross-references to the beginning of files
+   - Replace direct @ references with alternative formatting
+   - Correct extension usage (.md vs .mdc) in appropriate contexts
+
+## Correction Examples
+
+### Example 1: Fixing Unwrapped References
+
+**INCORRECT**:
+```markdown
+To check implementation status, use @parameters/rules/helpers/implementation/implementation-status.mdc
+```
+
+**CORRECT**:
+```markdown
+To check implementation status, use `implementation-status: @parameters/rules/helpers/implementation/implementation-status.mdc`
+```
+
+### Example 2: Moving References to Beginning
+
+**INCORRECT** (@ symbol in middle of file):
+```markdown
+## Implementation Process
+
+For more details, see @parameters/rules/helpers/implementation/implementation-workflow.md
+```
+
+**CORRECT** (@ symbol at beginning of file):
+```markdown
+@parameters/rules/helpers/implementation/implementation-workflow.md
+
+## Implementation Process
+
+For more details, see the implementation workflow documentation.
+```
+
+### Example 3: Replacing Direct References
+
+**INCORRECT**:
+```markdown
+Implementation details are in @parameters/rules/helpers/implementation/implementation-details.md
+```
+
+**CORRECT**:
+```markdown
+Implementation details are in the implementation details documentation (parameters/rules/helpers/implementation/implementation-details.md)
+```
+
+### Example 4: Fixing Extension Usage
+
+**INCORRECT** (wrong extension in message-command):
+```markdown
+Use `verify-planning: @parameters/rules/helpers/verification/verify-planning.md` to check implementation
+```
+
+**CORRECT**:
+```markdown
+Use `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` to check implementation
+```
+
+## Frontmatter Exception
+
+The @ symbol may be used in frontmatter within specific contexts:
+
+```markdown
+---
+description: Project rules for the cognitive architecture
+globs: 1000xbrain/**/*.md
+---
+```
+
+This usage is controlled by Cursor and doesn't trigger unwanted reference behavior.
+
+## Implementation Recommendations
+
+1. **Preventive Measures**:
+   - Use backticks liberally when discussing paths or references
+   - Place all cross-references at the beginning of files
+   - Use alternative formatting when direct references aren't needed
+   - Always use the correct extension (.md vs .mdc) based on context
+
+2. **Regular Compliance Checks**:
+   - Include @ symbol scanning in verification processes
+   - Run the scanning command before completing implementations
+   - Document corrected issues in implementation-progress.md
+   - Check for correct extension usage in all contexts
+
+3. **Documentation Updates**:
+   - Include these guidelines in new developer onboarding
+   - Reference these standards in the rules-workflow documentation
+   - Update templates to include proper @ usage patterns
+   - Emphasize the distinction between .md and .mdc files
+
+## Success Criteria
+
+@ symbol and extension usage is compliant when:
+
+1. All @ symbols outside the first 20 lines are properly wrapped in backticks
+2. No file names or headers contain @ symbols
+3. All examples of message-commands with project-rule-parameters use backticks
+4. Cross-references are properly placed at the beginning of files
+5. All message-command references use .mdc extension
+6. All file editing discussions use .md extension
+7. Documentation references consistently use .md extension
+8. No mixing of extensions in inappropriate contexts
+
+This standardization ensures consistent and reliable reference behavior throughout the 1000xbrain cognitive architecture, while maintaining clear distinction between brain-files (.md) and cursor-rules (.mdc). 
+

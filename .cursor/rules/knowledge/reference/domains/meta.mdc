@@ -1,0 +1,97 @@
+---
+description: USE WHEN exploring cognitive architecture, understanding system structure, or accessing meta-domain knowledge
+globs: 
+alwaysApply: false
+---
+# USE WHEN exploring cognitive architecture, understanding system structure, or accessing meta-domain knowledge
+
+# Meta Domain Reference
+
+## Overview
+
+This reference guide provides a comprehensive index of meta-domain knowledge in the 1000xbrain cognitive architecture. The meta domain includes files related to the architecture's structure, contribution standards, and self-understanding mechanisms.
+
+## Key Meta Domain Components
+
+| Component | Purpose | Primary Location |
+|-----------|---------|------------------|
+| Architecture | System structure and relationships | knowledge/reference/architecture.md |
+| Contributions | Standards for enhancing the system | knowledge/patterns/doc/ |
+| System Maps | Visualizations of system relationships | knowledge/reference/maps/ |
+| Self-Enhancement | Protocols for cognitive improvement | knowledge/guides/ |
+
+## Reference Resources
+
+### Architecture References
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Architecture Reference | Comprehensive system overview | `@reference/architecture.mdc` |
+| Architecture Guide | Implementation guidance for architecture | `@guides/architecture.mdc` |
+| Domain Map | Visual relationship of knowledge domains | `@reference/maps/domain-map.mdc` |
+| Document Types Map | Classification of documentation types | `@reference/maps/document-types.mdc` |
+
+### Documentation Standards
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| File Standards Reference | Comprehensive standards guide | `@reference/guides/file-standards.mdc` |
+| File Standards Pattern | Implementation patterns for standards | `@patterns/doc/file-standards.mdc` |
+| Document Types Map | Document structure and purpose guide | `@reference/maps/document-types.mdc` |
+
+### Cognitive Enhancement
+
+| Resource | Purpose | Reference Path |
+|----------|---------|----------------|
+| Cognitive Enhancement Guide | Self-improvement strategies | `@guides/cognitive-enhancement.mdc` |
+| Knowledge System Reference | Understanding the knowledge structure | `@reference/guides/knowledge-system.mdc` |
+
+## Common Reference Scenarios
+
+### Architecture Understanding
+
+When you need to understand the system architecture:
+1. Start with Architecture Reference: `@reference/architecture.mdc`
+2. Explore Domain Map for relationships: `@reference/maps/domain-map.mdc`
+3. Review specific domain references as needed
+
+### Documentation Creation
+
+When creating new documentation:
+1. Reference File Standards: `@reference/guides/file-standards.mdc`
+2. Use Document Types Map to select format: `@reference/maps/document-types.mdc`
+3. Apply File Standards Patterns: `@patterns/doc/file-standards.mdc`
+
+### System Enhancement
+
+When enhancing the cognitive architecture:
+1. Study Cognitive Enhancement Guide: `@guides/cognitive-enhancement.mdc`
+2. Understand Architecture Guide: `@guides/architecture.mdc`
+3. Follow Knowledge System principles: `@reference/guides/knowledge-system.mdc`
+
+## Key Meta Concepts
+
+- **Cognitive Architecture**: The structured knowledge system that forms 1000xdev's "mind"
+- **Brain-Files**: Pure markdown files (.md) in the 1000xbrain directory
+- **Cursor Rules**: Applied rules (.mdc) in the .cursor/rules directory
+- **Self-Enhancement**: The capability to improve one's own cognitive architecture
+- **Knowledge Organization**: The structured arrangement of information for optimal retrieval
+
+## Symbol Usage and Reference
+
+Always follow proper symbol usage when referencing meta-domain files:
+
+```
+# Correct project-rule-parameter format (for message-commands)
+message-command: @reference/guides/file-standards.mdc
+
+# Correct file reference format (for documentation)
+The standards are documented in knowledge/reference/guides/file-standards.md
+```
+
+## Related Domain References
+
+- Tool Domain: `@reference/domains/tool.mdc`
+- Memory Domain: `@reference/domains/memory.mdc`
+- Architecture Domain: `@reference/domains/architecture.mdc`
+- Knowledge Reference Index: `@reference/index.mdc` 
