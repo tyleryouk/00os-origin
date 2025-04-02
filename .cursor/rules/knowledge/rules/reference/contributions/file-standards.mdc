@@ -1,3 +1,8 @@
+---
+description: USE WHEN contributing to file standards, following contribution guidelines, or maintaining documentation consistency
+globs: 
+alwaysApply: false
+---
 # USE WHEN contributing to file standards, following contribution guidelines, or maintaining documentation consistency
 
 # File Formatting and Structure Standards

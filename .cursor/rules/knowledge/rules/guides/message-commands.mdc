@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating new project-rule-parameters to understand the association with message-commands
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating new project-rule-parameters to understand the association with message-commands
 
 # Message-Command System Guide

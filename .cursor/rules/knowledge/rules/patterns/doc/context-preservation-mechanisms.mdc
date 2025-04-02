@@ -1,3 +1,8 @@
+---
+description: USE WHEN preserving implementation context, reducing context fragmentation, or creating context recovery mechanisms
+globs: 
+alwaysApply: false
+---
 # USE WHEN preserving implementation context, reducing context fragmentation, or creating context recovery mechanisms
 
 # Context Preservation Mechanisms

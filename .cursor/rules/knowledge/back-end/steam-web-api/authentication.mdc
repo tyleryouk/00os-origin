@@ -1,588 +1,494 @@
+---
+description: USE WHEN implementing Steam authentication in back-end components
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing Steam authentication in back-end components
 
 ## Overview
 
-This knowledge file provides implementation guidance for integrating Steam OpenID authentication into the GigaSwap marketplace back-end components. It covers authentication flow, session management, security considerations, and API endpoints for handling Steam user authentication.
+This file provides implementation guidance for Steam OpenID authentication flow in the GigaSwap marketplace back-end. It covers the authentication process, endpoint implementation, token management, and security considerations.
 
-## Authentication Flow
+## Key Concepts
+
+- **Steam OpenID**: Authentication protocol used by Steam to verify user identity
+- **Authentication Flow**: Multi-step process for user authentication through Steam
+- **Security Tokens**: Tokens used to maintain authenticated state
+- **Session Management**: Techniques for maintaining user sessions
+- **API Integration**: Interacting with Steam Web API for user data
+
+## Implementation Guidelines
+
+### Authentication Flow
 
 The Steam OpenID authentication flow follows these steps:
 
-1. **Initiate Authentication**: User clicks login button on front-end which redirects to back-end authentication endpoint
-2. **Redirect to Steam**: Back-end creates an OpenID request and redirects user to Steam login page
-3. **Steam Authentication**: User authenticates on Steam's website
-4. **Return to Application**: Steam redirects back to our callback endpoint with authentication data
-5. **Validate Authentication**: Back-end validates the authentication response from Steam
-6. **Create User Session**: Back-end creates a secure session for the authenticated user
-7. **Return Session Token**: Back-end returns session token to front-end
+1. **Initiate Authentication**:
+   - User initiates login process by visiting your authentication endpoint
+   - Back-end creates an OpenID consumer
+   - Back-end redirects user to Steam's OpenID service
 
-## Implementation Components
+2. **Steam Authentication**:
+   - User authenticates on Steam's website
+   - Steam redirects back to your callback URL with identity data
+   - Back-end verifies the OpenID response
 
-### Steam Authentication Router
+3. **User Data Retrieval**:
+   - Back-end extracts Steam ID from the response
+   - Back-end calls Steam Web API to get user profile data
+   - Back-end creates or updates user record in database
+
+4. **Session Creation**:
+   - Back-end generates authentication token
+   - Back-end associates token with user
+   - Back-end returns token to front-end
+
+### Endpoint Implementation
+
+#### 1. Authentication Setup Utility
 
 ```python
-# app/routes/auth/steam.py
-
-from fastapi import APIRouter, Request, Depends, HTTPException, Response
+# app/utils/steam_auth.py
+from fastapi import Request, HTTPException
 from fastapi.responses import RedirectResponse
-from pydantic import BaseModel
-from app.services.steam_auth import SteamAuthService
-from app.services.user_service import UserService
-from app.services.session_service import SessionService
-from app.core.logger import logger
-from app.core.config import settings
+from starlette.status import HTTP_303_SEE_OTHER, HTTP_401_UNAUTHORIZED
+from openid.consumer import consumer
+import requests
+import json
+import os
+from app.utils.logger import get_logger
+from app.models.user_models import SteamUser
+from app.utils.redis_config import RedisManager
 
+# Setup logger
+logger = get_logger('steam_auth')
+
+# Configuration
+STEAM_API_KEY = os.getenv('STEAM_API_KEY', 'LITUJ4KSYS7D1QC0')
+STEAM_OPENID_URL = 'https://steamcommunity.com/openid'
+FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:3000')
+
+# Redis for token storage
+redis_manager = RedisManager()
+
+class SteamAuthManager:
+    """Manager for Steam OpenID authentication"""
+    
+    @staticmethod
+    async def initiate_auth(request: Request) -> RedirectResponse:
+        """Initiate Steam OpenID authentication flow"""
+        try:
+            # Create OpenID consumer
+            oid_consumer = consumer.Consumer({}, None)
+            
+            # Begin authentication process
+            auth_request = oid_consumer.begin(STEAM_OPENID_URL)
+            
+            # Get callback URL from request host
+            callback_url = str(request.url_for('steam_callback'))
+            
+            # Create redirect URL for Steam login
+            redirect_url = auth_request.redirectURL(
+                return_to=callback_url,
+                trust_root=str(request.base_url)
+            )
+            
+            logger.info(f"Initiating Steam auth, redirecting to {redirect_url}")
+            return RedirectResponse(url=redirect_url, status_code=HTTP_303_SEE_OTHER)
+            
+        except Exception as e:
+            logger.error(f"Error initiating Steam auth: {str(e)}")
+            raise HTTPException(
+                status_code=HTTP_401_UNAUTHORIZED,
+                detail=f"Failed to initiate Steam authentication: {str(e)}"
+            )
+    
+    @staticmethod
+    async def process_callback(request: Request) -> SteamUser:
+        """Process Steam OpenID callback"""
+        try:
+            # Create OpenID consumer
+            oid_consumer = consumer.Consumer({}, None)
+            
+            # Get query parameters
+            query_params = dict(request.query_params)
+            current_url = str(request.url)
+            
+            # Complete authentication process
+            info = oid_consumer.complete(query_params, current_url)
+            
+            if info.status != consumer.SUCCESS:
+                logger.error(f"Steam auth failed: {info.status}")
+                raise HTTPException(
+                    status_code=HTTP_401_UNAUTHORIZED,
+                    detail=f"Steam authentication failed: {info.status}"
+                )
+            
+            # Extract Steam ID from identity URL
+            # Format: https://steamcommunity.com/openid/id/[steam_id]
+            steam_id = info.identity_url.split('/')[-1]
+            
+            # Get user info from Steam API
+            user_data = await SteamAuthManager.get_steam_user_info(steam_id)
+            
+            logger.info(f"Steam auth success for user: {user_data.personaname}")
+            return user_data
+            
+        except Exception as e:
+            logger.error(f"Error processing Steam callback: {str(e)}")
+            raise HTTPException(
+                status_code=HTTP_401_UNAUTHORIZED,
+                detail=f"Failed to process Steam authentication: {str(e)}"
+            )
+    
+    @staticmethod
+    async def get_steam_user_info(steam_id: str) -> SteamUser:
+        """Get user info from Steam API"""
+        try:
+            url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/"
+            params = {
+                "key": STEAM_API_KEY,
+                "steamids": steam_id
+            }
+            
+            response = requests.get(url, params=params)
+            response.raise_for_status()
+            
+            data = response.json()
+            player = data['response']['players'][0]
+            
+            return SteamUser(
+                steam_id=player['steamid'],
+                personaname=player['personaname'],
+                avatar=player['avatar'],
+                avatarfull=player['avatarfull'],
+                profileurl=player['profileurl']
+            )
+            
+        except Exception as e:
+            logger.error(f"Error getting Steam user info: {str(e)}")
+            raise HTTPException(
+                status_code=HTTP_401_UNAUTHORIZED,
+                detail=f"Failed to get Steam user info: {str(e)}"
+            )
+    
+    @staticmethod
+    async def create_auth_token(user: SteamUser) -> str:
+        """Create authentication token for user"""
+        try:
+            # Generate token (in production, use more secure method)
+            token = f"steam_{user.steam_id}_{os.urandom(8).hex()}"
+            
+            # Store in Redis with expiration (24 hours)
+            await redis_manager.set_with_expiry(
+                f"auth_token:{token}", 
+                json.dumps(user.dict()), 
+                60 * 60 * 24
+            )
+            
+            return token
+            
+        except Exception as e:
+            logger.error(f"Error creating auth token: {str(e)}")
+            raise HTTPException(
+                status_code=HTTP_401_UNAUTHORIZED,
+                detail=f"Failed to create authentication token: {str(e)}"
+            )
+    
+    @staticmethod
+    async def validate_token(token: str) -> SteamUser:
+        """Validate authentication token"""
+        try:
+            # Get user data from Redis
+            user_data_str = await redis_manager.get(f"auth_token:{token}")
+            
+            if not user_data_str:
+                return None
+                
+            # Parse user data
+            user_data = json.loads(user_data_str)
+            return SteamUser(**user_data)
+            
+        except Exception as e:
+            logger.error(f"Error validating token: {str(e)}")
+            return None
+    
+    @staticmethod
+    async def logout(token: str) -> bool:
+        """Logout user by invalidating token"""
+        try:
+            # Remove token from Redis
+            await redis_manager.delete(f"auth_token:{token}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Error during logout: {str(e)}")
+            return False
+```
+
+#### 2. User Models
+
+```python
+# app/models/user_models.py
+from pydantic import BaseModel, Field
+from typing import Optional
+
+class SteamUser(BaseModel):
+    """Steam user model"""
+    steam_id: str
+    personaname: str
+    avatar: str
+    avatarfull: str
+    profileurl: str
+    
+class SteamAuthResponse(BaseModel):
+    """Response model for Steam authentication"""
+    authenticated: bool
+    user: Optional[SteamUser] = None
+    token: Optional[str] = None
+    redirect_url: Optional[str] = None
+```
+
+#### 3. Authentication Router
+
+```python
+# app/routers/steam_auth.py
+from fastapi import APIRouter, Request, Depends, Header, HTTPException, Cookie
+from fastapi.responses import RedirectResponse
+from typing import Optional
+import os
+from app.utils.steam_auth import (
+    SteamAuthManager,
+    FRONTEND_URL
+)
+from app.models.user_models import SteamUser, SteamAuthResponse
+from app.utils.logger import get_logger
+
+# Setup logger
+logger = get_logger('steam_auth_routes')
+
+# Create router
 router = APIRouter(prefix="/auth/steam", tags=["auth"])
-
-# Dependency injection
-steam_auth_service = SteamAuthService()
-user_service = UserService()
-session_service = SessionService()
-
 
 @router.get("/")
 async def steam_login(request: Request):
     """Initiate Steam OpenID authentication"""
-    try:
-        logger.info("Initiating Steam login")
-        # Generate the Steam OpenID URL
-        redirect_url = await steam_auth_service.get_auth_url(
-            return_url=f"{settings.API_BASE_URL}/auth/steam/callback"
-        )
-        return RedirectResponse(redirect_url)
-    except Exception as e:
-        logger.error(f"Error initiating Steam login: {str(e)}")
-        raise HTTPException(status_code=500, detail="Authentication initiation failed")
-
+    logger.info("Steam login initiated")
+    return await SteamAuthManager.initiate_auth(request)
 
 @router.get("/callback")
 async def steam_callback(request: Request):
     """Process Steam authentication callback"""
     try:
-        # Extract OpenID parameters from request
-        params = dict(request.query_params)
-        logger.info("Received Steam authentication callback")
-        
-        # Validate the authentication response
-        steam_id = await steam_auth_service.validate_auth_response(params)
-        if not steam_id:
-            logger.error("Steam authentication validation failed")
-            return RedirectResponse(f"{settings.FRONTEND_URL}/login?error=auth_failed")
-        
-        # Get or create user from Steam ID
-        user_data = await steam_auth_service.get_steam_user_data(steam_id)
-        user = await user_service.get_or_create_steam_user(
-            steam_id=steam_id,
-            display_name=user_data.get("personaname", f"User_{steam_id}"),
-            avatar_url=user_data.get("avatarfull", ""),
-            profile_url=user_data.get("profileurl", "")
-        )
+        # Process callback and get user data
+        user_data = await SteamAuthManager.process_callback(request)
         
         # Create session token
-        session = await session_service.create_session(user_id=user.id, auth_type="steam")
+        token = await SteamAuthManager.create_auth_token(user_data)
         
-        # Set HTTP-only cookie with session token
-        response = RedirectResponse(f"{settings.FRONTEND_URL}/market")
-        session_service.set_session_cookie(response, session.token)
+        # Construct frontend URL with token
+        frontend_url = f"{FRONTEND_URL}/auth/callback?token={token}"
         
-        logger.info(f"Steam authentication successful for user {user.id}")
-        return response
+        logger.info(f"Steam auth successful for user {user_data.personaname}")
+        return RedirectResponse(url=frontend_url)
         
     except Exception as e:
-        logger.error(f"Error in Steam callback: {str(e)}")
-        return RedirectResponse(f"{settings.FRONTEND_URL}/login?error=callback_error")
-
+        logger.error(f"Steam callback error: {str(e)}")
+        error_url = f"{FRONTEND_URL}/auth/error?message={str(e)}"
+        return RedirectResponse(url=error_url)
 
 @router.get("/status")
-async def check_auth_status(request: Request, session=Depends(session_service.get_current_session)):
-    """Check current authentication status"""
-    if session and session.user:
-        # Get fresh Steam user data if needed
-        steam_user = None
-        if session.user.steam_id:
-            try:
-                steam_user = await user_service.get_steam_user_profile(session.user.steam_id)
-            except Exception as e:
-                logger.error(f"Error fetching Steam profile: {str(e)}")
+async def auth_status(
+    request: Request,
+    authorization: Optional[str] = Header(None),
+    token: Optional[str] = Cookie(None)
+) -> SteamAuthResponse:
+    """Check authentication status"""
+    # Try to get token from header or cookie
+    auth_token = None
+    if authorization and authorization.startswith("Bearer "):
+        auth_token = authorization.replace("Bearer ", "")
+    elif token:
+        auth_token = token
         
-        return {
-            "authenticated": True,
-            "user": {
-                "id": session.user.id,
-                "steamId": session.user.steam_id,
-                "displayName": steam_user.display_name if steam_user else session.user.display_name,
-                "avatarUrl": steam_user.avatar_url if steam_user else session.user.avatar_url,
-                "profileUrl": steam_user.profile_url if steam_user else session.user.profile_url,
-                "inventoryPrivacy": steam_user.inventory_privacy if steam_user else "unknown"
-            }
-        }
+    if not auth_token:
+        return SteamAuthResponse(authenticated=False)
+        
+    # Validate token
+    user = await SteamAuthManager.validate_token(auth_token)
     
-    return {"authenticated": False}
-
+    if not user:
+        return SteamAuthResponse(authenticated=False)
+        
+    return SteamAuthResponse(
+        authenticated=True, 
+        user=user,
+        token=auth_token
+    )
 
 @router.post("/logout")
-async def logout(request: Request, response: Response, session=Depends(session_service.get_current_session)):
-    """Log out the current user by invalidating their session"""
-    if session:
-        await session_service.delete_session(session.token)
-        session_service.clear_session_cookie(response)
-        logger.info(f"User {session.user.id if session.user else 'unknown'} logged out")
+async def logout(
+    request: Request,
+    authorization: Optional[str] = Header(None),
+    token: Optional[str] = Cookie(None)
+) -> SteamAuthResponse:
+    """Logout user"""
+    # Try to get token from header or cookie
+    auth_token = None
+    if authorization and authorization.startswith("Bearer "):
+        auth_token = authorization.replace("Bearer ", "")
+    elif token:
+        auth_token = token
         
-    return {"success": True}
+    if not auth_token:
+        return SteamAuthResponse(authenticated=False)
+        
+    # Invalidate token
+    success = await SteamAuthManager.logout(auth_token)
+    
+    return SteamAuthResponse(authenticated=not success)
 ```
 
-### Steam Auth Service
+#### 4. Redis Configuration Utility
 
 ```python
-# app/services/steam_auth.py
-
-import re
-import aiohttp
-import hashlib
-from urllib.parse import urlencode
-from app.core.logger import logger
-from app.core.config import settings
-
-# OpenID constants
-STEAM_OPENID_URL = 'https://steamcommunity.com/openid/login'
-STEAM_API_KEY = settings.STEAM_API_KEY
-
-class SteamAuthService:
-    """Service for handling Steam OpenID authentication"""
-    
-    async def get_auth_url(self, return_url: str) -> str:
-        """Generate Steam OpenID authentication URL"""
-        params = {
-            'openid.ns': 'http://specs.openid.net/auth/2.0',
-            'openid.mode': 'checkid_setup',
-            'openid.return_to': return_url,
-            'openid.realm': settings.API_BASE_URL,
-            'openid.identity': 'http://specs.openid.net/auth/2.0/identifier_select',
-            'openid.claimed_id': 'http://specs.openid.net/auth/2.0/identifier_select',
-        }
-        return f"{STEAM_OPENID_URL}?{urlencode(params)}"
-    
-    async def validate_auth_response(self, params: dict) -> str:
-        """Validate the OpenID authentication response"""
-        if not params.get('openid.claimed_id'):
-            return None
-            
-        # Extract Steam ID from claimed_id
-        match = re.search(r'steamcommunity.com/openid/id/(.*?)$', params.get('openid.claimed_id', ''))
-        if not match:
-            logger.error("Failed to extract Steam ID from claimed_id")
-            return None
-            
-        steam_id = match.group(1)
-        
-        # Verify the authentication with Steam
-        verification_params = {
-            'openid.assoc_handle': params.get('openid.assoc_handle'),
-            'openid.signed': params.get('openid.signed'),
-            'openid.sig': params.get('openid.sig'),
-            'openid.ns': params.get('openid.ns'),
-            'openid.mode': 'check_authentication'
-        }
-        
-        # Copy over all signed fields
-        signed_fields = params.get('openid.signed', '').split(',')
-        for field in signed_fields:
-            verification_params[f'openid.{field}'] = params.get(f'openid.{field}', '')
-        
-        # Verify with Steam OpenID
-        async with aiohttp.ClientSession() as session:
-            async with session.post(STEAM_OPENID_URL, data=verification_params) as resp:
-                response_text = await resp.text()
-                if 'is_valid:true' not in response_text:
-                    logger.error(f"Steam OpenID verification failed: {response_text}")
-                    return None
-        
-        return steam_id
-    
-    async def get_steam_user_data(self, steam_id: str) -> dict:
-        """Get user data from Steam API using the Steam ID"""
-        if not STEAM_API_KEY:
-            logger.warning("STEAM_API_KEY not set, using SteamWebAPI.com instead")
-            return await self._get_user_data_from_steamwebapi(steam_id)
-        
-        url = f"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key={STEAM_API_KEY}&steamids={steam_id}"
-        
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url) as response:
-                    if response.status != 200:
-                        logger.error(f"Steam API error: {response.status}")
-                        return {}
-                        
-                    data = await response.json()
-                    players = data.get('response', {}).get('players', [])
-                    if not players:
-                        return {}
-                        
-                    return players[0]
-        except Exception as e:
-            logger.error(f"Error fetching Steam user data: {str(e)}")
-            return {}
-    
-    async def _get_user_data_from_steamwebapi(self, steam_id: str) -> dict:
-        """Fallback to SteamWebAPI.com for user data"""
-        url = f"https://api.steamwebapi.com/profile/{steam_id}"
-        api_key = settings.STEAMWEBAPI_KEY
-        
-        if not api_key:
-            logger.error("Neither STEAM_API_KEY nor STEAMWEBAPI_KEY are set")
-            return {}
-            
-        try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, headers={"Authorization": f"Bearer {api_key}"}) as response:
-                    if response.status != 200:
-                        logger.error(f"SteamWebAPI error: {response.status}")
-                        return {}
-                        
-                    data = await response.json()
-                    return {
-                        "personaname": data.get("personaname", f"User_{steam_id}"),
-                        "avatarfull": data.get("avatarfull", ""),
-                        "profileurl": data.get("profileurl", ""),
-                    }
-        except Exception as e:
-            logger.error(f"Error fetching Steam user data from SteamWebAPI: {str(e)}")
-            return {}
-```
-
-### Session Service
-
-```python
-# app/services/session_service.py
-
-import uuid
-import time
-from fastapi import Request, Response, Depends, HTTPException
-from app.models.session import Session
-from app.db.repositories.session_repository import SessionRepository
-from app.db.repositories.user_repository import UserRepository
-from app.core.config import settings
-from app.core.logger import logger
-
-class SessionService:
-    def __init__(self):
-        self.session_repository = SessionRepository()
-        self.user_repository = UserRepository()
-        self.cookie_name = settings.SESSION_COOKIE_NAME
-        self.cookie_max_age = settings.SESSION_COOKIE_MAX_AGE
-    
-    async def create_session(self, user_id: int, auth_type: str = "steam") -> Session:
-        """Create a new session for a user"""
-        token = str(uuid.uuid4())
-        expires_at = int(time.time()) + self.cookie_max_age
-        
-        session = Session(
-            token=token,
-            user_id=user_id,
-            auth_type=auth_type,
-            expires_at=expires_at
-        )
-        
-        # Save session to database
-        await self.session_repository.create(session)
-        return session
-    
-    async def get_session(self, token: str) -> Session:
-        """Get a session by token"""
-        session = await self.session_repository.get_by_token(token)
-        
-        # Check if session exists and is valid
-        if not session:
-            return None
-        
-        # Check if session is expired
-        if session.expires_at < int(time.time()):
-            await self.delete_session(token)
-            return None
-            
-        return session
-    
-    async def delete_session(self, token: str) -> bool:
-        """Delete a session by token"""
-        return await self.session_repository.delete(token)
-    
-    def set_session_cookie(self, response: Response, token: str) -> None:
-        """Set session cookie in response"""
-        response.set_cookie(
-            key=self.cookie_name,
-            value=token,
-            max_age=self.cookie_max_age,
-            httponly=True,
-            secure=settings.ENVIRONMENT != "development",
-            samesite="lax"
-        )
-    
-    def clear_session_cookie(self, response: Response) -> None:
-        """Clear session cookie from response"""
-        response.delete_cookie(
-            key=self.cookie_name,
-            httponly=True,
-            secure=settings.ENVIRONMENT != "development",
-            samesite="lax"
-        )
-    
-    async def get_current_session(self, request: Request) -> Session:
-        """Get current session from request cookies"""
-        token = request.cookies.get(self.cookie_name)
-        if not token:
-            return None
-            
-        session = await self.get_session(token)
-        if not session:
-            return None
-            
-        # Load user object
-        session.user = await self.user_repository.get_by_id(session.user_id)
-        return session
-```
-
-### User Service
-
-```python
-# app/services/user_service.py
-
-from app.models.user import User, SteamUserProfile
-from app.db.repositories.user_repository import UserRepository
-from app.core.logger import logger
-
-class UserService:
-    def __init__(self):
-        self.user_repository = UserRepository()
-    
-    async def get_or_create_steam_user(self, steam_id: str, display_name: str, avatar_url: str, profile_url: str) -> User:
-        """Get existing user by Steam ID or create a new one"""
-        # Check if user with Steam ID exists
-        user = await self.user_repository.get_by_steam_id(steam_id)
-        
-        if user:
-            # Update user info if needed
-            if (
-                user.display_name != display_name or 
-                user.avatar_url != avatar_url or
-                user.profile_url != profile_url
-            ):
-                user.display_name = display_name
-                user.avatar_url = avatar_url
-                user.profile_url = profile_url
-                await self.user_repository.update(user)
-            return user
-        
-        # Create new user
-        user = User(
-            steam_id=steam_id,
-            display_name=display_name,
-            avatar_url=avatar_url,
-            profile_url=profile_url,
-        )
-        
-        user_id = await self.user_repository.create(user)
-        user.id = user_id
-        
-        return user
-    
-    async def get_steam_user_profile(self, steam_id: str) -> SteamUserProfile:
-        """Get Steam user profile including inventory privacy settings"""
-        # Get Steam user profile from database
-        user = await self.user_repository.get_by_steam_id(steam_id)
-        if not user:
-            logger.error(f"User with Steam ID {steam_id} not found")
-            return None
-            
-        # Get inventory privacy from Steam API
-        from app.services.steam_api_service import SteamAPIService
-        steam_api = SteamAPIService()
-        
-        try:
-            privacy_settings = await steam_api.get_user_privacy_settings(steam_id)
-            
-            # Create user profile
-            profile = SteamUserProfile(
-                steam_id=steam_id,
-                display_name=user.display_name,
-                avatar_url=user.avatar_url,
-                profile_url=user.profile_url,
-                inventory_privacy=privacy_settings.get("inventory_privacy", "private")
-            )
-            
-            return profile
-        except Exception as e:
-            logger.error(f"Error fetching Steam privacy settings: {str(e)}")
-            
-            # Return basic profile without privacy settings
-            return SteamUserProfile(
-                steam_id=steam_id,
-                display_name=user.display_name,
-                avatar_url=user.avatar_url,
-                profile_url=user.profile_url,
-                inventory_privacy="unknown"
-            )
-```
-
-## Database Models
-
-### User Model
-
-```python
-# app/models/user.py
-
-from pydantic import BaseModel
-from datetime import datetime
-from typing import Optional
-
-class User(BaseModel):
-    id: Optional[int] = None
-    steam_id: str
-    display_name: str
-    avatar_url: str
-    profile_url: str
-    trade_url: Optional[str] = None
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    
-    class Config:
-        orm_mode = True
-
-class SteamUserProfile(BaseModel):
-    steam_id: str
-    display_name: str
-    avatar_url: str
-    profile_url: str
-    trade_url: Optional[str] = None
-    inventory_privacy: str  # "private", "friends", or "public"
-```
-
-### Session Model
-
-```python
-# app/models/session.py
-
-from pydantic import BaseModel
-from typing import Optional
-from app.models.user import User
-
-class Session(BaseModel):
-    id: Optional[int] = None
-    token: str
-    user_id: int
-    auth_type: str  # "steam", "email", etc.
-    expires_at: int  # Unix timestamp
-    user: Optional[User] = None
-    
-    class Config:
-        orm_mode = True
-```
-
-## Configuration
-
-```python
-# app/core/config.py
-
+# app/utils/redis_config.py
+import aioredis
 import os
-from pydantic import BaseSettings
+from app.utils.logger import get_logger
 
-class Settings(BaseSettings):
-    # Application settings
-    API_BASE_URL: str = os.getenv("API_BASE_URL", "http://localhost:8000")
-    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "http://localhost:3000")
-    ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
-    
-    # Database settings
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./app.db")
-    
-    # Steam API settings
-    STEAM_API_KEY: str = os.getenv("STEAM_API_KEY", "")
-    STEAMWEBAPI_KEY: str = os.getenv("STEAMWEBAPI_KEY", "LITUJ4KSYS7D1QC0")
-    
-    # Session settings
-    SESSION_COOKIE_NAME: str = os.getenv("SESSION_COOKIE_NAME", "gigaswap_session")
-    SESSION_COOKIE_MAX_AGE: int = int(os.getenv("SESSION_COOKIE_MAX_AGE", "604800"))  # 7 days
-    
-    class Config:
-        env_file = ".env"
+logger = get_logger('redis_config')
 
-settings = Settings()
+class RedisManager:
+    """Manager for Redis operations"""
+    
+    def __init__(self):
+        self.redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
+        self.redis = None
+        
+    async def connect(self):
+        """Connect to Redis"""
+        if not self.redis:
+            try:
+                self.redis = await aioredis.from_url(
+                    self.redis_url,
+                    encoding="utf-8",
+                    decode_responses=True
+                )
+                logger.info("Connected to Redis")
+            except Exception as e:
+                logger.error(f"Failed to connect to Redis: {str(e)}")
+                raise
+                
+    async def get(self, key):
+        """Get value from Redis"""
+        await self.connect()
+        return await self.redis.get(key)
+        
+    async def set(self, key, value):
+        """Set value in Redis"""
+        await self.connect()
+        return await self.redis.set(key, value)
+        
+    async def set_with_expiry(self, key, value, expiry_seconds):
+        """Set value in Redis with expiry"""
+        await self.connect()
+        return await self.redis.set(key, value, ex=expiry_seconds)
+        
+    async def delete(self, key):
+        """Delete key from Redis"""
+        await self.connect()
+        return await self.redis.delete(key)
+```
+
+### Integration with Main Application
+
+Update `app/main.py` to include the Steam authentication router:
+
+```python
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.routers import (
+    user_router,
+    auth_router,
+    steam_auth_router,  # Add this import
+    order_router
+)
+
+app = FastAPI()
+
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",  # Development front-end
+        "https://gigaswap.vercel.app"  # Production front-end
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include routers
+app.include_router(user_router)
+app.include_router(auth_router)
+app.include_router(steam_auth_router)  # Add this line
+app.include_router(order_router)
 ```
 
 ## Security Considerations
 
-1. **Session Tokens**:
-   - Use UUID tokens with sufficient entropy
-   - Store sessions securely in the database
-   - Implement session expiration and renewal
-   - Use HTTP-only, secure cookies
+### API Key Protection
 
-2. **CSRF Protection**:
-   - Implement proper CSRF protection for authenticated endpoints
-   - Use SameSite cookie attribute (Lax or Strict)
-   - Validate Origin/Referer headers for sensitive operations
+1. **Environment Variables**:
+   - Store Steam API key in environment variables
+   - Use a secrets manager in production
+   - Never hardcode the API key in code
 
-3. **API Key Management**:
-   - Never expose API keys in front-end code
-   - Store API keys in environment variables or secrets management
-   - Implement API key rotation procedures
-   - Use different API keys for development and production
+2. **Key Rotation**:
+   - Implement a process for API key rotation
+   - Monitor for unusual API usage patterns
+   - Have emergency procedures for key compromise
 
-4. **Error Handling**:
-   - Implement comprehensive error logging
-   - Return generic error messages to clients
-   - Log detailed error information server-side
-   - Handle all exceptions to prevent information leakage
+### Session Security
 
-## Error Handling Patterns
+1. **Token Security**:
+   - Use cryptographically secure random token generation
+   - Implement proper token expiration
+   - Store tokens securely (Redis with expiration)
 
-1. **Authentication Failures**:
+2. **HTTPS Requirements**:
+   - Enforce HTTPS for all authentication endpoints
+   - Set Secure and HttpOnly flags on cookies
+   - Implement HSTS headers
+
+3. **CORS Configuration**:
+   - Restrictive CORS policy with specific origins
+   - Allow credentials only for trusted domains
+   - Validate Origin headers on sensitive requests
+
+## Error Handling
+
+Implement robust error handling for authentication:
+
+1. **Authentication Errors**:
    - Log detailed error information
-   - Redirect to login page with error parameter
-   - Implement rate limiting for repeated failures
-   - Monitor for potential brute force attempts
+   - Return standardized error responses
+   - Implement rate limiting for failed attempts
 
-2. **API Service Failures**:
-   - Implement fallback providers (Steam API → SteamWebAPI.com)
-   - Use exponential backoff for retries
-   - Cache user data to reduce API dependencies
-   - Log detailed error information for debugging
+2. **API Errors**:
+   - Handle Steam API downtime gracefully
+   - Implement automatic retries with backoff
+   - Provide clear error messages
 
-3. **Session Management Errors**:
-   - Handle invalid or expired sessions gracefully
-   - Clear invalid session cookies
-   - Redirect to appropriate authentication flows
-   - Preserve intended destination for post-authentication redirect
-
-## Best Practices
-
-1. **Dependency Injection**:
-   - Use service-based architecture with dependency injection
-   - Keep clear separation of concerns
-   - Isolate external API dependencies
-   - Make services testable
-
-2. **Async Performance**:
-   - Use async/await for all I/O operations
-   - Implement proper connection pooling
-   - Use efficient HTTP client (aiohttp)
-   - Optimize database queries
-
-3. **Caching Strategy**:
-   - Cache Steam profile data
-   - Implement TTL-based cache invalidation
-   - Use memory cache for session validation
-   - Implement proper cache eviction policies
-
-4. **Security Headers**:
-   - Implement appropriate security headers
-   - Use Strict-Transport-Security
-   - Set X-Content-Type-Options and X-Frame-Options
-   - Configure proper CORS policies
+3. **Security Exceptions**:
+   - Log all security exceptions
+   - Implement alerting for suspicious activities
+   - Have fallback authentication mechanisms
 
 ## Cross-References
 
-- **Inventory API**: See `knowledge/back-end/steam-web-api/inventory.md`
-- **Trading API**: See `knowledge/back-end/steam-web-api/trading.md`
-- **Market Data API**: See `knowledge/back-end/steam-web-api/market-data.md`
-- **Front-End Authentication**: See `knowledge/front-end/steam-web-api/authentication.md` 
+- **Front-End Authentication**: `knowledge/front-end/steam-web-api/authentication.md`
+- **Inventory API Integration**: `knowledge/back-end/steam-web-api/inventory.md`
+- **Security Best Practices**: `knowledge/back-end/security.md`
+- **Redis Configuration**: `knowledge/back-end/caching.md` 

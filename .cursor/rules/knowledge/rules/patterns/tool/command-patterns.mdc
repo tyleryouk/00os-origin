@@ -1,3 +1,8 @@
+---
+description: USE WHEN running terminal commands, creating command sequences, or optimizing command line operations
+globs: 
+alwaysApply: false
+---
 # USE WHEN running terminal commands, creating command sequences, or optimizing command line operations
 
 # Command Patterns

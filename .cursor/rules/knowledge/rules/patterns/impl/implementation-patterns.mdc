@@ -1,3 +1,8 @@
+---
+description: USE WHEN applying implementation patterns, creating reusable components, or optimizing code structure
+globs: 
+alwaysApply: false
+---
 # USE WHEN applying implementation patterns, creating reusable components, or optimizing code structure
 
 # Implementation Patterns

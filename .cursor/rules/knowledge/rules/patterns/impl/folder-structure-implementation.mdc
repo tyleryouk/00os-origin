@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating planning folder structures, organizing complex feature documentation, implementing subsystem-specific documentation, or managing cross-references between planning documents
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating planning folder structures, organizing complex feature documentation, implementing subsystem-specific documentation, or managing cross-references between planning documents
 
 # Folder Structure Implementation Patterns

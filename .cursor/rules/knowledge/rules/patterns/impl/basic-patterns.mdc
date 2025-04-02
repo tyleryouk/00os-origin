@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing basic code structures, applying fundamental patterns, or establishing implementation foundations
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing basic code structures, applying fundamental patterns, or establishing implementation foundations
 
 # Basic Implementation Patterns

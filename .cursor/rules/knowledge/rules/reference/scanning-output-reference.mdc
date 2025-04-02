@@ -1,3 +1,8 @@
+---
+description: USE WHEN interpreting scanning results, analyzing validation reports, or troubleshooting scanning outputs
+globs: 
+alwaysApply: false
+---
 # USE WHEN interpreting scanning results, analyzing validation reports, or troubleshooting scanning outputs
 
 # Scanning Output Reference

@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing file reading patterns, optimizing file size handling, or managing large file operations
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing file reading patterns, optimizing file size handling, or managing large file operations
 
 # Tool-Aware File Reading Patterns

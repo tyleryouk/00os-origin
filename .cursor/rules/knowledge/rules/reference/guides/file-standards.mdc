@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating documentation files, following formatting standards, or maintaining consistent file structure
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating documentation files, following formatting standards, or maintaining consistent file structure
 
 # File Standards Reference Guide

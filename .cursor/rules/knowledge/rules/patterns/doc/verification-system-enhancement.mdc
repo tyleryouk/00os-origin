@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing verification systems, validating document structure, ensuring content quality, creating process checkpoints, or handling validation failures 
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing verification systems, validating document structure, ensuring content quality, creating process checkpoints, or handling validation failures 
 
 # Verification System Enhancement

@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing validation scripts, verifying project-rule-parameters, or automating reference checks
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing validation scripts, verifying project-rule-parameters, or automating reference checks
 
 # Validation Script Patterns

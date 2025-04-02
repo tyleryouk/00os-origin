@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing file validation, creating validation mechanisms, or ensuring documentation quality
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing file validation, creating validation mechanisms, or ensuring documentation quality
 
 # File Validation Mechanisms

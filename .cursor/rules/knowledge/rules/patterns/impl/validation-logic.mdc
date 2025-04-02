@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing validation logic, designing validation criteria, or enhancing reference checking
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing validation logic, designing validation criteria, or enhancing reference checking
 
 # Validation Logic Patterns

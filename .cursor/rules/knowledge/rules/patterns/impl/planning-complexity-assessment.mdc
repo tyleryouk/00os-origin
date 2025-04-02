@@ -1,3 +1,8 @@
+---
+description: USE WHEN assessing planning complexity, determining folder structures for features, managing component dependencies, organizing planning documentation, or estimating implementation phases
+globs: 
+alwaysApply: false
+---
 # USE WHEN assessing planning complexity, determining folder structures for features, managing component dependencies, organizing planning documentation, or estimating implementation phases
 
 # Planning Complexity Assessment Patterns

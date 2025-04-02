@@ -1,3 +1,8 @@
+---
+description: USE WHEN resolving scanning errors, fixing validation issues, or troubleshooting reference problems
+globs: 
+alwaysApply: false
+---
 # USE WHEN resolving scanning errors, fixing validation issues, or troubleshooting reference problems
 
 # Scanning Error Resolution Guide

@@ -1,0 +1,143 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# workflow: rules-workflow | pathway: rules | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/direct-mode/update-project-rule-parameter.md
+
+## Overview
+
+This project-rule-parameter provides structured guidance for updating existing project-rule-parameters in the 1000xbrain cognitive architecture. It ensures consistent validation, proper error handling, and maintains the integrity of parameter documentation during updates.
+
+## Implementation Process
+
+### 1. Pre-Update Validation
+
+1. **Verify Existing Parameter**:
+   - Confirm parameter file exists
+   - Validate current structure against templates
+   - Check reference integrity
+   - Document current state
+
+2. **Update Requirements**:
+   - Identify sections requiring updates
+   - Validate proposed changes against standards
+   - Verify domain boundaries
+   - Check reference impacts
+
+3. **Backup Creation**:
+   - Create temporary backup
+   - Document original state
+   - Establish recovery points
+   - Prepare rollback mechanism
+
+### 2. Update Implementation
+
+1. **Structure Preservation**:
+   - Maintain header format
+   - Preserve required sections
+   - Update while maintaining structure
+   - Validate section boundaries
+
+2. **Content Updates**:
+   - Apply changes progressively
+   - Validate each modification
+   - Update related references
+   - Maintain consistency
+
+3. **Reference Management**:
+   - Update affected references
+   - Verify reference integrity
+   - Maintain reference chains
+   - Document reference changes
+
+### 3. Post-Update Validation
+
+1. **Structure Validation**:
+   ```typescript
+   // Validate updated structure
+   validateFileStructure(filePath, template)
+   
+   // Verify section integrity
+   validateSections(filePath, template)
+   
+   // Check reference validity
+   validateReferences(filePath)
+   ```
+
+2. **Content Validation**:
+   - Verify content completeness
+   - Check terminology consistency
+   - Validate information flow
+   - Ensure standard adherence
+
+3. **Integration Verification**:
+   - Test reference resolution
+   - Verify knowledge access
+   - Check domain boundaries
+   - Validate system integration
+
+## Usage Guidelines
+
+### Basic Update
+
+```markdown
+direct-mode: rules-workflow
+prompt: update project-rule-parameter [filepath] to modify [section] with [changes]
+```
+
+### Complex Update
+
+```markdown
+direct-mode: rules-workflow
+prompt: update project-rule-parameter [filepath] with multiple changes:
+- Update [section1] with [changes1]
+- Modify [section2] with [changes2]
+- Add [section3] with [content]
+```
+
+## Success Criteria
+
+1. **Structure Integrity**:
+   - Header format maintained
+   - Required sections preserved
+   - Section hierarchy intact
+   - Reference format valid
+
+2. **Content Quality**:
+   - Updates properly integrated
+   - Terminology consistent
+   - Information flow logical
+   - Standards maintained
+
+3. **System Integration**:
+   - References resolved
+   - Knowledge accessible
+   - Domain boundaries respected
+   - Documentation updated
+
+## Error Handling
+
+| Issue | Solution |
+|-------|----------|
+| Invalid structure after update | Restore from backup, reapply changes with structure validation |
+| Broken references | Update reference paths, verify with reference validation |
+| Inconsistent content | Apply content validation, correct inconsistencies |
+| Domain boundary violation | Review domain rules, adjust update scope |
+| Failed validation | Review validation errors, apply corrections systematically |
+| Integration issues | Check system integration points, update affected components |
+| Backup corruption | Use secondary backup, document recovery process |
+| Incomplete update | Complete update progressively, validate each step |
+
+## Related Knowledge Components
+
+Access these components for additional guidance:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/doc/file-validation-mechanisms",
+  "knowledge/rules/patterns/doc/error-handling-mechanisms",
+  "knowledge/rules/patterns/doc/verification-system-enhancement",
+  "knowledge/rules/patterns/doc/context-preservation-mechanisms"
+], "Accessing update validation and error handling guidance")
+``` 

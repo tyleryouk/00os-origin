@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing file operations, defining authorization boundaries, or establishing domain-specific validation rules
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing file operations, defining authorization boundaries, or establishing domain-specific validation rules
 
 # File Operation Boundaries

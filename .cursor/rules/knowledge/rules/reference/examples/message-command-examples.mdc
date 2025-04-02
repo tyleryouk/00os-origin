@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing message commands, understanding command examples, or troubleshooting command usage
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing message commands, understanding command examples, or troubleshooting command usage
 
 # Message Command Examples

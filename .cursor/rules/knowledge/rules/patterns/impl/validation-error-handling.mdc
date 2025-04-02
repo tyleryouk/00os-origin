@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing error handling, resolving validation issues, or managing validation responses
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing error handling, resolving validation issues, or managing validation responses
 
 # Validation Error Handling Patterns

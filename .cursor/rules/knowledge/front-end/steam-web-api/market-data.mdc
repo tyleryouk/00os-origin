@@ -1,0 +1,823 @@
+---
+description: USE WHEN implementing Steam market data functionality in front-end components
+globs: 
+alwaysApply: false
+---
+# USE WHEN implementing Steam market data functionality in front-end components
+
+## Overview
+
+This knowledge file provides implementation guidance for integrating Steam market data into the GigaSwap marketplace front-end. It covers price data visualization, market listings, price history charts, and best practices for handling market data.
+
+## Key Concepts
+
+- **Market Price Data**: Current and historical price information for CS2 items
+- **Price History Charts**: Visualization of price trends over time
+- **Market Listings**: Available items for purchase on the Steam market
+- **Price Alerts**: Notifications for price changes based on user preferences
+
+## Implementation Components
+
+### Market Price Display Component
+
+```tsx
+import React from 'react';
+import { Box, Typography, Tooltip } from '@mui/material';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import { formatCurrency } from 'utils/formatters';
+
+interface MarketPriceProps {
+  currentPrice: number;
+  previousPrice?: number;
+  currency?: string;
+  size?: 'small' | 'medium' | 'large';
+}
+
+const MarketPrice: React.FC<MarketPriceProps> = ({
+  currentPrice,
+  previousPrice,
+  currency = 'USD',
+  size = 'medium',
+}) => {
+  // Calculate price change
+  const priceChange = previousPrice 
+    ? ((currentPrice - previousPrice) / previousPrice) * 100
+    : 0;
+  
+  // Determine if price is increasing or decreasing
+  const priceDirection = priceChange > 0 ? 'up' : priceChange < 0 ? 'down' : 'stable';
+  
+  // Format price change for display
+  const formattedChange = Math.abs(priceChange).toFixed(2) + '%';
+  
+  // Size-based styling
+  const fontSizes = {
+    small: { price: '0.875rem', change: '0.75rem' },
+    medium: { price: '1rem', change: '0.875rem' },
+    large: { price: '1.25rem', change: '1rem' },
+  };
+  
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+      <Typography 
+        variant="body1" 
+        sx={{ 
+          fontWeight: 'bold',
+          fontSize: fontSizes[size].price,
+          color: 'text.primary'
+        }}
+      >
+        {formatCurrency(currentPrice, currency)}
+      </Typography>
+      
+      {previousPrice && (
+        <Box 
+          sx={{ 
+            display: 'flex', 
+            alignItems: 'center',
+            color: priceDirection === 'up' 
+              ? 'success.main' 
+              : priceDirection === 'down' 
+                ? 'error.main' 
+                : 'text.secondary'
+          }}
+        >
+          {priceDirection === 'up' && <TrendingUpIcon fontSize="small" />}
+          {priceDirection === 'down' && <TrendingDownIcon fontSize="small" />}
+          <Typography 
+            variant="caption"
+            sx={{ 
+              fontSize: fontSizes[size].change,
+              ml: 0.5
+            }}
+          >
+            {formattedChange}
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+export default MarketPrice;
+```
+
+### Price History Chart Component
+
+```tsx
+import React, { useMemo } from 'react';
+import { Box, Typography, useTheme } from '@mui/material';
+import { 
+  LineChart, 
+  Line, 
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  ResponsiveContainer,
+  TooltipProps
+} from 'recharts';
+import { formatCurrency } from 'utils/formatters';
+
+interface PriceHistoryPoint {
+  date: string;
+  price: number;
+  volume?: number;
+}
+
+interface PriceHistoryChartProps {
+  data: PriceHistoryPoint[];
+  timeRange: '24h' | '7d' | '30d' | '90d' | 'all';
+  currency?: string;
+  height?: number;
+}
+
+const PriceHistoryChart: React.FC<PriceHistoryChartProps> = ({
+  data,
+  timeRange,
+  currency = 'USD',
+  height = 300,
+}) => {
+  const theme = useTheme();
+  
+  // Format data for display
+  const chartData = useMemo(() => {
+    return data.map(point => ({
+      ...point,
+      formattedDate: new Date(point.date).toLocaleDateString(),
+    }));
+  }, [data]);
+  
+  // Determine axis formatting based on time range
+  const getDateFormat = () => {
+    switch(timeRange) {
+      case '24h': return 'HH:mm';
+      case '7d': return 'ddd';
+      case '30d': return 'MMM DD';
+      case '90d': 
+      case 'all': 
+      default: return 'MMM YYYY';
+    }
+  };
+  
+  // Custom tooltip component
+  const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>) => {
+    if (active && payload && payload.length) {
+      const dataPoint = payload[0].payload as PriceHistoryPoint & { formattedDate: string };
+      return (
+        <Box
+          sx={{
+            backgroundColor: 'background.paper',
+            p: 1.5,
+            border: `1px solid ${theme.palette.divider}`,
+            borderRadius: 1,
+          }}
+        >
+          <Typography variant="body2" color="text.secondary">
+            {dataPoint.formattedDate}
+          </Typography>
+          <Typography variant="body1" fontWeight="bold" color="primary">
+            {formatCurrency(dataPoint.price, currency)}
+          </Typography>
+          {dataPoint.volume !== undefined && (
+            <Typography variant="caption" color="text.secondary">
+              Volume: {dataPoint.volume.toLocaleString()}
+            </Typography>
+          )}
+        </Box>
+      );
+    }
+    return null;
+  };
+  
+  return (
+    <Box sx={{ width: '100%', height }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={chartData}
+          margin={{ top: 5, right: 5, left: 5, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} />
+          <XAxis 
+            dataKey="formattedDate" 
+            tick={{ fill: theme.palette.text.secondary }}
+            axisLine={{ stroke: theme.palette.divider }}
+            tickLine={{ stroke: theme.palette.divider }}
+          />
+          <YAxis 
+            tickFormatter={(value) => formatCurrency(value, currency, { minimumFractionDigits: 0 })}
+            tick={{ fill: theme.palette.text.secondary }}
+            axisLine={{ stroke: theme.palette.divider }}
+            tickLine={{ stroke: theme.palette.divider }}
+          />
+          <Tooltip content={<CustomTooltip />} />
+          <Line 
+            type="monotone" 
+            dataKey="price" 
+            stroke={theme.palette.primary.main}
+            dot={false}
+            activeDot={{ r: 6, fill: theme.palette.primary.main }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </Box>
+  );
+};
+
+export default PriceHistoryChart;
+```
+
+### Market Data API Service
+
+```tsx
+// Add to api/market.ts
+import { apiClient } from './api-client';
+import { cache } from 'utils/cache';
+import { ConsolidatedLogger } from 'utils/consolidated-logger';
+
+export interface MarketPrice {
+  itemName: string;
+  currentPrice: number;
+  previousPrice: number;
+  lowestPrice: number;
+  highestPrice: number;
+  volume: number;
+  updated: string;
+}
+
+export interface PriceHistoryPoint {
+  date: string;
+  price: number;
+  volume?: number;
+}
+
+export interface MarketListing {
+  listingId: string;
+  itemName: string;
+  price: number;
+  seller: {
+    steamId: string;
+    displayName: string;
+  };
+  wear?: number;
+  patternId?: number;
+  listedAt: string;
+}
+
+export const marketAPI = {
+  /**
+   * Get current market price for an item
+   * @param itemName Item market hash name
+   * @returns Promise with market price data
+   */
+  getItemPrice: cache(
+    async (itemName: string): Promise<MarketPrice> => {
+      try {
+        ConsolidatedLogger.logCS2(`Getting market price for ${itemName}`, 'INFO');
+        const response = await apiClient.get(`/market/price/${encodeURIComponent(itemName)}`);
+        return response.data;
+      } catch (error) {
+        ConsolidatedLogger.logCS2Error(
+          error instanceof Error ? error : new Error(String(error)),
+          'marketAPI.getItemPrice'
+        );
+        throw error;
+      }
+    },
+    {
+      ttl: 5 * 60 * 1000, // 5 minutes
+      cacheKeyFn: (itemName) => `market_price_${itemName}`,
+    }
+  ),
+
+  /**
+   * Get price history for an item
+   * @param itemName Item market hash name
+   * @param timeRange Time range for history
+   * @returns Promise with price history data
+   */
+  getPriceHistory: cache(
+    async (
+      itemName: string,
+      timeRange: '24h' | '7d' | '30d' | '90d' | 'all' = '7d'
+    ): Promise<PriceHistoryPoint[]> => {
+      try {
+        ConsolidatedLogger.logCS2(
+          `Getting price history for ${itemName} (${timeRange})`,
+          'INFO'
+        );
+        const response = await apiClient.get(
+          `/market/history/${encodeURIComponent(itemName)}`,
+          { params: { timeRange } }
+        );
+        return response.data;
+      } catch (error) {
+        ConsolidatedLogger.logCS2Error(
+          error instanceof Error ? error : new Error(String(error)),
+          'marketAPI.getPriceHistory'
+        );
+        return [];
+      }
+    },
+    {
+      ttl: 15 * 60 * 1000, // 15 minutes
+      cacheKeyFn: (itemName, timeRange) => `price_history_${itemName}_${timeRange}`,
+    }
+  ),
+
+  /**
+   * Get current market listings
+   * @param itemName Item market hash name
+   * @param page Page number
+   * @param pageSize Page size
+   * @returns Promise with market listings
+   */
+  getMarketListings: cache(
+    async (
+      itemName: string,
+      page: number = 1,
+      pageSize: number = 10
+    ): Promise<{ listings: MarketListing[]; total: number }> => {
+      try {
+        ConsolidatedLogger.logCS2(
+          `Getting market listings for ${itemName} (page ${page})`,
+          'INFO'
+        );
+        const response = await apiClient.get(
+          `/market/listings/${encodeURIComponent(itemName)}`,
+          { params: { page, pageSize } }
+        );
+        return response.data;
+      } catch (error) {
+        ConsolidatedLogger.logCS2Error(
+          error instanceof Error ? error : new Error(String(error)),
+          'marketAPI.getMarketListings'
+        );
+        return { listings: [], total: 0 };
+      }
+    },
+    {
+      ttl: 2 * 60 * 1000, // 2 minutes
+      cacheKeyFn: (itemName, page, pageSize) =>
+        `market_listings_${itemName}_${page}_${pageSize}`,
+    }
+  ),
+
+  /**
+   * Setup price alert for an item
+   * @param itemName Item market hash name
+   * @param targetPrice Target price for alert
+   * @param alertType Type of alert (above or below)
+   * @returns Promise with alert setup result
+   */
+  createPriceAlert: async (
+    itemName: string,
+    targetPrice: number,
+    alertType: 'above' | 'below'
+  ): Promise<{ success: boolean; alertId?: string }> => {
+    try {
+      ConsolidatedLogger.logCS2(
+        `Creating price alert for ${itemName} at ${targetPrice} (${alertType})`,
+        'INFO'
+      );
+      const response = await apiClient.post('/market/alerts', {
+        itemName,
+        targetPrice,
+        alertType,
+      });
+      return response.data;
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'marketAPI.createPriceAlert'
+      );
+      return { success: false };
+    }
+  },
+};
+```
+
+### Market Data Hooks
+
+```tsx
+import { useState, useEffect, useCallback } from 'react';
+import { marketAPI, MarketPrice, PriceHistoryPoint, MarketListing } from 'api/market';
+import { ConsolidatedLogger } from 'utils/consolidated-logger';
+
+// Hook for item price
+export const useItemPrice = (itemName: string) => {
+  const [priceData, setPriceData] = useState<MarketPrice | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchPrice = useCallback(async () => {
+    if (!itemName) {
+      setError('Item name is required');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await marketAPI.getItemPrice(itemName);
+      setPriceData(data);
+    } catch (err) {
+      setError('Failed to load price data');
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useItemPrice'
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [itemName]);
+
+  useEffect(() => {
+    fetchPrice();
+  }, [fetchPrice]);
+
+  return { priceData, loading, error, refreshPrice: fetchPrice };
+};
+
+// Hook for price history
+export const usePriceHistory = (
+  itemName: string,
+  timeRange: '24h' | '7d' | '30d' | '90d' | 'all' = '7d'
+) => {
+  const [historyData, setHistoryData] = useState<PriceHistoryPoint[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchHistory = useCallback(async () => {
+    if (!itemName) {
+      setError('Item name is required');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await marketAPI.getPriceHistory(itemName, timeRange);
+      setHistoryData(data);
+    } catch (err) {
+      setError('Failed to load price history');
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'usePriceHistory'
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [itemName, timeRange]);
+
+  useEffect(() => {
+    fetchHistory();
+  }, [fetchHistory]);
+
+  return { historyData, loading, error, refreshHistory: fetchHistory };
+};
+
+// Hook for market listings
+export const useMarketListings = (
+  itemName: string,
+  page: number = 1,
+  pageSize: number = 10
+) => {
+  const [listingsData, setListingsData] = useState<{
+    listings: MarketListing[];
+    total: number;
+  }>({ listings: [], total: 0 });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchListings = useCallback(async () => {
+    if (!itemName) {
+      setError('Item name is required');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError(null);
+      const data = await marketAPI.getMarketListings(itemName, page, pageSize);
+      setListingsData(data);
+    } catch (err) {
+      setError('Failed to load market listings');
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useMarketListings'
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [itemName, page, pageSize]);
+
+  useEffect(() => {
+    fetchListings();
+  }, [fetchListings]);
+
+  return {
+    listings: listingsData.listings,
+    total: listingsData.total,
+    loading,
+    error,
+    refreshListings: fetchListings,
+  };
+};
+```
+
+## Market Data Visualization Components
+
+### Market Overview Panel
+
+```tsx
+import React, { useState } from 'react';
+import { 
+  Box, 
+  Card, 
+  CardContent, 
+  Typography, 
+  Tab, 
+  Tabs, 
+  CircularProgress,
+  Button
+} from '@mui/material';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import PriceHistoryChart from 'components/market/PriceHistoryChart';
+import MarketPrice from 'components/market/MarketPrice';
+import { useItemPrice, usePriceHistory } from 'hooks/useMarketData';
+import { formatCurrency } from 'utils/formatters';
+
+interface MarketOverviewProps {
+  itemName: string;
+}
+
+const MarketOverview: React.FC<MarketOverviewProps> = ({ itemName }) => {
+  const [timeRange, setTimeRange] = useState<'24h' | '7d' | '30d' | '90d' | 'all'>('7d');
+  const { priceData, loading: priceLoading, refreshPrice } = useItemPrice(itemName);
+  const { historyData, loading: historyLoading, refreshHistory } = usePriceHistory(itemName, timeRange);
+  
+  const handleTimeRangeChange = (_: React.SyntheticEvent, newValue: '24h' | '7d' | '30d' | '90d' | 'all') => {
+    setTimeRange(newValue);
+  };
+  
+  const handleRefresh = () => {
+    refreshPrice();
+    refreshHistory();
+  };
+  
+  const loading = priceLoading || historyLoading;
+  
+  return (
+    <Card>
+      <CardContent>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+          <Typography variant="h6">Market Overview</Typography>
+          <Button 
+            size="small" 
+            startIcon={<RefreshIcon />} 
+            onClick={handleRefresh}
+            disabled={loading}
+          >
+            Refresh
+          </Button>
+        </Box>
+        
+        {loading ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+            <CircularProgress />
+          </Box>
+        ) : priceData ? (
+          <>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+              <Box>
+                <Typography variant="body2" color="text.secondary">Current Price</Typography>
+                <MarketPrice 
+                  currentPrice={priceData.currentPrice}
+                  previousPrice={priceData.previousPrice}
+                  size="large"
+                />
+              </Box>
+              
+              <Box>
+                <Typography variant="body2" color="text.secondary">24h Volume</Typography>
+                <Typography variant="h6">{priceData.volume.toLocaleString()}</Typography>
+              </Box>
+              
+              <Box>
+                <Typography variant="body2" color="text.secondary">24h Range</Typography>
+                <Typography variant="body1">
+                  {formatCurrency(priceData.lowestPrice)} - {formatCurrency(priceData.highestPrice)}
+                </Typography>
+              </Box>
+            </Box>
+            
+            <Box sx={{ mb: 2 }}>
+              <Tabs 
+                value={timeRange}
+                onChange={handleTimeRangeChange}
+                variant="fullWidth"
+              >
+                <Tab label="24H" value="24h" />
+                <Tab label="7D" value="7d" />
+                <Tab label="30D" value="30d" />
+                <Tab label="90D" value="90d" />
+                <Tab label="All" value="all" />
+              </Tabs>
+            </Box>
+            
+            <PriceHistoryChart 
+              data={historyData}
+              timeRange={timeRange}
+              height={300}
+            />
+          </>
+        ) : (
+          <Typography color="text.secondary">No price data available</Typography>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
+export default MarketOverview;
+```
+
+### Market Listings Table
+
+```tsx
+import React, { useState } from 'react';
+import {
+  Box,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+  Pagination,
+  CircularProgress,
+  Button
+} from '@mui/material';
+import { useMarketListings } from 'hooks/useMarketData';
+import { formatCurrency, formatDate } from 'utils/formatters';
+
+interface MarketListingsTableProps {
+  itemName: string;
+  pageSize?: number;
+}
+
+const MarketListingsTable: React.FC<MarketListingsTableProps> = ({ 
+  itemName,
+  pageSize = 10
+}) => {
+  const [page, setPage] = useState(1);
+  const { listings, total, loading, refreshListings } = useMarketListings(
+    itemName,
+    page,
+    pageSize
+  );
+  
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+  
+  const totalPages = Math.ceil(total / pageSize);
+  
+  return (
+    <Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+        <Typography variant="h6">Market Listings</Typography>
+        <Button 
+          size="small" 
+          onClick={() => refreshListings()}
+          disabled={loading}
+        >
+          Refresh
+        </Button>
+      </Box>
+      
+      {loading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+          <CircularProgress />
+        </Box>
+      ) : listings.length > 0 ? (
+        <>
+          <TableContainer component={Paper} sx={{ mb: 2 }}>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Seller</TableCell>
+                  <TableCell align="right">Price</TableCell>
+                  <TableCell align="center">Wear</TableCell>
+                  <TableCell align="center">Pattern</TableCell>
+                  <TableCell align="right">Listed</TableCell>
+                  <TableCell align="right">Actions</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {listings.map((listing) => (
+                  <TableRow key={listing.listingId}>
+                    <TableCell>
+                      <Typography variant="body2" noWrap sx={{ maxWidth: 150 }}>
+                        {listing.seller.displayName}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Typography fontWeight="bold">
+                        {formatCurrency(listing.price)}
+                      </Typography>
+                    </TableCell>
+                    <TableCell align="center">
+                      {listing.wear ? listing.wear.toFixed(4) : 'N/A'}
+                    </TableCell>
+                    <TableCell align="center">
+                      {listing.patternId || 'N/A'}
+                    </TableCell>
+                    <TableCell align="right">
+                      {formatDate(listing.listedAt, { relative: true })}
+                    </TableCell>
+                    <TableCell align="right">
+                      <Button size="small" variant="contained" color="primary">
+                        Buy
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Pagination 
+              count={totalPages} 
+              page={page} 
+              onChange={handlePageChange} 
+              color="primary" 
+            />
+          </Box>
+        </>
+      ) : (
+        <Typography color="text.secondary" sx={{ py: 4, textAlign: 'center' }}>
+          No market listings available for this item
+        </Typography>
+      )}
+    </Box>
+  );
+};
+
+export default MarketListingsTable;
+```
+
+## Error Handling Patterns
+
+1. **API Failure Handling**:
+   - Implement fallback UI for market data components
+   - Show appropriate loading states during data fetching
+   - Display user-friendly error messages
+   - Provide retry mechanisms for failed requests
+
+2. **Network Issues**:
+   - Cache market data for offline access
+   - Implement stale-while-revalidate pattern
+   - Show cached data with freshness indicator
+   - Queue data refreshes when connection is restored
+
+3. **Data Inconsistency Handling**:
+   - Validate data integrity before display
+   - Handle missing or incomplete data gracefully
+   - Implement fallback display options
+   - Show data freshness indicators
+
+## Best Practices
+
+1. **Performance Optimization**:
+   - Implement appropriate caching strategies
+   - Use virtualization for long market listing tables
+   - Lazy-load market data components
+   - Optimize chart rendering for performance
+
+2. **User Experience**:
+   - Show loading states during data fetching
+   - Provide clear price trend indicators
+   - Implement responsive chart designs
+   - Maintain UI consistency across market components
+
+3. **Data Freshness**:
+   - Display last update timestamps
+   - Provide manual refresh options
+   - Implement auto-refresh for critical data
+   - Show data staleness indicators when appropriate
+
+## Cross-References
+
+- **Authentication**: See `knowledge/front-end/steam-web-api/authentication.md`
+- **Inventory Display**: See `knowledge/front-end/steam-web-api/inventory.md`
+- **Trading Implementation**: See `knowledge/front-end/steam-web-api/trading.md`
+- **Back-End Market Data**: See `knowledge/back-end/steam-web-api/market-data.md` 

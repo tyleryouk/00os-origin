@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating project-rule-parameters
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating project-rule-parameters
 
 # Parameter Documentation Template

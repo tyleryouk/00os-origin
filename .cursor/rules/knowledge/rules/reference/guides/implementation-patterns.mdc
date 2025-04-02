@@ -1,3 +1,8 @@
+---
+description: USE WHEN selecting implementation approaches, referencing pattern libraries, or organizing implementation strategies
+globs: 
+alwaysApply: false
+---
 # USE WHEN selecting implementation approaches, referencing pattern libraries, or organizing implementation strategies
 
 # Implementation Patterns Reference Guide
