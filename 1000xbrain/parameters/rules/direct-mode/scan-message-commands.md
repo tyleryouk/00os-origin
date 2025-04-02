@@ -53,10 +53,10 @@ Verify that all project-rule-parameters follow proper format:
 
 ```typescript
 // Check for incorrect extensions
-grep_search("@knowledge/rules/[a-z0-9-]+\\.md[^c]", false, "1000xbrain/**/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\\.md[^c]", false, "1000xbrain/**/*.md")
 
 // Check for improper path formats
-grep_search("@(?!knowledge/rules/)[^\\s]+\\.mdc", false, "1000xbrain/**/*.md")
+grep_search("@(?!knowledge/rules/rules/)[^\\s]+\\.mdc", false, "1000xbrain/**/*.md")
 ```
 
 ### 4. Backtick Protection Verification
@@ -77,7 +77,7 @@ Verify that all message-commands have corresponding project-rule-parameters:
 run_terminal_cmd("Get-ChildItem -Path '1000xbrain' -Recurse -Include '*.md' | Select-String -Pattern '([a-z-]+):' -AllMatches | ForEach-Object { $_.Matches } | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique", false, false)
 
 // Check for corresponding project-rule-parameters
-list_dir("1000xbrain/knowledge/rules")
+list_dir("1000xbrain/knowledge/rules/rules")
 ```
 
 ## Expected Outputs
@@ -169,8 +169,8 @@ grep_search(":[^ ]", false, "1000xbrain/**/*.md")
 grep_search(":\\s*\\[", false, "1000xbrain/**/*.md")
 
 // 3. Check for reference issues
-grep_search("@knowledge/rules/[a-z0-9-]+\\.md[^c]", false, "1000xbrain/**/*.md")
-grep_search("@(?!knowledge/rules/)[^\\s]+\\.mdc", false, "1000xbrain/**/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\\.md[^c]", false, "1000xbrain/**/*.md")
+grep_search("@(?!knowledge/rules/rules/)[^\\s]+\\.mdc", false, "1000xbrain/**/*.md")
 
 // 4. Check for unwrapped message-commands
 grep_search("[a-z-]+:\\s+@[^`]", false, "1000xbrain/**/*.md")

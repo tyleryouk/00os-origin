@@ -1,0 +1,147 @@
+# USE WHEN selecting implementation approaches, referencing pattern libraries, or organizing implementation strategies
+
+# Implementation Patterns Reference Guide
+
+## Overview
+
+This guide provides a quick reference for implementation patterns available in the 1000xbrain cognitive architecture. It lists the key implementation patterns with descriptions and references to their detailed documentation, making it easier to find the right pattern for specific implementation tasks.
+
+## Available Implementation Patterns
+
+### Basic Implementation Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Progressive Implementation** | Implement features in small, testable increments | `@patterns/impl/basic.mdc` |
+| **Context-First Implementation** | Build comprehensive context before implementation | `@patterns/impl/basic.mdc` |
+| **Pattern-Based Implementation** | Base implementation on existing patterns in codebase | `@patterns/impl/basic.mdc` |
+| **Type-Safe Implementation** | Ensure strong typing throughout implementation | `@patterns/impl/basic.mdc` |
+| **Error-Resilient Implementation** | Include robust error handling at every step | `@patterns/impl/basic.mdc` |
+
+### Architecture Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Module Separation** | Clear separation of concerns between modules | `@patterns/impl/architecture.mdc` |
+| **Interface-First Design** | Define clear interfaces before implementation | `@patterns/impl/architecture.mdc` |
+| **Domain-Driven Design** | Organize code around business domains | `@patterns/impl/architecture.mdc` |
+| **Clean Architecture** | Maintain separation between layers | `@patterns/impl/architecture.mdc` |
+| **Data Flow Architecture** | Clear unidirectional data flow | `@patterns/impl/architecture.mdc` |
+
+### State Management Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Immutability Pattern** | Treat state as immutable, create new instances for changes | `@patterns/impl/state.mdc` |
+| **State Container** | Centralized state management with controlled updates | `@patterns/impl/state.mdc` |
+| **State Machine** | Define explicit states and transitions | `@patterns/impl/state.mdc` |
+| **Observer Pattern** | Notify components of state changes | `@patterns/impl/state.mdc` |
+| **Command Pattern** | Encapsulate state-changing operations | `@patterns/impl/state.mdc` |
+
+### Component Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Presentation-Container Split** | Separate presentation from business logic | `@patterns/impl/component.mdc` |
+| **Higher-Order Components** | Enhance components with additional functionality | `@patterns/impl/component.mdc` |
+| **Compound Components** | Create cohesive component sets with implicit state sharing | `@patterns/impl/component.mdc` |
+| **Controlled Components** | Control component state through props | `@patterns/impl/component.mdc` |
+| **Headless UI Pattern** | Separate logic from presentation | `@patterns/impl/component.mdc` |
+
+### Testing Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Test-Driven Implementation** | Write tests before implementation | `@patterns/impl/testing.mdc` |
+| **Component Testing** | Test components in isolation | `@patterns/impl/testing.mdc` |
+| **Integration Testing** | Test component interactions | `@patterns/impl/testing.mdc` |
+| **State Transition Testing** | Test state transitions | `@patterns/impl/testing.mdc` |
+| **Edge Case Testing** | Test boundary conditions and error cases | `@patterns/impl/testing.mdc` |
+
+### API Integration Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Repository Pattern** | Abstract data access behind repositories | `@patterns/impl/api.mdc` |
+| **Adapter Pattern** | Adapt external APIs to internal interfaces | `@patterns/impl/api.mdc` |
+| **Data Fetching Pattern** | Consistent approach to data fetching and caching | `@patterns/impl/api.mdc` |
+| **Error Handling Pattern** | Standardized error handling for API calls | `@patterns/impl/api.mdc` |
+| **Retry Pattern** | Automatically retry failed API calls | `@patterns/impl/api.mdc` |
+
+### Performance Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Lazy Loading** | Load resources only when needed | `@patterns/impl/performance.mdc` |
+| **Virtual List** | Render only visible items in long lists | `@patterns/impl/performance.mdc` |
+| **Memoization** | Cache expensive calculations | `@patterns/impl/performance.mdc` |
+| **Debouncing** | Limit frequency of expensive operations | `@patterns/impl/performance.mdc` |
+| **Code Splitting** | Split code into smaller chunks | `@patterns/impl/performance.mdc` |
+
+## Workflow-Specific Patterns
+
+### Front-End Workflow Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Component Composition** | Build UIs from composable components | `@patterns/impl/front-end.mdc` |
+| **Page-Component Structure** | Organize components into page structures | `@patterns/impl/front-end.mdc` |
+| **Form Management** | Standardized form handling | `@patterns/impl/front-end.mdc` |
+| **Routing Pattern** | Consistent page navigation | `@patterns/impl/front-end.mdc` |
+| **Theme Implementation** | Consistent UI theming | `@patterns/impl/front-end.mdc` |
+
+### Back-End Workflow Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Service Layer** | Separate business logic from API endpoints | `@patterns/impl/back-end.mdc` |
+| **Repository Pattern** | Abstract database access | `@patterns/impl/back-end.mdc` |
+| **Middleware Chain** | Process requests through middleware chain | `@patterns/impl/back-end.mdc` |
+| **Validation Pattern** | Consistent input validation | `@patterns/impl/back-end.mdc` |
+| **Error Handling Middleware** | Centralized error handling | `@patterns/impl/back-end.mdc` |
+
+### Documentation Workflow Patterns
+
+| Pattern | Description | Reference |
+|---------|-------------|-----------|
+| **Progressive Documentation** | Start with core concepts, add details progressively | `@patterns/impl/documentation.mdc` |
+| **Example-First Documentation** | Lead with concrete examples | `@patterns/impl/documentation.mdc` |
+| **Visual Documentation** | Use diagrams and visual aids | `@patterns/impl/documentation.mdc` |
+| **Task-Based Documentation** | Organize by user tasks | `@patterns/impl/documentation.mdc` |
+| **Reference Documentation** | Comprehensive API reference | `@patterns/impl/documentation.mdc` |
+
+## Using Implementation Patterns
+
+### Pattern Selection Process
+
+1. **Identify the problem**: Clearly define what you're trying to solve
+2. **Consider domain context**: Select patterns appropriate for the domain
+3. **Check existing patterns**: Look for similar patterns already in use
+4. **Evaluate constraints**: Consider performance, complexity, and maintenance
+5. **Apply the pattern**: Implement following pattern guidelines
+
+### Pattern Combination
+
+Many implementation tasks require combining multiple patterns. Common combinations include:
+
+| Pattern Combination | Purpose | Example |
+|---------------------|---------|---------|
+| Context-First + Pattern-Based | Understand context before applying patterns | Reading similar components before creating a new one |
+| Test-Driven + Progressive | Incremental implementation with testing at each step | Building a feature gradually with tests for each part |
+| Interface-First + Repository | Clear data access through well-defined interfaces | Creating a data access layer with clean interfaces |
+| Component Composition + State Management | Create composable UI with predictable state | Building a form system with centralized state management |
+
+## Reference System
+
+For more detailed information on implementation patterns, use these references:
+
+- **Comprehensive Implementation Guide**: `@patterns/impl/implementation.mdc`
+- **Basic Implementation Patterns**: `@patterns/impl/basic.mdc`
+- **Architecture Patterns**: `@patterns/impl/architecture.mdc`
+- **Component Patterns**: `@patterns/impl/component.mdc`
+
+## Related References
+
+- [Knowledge System Reference](../knowledge-system.md)
+- [Tool Patterns Reference](tool-patterns.md)
+- [Architecture Guide](../../guides/architecture.md) 

@@ -69,7 +69,7 @@ grep_search("@parameters/rules/[a-z0-9-]+\\.mdc", false, "1000xbrain/**/*.md")
 Verify that actual files use the correct .md extension:
 
 ```typescript
-// List files in knowledge/rules directory
+// List files in knowledge/rules/rules directory
 list_dir("1000xbrain/parameters/rules")
 
 // Check for any files with .mdc extension (incorrect)
@@ -129,7 +129,7 @@ References analyzed:
 - 7 references use incorrect .md extension
 
 File extensions:
-- All 47 files in knowledge/rules directory use correct .md extension
+- All 47 files in knowledge/rules/rules directory use correct .md extension
 - No files with incorrect .mdc extension found
 
 Documentation:
@@ -147,7 +147,7 @@ Extension format checking revealed 7 issues that need to be addressed.
 Detailed extension format issues:
 
 Incorrect .md extension in references:
-- knowledge/rules/analyze-related-rules.md: `@parameters/rules/scan-message-commands.md` (line 42)
+- knowledge/rules/rules/analyze-related-rules.md: `@parameters/rules/scan-message-commands.md` (line 42)
 - workflows/rules-workflow/message-commands-reference.md: `@parameters/rules/verify-implementation.md` (line 78)
 - workflows/rules-workflow/rules-workflow-cheatsheet.md: `@parameters/rules/verify-backtick-wrapping.md` (line 36)
 - workflows/rules-workflow/rules-workflow-cheatsheet.md: `@parameters/rules/validate-path-format.md` (line 37)

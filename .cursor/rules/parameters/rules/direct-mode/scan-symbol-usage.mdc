@@ -20,13 +20,13 @@ This file complements:
 This file contains the comprehensive @ symbol scanning process and should be referenced as a project-rule-parameter when conducting a thorough symbol usage audit:
 
 ```
-scan-symbol-usage: @knowledge/rules/scan-symbol-usage.mdc
+scan-symbol-usage: @knowledge/rules/rules/scan-symbol-usage.mdc
 ```
 
 ## Command Format
 
 ```
-scan-symbol-usage: @knowledge/rules/scan-symbol-usage.mdc
+scan-symbol-usage: @knowledge/rules/rules/scan-symbol-usage.mdc
 ```
 
 ## Required Context
@@ -73,7 +73,7 @@ Analyze patterns of @ symbol usage:
 
 ```typescript
 // Find common project-rule-parameter patterns
-grep_search("@knowledge/rules/[a-z0-9-]+\\.mdc", false, "1000xbrain/**/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\\.mdc", false, "1000xbrain/**/*.md")
 
 // Find @ symbols in code blocks
 grep_search("```.*@", false, "1000xbrain/**/*.md")
@@ -195,7 +195,7 @@ grep_search("@", false, "1000xbrain/**/*.md")
 grep_search("@[^`]|[^`]@", false, "1000xbrain/**/*.md")
 
 // 3. Analyze @ symbol patterns
-grep_search("@knowledge/rules/[a-z0-9-]+\\.mdc", false, "1000xbrain/**/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\\.mdc", false, "1000xbrain/**/*.md")
 grep_search("^#.*@", false, "1000xbrain/**/*.md")
 
 // 4. Check for @ symbols in file names

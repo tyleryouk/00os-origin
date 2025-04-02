@@ -1,4 +1,4 @@
-# Workflow: rules-workflow | Pathway: finalization
+# workflow: rules-workflow | pathway: none | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/enhance-planning.mdc
 
 # Enhance Planning: Rules Workflow
 
@@ -12,14 +12,6 @@ This file provides an iterative planning enhancement pattern for rules workflow 
 - Complex implementation planning requires iterative enhancement
 
 This parameter is designed to work with the `enhance-planning:` message-command, providing a structured approach to progressively improving planning documentation through multiple iterations.
-
-## Usage as Project-Rule-Parameter
-
-This file contains planning enhancement guidance and should be referenced as a project-rule-parameter in message-commands:
-
-```
-enhance-planning: rules-workflow @parameters/rules/plan-mode/finalization-enhance-planning.mdc
-```
 
 This message-command can be issued multiple times in sequence to progressively enhance planning files.
 
@@ -119,7 +111,7 @@ codebase_search("implementation of [related feature]", ["relevant directories"])
 grep_search("pattern: [pattern name]", false, "*.md")
 
 // 3. Access relevant knowledge
-fetch_rules(["knowledge/relevant/pattern"])
+fetch_rules(["knowledge/rules/relevant/pattern"])
 
 // 4. Examine related file structures
 list_dir("path/to/related/implementation")
@@ -292,9 +284,3 @@ Further planning enhancement would provide diminishing returns. The planning doc
 
 planning-enhancement-complete
 ```
-
-## Related References
-
-- **Rules-Workflow**: `workflows/rules-workflow/rules-workflow.md`
-- **Planning Standards**: `parameters/rules/plan-mode/README.md`
-- **Implementation Patterns**: `parameters/rules/plan-mode/README.md` 

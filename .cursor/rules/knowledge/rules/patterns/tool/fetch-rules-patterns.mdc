@@ -1,0 +1,367 @@
+# USE WHEN implementing fetch_rules access patterns, optimizing knowledge access, or creating knowledge references
+
+# fetch_rules Tool Usage Patterns
+
+## Overview
+
+This pattern guide provides standardized, effective patterns for using the `fetch_rules` tool within the 1000xbrain cognitive architecture. These patterns ensure consistent, optimal access to specialized knowledge components.
+
+## Core Usage Patterns
+
+### Basic Pattern
+
+The standard pattern for accessing a single knowledge component:
+
+```typescript
+fetch_rules(["knowledge/rules/category/component"], 
+           "Purpose-focused explanation")
+```
+
+Example:
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for implementation")
+```
+
+### Multiple Rules Pattern
+
+The standard pattern for accessing multiple related knowledge components:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/category1/component1",
+  "knowledge/rules/category2/component2"
+], "Purpose-focused explanation covering all components")
+```
+
+Example:
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/tool/command-patterns"
+], "Accessing tool patterns for efficient implementation")
+```
+
+## Task-Specific Patterns
+
+### Architecture Understanding Pattern
+
+For understanding system architecture:
+
+```typescript
+fetch_rules(["knowledge/rules/reference/architecture"], 
+           "Understanding system architecture for [specific task]")
+```
+
+Variants:
+```typescript
+// For specific architectural components
+fetch_rules(["knowledge/rules/reference/architecture/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules for implementation")
+
+// For architectural mapping
+fetch_rules(["knowledge/rules/reference/maps/domain-map"], 
+           "Mapping knowledge domains for implementation planning")
+```
+
+### Implementation Pattern Access
+
+For accessing implementation patterns:
+
+```typescript
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Finding implementation patterns for [specific task]")
+```
+
+Variants:
+```typescript
+// For basic patterns
+fetch_rules(["knowledge/rules/patterns/impl/basic-patterns"], 
+           "Applying basic implementation patterns")
+
+// For architecture patterns
+fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"], 
+           "Implementing architectural patterns for system design")
+```
+
+### Tool Optimization Pattern
+
+For optimizing tool usage:
+
+```typescript
+fetch_rules(["knowledge/rules/patterns/tool/search-patterns"], 
+           "Optimizing search patterns for [specific task]")
+```
+
+Variants:
+```typescript
+// For command line operations
+fetch_rules(["knowledge/rules/patterns/tool/command-patterns"], 
+           "Optimizing command patterns for efficient execution")
+
+// For tool combinations
+fetch_rules(["knowledge/rules/patterns/tool/tool-combinations"], 
+           "Combining tools for complex workflow implementation")
+```
+
+### Documentation Creation Pattern
+
+For implementing documentation standards:
+
+```typescript
+fetch_rules(["knowledge/rules/patterns/doc/file-standards"], 
+           "Implementing file standards for documentation")
+```
+
+Variants:
+```typescript
+// For basic documentation patterns
+fetch_rules(["knowledge/rules/patterns/doc/basic-patterns"], 
+           "Applying standard documentation patterns")
+```
+
+## Context-Specific Patterns
+
+### Initial Exploration Pattern
+
+When first exploring a knowledge domain:
+
+```typescript
+fetch_rules(["knowledge/rules/reference/index"], 
+           "Exploring knowledge structure for implementation planning")
+```
+
+Variants:
+```typescript
+// For specific domain exploration
+fetch_rules(["knowledge/rules/reference/domains/tool"], 
+           "Exploring tool domain knowledge")
+```
+
+### Implementation Planning Pattern
+
+When planning implementation approaches:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/index",
+  "knowledge/rules/guides/architecture"
+], "Planning implementation approach for [specific task]")
+```
+
+### Problem-Solving Pattern
+
+When solving specific implementation problems:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/impl/implementation-patterns"
+], "Solving [specific problem] during implementation")
+```
+
+## Task Workflow Patterns
+
+### Knowledge Discovery Workflow
+
+Pattern for systematically exploring available knowledge:
+
+```typescript
+// Step 1: Start with the index
+fetch_rules(["knowledge/rules/reference/index"], 
+           "Starting knowledge exploration")
+
+// Step 2: Explore specific domain
+fetch_rules(["knowledge/rules/reference/domains/tool"], 
+           "Exploring tool domain knowledge")
+
+// Step 3: Access specific components
+fetch_rules(["knowledge/rules/patterns/tool/search-patterns"], 
+           "Accessing search patterns for implementation")
+```
+
+### Implementation Workflow
+
+Pattern for leveraging knowledge during implementation:
+
+```typescript
+// Step 1: Access architecture understanding
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding architectural context")
+
+// Step 2: Get implementation patterns
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Finding implementation patterns")
+
+// Step 3: Optimize tool usage
+fetch_rules(["knowledge/rules/patterns/tool/tool-combinations"], 
+           "Optimizing tool usage for implementation")
+```
+
+## Common Combinations
+
+### Architecture + Implementation Patterns
+
+For connecting architecture to implementation:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/guides/architecture",
+  "knowledge/rules/patterns/impl/implementation-patterns"
+], "Connecting architecture to implementation patterns")
+```
+
+### Search + Command Patterns
+
+For optimizing codebase navigation and manipulation:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/tool/command-patterns"
+], "Optimizing codebase navigation and manipulation")
+```
+
+### Implementation + Documentation Patterns
+
+For ensuring well-documented implementations:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/impl/implementation-patterns",
+  "knowledge/rules/patterns/doc/basic-patterns"
+], "Implementing well-documented features")
+```
+
+## Explanation Formulation Patterns
+
+### Task-Focused Explanation
+
+Pattern for explaining how knowledge applies to specific tasks:
+
+```
+"[Action verb] [knowledge type] for [specific task/purpose]"
+```
+
+Examples:
+- "Understanding architecture for front-end implementation"
+- "Applying search patterns for codebase exploration"
+- "Implementing documentation standards for API reference"
+
+### Problem-Solving Explanation
+
+Pattern for explaining how knowledge helps solve specific problems:
+
+```
+"Solving [specific problem] through [knowledge application]"
+```
+
+Examples:
+- "Solving search efficiency issues through optimized patterns"
+- "Addressing documentation gaps through standardized approaches"
+- "Resolving implementation conflicts through architectural guidance"
+
+### Learning-Focused Explanation
+
+Pattern for explaining how knowledge enhances understanding:
+
+```
+"Learning about [knowledge area] to improve [specific capability]"
+```
+
+Examples:
+- "Learning about system architecture to improve implementation design"
+- "Exploring tool patterns to enhance development efficiency"
+- "Understanding documentation standards to improve knowledge sharing"
+
+## Anti-Patterns to Avoid
+
+### Missing Explanation Anti-Pattern
+
+❌ **Avoid**:
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"])
+```
+
+✅ **Correct**:
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for implementation")
+```
+
+### Generic Explanation Anti-Pattern
+
+❌ **Avoid**:
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Getting information")
+```
+
+✅ **Correct**:
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for front-end implementation")
+```
+
+### Unrelated Components Anti-Pattern
+
+❌ **Avoid**:
+```typescript
+fetch_rules([
+  "knowledge/rules/guides/architecture",
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/doc/basic-patterns"
+], "Getting various information")
+```
+
+✅ **Correct**: Split into related groups
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture")
+
+fetch_rules(["knowledge/rules/patterns/tool/search-patterns"], 
+           "Optimizing search patterns")
+
+fetch_rules(["knowledge/rules/patterns/doc/basic-patterns"], 
+           "Implementing documentation standards")
+```
+
+### Path Format Anti-Pattern
+
+❌ **Avoid**:
+```typescript
+fetch_rules(["guides/architecture"])  // Missing knowledge/rules/ prefix
+fetch_rules(["knowledge/rules/guides-architecture"])  // Incorrect path format
+```
+
+✅ **Correct**:
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture")
+```
+
+## Verification and Testing
+
+### Path Validation Pattern
+
+Pattern for validating knowledge paths before use:
+
+```typescript
+// Check available_instructions first to confirm path exists
+grep_search("knowledge/rules/guides/architecture.*USE WHEN")
+
+// Then use the confirmed path
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture")
+```
+
+## Conclusion
+
+These standardized patterns ensure consistent, effective use of the `fetch_rules` tool across the cognitive architecture. Following these patterns will:
+
+1. **Standardize Knowledge Access**: Create consistent access patterns
+2. **Improve Explainability**: Document why knowledge is being accessed
+3. **Optimize Knowledge Combinations**: Combine related knowledge effectively
+4. **Avoid Common Issues**: Prevent misuse of the tool
+
+By adopting these patterns, the cognitive architecture maintains clear, effective knowledge access throughout all implementation tasks. 

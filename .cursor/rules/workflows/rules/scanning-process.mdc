@@ -1,0 +1,228 @@
+# @ Symbol Scanning Process
+
+This document defines the technical implementation of the scanning process for verifying proper @ symbol usage throughout the 1000xbrain cognitive architecture.
+
+For detailed @ symbol usage rules and guidelines, see core/communication/message-commands.md and the self-documenting header system in each project-rule-parameter.
+
+## Purpose
+
+The @ symbol scanning process ensures:
+
+1. **Reference Correctness**: All references to project-rule-parameters use the correct format
+2. **Backtick Protection**: All @ symbols in documentation are properly wrapped in backticks
+3. **File Cross-References**: All cross-references follow established patterns
+4. **Extension Consistency**: All project-rule-parameter references use .mdc extension
+
+## Scanning Commands Implementation
+
+This section provides the specific commands and their implementation for scanning @ symbol usage.
+
+### 1. Basic @ Symbol Search
+
+The following command finds all instances of the @ symbol in markdown files:
+
+```bash
+grep -r "@" --include="*.md" 1000xbrain/
+```
+
+This provides a comprehensive list of all @ symbol usages throughout the codebase.
+
+### 2. Unwrapped @ Symbol Detection
+
+This command identifies @ symbols that are not properly wrapped in backticks:
+
+```bash
+# Find @ symbols that are not properly wrapped in backticks
+grep -r "@" --include="*.md" 1000xbrain/ | grep -v "\`@" | grep -v "@\`" | grep -v "```"
+```
+
+This command excludes:
+- @ symbols preceded by a backtick (`@)
+- @ symbols followed by a backtick (@`)
+- @ symbols within code blocks (```)
+
+### 3. Message-Command Reference Search
+
+This command identifies message-command references:
+
+```bash
+grep -r ":" --include="*.md" 1000xbrain/ | grep -E "plan-mode|dev-mode|continue-planning|continue-implementation"
+```
+
+### 4. Incorrect Extension Search
+
+This command identifies project-rule-parameter references with incorrect extensions:
+
+```bash
+# Find project-rule-parameters with .md instead of .mdc extension
+grep -r "@[a-zA-Z0-9_/-]*\.md\b" --include="*.md" 1000xbrain/
+```
+
+### 5. Combined Scanning Command
+
+This multi-stage command performs comprehensive scanning:
+
+```bash
+# Save all @ symbols to a file
+grep -r "@" --include="*.md" 1000xbrain/ > all-symbols.txt
+
+# Find unwrapped @ symbols
+cat all-symbols.txt | grep -v "\`@" | grep -v "@\`" | grep -v "```" > unwrapped-symbols.txt
+
+# Find incorrect extensions
+grep -r "@[a-zA-Z0-9_/-]*\.md\b" --include="*.md" 1000xbrain/ > incorrect-extensions.txt
+
+# Report results
+echo "=== Unwrapped @ Symbols ==="; cat unwrapped-symbols.txt; echo
+echo "=== Incorrect Extensions ==="; cat incorrect-extensions.txt; echo
+```
+
+## Automated Scanning Integration
+
+The scanning commands can be integrated into automated scripts for regular validation:
+
+1. **Pre-commit Hook**: Run scanning before commits to catch issues early
+2. **Scheduled Scanning**: Run daily scans to identify accumulated issues
+3. **CI/CD Integration**: Include scanning in continuous integration workflows
+
+For detailed automation implementation, see [scanning-automation.md](scanning-automation.md).
+
+## Output Interpretation
+
+The scanning process produces different outputs that should be interpreted as follows:
+
+### Unwrapped @ Symbol Output
+
+Format:
+```
+file:line:content with unwrapped @symbol
+```
+
+Action Required:
+1. Edit the file to wrap the @ symbol in backticks
+2. Use proper formatting according to core/communication/message-commands.md
+
+### Incorrect Extension Output
+
+Format:
+```
+file:line:content with @path.md instead of @path.mdc
+```
+
+Action Required:
+1. Change .md to .mdc in all project-rule-parameter references
+2. Ensure file paths reference actual files that exist
+
+## Related Tools
+
+For validation and verification, see:
+- [validation-script.md](validation-script.md) - For project-rule-parameter validation
+- [scanning-automation.md](scanning-automation.md) - For automated scanning processes
+
+For @ symbol usage rules and proper formatting, see:
+- core/communication/message-commands.md - For guidance on message-command structure
+- core/communication/syntax-standards.md - For detailed symbol usage standards
+
+## README.md Verification Process
+
+This section defines the critical process for checking README.md files before making changes to any directory within the 1000xbrain cognitive architecture.
+
+### Purpose
+
+The README.md verification process ensures:
+
+1. **Directory Requirements**: Understanding specific requirements for each directory
+2. **Required Structure**: Following the documented structure for files in each directory
+3. **USE WHEN Headers**: Properly implementing required headers in knowledge files
+4. **Formatting Standards**: Following directory-specific formatting guidelines
+5. **Contribution Rules**: Complying with contribution guidelines for each section
+
+### README.md Verification Commands
+
+#### 1. Directory README.md Check
+
+Before making any changes to files in a directory, always first check its README.md:
+
+```bash
+# Check README.md in target directory
+cat 1000xbrain/[target_directory]/README.md
+```
+
+#### 2. Knowledge Directory USE WHEN Header Verification
+
+For knowledge files, verify the required USE WHEN header format:
+
+```bash
+# Check first line of any knowledge file to ensure it has USE WHEN header
+head -n 1 1000xbrain/knowledge/rules/[subdirectory]/[filename].md
+```
+
+### Automated README.md Checking Integration
+
+For automated implementation in tools and scripts:
+
+```powershell
+# Function to check README.md before file modifications
+function Check-ReadmeBeforeModification {
+    param (
+        [string]$targetFile
+    )
+    
+    # Get directory of target file
+    $fileDir = Split-Path -Parent $targetFile
+    $readmePath = Join-Path $fileDir "README.md"
+    
+    # Check if README.md exists
+    if (Test-Path $readmePath) {
+        Write-Host "IMPORTANT: Checking README.md before modification"
+        Get-Content $readmePath | Select-Object -First 20
+        
+        # For knowledge files, check USE WHEN requirement
+        if ($targetFile -like "*knowledge*" -and $targetFile -like "*.md") {
+            Write-Host "VERIFICATION: Checking for required USE WHEN header in knowledge files"
+            $firstLine = Get-Content $targetFile -TotalCount 1
+            if (-not ($firstLine -like "# USE WHEN*")) {
+                Write-Error "ERROR: Missing required USE WHEN header in knowledge file: $targetFile"
+                Write-Host "Knowledge files must start with: # USE WHEN [action verb in -ing form] [specific context]"
+            }
+        }
+    } else {
+        Write-Warning "No README.md found in directory: $fileDir"
+    }
+}
+```
+
+### README.md Verification Workflow
+
+When working with any files in the 1000xbrain cognitive architecture, follow this workflow:
+
+1. **Pre-Edit Check**: Before editing any file, check README.md in its directory
+2. **Directory Context**: Understand the specific requirements for that directory
+3. **Special Headers**: For knowledge files, verify USE WHEN header requirements
+4. **Post-Edit Validation**: After edits, validate compliance with directory standards
+
+### Knowledge Directory README.md Requirements
+
+For the knowledge directory specifically:
+
+1. **USE WHEN Headers**: All files in the knowledge directory must begin with a USE WHEN header
+2. **Header Format**: `# USE WHEN [action verb in -ing form] [specific task/context], [action verb in -ing form] [related domain], or [action verb in -ing form] [related technology]`
+3. **Action Verbs**: Must use -ing form (implementing, creating, optimizing, etc.)
+4. **Context Specificity**: Must clearly specify when the knowledge should be used
+5. **Multiple Contexts**: Should provide multiple contexts separated by commas and "or"
+
+### Output Interpretation
+
+When checking README.md files, focus on:
+
+1. **Structural Requirements**: Directory-specific file structure rules
+2. **Content Standards**: Required content elements for that directory
+3. **Special Headers**: Any required headers like USE WHEN for knowledge files
+4. **Example Formats**: Example structures to follow for that directory
+
+### Integration With Existing Tools
+
+This README.md verification process integrates with:
+- **Validation Script**: Add README.md checking to the validation process
+- **Scanning Automation**: Include README.md verification in automated scans
+- **Implementation Workflow**: Make README.md checking the first step before any file modifications

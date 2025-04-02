@@ -7,7 +7,7 @@ alwaysApply: true
 
 ## File Purpose and Relationship
 
-This file provides specific implementation standards and communication formats for the PolygonExpress project. It should be consulted for:
+This file provides specific implementation standards and communication formats for the GigaSwap project. It should be consulted for:
 
 - Environment-specific implementation standards
 - PowerShell command syntax requirements
@@ -19,7 +19,7 @@ See the condensed core-essentials.md file for essential identity and mode system
 
 ## Usage as Project-Rule-Parameter
 
-This file contains implementation standards and communication formats for the PolygonExpress project. It should be referenced as a project-rule-parameter in message-commands when detailed guidance on implementation standards, communication formats, error recovery, or performance optimization is needed:
+This file contains implementation standards and communication formats for the GigaSwap project. It should be referenced as a project-rule-parameter in message-commands when detailed guidance on implementation standards, communication formats, error recovery, or performance optimization is needed:
 
 ```
 update-rules: @core/identity/cognitive-principles.mdc
@@ -33,10 +33,10 @@ For more specialized implementation guidance, see:
 - @documentation-verification-enhancement.mdc: Documentation verification protocol
 - @implementation-workflow-guide.mdc: Implementation tracking and recovery
 
-When information appears to conflict, this file takes precedence for PolygonExpress implementation details.
+When information appears to conflict, this file takes precedence for GigaSwap implementation details.
 
 ## Rule Description
-This rule mandates the AI to deeply integrate and automatically apply project rules during all coding suggestions and response generations, with a specific focus on optimizing the log-based-workflow for PolygonExpress.
+This rule mandates the AI to deeply integrate and automatically apply project rules during all coding suggestions and response generations, with a specific focus on optimizing the log-based-workflow for GigaSwap.
 
 ## 1. Core Operating Principles
 
@@ -55,7 +55,7 @@ This rule mandates the AI to deeply integrate and automatically apply project ru
 - Complete ALL documentation updates in plan-mode
 - Send implementation-and-documentation-complete in plan-mode
 
-## 2. PolygonExpress-Specific Environment
+## 2. GigaSwap-Specific Environment
 
 ### Environment Setup
 - **Front-end**: Running locally at http://localhost:3000
@@ -146,7 +146,7 @@ Get-ChildItem -Path "logs-main" -Recurse -Filter "*.log" | Select-String -Patter
 For standard log checking commands, see @log-based-workflow-guide.mdc.
 
 ### PowerShell Command Syntax
-The PolygonExpress development environment uses PowerShell on Windows. This requires specific syntax for command chaining.
+The GigaSwap development environment uses PowerShell on Windows. This requires specific syntax for command chaining.
 
 For complete PowerShell command reference with examples, see @tool-call-reference.mdc.
 

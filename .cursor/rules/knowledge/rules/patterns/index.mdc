@@ -1,0 +1,107 @@
+# USE WHEN finding implementation patterns, navigating pattern categories, or selecting appropriate patterns
+
+# Pattern Index
+
+# Knowledge Patterns Reference
+
+## Overview
+
+This directory contains optimized implementation patterns for the 1000xbrain cognitive architecture, designed for explicit reference through message-commands. These patterns provide high-value, self-contained implementation guidance when referenced.
+
+As Manual Cursor Rules, these patterns must be explicitly referenced to be used:
+
+```
+message-command: @patterns/tool/search.mdc
+```
+
+## Pattern Categories
+
+The patterns are organized into focused categories for effective referencing:
+
+### Tool Patterns
+
+The `tool/` directory contains optimized patterns for effectively using tools:
+
+| Pattern File | Reference Path | Purpose |
+|--------------|---------------|---------|
+| [Search Patterns](tool/search-patterns.md) | `@patterns/tool/search.mdc` | Comprehensive patterns for effective search tool usage |
+| [Command Patterns](tool/command-patterns.md) | `@patterns/tool/command.mdc` | Patterns for executing terminal commands effectively |
+| [Reading Patterns](tool/reading-patterns.md) | `@patterns/tool/read.mdc` | Patterns for efficiently reading and analyzing files |
+| [Editing Patterns](tool/editing-patterns.md) | `@patterns/tool/edit.mdc` | Patterns for making effective file modifications |
+| [Tool Combinations](tool/combinations.md) | `@patterns/tool/combinations.mdc` | Patterns for combining multiple tools effectively |
+
+### Implementation Patterns
+
+The `implementation/` directory contains patterns for effective code implementation:
+
+| Pattern File | Reference Path | Purpose |
+|--------------|---------------|---------|
+| [Front-End Patterns](implementation/front-end.md) | `@patterns/implementation/front-end.mdc` | Patterns for effective front-end implementation |
+| [Back-End Patterns](implementation/back-end.md) | `@patterns/implementation/back-end.mdc` | Patterns for effective back-end implementation |
+| [Documentation Patterns](implementation/documentation.md) | `@patterns/implementation/documentation.mdc` | Patterns for creating comprehensive documentation |
+| [Testing Patterns](implementation/testing.md) | `@patterns/implementation/testing.mdc` | Patterns for implementing effective tests |
+| [Error Handling Patterns](implementation/error-handling.md) | `@patterns/implementation/error-handling.mdc` | Patterns for robust error handling |
+
+### Documentation Patterns
+
+The `documentation/` directory contains patterns for creating effective documentation:
+
+| Pattern File | Reference Path | Purpose |
+|--------------|---------------|---------|
+| [Conceptual Documentation](documentation/conceptual.md) | `@patterns/documentation/conceptual.mdc` | Patterns for creating clear conceptual documentation |
+| [Reference Documentation](documentation/reference.md) | `@patterns/documentation/reference.mdc` | Patterns for creating comprehensive reference documentation |
+| [Tutorial Documentation](documentation/tutorial.md) | `@patterns/documentation/tutorial.mdc` | Patterns for creating effective tutorial documentation |
+| [API Documentation](documentation/api.md) | `@patterns/documentation/api.mdc` | Patterns for documenting APIs effectively |
+
+## Pattern Usage Guide
+
+### Referencing Patterns
+
+When referencing patterns, follow these guidelines:
+
+1. **Be Specific**: Reference the most specific pattern file for your current needs
+2. **Use Complete Path**: Always include the complete reference path with `.mdc` extension
+3. **Context Matters**: Reference patterns in the context of specific actions
+
+Examples:
+```
+dev-mode: rules-workflow @patterns/tool/search.mdc
+continue-implementation: @patterns/implementation/front-end.mdc
+```
+
+### Pattern Combinations
+
+Patterns can be combined for more comprehensive guidance:
+
+```
+dev-mode: rules-workflow @patterns/tool/search.mdc @patterns/implementation/front-end.mdc
+```
+
+This loads both search patterns and front-end implementation patterns simultaneously.
+
+### When to Reference Patterns
+
+Patterns should be referenced when:
+
+1. **Starting Implementation**: Load relevant implementation patterns at the beginning
+2. **Complex Operations**: Load tool patterns for complex operations
+3. **Error Recovery**: Load error handling patterns when debugging issues
+4. **Documentation Creation**: Load documentation patterns when creating docs
+
+## Pattern Structure
+
+Each pattern file follows this consistent structure:
+
+1. **Overview**: Brief introduction to the pattern purpose
+2. **Core Patterns**: Detailed description of the core patterns
+3. **Examples**: Concrete, implementable examples
+4. **Related Knowledge**: References to related patterns
+
+This consistent structure makes patterns immediately applicable when referenced.
+
+## Related Knowledge
+
+For a higher-level overview of available patterns, reference:
+- `@reference/patterns.mdc`: Comprehensive patterns overview
+- `@reference/tool.mdc`: Tool domain knowledge overview
+- `@guides/pattern-usage.mdc`: Guide to effective pattern usage 

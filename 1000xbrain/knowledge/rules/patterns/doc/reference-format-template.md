@@ -1,0 +1,307 @@
+# USE WHEN creating documentation references, formatting file paths, or implementing consistent reference patterns
+
+# Reference Format Template
+
+## File Purpose and Relationship
+
+This file provides standardized formatting templates for all reference types used within the cognitive architecture. It establishes concrete format guidelines to ensure consistency across all documentation and minimize reference resolution issues. It should be used when:
+
+- Creating references to other files or components
+- Formatting examples containing references
+- Updating existing references to follow standards
+- Implementing reference patterns in new documentation
+
+This file is part of the documentation patterns in the knowledge/rules/patterns/doc directory and complements the reference-architecture-guide.md which provides broader reference architecture strategies.
+
+## Reference Format Standards
+
+### File Reference Format
+
+When referencing other files as direct references:
+
+1. **Brain Files (For Editing)**:
+   ```markdown
+   `core/identity/global-rules.md`
+   ```
+   - Always use `.md` extension
+   - Always wrap in backticks
+   - Use relative paths from the 1000xbrain root
+   - Include context about the reference purpose
+
+2. **Project-Rule-Parameters (For Commands)**:
+   ```markdown
+   `plan-mode: rules-workflow @parameters/rules/plan-mode.mdc`
+   ```
+   - Always use `.mdc` extension
+   - Always wrap in backticks
+   - Include the complete message-command
+   - Ensure exact path accuracy
+
+### Top-of-File Reference Format
+
+For direct file references at the top of files:
+
+```markdown
+@core/identity/global-rules.md
+@workflows/rules-workflow.md
+@core/communication/message-commands.md
+```
+
+- Only use in the first 20 lines of a file
+- No backticks required for these references
+- One reference per line
+- Place related references together
+- Include only essential references
+
+### Knowledge Component Reference Format
+
+When referencing knowledge components with fetch_rules:
+
+```markdown
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for implementation")
+```
+```
+
+- Always include clear explanation parameter
+- Use precise paths to knowledge components
+- Group related knowledge components in a single call
+- Follow standard indentation pattern
+
+### In-Text Reference Format
+
+When mentioning files in regular text:
+
+```markdown
+For more information about the message-command system, see `core/communication/message-commands.md`.
+```
+
+- Always wrap file paths in backticks
+- Use appropriate context around the reference
+- Include purpose of the reference
+- Use relative paths from the 1000xbrain root
+
+### Reference Section Format
+
+For dedicated reference sections:
+
+```markdown
+## Reference Links
+
+### Core Components
+- `core/identity/global-rules.md`: Core identity and system rules
+- `core/modes/mode-transitions.md`: Mode transition system
+
+### Implementation Components
+- `workflows/rules-workflow.md`: Rules workflow implementation
+- `workflows/rules-workflow/validation-script.md`: Parameter validation
+```
+
+- Group references by logical category
+- Include brief description of each reference
+- Use consistent formatting for all references
+- Maintain hierarchical organization
+
+## @ Symbol Protection Templates
+
+### Backtick Wrapping Format
+
+For individual @ symbol references:
+
+```markdown
+Use `@parameters/rules/verify-planning.mdc` for verification.
+```
+
+- Single backticks around the entire reference
+- No space between @ and the path
+- Include context around the reference
+
+### Code Block Format
+
+For multiple @ symbol references:
+
+````markdown
+```
+@parameters/rules/verify-planning.mdc
+@parameters/rules/validate-changes.mdc
+```
+````
+
+- Place in code block when listing multiple references
+- Use proper markdown code block syntax
+- No backticks within the code block
+
+### Message-Command Example Format
+
+For message-commands with parameters:
+
+```markdown
+Use the command `verify-planning: @parameters/rules/verify-planning.mdc` for verification.
+```
+
+- Wrap the entire command including @ symbol in backticks
+- Include the full command with colon and spaces
+- Provide context around the example
+
+## Reference Distinction Templates
+
+### Extension Distinction Format
+
+When explaining different file types:
+
+```markdown
+Edit the brain-file `core/identity/global-rules.md` to modify the source.
+
+Use the project-rule-parameter `@parameters/rules/verify-planning.mdc` in message-commands.
+```
+
+- Clearly indicate file type (brain-file vs. project-rule-parameter)
+- Use consistent terminology for file types
+- Use correct extensions (.md for brain-files, .mdc for project-rule-parameters)
+- Maintain clear separation between reference types
+
+### Reference Type Formatting
+
+For different reference types:
+
+```markdown
+## File References
+- Brain File: `core/identity/global-rules.md`
+- Project-Rule-Parameter: `@parameters/rules/verify-planning.mdc`
+
+## Command References
+- Basic Command: `plan-mode: rules-workflow`
+- With Parameter: `plan-mode: rules-workflow @parameters/rules/plan-mode.mdc`
+
+## Knowledge References
+- Knowledge Component: `fetch_rules(["knowledge/rules/guides/architecture"])`
+```
+
+- Use consistent headers for reference sections
+- Clearly label reference types
+- Group similar references together
+- Maintain consistent formatting within each type
+
+## Hierarchical Reference Templates
+
+### Parent-Child Reference Format
+
+When showing hierarchical relationships:
+
+```markdown
+Parent: `core/identity/global-rules.md`
+├── Child: `core/modes/mode-transitions.md`
+│   └── Grandchild: `workflows/rules-workflow.md`
+│       └── Great-Grandchild: `workflows/rules-workflow/validation-script.md`
+└── Child: `core/communication/message-commands.md`
+```
+
+- Use tree structure to show hierarchical relationships
+- Maintain consistent indentation
+- Clearly label relationship types
+- Show multiple levels when relevant
+
+### Reference Flow Format
+
+For showing reference chains:
+
+```markdown
+`core/identity/global-rules.md` → `workflows/rules-workflow.md` → `workflows/rules-workflow/validation-script.md`
+```
+
+- Use arrows to show reference flow
+- Backtick each file separately
+- Limit chains to 2-3 levels
+- Show direct reference paths
+
+## fetch_rules Optimization Templates
+
+### Basic fetch_rules Format
+
+```typescript
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for implementation")
+```
+
+- First parameter: Array of knowledge paths
+- Second parameter: Clear explanation
+- Proper indentation and line breaks for readability
+
+### Multiple Knowledge Component Format
+
+```typescript
+fetch_rules([
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/tool/command-patterns"
+], "Understanding tool usage patterns for efficient implementation")
+```
+
+- Array format with one path per line
+- Consistent indentation
+- Clear explanation relevant to all components
+- Group only closely related components
+
+### Progressive Knowledge Access Format
+
+```typescript
+// Basic architecture understanding
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture")
+
+// Implementation approach for feature
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Implementing feature based on established patterns")
+```
+
+- Sequence knowledge access from general to specific
+- Include comments explaining the progression
+- Clear explanation for each knowledge access
+- Logical relationship between progressive accesses
+
+## Validation and Best Practices
+
+### Format Validation Checklist
+
+Before using references, verify:
+
+1. **Extension Correctness**:
+   - Brain files (.md) for editing and documentation references
+   - Project rules (.mdc) for message-command parameters
+
+2. **Symbol Protection**:
+   - @ symbols wrapped in backticks except in first 20 lines
+   - No unprotected @ symbols in regular text
+   - Proper code blocks for multiple references
+
+3. **Path Accuracy**:
+   - Correct directory structure (core, workflows, parameters, knowledge)
+   - Accurate file names and paths
+   - Consistency in path references
+
+4. **Format Consistency**:
+   - Same format used for similar references
+   - Appropriate format for each reference type
+   - Consistent backtick usage
+
+### Implementation Best Practices
+
+1. **Minimize Reference Depth**:
+   - Limit reference chains to 2-3 levels
+   - Create direct references to frequently used files
+   - Use hierarchical organization to minimize depth
+
+2. **Group Related References**:
+   - Place related references together
+   - Create dedicated reference sections
+   - Organize references by hierarchy level
+
+3. **Reference Context**:
+   - Provide context around references
+   - Explain purpose of references
+   - Include brief descriptions of referenced content
+
+4. **Reference Evolution**:
+   - Update references when files move or change
+   - Maintain reference integrity during refactoring
+   - Regularly verify reference validity 

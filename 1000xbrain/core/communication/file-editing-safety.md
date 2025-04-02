@@ -112,7 +112,7 @@ This file establishes critical safety guidelines for file editing within the 100
 ```markdown
 # Reference files with correct extensions
 Regular path: core/identity/global-rules.md         # For file operations
-Project-rule-parameter: @knowledge/rules/plan-mode.mdc   # For message-commands
+Project-rule-parameter: @knowledge/rules/rules/plan-mode.mdc   # For message-commands
 ```
 
 ## Synchronization Process

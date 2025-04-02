@@ -11,8 +11,8 @@ This file provides guidance on the core structure and syntax for message-command
 This file complements:
 - `core/identity/global-rules.md`: Core identity and mode concepts
 - `core/modes/mode-transitions.md`: Simplified mode transition process
-- `knowledge/patterns/tool/tool-patterns.md`: Tool call standards and examples
-- `knowledge/guides/fetch-rules.md`: Standardized knowledge access
+- `knowledge/rules/patterns/tool/tool-patterns.md`: Tool call standards and examples
+- `knowledge/rules/guides/fetch-rules.md`: Standardized knowledge access
 
 ## Project-Rule-Parameter Header System
 

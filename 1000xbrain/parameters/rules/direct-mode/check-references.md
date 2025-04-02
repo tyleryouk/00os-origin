@@ -166,10 +166,10 @@ Detailed reference issues report:
 Incorrect path formats:
 - workflows/rules-workflow/rules-workflow.md: `@verify-planning.mdc` (missing path)
 - core/modes/plan-mode.md: `@rules/verify-planning.mdc` (incomplete path)
-- knowledge/rules/scan-message-commands.md: `@front-end/verify-planning.mdc` (wrong directory)
+- knowledge/rules/rules/scan-message-commands.md: `@front-end/verify-planning.mdc` (wrong directory)
 
 Wrong extensions:
-- knowledge/rules/analyze-related-rules.md: `@parameters/rules/scan-message-commands.md` (should be .mdc)
+- knowledge/rules/rules/analyze-related-rules.md: `@parameters/rules/scan-message-commands.md` (should be .mdc)
 - workflows/rules-workflow/message-commands-reference.md: `@parameters/rules/verify-implementation.md` (should be .mdc)
 
 References to non-existent files:

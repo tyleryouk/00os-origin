@@ -5,11 +5,9 @@ alwaysApply: true
 ---
 # Message Commands
 
-> **IMPORTANT UPDATE**: This file has been significantly simplified with the introduction of the project-rule-parameter header system. This eliminates the need for centralized listing of all message-commands.
-
 ## File Purpose and Relationship
 
-This file provides guidance on the core structure and syntax for message-commands in the PolygonExpress workflow system. It should be consulted when:
+This file provides guidance on the core structure and syntax for message-commands in the GigaSwap workflow system. It should be consulted when:
 
 - Understanding the core message-command structure
 - Learning about the flexible project-rule-parameter system
@@ -18,8 +16,8 @@ This file provides guidance on the core structure and syntax for message-command
 This file complements:
 - `core/identity/global-rules.md`: Core identity and mode concepts
 - `core/modes/mode-transitions.md`: Simplified mode transition process
-- `knowledge/patterns/tool/tool-patterns.md`: Tool call standards and examples
-- `knowledge/guides/fetch-rules.md`: Standardized knowledge access
+- `knowledge/rules/patterns/tool/tool-patterns.md`: Tool call standards and examples
+- `knowledge/rules/guides/fetch-rules.md`: Standardized knowledge access
 
 ## Project-Rule-Parameter Header System
 
@@ -37,49 +35,6 @@ This header pattern includes:
 - **project-rule-parameter-path**: Full path to the parameter file
 
 This self-documenting approach eliminates the need for global tracking of all message-commands and parameters.
-
-## Essential Message-Command Structure
-
-All message-commands follow a consistent structure:
-
-```
-message-command: standard-parameter @project-rule-parameter.mdc
-```
-
-Where:
-- `message-command:` is the actual command (e.g., `plan-mode:`)
-- `standard-parameter` is an optional parameter that modifies the command (e.g., `rules-workflow`)
-- `@project-rule-parameter.mdc` is an optional project-rule-parameter that provides detailed execution instructions
-
-## Simplified Message-Command Categories
-
-Message-commands are organized into two simple categories:
-
-```
-┌───────────────────────────────────────────────────────────────────────┐
-│                                                                       │
-│   SIMPLIFIED MESSAGE-COMMAND CATEGORIES                               │
-│                                                                       │
-│   ┌─────────────────────┐   ┌─────────────────────┐                   │
-│   │ ACTIVATION COMMANDS │   │ CONTINUATION COMMANDS                   │
-│   │                     │   │                     │                   │
-│   │ • plan-mode         │   │ • continue-planning │                   │
-│   │ • dev-mode          │   │ • continue-implementation               │
-│   │ • direct-mode       │   │                     │                   │
-│   └─────────────────────┘   └─────────────────────┘                   │
-│                                                                       │
-└───────────────────────────────────────────────────────────────────────┘
-```
-
-## Knowledge Access with fetch_rules Tool
-
-The `fetch_rules` tool provides standardized, self-documented access to specialized knowledge components within the cognitive architecture. Unlike message-commands which use the `@` symbol, the `fetch_rules` tool uses a function-based approach for accessing Agent Requested rules.
-
-### Basic fetch_rules Syntax
-
-```typescript
-fetch_rules(["knowledge/path/to/component"], "Explanation of why accessing")
-```
 
 ## ⚠️ CRITICAL: Project-Rule-Parameter Extension Requirements ⚠️
 

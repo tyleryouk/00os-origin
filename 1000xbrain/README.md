@@ -82,7 +82,7 @@ Failure to follow these rules has been proven to cause:
 
 **README.md Exception**: README.md files throughout 1000xbrain are for organizational purposes and documentation only. They are NOT synchronized to Cursor Rules and do not directly affect AI behavior.
 
-See the file `/knowledge/reference/architecture/brain-files-cursor-rules.md` for a complete mapping between 1000xbrain files and their corresponding Cursor Project Rules.
+See the file `/knowledge/rules/rules/reference/architecture/brain-files-cursor-rules.md` for a complete mapping between 1000xbrain files and their corresponding Cursor Project Rules.
 
 ## Rule Types and Access Methods
 
@@ -93,19 +93,19 @@ The 1000xbrain cognitive architecture uses four rule types, each with its own sp
 | `/core/` | Always | Automatic inclusion | Core identity and capabilities |
 | `/workflows/` | Auto-Attached | File pattern matching | Workflow-specific guides |
 | `/parameters/` | Manual | Project-rule-parameters | Task-specific parameters |
-| `/knowledge/` | Agent Requested | fetch_rules tool | Specialized domain knowledge |
+| `/knowledge/rules/` | Agent Requested | fetch_rules tool | Specialized domain knowledge |
 
 To access specialized knowledge components in the knowledge directory, use the fetch_rules tool:
 
 ```typescript
 // Basic usage
-fetch_rules(["knowledge/guides/architecture"], 
+fetch_rules(["knowledge/rules/guides/architecture"], 
            "Understanding system architecture")
 
 // Multiple rules
 fetch_rules([
-  "knowledge/patterns/tool/search-patterns",
-  "knowledge/patterns/tool/command-patterns"
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/tool/command-patterns"
 ], "Accessing multiple tool patterns")
 ```
 
@@ -116,7 +116,7 @@ The fetch_rules tool works in conjunction with the available_instructions sectio
 All files in the 1000xbrain directory follow consistent formatting and structure standards. For detailed guidelines, use:
 
 ```typescript
-fetch_rules(["knowledge/reference/contributions/file-standards"])
+fetch_rules(["knowledge/rules/reference/contributions/file-standards"])
 ```
 
 ## Core Components
@@ -125,17 +125,17 @@ fetch_rules(["knowledge/reference/contributions/file-standards"])
 |-----------|---------|----------|--------------|
 | [core/](core/) | Fundamental identity and cognitive capabilities | Core identity, mode system, communication protocols | Defines who 1000xdev is and how it operates |
 | [workflows/](workflows/) | Structured processes for different development domains | Rules, front-end, back-end, and documentation workflows | Controls how 1000xdev approaches different tasks |
-| [knowledge/](knowledge/) | Domain-specific implementation details and reference system | Reference guides, implementation patterns, domain knowledge | Provides specialized knowledge for implementation |
-| [knowledge/patterns/tool/](knowledge/patterns/tool/) | Tool usage patterns and utilities | Tool patterns, combinations, and cheatsheets | Effective tool usage patterns and strategies |
-| [knowledge/reference/](knowledge/reference/) | Documentation about the architecture itself | Structure guides, enhancement protocols, references | Architecture documentation and references |
-| [knowledge/patterns/impl/](knowledge/patterns/impl/) | Implementation patterns and learning mechanisms | Development journal, pattern recognition, optimizations | Implementation patterns and optimizations |
+| [knowledge/rules/](knowledge/rules/) | Domain-specific implementation details and reference system | Reference guides, implementation patterns, domain knowledge | Provides specialized knowledge for implementation |
+| [knowledge/rules/patterns/tool/](knowledge/rules/patterns/tool/) | Tool usage patterns and utilities | Tool patterns, combinations, and cheatsheets | Effective tool usage patterns and strategies |
+| [knowledge/rules/reference/](knowledge/rules/reference/) | Documentation about the architecture itself | Structure guides, enhancement protocols, references | Architecture documentation and references |
+| [knowledge/rules/patterns/impl/](knowledge/rules/patterns/impl/) | Implementation patterns and learning mechanisms | Development journal, pattern recognition, optimizations | Implementation patterns and optimizations |
 
-The knowledge/ directory serves as the primary location for all Agent Requested rules, providing a more organized, reference-optimized structure that can be accessed through the fetch_rules tool.
+The knowledge/rules/ directory serves as the primary location for all Agent Requested rules, providing a more organized, reference-optimized structure that can be accessed through the fetch_rules tool.
 
 For optimal knowledge access, use the reference indexing system:
 
 ```typescript
-fetch_rules(["knowledge/reference/index"])
+fetch_rules(["knowledge/rules/reference/index"])
 ```
 
 ## Why This Structure Matters
@@ -170,7 +170,7 @@ Each main directory in the 1000xbrain cognitive architecture is associated with 
 | `/core/` | **Always** | Fundamental identity and cognitive capabilities | Forms the baseline personality and capabilities | Automatic inclusion |
 | `/workflows/` | **Auto-Attached** | Workflow-specific guides | Shapes task-specific behaviors and approaches | File pattern matching |
 | `/parameters/` | **Manual** | Task-specific implementation details | Provides specialized knowledge on demand | `parameter: @parameters/path.mdc` |
-| `/knowledge/` | **Agent Requested** | Specialized domain expertise | Enables self-directed learning and adaptation | `fetch_rules(["knowledge/path"])` |
+| `/knowledge/rules/` | **Agent Requested** | Specialized domain expertise | Enables self-directed learning and adaptation | `fetch_rules(["knowledge/rules/path"])` |
 
 This organization ensures that each folder primarily contains files of a single rule type, avoiding confusion and maintaining a clean cognitive architecture.
 
@@ -181,8 +181,8 @@ Begin exploring with these key files:
 1. **Identity Overview**: [core/identity/global-rules.md](core/identity/global-rules.md)
 2. **Mode System**: [core/modes/mode-transitions.md](core/modes/mode-transitions.md)
 3. **Communication**: [core/communication/message-commands.md](core/communication/message-commands.md)
-4. **Architecture Map**: Access by using `fetch_rules(["knowledge/reference/architecture/structure-overview"])`
-5. **File Standards**: Access by using `fetch_rules(["knowledge/reference/contributions/file-standards"])`
+4. **Architecture Map**: Access by using `fetch_rules(["knowledge/rules/reference/architecture/structure-overview"])`
+5. **File Standards**: Access by using `fetch_rules(["knowledge/rules/reference/contributions/file-standards"])`
 
 ## For 1000xdev: My Cognitive Foundation
 

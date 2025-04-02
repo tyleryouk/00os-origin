@@ -1,0 +1,317 @@
+# USE WHEN implementing file standards, organizing document structure, or creating consistent documentation
+
+# File Standards Patterns
+
+## Overview
+
+This pattern guide provides practical implementation patterns for applying file standards consistently across the 1000xbrain cognitive architecture. Unlike the reference guide, this document focuses on implementation patterns and practical application.
+
+## Standard Document Structure Patterns
+
+### Basic Document Pattern
+
+```markdown
+# [Descriptive Title]
+
+## Overview
+
+[1-2 paragraphs explaining purpose and value]
+
+## [Main Content Section 1]
+
+[Content with practical information]
+
+## [Main Content Section 2]
+
+[More content with examples or patterns]
+
+## Relationship to Other Components
+
+[How this connects to other parts of the system]
+```
+
+### Reference Document Pattern
+
+```markdown
+# [Topic] Reference
+
+## Overview
+
+[Brief explanation of reference purpose]
+
+## Key Concepts
+
+[Essential concepts with concise explanations]
+
+## Common Patterns
+
+[Practical patterns for implementation]
+
+## Examples
+
+[Clear, copy-pastable examples]
+
+## When to Use
+
+[Guidelines for when this reference applies]
+```
+
+### Guide Document Pattern
+
+```markdown
+# [Topic] Guide
+
+## Overview
+
+[Purpose and scope of the guide]
+
+## Step-by-Step Process
+
+1. [First step with details]
+2. [Second step with details]
+3. [Third step with details]
+
+## Common Scenarios
+
+[Typical usage scenarios with guidance]
+
+## Troubleshooting
+
+[Solutions to common issues]
+```
+
+## Content Organization Patterns
+
+### Overview Section Pattern
+
+```markdown
+## Overview
+
+This [file type] provides [purpose] for [target audience]. It addresses the need for [problem solved] by [solution approach]. When used effectively, it enables [primary benefit] and [secondary benefit].
+```
+
+### Relationship Section Pattern
+
+```markdown
+## Relationship to Other Components
+
+This file connects with:
+- [Component 1]: Provides [relationship type]
+- [Component 2]: Depends on [relationship type]
+- [Component 3]: Extends [relationship type]
+
+For complete integration, see [reference file].
+```
+
+### Implementation Guidance Pattern
+
+```markdown
+## Implementation Guidance
+
+When implementing this pattern:
+
+1. **Begin with [starting point]**: Ensure [requirement]
+2. **Focus on [key aspect]**: Maintain [standard]
+3. **Verify [critical element]**: Check [verification method]
+4. **Avoid [common mistake]**: Instead, [correct approach]
+```
+
+## Symbol and Reference Usage Patterns
+
+### @ Symbol Backtick Pattern
+
+```markdown
+Reference the documentation using the proper format:
+`@reference/guides/file-standards.mdc`
+
+NOT:
+@reference/guides/file-standards.mdc
+```
+
+### File Extension Distinction Pattern
+
+```markdown
+For brain-files (editable source):
+knowledge/rules/guides/example.md
+
+For project-rule-parameters (message-commands):
+`@knowledge/rules/guides/example.mdc`
+```
+
+### Related Files Reference Pattern
+
+```markdown
+## Related Files
+
+| File | Purpose | Reference Path |
+|------|---------|----------------|
+| [File 1] | [Purpose description] | `@reference/path.mdc` |
+| [File 2] | [Purpose description] | `@reference/path.mdc` |
+| [File 3] | [Purpose description] | `@reference/path.mdc` |
+```
+
+## Code Example Patterns
+
+### TypeScript Code Block Pattern
+
+```markdown
+```typescript
+// Descriptive comment
+function exampleFunction() {
+  // Implementation details
+  const result = performOperation();
+  return result;
+}
+```
+```
+
+### Shell Command Pattern
+
+```markdown
+```bash
+# Descriptive comment
+command --parameter value
+```
+```
+
+### JSON Configuration Pattern
+
+```markdown
+```json
+{
+  "setting": "value",
+  "options": {
+    "feature1": true,
+    "feature2": false
+  }
+}
+```
+```
+
+## Checklist Implementation Pattern
+
+Use this pattern for quality control checklists:
+
+```markdown
+## Quality Checklist
+
+Before finalizing:
+
+- [ ] Verify header structure follows standards
+- [ ] Ensure all @ symbols are properly wrapped in backticks
+- [ ] Check that code examples include language specification
+- [ ] Confirm file contains proper overview section
+- [ ] Validate all file references use correct extensions
+```
+
+## Implementation Examples
+
+### Example 1: Creating a New Reference Guide
+
+```markdown
+# Search Patterns Reference
+
+## Overview
+
+This reference guide provides optimized patterns for effective codebase searching. It offers strategies for both semantic and text-based searches to maximize discovery efficiency.
+
+## Key Concepts
+
+- **Progressive Narrowing**: Start broad, then narrow scope
+- **Context Building**: Use search results to build understanding
+- **Tool Selection**: Choose appropriate search tool for the task
+
+## Common Patterns
+
+### Semantic Search Pattern
+
+1. Start with general concept search
+2. Analyze initial results to refine understanding
+3. Narrow search with more specific terms
+4. Locate key implementation files
+
+### Text Search Pattern
+
+1. Begin with exact terms or symbols
+2. Use regex for pattern matching
+3. Scope search to specific file types
+4. Filter results for relevance
+
+## Examples
+
+```typescript
+// Progressive semantic search
+codebase_search("authentication implementation")
+codebase_search("user login process")
+codebase_search("password validation")
+
+// Targeted text search
+grep_search("AuthService", true, "*.ts")
+```
+
+## When to Use
+
+- Use semantic search for concept discovery
+- Use text search for exact symbol or pattern location
+- Combine both approaches for comprehensive understanding
+```
+
+### Example 2: Creating a Workflow Guide
+
+```markdown
+# Front-End Implementation Workflow
+
+## Overview
+
+This guide outlines the standard workflow for front-end implementations in the GigaSwap system, focusing on component development and integration.
+
+## Step-by-Step Process
+
+1. **Review requirements**: Understand feature specifications
+2. **Identify components**: Determine which components need modification
+3. **Design approach**: Create implementation plan
+4. **Implement changes**: Follow established patterns
+5. **Test functionality**: Verify correct operation
+6. **Document changes**: Update relevant documentation
+
+## Common Scenarios
+
+### New Component Creation
+
+When creating a new component:
+1. Study similar existing components
+2. Follow established naming conventions
+3. Implement proper type definitions
+4. Include error handling and loading states
+
+### Component Enhancement
+
+When enhancing an existing component:
+1. Preserve existing functionality
+2. Maintain consistent styling and behavior
+3. Follow established state management patterns
+4. Update tests to cover new functionality
+
+## Troubleshooting
+
+- **Component not rendering**: Check import paths and component registration
+- **Styling inconsistencies**: Verify CSS module imports
+- **Type errors**: Ensure proper interface implementation
+- **State management issues**: Check state flow and update cycles
+```
+
+## Practical Application Tips
+
+1. **Start with templates**: Use these patterns as starting points
+2. **Maintain consistency**: Apply the same pattern across similar files
+3. **Progressive enhancement**: Improve documentation incrementally
+4. **Focus on clarity**: Optimize for understanding, not perfection
+5. **Use appropriate detail**: Match detail level to file purpose
+
+## Implementation Recommendations
+
+- Use document patterns appropriate to the file's purpose
+- Focus on practical, actionable content
+- Include examples that demonstrate best practices
+- Follow symbol usage standards consistently
+- Validate documentation against quality checklist 

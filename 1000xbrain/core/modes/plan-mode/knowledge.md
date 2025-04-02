@@ -17,17 +17,17 @@ This file outlines how to access and use specialized knowledge during Planning M
 
 ```typescript
 // Access architecture understanding for planning
-fetch_rules(["knowledge/guides/architecture"], 
+fetch_rules(["knowledge/rules/guides/architecture"], 
            "Understanding system architecture for planning implementation")
 
 // Access implementation patterns for planning
-fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
            "Finding implementation patterns for planning approach")
 
 // Access multiple related knowledge components
 fetch_rules([
-  "knowledge/guides/architecture",
-  "knowledge/patterns/impl/implementation-patterns"
+  "knowledge/rules/guides/architecture",
+  "knowledge/rules/patterns/impl/implementation-patterns"
 ], "Understanding both architecture and patterns for comprehensive planning")
 ```
 
@@ -37,25 +37,25 @@ When creating planning documentation, use these knowledge components:
 
 | Knowledge Type | fetch_rules Path | Planning Usage |
 |---------------|-----------------|---------------|
-| Architecture Guides | `knowledge/guides/architecture` | Understanding system structure |
-| Implementation Patterns | `knowledge/patterns/impl/implementation-patterns` | Planning implementation approaches |
-| Tool Patterns | `knowledge/patterns/tool/search-patterns` | Planning efficient search strategies |
-| Documentation Patterns | `knowledge/patterns/doc/file-standards` | Creating standardized documentation |
-| Domain Maps | `knowledge/reference/maps/domain-map` | Understanding knowledge relationships |
-| Cognitive Enhancement | `knowledge/guides/cognitive-enhancement` | Planning system improvements |
-| Architecture Patterns | `knowledge/patterns/impl/architecture-patterns` | Planning architectural changes |
+| Architecture Guides | `knowledge/rules/guides/architecture` | Understanding system structure |
+| Implementation Patterns | `knowledge/rules/patterns/impl/implementation-patterns` | Planning implementation approaches |
+| Tool Patterns | `knowledge/rules/patterns/tool/search-patterns` | Planning efficient search strategies |
+| Documentation Patterns | `knowledge/rules/patterns/doc/file-standards` | Creating standardized documentation |
+| Domain Maps | `knowledge/rules/reference/maps/domain-map` | Understanding knowledge relationships |
+| Cognitive Enhancement | `knowledge/rules/guides/cognitive-enhancement` | Planning system improvements |
+| Architecture Patterns | `knowledge/rules/patterns/impl/architecture-patterns` | Planning architectural changes |
 
 ## 3. Knowledge Access Best Practices
 
 1. **Access Architecture Understanding First**:
    ```typescript
-   fetch_rules(["knowledge/guides/architecture"], 
+   fetch_rules(["knowledge/rules/guides/architecture"], 
               "Understanding system architecture for planning")
    ```
 
 2. **Research Implementation Patterns**:
    ```typescript
-   fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+   fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
               "Researching implementation patterns for planning")
    ```
 
@@ -71,14 +71,14 @@ When creating planning documentation, use these knowledge components:
 4. **Combine Related Knowledge Components**:
    ```typescript
    fetch_rules([
-     "knowledge/patterns/tool/search-patterns",
-     "knowledge/patterns/tool/command-patterns"
+     "knowledge/rules/patterns/tool/search-patterns",
+     "knowledge/rules/patterns/tool/command-patterns"
    ], "Planning comprehensive tool usage strategy")
    ```
 
 5. **Include Detailed Explanations**:
    ```typescript
-   fetch_rules(["knowledge/reference/architecture/brain-files-cursor-rules"],
+   fetch_rules(["knowledge/rules/reference/architecture/brain-files-cursor-rules"],
               "Understanding brain-files and cursor-rules relationship for planning proper file structure")
    ```
 
@@ -86,27 +86,27 @@ When creating planning documentation, use these knowledge components:
 
 ### Front-End Planning
 ```typescript
-fetch_rules(["knowledge/reference/domains/front-end"],
+fetch_rules(["knowledge/rules/reference/domains/front-end"],
            "Accessing front-end specific planning patterns")
 ```
 
 ### Back-End Planning
 ```typescript
-fetch_rules(["knowledge/reference/domains/back-end"],
+fetch_rules(["knowledge/rules/reference/domains/back-end"],
            "Understanding back-end architecture for planning implementation")
 ```
 
 ### System-Wide Planning
 ```typescript
 fetch_rules([
-  "knowledge/guides/architecture",
-  "knowledge/patterns/impl/architecture-patterns",
-  "knowledge/reference/maps/domain-map"
+  "knowledge/rules/guides/architecture",
+  "knowledge/rules/patterns/impl/architecture-patterns",
+  "knowledge/rules/reference/maps/domain-map"
 ], "Comprehensive architectural understanding for system-wide planning")
 ```
 
 For detailed fetch_rules usage patterns:
 ```typescript
-fetch_rules(["knowledge/patterns/tool/fetch-rules-patterns"],
+fetch_rules(["knowledge/rules/patterns/tool/fetch-rules-patterns"],
            "Learning standardized fetch_rules patterns for planning")
 ``` 

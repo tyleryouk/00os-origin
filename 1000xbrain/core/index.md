@@ -10,12 +10,12 @@ The core-essentials.md file contains the essential information about 1000xdev's 
 
 | Topic | Path | Access Method |
 |-------|------|---------------|
-| Mode System | knowledge/reference/architecture/modes.md | `fetch_rules(["knowledge/reference/architecture/modes"])` |
-| Message Commands | knowledge/reference/architecture/message-commands.md | `fetch_rules(["knowledge/reference/architecture/message-commands"])` |
-| File Safety | knowledge/reference/architecture/file-safety.md | `fetch_rules(["knowledge/reference/architecture/file-safety"])` |
-| 1000xdev Identity | knowledge/reference/architecture/identity.md | `fetch_rules(["knowledge/reference/architecture/identity"])` |
-| Knowledge Access | knowledge/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/reference/architecture/knowledge-access"])` |
-| Simplified Commands | knowledge/guides/simplified-message-commands.md | `fetch_rules(["knowledge/guides/simplified-message-commands"])` |
+| Mode System | knowledge/rules/reference/architecture/modes.md | `fetch_rules(["knowledge/rules/reference/architecture/modes"])` |
+| Message Commands | knowledge/rules/reference/architecture/message-commands.md | `fetch_rules(["knowledge/rules/reference/architecture/message-commands"])` |
+| File Safety | knowledge/rules/reference/architecture/file-safety.md | `fetch_rules(["knowledge/rules/reference/architecture/file-safety"])` |
+| 1000xdev Identity | knowledge/rules/reference/architecture/identity.md | `fetch_rules(["knowledge/rules/reference/architecture/identity"])` |
+| Knowledge Access | knowledge/rules/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/rules/reference/architecture/knowledge-access"])` |
+| Simplified Commands | knowledge/rules/guides/simplified-message-commands.md | `fetch_rules(["knowledge/rules/guides/simplified-message-commands"])` |
 
 ## Mode-Specific Information
 
@@ -23,9 +23,9 @@ For detailed information about each mode, refer to the following knowledge compo
 
 | Mode | Path | Access Method |
 |------|------|---------------|
-| Planning Mode | knowledge/reference/architecture/modes.md | `fetch_rules(["knowledge/reference/architecture/modes"])` |
-| Developer Mode | knowledge/reference/architecture/modes.md | `fetch_rules(["knowledge/reference/architecture/modes"])` |
-| Direct Mode | knowledge/reference/architecture/modes.md | `fetch_rules(["knowledge/reference/architecture/modes"])` |
+| Planning Mode | knowledge/rules/reference/architecture/modes.md | `fetch_rules(["knowledge/rules/reference/architecture/modes"])` |
+| Developer Mode | knowledge/rules/reference/architecture/modes.md | `fetch_rules(["knowledge/rules/reference/architecture/modes"])` |
+| Direct Mode | knowledge/rules/reference/architecture/modes.md | `fetch_rules(["knowledge/rules/reference/architecture/modes"])` |
 
 ## Message Command Information
 
@@ -33,9 +33,9 @@ For detailed information about message commands, refer to the following knowledg
 
 | Topic | Path | Access Method |
 |-------|------|---------------|
-| Basic Commands | knowledge/reference/architecture/message-commands.md | `fetch_rules(["knowledge/reference/architecture/message-commands"])` |
-| Simplified System | knowledge/guides/simplified-message-commands.md | `fetch_rules(["knowledge/guides/simplified-message-commands"])` |
-| Project Rule Parameters | knowledge/reference/architecture/message-commands.md | `fetch_rules(["knowledge/reference/architecture/message-commands"])` |
+| Basic Commands | knowledge/rules/reference/architecture/message-commands.md | `fetch_rules(["knowledge/rules/reference/architecture/message-commands"])` |
+| Simplified System | knowledge/rules/guides/simplified-message-commands.md | `fetch_rules(["knowledge/rules/guides/simplified-message-commands"])` |
+| Project Rule Parameters | knowledge/rules/reference/architecture/message-commands.md | `fetch_rules(["knowledge/rules/reference/architecture/message-commands"])` |
 
 ## File Safety Information
 
@@ -43,9 +43,9 @@ For detailed information about file editing safety, refer to the following knowl
 
 | Topic | Path | Access Method |
 |-------|------|---------------|
-| File Editing Safety | knowledge/reference/architecture/file-safety.md | `fetch_rules(["knowledge/reference/architecture/file-safety"])` |
-| Brain-Files vs. Cursor-Rules | knowledge/reference/architecture/file-safety.md | `fetch_rules(["knowledge/reference/architecture/file-safety"])` |
-| Symbol Protection | knowledge/reference/architecture/file-safety.md | `fetch_rules(["knowledge/reference/architecture/file-safety"])` |
+| File Editing Safety | knowledge/rules/reference/architecture/file-safety.md | `fetch_rules(["knowledge/rules/reference/architecture/file-safety"])` |
+| Brain-Files vs. Cursor-Rules | knowledge/rules/reference/architecture/file-safety.md | `fetch_rules(["knowledge/rules/reference/architecture/file-safety"])` |
+| Symbol Protection | knowledge/rules/reference/architecture/file-safety.md | `fetch_rules(["knowledge/rules/reference/architecture/file-safety"])` |
 
 ## Knowledge Access Information
 
@@ -53,10 +53,10 @@ For detailed information about the knowledge access system, refer to the followi
 
 | Topic | Path | Access Method |
 |-------|------|---------------|
-| Knowledge System | knowledge/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/reference/architecture/knowledge-access"])` |
-| fetch_rules Tool | knowledge/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/reference/architecture/knowledge-access"])` |
-| Knowledge Directory | knowledge/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/reference/architecture/knowledge-access"])` |
-| Best Practices | knowledge/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/reference/architecture/knowledge-access"])` |
+| Knowledge System | knowledge/rules/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/rules/reference/architecture/knowledge-access"])` |
+| fetch_rules Tool | knowledge/rules/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/rules/reference/architecture/knowledge-access"])` |
+| Knowledge Directory | knowledge/rules/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/rules/reference/architecture/knowledge-access"])` |
+| Best Practices | knowledge/rules/reference/architecture/knowledge-access.md | `fetch_rules(["knowledge/rules/reference/architecture/knowledge-access"])` |
 
 ## Why This Approach
 

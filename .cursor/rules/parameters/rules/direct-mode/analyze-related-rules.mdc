@@ -1,4 +1,5 @@
-# Analyze Related Rules
+# workflow: rules-workflow | pathway: none | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/performance.mdc
+
 
 ## File Purpose and Relationship
 
@@ -18,7 +19,7 @@ This file complements:
 
 To perform relationship analysis, the following context is required:
 
-1. Access to all 1000xbrain files, particularly in the knowledge/rules directory
+1. Access to all 1000xbrain files, particularly in the knowledge/rules/rules directory
 2. Understanding of the message-command system
 3. Knowledge of the project-rule-parameter reference patterns
 
@@ -29,11 +30,11 @@ To perform relationship analysis, the following context is required:
 First, create a comprehensive inventory of all project rules:
 
 ```typescript
-// List all files in the knowledge/rules directory
-list_dir("1000xbrain/knowledge/rules")
+// List all files in the knowledge/rules/rules directory
+list_dir("1000xbrain/knowledge/rules/rules")
 
 // Get file count to understand scope
-run_terminal_cmd("Get-ChildItem -Path '1000xbrain/knowledge/rules' -File | Measure-Object | Select-Object -ExpandProperty Count", false, false)
+run_terminal_cmd("Get-ChildItem -Path '1000xbrain/knowledge/rules/rules' -File | Measure-Object | Select-Object -ExpandProperty Count", false, false)
 ```
 
 ### 2. Reference Extraction
@@ -42,10 +43,10 @@ Extract all cross-references between project rules:
 
 ```typescript
 // Find all references to other project rules
-grep_search("@knowledge/rules/[a-z0-9-]+\.mdc", false, "1000xbrain/knowledge/rules/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\.mdc", false, "1000xbrain/knowledge/rules/rules/*.md")
 
 // Find all references in message-commands documentation
-grep_search("message-command.*@knowledge/rules", false, "1000xbrain/**/*.md")
+grep_search("message-command.*@knowledge/rules/rules", false, "1000xbrain/**/*.md")
 ```
 
 ### 3. Dependency Mapping
@@ -54,7 +55,7 @@ Create a dependency map showing which rules rely on others:
 
 ```typescript
 // For each rule, find what other rules reference it
-grep_search("@knowledge/rules/specific-rule.mdc", false, "1000xbrain/knowledge/rules/*.md")
+grep_search("@knowledge/rules/rules/specific-rule.mdc", false, "1000xbrain/knowledge/rules/rules/*.md")
 ```
 
 ### 4. Consistency Verification
@@ -63,10 +64,10 @@ Verify that references are consistent across all rules:
 
 ```typescript
 // Check for consistent path format
-grep_search("@(?!knowledge/rules/)[^\\s]+\\.mdc", false, "1000xbrain/knowledge/rules/*.md")
+grep_search("@(?!knowledge/rules/rules/)[^\\s]+\\.mdc", false, "1000xbrain/knowledge/rules/rules/*.md")
 
 // Check for consistent extension usage
-grep_search("@knowledge/rules/[a-z0-9-]+\\.md[^c]", false, "1000xbrain/knowledge/rules/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\\.md[^c]", false, "1000xbrain/knowledge/rules/rules/*.md")
 ```
 
 ### 5. Impact Analysis
@@ -75,10 +76,10 @@ Analyze the potential impact of changes to specific rules:
 
 ```typescript
 // For a specific rule, identify all dependent rules
-grep_search("@knowledge/rules/target-rule.mdc", false, "1000xbrain/**/*.md")
+grep_search("@knowledge/rules/rules/target-rule.mdc", false, "1000xbrain/**/*.md")
 
 // Check for implementation dependencies
-codebase_search("specific rule implementation pattern", ["1000xbrain/knowledge/rules"])
+codebase_search("specific rule implementation pattern", ["1000xbrain/knowledge/rules/rules"])
 ```
 
 ## Expected Outputs
@@ -96,7 +97,7 @@ Common issues and their resolutions:
 
 | Issue | Resolution |
 |-------|------------|
-| Inconsistent reference formats | Standardize to `@knowledge/rules/filename.mdc` format |
+| Inconsistent reference formats | Standardize to `@knowledge/rules/rules/filename.mdc` format |
 | Circular dependencies | Break circular relationships by refactoring rules |
 | Orphaned rules | Document or remove rules with no incoming references |
 | Missing references | Add proper backtick-wrapped references |
@@ -111,7 +112,7 @@ Common issues and their resolutions:
 Related rules analysis complete.
 
 Rule inventory:
-- 47 rules in knowledge/rules directory
+- 47 rules in knowledge/rules/rules directory
 
 Dependency highlights:
 - Core rules (mode-transitions.md, core-essentials.md) referenced by 15+ other rules
@@ -126,7 +127,7 @@ Reference consistency:
 - 2 rules use incorrect extensions
 
 Recommendations:
-- Standardize all references to @knowledge/rules/*.mdc format
+- Standardize all references to @knowledge/rules/rules/*.mdc format
 - Add cross-references to 4 under-referenced rules
 - Consider consolidating 2 rules with significant overlap
 ```
@@ -164,16 +165,16 @@ For more efficient analysis, the following tool sequence can be used:
 
 ```typescript
 // 1. Create rule inventory
-list_dir("1000xbrain/knowledge/rules")
+list_dir("1000xbrain/knowledge/rules/rules")
 
 // 2. Extract all cross-references
-grep_search("@knowledge/rules/[a-z0-9-]+\.mdc", false, "1000xbrain/knowledge/rules/*.md")
+grep_search("@knowledge/rules/rules/[a-z0-9-]+\.mdc", false, "1000xbrain/knowledge/rules/rules/*.md")
 
 // 3. For specific rule analysis
-grep_search("@knowledge/rules/target-rule.mdc", false, "1000xbrain/**/*.md")
+grep_search("@knowledge/rules/rules/target-rule.mdc", false, "1000xbrain/**/*.md")
 
 // 4. Check for inconsistencies
-grep_search("@(?!knowledge/rules/)[^\\s]+\\.mdc", false, "1000xbrain/knowledge/rules/*.md")
+grep_search("@(?!knowledge/rules/rules/)[^\\s]+\\.mdc", false, "1000xbrain/knowledge/rules/rules/*.md")
 
 // 5. Document findings
 edit_file("planning/rules-analysis/analysis-results.md", 

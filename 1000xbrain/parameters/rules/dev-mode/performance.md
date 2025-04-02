@@ -1,4 +1,4 @@
-# Dev Mode: Performance Optimization
+# workflow: rules-workflow | pathway: performance | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/performance.mdc
 
 ## File Purpose and Relationship
 
@@ -10,9 +10,9 @@ This file defines the specific operation of the `dev-mode: rules-workflow @param
 - Verification strategies for performance improvements
 
 This file complements:
-- `fetch_rules(["knowledge/reference/guides/implementation-patterns"])`: Implementation continuation protocols
+- `fetch_rules(["knowledge/rules/reference/guides/implementation-patterns"])`: Implementation continuation protocols
 - `@parameters/rules/plan-mode-performance.mdc`: Planning guidance for performance optimizations
-- `fetch_rules(["knowledge/patterns/impl/implementation-patterns"])`: Overall rules workflow
+- `fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"])`: Overall rules workflow
 
 ## Usage as Project-Rule-Parameter
 

@@ -42,7 +42,7 @@ All implementations should follow this knowledge-enhanced process:
 
 ```typescript
 // Access implementation patterns before making changes
-fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
            "Finding patterns for feature implementation")
 ```
 
@@ -88,7 +88,7 @@ When encountering errors, follow this knowledge-enhanced approach:
 
 1. **Access Error Handling Knowledge**: Get standardized error handling patterns
    ```typescript
-   fetch_rules(["knowledge/patterns/impl/error-handling"], 
+   fetch_rules(["knowledge/rules/patterns/impl/error-handling"], 
               "Accessing error handling patterns for debugging")
    ```
 
@@ -101,7 +101,7 @@ When encountering errors, follow this knowledge-enhanced approach:
 
 | Error Type | Resolution Approach | Knowledge Access |
 |------------|-------------------|------------------|
-| **Type Errors** | Add proper type annotations | `fetch_rules(["knowledge/patterns/impl/typescript-patterns"])` |
-| **API Integration** | Verify endpoints and add error handling | `fetch_rules(["knowledge/patterns/impl/api-patterns"])` |
-| **State Management** | Use proper state update patterns | `fetch_rules(["knowledge/patterns/impl/state-management"])` |
-| **Network Errors** | Add retry logic and error handling | `fetch_rules(["knowledge/patterns/impl/network-handling"])` | 
+| **Type Errors** | Add proper type annotations | `fetch_rules(["knowledge/rules/patterns/impl/typescript-patterns"])` |
+| **API Integration** | Verify endpoints and add error handling | `fetch_rules(["knowledge/rules/patterns/impl/api-patterns"])` |
+| **State Management** | Use proper state update patterns | `fetch_rules(["knowledge/rules/patterns/impl/state-management"])` |
+| **Network Errors** | Add retry logic and error handling | `fetch_rules(["knowledge/rules/patterns/impl/network-handling"])` | 

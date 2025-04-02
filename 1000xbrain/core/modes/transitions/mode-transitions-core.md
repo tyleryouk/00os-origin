@@ -124,15 +124,15 @@ During mode transitions, the `fetch_rules` tool provides access to specialized k
 
 ```typescript
 // Access transition patterns
-fetch_rules(["knowledge/patterns/impl/mode-transition-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/mode-transition-patterns"], 
            "Understanding effective mode transition patterns")
 
 // Access implementation preparation patterns
-fetch_rules(["knowledge/patterns/impl/implementation-preparation"], 
+fetch_rules(["knowledge/rules/patterns/impl/implementation-preparation"], 
            "Preparing for implementation phase transition")
 
 // Access direct-mode research patterns
-fetch_rules(["knowledge/patterns/impl/direct-mode-research-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/direct-mode-research-patterns"], 
            "Optimizing research phase in direct implementation mode")
 ```
 

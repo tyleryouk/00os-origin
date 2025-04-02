@@ -1,0 +1,171 @@
+# USE WHEN finding reference materials, navigating the knowledge system, or accessing domain knowledge
+
+# Knowledge Reference Index
+
+## Overview
+
+This central index provides access to the comprehensive knowledge reference system in the 1000xbrain cognitive architecture. It serves as the main navigation point for accessing all reference materials across different knowledge domains.
+
+## Knowledge Domains
+
+| Domain | Description | Primary Index |
+|--------|-------------|---------------|
+| Tool | Tool usage patterns and standards | [domains/tool.md](domains/tool.md) |
+| Architecture | System structure and relationships | [architecture.md](architecture.md) |
+| Implementation | Implementation patterns and standards | [domains/implementation.md](domains/implementation.md) |
+| Documentation | Documentation standards and patterns | [guides/file-standards.md](guides/file-standards.md) |
+| Meta | Cognitive architecture self-understanding | [domains/meta.md](domains/meta.md) |
+| Memory | Learning and pattern recognition | [domains/memory.md](domains/memory.md) |
+
+## Core Reference Guides
+
+### System References
+
+| Reference | Purpose | Path |
+|-----------|---------|------|
+| Architecture Reference | Comprehensive system architecture | [architecture.md](architecture.md) |
+| Mode System Architecture | Mode system details and usage | [architecture/modes.md](architecture/modes.md) |
+| Message Command Reference | Message command system details | [architecture/message-commands.md](architecture/message-commands.md) |
+| File Editing Safety | File editing safety guidelines | [architecture/file-safety.md](architecture/file-safety.md) |
+| 1000xdev Identity | 1000xdev identity details | [architecture/identity.md](architecture/identity.md) |
+| Knowledge Access System | Knowledge access details and patterns | [architecture/knowledge-access.md](architecture/knowledge-access.md) |
+| Knowledge System Guide | Knowledge organization and usage | [guides/knowledge-system.md](guides/knowledge-system.md) |
+| File Standards Guide | Documentation format standards | [guides/file-standards.md](guides/file-standards.md) |
+| Document Types Map | Document structure and purpose | [maps/document-types.md](maps/document-types.md) |
+| Terminology Standards | Standardized terminology guide | [guides/terminology-standards.md](guides/terminology-standards.md) |
+| Project Rule Parameters | Parameter reference guide | [guides/project-rule-parameter.md](guides/project-rule-parameter.md) |
+| Memory Structures | Memory system organization | [guides/memory-structures.md](guides/memory-structures.md) |
+| Simplified Message-Commands | Guide to simplified message-commands | [guides/simplified-message-commands.md](../../guides/simplified-message-commands.md) |
+
+### Tool References
+
+| Reference | Purpose | Path |
+|-----------|---------|------|
+| Tool Patterns | Tool usage pattern collection | [guides/tool-patterns.md](guides/tool-patterns.md) |
+| Search Tools | Search tool optimization guide | [guides/search-tools.md](guides/search-tools.md) |
+
+### Implementation References
+
+| Reference | Purpose | Path |
+|-----------|---------|------|
+| Implementation Patterns | Implementation pattern collection | [guides/implementation-patterns.md](guides/implementation-patterns.md) |
+
+## Reference Maps
+
+Maps provide visual and structured guides to relationships and organization:
+
+| Map | Purpose | Path |
+|-----|---------|------|
+| Domain Map | Knowledge domain relationships | [maps/domain-map.md](maps/domain-map.md) |
+| Document Types Map | Document classification and structure | [maps/document-types.md](maps/document-types.md) |
+
+## Examples
+
+Reference examples demonstrate proper implementation:
+
+| Example | Purpose | Path |
+|---------|---------|------|
+| File Standards Example | File formatting demonstration | [examples/file-standards-example.md](examples/file-standards-example.md) |
+
+## Reference Path System
+
+### Standard Reference Format
+
+Standard references use the full path to the knowledge file:
+
+```
+message-command: @parameters/reference/guides/tool-patterns.mdc
+```
+
+### Shortcut Reference Format
+
+Shortcut references use simplified paths for common references:
+
+```
+message-command: @reference/guides/tool-patterns.mdc
+```
+
+See [shortcut-references.md](shortcut-references.md) for the complete shortcut reference system.
+
+## Using This Reference Index
+
+1. **Start here** for any knowledge navigation needs
+2. Navigate to the appropriate domain index for domain-specific knowledge
+3. Access specific reference guides for detailed information
+4. Use reference maps for understanding relationships between components
+5. Reference the shortcut system for simplified access patterns
+
+## Reference Loading Patterns
+
+### Basic Knowledge Loading
+
+For fundamental understanding of knowledge organization:
+
+```
+message-command: @reference/index.mdc @reference/guides/knowledge-system.mdc
+```
+
+### Mode System Knowledge
+
+For understanding the mode system and message-commands:
+
+```
+fetch_rules(["knowledge/rules/reference/architecture/modes", "knowledge/rules/reference/architecture/message-commands"], 
+           "Understanding mode system and message-commands")
+```
+
+### File Safety and Identity
+
+For understanding file safety guidelines and 1000xdev identity:
+
+```
+fetch_rules(["knowledge/rules/reference/architecture/file-safety", "knowledge/rules/reference/architecture/identity"], 
+           "Understanding file safety and identity")
+```
+
+### Tool-Related Knowledge
+
+For comprehensive tool usage knowledge:
+
+```
+message-command: @reference/domains/tool.mdc @reference/guides/tool-patterns.mdc
+```
+
+### Documentation Standards
+
+For understanding documentation standards and patterns:
+
+```
+message-command: @reference/guides/file-standards.mdc @reference/maps/document-types.mdc
+```
+
+### Knowledge System Understanding
+
+For understanding the complete knowledge architecture:
+
+```
+fetch_rules(["knowledge/rules/reference/architecture/knowledge-access", "knowledge/rules/reference/maps/domain-map"], 
+           "Understanding knowledge architecture")
+```
+
+### Terminology and References
+
+For standardized terminology and project rule parameters:
+
+```
+message-command: @reference/guides/terminology-standards.mdc @reference/guides/project-rule-parameter.mdc
+```
+
+### Memory System Knowledge
+
+For understanding memory structures and pattern systems:
+
+```
+message-command: @reference/guides/memory-structures.mdc @reference/domains/memory.mdc
+```
+
+## Related Guides
+
+- Cognitive Enhancement: `@guides/cognitive-enhancement.mdc`
+- Architecture Guide: `@guides/architecture.mdc`
+- Simplified Message-Commands: `fetch_rules(["knowledge/rules/guides/simplified-message-commands"])` 

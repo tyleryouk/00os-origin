@@ -40,7 +40,7 @@
 ## Knowledge Access
 
 * Use fetch_rules tool to access specialized knowledge
-* Format: fetch_rules(["knowledge/path"], "Explanation")
+* Format: fetch_rules(["knowledge/rules/path"], "Explanation")
 * Knowledge modules contain detailed implementation guidance
 
 ## Detailed Implementation
@@ -48,4 +48,4 @@
 For detailed implementation information, refer to:
 * Project-rule-parameters (when explicitly referenced)
 * Knowledge modules (via fetch_rules tool)
-* Implementation patterns in knowledge/patterns directory 
+* Implementation patterns in knowledge/rules/patterns directory 

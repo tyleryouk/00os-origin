@@ -40,17 +40,17 @@ During mode transitions, verify proper context handling:
 
 ```typescript
 // Context management knowledge
-fetch_rules(["knowledge/patterns/impl/context-management"], 
+fetch_rules(["knowledge/rules/patterns/impl/context-management"], 
            "Understanding context management during transitions")
 
 // Mode-specific context patterns
-fetch_rules(["knowledge/patterns/impl/mode-context-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/mode-context-patterns"], 
            "Accessing mode-specific context patterns")
 
 // Transition context optimization
 fetch_rules([
-  "knowledge/patterns/impl/context-optimization",
-  "knowledge/patterns/impl/transition-optimization"
+  "knowledge/rules/patterns/impl/context-optimization",
+  "knowledge/rules/patterns/impl/transition-optimization"
 ], "Optimizing context handling during transitions")
 ```
 
@@ -103,15 +103,15 @@ During direct mode, access relevant knowledge components:
 
 ```typescript
 // Direct mode research patterns
-fetch_rules(["knowledge/patterns/impl/direct-mode-research"], 
+fetch_rules(["knowledge/rules/patterns/impl/direct-mode-research"], 
            "Understanding optimal research patterns for direct implementation")
 
 // Pattern discovery and application
-fetch_rules(["knowledge/patterns/impl/pattern-discovery"], 
+fetch_rules(["knowledge/rules/patterns/impl/pattern-discovery"], 
            "Discovering implementation patterns from existing code")
 
 // Direct implementation verification
-fetch_rules(["knowledge/patterns/impl/direct-verification"], 
+fetch_rules(["knowledge/rules/patterns/impl/direct-verification"], 
            "Verifying direct implementations without planning documentation")
 ```
 

@@ -114,9 +114,9 @@ The cognitive architecture includes a sophisticated knowledge access system that
 
 The knowledge directory is organized into specialized categories:
 
-1. **Reference**: Central knowledge reference system (`knowledge/reference/*`)
-2. **Patterns**: Consolidated pattern repository (`knowledge/patterns/*`)
-3. **Guides**: Implementation guides for common tasks (`knowledge/guides/*`)
+1. **Reference**: Central knowledge reference system (`knowledge/rules/reference/*`)
+2. **Patterns**: Consolidated pattern repository (`knowledge/rules/patterns/*`)
+3. **Guides**: Implementation guides for common tasks (`knowledge/rules/guides/*`)
 
 ### Using fetch_rules Tool
 
@@ -133,19 +133,19 @@ All knowledge access should follow these standard patterns:
 
 ```typescript
 // Basic pattern with explanation
-fetch_rules(["knowledge/guides/architecture"], 
+fetch_rules(["knowledge/rules/guides/architecture"], 
            "Understanding system architecture for implementation")
 
 // Multiple rules pattern
 fetch_rules([
-  "knowledge/patterns/tool/search-patterns",
-  "knowledge/patterns/tool/command-patterns"
+  "knowledge/rules/patterns/tool/search-patterns",
+  "knowledge/rules/patterns/tool/command-patterns"
 ], "Accessing tool patterns for efficient implementation")
 ```
 
 For detailed usage patterns, use:
 ```typescript
-fetch_rules(["knowledge/patterns/tool/fetch-rules-patterns"],
+fetch_rules(["knowledge/rules/patterns/tool/fetch-rules-patterns"],
            "Accessing standardized fetch_rules usage patterns")
 ```
 
@@ -159,7 +159,7 @@ When implementing complex features or understanding system components, use `fetc
 
 For complete documentation on using the fetch_rules tool, use:
 ```typescript
-fetch_rules(["knowledge/guides/fetch-rules"],
+fetch_rules(["knowledge/rules/guides/fetch-rules"],
            "Understanding fetch_rules tool usage")
 ```
 
@@ -460,7 +460,7 @@ For maximum efficiency, follow these sequence patterns:
 
 ```typescript
 // 1. Access relevant knowledge
-fetch_rules(["knowledge/patterns/impl/implementation-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
            "Understanding implementation patterns for feature")
 
 // 2. Find relevant files
@@ -529,7 +529,7 @@ The 1000xbrain cognitive architecture is organized into three core components:
    - Domain-specific implementation guidance
 
 3. **Knowledge Components**: Specialized implementation knowledge
-   - Located in `/knowledge/` directory 
+   - Located in `/knowledge/rules/` directory 
    - Patterns: Implementation and tool usage patterns
    - Reference: Guides, architectural information, and examples
    - Domains: Technical domain knowledge

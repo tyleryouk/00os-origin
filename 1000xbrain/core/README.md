@@ -62,7 +62,7 @@ The core rules use a dual-approach to prevent context overload:
 
 1. **Follow Cognitive Enhancement Guidelines**: 
    ```typescript
-   fetch_rules(["knowledge/reference/architecture/cognitive-enhancement-guide"], 
+   fetch_rules(["knowledge/rules/reference/architecture/cognitive-enhancement-guide"], 
               "Understanding cognitive enhancement guidelines")
    ```
 2. **Consider System-Wide Impact**: Core changes affect all behaviors
@@ -136,7 +136,7 @@ When enhancing core brain-files, follow this process:
 
 For detailed enhancement guidelines, use:
 ```typescript
-fetch_rules(["knowledge/reference/architecture/cognitive-enhancement-guide"], 
+fetch_rules(["knowledge/rules/reference/architecture/cognitive-enhancement-guide"], 
            "Understanding cognitive enhancement process")
 ```
 

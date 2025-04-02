@@ -105,17 +105,17 @@ These knowledge components are particularly valuable during transition handling:
 
 ```typescript
 // Access mode transition patterns
-fetch_rules(["knowledge/patterns/impl/mode-transition-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/mode-transition-patterns"], 
            "Understanding effective mode transition patterns")
 
 // Access context management patterns
-fetch_rules(["knowledge/patterns/impl/context-management"], 
+fetch_rules(["knowledge/rules/patterns/impl/context-management"], 
            "Managing context during mode transitions")
 
 // Access recovery patterns
 fetch_rules([
-  "knowledge/patterns/impl/error-recovery",
-  "knowledge/patterns/impl/state-recovery"
+  "knowledge/rules/patterns/impl/error-recovery",
+  "knowledge/rules/patterns/impl/state-recovery"
 ], "Accessing recovery patterns for transition issues")
 ```
 

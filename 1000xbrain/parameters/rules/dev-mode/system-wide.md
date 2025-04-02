@@ -1,38 +1,5 @@
-# Dev Mode: System-Wide Enhancement
+# workflow: rules-workflow | pathway: system-wide | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/system-wide.mdc
 
-## File Purpose and Relationship
-
-This file defines the specific operation of the `dev-mode: rules-workflow @parameters/rules/dev-mode-system-wide.mdc` message-command, which initializes developer mode with a focus on system-wide enhancement implementation. It should be consulted to understand:
-
-- How to implement comprehensive system-wide enhancements
-- Specialized implementation structure for cross-component changes
-- Tool call sequences for coordinated multi-component implementation
-- Verification strategies for system-wide improvements
-
-This file complements:
-- `@parameters/rules/continue-implementation.mdc`: Implementation continuation protocols
-- `@parameters/rules/plan-mode-system-wide.mdc`: Planning guidance for system-wide enhancements
-- `fetch_rules(["knowledge/reference/architecture/brain-files-cursor-rules"])`: Overall rules workflow
-
-## Project Rule Parameter
-
-Loyal to: dev-mode: @parameters/rules/dev-mode-system-wide.mdc
-
-## Call Pattern
-
-Message-Command: dev-mode
-Standard-Parameters: rules-workflow
-Example: `dev-mode: rules-workflow @dev-mode-system-wide.mdc`
-
-## Usage as Project-Rule-Parameter
-
-This file contains specialized implementation details for system-wide enhancement development. It should be referenced as a project-rule-parameter when initializing implementation for comprehensive system improvements:
-
-```
-dev-mode: rules-workflow @parameters/rules/dev-mode-system-wide.mdc
-```
-
-For general implementation or other enhancement pathways, see the alternative project-rule-parameters listed in `@parameters/rules/dev-mode-rules-workflow.mdc`.
 
 ## 1. System-Wide Enhancement Implementation Overview
 
@@ -56,7 +23,12 @@ The system-wide enhancement implementation pathway provides a specialized execut
 When the `dev-mode: rules-workflow @parameters/rules/dev-mode-system-wide.mdc` message-command is received, 1000xdev will:
 
 1. **Initialize Developer Mode**: Enter or remain in Developer Mode with the 💻 1000xdev [rules-workflow] indicator
-2. **Analyze System-Wide Plan**: Review the comprehensive implementation plan from the planning folder
+2. **Analyze System-Wide Plan**: Review the following planning-folder-files in order:
+README.md
+implementation-progress.md
+context-files (all context-files)
+implementation-files (all implementation-files)
+tool-call-cheatsheet.md
 3. **Create Implementation Progress Tracking**: Set up tracking for cross-component changes
 4. **Execute Coordinated Changes**: Implement changes across multiple components in a coordinated sequence
 5. **Verify System-Wide Integrity**: Test the entire system's functionality after changes
@@ -354,18 +326,18 @@ When implementing system-wide enhancements, use the `fetch_rules` tool to access
 
 ```typescript
 // Access architecture understanding for system-wide implementation
-fetch_rules(["knowledge/guides/architecture"], 
+fetch_rules(["knowledge/rules/guides/architecture"], 
            "Understanding system architecture for comprehensive implementation")
 
 // Access implementation patterns for consistent changes
-fetch_rules(["knowledge/patterns/impl/architecture-patterns"], 
+fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"], 
            "Implementing consistent architectural patterns across the system")
 
 // Access multiple knowledge components for complex implementations
 fetch_rules([
-  "knowledge/guides/architecture",
-  "knowledge/patterns/impl/architecture-patterns",
-  "knowledge/reference/maps/domain-map"
+  "knowledge/rules/guides/architecture",
+  "knowledge/rules/patterns/impl/architecture-patterns",
+  "knowledge/rules/reference/maps/domain-map"
 ], "Comprehensive architectural understanding for system-wide implementation")
 ```
 
@@ -375,11 +347,11 @@ When implementing system-wide enhancements, these knowledge components are parti
 
 | Knowledge Component | fetch_rules Path | Usage |
 |---------------------|-----------------|-------|
-| Architecture Guide | `knowledge/guides/architecture` | Understanding system architecture |
-| Architecture Patterns | `knowledge/patterns/impl/architecture-patterns` | Consistent architectural implementation |
-| Domain Map | `knowledge/reference/maps/domain-map` | Understanding relationships between components |
-| Cognitive Enhancement | `knowledge/guides/cognitive-enhancement` | System-wide enhancement approaches |
-| File Standards | `knowledge/patterns/doc/file-standards` | Consistent file structure |
+| Architecture Guide | `knowledge/rules/guides/architecture` | Understanding system architecture |
+| Architecture Patterns | `knowledge/rules/patterns/impl/architecture-patterns` | Consistent architectural implementation |
+| Domain Map | `knowledge/rules/reference/maps/domain-map` | Understanding relationships between components |
+| Cognitive Enhancement | `knowledge/rules/guides/cognitive-enhancement` | System-wide enhancement approaches |
+| File Standards | `knowledge/rules/patterns/doc/file-standards` | Consistent file structure |
 
 ### Knowledge Access Best Practices for System-Wide Enhancements
 
@@ -387,39 +359,39 @@ For optimal knowledge access during system-wide enhancement implementation:
 
 1. **Start with Architecture Understanding**: Begin with comprehensive architectural knowledge
    ```typescript
-   fetch_rules(["knowledge/guides/architecture"], 
+   fetch_rules(["knowledge/rules/guides/architecture"], 
               "Understanding system architecture for comprehensive implementation")
    ```
 
 2. **Access Implementation Patterns**: Ensure consistent implementation
    ```typescript
-   fetch_rules(["knowledge/patterns/impl/architecture-patterns"], 
+   fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"], 
               "Accessing architectural patterns for consistent implementation")
    ```
 
 3. **Understand Component Relationships**: Map dependencies between components
    ```typescript
-   fetch_rules(["knowledge/reference/maps/domain-map"], 
+   fetch_rules(["knowledge/rules/reference/maps/domain-map"], 
               "Understanding component relationships for coordinated implementation")
    ```
 
 4. **Combine Related Knowledge Components**: For complete understanding
    ```typescript
    fetch_rules([
-     "knowledge/guides/architecture",
-     "knowledge/patterns/impl/architecture-patterns",
-     "knowledge/reference/maps/domain-map"
+     "knowledge/rules/guides/architecture",
+     "knowledge/rules/patterns/impl/architecture-patterns",
+     "knowledge/rules/reference/maps/domain-map"
    ], "Comprehensive understanding for system-wide implementation")
    ```
 
 5. **Access Cognitive Enhancement Guidelines**: For system improvement approaches
    ```typescript
-   fetch_rules(["knowledge/guides/cognitive-enhancement"], 
+   fetch_rules(["knowledge/rules/guides/cognitive-enhancement"], 
               "Understanding cognitive enhancement approaches for system improvements")
    ```
 
 For detailed documentation on fetch_rules usage for system-wide enhancements, access:
 ```typescript
-fetch_rules(["knowledge/guides/fetch-rules"],
+fetch_rules(["knowledge/rules/guides/fetch-rules"],
            "Understanding fetch_rules usage for system-wide implementation")
 ``` 

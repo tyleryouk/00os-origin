@@ -1,4 +1,4 @@
-# Enhance Requirements: Rules Workflow
+# workflow: rules-workflow | pathway: none | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/enhance-requirements.mdc
 
 ## File Purpose
 
@@ -10,16 +10,6 @@ This file provides a focused requirements enhancement pattern for rules workflow
 - Requirements would benefit from structured enhancement
 
 This parameter is designed to work with the `enhance-requirements:` message-command, providing a structured approach to researching and improving requirements before implementation.
-
-## Usage as Project-Rule-Parameter
-
-This file contains requirements enhancement guidance and should be referenced as a project-rule-parameter in message-commands:
-
-```
-enhance-requirements: rules-workflow @parameters/rules/continuation/enhance-requirements.mdc
-```
-
-This message-command can be issued multiple times in sequence to progressively enhance requirements.
 
 ## Enhancement Process Overview
 
@@ -112,7 +102,7 @@ codebase_search("implementation of [related feature]", ["relevant directories"])
 grep_search("pattern: [pattern name]", false, "*.md")
 
 // 3. Access relevant knowledge
-fetch_rules(["knowledge/relevant/pattern"])
+fetch_rules(["knowledge/rules/relevant/pattern"])
 
 // 4. Examine related file structures
 list_dir("path/to/related/implementation")

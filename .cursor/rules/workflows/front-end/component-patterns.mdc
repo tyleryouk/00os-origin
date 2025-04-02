@@ -1,0 +1,1097 @@
+# Front-End Component Patterns
+
+## Overview and Purpose
+
+This Project Rule defines the standard component patterns and best practices for the GigaSwap front-end codebase. It establishes consistent approaches to component design, organization, and implementation to ensure maintainability, performance, and scalability.
+
+This file complements:
+- **front-end-workflow.mdc**: Core front-end development workflow
+- **analyze-component.mdc**: Component analysis command
+- **log-based-process.mdc**: Log-based debugging workflow
+
+## Testing Components with Autonomous Terminal Commands
+
+**⚠️ IMPORTANT**: When testing components, 1000xdev must autonomously run all terminal commands. Tyler never runs terminal commands during front-end workflow processes.
+
+For component testing, follow this autonomous process:
+
+1. Implement the component with strategic logging
+2. Autonomously run terminal commands to analyze logs
+3. If needed, request UX testing from Tyler using `recreate-ux-situation`
+4. After Tyler completes the requested testing, autonomously run additional terminal commands to analyze the resulting logs
+5. Make any necessary improvements based on log analysis
+
+**Example of autonomous terminal command usage**:
+
+```typescript
+// After implementing a component, check logs
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" -Tail 50", false, true)
+
+// Request UX testing if needed
+recreate-ux-situation("Please test the dropdown menu by clicking on the user avatar and selecting 'Settings'")
+
+// After Tyler performs the test, analyze logs
+run_terminal_cmd("Get-Content -Path \"logs-main/front-end/$(Get-Date -Format 'yyyy-MM-dd').log\" | Select-String -Pattern \"\\[DropdownMenu\\]\"", false, true)
+
+// Check for errors
+grep_search("ERROR|Exception|failed", false, "logs-main/front-end/*.log")
+```
+
+## 1. Component Organization
+
+### 1.1 Directory Structure
+
+Components are organized following this structure:
+
+```
+front-end/src/components/
+  ├── common/              # Reusable components across features
+  │   ├── buttons/
+  │   ├── inputs/
+  │   ├── cards/
+  │   └── typography/
+  ├── layout/              # Layout components
+  │   ├── Header/
+  │   ├── Footer/
+  │   ├── Sidebar/
+  │   └── PageLayout/
+  ├── feature-specific/    # Feature-specific components
+  │   ├── wallet/
+  │   ├── transactions/
+  │   └── profile/
+  ├── providers/           # Context providers
+  └── page-components/     # Components for specific pages
+```
+
+### 1.2 File Organization
+
+Each component should follow this file organization:
+
+```
+ComponentName/
+  ├── ComponentName.tsx     # Main component
+  ├── ComponentName.test.tsx # Tests
+  ├── ComponentName.styles.ts # Styled components (if applicable)
+  ├── ComponentName.types.ts  # TypeScript types and interfaces
+  ├── ComponentName.utils.ts  # Utility functions
+  └── index.ts              # Re-export
+```
+
+## 2. Component Types
+
+### 2.1 Presentation Components
+
+Presentation components focus on UI rendering and should:
+
+- Accept data via props
+- Have minimal or no state
+- Render UI based on props
+- Emit events to parent components
+- Be highly reusable
+- Use explicit prop types
+
+Example:
+```tsx
+import React from 'react';
+
+interface ButtonProps {
+  label: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  onClick: () => void;
+}
+
+export const Button: React.FC<ButtonProps> = ({
+  label,
+  variant = 'primary',
+  size = 'medium',
+  disabled = false,
+  onClick
+}) => {
+  return (
+    <button
+      className={`btn btn-${variant} btn-${size} ${disabled ? 'disabled' : ''}`}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  );
+};
+```
+
+### 2.2 Container Components
+
+Container components handle logic and state management:
+
+- Connect to context or data sources
+- Manage component state
+- Handle business logic
+- Pass data to presentation components
+- Manage effects and lifecycle
+- Implement error handling
+
+Example:
+```tsx
+import React, { useState, useEffect } from 'react';
+import { useWallet } from '../../hooks/useWallet';
+import { ProfileCard } from '../common/ProfileCard';
+import { log } from '../../utils/logger';
+
+export const ProfileContainer: React.FC = () => {
+  const { address, getBalance } = useWallet();
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      log('INFO', 'API', 'Fetching profile', { address });
+      try {
+        setLoading(true);
+        const profileData = await api.getProfile(address);
+        const balance = await getBalance();
+        setProfile({ ...profileData, balance });
+        log('INFO', 'STATE', 'Profile loaded', { profileData });
+      } catch (err) {
+        setError(err.message);
+        log('ERROR', 'API', 'Profile fetch failed', { error: err });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (address) {
+      fetchProfile();
+    }
+  }, [address, getBalance]);
+
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorDisplay message={error} />;
+  
+  return profile ? (
+    <ProfileCard
+      username={profile.username}
+      balance={profile.balance}
+      avatar={profile.avatar}
+      onEdit={() => {/* ... */}}
+    />
+  ) : null;
+};
+```
+
+### 2.3 Layout Components
+
+Layout components define page structure:
+
+- Control component arrangement
+- Handle responsive layout
+- Utilize CSS Grid or Flexbox
+- Manage spacing and alignment
+- Define reusable layout patterns
+- Accept children as props
+
+Example:
+```tsx
+import React from 'react';
+
+interface GridContainerProps {
+  children: React.ReactNode;
+  columns?: number;
+  gap?: string;
+  className?: string;
+}
+
+export const GridContainer: React.FC<GridContainerProps> = ({
+  children,
+  columns = 12,
+  gap = '1rem',
+  className = ''
+}) => {
+  return (
+    <div
+      className={`grid-container ${className}`}
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(${columns}, 1fr)`,
+        gap
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+```
+
+### 2.4 HOC (Higher-Order Components)
+
+Higher-Order Components enhance existing components:
+
+- Add functionality to components
+- Share behavior between components
+- Access context or state
+- Implement cross-cutting concerns
+- Handle authentication or permissions
+- Override props or provide defaults
+
+Example:
+```tsx
+import React from 'react';
+import { useWallet } from '../../hooks/useWallet';
+
+interface WithWalletProps {
+  isConnected: boolean;
+  address: string | null;
+  connect: () => Promise<void>;
+}
+
+export const withWallet = <P extends object>(
+  Component: React.ComponentType<P & WithWalletProps>
+): React.FC<P> => {
+  return (props: P) => {
+    const { isConnected, address, connect } = useWallet();
+    
+    return (
+      <Component
+        {...props}
+        isConnected={isConnected}
+        address={address}
+        connect={connect}
+      />
+    );
+  };
+};
+
+// Usage:
+// const EnhancedComponent = withWallet(MyComponent);
+```
+
+## 3. Component Implementation Patterns
+
+### 3.1 Functional Components with Hooks
+
+All components must use functional components with hooks:
+
+```tsx
+import React, { useState, useEffect, useCallback } from 'react';
+
+export const Counter: React.FC = () => {
+  const [count, setCount] = useState(0);
+  
+  const increment = useCallback(() => {
+    setCount(prev => prev + 1);
+  }, []);
+  
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+  
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+```
+
+### 3.2 Props Interface Pattern
+
+All component props must use TypeScript interfaces:
+
+```tsx
+// Component.types.ts
+export interface ComponentProps {
+  id: string;
+  title: string;
+  description?: string;
+  onClick?: (id: string) => void;
+}
+
+// Component.tsx
+import React from 'react';
+import { ComponentProps } from './Component.types';
+
+export const Component: React.FC<ComponentProps> = ({ 
+  id, 
+  title, 
+  description = '', 
+  onClick 
+}) => {
+  // Implementation...
+};
+```
+
+### 3.3 Component Composition Pattern
+
+Compose components for complex UI:
+
+```tsx
+import React from 'react';
+import { Card } from '../common/Card';
+import { Button } from '../common/Button';
+import { Typography } from '../common/Typography';
+
+interface ProductCardProps {
+  product: {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+  };
+  onAddToCart: (id: string) => void;
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({ 
+  product, 
+  onAddToCart 
+}) => {
+  return (
+    <Card>
+      <Card.Header>
+        <Typography variant="h3">{product.name}</Typography>
+      </Card.Header>
+      <Card.Body>
+        <Typography variant="body1">{product.description}</Typography>
+        <Typography variant="h4">${product.price.toFixed(2)}</Typography>
+      </Card.Body>
+      <Card.Footer>
+        <Button 
+          variant="primary" 
+          onClick={() => onAddToCart(product.id)}
+        >
+          Add to Cart
+        </Button>
+      </Card.Footer>
+    </Card>
+  );
+};
+```
+
+### 3.4 Conditional Rendering Pattern
+
+Use these patterns for conditional rendering:
+
+```tsx
+// Short-circuit evaluation
+{isLoggedIn && <UserProfile />}
+
+// Ternary operator
+{isLoggedIn ? <UserProfile /> : <LoginButton />}
+
+// Null coalescing
+{user?.address || 'No address available'}
+
+// Function extraction for complex conditions
+const renderContent = () => {
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage message={error} />;
+  if (!data) return <EmptyState />;
+  return <DataDisplay data={data} />;
+};
+
+return <div>{renderContent()}</div>;
+```
+
+### 3.5 Event Handler Pattern
+
+Handle events with proper typing:
+
+```tsx
+import React, { useState, useCallback } from 'react';
+
+interface FormData {
+  username: string;
+  email: string;
+}
+
+export const SignupForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    username: '',
+    email: ''
+  });
+  
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  }, []);
+  
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Form submission logic
+  }, [formData]);
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="username"
+        value={formData.username}
+        onChange={handleChange}
+      />
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <button type="submit">Sign Up</button>
+    </form>
+  );
+};
+```
+
+## 4. Performance Optimization Patterns
+
+### 4.1 Memoization Pattern
+
+Use memoization to prevent unnecessary renders:
+
+```tsx
+import React, { useMemo, useCallback, memo } from 'react';
+
+interface ExpensiveComponentProps {
+  data: any[];
+  onItemClick: (id: string) => void;
+}
+
+export const ExpensiveComponent: React.FC<ExpensiveComponentProps> = memo(({
+  data,
+  onItemClick
+}) => {
+  // Memoize expensive calculations
+  const processedData = useMemo(() => {
+    return data.map(item => ({
+      ...item,
+      computed: expensiveComputation(item)
+    }));
+  }, [data]);
+  
+  // Memoize callback functions
+  const handleClick = useCallback((id: string) => {
+    onItemClick(id);
+  }, [onItemClick]);
+  
+  return (
+    <div>
+      {processedData.map(item => (
+        <div key={item.id} onClick={() => handleClick(item.id)}>
+          {item.computed}
+        </div>
+      ))}
+    </div>
+  );
+});
+```
+
+### 4.2 Lazy Loading Pattern
+
+Implement lazy loading for code splitting:
+
+```tsx
+import React, { lazy, Suspense } from 'react';
+
+// Lazy load components
+const HeavyComponent = lazy(() => 
+  import('../components/HeavyComponent')
+);
+
+export const LazyLoadingExample: React.FC = () => {
+  return (
+    <div>
+      <h1>Main Content</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <HeavyComponent />
+      </Suspense>
+    </div>
+  );
+};
+```
+
+### 4.3 Virtualization Pattern
+
+Implement virtualization for long lists:
+
+```tsx
+import React from 'react';
+import { VirtualizedList } from 'react-window';
+
+interface ListItemProps {
+  index: number;
+  style: React.CSSProperties;
+  data: any[];
+}
+
+const Row: React.FC<ListItemProps> = ({ index, style, data }) => (
+  <div style={style}>
+    {data[index].name}
+  </div>
+);
+
+export const VirtualizedListExample: React.FC<{ items: any[] }> = ({ items }) => {
+  return (
+    <VirtualizedList
+      height={400}
+      width="100%"
+      itemCount={items.length}
+      itemSize={35}
+      itemData={items}
+    >
+      {Row}
+    </VirtualizedList>
+  );
+};
+```
+
+## 5. State Management Patterns
+
+### 5.1 Local State Pattern
+
+Use local state for component-specific state:
+
+```tsx
+import React, { useState } from 'react';
+
+export const Counter: React.FC = () => {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+    </div>
+  );
+};
+```
+
+### 5.2 Context API Pattern
+
+Use Context API for shared state:
+
+```tsx
+// ThemeContext.tsx
+import React, { createContext, useContext, useState } from 'react';
+
+type Theme = 'light' | 'dark';
+
+interface ThemeContextType {
+  theme: Theme;
+  toggleTheme: () => void;
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [theme, setTheme] = useState<Theme>('light');
+  
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+  
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export const useTheme = (): ThemeContextType => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
+```
+
+### 5.3 Reducer Pattern
+
+Use reducer for complex state logic:
+
+```tsx
+import React, { useReducer } from 'react';
+
+type FormState = {
+  username: string;
+  email: string;
+  password: string;
+  errors: {
+    username?: string;
+    email?: string;
+    password?: string;
+  };
+  isSubmitting: boolean;
+};
+
+type FormAction =
+  | { type: 'FIELD_CHANGE', field: string, value: string }
+  | { type: 'SUBMIT_START' }
+  | { type: 'SUBMIT_SUCCESS' }
+  | { type: 'SUBMIT_FAILURE', errors: Record<string, string> };
+
+const initialState: FormState = {
+  username: '',
+  email: '',
+  password: '',
+  errors: {},
+  isSubmitting: false
+};
+
+const formReducer = (state: FormState, action: FormAction): FormState => {
+  switch (action.type) {
+    case 'FIELD_CHANGE':
+      return {
+        ...state,
+        [action.field]: action.value,
+        errors: {
+          ...state.errors,
+          [action.field]: undefined
+        }
+      };
+    case 'SUBMIT_START':
+      return {
+        ...state,
+        isSubmitting: true
+      };
+    case 'SUBMIT_SUCCESS':
+      return {
+        ...state,
+        isSubmitting: false,
+        errors: {}
+      };
+    case 'SUBMIT_FAILURE':
+      return {
+        ...state,
+        isSubmitting: false,
+        errors: action.errors
+      };
+    default:
+      return state;
+  }
+};
+
+export const RegistrationForm: React.FC = () => {
+  const [state, dispatch] = useReducer(formReducer, initialState);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: 'FIELD_CHANGE',
+      field: e.target.name,
+      value: e.target.value
+    });
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch({ type: 'SUBMIT_START' });
+    
+    try {
+      // Validation logic
+      // API call logic
+      dispatch({ type: 'SUBMIT_SUCCESS' });
+    } catch (error) {
+      dispatch({ 
+        type: 'SUBMIT_FAILURE', 
+        errors: { 
+          username: 'Invalid username',
+          // other errors
+        } 
+      });
+    }
+  };
+  
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Form fields */}
+    </form>
+  );
+};
+```
+
+## 6. Component Integration Patterns
+
+### 6.1 Composition vs Inheritance
+
+Always prefer composition over inheritance:
+
+```tsx
+// Bad: Using inheritance
+class SpecialButton extends Button {
+  render() {
+    return <button className="special">{this.props.children}</button>;
+  }
+}
+
+// Good: Using composition
+const SpecialButton: React.FC<ButtonProps> = (props) => {
+  return <Button {...props} className="special" />;
+};
+```
+
+### 6.2 Render Props Pattern
+
+Use render props for flexible component composition:
+
+```tsx
+import React, { useState } from 'react';
+
+interface ToggleProps {
+  children: (props: { isOn: boolean; toggle: () => void }) => React.ReactNode;
+}
+
+export const Toggle: React.FC<ToggleProps> = ({ children }) => {
+  const [isOn, setIsOn] = useState(false);
+  
+  const toggle = () => {
+    setIsOn(prev => !prev);
+  };
+  
+  return <>{children({ isOn, toggle })}</>;
+};
+
+// Usage
+const ToggleExample: React.FC = () => {
+  return (
+    <Toggle>
+      {({ isOn, toggle }) => (
+        <div>
+          <button onClick={toggle}>{isOn ? 'ON' : 'OFF'}</button>
+          {isOn && <div>Feature enabled!</div>}
+        </div>
+      )}
+    </Toggle>
+  );
+};
+```
+
+### 6.3 Custom Hook Pattern
+
+Extract reusable logic into custom hooks:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+export const useLocalStorage = <T,>(key: string, initialValue: T) => {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+  
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(key, JSON.stringify(storedValue));
+    } catch (error) {
+      console.error(error);
+    }
+  }, [key, storedValue]);
+  
+  return [storedValue, setStoredValue] as const;
+};
+
+// Usage
+const ProfileComponent: React.FC = () => {
+  const [user, setUser] = useLocalStorage('user', null);
+  
+  // Component logic
+};
+```
+
+## 7. Error Handling Patterns
+
+### 7.1 Error Boundary Pattern
+
+Implement error boundaries for component error handling:
+
+```tsx
+import React, { Component, ErrorInfo, ReactNode } from 'react';
+
+interface ErrorBoundaryProps {
+  fallback?: ReactNode;
+  children: ReactNode;
+  onError?: (error: Error, info: ErrorInfo) => void;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error?: Error;
+}
+
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, info: ErrorInfo): void {
+    if (this.props.onError) {
+      this.props.onError(error, info);
+    }
+    
+    // Log error to monitoring service
+    console.error('Error caught by boundary:', error, info);
+  }
+
+  render(): ReactNode {
+    if (this.state.hasError) {
+      if (this.props.fallback) {
+        return this.props.fallback;
+      }
+      return (
+        <div className="error-container">
+          <h2>Something went wrong</h2>
+          <p>{this.state.error?.message}</p>
+          <button onClick={() => this.setState({ hasError: false })}>
+            Try again
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+// Usage
+const App: React.FC = () => {
+  return (
+    <ErrorBoundary 
+      fallback={<div>Something went wrong</div>}
+      onError={(error, info) => {
+        // Report to error tracking service
+      }}
+    >
+      <ComponentThatMightError />
+    </ErrorBoundary>
+  );
+};
+```
+
+### 7.2 Try-Catch Pattern for Async Operations
+
+Handle async errors with try-catch:
+
+```tsx
+import React, { useState, useEffect } from 'react';
+import { log } from '../../utils/logger';
+
+interface DataFetchingComponentProps {
+  apiUrl: string;
+}
+
+export const DataFetchingComponent: React.FC<DataFetchingComponentProps> = ({ apiUrl }) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      log('INFO', 'API', 'Fetching data', { url: apiUrl });
+      setLoading(true);
+      setError(null);
+      
+      try {
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        setData(result);
+        log('INFO', 'API', 'Data fetched successfully', { data: result });
+      } catch (error) {
+        setError(error instanceof Error ? error : new Error(String(error)));
+        log('ERROR', 'API', 'Data fetch failed', { error });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [apiUrl]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data) return <div>No data</div>;
+
+  return (
+    <div>
+      {/* Render data */}
+    </div>
+  );
+};
+```
+
+## 8. Testing Patterns
+
+### 8.1 Component Test Pattern
+
+Follow this structure for component tests:
+
+```tsx
+// Button.test.tsx
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Button } from './Button';
+
+describe('Button Component', () => {
+  // Setup test
+  it('renders with correct label', () => {
+    render(<Button label="Click me" onClick={() => {}} />);
+    expect(screen.getByText('Click me')).toBeInTheDocument();
+  });
+
+  // Behavior test
+  it('calls onClick when clicked', () => {
+    const mockOnClick = jest.fn();
+    render(<Button label="Click me" onClick={mockOnClick} />);
+    
+    fireEvent.click(screen.getByText('Click me'));
+    expect(mockOnClick).toHaveBeenCalledTimes(1);
+  });
+
+  // Conditional rendering test
+  it('is disabled when disabled prop is true', () => {
+    render(<Button label="Click me" onClick={() => {}} disabled={true} />);
+    expect(screen.getByText('Click me')).toBeDisabled();
+  });
+
+  // Style test
+  it('applies the correct css class based on variant', () => {
+    const { container } = render(
+      <Button label="Click me" onClick={() => {}} variant="primary" />
+    );
+    expect(container.firstChild).toHaveClass('btn-primary');
+  });
+});
+```
+
+### 8.2 Integration Test Pattern
+
+Test component integration:
+
+```tsx
+// Form.test.tsx
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { UserForm } from './UserForm';
+import { UserProvider } from '../contexts/UserContext';
+
+describe('UserForm Integration', () => {
+  it('submits the form with correct values', async () => {
+    const mockSubmit = jest.fn();
+    
+    render(
+      <UserProvider>
+        <UserForm onSubmit={mockSubmit} />
+      </UserProvider>
+    );
+    
+    fireEvent.change(screen.getByLabelText('Username'), {
+      target: { value: 'testuser' }
+    });
+    
+    fireEvent.change(screen.getByLabelText('Email'), {
+      target: { value: 'test@example.com' }
+    });
+    
+    fireEvent.click(screen.getByText('Submit'));
+    
+    await waitFor(() => {
+      expect(mockSubmit).toHaveBeenCalledWith({
+        username: 'testuser',
+        email: 'test@example.com'
+      });
+    });
+  });
+  
+  it('displays validation errors on invalid input', async () => {
+    render(
+      <UserProvider>
+        <UserForm onSubmit={() => {}} />
+      </UserProvider>
+    );
+    
+    fireEvent.change(screen.getByLabelText('Email'), {
+      target: { value: 'invalid-email' }
+    });
+    
+    fireEvent.click(screen.getByText('Submit'));
+    
+    await waitFor(() => {
+      expect(screen.getByText('Invalid email format')).toBeInTheDocument();
+    });
+  });
+});
+```
+
+## 9. Component Documentation
+
+Every component must be documented following this standard:
+
+```tsx
+/**
+ * Button component for user interactions.
+ * 
+ * @component
+ * @example
+ * ```tsx
+ * <Button 
+ *   label="Submit" 
+ *   variant="primary" 
+ *   onClick={() => console.log('clicked')} 
+ * />
+ * ```
+ */
+export const Button: React.FC<ButtonProps> = ({ 
+  label, 
+  variant = 'primary',
+  onClick
+}) => {
+  // Implementation
+};
+```
+
+## 10. Common Anti-Patterns to Avoid
+
+1. **Prop Drilling**: Avoid passing props through multiple levels of components
+2. **Large Components**: Keep components focused and small
+3. **Duplicate Logic**: Extract shared logic into hooks or utilities
+4. **Inline Styles**: Use CSS modules or styled components instead
+5. **Class Components**: Use functional components with hooks
+6. **Direct DOM Manipulation**: Use React refs and state
+7. **Complex State Logic**: Use useReducer instead of multiple useState calls
+8. **Missing Type Definitions**: Always define proper TypeScript types
+9. **Inconsistent Naming**: Follow consistent naming conventions
+10. **Uncontrolled Components**: Prefer controlled components with explicit state management
+
+## 11. Response Format
+
+After analyzing a component with `analyze-component` message-command, you should respond with:
+
+```
+📋 1000xdev [front-end-workflow]
+
+Component [name] analyzed.
+
+Key characteristics:
+- [Type]: [Presentation/Container/Layout/HOC]
+- [State Management]: [Local State/Context/Redux/Props only]
+- [Patterns]: [List of patterns used]
+- [Dependencies]: [List of key dependencies]
+
+Component documentation created in [planning_folder]/context-components.md 

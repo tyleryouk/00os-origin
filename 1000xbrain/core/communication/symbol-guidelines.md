@@ -92,7 +92,7 @@ To prevent cognitive confusion and implementation errors:
 | **❌** | Cross Mark | Prohibition/Failure | Status indicators | `❌ Not authorized` |
 | **🚫** | Prohibition | Strict prohibition | Authority matrix | `🚫 FORBIDDEN` |
 | **⚠️** | Warning | Critical attention | Important notices | `⚠️ Critical requirement` |
-| **/**  | Forward Slash | Path separator | File paths | `knowledge/rules/file.md` |
+| **/**  | Forward Slash | Path separator | File paths | `knowledge/rules/rules/file.md` |
 | **\\** | Backslash | Escape character | Code examples | `console.log(\"escaped\")` |
 
 ## @ Symbol Usage Guidelines
@@ -422,7 +422,7 @@ Certain symbols are frequently used together in specific patterns:
    ```markdown
    I'll enhance core/identity/global-rules.md to improve identity definition.
    Edit workflows/front-end-workflow/workflow-entry.md to update front-end patterns.
-   Let's check knowledge/back-end/fastapi-patterns.md for API implementation details.
+   Let's check knowledge/rules/back-end/fastapi-patterns.md for API implementation details.
    ```
 
 3. **Documentation References (ALWAYS .md)**:
