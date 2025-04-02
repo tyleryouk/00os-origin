@@ -2,33 +2,54 @@
 
 ## Overview
 
-This knowledge file provides implementation guidance for integrating Steam authentication into the GigaSwap marketplace front-end components. It covers the authentication flow, component design, state management, and best practices for handling Steam user sessions.
+This file provides implementation guidance for Steam OpenID authentication flow in the GigaSwap marketplace front-end. It covers best practices, component structure, and integration with the authentication system.
 
-## Authentication Flow
+## Key Concepts
+
+- **Steam OpenID**: Authentication protocol used by Steam to verify user identity
+- **Authentication Flow**: Multi-step process for user authentication through Steam
+- **Security Tokens**: Tokens used to maintain authenticated state
+- **Session Management**: Techniques for maintaining user sessions
+- **User Profile**: Steam user profile data structure and usage
+
+## Implementation Guidelines
+
+### Authentication Flow
 
 The Steam authentication flow follows these steps:
 
-1. **Redirect to Steam**: User clicks a "Login with Steam" button which redirects to Steam's OpenID provider
-2. **Steam Authentication**: User authenticates on Steam's website
-3. **Return to Application**: Steam redirects back to our application with authentication data
-4. **Session Creation**: Back-end processes the authentication and establishes a session
-5. **State Management**: Front-end updates UI based on the authenticated state
+1. **Initiate Authentication**:
+   - User clicks "Login with Steam" button
+   - Front-end redirects to back-end authentication endpoint
+   - Back-end redirects to Steam OpenID service
 
-## Implementation Components
+2. **Steam Authentication**:
+   - User authenticates on Steam's website
+   - Steam redirects back to your callback URL
+   - Back-end processes the OpenID response
 
-### Steam Login Button
+3. **Session Creation**:
+   - Back-end creates authentication token
+   - Back-end redirects to front-end with token
+   - Front-end stores token and loads user data
+
+4. **Session Management**:
+   - Front-end includes token in subsequent requests
+   - Back-end validates token for protected operations
+   - Token expiration and refresh handling
+
+### Component Implementation
+
+#### Login Button Component
 
 ```tsx
-import React from 'react';
-import Button from '@mui/material/Button';
-import SteamIcon from 'components/icons/SteamIcon';
-import { steamAuth } from 'api/auth';
-import { ConsolidatedLogger } from 'utils/consolidated-logger';
-
 const SteamLoginButton: React.FC = () => {
   const handleLogin = () => {
-    ConsolidatedLogger.log('INFO', 'AUTH', 'Steam login initiated');
-    steamAuth.login();
+    // Log the interaction
+    ConsolidatedLogger.log('INFO', 'AUTH', 'Steam login clicked');
+    
+    // Redirect to the back-end auth endpoint
+    window.location.href = '/api/auth/steam';
   };
   
   return (
@@ -42,39 +63,40 @@ const SteamLoginButton: React.FC = () => {
     </Button>
   );
 };
-
-export default SteamLoginButton;
 ```
 
-### Steam Authentication Hook
+#### Authentication Hook
 
 ```tsx
-import { useState, useEffect } from 'react';
-import { steamAuth } from 'api/auth';
-import { SteamUser } from 'models/SteamUser.model';
-import { ConsolidatedLogger } from 'utils/consolidated-logger';
-
-export const useSteamAuth = () => {
+const useSteamAuth = () => {
   const [user, setUser] = useState<SteamUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
   
+  // Check authentication status on load
   useEffect(() => {
     const checkAuth = async () => {
       try {
         setLoading(true);
-        const authStatus = await steamAuth.getStatus();
+        const response = await fetch('/api/auth/steam/status', {
+          credentials: 'include' // Include cookies for token
+        });
         
-        if (authStatus.authenticated) {
-          setUser(authStatus.user);
-          ConsolidatedLogger.log('INFO', 'AUTH', 'Steam authentication successful', { 
-            steamId: authStatus.user.steamId 
-          });
+        if (!response.ok) {
+          throw new Error('Authentication check failed');
+        }
+        
+        const data = await response.json();
+        
+        if (data.authenticated) {
+          setUser(data.user);
         }
       } catch (error) {
         ConsolidatedLogger.logError(
           error instanceof Error ? error : new Error(String(error)),
           'useSteamAuth.checkAuth'
         );
+        setError(error instanceof Error ? error : new Error(String(error)));
       } finally {
         setLoading(false);
       }
@@ -83,220 +105,153 @@ export const useSteamAuth = () => {
     checkAuth();
   }, []);
   
+  // Logout function
   const logout = async () => {
     try {
-      await steamAuth.logout();
+      const response = await fetch('/api/auth/steam/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
+      
+      if (!response.ok) {
+        throw new Error('Logout failed');
+      }
+      
       setUser(null);
-      ConsolidatedLogger.log('INFO', 'AUTH', 'Steam logout successful');
+      return true;
     } catch (error) {
       ConsolidatedLogger.logError(
         error instanceof Error ? error : new Error(String(error)),
         'useSteamAuth.logout'
       );
+      return false;
     }
   };
   
   return { 
     user, 
     loading, 
+    error,
     isAuthenticated: !!user,
-    logout
+    logout 
   };
 };
 ```
 
-### Steam Authentication API Service
+#### User Profile Display
 
 ```tsx
-// Add to api/auth.ts
-export const steamAuth = {
-  login: async () => {
-    try {
-      ConsolidatedLogger.log('INFO', 'AUTH', 'Redirecting to Steam login');
-      window.location.href = '/api/auth/steam';
-    } catch (error) {
-      ConsolidatedLogger.logError(
-        error instanceof Error ? error : new Error(String(error)),
-        'steamAuth.login'
-      );
-      throw error;
-    }
-  },
+const UserProfile: React.FC = () => {
+  const { user, isAuthenticated, loading, logout } = useSteamAuth();
   
-  getStatus: async () => {
+  if (loading) {
+    return <CircularProgress size={24} />;
+  }
+  
+  if (!isAuthenticated || !user) {
+    return <SteamLoginButton />;
+  }
+  
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <Avatar 
+        src={user.avatarfull} 
+        alt={user.personaname}
+        sx={{ marginRight: 1 }}
+      />
+      <Typography variant="subtitle1">
+        {user.personaname}
+      </Typography>
+      <Button 
+        variant="text" 
+        onClick={logout}
+        size="small"
+        sx={{ marginLeft: 2 }}
+      >
+        Logout
+      </Button>
+    </Box>
+  );
+};
+```
+
+### API Integration
+
+The front-end needs these API integration points:
+
+1. **Authentication API Service**:
+```typescript
+// src/api/auth.ts
+export const steamAuth = {
+  // Get authentication status
+  getStatus: async (): Promise<AuthResponse> => {
     try {
-      const response = await authAPI.get('/auth/steam/status');
-      return response.data;
+      const response = await fetch('/api/auth/steam/status', {
+        credentials: 'include'
+      });
+      return await response.json();
     } catch (error) {
-      ConsolidatedLogger.logError(
-        error instanceof Error ? error : new Error(String(error)),
-        'steamAuth.getStatus'
-      );
+      ConsolidatedLogger.logError(error, 'steamAuth.getStatus');
       return { authenticated: false };
     }
   },
   
-  logout: async () => {
+  // Logout user
+  logout: async (): Promise<boolean> => {
     try {
-      await authAPI.post('/auth/steam/logout');
-      return true;
+      const response = await fetch('/api/auth/steam/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
+      return response.ok;
     } catch (error) {
-      ConsolidatedLogger.logError(
-        error instanceof Error ? error : new Error(String(error)),
-        'steamAuth.logout'
-      );
+      ConsolidatedLogger.logError(error, 'steamAuth.logout');
       return false;
     }
   }
 };
 ```
 
-### Steam User Profile Component
-
-```tsx
-import React from 'react';
-import { Box, Avatar, Typography, Menu, MenuItem, IconButton } from '@mui/material';
-import { KeyboardArrowDown } from '@mui/icons-material';
-import { useSteamAuth } from 'hooks/useSteamAuth';
-
-const SteamUserProfile: React.FC = () => {
-  const { user, logout } = useSteamAuth();
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  
-  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-  
-  const handleLogout = () => {
-    logout();
-    handleMenuClose();
-  };
-  
-  if (!user) return null;
-  
-  return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <Avatar src={user.avatarUrl} alt={user.displayName} />
-      <Box sx={{ ml: 1, display: { xs: 'none', md: 'block' } }}>
-        <Typography variant="subtitle2">{user.displayName}</Typography>
-      </Box>
-      <IconButton onClick={handleMenuOpen} size="small">
-        <KeyboardArrowDown />
-      </IconButton>
-      
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleMenuClose}
-      >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Inventory</MenuItem>
-        <MenuItem onClick={handleMenuClose}>Trades</MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      </Menu>
-    </Box>
-  );
-};
-
-export default SteamUserProfile;
-```
-
-## Steam User Model
-
-```tsx
-// models/SteamUser.model.ts
+2. **User Model Definition**:
+```typescript
+// src/models/SteamUser.model.ts
 export interface SteamUser {
-  steamId: string;
-  displayName: string;
-  avatarUrl: string;
-  profileUrl: string;
-  tradeUrl?: string;
-  inventoryPrivacy: 'private' | 'friends' | 'public';
+  steam_id: string;
+  personaname: string;
+  avatar: string;
+  avatarfull: string;
+  profileurl: string;
+}
+
+export interface AuthResponse {
+  authenticated: boolean;
+  user?: SteamUser;
+  token?: string;
 }
 ```
 
-## Authentication Context Provider
+## Error Handling
 
-```tsx
-import React, { createContext, useContext, ReactNode } from 'react';
-import { useSteamAuth } from 'hooks/useSteamAuth';
-import { SteamUser } from 'models/SteamUser.model';
-
-interface AuthContextType {
-  user: SteamUser | null;
-  loading: boolean;
-  isAuthenticated: boolean;
-  logout: () => Promise<void>;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const auth = useSteamAuth();
-  
-  return (
-    <AuthContext.Provider value={auth}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-```
-
-## Error Handling Patterns
+Implement comprehensive error handling:
 
 1. **Authentication Failures**:
-   - Log detailed error information
+   - Handle failed initial authentication
+   - Handle callback errors
    - Provide user-friendly error messages
-   - Implement automatic retry for transient failures
-   - Fallback to non-authenticated experience
 
-2. **Session Expiration**:
-   - Detect expired sessions
-   - Prompt for re-authentication
-   - Preserve user state when possible
-   - Handle graceful session recovery
+2. **Session Errors**:
+   - Handle token expiration
+   - Handle failed refreshes
+   - Implement automatic logout on session errors
 
-3. **Network Issues**:
-   - Implement offline detection
-   - Queue authentication requests
-   - Provide clear status updates
-   - Resume authentication flow when connection restores
-
-## Best Practices
-
-1. **Security Guidelines**:
-   - Never store Steam credentials in the front-end
-   - Use secure HTTP-only cookies for session persistence
-   - Implement proper CSRF protection
-   - Use HTTPS for all authentication requests
-
-2. **Performance Optimization**:
-   - Minimize authentication redirects
-   - Cache user profile data appropriately
-   - Lazy-load authentication components
-   - Implement proper loading states
-
-3. **UX Considerations**:
-   - Provide clear loading indicators during authentication
-   - Support deep linking with authentication redirection
-   - Preserve pre-authentication state
-   - Implement smooth transitions between authenticated states
+3. **Network Errors**:
+   - Handle API call failures
+   - Implement retry logic for transient errors
+   - Provide offline feedback
 
 ## Cross-References
 
-- **Inventory Management**: See `knowledge/front-end/steam-web-api/inventory.md`
-- **API Integration**: See `knowledge/front-end/steam-web-api/api-integration.md`
-- **Back-End Authentication**: See `knowledge/back-end/steam-web-api/authentication.md`
-- **State Management**: See `knowledge/front-end/steam-web-api/state-management.md` 
+- **Back-End Authentication**: `knowledge/back-end/steam-web-api/authentication.md`
+- **State Management**: `knowledge/front-end/steam-web-api/state-management.md`
+- **User Profile Components**: `knowledge/front-end/steam-web-api/user-profile.md`
+- **Error Handling Patterns**: `knowledge/front-end/error-handling.md` 

@@ -1,3 +1,8 @@
+---
+description: USE WHEN configuring project rule parameters, creating message-commands, or using parameter references
+globs: 
+alwaysApply: false
+---
 # USE WHEN configuring project rule parameters, creating message-commands, or using parameter references
 
 # Project Rule Parameter Reference Guide

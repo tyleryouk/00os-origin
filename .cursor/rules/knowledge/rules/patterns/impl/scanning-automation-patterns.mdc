@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing scanning automation, developing validation tools, or optimizing scanning processes
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing scanning automation, developing validation tools, or optimizing scanning processes
 
 # Scanning Automation Patterns

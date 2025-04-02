@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing error handling, creating recovery mechanisms, or developing validation systems
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing error handling, creating recovery mechanisms, or developing validation systems
 
 # Error Handling Mechanisms

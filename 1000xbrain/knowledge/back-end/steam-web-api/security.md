@@ -1,0 +1,471 @@
+# USE WHEN implementing security measures for Steam Web API in back-end components
+
+## Overview
+
+This file provides implementation guidance for securing the Steam Web API integration in GigaSwap's back-end. It covers API key management, authentication token handling, input validation, and Steam Guard verification.
+
+## Key Concepts
+
+- **API Key Management**: Securely storing and using Steam API keys
+- **Authentication Tokens**: Secure handling of Steam authentication tokens
+- **Input Validation**: Preventing injection and other attacks
+- **Steam Guard**: Verifying Steam Guard protection for trades
+
+## Implementation Guidelines
+
+### API Key Management
+
+```python
+from app.core.config import settings
+from app.utils.encryption import decrypt_sensitive_data
+from fastapi import Depends
+
+class APIKeyManager:
+    """Manages secure access to API keys"""
+    
+    def __init__(self):
+        # Get encrypted API key from settings
+        encrypted_key = settings.ENCRYPTED_STEAM_API_KEY
+        
+        # Decrypt the key when needed
+        self._api_key = None
+    
+    @property
+    def api_key(self):
+        """Get decrypted API key"""
+        if self._api_key is None:
+            self._api_key = decrypt_sensitive_data(settings.ENCRYPTED_STEAM_API_KEY)
+        return self._api_key
+    
+    def get_headers(self):
+        """Get headers with API key"""
+        return {"X-API-Key": self.api_key}
+
+# Dependency for getting API key manager
+async def get_api_key_manager():
+    return APIKeyManager()
+```
+
+### Encryption Utilities
+
+```python
+from cryptography.fernet import Fernet
+from app.core.config import settings
+
+def encrypt_sensitive_data(data: str) -> str:
+    """Encrypt sensitive data using Fernet symmetric encryption"""
+    if not data:
+        return None
+        
+    # Create Fernet cipher with the application's encryption key
+    cipher = Fernet(settings.ENCRYPTION_KEY)
+    
+    # Encrypt the data
+    encrypted_data = cipher.encrypt(data.encode())
+    
+    # Return as string
+    return encrypted_data.decode()
+
+def decrypt_sensitive_data(encrypted_data: str) -> str:
+    """Decrypt sensitive data using Fernet symmetric encryption"""
+    if not encrypted_data:
+        return None
+        
+    # Create Fernet cipher with the application's encryption key
+    cipher = Fernet(settings.ENCRYPTION_KEY)
+    
+    # Decrypt the data
+    decrypted_data = cipher.decrypt(encrypted_data.encode())
+    
+    # Return as string
+    return decrypted_data.decode()
+```
+
+### Authentication Token Security
+
+```python
+from jose import jwt
+from datetime import datetime, timedelta
+from app.core.config import settings
+
+class TokenManager:
+    """Manages secure handling of authentication tokens"""
+    
+    @staticmethod
+    async def create_token(data: dict, expires_delta: timedelta = None):
+        """Create a secure JWT token"""
+        to_encode = data.copy()
+        
+        # Set expiration
+        if expires_delta:
+            expire = datetime.utcnow() + expires_delta
+        else:
+            expire = datetime.utcnow() + timedelta(minutes=15)
+            
+        to_encode.update({"exp": expire})
+        
+        # Create JWT token
+        encoded_jwt = jwt.encode(
+            to_encode, 
+            settings.SECRET_KEY, 
+            algorithm=settings.ALGORITHM
+        )
+        
+        return encoded_jwt
+    
+    @staticmethod
+    async def verify_token(token: str):
+        """Verify and decode a JWT token"""
+        try:
+            payload = jwt.decode(
+                token, 
+                settings.SECRET_KEY, 
+                algorithms=[settings.ALGORITHM]
+            )
+            return payload
+        except jwt.JWTError:
+            return None
+```
+
+### Secure Cookie Management
+
+```python
+from fastapi import Response, Request
+from datetime import datetime, timedelta
+
+class SecureCookieManager:
+    """Manages secure cookie operations for authentication"""
+    
+    @staticmethod
+    def set_auth_cookie(response: Response, token: str, max_age: int = 3600):
+        """Set secure authentication cookie"""
+        response.set_cookie(
+            key="auth_token",
+            value=token,
+            max_age=max_age,
+            httponly=True,
+            secure=True,  # Requires HTTPS
+            samesite="lax"
+        )
+        
+    @staticmethod
+    def get_auth_cookie(request: Request) -> str:
+        """Get authentication cookie from request"""
+        return request.cookies.get("auth_token")
+        
+    @staticmethod
+    def clear_auth_cookie(response: Response):
+        """Clear authentication cookie"""
+        response.delete_cookie(
+            key="auth_token",
+            httponly=True,
+            secure=True,
+            samesite="lax"
+        )
+```
+
+### Input Validation
+
+```python
+from pydantic import BaseModel, validator
+from typing import Optional
+import re
+
+class SteamID(BaseModel):
+    """Model for validating Steam IDs"""
+    steam_id: str
+    
+    @validator("steam_id")
+    def validate_steam_id(cls, v):
+        """Validate Steam ID format"""
+        # Steam ID should be a 17-digit number
+        if not re.match(r"^\d{17}$", v):
+            raise ValueError("Invalid Steam ID format")
+        return v
+
+class ItemName(BaseModel):
+    """Model for validating item names"""
+    item_name: str
+    
+    @validator("item_name")
+    def validate_item_name(cls, v):
+        """Validate item name"""
+        # Check for potential injection characters
+        if re.search(r"[<>'\";]/", v):
+            raise ValueError("Invalid characters in item name")
+        return v
+
+class AssetID(BaseModel):
+    """Model for validating asset IDs"""
+    asset_id: str
+    
+    @validator("asset_id")
+    def validate_asset_id(cls, v):
+        """Validate asset ID format"""
+        # Asset ID should be a digit sequence
+        if not re.match(r"^\d+$", v):
+            raise ValueError("Invalid asset ID format")
+        return v
+
+class TradeURL(BaseModel):
+    """Model for validating Steam trade URLs"""
+    trade_url: str
+    
+    @validator("trade_url")
+    def validate_trade_url(cls, v):
+        """Validate Steam trade URL format"""
+        # Basic pattern matching for Steam trade URLs
+        if not re.match(r"^https://steamcommunity\.com/tradeoffer/new/\?partner=\d+&token=[a-zA-Z0-9_-]+$", v):
+            raise ValueError("Invalid Steam trade URL format")
+        return v
+```
+
+### Steam Guard Verification
+
+```python
+from fastapi import HTTPException
+from app.models.steam_models import TradeOffer
+
+class SteamGuardVerifier:
+    """Verifies Steam Guard protection for trades"""
+    
+    @staticmethod
+    async def verify_trade_eligibility(user_id: str, trade_offer: TradeOffer):
+        """Verify if user is eligible for trading (has Steam Guard enabled)"""
+        try:
+            # Get Steam service
+            steam_service = SteamService()
+            
+            # Check if user has Steam Guard enabled
+            guard_status = await steam_service.get_steam_guard_status(user_id)
+            
+            if not guard_status["enabled"]:
+                raise HTTPException(
+                    status_code=403,
+                    detail="Steam Guard must be enabled to trade"
+                )
+            
+            # Check if there's a trade hold
+            if guard_status["hold_duration"] > 0:
+                # Return success with hold duration
+                return {
+                    "eligible": True,
+                    "hold_duration": guard_status["hold_duration"],
+                    "message": f"Trade will be held for {guard_status['hold_duration']} days"
+                }
+            
+            # No trade hold
+            return {
+                "eligible": True,
+                "hold_duration": 0,
+                "message": "Trade can be completed immediately"
+            }
+            
+        except Exception as e:
+            logger.error(f"Trade eligibility check error: {str(e)}")
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to verify trade eligibility"
+            )
+```
+
+## Security Best Practices
+
+### 1. API Key Security
+
+- Never store API keys in plaintext in configuration files
+- Use environment variables or secure vaults for API key storage
+- Encrypt sensitive API keys at rest
+- Never expose API keys in client-side code or responses
+- Implement API key rotation procedures
+
+### 2. Authentication Security
+
+- Use JWT tokens with appropriate expiration times
+- Store tokens in HttpOnly cookies to prevent JavaScript access
+- Implement proper CSRF protection for all authenticated endpoints
+- Use secure and SameSite cookie settings
+- Implement token refresh mechanisms for long-lived sessions
+
+### 3. HTTPS and TLS Security
+
+- Use HTTPS for all API communications
+- Implement strict HSTS headers
+- Use modern TLS versions (1.2+)
+- Configure secure cipher suites
+- Implement certificate pinning for critical endpoints
+
+### 4. Input Validation and Sanitization
+
+- Validate all input parameters with Pydantic models
+- Implement input sanitization for all user-provided data
+- Use parameterized queries to prevent SQL injection
+- Validate all Steam-related inputs (IDs, trade URLs, etc.)
+- Implement request size limits to prevent DoS attacks
+
+### 5. Rate Limiting and DOS Protection
+
+- Implement IP-based rate limiting for anonymous endpoints
+- Implement user-based rate limiting for authenticated endpoints
+- Set different rate limits for different endpoint types
+- Implement circuit breakers for failing external services
+- Use Redis or similar for distributed rate limit tracking
+
+### Security Middleware Implementation
+
+```python
+from fastapi import FastAPI, Request, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from app.core.config import settings
+
+def configure_security(app: FastAPI):
+    """Configure security settings for the FastAPI app"""
+    
+    # Configure CORS
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_headers=["*"],
+    )
+    
+    # Add security headers middleware
+    @app.middleware("http")
+    async def add_security_headers(request: Request, call_next):
+        response = await call_next(request)
+        
+        # Add security headers
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+        
+        return response
+    
+    # Add API key validation middleware
+    @app.middleware("http")
+    async def validate_api_key(request: Request, call_next):
+        # Only apply to internal API endpoints
+        if request.url.path.startswith("/api/internal/"):
+            api_key = request.headers.get("X-API-Key")
+            
+            if not api_key or api_key != settings.INTERNAL_API_KEY:
+                raise HTTPException(status_code=403, detail="Invalid API key")
+        
+        return await call_next(request)
+```
+
+## Logging Sensitive Information
+
+Implement secure logging practices:
+
+```python
+import logging
+from app.core.config import settings
+
+class SecureLogger:
+    """Logger that handles sensitive information securely"""
+    
+    def __init__(self, name: str):
+        self.logger = logging.getLogger(name)
+    
+    def _mask_sensitive_data(self, message: str) -> str:
+        """Mask sensitive data in log messages"""
+        # Mask API keys
+        message = re.sub(r'(api_?key=)([^&\s]+)', r'\1[REDACTED]', message, flags=re.IGNORECASE)
+        
+        # Mask Steam IDs (only show first 5 and last 4 digits)
+        message = re.sub(r'(\d{17})', lambda m: m.group(1)[:5] + '********' + m.group(1)[-4:], message)
+        
+        # Mask tokens
+        message = re.sub(r'(token=)([^&\s]+)', r'\1[REDACTED]', message, flags=re.IGNORECASE)
+        
+        return message
+    
+    def info(self, message: str, *args, **kwargs):
+        """Log info message with sensitive data masked"""
+        self.logger.info(self._mask_sensitive_data(message), *args, **kwargs)
+    
+    def error(self, message: str, *args, **kwargs):
+        """Log error message with sensitive data masked"""
+        self.logger.error(self._mask_sensitive_data(message), *args, **kwargs)
+    
+    def warning(self, message: str, *args, **kwargs):
+        """Log warning message with sensitive data masked"""
+        self.logger.warning(self._mask_sensitive_data(message), *args, **kwargs)
+    
+    def debug(self, message: str, *args, **kwargs):
+        """Log debug message with sensitive data masked (only in debug mode)"""
+        if settings.DEBUG:
+            self.logger.debug(self._mask_sensitive_data(message), *args, **kwargs)
+```
+
+## Security Monitoring
+
+Implement security monitoring for critical Steam operations:
+
+```python
+from app.models.security import SecurityEvent
+from app.utils.database import get_db
+from sqlalchemy.orm import Session
+from fastapi import Depends
+
+class SecurityMonitor:
+    """Monitors security-related events"""
+    
+    def __init__(self, db: Session = Depends(get_db)):
+        self.db = db
+    
+    async def log_security_event(self, event_type: str, user_id: str, details: dict):
+        """Log a security event"""
+        event = SecurityEvent(
+            event_type=event_type,
+            user_id=user_id,
+            details=details,
+            ip_address=details.get("ip_address")
+        )
+        
+        self.db.add(event)
+        self.db.commit()
+        
+        # If this is a high-severity event, trigger alerts
+        if event_type in ["failed_login", "api_key_misuse", "trade_attack"]:
+            await self._trigger_security_alert(event)
+    
+    async def _trigger_security_alert(self, event: SecurityEvent):
+        """Trigger a security alert for high-severity events"""
+        # Implement alert notification (email, Slack, etc.)
+        pass
+    
+    async def check_for_suspicious_activity(self, user_id: str) -> bool:
+        """Check if user has suspicious activity"""
+        # Check for multiple failed logins
+        failed_logins = self.db.query(SecurityEvent).filter(
+            SecurityEvent.user_id == user_id,
+            SecurityEvent.event_type == "failed_login",
+            SecurityEvent.created_at >= datetime.utcnow() - timedelta(hours=24)
+        ).count()
+        
+        if failed_logins >= 5:
+            return True
+        
+        # Check for other suspicious events
+        suspicious_events = self.db.query(SecurityEvent).filter(
+            SecurityEvent.user_id == user_id,
+            SecurityEvent.event_type.in_(["api_key_misuse", "trade_attack"]),
+            SecurityEvent.created_at >= datetime.utcnow() - timedelta(days=7)
+        ).count()
+        
+        if suspicious_events > 0:
+            return True
+        
+        return False
+```
+
+## Cross-References
+
+- Authentication implementation: `knowledge/back-end/steam-web-api/authentication.md`
+- Data caching strategies: `knowledge/back-end/steam-web-api/data-caching.md`
+- Market data implementation: `knowledge/back-end/steam-web-api/market-data.md`
+- API best practices: `knowledge/rules/back-end-steam-web-api/best-practices.md` 

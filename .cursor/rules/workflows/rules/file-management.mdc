@@ -1,0 +1,65 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
+# File Management and Synchronization
+
+## Overview
+
+This file covers the essential processes for file management, synchronization, and validation in the 1000xbrain cognitive architecture.
+
+## Critical File Structure Requirements
+
+All brain-files MUST follow these structure requirements:
+
+1. **NO FRONTMATTER**: Brain-files should NEVER contain frontmatter (the --- enclosed metadata sections).
+2. **NO RULE TYPE SPECIFICATIONS**: Never add rule_type, description, or globs specifications to brain-files.
+3. **DIRECT CONTENT**: All markdown content must begin directly with headers or text.
+4. **STANDARD MARKDOWN**: Use only standard markdown formatting.
+
+Brain-files are pure markdown content only. All rule type designations, glob patterns, and other configuration metadata are handled exclusively in Cursor Rules (.mdc) files by Tyler through the Cursor Settings UI.
+
+## File Extension Standards
+
+It is critical to maintain clear distinction between file types:
+
+| Extension | Purpose | Can Be Edited | Referenced As |
+|-----------|---------|---------------|--------------|
+| `.md` | Source files in 1000xbrain | ✅ YES | In regular paths |
+| `.mdc` | Cursor Project Rules | 🚫 NO | In project-rule-parameters |
+
+When referencing files in documentation:
+- Use `.md` when referring to source files: `core/identity/global-rules.md`
+- Use `.mdc` when specifying project-rule-parameters: `@parameters/rules/plan-mode.mdc`
+
+## @ Symbol Usage
+
+For proper @ symbol usage:
+
+1. **Backtick Protection**: Wrap all @ symbols in backticks (e.g., `` `@example.mdc` ``) in regular text
+2. **No Unwrapped Symbols**: Never use unwrapped @ symbols in documentation
+3. **Extension Correctness**: Always use .mdc extension in project-rule-parameters
+4. **README.md Verification**: Check README.md in directories before making changes
+
+## Validation Process
+
+Validate file integrity through these key checks:
+
+1. **Extension Correctness**: Ensure all project-rule-parameter references use `.mdc` extension
+2. **File Existence**: Verify referenced files actually exist
+3. **Naming Consistency**: Check for consistency in naming patterns
+4. **Path Validity**: Validate file paths are correctly formatted
+
+## Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| Inconsistent extensions | Always use .mdc in project-rule-parameters |
+| Reference errors | Wrap @ symbols in backticks |
+| Cognitive integration issues | Ensure correct extension differentiation (.md vs .mdc) |
+| Unwrapped @ symbols | Add backticks around all @ symbols in documentation |
+
+## Conclusion
+
+Proper file management is essential for maintaining the integrity and functionality of the 1000xbrain cognitive architecture. Following these standards ensures synchronization works correctly and prevents AI hallucinations and system errors. 

@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating direct file references, optimizing reference paths, or implementing reference chain optimization
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating direct file references, optimizing reference paths, or implementing reference chain optimization
 
 # Direct Reference Patterns

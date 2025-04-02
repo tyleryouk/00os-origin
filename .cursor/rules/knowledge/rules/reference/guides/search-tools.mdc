@@ -1,3 +1,8 @@
+---
+description: USE WHEN using search tools, optimizing code-finding strategies, or navigating large codebases
+globs: 
+alwaysApply: false
+---
 # USE WHEN using search tools, optimizing code-finding strategies, or navigating large codebases
 
 # Search Tools Reference Guide

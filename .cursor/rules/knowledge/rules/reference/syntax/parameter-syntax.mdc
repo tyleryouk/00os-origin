@@ -1,3 +1,8 @@
+---
+description: USE WHEN defining parameter syntax, documenting parameter formats, or troubleshooting parameter issues
+globs: 
+alwaysApply: false
+---
 # USE WHEN defining parameter syntax, documenting parameter formats, or troubleshooting parameter issues
 
 # Parameter Syntax Reference

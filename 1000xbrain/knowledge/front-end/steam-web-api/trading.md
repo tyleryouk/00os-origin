@@ -1,0 +1,875 @@
+# USE WHEN implementing Steam trading functionality in front-end components
+
+## Overview
+
+This knowledge file provides implementation guidance for integrating Steam trading functionality into the GigaSwap marketplace front-end. It covers trade offer creation, status tracking, security verification, and best practices for handling trading functionality.
+
+## Key Concepts
+
+- **Trade Offers**: Requests to exchange items between users
+- **Trade Security**: Verification mechanisms to prevent fraud
+- **Trade Status**: Tracking the state of trade offers
+- **Trade History**: Recording and displaying previous trades
+
+## Implementation Components
+
+### Trade Offer Creation
+
+```tsx
+import React, { useState } from 'react';
+import { 
+  Box, 
+  Button, 
+  Typography, 
+  Dialog, 
+  DialogTitle, 
+  DialogContent,
+  DialogActions,
+  TextField,
+  FormControlLabel,
+  Checkbox,
+  CircularProgress,
+  Alert
+} from '@mui/material';
+import { useSteamInventory } from 'hooks/useSteamInventory';
+import { useTradeOffers } from 'hooks/useTradeOffers';
+import InventoryItemSelector from 'components/inventory/InventoryItemSelector';
+import { SteamInventoryItem } from 'models/CS2Gun.model';
+import { ConsolidatedLogger } from 'utils/consolidated-logger';
+
+interface TradeOfferModalProps {
+  open: boolean;
+  onClose: () => void;
+  recipientSteamId?: string;
+}
+
+const TradeOfferModal: React.FC<TradeOfferModalProps> = ({
+  open,
+  onClose,
+  recipientSteamId = ''
+}) => {
+  const [selectedItems, setSelectedItems] = useState<SteamInventoryItem[]>([]);
+  const [recipient, setRecipient] = useState(recipientSteamId);
+  const [message, setMessage] = useState('');
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  const { inventory, loading: inventoryLoading } = useSteamInventory();
+  const { createTradeOffer, creating } = useTradeOffers();
+  
+  const handleItemToggle = (item: SteamInventoryItem) => {
+    setSelectedItems(prev => {
+      const exists = prev.some(i => i.assetId === item.assetId);
+      if (exists) {
+        return prev.filter(i => i.assetId !== item.assetId);
+      } else {
+        return [...prev, item];
+      }
+    });
+  };
+  
+  const handleSubmit = async () => {
+    try {
+      setError(null);
+      
+      if (!recipient) {
+        setError('Recipient Steam ID is required');
+        return;
+      }
+      
+      if (selectedItems.length === 0) {
+        setError('Select at least one item to trade');
+        return;
+      }
+      
+      if (!agreedToTerms) {
+        setError('You must agree to the terms');
+        return;
+      }
+      
+      const assetIds = selectedItems.map(item => item.assetId);
+      
+      ConsolidatedLogger.logCS2(
+        `Creating trade offer to ${recipient} with ${assetIds.length} items`, 
+        'INFO'
+      );
+      
+      const result = await createTradeOffer({
+        recipientSteamId: recipient,
+        assetIds,
+        message,
+      });
+      
+      if (result.success) {
+        ConsolidatedLogger.logCS2(
+          `Trade offer created successfully: ${result.tradeOfferId}`, 
+          'INFO'
+        );
+        onClose();
+      } else {
+        setError(result.error || 'Failed to create trade offer');
+      }
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'TradeOfferModal.handleSubmit'
+      );
+      setError('An error occurred while creating the trade offer');
+    }
+  };
+  
+  return (
+    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+      <DialogTitle>Create Trade Offer</DialogTitle>
+      <DialogContent>
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
+        
+        <TextField
+          label="Recipient Steam ID"
+          value={recipient}
+          onChange={(e) => setRecipient(e.target.value)}
+          fullWidth
+          margin="normal"
+          disabled={!!recipientSteamId}
+        />
+        
+        <TextField
+          label="Message (Optional)"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          fullWidth
+          margin="normal"
+          multiline
+          rows={2}
+        />
+        
+        <Typography variant="h6" sx={{ mt: 3, mb: 1 }}>
+          Select Items to Trade
+        </Typography>
+        
+        {inventoryLoading ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+            <CircularProgress />
+          </Box>
+        ) : inventory.length > 0 ? (
+          <InventoryItemSelector 
+            items={inventory.filter(item => item.tradable)}
+            selectedItems={selectedItems}
+            onItemToggle={handleItemToggle}
+          />
+        ) : (
+          <Typography color="text.secondary" sx={{ p: 2 }}>
+            No tradable items in your inventory
+          </Typography>
+        )}
+        
+        <FormControlLabel
+          control={
+            <Checkbox 
+              checked={agreedToTerms}
+              onChange={(e) => setAgreedToTerms(e.target.checked)}
+            />
+          }
+          label="I understand that this trade is final and non-reversible once accepted"
+          sx={{ mt: 2 }}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button 
+          onClick={handleSubmit} 
+          variant="contained" 
+          color="primary"
+          disabled={creating || !agreedToTerms || selectedItems.length === 0}
+        >
+          {creating ? <CircularProgress size={24} /> : 'Create Trade Offer'}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+export default TradeOfferModal;
+```
+
+### Trade API Service
+
+```tsx
+// Add to api/trade.ts
+import { apiClient } from './api-client';
+import { ConsolidatedLogger } from 'utils/consolidated-logger';
+
+export interface TradeOffer {
+  tradeOfferId: string;
+  partnerSteamId: string;
+  partnerName: string;
+  itemsToGive: {
+    assetId: string;
+    name: string;
+    imageUrl: string;
+  }[];
+  status: 'Pending' | 'Accepted' | 'Declined' | 'Canceled' | 'Expired' | 'Error';
+  message?: string;
+  createdAt: string;
+  expiresAt: string;
+}
+
+export interface CreateTradeOfferParams {
+  recipientSteamId: string;
+  assetIds: string[];
+  message?: string;
+}
+
+export interface CreateTradeOfferResult {
+  success: boolean;
+  tradeOfferId?: string;
+  error?: string;
+}
+
+export const tradeAPI = {
+  /**
+   * Create a new trade offer
+   * @param params Trade offer parameters
+   * @returns Promise with trade offer result
+   */
+  createTradeOffer: async (
+    params: CreateTradeOfferParams
+  ): Promise<CreateTradeOfferResult> => {
+    try {
+      ConsolidatedLogger.logCS2(
+        `Creating trade offer to ${params.recipientSteamId} with ${params.assetIds.length} items`,
+        'INFO'
+      );
+      
+      const response = await apiClient.post('/trades/offers', params);
+      return response.data;
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'tradeAPI.createTradeOffer'
+      );
+      
+      // Extract error message from API response if available
+      let errorMessage = 'Failed to create trade offer';
+      if (error.response && error.response.data && error.response.data.detail) {
+        errorMessage = error.response.data.detail;
+      }
+      
+      return { success: false, error: errorMessage };
+    }
+  },
+
+  /**
+   * Get active trade offers
+   * @returns Promise with active trade offers
+   */
+  getActiveOffers: async (): Promise<TradeOffer[]> => {
+    try {
+      ConsolidatedLogger.logCS2('Getting active trade offers', 'INFO');
+      const response = await apiClient.get('/trades/offers/active');
+      return response.data;
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'tradeAPI.getActiveOffers'
+      );
+      return [];
+    }
+  },
+
+  /**
+   * Get trade history
+   * @param page Page number
+   * @param pageSize Number of items per page
+   * @returns Promise with trade history
+   */
+  getTradeHistory: async (
+    page: number = 1,
+    pageSize: number = 10
+  ): Promise<{ trades: TradeOffer[]; total: number }> => {
+    try {
+      ConsolidatedLogger.logCS2('Getting trade history', 'INFO');
+      const response = await apiClient.get('/trades/history', {
+        params: { page, pageSize }
+      });
+      return response.data;
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'tradeAPI.getTradeHistory'
+      );
+      return { trades: [], total: 0 };
+    }
+  },
+
+  /**
+   * Accept a trade offer
+   * @param tradeOfferId ID of the trade offer to accept
+   * @returns Promise with result
+   */
+  acceptOffer: async (tradeOfferId: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      ConsolidatedLogger.logCS2(`Accepting trade offer ${tradeOfferId}`, 'INFO');
+      const response = await apiClient.post(`/trades/offers/${tradeOfferId}/accept`);
+      return { success: true, ...response.data };
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'tradeAPI.acceptOffer'
+      );
+      
+      let errorMessage = 'Failed to accept trade offer';
+      if (error.response && error.response.data && error.response.data.detail) {
+        errorMessage = error.response.data.detail;
+      }
+      
+      return { success: false, error: errorMessage };
+    }
+  },
+
+  /**
+   * Decline a trade offer
+   * @param tradeOfferId ID of the trade offer to decline
+   * @returns Promise with result
+   */
+  declineOffer: async (tradeOfferId: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      ConsolidatedLogger.logCS2(`Declining trade offer ${tradeOfferId}`, 'INFO');
+      const response = await apiClient.post(`/trades/offers/${tradeOfferId}/decline`);
+      return { success: true, ...response.data };
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'tradeAPI.declineOffer'
+      );
+      
+      let errorMessage = 'Failed to decline trade offer';
+      if (error.response && error.response.data && error.response.data.detail) {
+        errorMessage = error.response.data.detail;
+      }
+      
+      return { success: false, error: errorMessage };
+    }
+  },
+
+  /**
+   * Cancel a trade offer
+   * @param tradeOfferId ID of the trade offer to cancel
+   * @returns Promise with result
+   */
+  cancelOffer: async (tradeOfferId: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      ConsolidatedLogger.logCS2(`Canceling trade offer ${tradeOfferId}`, 'INFO');
+      const response = await apiClient.post(`/trades/offers/${tradeOfferId}/cancel`);
+      return { success: true, ...response.data };
+    } catch (error) {
+      ConsolidatedLogger.logCS2Error(
+        error instanceof Error ? error : new Error(String(error)),
+        'tradeAPI.cancelOffer'
+      );
+      
+      let errorMessage = 'Failed to cancel trade offer';
+      if (error.response && error.response.data && error.response.data.detail) {
+        errorMessage = error.response.data.detail;
+      }
+      
+      return { success: false, error: errorMessage };
+    }
+  }
+};
+```
+
+### Trade Status Hook
+
+```tsx
+import { useState, useEffect, useCallback } from 'react';
+import { tradeAPI, TradeOffer, CreateTradeOfferParams, CreateTradeOfferResult } from 'api/trade';
+import { ConsolidatedLogger } from 'utils/consolidated-logger';
+
+export const useTradeOffers = () => {
+  const [activeOffers, setActiveOffers] = useState<TradeOffer[]>([]);
+  const [history, setHistory] = useState<TradeOffer[]>([]);
+  const [totalHistory, setTotalHistory] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [historyLoading, setHistoryLoading] = useState(true);
+  const [creating, setCreating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  const fetchActiveOffers = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const offers = await tradeAPI.getActiveOffers();
+      setActiveOffers(offers);
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useTradeOffers.fetchActiveOffers'
+      );
+      setError('Failed to load active trade offers');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+  
+  const fetchTradeHistory = useCallback(async (page: number = 1, pageSize: number = 10) => {
+    try {
+      setHistoryLoading(true);
+      const result = await tradeAPI.getTradeHistory(page, pageSize);
+      setHistory(result.trades);
+      setTotalHistory(result.total);
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useTradeOffers.fetchTradeHistory'
+      );
+    } finally {
+      setHistoryLoading(false);
+    }
+  }, []);
+  
+  const createTradeOffer = useCallback(async (params: CreateTradeOfferParams): Promise<CreateTradeOfferResult> => {
+    try {
+      setCreating(true);
+      const result = await tradeAPI.createTradeOffer(params);
+      
+      if (result.success) {
+        // Refresh active offers after creation
+        fetchActiveOffers();
+      }
+      
+      return result;
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useTradeOffers.createTradeOffer'
+      );
+      return { success: false, error: 'Failed to create trade offer' };
+    } finally {
+      setCreating(false);
+    }
+  }, [fetchActiveOffers]);
+  
+  const acceptOffer = useCallback(async (tradeOfferId: string) => {
+    try {
+      const result = await tradeAPI.acceptOffer(tradeOfferId);
+      
+      if (result.success) {
+        // Refresh offers after accepting
+        fetchActiveOffers();
+        fetchTradeHistory();
+      }
+      
+      return result;
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useTradeOffers.acceptOffer'
+      );
+      return { success: false, error: 'Failed to accept trade offer' };
+    }
+  }, [fetchActiveOffers, fetchTradeHistory]);
+  
+  const declineOffer = useCallback(async (tradeOfferId: string) => {
+    try {
+      const result = await tradeAPI.declineOffer(tradeOfferId);
+      
+      if (result.success) {
+        // Refresh offers after declining
+        fetchActiveOffers();
+        fetchTradeHistory();
+      }
+      
+      return result;
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useTradeOffers.declineOffer'
+      );
+      return { success: false, error: 'Failed to decline trade offer' };
+    }
+  }, [fetchActiveOffers, fetchTradeHistory]);
+  
+  const cancelOffer = useCallback(async (tradeOfferId: string) => {
+    try {
+      const result = await tradeAPI.cancelOffer(tradeOfferId);
+      
+      if (result.success) {
+        // Refresh offers after canceling
+        fetchActiveOffers();
+        fetchTradeHistory();
+      }
+      
+      return result;
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'useTradeOffers.cancelOffer'
+      );
+      return { success: false, error: 'Failed to cancel trade offer' };
+    }
+  }, [fetchActiveOffers, fetchTradeHistory]);
+  
+  useEffect(() => {
+    fetchActiveOffers();
+    fetchTradeHistory();
+  }, [fetchActiveOffers, fetchTradeHistory]);
+  
+  return {
+    activeOffers,
+    history,
+    totalHistory,
+    loading,
+    historyLoading,
+    creating,
+    error,
+    fetchActiveOffers,
+    fetchTradeHistory,
+    createTradeOffer,
+    acceptOffer,
+    declineOffer,
+    cancelOffer
+  };
+};
+```
+
+### Trade Offer List Component
+
+```tsx
+import React from 'react';
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Chip,
+  Grid,
+  Avatar,
+  Divider,
+  CircularProgress,
+  Alert
+} from '@mui/material';
+import { format } from 'date-fns';
+import { useTradeOffers } from 'hooks/useTradeOffers';
+import { TradeOffer } from 'api/trade';
+import ItemAvatar from 'components/inventory/ItemAvatar';
+
+const TradeOfferList: React.FC = () => {
+  const {
+    activeOffers,
+    loading,
+    error,
+    fetchActiveOffers,
+    acceptOffer,
+    declineOffer,
+    cancelOffer
+  } = useTradeOffers();
+  
+  const getStatusColor = (status: TradeOffer['status']) => {
+    switch (status) {
+      case 'Pending': return 'warning';
+      case 'Accepted': return 'success';
+      case 'Declined':
+      case 'Canceled':
+      case 'Expired':
+      case 'Error': return 'error';
+      default: return 'default';
+    }
+  };
+  
+  const handleAction = async (action: 'accept' | 'decline' | 'cancel', tradeOfferId: string) => {
+    let result;
+    
+    if (action === 'accept') {
+      result = await acceptOffer(tradeOfferId);
+    } else if (action === 'decline') {
+      result = await declineOffer(tradeOfferId);
+    } else if (action === 'cancel') {
+      result = await cancelOffer(tradeOfferId);
+    }
+    
+    if (result && !result.success) {
+      alert(result.error || `Failed to ${action} trade offer`);
+    }
+    
+    fetchActiveOffers();
+  };
+  
+  return (
+    <Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+        <Typography variant="h6">Active Trade Offers</Typography>
+        <Button 
+          size="small" 
+          onClick={() => fetchActiveOffers()}
+          disabled={loading}
+        >
+          Refresh
+        </Button>
+      </Box>
+      
+      {loading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>
+          <CircularProgress />
+        </Box>
+      ) : error ? (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      ) : activeOffers.length > 0 ? (
+        <Grid container spacing={2}>
+          {activeOffers.map(offer => (
+            <Grid item xs={12} key={offer.tradeOfferId}>
+              <Card>
+                <CardContent>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
+                    <Box>
+                      <Typography variant="subtitle1">
+                        Trade with {offer.partnerName}
+                      </Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        Created: {format(new Date(offer.createdAt), 'MMM d, yyyy HH:mm')}
+                      </Typography>
+                    </Box>
+                    <Chip 
+                      label={offer.status} 
+                      color={getStatusColor(offer.status)} 
+                      size="small" 
+                    />
+                  </Box>
+                  
+                  {offer.message && (
+                    <Typography variant="body2" sx={{ mb: 2 }}>
+                      "{offer.message}"
+                    </Typography>
+                  )}
+                  
+                  <Box sx={{ mb: 2 }}>
+                    <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                      Items to Trade:
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                      {offer.itemsToGive.map(item => (
+                        <ItemAvatar
+                          key={item.assetId}
+                          name={item.name}
+                          imageUrl={item.imageUrl}
+                          size="medium"
+                        />
+                      ))}
+                    </Box>
+                  </Box>
+                  
+                  <Divider sx={{ my: 2 }} />
+                  
+                  <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+                    {offer.status === 'Pending' && (
+                      <>
+                        <Button 
+                          variant="outlined" 
+                          color="error"
+                          onClick={() => handleAction('decline', offer.tradeOfferId)}
+                        >
+                          Decline
+                        </Button>
+                        <Button 
+                          variant="contained" 
+                          color="primary"
+                          onClick={() => handleAction('accept', offer.tradeOfferId)}
+                        >
+                          Accept
+                        </Button>
+                      </>
+                    )}
+                    {offer.status === 'Pending' && (
+                      <Button 
+                        variant="outlined"
+                        onClick={() => handleAction('cancel', offer.tradeOfferId)}
+                      >
+                        Cancel
+                      </Button>
+                    )}
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Box sx={{ py: 4, textAlign: 'center' }}>
+          <Typography color="text.secondary">
+            No active trade offers
+          </Typography>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+export default TradeOfferList;
+```
+
+## Trade Security Implementation
+
+### Security Verification Component
+
+```tsx
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  CircularProgress,
+  Alert
+} from '@mui/material';
+import { tradeAPI } from 'api/trade';
+import { ConsolidatedLogger } from 'utils/consolidated-logger';
+
+interface SecurityVerificationProps {
+  tradeOfferId: string;
+  open: boolean;
+  onClose: () => void;
+  onVerified: () => void;
+}
+
+const SecurityVerification: React.FC<SecurityVerificationProps> = ({
+  tradeOfferId,
+  open,
+  onClose,
+  onVerified
+}) => {
+  const [verificationCode, setVerificationCode] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  const handleVerify = async () => {
+    if (!verificationCode) {
+      setError('Verification code is required');
+      return;
+    }
+    
+    try {
+      setLoading(true);
+      setError(null);
+      
+      // Example API call - would need to be implemented in the API
+      const result = await tradeAPI.verifyTradeOffer(tradeOfferId, verificationCode);
+      
+      if (result.success) {
+        ConsolidatedLogger.logCS2(
+          `Trade offer ${tradeOfferId} verified successfully`,
+          'INFO'
+        );
+        onVerified();
+        onClose();
+      } else {
+        setError(result.error || 'Verification failed');
+      }
+    } catch (err) {
+      ConsolidatedLogger.logCS2Error(
+        err instanceof Error ? err : new Error(String(err)),
+        'SecurityVerification.handleVerify'
+      );
+      setError('An error occurred during verification');
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  return (
+    <Dialog open={open} onClose={onClose}>
+      <DialogTitle>Security Verification</DialogTitle>
+      <DialogContent>
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
+        
+        <Typography variant="body2" sx={{ mb: 2 }}>
+          To complete this trade, please enter the verification code sent to your email or mobile device.
+        </Typography>
+        
+        <TextField
+          label="Verification Code"
+          value={verificationCode}
+          onChange={(e) => setVerificationCode(e.target.value)}
+          fullWidth
+          margin="normal"
+          autoFocus
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button
+          onClick={handleVerify}
+          variant="contained"
+          color="primary"
+          disabled={loading || !verificationCode}
+        >
+          {loading ? <CircularProgress size={24} /> : 'Verify'}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+export default SecurityVerification;
+```
+
+## Error Handling Patterns
+
+1. **Trade Creation Errors**:
+   - Item availability verification
+   - Trade partner validation
+   - Rate limit handling
+   - Steam API connectivity issues
+
+2. **Trade Status Update Errors**:
+   - Status synchronization failures
+   - Expired offers handling
+   - Cancelled trades handling
+   - Partner response timeout
+
+3. **Security Verification Failures**:
+   - Verification code validation
+   - Session authentication issues
+   - Mobile confirmations handling
+   - Multi-device coordination
+
+## Best Practices
+
+1. **Security Guidelines**:
+   - Always verify trade partner identity
+   - Implement trade value verification to prevent scams
+   - Add confirmation steps for high-value trades
+   - Maintain trade history for dispute resolution
+
+2. **Performance Optimization**:
+   - Minimize trade offer creation overhead
+   - Implement efficient polling for trade status updates
+   - Optimize inventory item selection UI for large inventories
+   - Cache trade history for quicker access
+
+3. **UX Considerations**:
+   - Provide clear trade status indicators
+   - Implement mobile notifications for trade updates
+   - Design intuitive item selection interface
+   - Add comprehensive trade value visualization
+
+## Cross-References
+
+- **Authentication**: See `knowledge/front-end/steam-web-api/authentication.md`
+- **Inventory Display**: See `knowledge/front-end/steam-web-api/inventory.md`
+- **Market Data**: See `knowledge/front-end/steam-web-api/market-data.md`
+- **Back-End Trading**: See `knowledge/back-end/steam-web-api/trading.md` 

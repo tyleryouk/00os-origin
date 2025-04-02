@@ -2,47 +2,75 @@
 
 ## Overview
 
-This workflow provides specialized behavior for back-end components that interact with the Steam Web API.
+This workflow provides specialized behavior for back-end components that interact with the Steam Web API, extending the base back-end workflow with Steam-specific patterns. It encompasses authentication, inventory management, market data handling, and trading system integration.
 
-## File Patterns
+## Workflow Activation
 
-This workflow is activated for files matching these patterns:
-
-- `**/app/routes/auth/steam*.py`
-- `**/app/routes/inventory/steam*.py`
-- `**/app/routes/market/steam*.py`
-- `**/app/routes/trading/steam*.py`
-- `**/app/services/steam*.py`
-- `**/app/models/steam*.py`
-- `**/app/schemas/steam*.py`
+This workflow is automatically attached whenever working with any file in the `back-end/` directory. It extends the base back-end workflow with Steam Web API-specific patterns and guidance for Steam-related components.
 
 ## Behavior Specialization
 
 This workflow specializes behavior for Steam Web API integration by:
 
 1. **Authentication Patterns**:
-   - Providing specialized Steam OpenID authentication patterns
-   - Offering security token handling for Steam users
-   - Supporting secure session management patterns
-   - Enhancing user profile data storage and retrieval
+   - Steam OpenID authentication flows
+   - Security token handling for Steam users
+   - Secure session management patterns
+   - User profile data storage and retrieval
+   - API key security management
 
 2. **Inventory Patterns**:
-   - Supporting Steam inventory data fetching and caching
-   - Offering CS2 skin data transformation patterns
-   - Providing inventory privacy handling
-   - Supporting inventory data validation and normalization
+   - Steam inventory data fetching and caching
+   - CS2 skin data transformation patterns
+   - Inventory privacy handling
+   - Inventory data validation and normalization
+   - Inventory change detection
 
 3. **Market Data Patterns**:
-   - Enhancing price data aggregation patterns
-   - Supporting historical price tracking
-   - Providing market trend analysis
-   - Offering exchange rate conversion
+   - Price data aggregation patterns
+   - Historical price tracking
+   - Market trend analysis
+   - Exchange rate conversion
+   - Real-time market updates
 
 4. **Trading Patterns**:
-   - Supporting trade offer creation and validation
-   - Enhancing trade status tracking and management
-   - Providing trade history storage and retrieval
-   - Supporting secure trade verification patterns
+   - Trade offer creation and validation
+   - Trade status tracking and management
+   - Trade history storage and retrieval
+   - Secure trade verification patterns
+   - Escrow system integration
+
+## Integration Architecture
+
+The Steam Web API integration follows this layered architecture:
+
+1. **API Client Layer**:
+   - Handles direct communication with Steam Web API
+   - Implements proper rate limiting
+   - Manages authentication headers
+   - Handles retry logic
+   - Monitors API health
+
+2. **Service Layer**:
+   - Transforms API responses to domain models
+   - Implements business logic
+   - Handles caching strategies
+   - Manages error scenarios
+   - Coordinates multi-step operations
+
+3. **Controller Layer**:
+   - Exposes Steam functionalities via FastAPI endpoints
+   - Handles request validation
+   - Manages authentication/authorization
+   - Implements proper error responses
+   - Provides OpenAPI documentation
+
+4. **Background Processing Layer**:
+   - Handles long-running Steam operations
+   - Implements polling for trade status
+   - Manages market data synchronization
+   - Processes inventory updates
+   - Executes scheduled tasks
 
 ## Related Parameters
 
@@ -60,154 +88,91 @@ This workflow references the following knowledge components:
 - **Inventory**: `knowledge/back-end/steam-web-api/inventory.md`
 - **Market Data**: `knowledge/back-end/steam-web-api/market-data.md`
 - **Trading**: `knowledge/back-end/steam-web-api/trading.md`
+- **Security**: `knowledge/back-end/steam-web-api/security.md`
+- **Data Caching**: `knowledge/back-end/steam-web-api/data-caching.md`
 
-## Implementation Patterns
+## Integration with Other Workflows
 
-### Router Structure Pattern
+1. **Authentication Workflow Integration**:
+   - Extends `workflows/back-end/authentication.md` with Steam-specific authentication
+   - Implements Steam OpenID Connect patterns
+   - Manages Steam user identity in the system
+   - Handles Steam session security
 
-```python
-# Standard pattern for Steam API routers
-from fastapi import APIRouter, Request, Depends, HTTPException
-from app.services.steam_service import SteamService
-from app.services.session_service import SessionService
-from app.core.logger import logger
+2. **Caching Workflow Integration**:
+   - Extends `workflows/back-end/caching.md` with Steam-specific caching strategies
+   - Implements adaptive TTL for different Steam data types
+   - Uses Redis for Steam inventory and market data
+   - Handles cache invalidation for Steam events
 
-router = APIRouter(prefix="/steam", tags=["steam"])
+3. **Database Workflow Integration**:
+   - Extends `workflows/back-end/database.md` with Steam data modeling
+   - Implements Steam-specific database schemas
+   - Manages Steam item historical data
+   - Optimizes queries for Steam-related operations
 
-# Dependency injection
-steam_service = SteamService()
-session_service = SessionService()
+## Quality Requirements
 
-@router.get("/endpoint")
-async def steam_endpoint(request: Request, session=Depends(session_service.get_current_session)):
-    """Steam API endpoint description"""
-    # Authentication check
-    if not session or not session.user:
-        raise HTTPException(status_code=401, detail="Authentication required")
-    
-    try:
-        # Log the operation
-        logger.info(f"Steam operation for user {session.user.id}")
-        
-        # Service call
-        result = await steam_service.some_operation(session.user.steam_id)
-        
-        return result
-    except Exception as e:
-        # Log error
-        logger.error(f"Error in Steam operation: {str(e)}")
-        
-        # Return appropriate error
-        raise HTTPException(status_code=500, detail="Operation failed")
-```
+Steam Web API features must meet these quality gates:
 
-### Service Structure Pattern
+1. **Test Coverage**: 90% minimum coverage
+2. **Code Quality**: 8.5/10 minimum Pylint score
+3. **Security**: Pass all Bandit security checks and Steam-specific security tests
+4. **Performance**: Pass Steam-specific performance benchmarks
+5. **Reliability**: Handle Steam API outages gracefully
 
-```python
-# Standard pattern for Steam services
-import aiohttp
-from typing import Dict, List, Any
-from app.core.logger import logger
-from app.core.config import settings
-from app.core.cache import cache
+## Implementation Guidelines
 
-class SteamService:
-    """Service for Steam API operations"""
-    
-    def __init__(self):
-        self.api_key = settings.STEAMWEBAPI_KEY
-    
-    @cache(ttl=300)
-    async def some_operation(self, steam_id: str) -> Dict[str, Any]:
-        """Description of the operation"""
-        try:
-            # Construct API URL
-            url = f"https://api.steamwebapi.com/endpoint/{steam_id}"
-            
-            # Make API request
-            async with aiohttp.ClientSession() as session:
-                headers = {"Authorization": f"Bearer {self.api_key}"}
-                
-                async with session.get(url, headers=headers) as response:
-                    # Handle non-200 responses
-                    if response.status != 200:
-                        logger.error(f"SteamWebAPI error: {response.status}")
-                        error_text = await response.text()
-                        logger.error(f"Error details: {error_text}")
-                        return {"error": "API request failed"}
-                    
-                    # Process response
-                    data = await response.json()
-                    return self._transform_data(data)
-        except Exception as e:
-            # Log error
-            logger.error(f"Error in Steam operation: {str(e)}")
-            return {"error": "Operation failed"}
-    
-    def _transform_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Transform data from API format to application format"""
-        # Transformation logic
-        return data
-```
+1. **API Integration**:
+   - Use aiohttp for async HTTP requests to Steam API
+   - Implement proper rate limiting with exponential backoff
+   - Handle Steam-specific error codes and responses
+   - Cache responses with appropriate TTL
+   - Log all Steam API interactions for debugging
 
-### Error Handling Pattern
+2. **Error Handling**:
+   - Handle Steam API rate limits with retry logic
+   - Manage authentication failures with proper user feedback
+   - Process API-specific errors with fallback mechanisms
+   - Implement comprehensive logging for Steam operations
+   - Provide degraded functionality during Steam outages
 
-```python
-# Standard pattern for Steam error handling
-try:
-    # Steam API operation
-except aiohttp.ClientResponseError as e:
-    if e.status == 429:
-        # Rate limiting error
-        logger.error(f"Rate limit exceeded: {str(e)}")
-        # Implement exponential backoff
-    elif e.status == 403:
-        # Authentication error
-        logger.error(f"Authentication failed: {str(e)}")
-        # Return appropriate error
-    else:
-        # General API error
-        logger.error(f"API error: {str(e)}")
-        # Return appropriate error
-except aiohttp.ClientError as e:
-    # Network error
-    logger.error(f"Network error: {str(e)}")
-    # Return appropriate error
-except Exception as e:
-    # Unexpected error
-    logger.error(f"Unexpected error: {str(e)}")
-    # Return appropriate error
-```
+3. **Data Management**:
+   - Cache Steam inventory data with appropriate invalidation
+   - Transform API responses to consistent internal formats
+   - Validate Steam data formats before processing
+   - Handle data privacy requirements for Steam user data
+   - Implement data consistency checks
 
-### Caching Pattern
+4. **Security Practices**:
+   - Never expose Steam API keys in client-side code
+   - Implement proper API key rotation
+   - Validate all Steam authentication tokens
+   - Secure Steam trade URLs and offers
+   - Monitor for suspicious Steam trading patterns
 
-```python
-# Standard pattern for Steam data caching
-from app.core.cache import cache
+## Steam API Rate Limiting Strategy
 
-@cache(ttl=300)  # 5 minutes TTL
-async def cached_operation(self, params):
-    # Operation implementation
-    return result
+1. **Client-Side Rate Limiting**:
+   - Implement token bucket algorithm
+   - Configure appropriate rate windows
+   - Track rate limits per endpoint
+   - Implement backoff strategies
 
-# Manual cache implementation
-async def get_data(self, key, refresh=False):
-    # Skip cache if refresh requested
-    if refresh:
-        return await self._fetch_data()
-    
-    # Try to get from cache
-    cache_key = f"steam_data_{key}"
-    cached_data = await self._get_cached_data(cache_key)
-    
-    if cached_data:
-        return cached_data
-    
-    # Fetch new data
-    data = await self._fetch_data()
-    
-    # Cache the data
-    await self._cache_data(cache_key, data)
-    
-    return data
-``` 
+2. **Response Handling**:
+   - Parse Steam rate limit headers
+   - Adjust request timing dynamically
+   - Queue non-urgent requests
+   - Prioritize critical operations
+
+3. **Error Recovery**:
+   - Detect rate limit errors (429 responses)
+   - Implement exponential backoff
+   - Retry with jitter
+   - Fall back to cached data when appropriate
+
+4. **Monitoring**:
+   - Track API quota consumption
+   - Alert on approaching limits
+   - Log rate limit events
+   - Monitor Steam API status 

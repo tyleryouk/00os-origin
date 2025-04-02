@@ -1,3 +1,8 @@
+---
+description: USE WHEN exploring architectural domains, understanding system components, or planning architectural changes
+globs: 
+alwaysApply: false
+---
 # USE WHEN exploring architectural domains, understanding system components, or planning architectural changes
 
 # Architecture Domain Reference

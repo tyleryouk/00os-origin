@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating new brain-files
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating new brain-files
 
 # Standard File Template

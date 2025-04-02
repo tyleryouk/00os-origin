@@ -1,3 +1,8 @@
+---
+description: USE WHEN creating documentation references, formatting file paths, or implementing consistent reference patterns
+globs: 
+alwaysApply: false
+---
 # USE WHEN creating documentation references, formatting file paths, or implementing consistent reference patterns
 
 # Reference Format Template

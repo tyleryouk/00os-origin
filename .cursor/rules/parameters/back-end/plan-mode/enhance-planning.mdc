@@ -1,0 +1,328 @@
+# workflow: back-end-workflow | pathway: none | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/back-end/plan-mode/enhance-planning.md
+
+# Enhance Planning: Back-End Workflow
+
+## File Purpose
+
+This file provides an iterative planning enhancement pattern for back-end workflow implementation. It should be used when:
+
+- Back-end planning documentation requires further refinement
+- Additional API research and analysis is needed
+- Database schema planning needs optimization
+- Security and performance considerations need enhancement
+- Integration points with front-end require clarification
+
+This parameter is designed to work with the `enhance-planning:` message-command, providing a structured approach to progressively improving back-end planning documentation through multiple iterations.
+
+This message-command can be issued multiple times in sequence to progressively enhance planning files.
+
+## Enhancement Process Overview
+
+The back-end planning enhancement process follows these key steps:
+
+1. **Planning State Analysis**
+   - Assess current API documentation quality
+   - Review database schema definitions
+   - Analyze security planning completeness
+   - Evaluate integration readiness with front-end
+   - Check performance optimization planning
+
+2. **Enhancement Strategy Selection**
+   - Determine critical back-end components needing enhancement
+   - Select appropriate research approach for APIs and databases
+   - Design iterative enhancement plan for security and performance
+   - Prioritize high-impact improvements for system stability
+
+3. **Enhanced Research Process**
+   - Research existing API patterns and best practices
+   - Analyze database optimization strategies
+   - Study security implementation patterns
+   - Investigate performance bottlenecks
+   - Review integration patterns with front-end
+
+4. **Planning Document Enhancement**
+   - Improve API documentation and specifications
+   - Enhance database schema planning
+   - Strengthen security implementation plans
+   - Add detailed performance optimization strategies
+   - Clarify front-end integration points
+
+5. **Enhancement Value Assessment**
+   - Analyze if further enhancement would provide diminishing returns
+   - Determine if back-end planning is sufficiently complete
+   - Assess implementation readiness for all components
+   - Provide explicit recommendation on enhancement completion
+
+## Planning State Analysis
+
+Begin by analyzing the current state of back-end planning documentation:
+
+```typescript
+// 1. Review core planning files
+read_file("[planning_folder_path]/requirements.md", should_read_entire_file=true)
+read_file("[planning_folder_path]/implementation-[feature].md", should_read_entire_file=true)
+
+// 2. Check API documentation
+read_file("[planning_folder_path]/api-spec.md", should_read_entire_file=true)
+
+// 3. Review database planning
+read_file("[planning_folder_path]/database-schema.md", should_read_entire_file=true)
+
+// 4. Check security planning
+read_file("[planning_folder_path]/security-plan.md", should_read_entire_file=true)
+
+// 5. Review integration documentation
+read_file("[planning_folder_path]/integration-spec.md", should_read_entire_file=true)
+```
+
+## Enhancement Strategy Selection
+
+Based on the planning state analysis, select appropriate enhancement strategies:
+
+1. **API Enhancement**
+   - Clarify endpoint specifications
+   - Add request/response examples
+   - Document error handling
+   - Include rate limiting details
+   - Specify authentication requirements
+
+2. **Database Enhancement**
+   - Improve schema definitions
+   - Add indexing strategies
+   - Document relationships
+   - Include migration plans
+   - Specify backup procedures
+
+3. **Security Enhancement**
+   - Strengthen authentication plans
+   - Add authorization details
+   - Include input validation
+   - Document security headers
+   - Specify CORS policies
+
+4. **Performance Enhancement**
+   - Add caching strategies
+   - Include optimization techniques
+   - Document scaling plans
+   - Specify monitoring approaches
+   - Add performance metrics
+
+5. **Integration Enhancement**
+   - Clarify front-end dependencies
+   - Document state management
+   - Add WebSocket specifications
+   - Include error handling
+   - Specify data formats
+
+## Enhanced Research Process
+
+Conduct thorough research using explicit tool calls:
+
+```typescript
+// 1. Research similar API implementations
+codebase_search("FastAPI endpoint implementation", ["back-end/app/api"])
+
+// 2. Analyze database patterns
+grep_search("SQLAlchemy model", false, "*.py")
+
+// 3. Study security implementations
+codebase_search("authentication middleware", ["back-end/app/auth"])
+
+// 4. Review performance patterns
+codebase_search("caching implementation", ["back-end/app/cache"])
+
+// 5. Access relevant knowledge
+fetch_rules(["knowledge/back-end/steam-web-api/authentication"])
+```
+
+## Planning Document Enhancement
+
+Apply research findings to enhance planning documents:
+
+```typescript
+// 1. Enhance API documentation
+edit_file("[planning_folder_path]/api-spec.md",
+          "Enhance API specifications with detailed examples",
+          "// ... existing content ...\n\n## Enhanced API Specifications\n\n### Endpoint: [endpoint_name]\n```python\n@router.post('/[path]')\nasync def endpoint_handler(request: Request):\n    # Implementation example\n    pass\n```\n\n### Request Example\n```json\n{\n    \"field\": \"value\"\n}\n```\n\n### Response Example\n```json\n{\n    \"status\": \"success\",\n    \"data\": {}\n}\n```\n\n### Error Handling\n```python\nfrom fastapi import HTTPException\n\nif error_condition:\n    raise HTTPException(status_code=400, detail=\"Error message\")\n```\n\n// ... existing content ...")
+
+// 2. Enhance database planning
+edit_file("[planning_folder_path]/database-schema.md",
+          "Enhance database schema with optimization details",
+          "// ... existing content ...\n\n## Enhanced Database Schema\n\n### Model: [model_name]\n```python\nclass ModelName(Base):\n    __tablename__ = \"table_name\"\n    \n    id = Column(Integer, primary_key=True)\n    field = Column(String, index=True)\n    \n    # Relationships\n    related = relationship(\"RelatedModel\", back_populates=\"model\")\n```\n\n### Indexing Strategy\n- Primary Index: id\n- Secondary Indexes: [field_names]\n\n### Optimization Plan\n- Query optimization techniques\n- Caching strategy\n- Batch processing approach\n\n// ... existing content ...")
+
+// 3. Enhance security planning
+edit_file("[planning_folder_path]/security-plan.md",
+          "Enhance security implementation details",
+          "// ... existing content ...\n\n## Enhanced Security Implementation\n\n### Authentication\n```python\nfrom fastapi_security import OAuth2PasswordBearer\n\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n\n@router.get('/protected')\nasync def protected_route(token: str = Depends(oauth2_scheme)):\n    # Implementation\n    pass\n```\n\n### Authorization\n- Role-based access control\n- Permission validation\n- Token validation\n\n### Security Headers\n```python\nfrom fastapi.middleware.security import SecurityMiddleware\n\napp.add_middleware(SecurityMiddleware)\n```\n\n// ... existing content ...")
+
+// 4. Enhance performance planning
+edit_file("[planning_folder_path]/performance-plan.md",
+          "Enhance performance optimization strategy",
+          "// ... existing content ...\n\n## Enhanced Performance Strategy\n\n### Caching Implementation\n```python\nfrom fastapi_cache import FastAPICache\n\n@router.get('/cached')\n@cache(expire=300)\nasync def cached_route():\n    # Implementation\n    pass\n```\n\n### Database Optimization\n- Connection pooling\n- Query optimization\n- Bulk operations\n\n### Monitoring Strategy\n- Performance metrics\n- Logging approach\n- Alert thresholds\n\n// ... existing content ...")
+```
+
+## Enhancement Value Assessment Guidelines
+
+When assessing whether further planning enhancement would provide diminishing returns, consider:
+
+1. **API Readiness**
+   - Are all endpoints clearly specified?
+   - Is error handling comprehensive?
+   - Are authentication requirements clear?
+   - Are response formats well-defined?
+
+2. **Database Readiness**
+   - Is the schema fully defined?
+   - Are optimization strategies clear?
+   - Is the migration plan complete?
+   - Are backup procedures specified?
+
+3. **Security Readiness**
+   - Is authentication fully planned?
+   - Are authorization rules clear?
+   - Is input validation defined?
+   - Are security headers specified?
+
+4. **Performance Readiness**
+   - Are caching strategies defined?
+   - Is optimization planning complete?
+   - Are monitoring approaches specified?
+   - Are scaling plans documented?
+
+5. **Integration Readiness**
+   - Are front-end dependencies clear?
+   - Is state management defined?
+   - Are WebSocket specs complete?
+   - Is error handling documented?
+
+## Enhancement Completion Signaling
+
+When enhancement is complete and further iterations would provide diminishing returns:
+
+```
+📋 1000xdev [back-end-workflow]
+
+Planning enhancement complete:
+
+Enhancements Applied:
+- Enhanced API documentation with detailed examples and error handling
+- Improved database schema with optimization strategies
+- Strengthened security planning with authentication and authorization details
+- Added comprehensive performance optimization strategies
+- Clarified front-end integration specifications
+
+Enhancement Value Analysis:
+- API Documentation Quality: High
+- Database Planning Quality: High
+- Security Planning Quality: High
+- Performance Planning Quality: High
+- Integration Planning Quality: High
+- Implementation readiness: Ready
+- Further enhancement value: Low (diminishing returns)
+
+Recommendation:
+Further planning enhancement would provide diminishing returns. The back-end planning documentation is comprehensive and implementation-ready. Recommend proceeding to implementation phase.
+
+planning-enhancement-complete
+```
+
+## Common Enhancement Patterns
+
+### API Documentation Pattern
+
+```markdown
+# API Endpoint Documentation
+
+## Endpoint: /api/v1/[endpoint]
+- Method: [GET/POST/PUT/DELETE]
+- Authentication: Required/Optional
+- Rate Limit: [limit]
+
+### Request
+```json
+{
+    "field": "type and description"
+}
+```
+
+### Response
+```json
+{
+    "status": "success",
+    "data": {
+        "field": "type and description"
+    }
+}
+```
+
+### Error Responses
+```json
+{
+    "status": "error",
+    "error": {
+        "code": "ERROR_CODE",
+        "message": "Error description"
+    }
+}
+```
+
+### Implementation Notes
+- Security considerations
+- Performance considerations
+- Caching strategy
+- Error handling approach
+```
+
+### Database Schema Pattern
+
+```markdown
+# Database Schema Documentation
+
+## Model: [ModelName]
+
+### Fields
+| Field | Type | Constraints | Index | Description |
+|-------|------|------------|--------|-------------|
+| id | Integer | PK, NOT NULL | Primary | Unique identifier |
+| field | String | NOT NULL | Secondary | Description |
+
+### Relationships
+- OneToMany with [RelatedModel]
+- ManyToOne with [ParentModel]
+
+### Optimization Strategy
+- Indexing approach
+- Query optimization
+- Caching strategy
+
+### Migration Plan
+1. Create table
+2. Add indexes
+3. Migrate existing data
+```
+
+### Security Implementation Pattern
+
+```markdown
+# Security Implementation
+
+## Authentication
+- OAuth2 implementation
+- Token validation
+- Session management
+
+## Authorization
+- Role-based access control
+- Permission validation
+- Resource ownership
+
+## Security Headers
+- CORS configuration
+- CSP settings
+- XSS protection
+
+## Input Validation
+- Request validation
+- Sanitization rules
+- Rate limiting
+``` 

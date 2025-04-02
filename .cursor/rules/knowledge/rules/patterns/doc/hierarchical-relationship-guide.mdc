@@ -1,3 +1,8 @@
+---
+description: USE WHEN structuring documentation hierarchies, establishing component relationships, or implementing progressive disclosure
+globs: 
+alwaysApply: false
+---
 # USE WHEN structuring documentation hierarchies, establishing component relationships, or implementing progressive disclosure
 
 # Hierarchical Relationship Guide

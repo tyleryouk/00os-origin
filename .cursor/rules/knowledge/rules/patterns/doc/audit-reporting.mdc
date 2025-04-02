@@ -1,0 +1,287 @@
+---
+description: USE WHEN creating audit reports, standardizing documentation formats, or implementing reporting templates
+globs: 
+alwaysApply: false
+---
+# USE WHEN creating audit reports, standardizing documentation formats, or implementing reporting templates
+
+# Audit Reporting Templates
+
+## Overview
+
+This document provides standardized templates for documenting audits of project-rule-parameters in the 1000xbrain cognitive architecture. These templates ensure consistency in reporting, improve clarity of findings, and streamline the corrective action process.
+
+## Key Concepts
+
+- **Report Types**: Different reports generated during audit processes
+- **Report Structure**: Standardized sections for each report type
+- **Formatting Standards**: Consistent formatting for clarity and usability
+- **Action Item Tracking**: Mechanisms for tracking corrective actions
+
+## Detailed Templates
+
+### 1. Full Audit Report Template
+
+```markdown
+# Rules Audit Report - [Month Year]
+
+## Summary
+- [Number] project-rule-parameters audited
+- [Number] headers verified
+- [Number] project-rule-parameters with issues
+- [Number] format inconsistencies identified
+
+## Critical Issues
+
+1. Missing headers:
+   - `[filepath]` - no header found
+   - `[filepath]` - no header found
+   
+2. Inconsistent headers:
+   - [Number] headers missing [component] component
+   - [Number] headers with incorrect [component]
+   - [Number] headers with mismatched [component] vs. [other component]
+
+## Format Issues
+
+1. Inconsistent paths in headers:
+   - [Number] project-rule-parameter-paths don't match actual file location
+   - [Number] project-rule-parameter-paths use `.md` instead of `.mdc` extension
+   
+2. Header formatting:
+   - [Number] headers not using standardized separator format with pipe symbol
+
+## Content Issues
+
+1. Missing sections:
+   - [Number] project-rule-parameters missing [Section Name] section
+   - [Number] project-rule-parameters missing [Section Name] section
+
+## File-Specific Issues
+
+1. `[filepath]`:
+   - Missing header
+   - Missing sections: [Section], [Section]
+   - Path mismatch: header `[path]` vs. actual `[path]`
+
+2. `[filepath]`:
+   - Inconsistent header: missing [component]
+   - Reference issues: [details]
+   - Format issues: [details]
+
+## Recommended Actions
+
+1. Add standardized headers to project-rule-parameters missing them
+2. Correct inconsistent header components
+3. Standardize project-rule-parameter-paths in headers
+4. Fix header formatting issues
+5. Add missing sections to incomplete project-rule-parameters
+
+## Audit Details
+
+Audit conducted: [Date]
+Audit script: [Script Name]
+Issues log: [Filepath]
+Complete results: [Filepath]
+```
+
+### 2. Action Items Template
+
+```markdown
+# Rules Audit Action Items - [Month Year]
+
+## High Priority Items
+
+1. **Missing Headers** - Fix within 1 week
+   - [ ] Add header to `[filepath]`
+   - [ ] Add header to `[filepath]`
+   - [ ] Add header to `[filepath]`
+
+2. **Path Mismatches** - Fix within 1 week
+   - [ ] Correct path in header of `[filepath]`
+   - [ ] Correct path in header of `[filepath]`
+
+## Medium Priority Items
+
+1. **Inconsistent Headers** - Fix within 2 weeks
+   - [ ] Standardize separator format in `[filepath]`
+   - [ ] Add missing components to `[filepath]`
+
+2. **Missing Sections** - Fix within 2 weeks
+   - [ ] Add Error Handling section to `[filepath]`
+   - [ ] Add Expected Outputs section to `[filepath]`
+
+## Low Priority Items
+
+1. **Documentation Improvements** - Fix within 1 month
+   - [ ] Enhance examples in `[filepath]`
+   - [ ] Clarify instructions in `[filepath]`
+
+## Completion Tracking
+
+| Item | Assigned To | Due Date | Status | Completed Date |
+|------|------------|----------|--------|---------------|
+| Add header to `[filepath]` | [Person] | [Date] | In Progress | - |
+| Correct path in `[filepath]` | [Person] | [Date] | Pending | - |
+| Add Error Handling section | [Person] | [Date] | Completed | [Date] |
+```
+
+### 3. Consistency Matrix Template
+
+```markdown
+# Rules Consistency Matrix - [Month Year]
+
+## Header Component Consistency
+
+| Component | Present | Missing | Incorrect Format | Percentage Correct |
+|-----------|---------|---------|-----------------|-------------------|
+| workflow  | [Number] | [Number] | [Number] | [Percentage]% |
+| pathway   | [Number] | [Number] | [Number] | [Percentage]% |
+| message-command | [Number] | [Number] | [Number] | [Percentage]% |
+| standard-parameter(s) | [Number] | [Number] | [Number] | [Percentage]% |
+| project-rule-parameter-path | [Number] | [Number] | [Number] | [Percentage]% |
+
+## Section Consistency
+
+| Section | Present | Missing | Percentage Present |
+|---------|---------|---------|-------------------|
+| Purpose | [Number] | [Number] | [Percentage]% |
+| Command Format | [Number] | [Number] | [Percentage]% |
+| Required Context | [Number] | [Number] | [Percentage]% |
+| Process Steps | [Number] | [Number] | [Percentage]% |
+| Tool Calls | [Number] | [Number] | [Percentage]% |
+| Expected Outputs | [Number] | [Number] | [Percentage]% |
+| Error Handling | [Number] | [Number] | [Percentage]% |
+
+## Format Consistency
+
+| Format Aspect | Correct | Incorrect | Percentage Correct |
+|---------------|---------|-----------|-------------------|
+| File Naming | [Number] | [Number] | [Percentage]% |
+| Path Structure | [Number] | [Number] | [Percentage]% |
+| Reference Format | [Number] | [Number] | [Percentage]% |
+| Backtick Protection | [Number] | [Number] | [Percentage]% |
+```
+
+### 4. Coverage Report Template
+
+```markdown
+# Rules Coverage Report - [Month Year]
+
+## Message-Command to Project-Rule-Parameter Mapping
+
+| Message-Command | Project-Rule-Parameter | Status |
+|-----------------|------------------------|--------|
+| verify-planning: | @parameters/rules/plan-mode/verify-planning.mdc | ✅ Aligned |
+| analyze-logs: | @parameters/rules/dev-mode/analyze-logs.mdc | ✅ Aligned |
+| rules-audit-process: | @parameters/rules/plan-mode/rules-audit-process.mdc | ✅ Aligned |
+| scan-symbol-usage: | @parameters/rules/direct-mode/scan-symbol-usage.mdc | ✅ Aligned |
+| continue-implementation: | Missing | ❌ Not Found |
+
+## Workflow Coverage
+
+| Workflow | Message-Commands | Project-Rule-Parameters | Coverage Percentage |
+|---------|------------------|--------------------------|---------------------|
+| rules-workflow | [Number] | [Number] | [Percentage]% |
+| front-end-workflow | [Number] | [Number] | [Percentage]% |
+| back-end-workflow | [Number] | [Number] | [Percentage]% |
+| scripts-workflow | [Number] | [Number] | [Percentage]% |
+
+## Mode Coverage
+
+| Mode | Message-Commands | Project-Rule-Parameters | Coverage Percentage |
+|------|------------------|--------------------------|---------------------|
+| plan-mode | [Number] | [Number] | [Percentage]% |
+| dev-mode | [Number] | [Number] | [Percentage]% |
+| direct-mode | [Number] | [Number] | [Percentage]% |
+
+## Pathway Coverage
+
+| Pathway | Message-Commands | Project-Rule-Parameters | Coverage Percentage |
+|---------|------------------|--------------------------|---------------------|
+| audit | [Number] | [Number] | [Percentage]% |
+| verification | [Number] | [Number] | [Percentage]% |
+| implementation | [Number] | [Number] | [Percentage]% |
+| analysis | [Number] | [Number] | [Percentage]% |
+```
+
+## Examples
+
+### Example Filled Audit Report
+
+```markdown
+# Rules Audit Report - June 2023
+
+## Summary
+- 47 project-rule-parameters audited
+- 45 headers verified
+- 2 project-rule-parameters missing proper headers
+- 12 format inconsistencies identified
+
+## Critical Issues
+
+1. Missing headers:
+   - `parameters/rules/helpers/analysis/analyze-logs.md` - no header found
+   - `parameters/rules/helpers/verification/verify-implementation.md` - no header found
+   
+2. Inconsistent headers:
+   - 4 headers missing pathway component
+   - 3 headers with incorrect workflow type
+   - 2 headers with mismatched message-command vs. filename
+
+## Format Issues
+
+1. Inconsistent paths in headers:
+   - 5 project-rule-parameter-paths don't match actual file location
+   - 3 project-rule-parameter-paths use `.md` instead of `.mdc` extension
+   
+2. Header formatting:
+   - 4 headers not using standardized separator format with pipe symbol
+
+## Content Issues
+
+1. Missing sections:
+   - 3 project-rule-parameters missing Error Handling section
+   - 2 project-rule-parameters missing Expected Outputs section
+
+## Recommended Actions
+
+1. Add standardized headers to project-rule-parameters missing them
+2. Correct inconsistent header components
+3. Standardize project-rule-parameter-paths in headers
+4. Fix header formatting issues
+5. Add missing sections to incomplete project-rule-parameters
+```
+
+### Example Action Items (Partially Completed)
+
+```markdown
+# Rules Audit Action Items - June 2023
+
+## High Priority Items
+
+1. **Missing Headers** - Fix within 1 week
+   - [x] Add header to `parameters/rules/helpers/analysis/analyze-logs.md`
+   - [ ] Add header to `parameters/rules/helpers/verification/verify-implementation.md`
+
+2. **Path Mismatches** - Fix within 1 week
+   - [x] Correct path in header of `parameters/rules/plan-mode/rules-audit.md`
+   - [ ] Correct path in header of `parameters/rules/dev-mode/audit-implementation.md`
+
+## Medium Priority Items
+
+1. **Inconsistent Headers** - Fix within 2 weeks
+   - [x] Standardize separator format in 4 files
+   - [ ] Add missing pathway components to 4 files
+```
+
+## Related Components
+
+- [Audit Procedures Guide](/knowledge/rules/guides/audit-procedures.md)
+- [Audit Validation Criteria](/knowledge/rules/reference/audit-validation-criteria.md)
+- [Audit Implementation Patterns](/knowledge/rules/patterns/impl/audit-implementation.md)
+- [File Standards Guide](/knowledge/rules/reference/guides/file-standards.md)
+
+## Conclusion
+
+These audit reporting templates provide a standardized approach to documenting audit findings, tracking corrective actions, analyzing consistency, and monitoring coverage across the 1000xbrain cognitive architecture. Using these templates ensures clear communication of audit results and facilitates effective maintenance of project-rule-parameters. 

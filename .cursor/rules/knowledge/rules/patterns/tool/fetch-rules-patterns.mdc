@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing fetch_rules access patterns, optimizing knowledge access, or creating knowledge references
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing fetch_rules access patterns, optimizing knowledge access, or creating knowledge references
 
 # fetch_rules Tool Usage Patterns
