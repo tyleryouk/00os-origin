@@ -1,3 +1,8 @@
+---
+description: 
+globs: front-end/**
+alwaysApply: false
+---
 # Workflow Documentation: Front-End Workflow
 
 ## Template Reference

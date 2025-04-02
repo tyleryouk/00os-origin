@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing parameter systems, designing validation rules, or creating parameter documentation
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing parameter systems, designing validation rules, or creating parameter documentation
 
 # Implementation Guide: Parameter Implementation

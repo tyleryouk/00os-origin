@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing workflow features, developing workflow types, or enhancing workflow systems
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing workflow features, developing workflow types, or enhancing workflow systems
 
 # Implementation Guide: Workflow Implementation

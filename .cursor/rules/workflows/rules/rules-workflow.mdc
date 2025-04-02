@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Project Rule Development Workflow
 
 This file defines the essential standards for developing and updating the 1000xbrain cognitive architecture.

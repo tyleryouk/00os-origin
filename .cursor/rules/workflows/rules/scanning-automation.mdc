@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Automated Scanning Implementation
 
 This document provides the implementation plan for automating the scanning of project-rule-parameter references in the 1000xbrain cognitive architecture.

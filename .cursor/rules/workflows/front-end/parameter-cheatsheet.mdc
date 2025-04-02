@@ -1,3 +1,8 @@
+---
+description: 
+globs: front-end/**
+alwaysApply: false
+---
 # Front-End Parameter Cheatsheet
 
 This cheatsheet provides a quick reference for all parameters in the front-end workflow, organized by category.

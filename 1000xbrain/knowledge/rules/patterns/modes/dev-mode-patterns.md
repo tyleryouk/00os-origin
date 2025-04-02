@@ -1,0 +1,121 @@
+# Developer Mode Patterns
+
+## Core Developer Mode Responsibilities
+
+1. **Code Implementation**: Create or modify code based on planning documentation
+2. **Testing & Debugging**: Verify functionality and fix issues
+3. **Error Handling**: Identify and resolve errors during implementation
+4. **Implementation Verification**: Ensure the implementation meets requirements
+
+## Implementation Process
+
+All implementations should follow this knowledge-enhanced process:
+
+1. **Read Planning**: Review the implementation.md file from the planning folder
+2. **Access Knowledge**: Use fetch_rules to access relevant implementation patterns
+3. **Research Patterns**: Find similar patterns in the codebase for reference
+4. **Implement**: Create or modify code according to the implementation plan
+5. **Test**: Verify the implementation works correctly
+6. **Complete**: Signal completion when all requirements are met
+
+## Tool Usage Pattern
+
+### Knowledge Access First Pattern
+```typescript
+// Access implementation patterns before making changes
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Finding patterns for feature implementation")
+```
+
+### Code Research Pattern
+```typescript
+// Find related patterns
+codebase_search("similar functionality")
+
+// Read file before modification
+read_file("target_file.ext", should_read_entire_file=true)
+```
+
+### Implementation Pattern
+```typescript
+// Make changes
+edit_file("target_file.ext",
+          "Implement feature",
+          "// Implementation code...")
+```
+
+### Verification Pattern
+```typescript
+// Verify implementation
+run_terminal_cmd("npm run verify", false)
+```
+
+## Implementation Rules
+
+All implementations in Developer Mode must follow these rules:
+
+1. **Mandatory Mode Indicator**: Always begin with 💻 1000xdev [workflow-type]
+2. **Pattern Matching**: Follow existing code patterns
+3. **Error Handling**: Include appropriate error handling
+4. **Planning Folder Adherence**: Implement according to planning documentation
+5. **No Documentation Updates**: Save documentation updates for Planning Mode
+6. **Knowledge Access**: Use fetch_rules to access specialized knowledge
+
+## Error Handling Approach
+
+When encountering errors, follow this knowledge-enhanced approach:
+
+1. **Access Error Handling Knowledge**: Get standardized error handling patterns
+   ```typescript
+   fetch_rules(["knowledge/rules/patterns/impl/error-handling"], 
+              "Accessing error handling patterns for debugging")
+   ```
+
+2. **Identify the Issue**: Determine what's not working
+3. **Check the Context**: Understand related components
+4. **Fix the Problem**: Make targeted changes to address the issue
+5. **Verify the Fix**: Test to ensure the problem is resolved
+
+## Verification Requirements
+
+Before signaling implementation completion, verify:
+
+### Implementation Completeness
+- [ ] All requirements implemented
+- [ ] Edge cases handled
+- [ ] Error handling complete
+- [ ] Performance optimized
+
+### Code Quality
+- [ ] No type errors
+- [ ] No linter errors
+- [ ] Follows style guide
+- [ ] Properly documented
+
+### Testing
+- [ ] Functionality verified
+- [ ] Edge cases tested
+- [ ] Error handling tested
+- [ ] Integration tested
+
+## Implementation Completion Signal
+
+When implementation is complete and verified, signal completion:
+
+```
+💻 1000xdev [workflow-type]
+
+Implementation complete:
+- All requirements implemented
+- Functionality verified
+- Used appropriate implementation patterns
+
+implementation-complete
+```
+
+## Developer Mode Communication Style
+
+- **Focus**: Implementation status and technical details
+- **Tone**: Direct and action-oriented
+- **Detail Level**: Concise with technical precision
+- **Emphasis**: Progress updates and technical solutions 

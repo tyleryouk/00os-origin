@@ -1,0 +1,115 @@
+# Planning Mode Patterns
+
+## Core Planning Mode Responsibilities
+
+1. **Documentation Creation**: Develop comprehensive planning documentation
+2. **Planning & Analysis**: Analyze requirements and plan implementation approach
+3. **Knowledge Documentation**: Document knowledge and insights for implementation
+4. **Context Building**: Establish essential context for implementation
+
+## Essential Planning Document Structure
+
+### Requirements Document Structure
+```markdown
+# Requirements
+
+## Objective
+[Clear statement of what needs to be accomplished]
+
+## Success Criteria
+[List of specific measurable outcomes]
+
+## Technical Requirements
+[List of essential technical requirements]
+```
+
+### Implementation Document Structure
+```markdown
+# Implementation Plan
+
+## Target Files
+[List of files to modify]
+
+## Implementation Approach
+[Clear implementation guidance]
+
+## Verification Approach
+[How to verify the implementation is correct]
+```
+
+## Documentation Creation and Editing
+
+- **Primary Tool**: `edit_file` for creating and modifying documentation files
+- **Usage Pattern**: Create comprehensive files in single edits
+- **Best Practice**: Focus on essential content
+
+```typescript
+// Create implementation document
+edit_file("planning/feature-name/implementation.md", 
+          "Create implementation plan",
+          "# Implementation Plan\n\n## Target Files\n\n...")
+```
+
+## Planning Mode Verification Checklist
+
+Before signaling planning completion, verify these key aspects:
+
+### Requirements Verification
+- [ ] Objectives are clearly defined
+- [ ] Success criteria are established
+- [ ] Core technical requirements are documented
+
+### Implementation Verification
+- [ ] Target files are identified
+- [ ] Implementation approach is clear
+- [ ] Verification method is established
+
+### Overall Planning Folder Verification
+- [ ] Essential files are present and complete
+- [ ] Documentation provides sufficient guidance for implementation
+- [ ] No critical information gaps exist
+
+## Knowledge Access Patterns
+
+When creating planning documentation, use these knowledge components:
+
+| Knowledge Type | fetch_rules Path | Planning Usage |
+|---|-----|---|
+| Architecture Guides | `knowledge/rules/guides/architecture` | Understanding system structure |
+| Implementation Patterns | `knowledge/rules/patterns/impl/implementation-patterns` | Planning implementation approaches |
+| Tool Patterns | `knowledge/rules/patterns/tool/search-patterns` | Planning efficient search strategies |
+| Documentation Patterns | `knowledge/rules/patterns/doc/file-standards` | Creating standardized documentation |
+
+### Knowledge Access Example
+
+```typescript
+// Access architecture understanding for planning
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for planning implementation")
+
+// Access implementation patterns for planning
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Finding implementation patterns for planning approach")
+```
+
+## Planning Completion Signal
+
+When planning is complete and verified, send the `planning-document-complete` signal:
+
+```
+📋 1000xdev [workflow-type]
+
+planning-document-complete
+
+Planning is complete with:
+- Requirements document with clear objectives and success criteria
+- Implementation plan with detailed approach
+- Context files with essential system information
+```
+
+## Planning Mode Communication Style
+
+- **Focus**: Documentation clarity, completeness, and planning folder structure
+- **Tone**: Analytical and thorough
+- **Detail Level**: Comprehensive with clear organization
+- **Emphasis**: Architecture, relationships, planning, and implementation guidance 

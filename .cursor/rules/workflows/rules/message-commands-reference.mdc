@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Message Commands Reference for Rules Workflow - DEPRECATED
 
 > **IMPORTANT NOTICE**: This centralized message command reference has been deprecated in favor of the new project-rule-parameter header system. Please refer to the header in each individual project-rule-parameter file for command information.

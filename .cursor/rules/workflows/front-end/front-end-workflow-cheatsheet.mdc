@@ -1,3 +1,8 @@
+---
+description: 
+globs: front-end/**
+alwaysApply: false
+---
 # FRONT-END-Workflow Cheatsheet
 
 ## PLAN-MODE project-rule-parameters

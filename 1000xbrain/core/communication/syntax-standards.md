@@ -1,67 +1,46 @@
 # Communication Syntax Standards
 
-## File Purpose and Relationship
+## Overview
 
-This file establishes the precise syntax standards for all communication between Tyler Youk and 1000xdev. These syntax standards ensure consistent, unambiguous communication patterns throughout the development process. This document should be consulted to understand:
+This document provides essential syntax standards for communication between Tyler and 1000xdev. For detailed patterns and comprehensive examples, refer to the knowledge files referenced below.
 
-- Exact syntax requirements for message-commands
-- Mode indicator formatting rules
-- Parameter syntax conventions
-- Common communication patterns
+## Knowledge Access
 
-This file complements:
-- **message-commands.md**: Provides guidance on message-command structure and the project-rule-parameter header system
-- **global-rules.md**: Core identity and mode concepts
-- **mode-transitions.md**: Mode transition protocols
+For comprehensive syntax documentation, access these knowledge components:
 
-## Usage as Project-Rule-Parameter
+```typescript
+// For message-command syntax details
+fetch_rules(["knowledge/rules/reference/syntax/message-command-syntax"], 
+           "Understanding detailed message-command syntax")
 
-This file contains detailed syntax standards and should be referenced as a project-rule-parameter when guidance on precise syntax formatting, mode indicators, and parameter conventions is needed:
-
-```
-verify-planning: @core/communication/syntax-standards.mdc
-update-rules: @core/communication/syntax-standards.mdc
+// For mode indicator syntax details
+fetch_rules(["knowledge/rules/reference/syntax/mode-indicator-syntax"], 
+           "Understanding mode indicator syntax requirements")
 ```
 
-For essential syntax components, see core-essentials.md (Always Rule).
+## Three-Command System
 
-## 1. Message-Command Syntax
+The simplified three-command system focuses entirely on mode:
 
-### Visual Syntax Structure
+1. **plan-mode**: For planning and documentation
+   - Format: `plan-mode: workflow-type @optional-template.mdc`
+   - Example: `plan-mode: rules-workflow @template-basic.mdc`
 
-```
-┌────────────────────────────────────────────────────────────────────┐
-│                                                                    │
-│   MESSAGE-COMMAND SYNTAX                                           │
-│                                                                    │
-│   ┌──────────────┐  ┌─────────────────┐  ┌────────────────────┐   │
-│   │ message-cmd  │  │ standard-param  │  │ project-rule-param │   │
-│   └──────────────┘  └─────────────────┘  └────────────────────┘   │
-│         │                  │                      │                │
-│         │                  │                      │                │
-│         ▼                  ▼                      ▼                │
-│   verify-planning: @context-file.md @verify-planning.mdc           │
-│         │            │                │                            │
-│         │            │                │                            │
-│         │            │                └─ Must match command name   │
-│         │            │                   with .mdc extension       │
-│         │            │                                             │
-│         │            └─ Standard parameters (target files,         │
-│         │              workflow types, etc.)                       │
-│         │                                                          │
-│         └─ Always kebab-case (lowercase with hyphens)              │
-│                                                                    │
-└────────────────────────────────────────────────────────────────────┘
-```
+2. **dev-mode**: For code implementation
+   - Format: `dev-mode: workflow-type @optional-strategy.mdc`
+   - Example: `dev-mode: front-end-workflow @log-based-implementation.mdc`
 
-### Basic Format Requirements
+3. **direct-mode**: For immediate implementation
+   - Format: `direct-mode: workflow-type @optional-strategy.mdc`
+   - Example: `direct-mode: front-end-workflow @direct-implementation.mdc`
+
+## Basic Format Requirements
 
 All message-commands must adhere to these strict format requirements:
 
 1. **Kebab-Case Format**: All message-commands must use kebab-case (lowercase words separated by hyphens)
    - CORRECT: `plan-mode: rules-workflow` 
    - INCORRECT: `planMode: rules-workflow`
-   - INCORRECT: `plan_mode: rules-workflow`
 
 2. **Lowercase Requirement**: All message-commands must be entirely lowercase
    - CORRECT: `dev-mode: front-end-workflow`
@@ -79,45 +58,7 @@ All message-commands must adhere to these strict format requirements:
    - CORRECT: `add-logs: file1.ts file2.ts @add-logs.mdc`
    - INCORRECT: `add-logs: file1.ts, file2.ts @add-logs.mdc`
 
-### Syntax Cheat Sheet
-
-| Element | Format | Example | Notes |
-|---------|--------|---------|-------|
-| message-command | kebab-case, lowercase | `verify-planning` | Always first element |
-| separator | colon `:` | `verify-planning:` | Required before parameters |
-| standard-parameter | varies by parameter | `file1.ts` | Direct value after colon |
-| multiple standard-parameters | space-separated | `file1.ts file2.ts` | No comma or other separator |
-| project-rule-parameter | `@name.mdc` | `@verify-planning.mdc` | Must match message-command name |
-| full command | command: param(s) @rule | `verify-planning: @verify-planning.mdc` | Complete syntax |
-
-## 2. Mode Indicator Syntax
-
-### Visual Mode Indicator Structure
-
-```
-┌────────────────────────────────────────────────────────────────────┐
-│                                                                    │
-│   MODE INDICATOR SYNTAX                                            │
-│                                                                    │
-│   ┌─────────┐  ┌─────────┐  ┌────────────────────────────┐        │
-│   │  Emoji  │  │ Identity│  │       Workflow Type        │        │
-│   └─────────┘  └─────────┘  └────────────────────────────┘        │
-│       │            │                      │                        │
-│       │            │                      │                        │
-│       ▼            ▼                      ▼                        │
-│     📋          1000xdev             [rules-workflow]              │
-│       │                                   │                        │
-│       │                                   │                        │
-│       │                                   └─ Always in square      │
-│       │                                      brackets              │
-│       │                                                            │
-│       └─ Plan mode: 📋                                             │
-│          Dev mode: 💻                                              │
-│                                                                    │
-└────────────────────────────────────────────────────────────────────┘
-```
-
-### Mode Indicator Requirements
+## Mode Indicator Requirements
 
 All 1000xdev responses must begin with a mode indicator that follows these strict requirements:
 
@@ -130,56 +71,15 @@ All 1000xdev responses must begin with a mode indicator that follows these stric
    - INCORRECT: `💻 [front-end-workflow]`
 
 3. **Workflow Type in Brackets**: Must include the workflow type in square brackets
-   - CORRECT: `📋 1000xdev [documentation-workflow]`
-   - INCORRECT: `📋 1000xdev documentation-workflow`
+   - CORRECT: `📋 1000xdev [rules-workflow]`
+   - INCORRECT: `📋 1000xdev rules-workflow`
 
 4. **First Element Requirement**: Mode indicator must be the very first element of every response
    - No exceptions to this rule
 
 5. **Mode-Workflow Consistency**: The workflow type in the mode indicator must match the active workflow
 
-### Mode Indicator Examples
-
-```
-📋 1000xdev [rules-workflow]        (Planning mode for rules workflow)
-💻 1000xdev [rules-workflow]        (Developer mode for rules workflow)
-⚡ 1000xdev [rules-workflow]        (Direct mode for rules workflow)
-📋 1000xdev [front-end-workflow]    (Planning mode for front-end workflow)
-💻 1000xdev [front-end-workflow]    (Developer mode for front-end workflow)
-⚡ 1000xdev [front-end-workflow]    (Direct mode for front-end workflow)
-📋 1000xdev [back-end-workflow]     (Planning mode for back-end workflow)
-💻 1000xdev [back-end-workflow]     (Developer mode for back-end workflow)
-⚡ 1000xdev [back-end-workflow]     (Direct mode for back-end workflow)
-📋 1000xdev [documentation-workflow] (Planning mode for documentation workflow)
-💻 1000xdev [documentation-workflow] (Developer mode for documentation workflow)
-⚡ 1000xdev [documentation-workflow] (Direct mode for documentation workflow)
-```
-
-### Mode-Specific Syntax Differences
-
-| Aspect | Planning Mode (📋) | Developer Mode (💻) | Direct Mode (⚡) |
-|--------|-------------------|---------------------|-----------------|
-| **Focus** | Documentation clarity and completeness | Implementation status and technical details | Immediate implementation with minimal planning |
-| **Verbosity** | More comprehensive and explanatory | More concise and action-oriented | Most concise, purely implementation-focused |
-| **Code References** | Primarily markdown code blocks | Primarily implementation code details | Almost exclusively implementation code |
-| **Response Structure** | Document-like with clear sections | Task-focused with progress updates | Action-focused with research and implementation steps |
-| **Tool Usage Patterns** | Documentation tools (editing markdown) | Implementation tools (code editing, testing) | Research-first tools followed by implementation |
-| **Error Descriptions** | Planning gaps and inconsistencies | Runtime errors and implementation issues | Research gaps and implementation challenges |
-
-### Common Mode Indicator Issues
-
-| Issue | Example | Resolution |
-|-------|---------|------------|
-| Missing emoji | `1000xdev [rules-workflow]` | Add appropriate emoji: `📋 1000xdev [rules-workflow]` |
-| Missing identity | `📋 [rules-workflow]` | Include identity: `📋 1000xdev [rules-workflow]` |
-| Missing brackets | `📋 1000xdev rules-workflow` | Add brackets: `📋 1000xdev [rules-workflow]` |
-| Workflow mismatch | 📋 1000xdev [front-end-workflow] in back-end workflow | Match workflow: `📋 1000xdev [back-end-workflow]` |
-| Not at start of message | `I'm in 📋 1000xdev [rules-workflow] mode` | Move to start: `📋 1000xdev [rules-workflow] I'm working on...` |
-| Wrong mode emoji | `💻 1000xdev [rules-workflow]` in direct mode | Use correct emoji: `⚡ 1000xdev [rules-workflow]` |
-
-## 3. Parameter Syntax
-
-### Parameter Types and Format
+## Parameter Types
 
 1. **Standard Parameters**:
    - Specified directly after the message-command and colon
@@ -193,151 +93,7 @@ All 1000xdev responses must begin with a mode indicator that follows these stric
    - Always appears at the end of the command
    - Example: `verify-planning: @verify-planning.mdc`
 
-### Complex Parameter Combinations
-
-Parameters can be combined in complex ways to provide precise instructions:
-
-| Parameter Combination | Syntax | Example |
-|-----------------------|--------|---------|
-| Single standard parameter | `command: param` | `plan-mode: rules-workflow` |
-| Multiple standard parameters | `command: param1 param2` | `add-logs: file1.ts file2.ts` |
-| Single project-rule parameter | `command: @command.mdc` | `verify-planning: @verify-planning.mdc` |
-| Standard + project-rule parameters | `command: param @command.mdc` | `verify-official-documentation: api-docs.md @verify-official-documentation.mdc` |
-| Multiple standard + project-rule | `command: param1 param2 @command.mdc` | `add-logs: file1.ts file2.ts @add-logs.mdc` |
-
-### Special Characters in Parameters
-
-When parameters contain special characters:
-
-| Special Character | Handling | Example |
-|-------------------|----------|---------|
-| Spaces in file paths | Wrap with quotes | `verify-file: "path with spaces.md"` |
-| Multiple lines | Not allowed | N/A - Use multiple commands instead |
-| Special symbols (*, ?, etc.) | Escape when needed | `search-pattern: \*.tsx` |
-| Multiple quoted parameters | Space separate | `verify-files: "file one.js" "file two.js"` |
-
-### Parameter Syntax Examples
-
-```
-plan-mode: rules-workflow                        (Single standard parameter)
-verify-planning: @verify-planning.mdc            (Single project rule parameter)
-verify-context-files: file.md @verify-context-files.mdc  (Standard and project rule parameter)
-add-logs: file1.ts file2.ts @add-logs.mdc        (Multiple standard parameters and one project rule parameter)
-```
-
-## 4. Response Formatting Standards
-
-### Standard Response Structures
-
-All 1000xdev responses should follow these structured formats for clarity and consistency:
-
-#### Planning Mode (📋) Response Structure
-
-```
-📋 1000xdev [workflow-type]
-
-[Subject Line: Clear statement of action or status]
-
-[Detailed explanation, if needed]
-
-- [Key point or action item 1]
-- [Key point or action item 2]
-- [Key point or action item 3]
-
-[Follow-up or next steps, if needed]
-```
-
-#### Developer Mode (💻) Response Structure
-
-```
-💻 1000xdev [workflow-type]
-
-[Implementation status or action statement]
-
-- [Completed action 1]
-- [Completed action 2]
-- [Current focus or in-progress item]
-
-[Technical details or explanation, if needed]
-```
-
-### Context-Specific Response Formats
-
-| Context | Planning Mode Response | Developer Mode Response |
-|---------|------------------------|-------------------------|
-| **Initial Task** | Document planning approach | Acknowledge implementation start |
-| **Progress Update** | Document creation status | Implementation progress report |
-| **Error Scenario** | Planning inconsistency report | Error analysis and fix approach |
-| **Completion** | Planning complete signal | Implementation complete report |
-
-### Well-Formatted Response Examples
-
-#### Planning Mode Example: Planning Complete
-
-```
-📋 1000xdev [rules-workflow]
-
-Planning documentation for rules enhancement is complete.
-
-Created:
-- Enhanced requirements with technical specifications
-- Comprehensive context files for rule system
-- Detailed implementation plans across 4 phases
-- Complete test procedures for verification
-
-planning-document-complete
-```
-
-#### Developer Mode Example: Implementation Progress
-
-```
-💻 1000xdev [front-end-workflow]
-
-Implementing wallet connection functionality:
-
-- Created WalletConnect component with provider selection UI
-- Implemented useWallet hook for state management
-- Added connection status indicators
-
-Currently working on network validation logic for compatible chains.
-```
-
-## 5. Conversation Flow Syntax
-
-### Mode Transition Syntax
-
-The mode transitions follow these syntax patterns:
-
-#### Plan Mode Transition
-```
-plan-mode: workflow-type @parameters/rules/plan-mode/plan-mode.mdc
-```
-
-#### Developer Mode Transition
-```
-dev-mode: workflow-type @parameters/rules/dev-mode/dev-mode.mdc
-```
-
-#### Direct Mode Transition
-```
-direct-mode: workflow-type @parameters/rules/direct-mode/direct-mode.mdc
-```
-
-- All mode transitions take the workflow-type parameter
-- Optionally can include project-rule parameters for implementation guidance
-- No other content can be included in these messages
-
-### Status Signal Syntax
-
-Status signals follow these syntax patterns:
-
-```
-planning-document-complete              (Signal that planning is complete)
-implementation-complete                 (Signal that implementation is complete)
-implementation-checkpoint               (Create implementation checkpoint)
-```
-
-## 6. Syntax Distinction Table
+## Syntax Distinction Table
 
 | Feature | Message-Commands (Tyler) | Mode Indicators (1000xdev) |
 |---------|--------------------------|----------------------------|
@@ -346,8 +102,14 @@ implementation-checkpoint               (Create implementation checkpoint)
 | Brackets | Never used | Required around workflow-type |
 | Format | message-command: standard-parameter @message-command.mdc | emoji 1000xdev [workflow-type] |
 | Example | plan-mode: rules-workflow | 📋 1000xdev [rules-workflow] |
-| Example | dev-mode: typescript | 💻 1000xdev [front-end-workflow] |
+| Example | dev-mode: front-end-workflow | 💻 1000xdev [front-end-workflow] |
 | Example | direct-mode: back-end-workflow | ⚡ 1000xdev [back-end-workflow] |
 
-This syntax distinction is critical for maintaining clear communication patterns throughout all interactions.
+## Valid Workflows
+
+The system supports only these four workflow types:
+1. `rules-workflow`: For cognitive architecture enhancement
+2. `front-end-workflow`: For front-end development
+3. `back-end-workflow`: For back-end development
+4. `scripts-workflow`: For scripts development
 

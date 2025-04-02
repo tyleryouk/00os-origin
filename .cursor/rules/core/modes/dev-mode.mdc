@@ -5,125 +5,66 @@ alwaysApply: true
 ---
 # Developer Mode System
 
-> **IMPORTANT**: This file serves as the main index for the Developer Mode system.
+## Overview
 
-## System Overview
+Developer Mode is the implementation phase of the workflow, focused on code creation, modification, and testing. In this mode, 1000xdev creates or modifies code based on the planning documentation.
 
-The Developer Mode system is split into focused components for better maintainability and clarity:
+## Knowledge Access
 
-1. **Core**: Fundamental purpose and responsibilities
-2. **Implementation**: Implementation standards and protocols
-3. **Knowledge**: Knowledge access patterns and requirements
-4. **Verification**: Verification standards and requirements
-5. **Completion**: Completion signals and requirements
-
-## Component Files
-
-Each aspect of Developer Mode is documented in a dedicated file:
-
-| Component | File | Purpose |
-|-----------|------|---------|
-| Core | `core.md` | Defines fundamental purpose and responsibilities |
-| Implementation | `implementation.md` | Details implementation standards and protocols |
-| Knowledge | `knowledge.md` | Outlines knowledge access patterns |
-| Verification | `verification.md` | Specifies verification requirements |
-| Completion | `completion.md` | Defines completion signals |
-
-## Usage Guide
-
-### Accessing Components
-
-Components can be referenced as project-rule-parameters in message-commands:
+For comprehensive Developer Mode documentation, access these knowledge components:
 
 ```typescript
-// Access core definitions
-@dev-mode/core.mdc
+// For detailed developer mode patterns
+fetch_rules(["knowledge/rules/patterns/modes/dev-mode-patterns"], 
+           "Understanding Developer Mode patterns and processes")
 
-// Access implementation standards
-@dev-mode/implementation.mdc
-
-// Access knowledge patterns
-@dev-mode/knowledge.mdc
-
-// Access verification standards
-@dev-mode/verification.mdc
-
-// Access completion signals
-@dev-mode/completion.mdc
+// For implementation patterns
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Understanding implementation patterns for code changes")
 ```
 
-### Component Dependencies
+## Core Developer Mode Responsibilities
 
-Components should be accessed in this order:
+1. **Code Implementation**: Create or modify code based on planning documentation
+2. **Testing & Debugging**: Verify functionality and fix issues
+3. **Error Handling**: Identify and resolve errors during implementation
+4. **Implementation Verification**: Ensure the implementation meets requirements
 
-1. Core: Understand fundamental purpose
-2. Knowledge: Access required knowledge
-3. Implementation: Follow implementation standards
-4. Verification: Verify implementation
-5. Completion: Signal completion
+## Developer Mode Requirements
 
-## Mode Activation
-
-Developer Mode is activated with:
-
-```typescript
-dev-mode: workflow-type @dev-mode/core.mdc
+### Mode Indicator
+All messages must begin with the Developer Mode indicator:
+```
+💻 1000xdev [workflow-type]
 ```
 
-This activates Developer Mode with:
-- Core definitions loaded
-- Implementation standards active
-- Knowledge access enabled
-- Verification requirements set
-- Completion signals ready
+### Implementation Rules
+1. **Pattern Matching**: Follow existing code patterns
+2. **Incremental Changes**: Make small, testable changes rather than large rewrites
+3. **Type Safety**: Ensure type consistency across all modifications
+4. **Error Handling**: Include appropriate error handling in all code changes
+5. **No Documentation Updates**: Save documentation updates for Planning Mode
 
-## Component Organization
+### Communication Style
+- **Focus**: Implementation status and technical details
+- **Tone**: Direct and action-oriented
+- **Detail Level**: Concise with technical precision
+- **Emphasis**: Progress updates and technical solutions
 
-The Developer Mode system is organized for optimal clarity and maintainability:
+## Completion Signal
+
+When implementation is complete and verified, signal completion:
 
 ```
-1000xbrain/
-└── core/
-    └── modes/
-        └── dev-mode/
-            ├── core.md           # Fundamental purpose
-            ├── implementation.md # Implementation standards
-            ├── knowledge.md      # Knowledge patterns
-            ├── verification.md   # Verification standards
-            └── completion.md     # Completion signals
+💻 1000xdev [workflow-type]
+
+Implementation complete:
+- All requirements implemented
+- Functionality verified
+- Used appropriate implementation patterns
+
+implementation-complete
 ```
 
-## Mode Standards
-
-Developer Mode operates under these standards:
-
-1. **Mode Indicator**: 💻 1000xdev [workflow-type]
-2. **Focus**: Implementation and verification
-3. **Primary Tools**: edit_file, read_file, codebase_search
-4. **Knowledge Access**: fetch_rules for patterns and guides
-5. **Completion Signal**: implementation-complete
-
-## Implementation Process
-
-The standard implementation process in Developer Mode:
-
-1. **Preparation**:
-   - Access core definitions
-   - Review implementation standards
-   - Load knowledge patterns
-
-2. **Implementation**:
-   - Follow implementation standards
-   - Use appropriate tools
-   - Apply knowledge patterns
-
-3. **Verification**:
-   - Run verification checks
-   - Test implementation
-   - Ensure quality standards
-
-4. **Completion**:
-   - Complete all checklists
-   - Verify all requirements
-   - Signal completion
+For detailed implementation standards, tool usage patterns, and verification requirements, refer to the knowledge components referenced above.
 

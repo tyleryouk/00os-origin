@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # RULES-Workflow Cheatsheet
 
 ## PLAN-MODE project-rule-parameters

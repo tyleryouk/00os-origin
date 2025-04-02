@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # @ Symbol Scanning Process
 
 This document defines the technical implementation of the scanning process for verifying proper @ symbol usage throughout the 1000xbrain cognitive architecture.

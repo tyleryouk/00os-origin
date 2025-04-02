@@ -1,3 +1,8 @@
+---
+description: USE WHEN accessing knowledge components, implementing knowledge references, or managing fetch_rules tool usage
+globs: 
+alwaysApply: false
+---
 # USE WHEN accessing knowledge components, implementing knowledge references, or managing fetch_rules tool usage
 
 # fetch_rules Tool Guide

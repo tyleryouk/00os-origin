@@ -1,4 +1,6 @@
-# Simplified Message-Command System Guide
+# USE WHEN creating new project-rule-parameters to understand the association with message-commands
+
+# Message-Command System Guide
 
 ## Overview
 

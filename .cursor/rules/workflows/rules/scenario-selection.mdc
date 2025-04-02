@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Rules Workflow Scenario Selection
 
 This document provides guidance for selecting the appropriate scenario type and project-rule-parameter based on the nature of the enhancement.

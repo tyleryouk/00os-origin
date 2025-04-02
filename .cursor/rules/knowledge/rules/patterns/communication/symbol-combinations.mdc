@@ -1,0 +1,146 @@
+# Symbol Combinations and Context-Specific Usage
+
+## Mode Indicator Symbol Structure
+
+Mode indicators consist of specific symbols that must be used consistently:
+
+```
+┌───────────────────────────────────────────────────┐
+│                                                   │
+│  📋/💻/⚡  1000xdev  [workflow-type]              │
+│   │         │             │                       │
+│   │         │             │                       │
+│   │         │             └── Square brackets     │
+│   │         │                 required            │
+│   │         │                                     │
+│   │         └── Identity always                   │
+│   │             follows emoji                     │
+│   │                                               │
+│   └── Plan mode: 📋 (clipboard)                   │
+│       Dev mode: 💻 (computer)                     │
+│       Direct mode: ⚡ (lightning)                  │
+│                                                   │
+└───────────────────────────────────────────────────┘
+```
+
+## Mode Indicator Symbol Decision Tree
+```
+Which mode are you operating in?
+├── Planning Mode → Use 📋 emoji
+├── Developer Mode → Use 💻 emoji
+└── Direct Mode → Use ⚡ emoji
+
+What workflow are you working on?
+├── Rules → [rules-workflow]
+├── Front-End → [front-end-workflow]
+├── Back-End → [back-end-workflow]
+└── Scripts → [scripts-workflow]
+
+Full mode indicator:
+Planning + Rules = 📋 1000xdev [rules-workflow]
+Developer + Front-End = 💻 1000xdev [front-end-workflow]
+Direct + Back-End = ⚡ 1000xdev [back-end-workflow]
+etc.
+```
+
+## Mode Indicator Troubleshooting
+
+| Issue | Example | Correction |
+|----|---|---|
+| Missing emoji | `1000xdev [rules-workflow]` | Add appropriate emoji: `📋 1000xdev [rules-workflow]` |
+| Wrong emoji | `💻 1000xdev [rules-workflow]` in plan-mode | Use correct emoji: `📋 1000xdev [rules-workflow]` |
+| Wrong emoji | `📋 1000xdev [front-end-workflow]` in direct-mode | Use correct emoji: `⚡ 1000xdev [front-end-workflow]` |
+| Missing brackets | `📋 1000xdev rules-workflow` | Add brackets: `📋 1000xdev [rules-workflow]` |
+| Incomplete indicator | `📋 [rules-workflow]` | Include all parts: `📋 1000xdev [rules-workflow]` |
+| Not at beginning | `Starting work... 📋 1000xdev [rules-workflow]` | Move to beginning: `📋 1000xdev [rules-workflow] Starting work...` |
+
+## Context-Aware Symbol Usage
+
+Different communication contexts require different symbol usage patterns:
+
+### Planning Mode Documentation Context
+
+| Symbol | Usage Pattern | Example |
+|-----|-----|---|
+| **#** | Used for section headers | `# Requirements`, `## Implementation Plan` |
+| **-** | Used for list items | `- First item`, `- Second item` |
+| **\|** | Used for table formatting | `\| Header \| Header \|` |
+| **\`\`** | Used for inline code or references | `` `verify-planning` `` |
+| **@** | Used only at file beginning or in backticks | `@related-file.md` or `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+| **.md** | Used for brain-files | `Edit core/identity/global-rules.md` |
+| **.mdc** | Used in message-command examples | `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+
+### Developer Mode Implementation Context
+
+| Symbol | Usage Pattern | Example |
+|-----|-----|---|
+| **/**  | Used for file paths | `src/components/Feature.tsx` |
+| **:**  | Used for property definitions | `status: 'complete'` |
+| **{}** | Used for code blocks and object literals | `{ property: value }` |
+| **()** | Used for function calls | `functionName()` |
+| **@** | Used in code comments or backtick-wrapped | `// @ts-ignore` or `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+| **.md** | Used for brain-files | `Checking core/identity/global-rules.md` |
+| **.mdc** | Used in message-command examples | `` `@parameters/rules/helpers/verification/verify-planning.mdc` `` |
+
+### Message-Command Context
+
+| Symbol | Usage Pattern | Example |
+|-----|-----|---|
+| **:**  | Always follows the message-command | `dev-mode: typescript` |
+| **@**  | Always prefixes project-rule parameters | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+| **-**  | Used within kebab-case commands | `verify-planning` |
+| **[ ]** | Never used in message-commands | `verify-planning: typescript` (not `[typescript]`) |
+| **.**  | Used in file extensions | `.md`, `.mdc`, `.tsx` |
+| **.mdc** | ALWAYS used for project-rule parameters | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+| **.md** | NEVER used for project-rule parameters | ❌ `@parameters/rules/helpers/verification/verify-planning.md` ❌ |
+
+## Effective Symbol Combinations
+
+Certain symbols are frequently used together in specific patterns:
+
+### Documentation Symbol Combinations
+
+| Combination | Purpose | Example |
+|----|---|---|
+| **# + [ ]** | Section with emphasized terms | `# Mode [Planning]` |
+| **\| + -** | Table with list items | `\| Category \| - Item 1<br>- Item 2 \|` |
+| **@ + \`\`` | Referenced file with backticks | `` `@file.md` `` |
+| **> + -** | Blockquote with list | `> Important:<br>- Point 1<br>- Point 2` |
+| **```+ @** | Code block with reference | ```````typescript<br>// @ts-ignore`````` |
+| **\`\` + .md** | Brain-file reference | `` `global-rules.md` `` |
+| **\`\` + .mdc** | Cursor-rule reference | `` `@global-rules.mdc` `` |
+
+### Message-Command Symbol Combinations
+
+| Combination | Purpose | Example |
+|----|---|---|
+| **- + :** | Command with parameter separator | `dev-mode: typescript` |
+| **: + @** | Parameter with project rule | `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` |
+| **: + " + "** | Parameter with quoted value | `verify-file: "path with spaces.md"` |
+| **@ + .mdc** | Project rule with extension | `@parameters/rules/helpers/verification/verify-planning.mdc` |
+| **/ + @** | Path with reference | `path/to/file.md @parameters/rules/helpers/verification/verify-planning.mdc` |
+
+### Mode Indicator Symbol Combinations
+
+| Combination | Purpose | Example |
+|----|---|---|
+| **📋 + [ ]** | Plan mode with workflow | `📋 1000xdev [rules-workflow]` |
+| **💻 + [ ]** | Dev mode with workflow | `💻 1000xdev [front-end-workflow]` |
+| **⚡ + [ ]** | Direct mode with workflow | `⚡ 1000xdev [back-end-workflow]` |
+| **[ + -]** | Workflow with kebab-case | `[front-end-workflow]` |
+| **📋 + #** | Plan mode with header | `📋 1000xdev [rules-workflow]<br># Planning Update` |
+| **💻 + -** | Dev mode with list | `💻 1000xdev [front-end-workflow]<br>- Implemented feature` |
+| **⚡ + -** | Direct mode with list | `⚡ 1000xdev [back-end-workflow]<br>- Implemented feature` |
+
+### Symbol Combination Conflicts to Avoid
+
+| Combination | Conflict | Resolution |
+|----|----|---|
+| **@ + #** | @ reference with heading | Move reference to beginning of file |
+| **@ + @** | Multiple adjacent references | Separate with text or use lists |
+| **[ ] + [ ]** | Nested brackets | Use different delimiters for inner grouping |
+| **\` + @** | Backtick directly before @ | Add space: \` @file.md` |
+| **# + @** | Heading with @ reference | Never use @ in headers |
+| **.mdc + edit** | Referencing mdc file for editing | Use .md extension for editing contexts |
+| **.md + message-command** | Using .md in message-command | Always use .mdc in message-commands |
+``` 

@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Synchronizing 1000xbrain and Cursor Rules
 
 This file documents the automatic synchronization process between 1000xbrain files (.md) and Cursor Project Rules (.mdc).

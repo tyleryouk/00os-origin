@@ -1,5 +1,7 @@
 # workflow: rules-workflow | pathway: system-wide | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/system-wide.mdc
 
+## System-Wide Enhancement Planning Overview
+
 The system-wide pathway creates a specialized planning structure optimized for coordinated improvements across multiple subsystems within the 1000xbrain cognitive architecture. This approach is ideal when:
 
 - Changes affect multiple cognitive components
@@ -8,10 +10,20 @@ The system-wide pathway creates a specialized planning structure optimized for c
 - New capabilities need system-wide integration
 - Major version updates are being implemented
 
+### Key Benefits
+
+1. **Comprehensive Impact**: Plans coordinated changes across the entire architecture
+2. **Architectural Consistency**: Ensures consistent patterns across all components
+3. **Coordinated Planning**: Manages dependencies between components
+4. **Cross-Component Verification**: Designs testing for interactions between components
+5. **Holistic Improvement**: Addresses system-level concerns rather than isolated components
+
 ## Core Command Operation
 
+When the `plan-mode: rules-workflow @parameters/rules/plan-mode/system-wide.mdc` message-command is received, 1000xdev will:
+
 1. **Initialize Planning Mode**: Enter or remain in Planning Mode with the 📋 1000xdev [rules-workflow] indicator
-2. **Map System Architecture**: Create or continue creating comprehensive cognitive architecture map
+2. **Map System Architecture**: Create comprehensive cognitive architecture map
 3. **Identify Cross-System Patterns**: Document patterns that span subsystems
 4. **Design Coordinated Enhancements**: Create implementation plans with cross-system coordination
 5. **Develop Integration Testing**: Create strategies to verify system-wide coherence
@@ -31,24 +43,25 @@ list_dir("1000xbrain/core")
 list_dir("1000xbrain/workflows")
 list_dir("1000xbrain/knowledge")
 
-// 4. Read architecture overview
-read_file("1000xbrain/README.md", should_read_entire_file=true)
-read_file("meta/architecture/structure-overview.md", should_read_entire_file=true)
-
-// 5. Create system-wide architecture mapping
+// 4. Create system-wide architecture mapping
 edit_file("[planning_folder_path]/context-architecture-mapping.md",
           "Create system-wide architecture mapping",
           "# Context Analysis: Cognitive Architecture Mapping\n\n...")
 
-// 6. Create cross-system patterns analysis
+// 5. Create cross-system patterns analysis
 edit_file("[planning_folder_path]/context-cross-system-patterns.md",
           "Create cross-system patterns analysis",
           "# Context Analysis: Cross-System Patterns\n\n...")
 
-// 7. Create comprehensive implementation plan
+// 6. Create comprehensive implementation plan
 edit_file("[planning_folder_path]/implementation-system-wide-enhancement.md",
           "Create system-wide implementation plan",
           "# Implementation Plan: System-Wide Enhancement\n\n...")
+
+// 7. Create implementation progress tracking template
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Create implementation progress tracking template",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Phase Overview\n\n...")
 
 // 8. Create integration testing framework
 edit_file("[planning_folder_path]/test-cheatsheet.md",
@@ -65,143 +78,73 @@ The system-wide enhancement pathway creates a specialized planning structure:
 | File | Purpose | Special Focus |
 |---|---|---|
 | `README.md` | Provide planning overview | System-wide enhancement approach |
-| `implementation-progress.md` | Provides tracking for dev-mode | Tracking purposes |
+| `implementation-progress.md` | Provides tracking for dev-mode | Structure for tracking implementation phases |
 | `requirements.md` | Define system-wide enhancement objectives | Identify cross-system requirements |
 | `context-architecture-mapping.md` | Map cognitive architecture | Document subsystem relationships |
 | `context-cross-system-patterns.md` | Analyze cross-system patterns | Identify patterns spanning subsystems |
 | `implementation-system-wide-enhancement.md` | Plan implementation approach | Coordinated multi-phase implementation |
-| `tool-call-cheatsheet.md` | Define integration testing approach | Cross-system validation |
+| `test-cheatsheet.md` | Define integration testing approach | Cross-system validation |
 
 **mandatory**
 README.md must have this header at the top of the file:
 # rules-workflow | system-wide
 
-### Optional Files
-
-| File | Purpose | When to Include |
-|---|---|---|
-| `context-dependency-analysis.md` | Map subsystem dependencies | For complex interdependencies |
-| `implementation-migration.md` | Plan migration approach | When backward compatibility is needed |
-| `context-future-architecture.md` | Document target architecture | For major architectural shifts |
-
-## Context File Structure
-
-The `context-architecture-mapping.md` file for system-wide enhancement follows this structure:
-
-```markdown
-# Context Analysis: Cognitive Architecture Mapping
-
-## Cognitive Architecture Overview
-[High-level map of the current architecture]
-
-## Core Subsystems
-[Analysis of core identity and mode subsystems]
-
-## Workflow Subsystems
-[Analysis of workflow implementation subsystems]
-
-## Knowledge Subsystems
-[Analysis of domain-specific knowledge subsystems]
-
-## Integration Points
-[Documentation of key integration points between subsystems]
-
-## Enhancement Impact
-[Analysis of how enhancements will affect each subsystem]
-```
-
 ## Implementation Planning
 
-System-wide enhancement implementation plans follow this structure:
+System-wide enhancement implementation plans follow this structured phase approach:
 
 ```markdown
 # Implementation Plan: System-Wide Enhancement
 
-## Enhancement Scope
-[Define scope of system-wide changes]
-
-## Implementation Strategy
-[Overall approach to coordinated implementation]
-
 ## Implementation Phases
-1. **Phase 1: Core Foundations**
-   - [Foundation changes affecting all subsystems]
-   - [Core dependency updates]
+1. **Phase 1: Preparation and Dependency Analysis**
+   - [System architecture analysis]
+   - [Component dependency mapping]
+   - [Implementation sequence planning]
 
-2. **Phase 2: Subsystem Updates**
-   - [Coordinated changes to each subsystem]
-   - [Pattern standardization]
+2. **Phase 2: Core Component Implementation**
+   - [Changes to core identity components]
+   - [Updates to mode system components]
+   - [Enhancements to communication components]
 
-3. **Phase 3: Integration**
-   - [Cross-system integration]
-   - [Consistency validation]
+3. **Phase 3: Dependent Component Implementation**
+   - [Updates to workflow components]
+   - [Enhancements to knowledge components]
+   - [Modifications to parameter components]
 
-4. **Phase 4: Optimization**
-   - [System-wide optimization]
-   - [Final refinements]
-
-## Coordination Requirements
-[How subsystem changes must be coordinated]
-
-## Verification Approach
-[How to verify system-wide consistency]
+4. **Phase 4: System-Wide Verification**
+   - [Core component verification]
+   - [Dependent component verification]
+   - [Cross-component integration testing]
+   - [System-wide functionality validation]
 ```
 
-## 6. Common System-Wide Enhancement Patterns
+## Common System-Wide Enhancement Patterns
 
 ### Architectural Pattern Standardization
-
-For standardizing patterns across the architecture:
-
-1. **Analysis Focus**: Map pattern variations across subsystems
-2. **Implementation Approach**: Implement consistent patterns in phases
-3. **Testing Strategy**: Verify pattern consistency in all contexts
+- **Analysis Focus**: Map pattern variations across subsystems
+- **Implementation Approach**: Implement consistent patterns in phases
+- **Testing Strategy**: Verify pattern consistency in all contexts
 
 ### Cross-System Terminology Alignment
-
-For aligning terminology across subsystems:
-
-1. **Analysis Focus**: Identify terminology inconsistencies
-2. **Implementation Approach**: Implement standardized terminology
-3. **Testing Strategy**: Verify terminology usage across all documentation
+- **Analysis Focus**: Identify terminology inconsistencies
+- **Implementation Approach**: Implement standardized terminology
+- **Testing Strategy**: Verify terminology usage across documentation
 
 ### System-Wide Capability Enhancement
-
-For adding new capabilities across the system:
-
-1. **Analysis Focus**: Map capability integration points
-2. **Implementation Approach**: Implement capabilities with consistent interfaces
-3. **Testing Strategy**: Verify capability functionality in all contexts
-
-### Major Version Update
-
-For major version transitions:
-
-1. **Analysis Focus**: Map all affected components and patterns
-2. **Implementation Approach**: Phase implementation with backward compatibility
-3. **Testing Strategy**: Comprehensive testing across all subsystems
+- **Analysis Focus**: Map capability integration points
+- **Implementation Approach**: Implement capabilities with consistent interfaces
+- **Testing Strategy**: Verify capability functionality in all contexts
 
 ## Integration Testing Framework
 
-The system-wide enhancement approach includes a specialized testing framework for cross-system integration:
+The system-wide enhancement approach includes specialized testing for cross-system integration:
 
-### Cross-System Testing
+### Component Interaction Testing
+Tests for interactions between core components, workflow interactions, and knowledge system integration.
 
-```markdown
-## Integration Test Framework
-
-### Core Integration Tests
-[Tests for core identity and mode subsystems]
-
-### Workflow Integration Tests
-[Tests for workflow implementations]
-
-### Knowledge Integration Tests
-[Tests for domain-specific knowledge integration]
-
-### Cross-System Validation
-[Tests that verify consistency across subsystem boundaries]
-```
+### End-to-End Flow Testing
+Tests for complete message-command processing flow, mode transitions, and knowledge access patterns.
 
 ## Success Criteria
 
@@ -210,13 +153,22 @@ Successful initialization of system-wide enhancement planning meets these criter
 1. **Architecture Mapping**: Comprehensive mapping of the cognitive architecture
 2. **Cross-System Analysis**: Identification of patterns spanning subsystems
 3. **Coordinated Planning**: Well-structured implementation plan with clear dependencies
-4. **Integration Focus**: Strong emphasis on subsystem integration and consistency
-5. **Comprehensive Testing**: Testing strategies that verify cross-system integrity
+4. **Implementation Structure**: Clearly defined phases matching development workflow
+5. **Integration Focus**: Strong emphasis on subsystem integration and consistency
+6. **Comprehensive Testing**: Testing strategies that verify cross-system integrity
 
+## Knowledge Access
 
-## Knowledge Base
+When planning system-wide enhancements, use the `fetch_rules` tool to access specialized knowledge:
 
-- `fetch_rules(["knowledge/rules/reference/architecture/brain-files-cursor-rules"])`: General planning mode operations
-- `fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"])`: Overall rules workflow
-- **meta/architecture/structure-overview.md**: Architecture overview
-- **meta/contributions/file-standards.md**: File standards 
+```typescript
+// Access architecture understanding for planning
+fetch_rules(["knowledge/rules/guides/architecture"], 
+           "Understanding system architecture for comprehensive planning")
+
+// Access multiple knowledge components for complex planning
+fetch_rules([
+  "knowledge/rules/guides/architecture",
+  "knowledge/rules/patterns/impl/architecture-patterns",
+  "knowledge/rules/reference/maps/domain-map"
+], "Comprehensive architectural understanding for system-wide planning")

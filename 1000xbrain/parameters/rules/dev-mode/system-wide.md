@@ -20,45 +20,73 @@ The system-wide enhancement implementation pathway provides a specialized execut
 
 ## 2. Core Command Operation
 
-When the `dev-mode: rules-workflow @parameters/rules/dev-mode-system-wide.mdc` message-command is received, 1000xdev will:
+When the `dev-mode: rules-workflow @parameters/rules/dev-mode/system-wide.mdc` message-command is received, 1000xdev will:
 
 1. **Initialize Developer Mode**: Enter or remain in Developer Mode with the 💻 1000xdev [rules-workflow] indicator
-2. **Analyze System-Wide Plan**: Review the following planning-folder-files in order:
-README.md
-implementation-progress.md
-context-files (all context-files)
-implementation-files (all implementation-files)
-tool-call-cheatsheet.md
-3. **Create Implementation Progress Tracking**: Set up tracking for cross-component changes
-4. **Execute Coordinated Changes**: Implement changes across multiple components in a coordinated sequence
-5. **Verify System-Wide Integrity**: Test the entire system's functionality after changes
+2. **ALWAYS Re-Read Planning Folder Files**: Read the following planning-folder-files IN THIS EXACT ORDER:
+   - README.md (MANDATORY FIRST FILE)
+   - implementation-progress.md (MANDATORY SECOND FILE)
+   - context-files (all context-files)
+   - implementation-files (all implementation-files)
+   - test-cheatsheet.md
+3. **Continue Implementation from Current Point**: Use implementation-progress.md to determine the current state
+4. **Frequently Update Implementation Progress**: Update after EACH significant change or every 3-5 tool calls
+5. **Execute Coordinated Changes**: Implement changes across multiple components in a coordinated sequence
+6. **Verify System-Wide Integrity**: Test the entire system's functionality after changes
 
-### Tool Call Sequence
+### ⚠️ CRITICAL: Memory Reset Handling
+
+This project-rule-parameter will be repeatedly sent until implementation is complete. Additionally, memory resets may occur during implementation. Therefore:
+
+1. **ALWAYS begin with explicit file reading** in the exact order specified above
+2. **FIRST read README.md and implementation-progress.md** to establish context
+3. **Update implementation-progress.md frequently** to maintain continuity
+4. **Never assume previous context is remembered** - verify current state through explicit file reads
+5. **Make each response self-contained** with clear status indicators
+
+## 3. Mandatory Tool Call Sequence After Each Memory Reset
 
 ```typescript
-// 1. Check planning folder structure
-list_dir("[planning_folder_path]")
+// MANDATORY: ALWAYS start by reading README.md FIRST
+read_file("[planning_folder_path]/README.md", should_read_entire_file=true)
 
-// 2. Read context and implementation files
-read_file("[planning_folder_path]/context-system-wide-enhancement.md", should_read_entire_file=true)
+// MANDATORY: ALWAYS read implementation-progress.md SECOND to determine current state
+read_file("[planning_folder_path]/implementation-progress.md", should_read_entire_file=true)
+
+// Read relevant context files based on implementation phase
+read_file("[planning_folder_path]/context-architecture-mapping.md", should_read_entire_file=true)
+read_file("[planning_folder_path]/context-cross-system-patterns.md", should_read_entire_file=true)
 read_file("[planning_folder_path]/implementation-system-wide-enhancement.md", should_read_entire_file=true)
 
-// 3. Create implementation progress tracking
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Create system-wide implementation progress tracking",
-          "# Implementation Progress: System-Wide Enhancement\n\n...")
-
-// 4. Examine system structure
+// Examine system structure as needed
 list_dir("1000xbrain")
 list_dir("1000xbrain/core")
 list_dir("1000xbrain/workflows")
 list_dir("1000xbrain/knowledge")
 
-// 5. Begin coordinated implementation
-// Implementation following the phases defined in implementation-system-wide-enhancement.md
+// Continue implementation from current progress point
+// Implementation based on current state in implementation-progress.md
 ```
 
-## 3. Specialized Implementation Structure
+## 4. Continuous Implementation Progress Tracking
+
+Implementation progress MUST be updated frequently to maintain context across memory resets:
+
+1. **Update After Each Significant Change**: Document every completed step
+2. **Update Every 3-5 Tool Calls**: Even for minor changes or analysis
+3. **Include Timestamps**: Add timestamps to each update for tracking
+4. **Mark Current Position Clearly**: Indicate exactly which step is in progress
+5. **Describe Next Steps**: Always outline the next planned actions
+6. **Use Status Indicators**: Use checkmarks, status tags, and clear labeling
+
+```typescript
+// Update implementation progress after EACH significant change
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update implementation progress - [specific change description]",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: [phase]\n- Step: [step]\n- Last Update: [timestamp]\n- Current Task: [specific task in progress]\n- Next Steps: [next planned actions]\n\n...")
+```
+
+## 5. Specialized Implementation Structure
 
 The system-wide enhancement implementation follows this specialized structure:
 
@@ -74,65 +102,85 @@ list_dir("1000xbrain/knowledge")
 // 2. Map component dependencies
 edit_file("[planning_folder_path]/implementation-progress.md",
           "Document component dependencies",
-          "# Implementation Progress: System-Wide Enhancement\n\n## Component Dependencies\n\n...")
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 1\n- Step: 1.2\n- Last Update: [timestamp]\n- Current Task: Mapping component dependencies\n\n## Component Dependencies\n\n...")
 
 // 3. Create implementation sequence
 edit_file("[planning_folder_path]/implementation-progress.md",
           "Document implementation sequence",
-          "# Implementation Progress: System-Wide Enhancement\n\n## Implementation Sequence\n\n1. [First component]\n2. [Second component]\n...")
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 1\n- Step: 1.3\n- Last Update: [timestamp]\n- Current Task: Creating implementation sequence\n\n## Implementation Sequence\n\n1. [First component]\n2. [Second component]\n...")
 ```
 
 ### Phase 2: Core Component Implementation
 
 ```typescript
-// 1. Implement changes to core components
+// 1. Update progress before reading file
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Beginning core component implementation",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 2\n- Step: 2.1\n- Last Update: [timestamp]\n- Current Task: Beginning implementation of [component]\n...")
+
+// 2. Implement changes to core components
 read_file("1000xbrain/core/[component]/[file_to_modify].md", should_read_entire_file=true)
 edit_file("1000xbrain/core/[component]/[file_to_modify].md",
           "Implement core component changes",
           "# [Title]\n\n## [Enhanced Section]\n\n[Enhanced Content]")
 
-// 2. Update implementation progress
+// 3. Update implementation progress IMMEDIATELY after change
 edit_file("[planning_folder_path]/implementation-progress.md",
-          "Update implementation progress",
-          "# Implementation Progress: System-Wide Enhancement\n\nCore components updated...")
+          "Update implementation progress - [component] modified",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 2\n- Step: 2.1\n- Last Update: [timestamp]\n- Current Task: Completed implementation of [component]\n- Next Steps: [next component to modify]\n\n## Detailed Progress\n\n### Phase 2: Core Component Implementation\n- [x] Step 2.1: Modified [component]\n- [ ] Step 2.2: [next component]...")
 ```
 
 ### Phase 3: Dependent Component Implementation
 
 ```typescript
-// 1. Implement changes to dependent components
+// 1. Update progress before reading file
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Beginning dependent component implementation",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 3\n- Step: 3.1\n- Last Update: [timestamp]\n- Current Task: Beginning implementation of [dependent component]\n...")
+
+// 2. Implement changes to dependent components
 read_file("1000xbrain/[dependent_path]/[file_to_modify].md", should_read_entire_file=true)
 edit_file("1000xbrain/[dependent_path]/[file_to_modify].md",
           "Implement dependent component changes",
           "# [Title]\n\n## [Enhanced Section]\n\n[Enhanced Content]")
 
-// 2. Update implementation progress
+// 3. Update implementation progress IMMEDIATELY after change
 edit_file("[planning_folder_path]/implementation-progress.md",
-          "Update implementation progress",
-          "# Implementation Progress: System-Wide Enhancement\n\nDependent components updated...")
+          "Update implementation progress - [dependent component] modified",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 3\n- Step: 3.1\n- Last Update: [timestamp]\n- Current Task: Completed implementation of [dependent component]\n- Next Steps: [next dependent component to modify]\n\n## Detailed Progress\n\n### Phase 3: Dependent Component Implementation\n- [x] Step 3.1: Modified [dependent component]\n- [ ] Step 3.2: [next dependent component]...")
 ```
 
 ### Phase 4: System-Wide Verification
 
 ```typescript
-// 1. Verify core component changes
+// 1. Update progress before verification
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Beginning system-wide verification",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.1\n- Last Update: [timestamp]\n- Current Task: Beginning verification of core components\n...")
+
+// 2. Verify core component changes
 read_file("1000xbrain/core/[component]/[modified_file].md", should_read_entire_file=true)
 
-// 2. Verify dependent component changes
+// 3. Update progress after each verification
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Update verification progress - [component] verified",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.1\n- Last Update: [timestamp]\n- Current Task: Completed verification of [component]\n- Next Steps: Verify [next component]\n\n## Detailed Progress\n\n### Phase 4: System-Wide Verification\n- [x] Step 4.1: Verified [component]\n- [ ] Step 4.2: Verify [next component]...")
+
+// 4. Verify dependent component changes
 read_file("1000xbrain/[dependent_path]/[modified_file].md", should_read_entire_file=true)
 
-// 3. Verify cross-component functionality
+// 5. Update progress after verification
 edit_file("[planning_folder_path]/implementation-progress.md",
-          "Document system-wide verification",
-          "# Implementation Progress: System-Wide Enhancement\n\n## System Verification\n\n...")
+          "Update verification progress - [dependent component] verified",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.2\n- Last Update: [timestamp]\n- Current Task: Completed verification of [dependent component]\n- Next Steps: Verify cross-component functionality\n\n## Detailed Progress\n\n### Phase 4: System-Wide Verification\n- [x] Step 4.1: Verified core components\n- [x] Step 4.2: Verified dependent components\n- [ ] Step 4.3: Verify cross-component functionality...")
 
-// 4. Final implementation progress update
+// 6. Final implementation progress update
 edit_file("[planning_folder_path]/implementation-progress.md",
           "Complete implementation progress",
-          "# Implementation Progress: System-Wide Enhancement\n\nImplementation complete...")
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: Complete\n- Last Update: [timestamp]\n- Current Task: Implementation completed\n\n## Detailed Progress\n\n### Phase 4: System-Wide Verification\n- [x] Step 4.1: Verified core components\n- [x] Step 4.2: Verified dependent components\n- [x] Step 4.3: Verified cross-component functionality\n\n## Implementation Complete\nAll phases and steps have been successfully completed.")
 ```
 
-## 4. Implementation Progress Tracking
+## 6. Implementation Progress Structure
 
 For system-wide enhancements, implementation progress tracking follows this specialized structure:
 
@@ -143,6 +191,8 @@ For system-wide enhancements, implementation progress tracking follows this spec
 - Phase: [current phase number]
 - Step: [current step number]
 - Last Update: [timestamp]
+- Current Task: [specific task currently in progress]
+- Next Steps: [upcoming tasks]
 
 ## System Components
 - Core Components: [list of core components being modified]
@@ -178,9 +228,14 @@ For system-wide enhancements, implementation progress tracking follows this spec
 - Component 1: [status] - [details]
 - Component 2: [status] - [details]
 - Component 3: [status] - [details]
+
+## Recent Updates
+- [timestamp]: [specific update detail]
+- [timestamp]: [specific update detail]
+- [timestamp]: [specific update detail]
 ```
 
-## 5. Common System-Wide Implementation Patterns
+## 7. Common System-Wide Implementation Patterns
 
 ### Architectural Pattern Standardization
 
@@ -209,16 +264,17 @@ For standardizing terminology across the system:
 3. **Dependent Component Updates**: Propagate terminology to all components
 4. **Documentation Consistency**: Ensure documentation reflects standardized terms
 
-## 6. System Integration Testing
+## 8. System Integration Testing
 
 System-wide enhancements require comprehensive integration testing:
 
 ### Component Interaction Testing
 
 ```typescript
-// 1. Identify component interactions
-list_dir("1000xbrain/[component1_path]")
-list_dir("1000xbrain/[component2_path]")
+// 1. Update progress before testing
+edit_file("[planning_folder_path]/implementation-progress.md",
+          "Beginning component interaction testing",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.3\n- Last Update: [timestamp]\n- Current Task: Testing interaction between [component1] and [component2]\n...")
 
 // 2. Test interaction between components
 read_file("1000xbrain/[component1_path]/[interface_file].md", should_read_entire_file=true)
@@ -227,16 +283,16 @@ read_file("1000xbrain/[component2_path]/[consumer_file].md", should_read_entire_
 // 3. Document interaction test results
 edit_file("[planning_folder_path]/implementation-progress.md",
           "Document component interaction test",
-          "# Implementation Progress: System-Wide Enhancement\n\n## Component Interaction\n\n- [Component1]-[Component2]: [status]")
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.3\n- Last Update: [timestamp]\n- Current Task: Completed testing interaction between [component1] and [component2]\n- Next Steps: Test next component interaction\n\n## Component Interaction\n\n- [Component1]-[Component2]: [status]")
 ```
 
 ### End-to-End Flow Testing
 
 ```typescript
-// 1. Define system flow to test
+// 1. Update progress before testing
 edit_file("[planning_folder_path]/implementation-progress.md",
-          "Define end-to-end flow test",
-          "# Implementation Progress: System-Wide Enhancement\n\n## End-to-End Flow\n\n1. [Step 1]\n2. [Step 2]\n...")
+          "Beginning end-to-end flow testing",
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.4\n- Last Update: [timestamp]\n- Current Task: Testing end-to-end flow\n...")
 
 // 2. Test each step in the flow
 read_file("1000xbrain/[component1_path]/[step1_file].md", should_read_entire_file=true)
@@ -245,10 +301,10 @@ read_file("1000xbrain/[component2_path]/[step2_file].md", should_read_entire_fil
 // 3. Document flow test results
 edit_file("[planning_folder_path]/implementation-progress.md",
           "Document flow test results",
-          "# Implementation Progress: System-Wide Enhancement\n\n## Flow Test Results\n\n- Flow: [status]")
+          "# Implementation Progress: System-Wide Enhancement\n\n## Current Status\n- Phase: 4\n- Step: 4.4\n- Last Update: [timestamp]\n- Current Task: Completed end-to-end flow testing\n- Next Steps: Final implementation verification\n\n## Flow Test Results\n\n- Flow: [status]")
 ```
 
-## 7. Success Criteria
+## 9. Success Criteria
 
 Successful implementation of system-wide enhancement meets these criteria:
 
@@ -257,8 +313,9 @@ Successful implementation of system-wide enhancement meets these criteria:
 3. **Functional Integration**: Components work together seamlessly
 4. **Documentation Coherence**: Documentation reflects the enhanced architecture
 5. **Verification Thoroughness**: System-wide testing confirms comprehensive functionality
+6. **Progress Documentation**: Comprehensive implementation-progress.md with detailed tracking
 
-## 8. Implementation Completion
+## 10. Implementation Completion
 
 When system-wide enhancement implementation is complete, 1000xdev:
 
@@ -277,6 +334,7 @@ System-Wide Enhancement Implementation complete:
 - All components enhanced
 - System-wide integration verified
 - Cross-component functionality confirmed
+- Implementation-progress.md updated with final status
 - Follow-up requirements folder created: planning/{next-number}-{follow-up-focus}
 
 implementation-complete
@@ -300,27 +358,7 @@ edit_file("planning/{next-number}-{follow-up-focus}/requirements.md",
           "# Requirements: {follow-up-focus}\n\n[Requirements content based on findings from current implementation]")
 ```
 
-This automatic process ensures continuity in system-wide enhancements, with each implementation naturally flowing into the next enhancement cycle.
-
-## 9. Examples
-
-### Example 1: Message-Command System Enhancement
-
-With planning folder focusing on message-command system enhancement, implementation would:
-- Update core communication components
-- Modify dependent workflow components
-- Standardize message-command patterns
-- Verify system-wide message handling
-
-### Example 2: Cognitive Architecture Restructuring
-
-With planning folder focusing on cognitive architecture restructuring, implementation would:
-- Modify core architectural components
-- Update dependent components to use new structure
-- Ensure consistent file organization
-- Verify complete system functionality
-
-## 4. Knowledge Access During System-Wide Implementation
+## 11. Knowledge Access During System-Wide Implementation
 
 When implementing system-wide enhancements, use the `fetch_rules` tool to access specialized knowledge that enables more effective implementation:
 
@@ -341,7 +379,7 @@ fetch_rules([
 ], "Comprehensive architectural understanding for system-wide implementation")
 ```
 
-### System-Wide Enhancement Knowledge Components
+### Recommended Knowledge Components
 
 When implementing system-wide enhancements, these knowledge components are particularly valuable:
 
@@ -353,45 +391,12 @@ When implementing system-wide enhancements, these knowledge components are parti
 | Cognitive Enhancement | `knowledge/rules/guides/cognitive-enhancement` | System-wide enhancement approaches |
 | File Standards | `knowledge/rules/patterns/doc/file-standards` | Consistent file structure |
 
-### Knowledge Access Best Practices for System-Wide Enhancements
+### Knowledge Access Best Practices
 
 For optimal knowledge access during system-wide enhancement implementation:
 
 1. **Start with Architecture Understanding**: Begin with comprehensive architectural knowledge
-   ```typescript
-   fetch_rules(["knowledge/rules/guides/architecture"], 
-              "Understanding system architecture for comprehensive implementation")
-   ```
-
 2. **Access Implementation Patterns**: Ensure consistent implementation
-   ```typescript
-   fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"], 
-              "Accessing architectural patterns for consistent implementation")
-   ```
-
 3. **Understand Component Relationships**: Map dependencies between components
-   ```typescript
-   fetch_rules(["knowledge/rules/reference/maps/domain-map"], 
-              "Understanding component relationships for coordinated implementation")
-   ```
-
 4. **Combine Related Knowledge Components**: For complete understanding
-   ```typescript
-   fetch_rules([
-     "knowledge/rules/guides/architecture",
-     "knowledge/rules/patterns/impl/architecture-patterns",
-     "knowledge/rules/reference/maps/domain-map"
-   ], "Comprehensive understanding for system-wide implementation")
-   ```
-
-5. **Access Cognitive Enhancement Guidelines**: For system improvement approaches
-   ```typescript
-   fetch_rules(["knowledge/rules/guides/cognitive-enhancement"], 
-              "Understanding cognitive enhancement approaches for system improvements")
-   ```
-
-For detailed documentation on fetch_rules usage for system-wide enhancements, access:
-```typescript
-fetch_rules(["knowledge/rules/guides/fetch-rules"],
-           "Understanding fetch_rules usage for system-wide implementation")
-``` 
+5. **Access Cognitive Enhancement Guidelines**: For system improvement approaches 

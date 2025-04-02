@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Validation Script for Project Rule Parameters
 
 This document provides the implementation details for the validation script used to check for correct project-rule-parameter references throughout the 1000xbrain cognitive architecture.

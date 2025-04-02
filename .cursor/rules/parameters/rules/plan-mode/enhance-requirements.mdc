@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # workflow: rules-workflow | pathway: none | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/enhance-requirements.mdc
 
 ## File Purpose
@@ -11,12 +16,21 @@ This file provides a focused requirements enhancement pattern for rules workflow
 
 This parameter is designed to work with the `enhance-requirements:` message-command, providing a structured approach to researching and improving requirements before implementation.
 
+## ⚠️ IMPORTANT: FILE SCOPE RESTRICTION ⚠️
+
+**This parameter is specifically for enhancing the requirements.md file ONLY.**
+
+1. **Read-Only Reference**: Other planning files may be read for context and understanding
+2. **Edit Restriction**: ONLY the requirements.md file should be edited or modified
+3. **Single-File Focus**: All enhancements must be applied to requirements.md, not to any other file
+4. **Documentation Update**: No other planning documents should be created or modified
+
 ## Enhancement Process Overview
 
 The requirements enhancement process follows these key steps:
 
 1. **Requirements Analysis**
-   - Assess current requirements clarity
+   - Assess current requirements clarity in requirements.md
    - Identify ambiguous areas
    - Determine technical gaps
    - Evaluate implementation feasibility
@@ -34,7 +48,7 @@ The requirements enhancement process follows these key steps:
    - Investigate technical constraints
 
 4. **Requirements Document Enhancement**
-   - Apply research findings to requirements
+   - Apply research findings to requirements.md ONLY
    - Add technical details and constraints
    - Clarify ambiguous requirements
    - Structure requirements effectively
@@ -44,10 +58,10 @@ The requirements enhancement process follows these key steps:
 Begin by analyzing the current state of requirements:
 
 ```typescript
-// Read and understand existing requirements
+// Read and understand existing requirements - THE ONLY FILE TO BE EDITED
 read_file("[planning_folder_path]/requirements.md", should_read_entire_file=true)
 
-// Check other planning documents for context
+// Optionally read other planning documents for CONTEXT ONLY (do not edit these)
 if (file_exists("[planning_folder_path]/context-[feature].md")) {
   read_file("[planning_folder_path]/context-[feature].md", should_read_entire_file=true)
 }
@@ -56,7 +70,7 @@ if (file_exists("[planning_folder_path]/implementation-[feature].md")) {
   read_file("[planning_folder_path]/implementation-[feature].md", should_read_entire_file=true)
 }
 
-// Review README for overall project context
+// Review README for overall project context (do not edit)
 if (file_exists("[planning_folder_path]/README.md")) {
   read_file("[planning_folder_path]/README.md", should_read_entire_file=true)
 }
@@ -116,10 +130,10 @@ web_search("best practices for [feature] implementation")
 
 ## Requirements Document Enhancement
 
-Apply research findings to enhance the requirements document:
+Apply research findings to enhance ONLY the requirements.md document:
 
 ```typescript
-// Enhance requirements document with research findings
+// Enhance requirements document with research findings (ONLY FILE TO EDIT)
 edit_file("[planning_folder_path]/requirements.md",
           "Enhance requirements with research findings",
           "// ... existing content ...\n\n## Enhanced Requirements\n\n### Technical Requirements\n- [Technical Requirement 1]\n- [Technical Requirement 2]\n\n### Functional Requirements\n- [Functional Requirement 1]\n- [Functional Requirement 2]\n\n### Non-Functional Requirements\n- [Non-Functional Requirement 1]\n- [Non-Functional Requirement 2]\n\n### Implementation Constraints\n- [Constraint 1]\n- [Constraint 2]\n\n### Acceptance Criteria\n- [Criterion 1]\n- [Criterion 2]\n\n// ... existing content ...")
@@ -127,7 +141,7 @@ edit_file("[planning_folder_path]/requirements.md",
 
 ## Enhanced Requirements Template
 
-Use this structured template for organizing enhanced requirements:
+Use this structured template for organizing enhanced requirements in requirements.md:
 
 ```markdown
 # Enhanced Requirements
@@ -176,7 +190,7 @@ Use this structured template for organizing enhanced requirements:
 
 ### Technical Detail Pattern
 
-Add specific technical details to clarify implementation:
+Add specific technical details to clarify implementation (in requirements.md only):
 
 ```markdown
 ## Technical Details
@@ -202,7 +216,7 @@ Add specific technical details to clarify implementation:
 
 ### Implementation Constraints Pattern
 
-Clarify technical boundaries and constraints:
+Clarify technical boundaries and constraints (in requirements.md only):
 
 ```markdown
 ## Implementation Constraints
@@ -242,7 +256,7 @@ When requirements enhancement is complete:
 
 Requirements enhancement complete:
 
-Enhancements Applied:
+Enhancements Applied to requirements.md:
 - Added detailed technical requirements
 - Clarified performance expectations
 - Added security requirements
@@ -256,14 +270,14 @@ requirements-enhancement-complete
 
 ## Enhancement Iteration Flow
 
-The `enhance-requirements` process is designed to be iterative:
+The `enhance-requirements` process is designed to be iterative, focusing exclusively on requirements.md:
 
-1. **Initial Analysis**: First assessment of requirements and research needs
+1. **Initial Analysis**: First assessment of requirements.md and research needs
 2. **Research**: Conduct explicit tool calls to gather needed information
-3. **Enhancement**: Apply findings to enhance requirements document
+3. **Enhancement**: Apply findings to enhance requirements.md document ONLY
 4. **Reassessment**: User reviews changes and may send follow-up `enhance-requirements` command
 5. **Further Research**: Based on feedback, conduct additional research
-6. **Refinement**: Further enhance requirements with new findings
+6. **Refinement**: Further enhance requirements.md with new findings
 
 This iterative process continues until requirements reach optimal clarity and completeness.
 

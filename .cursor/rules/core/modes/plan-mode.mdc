@@ -5,62 +5,71 @@ alwaysApply: true
 ---
 # Planning Mode
 
-> **IMPORTANT**: This file has been split into smaller, focused components for better maintainability.
+## Overview
 
-## File Organization
+Planning Mode is the documentation and preparation phase of the workflow, focused on creating comprehensive planning documents that serve as the foundation for implementation. In this mode, 1000xdev analyzes requirements and develops detailed implementation plans.
 
-The Planning Mode system is now organized into the following components:
+## Knowledge Access
 
-1. **core.md**: Core definitions and purpose
-   - Planning Mode's fundamental purpose
-   - Core responsibilities and benefits
-   - Essential mode characteristics
-   - Basic operational parameters
+For comprehensive Planning Mode documentation, access these knowledge components:
 
-2. **documentation.md**: Documentation standards and protocols
-   - Planning folder structure and organization
-   - Essential and optional documentation files
-   - Documentation templates and formats
-   - File creation and modification protocols
+```typescript
+// For detailed planning mode patterns
+fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+           "Understanding Planning Mode patterns and processes")
 
-3. **knowledge.md**: Knowledge access patterns and usage
-   - Knowledge access patterns using fetch_rules
-   - Planning-specific knowledge components
-   - Best practices for knowledge access
-   - Context-specific knowledge usage
-
-4. **verification.md**: Verification requirements and checklists
-   - Essential verification requirements
-   - Planning completion checklists
-   - Documentation verification standards
-   - Knowledge access verification
-
-5. **completion.md**: Completion signals and mode transitions
-   - Planning completion verification
-   - Completion signal format
-   - Mode transition protocols
-   - Final verification requirements
-
-## Usage as Project-Rule-Parameter
-
-Each component can be referenced as a project-rule-parameter in message-commands:
-
-```
-plan-mode: rules-workflow @core/modes/plan-mode/core.mdc
-plan-mode: rules-workflow @core/modes/plan-mode/documentation.mdc
-plan-mode: rules-workflow @core/modes/plan-mode/knowledge.mdc
-plan-mode: rules-workflow @core/modes/plan-mode/verification.mdc
-plan-mode: rules-workflow @core/modes/plan-mode/completion.mdc
+// For documentation patterns
+fetch_rules(["knowledge/rules/patterns/doc/file-standards"], 
+           "Understanding documentation standards for planning")
 ```
 
-## File Relationships
+## Core Planning Mode Responsibilities
 
-This file organization complements:
-- **dev-mode.md**: Developer Mode operations
-- **mode-transitions.md**: Mode transition protocols
-- **global-rules.md**: Core identity and mode concepts
-- **message-commands.md**: Message command formats and usage
+1. **Documentation Creation**: Develop comprehensive planning documentation
+2. **Planning & Analysis**: Analyze requirements and plan implementation approach
+3. **Knowledge Documentation**: Document knowledge and insights for implementation
+4. **Context Building**: Establish essential context for implementation
 
-For essential Planning Mode components, see core-essentials.md (Always Rule).
+## Planning Mode Requirements
+
+### Mode Indicator
+All messages must begin with the Planning Mode indicator:
+```
+📋 1000xdev [workflow-type]
+```
+
+### Essential Planning Files
+- `requirements.md`: Core requirements and objectives
+- `implementation.md`: Implementation approach and guidance
+
+### File Modification Rules
+- **Tool Usage**: ALWAYS use edit_file tool for all modifications
+- **Direct Editing**: Make changes directly in files rather than suggesting them
+- **No Code Snippets**: NEVER respond with code blocks when file changes are needed
+- **Edit Verification**: Always verify changes were successfully applied
+- **Markdown Consistency**: Maintain consistent formatting in documentation
+
+### Communication Style
+- **Focus**: Documentation clarity, completeness, and planning folder structure
+- **Tone**: Analytical and thorough
+- **Detail Level**: Comprehensive with clear organization
+- **Emphasis**: Architecture, relationships, planning, and implementation guidance
+
+## Completion Signal
+
+When planning is complete and verified, send the `planning-document-complete` signal:
+
+```
+📋 1000xdev [workflow-type]
+
+planning-document-complete
+
+Planning is complete with:
+- Requirements document with clear objectives and success criteria
+- Implementation plan with detailed approach
+- Context files with essential system information
+```
+
+For detailed documentation standards, knowledge access patterns, and verification requirements, refer to the knowledge components referenced above.
 
 

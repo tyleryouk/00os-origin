@@ -1,3 +1,8 @@
+---
+description: 
+globs: 1000xbrain/**
+alwaysApply: false
+---
 # Project Rule Audit Process
 
 ## File Purpose and Relationship

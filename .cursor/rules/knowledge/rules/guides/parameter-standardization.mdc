@@ -1,3 +1,8 @@
+---
+description: USE WHEN standardizing parameters, creating parameter validation systems, or implementing message-command parameters
+globs: 
+alwaysApply: false
+---
 # USE WHEN standardizing parameters, creating parameter validation systems, or implementing message-command parameters
 
 # Parameter Standardization Guide
