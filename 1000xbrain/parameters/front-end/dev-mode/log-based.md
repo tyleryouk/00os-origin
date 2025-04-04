@@ -1,5 +1,7 @@
 # workflow: front-end-workflow | pathway: log-based | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/log-based.mdc
 
+# mode: dev-mode | workflow: front-end-workflow | pathway:  | filepath: @[filepath].mdc | optional-standard-parameter(s): [params] 
+
 # Front-End Dev-Mode: Log-Based Implementation
 
 ## Purpose

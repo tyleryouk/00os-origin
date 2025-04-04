@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: system-wide-optimization | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/system-wide-optimization.mdc
+# mode: plan-mode | workflow: rules-workflow | pathway: system-wide-optimization | filepath: @parameters/rules/plan-mode/system-wide-optimization.mdc  | optional-standard-parameter(s): none
 
 ## System-Wide Optimization Planning Overview
 
@@ -88,19 +88,24 @@ When planning in any folder, 1000xdev must maintain awareness of:
 ### For 93-rules-workflow-system-wide-optimization
 
 ```typescript
-// 1. Determine current planning folder
+// 1. Verify planning folder exists and determine current folder context
 list_dir("planning")
-// Confirm working in 93-rules-workflow-system-wide-optimization
+// Validate working in correct planning folder
+list_dir("planning/93-rules-workflow-system-wide-optimization")
 
-// 2. Read requirements and prior implementation results
+// 2. Read requirements and prior implementation results in sequential order
+read_file("planning/93-rules-workflow-system-wide-optimization/README.md", should_read_entire_file=true)
 read_file("planning/93-rules-workflow-system-wide-optimization/requirements.md", should_read_entire_file=true)
 read_file("planning/92-rules-workflow-system-wide/implementation-progress.md", should_read_entire_file=true)
 
-// 3. Analyze current core structure (READ ONLY)
+// 3. Analyze current core structure (READ ONLY) in descending hierarchy
 list_dir("1000xbrain/core")
-list_dir("1000xbrain/core/communication")
+// Measure current line count to establish baseline
+run_terminal_cmd("(Get-ChildItem -Path \"1000xbrain/core\" -Recurse -Filter \"*.md\" | Get-Content | Measure-Object -Line).Lines", false)
+// Examine specific subsystem directories
 list_dir("1000xbrain/core/identity")
 list_dir("1000xbrain/core/modes")
+list_dir("1000xbrain/core/communication")
 
 // 4. Create core-specific implementation plan
 edit_file("planning/93-rules-workflow-system-wide-optimization/implementation-core-optimization.md",
@@ -109,24 +114,28 @@ edit_file("planning/93-rules-workflow-system-wide-optimization/implementation-co
 
 // 5. Create quantitative metrics tracking template
 edit_file("planning/93-rules-workflow-system-wide-optimization/implementation-progress.md",
-          "Create implementation progress tracking template",
+          "Create implementation progress tracking template with clear separation between planning and implementation sections",
           "# Implementation Progress: Core Optimization\n\n## Planning Status\n- Planning Phase: In Progress\n- Last Update: [timestamp]\n- Current Planning Task: Creating core optimization plan\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Optimization Metrics\n- Current Line Count: [count]\n- Target Line Count: <2000 lines\n- Reduction Goal: [percentage]%\n\n...")
 ```
 
 ### For 94-rules-workflow-system-wide-optimization
 
 ```typescript
-// 1. Determine current planning folder
+// 1. Verify planning folder exists and determine current folder context
 list_dir("planning")
-// Confirm working in 94-rules-workflow-system-wide-optimization
+// Validate working in correct planning folder
+list_dir("planning/94-rules-workflow-system-wide-optimization")
 
-// 2. Read requirements and prior implementation results
+// 2. Read requirements and prior implementation results in sequential order
+read_file("planning/94-rules-workflow-system-wide-optimization/README.md", should_read_entire_file=true)
 read_file("planning/94-rules-workflow-system-wide-optimization/requirements.md", should_read_entire_file=true)
 read_file("planning/93-rules-workflow-system-wide-optimization/implementation-progress.md", should_read_entire_file=true)
 
-// 3. Analyze current knowledge structure (READ ONLY)
+// 3. Analyze current knowledge structure (READ ONLY) in hierarchical order
 list_dir("1000xbrain/knowledge")
 list_dir("1000xbrain/knowledge/rules")
+// Check parameters structure to understand format standardization needs
+list_dir("1000xbrain/parameters")
 list_dir("1000xbrain/parameters/rules")
 
 // 4. Create knowledge-specific implementation plan
@@ -136,27 +145,36 @@ edit_file("planning/94-rules-workflow-system-wide-optimization/implementation-kn
 
 // 5. Create pathway organization tracking template
 edit_file("planning/94-rules-workflow-system-wide-optimization/implementation-progress.md",
-          "Create implementation progress tracking template",
+          "Create implementation progress tracking template with clear separation between planning and implementation sections",
           "# Implementation Progress: Knowledge & Parameters Optimization\n\n## Planning Status\n- Planning Phase: In Progress\n- Last Update: [timestamp]\n- Current Planning Task: Creating knowledge organization plan\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Pathway Organization\n- Current Structure: [description]\n- Target Structure: [description]\n- Organization Progress: 0%\n\n...")
 ```
 
 ### For 95-rules-workflow-system-wide-optimization
 
 ```typescript
-// 1. Determine current planning folder
+// 1. Verify planning folder exists and determine current folder context
 list_dir("planning")
-// Confirm working in 95-rules-workflow-system-wide-optimization
+// Validate working in correct planning folder
+list_dir("planning/95-rules-workflow-system-wide-optimization")
 
-// 2. Read requirements and all prior implementation results
+// 2. Read requirements and all prior implementation results in sequential order
+read_file("planning/95-rules-workflow-system-wide-optimization/README.md", should_read_entire_file=true)
 read_file("planning/95-rules-workflow-system-wide-optimization/requirements.md", should_read_entire_file=true)
+// Read implementation progress in reverse chronological order
 read_file("planning/94-rules-workflow-system-wide-optimization/implementation-progress.md", should_read_entire_file=true)
 read_file("planning/93-rules-workflow-system-wide-optimization/implementation-progress.md", should_read_entire_file=true)
 
-// 3. Analyze entire optimized system (READ ONLY)
+// 3. Analyze entire optimized system (READ ONLY) in hierarchical order
 list_dir("1000xbrain")
+// Examine optimized core structure
 list_dir("1000xbrain/core")
+run_terminal_cmd("(Get-ChildItem -Path \"1000xbrain/core\" -Recurse -Filter \"*.md\" | Get-Content | Measure-Object -Line).Lines", false)
+// Examine optimized knowledge structure
 list_dir("1000xbrain/knowledge")
+list_dir("1000xbrain/knowledge/rules")
+// Examine optimized parameters structure
 list_dir("1000xbrain/parameters")
+list_dir("1000xbrain/parameters/rules")
 
 // 4. Create future enhancement plan
 edit_file("planning/95-rules-workflow-system-wide-optimization/implementation-future-enhancements.md",
@@ -165,7 +183,7 @@ edit_file("planning/95-rules-workflow-system-wide-optimization/implementation-fu
 
 // 5. Create enhancement categorization template
 edit_file("planning/95-rules-workflow-system-wide-optimization/implementation-progress.md",
-          "Create implementation progress tracking template",
+          "Create implementation progress tracking template with clear separation between planning and implementation sections",
           "# Implementation Progress: Future Enhancements\n\n## Planning Status\n- Planning Phase: In Progress\n- Last Update: [timestamp]\n- Current Planning Task: Categorizing enhancement opportunities\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Enhancement Categories\n- Category 1: [description]\n- Category 2: [description]\n- Category 3: [description]\n\n...")
 ```
 
@@ -368,10 +386,11 @@ fetch_rules(["knowledge/rules/guides/architecture"],
 fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
            "Finding optimization patterns for implementation planning")
 
-// Access multiple knowledge components
+// Access specific optimization-related knowledge
 fetch_rules([
   "knowledge/rules/guides/architecture",
-  "knowledge/rules/patterns/impl/optimization-patterns"
+  "knowledge/rules/patterns/impl/optimization-patterns",
+  "knowledge/rules/reference/maps/domain-map"
 ], "Comprehensive architectural understanding for optimization planning")
 ```
 
@@ -379,18 +398,24 @@ fetch_rules([
 
 For 93-rules-workflow-system-wide-optimization:
 ```typescript
-fetch_rules(["knowledge/rules/patterns/impl/consolidation-patterns"],
-           "Finding patterns for core file consolidation")
+fetch_rules([
+  "knowledge/rules/patterns/impl/consolidation-patterns",
+  "knowledge/rules/reference/architecture"
+], "Finding patterns for core file consolidation and architectural understanding")
 ```
 
 For 94-rules-workflow-system-wide-optimization:
 ```typescript
-fetch_rules(["knowledge/rules/patterns/impl/organization-patterns"],
-           "Finding patterns for knowledge organization")
+fetch_rules([
+  "knowledge/rules/patterns/impl/organization-patterns",
+  "knowledge/rules/reference/maps/domain-map"
+], "Finding patterns for knowledge organization and domain relationships")
 ```
 
 For 95-rules-workflow-system-wide-optimization:
 ```typescript
-fetch_rules(["knowledge/rules/guides/cognitive-enhancement"],
-           "Understanding cognitive enhancement opportunities")
+fetch_rules([
+  "knowledge/rules/guides/cognitive-enhancement",
+  "knowledge/rules/patterns/impl/architecture-patterns"
+], "Understanding cognitive enhancement opportunities and architectural evolution")
 ``` 

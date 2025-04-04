@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: performance | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/performance.mdc
+# mode: dev-mode | workflow: rules-workflow | pathway: performance | filepath: @parameters/rules/dev-mode/performance.mdc  | optional-standard-parameter(s): none
 
 ## File Purpose and Relationship
 

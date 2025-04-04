@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: system-wide | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/system-wide.mdc
+# mode: dev-mode | workflow: rules-workflow | pathway: system-wide | filepath: @parameters/rules/dev-mode/system-wide.mdc  | optional-standard-parameter(s): none
 
 
 ## 1. System-Wide Enhancement Implementation Overview

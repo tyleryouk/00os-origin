@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: system-wide | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/system-wide.mdc
+# mode: plan-mode | workflow: rules-workflow | pathway: system-wide | filepath: @parameters/rules/plan-mode/system-wide.mdc | optional-standard-parameter(s): none
 
 ## System-Wide Enhancement Planning Overview
 
