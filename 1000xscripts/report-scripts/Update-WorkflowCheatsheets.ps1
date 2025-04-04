@@ -53,7 +53,7 @@ function Get-MessageCommand {
     
     <#
     .SYNOPSIS
-        Extracts the message-command and standard parameters from a parameter file
+        Extracts the message-command, standard parameters, and pathway from a parameter file
     
     .DESCRIPTION
         This function analyzes a parameter file to determine which message-command it is 
@@ -65,21 +65,31 @@ function Get-MessageCommand {
         3. Command format examples in code blocks
         4. File name inference (based on naming conventions)
         
+        It also extracts the pathway from the header format:
+        # workflow: [workflow-type] | pathway: [pathway-name] | message-command: [message-command] | 
+        standard-parameter(s): [standard-parameter] | project-rule-parameter-filepath: [project-rule-parameter-filepath]
+        
         This process ensures each parameter is correctly associated with its intended
-        message-command for accurate cheatsheet generation.
+        message-command and pathway for accurate cheatsheet generation.
     
     .PARAMETER FilePath
         The path to the parameter file to analyze
     
     .RETURNS
-        A hashtable with Command and Parameters properties
+        A hashtable with Command, Parameters, and Pathway properties
     #>
     
     $msgCmd = ""
     $stdParams = @()
+    $pathway = ""
     
     try {
         $content = Get-Content -Path $FilePath -Raw -ErrorAction SilentlyContinue
+        
+        # Extract pathway from the header format
+        if ($content -match "#\s+workflow:.+?\|\s*pathway:\s*([^|]+?)\s*\|") {
+            $pathway = $matches[1].Trim()
+        }
         
         # Try to find loyalty section - most accurate way to determine message-command
         if ($content -match "Loyal to:\s*([a-z0-9\-]+)(?::|\s)") {
@@ -87,6 +97,10 @@ function Get-MessageCommand {
         }
         # Try to find Call Pattern section with explicit Message-Command
         elseif ($content -match "Message-Command:\s*([a-z0-9\-]+)") {
+            $msgCmd = $matches[1].Trim()
+        }
+        # Extract from header format
+        elseif ($content -match "#\s+workflow:.+?\|\s*message-command:\s*([^|]+?)\s*\|") {
             $msgCmd = $matches[1].Trim()
         }
         # Try to find command format examples
@@ -105,6 +119,13 @@ function Get-MessageCommand {
                 $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
             }
         }
+        # Extract from header format
+        elseif ($content -match "#\s+workflow:.+?\|\s*standard-parameter\(s\):\s*([^|]+?)\s*\|") {
+            $paramString = $matches[1].Trim()
+            if ($paramString -ne "none") {
+                $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
+            }
+        }
         
         # Special case for template-past-chat-hallucination
         if ($FilePath -match "template-past-chat-hallucination") {
@@ -116,7 +137,7 @@ function Get-MessageCommand {
             $fileName = [System.IO.Path]::GetFileNameWithoutExtension($FilePath)
             
             if ($fileName -match "^template-") {
-                $msgCmd = "create-template"
+                $msgCmd = "plan-mode"
                 if (-not $stdParams -or $stdParams.Count -eq 0) {
                     $stdParams = @("workflow-type")
                 }
@@ -140,31 +161,65 @@ function Get-MessageCommand {
                 }
             }
             elseif ($fileName -match "^continue-planning") {
-                $msgCmd = "continue-planning"
+                $msgCmd = "plan-mode"
             }
             elseif ($fileName -match "^continue-implementation") {
-                $msgCmd = "continue-implementation"
+                $msgCmd = "dev-mode"
             }
             elseif ($fileName -match "^enhance-") {
                 # Handle enhance-* files in continuation directories
                 if ($FilePath -match "continuation") {
-                    if ($fileName -match "enhance-requirements") {
-                        $msgCmd = "continue-planning"
-                    }
-                    elseif ($fileName -match "enhance-planning") {
-                        $msgCmd = "continue-planning"
-                    }
-                    else {
-                        $msgCmd = "continue-planning"
-                    }
+                    $msgCmd = "plan-mode"
                 }
                 else {
-                    $msgCmd = $fileName
+                    # Default enhance-* files to plan-mode
+                    $msgCmd = "plan-mode"
                 }
             }
             else {
-                # Default to filename as command name if nothing else works
-                $msgCmd = $fileName
+                # For any other filenames, default to the appropriate mode based on directory structure
+                if ($FilePath -match "\\plan-mode\\") {
+                    $msgCmd = "plan-mode"
+                } 
+                elseif ($FilePath -match "\\dev-mode\\") {
+                    $msgCmd = "dev-mode"
+                }
+                elseif ($FilePath -match "\\direct-mode\\") {
+                    $msgCmd = "direct-mode"
+                }
+                else {
+                    # If all else fails, default to plan-mode
+                    $msgCmd = "plan-mode"
+                }
+            }
+        }
+        
+        # Validate and normalize message command to ensure it's one of the 3 valid commands
+        if ($msgCmd -notin @("plan-mode", "dev-mode", "direct-mode")) {
+            # Apply mapping for legacy commands
+            switch -regex ($msgCmd) {
+                "create-template|continue-planning|enhance-.*|verify-.*|analyze-.*" {
+                    $msgCmd = "plan-mode"
+                }
+                "continue-implementation|implement-.*" {
+                    $msgCmd = "dev-mode"
+                }
+                default {
+                    # Default fallback is plan-mode
+                    Write-Warning "Unrecognized message command '$msgCmd' in $FilePath - defaulting to plan-mode"
+                    $msgCmd = "plan-mode"
+                }
+            }
+        }
+        
+        # If pathway is not found, use "default" or try to infer from directory structure
+        if ([string]::IsNullOrEmpty($pathway)) {
+            # Try to infer from directory structure
+            $relativePath = $FilePath.Replace($PSScriptRoot, "").TrimStart('\', '/')
+            if ($relativePath -match "/([^/]+)/[^/]+\.md$") {
+                $pathway = $matches[1]
+            } else {
+                $pathway = "default"
             }
         }
     }
@@ -175,6 +230,7 @@ function Get-MessageCommand {
     return @{
         Command = $msgCmd
         Parameters = $stdParams
+        Pathway = $pathway
     }
 }
 
@@ -228,6 +284,7 @@ function Get-Parameters {
                 MdcPath = $mdcPath
                 Command = $cmdInfo.Command
                 Parameters = $cmdInfo.Parameters
+                Pathway = $cmdInfo.Pathway
                 IsReadme = $fileName -eq "README.md"
             }
             
@@ -253,27 +310,23 @@ function Create-WorkflowCheatsheet {
     
     <#
     .SYNOPSIS
-        Creates a formatted workflow cheatsheet organized by subdirectory categories
+        Creates a formatted workflow cheatsheet organized by pathway categories
     
     .DESCRIPTION
-        This function takes parameters organized by subdirectories and creates a 
-        consistently formatted cheatsheet with each section representing a subdirectory.
-        The cheatsheet follows this organization pattern:
-        1. PLAN-MODE project-rule-parameters
-        2. DEV-MODE project-rule-parameters
-        3. DIRECT-MODE project-rule-parameters
-        4. CONTINUATION project-rule-parameters
-        5. HELPERS project-rule-parameters (with subcategories)
+        This function takes parameters and creates a consistently formatted cheatsheet 
+        with each section representing a pathway category.
+        The cheatsheet follows this organization pattern by grouping parameters by pathway
+        as defined in their headers.
         
-        This structure directly mirrors the 1000xbrain/parameters/[workflow]/subdirectory
-        organization, making the cheatsheet easy to navigate.
+        This structure makes the cheatsheet more functionally organized based on the
+        parameter's purpose rather than just its file location.
     
     .PARAMETER WorkflowType
         The type of workflow (e.g., "rules", "front-end")
     
     .PARAMETER Parameters
         Array of parameter objects with properties including RelativePath, MdcPath, 
-        Command, and Parameters
+        Command, Parameters, and Pathway
     #>
     
     Write-Host "Creating cheatsheet for $WorkflowType workflow"
@@ -284,102 +337,51 @@ function Create-WorkflowCheatsheet {
     [void]$lines.Add("# $($WorkflowType.ToUpper())-Workflow Cheatsheet")
     [void]$lines.Add("")
     
-    # First, organize parameters by their subdirectory category
-    $organizedByCategory = @{}
+    # First, organize parameters by their pathway
+    $organizedByPathway = @{}
     
     foreach ($param in $Parameters) {
-        $relPath = $param.RelativePath
-        if ([string]::IsNullOrEmpty($relPath) -or -not ($relPath -match "\\")) {
-            $category = "root"
-        } else {
-            $category = $relPath.Split("\")[0]
+        $pathway = $param.Pathway
+        if ([string]::IsNullOrEmpty($pathway)) {
+            $pathway = "default"
         }
         
-        if (-not $organizedByCategory.ContainsKey($category)) {
-            $organizedByCategory[$category] = @()
+        if (-not $organizedByPathway.ContainsKey($pathway)) {
+            $organizedByPathway[$pathway] = @()
         }
         
-        $organizedByCategory[$category] += $param
+        $organizedByPathway[$pathway] += $param
     }
     
-    # Skip ROOT items
-    if ($organizedByCategory.ContainsKey("root")) {
-        $organizedByCategory.Remove("root")
-    }
-    
-    # Process each category in specific order
-    $categoryOrder = @("plan-mode", "dev-mode", "direct-mode", "continuation", "helpers")
-    
-    foreach ($category in $categoryOrder) {
-        if ($organizedByCategory.ContainsKey($category)) {
-            # Add section header for the category
-            [void]$lines.Add("## $($category.ToUpper()) project-rule-parameters")
-            [void]$lines.Add("")
+    # Process each pathway alphabetically
+    foreach ($pathway in $organizedByPathway.Keys | Sort-Object) {
+        # Add section header for the pathway
+        [void]$lines.Add("## PATHWAY: $pathway")
+        [void]$lines.Add("")
+        
+        # Create table for this pathway
+        [void]$lines.Add("| project-rule-parameter | message-command | standard-parameters |")
+        [void]$lines.Add("|------------------------|-----------------|---------------------|")
+        
+        # Sort parameters by MdcPath
+        $sortedParams = $organizedByPathway[$pathway] | Sort-Object -Property MdcPath
+        
+        foreach ($param in $sortedParams) {
+            # Get the command that this parameter is "loyal to"
+            $loyalCommand = $param.Command
             
-            if ($category -eq "plan-mode" -or $category -eq "dev-mode" -or $category -eq "direct-mode" -or $category -eq "continuation") {
-                # For main mode categories and continuation, show parameters with command and standard params
-                [void]$lines.Add("| project-rule-parameter | message-command | standard-parameters |")
-                [void]$lines.Add("|------------------------|-----------------|---------------------|")
-                
-                # Sort parameters by name
-                $sortedParams = $organizedByCategory[$category] | Sort-Object -Property MdcPath
-                
-                foreach ($param in $sortedParams) {
-                    # Get the command that this parameter is "loyal to"
-                    $loyalCommand = $param.Command
-                    
-                    # Extract standard parameters
-                    $stdParamsString = if ($param.Parameters -and $param.Parameters.Count -gt 0) {
-                        $param.Parameters -join ", "
-                    } else {
-                        "none"
-                    }
-                    
-                    [void]$lines.Add("| ``$($param.MdcPath)`` | $loyalCommand | $stdParamsString |")
-                }
+            # Extract standard parameters
+            $stdParamsString = if ($param.Parameters -and $param.Parameters.Count -gt 0) {
+                $param.Parameters -join ", "
             } else {
-                # For helpers subcategories, group further by subdirectory
-                $subDirMap = @{}
-                
-                foreach ($param in $organizedByCategory[$category]) {
-                    $subPath = $param.RelativePath.Substring($category.Length + 1)
-                    $subDir = if ([string]::IsNullOrEmpty($subPath) -or -not ($subPath -match "\\")) {
-                        "root"
-                    } else {
-                        $subPath.Split("\")[0]
-                    }
-                    
-                    if (-not $subDirMap.ContainsKey($subDir)) {
-                        $subDirMap[$subDir] = @()
-                    }
-                    
-                    $subDirMap[$subDir] += $param
-                }
-                
-                # Skip root category for helpers
-                if ($subDirMap.ContainsKey("root")) {
-                    $subDirMap.Remove("root")
-                }
-                
-                # Process each helpers subcategory
-                foreach ($subDir in $subDirMap.Keys | Sort-Object) {
-                    [void]$lines.Add("")
-                    [void]$lines.Add("### $($subDir.ToUpper()) Commands")
-                    [void]$lines.Add("")
-                    [void]$lines.Add("| project-rule-parameter | message-command |")
-                    [void]$lines.Add("|------------------------|-----------------|")
-                    
-                    # Sort parameters by message command
-                    $sortedParams = $subDirMap[$subDir] | Sort-Object -Property Command
-                    
-                    foreach ($param in $sortedParams) {
-                        [void]$lines.Add("| ``$($param.MdcPath)`` | $($param.Command) |")
-                    }
-                }
+                "none"
             }
             
-            [void]$lines.Add("")
+            # Remove mode determination and column
+            [void]$lines.Add("| ``$($param.MdcPath)`` | $loyalCommand | $stdParamsString |")
         }
+        
+        [void]$lines.Add("")
     }
     
     # Generate the final content
@@ -405,7 +407,6 @@ function Create-CompleteCheatsheet {
     [void]$lines.Add("- [Back-End Workflow](#back-end-workflow-cheatsheet)")
     [void]$lines.Add("- [Documentation Workflow](#documentation-workflow-cheatsheet)")
     [void]$lines.Add("- [Scripts Workflow](#scripts-workflow-cheatsheet)")
-    [void]$lines.Add("- [Common Message-Commands](#common-message-commands-reference)")
     [void]$lines.Add("")
     [void]$lines.Add("---")
     [void]$lines.Add("")
@@ -437,20 +438,6 @@ function Create-CompleteCheatsheet {
     [void]$lines.Add("")
     [void]$lines.Add("> Coming soon")
     [void]$lines.Add("")
-    [void]$lines.Add("---")
-    [void]$lines.Add("")
-    
-    # Add common commands reference
-    [void]$lines.Add("# Common Message-Commands Reference")
-    [void]$lines.Add("")
-    [void]$lines.Add("| Message-Command | Description | Standard-Parameters |")
-    [void]$lines.Add("|-----------------|-------------|---------------------|")
-    [void]$lines.Add("| `plan-mode` | Start or switch to Planning Mode | workflow-type |")
-    [void]$lines.Add("| `dev-mode` | Start or switch to Developer Mode | workflow-type |")
-    [void]$lines.Add("| `direct-mode` | Skip planning and directly start implementation | workflow-type |")
-    [void]$lines.Add("| `continue-planning` | Continue planning with specific guidance | none |")
-    [void]$lines.Add("| `continue-implementation` | Continue implementation with specific guidance | none |")
-    [void]$lines.Add("| `create-template` | Create a template | workflow-type |")
     
     # Generate the final content
     $content = $lines -join "`r`n"
@@ -459,8 +446,8 @@ function Create-CompleteCheatsheet {
 
 # Main execution logic
 try {
-    Write-Host "Updating workflow cheatsheets..."
-    Write-Host "================================="
+    Write-Host "Updating master workflow cheatsheet..."
+    Write-Host "====================================="
     Write-Host ""
     
     # Process front-end workflow
@@ -468,10 +455,11 @@ try {
     if (Test-Path $frontEndParametersPath) {
         Write-Host "Front-end parameters directory exists at: $frontEndParametersPath"
         
-        # Check for continuation subdirectory
-        $frontEndContinuationPath = Join-Path $frontEndParametersPath "continuation"
-        if (Test-Path $frontEndContinuationPath) {
-            Write-Host "Found continuation subdirectory at: $frontEndContinuationPath"
+        # Get subdirectories for logging
+        $subdirs = Get-ChildItem -Path $frontEndParametersPath -Directory | Select-Object -ExpandProperty Name
+        Write-Host "Found the following subdirectories in front-end parameters:"
+        foreach ($dir in $subdirs) {
+            Write-Host "  - $dir/"
         }
         
         $frontEndParams = Get-Parameters -DirectoryPath $frontEndParametersPath -WorkflowType "front-end"
@@ -485,12 +473,6 @@ try {
     Write-Host "Processing rules workflow..."
     if (Test-Path $rulesParametersPath) {
         Write-Host "Rules parameters directory exists at: $rulesParametersPath"
-        
-        # Check for continuation subdirectory
-        $rulesContinuationPath = Join-Path $rulesParametersPath "continuation"
-        if (Test-Path $rulesContinuationPath) {
-            Write-Host "Found continuation subdirectory at: $rulesContinuationPath"
-        }
         
         # Get subdirectories for logging
         $subdirs = Get-ChildItem -Path $rulesParametersPath -Directory | Select-Object -ExpandProperty Name
@@ -507,37 +489,22 @@ try {
     }
     
     # Create complete cheatsheet
-    Write-Host "Creating complete cheatsheet..."
+    Write-Host "Creating master cheatsheet..."
     $completeContent = Create-CompleteCheatsheet -FrontEndContent $frontEndContent -RulesContent $rulesContent
     
-    # Ensure directories exist
-    $frontEndDir = Split-Path -Parent $frontEndWorkflowCheatsheetPath
-    $rulesDir = Split-Path -Parent $rulesWorkflowCheatsheetPath
+    # Ensure directory exists
     $completeDir = Split-Path -Parent $completeCheatsheetPath
     
-    if (-not (Test-Path $frontEndDir)) { 
-        Write-Host "Creating front-end workflow directory: $frontEndDir"
-        New-Item -ItemType Directory -Path $frontEndDir -Force | Out-Null 
-    }
-    if (-not (Test-Path $rulesDir)) { 
-        Write-Host "Creating rules workflow directory: $rulesDir"
-        New-Item -ItemType Directory -Path $rulesDir -Force | Out-Null 
-    }
     if (-not (Test-Path $completeDir)) { 
         Write-Host "Creating planning directory: $completeDir"
         New-Item -ItemType Directory -Path $completeDir -Force | Out-Null 
     }
     
-    # Write files
-    Write-Host "Writing cheatsheet files..."
-    Set-Content -Path $frontEndWorkflowCheatsheetPath -Value $frontEndContent -Force
-    Set-Content -Path $rulesWorkflowCheatsheetPath -Value $rulesContent -Force
+    # Write master cheatsheet file
+    Write-Host "Writing master cheatsheet file..."
     Set-Content -Path $completeCheatsheetPath -Value $completeContent -Force
     
-    Write-Host "All cheatsheets updated successfully:"
-    Write-Host "  - Front-end workflow: $frontEndWorkflowCheatsheetPath"
-    Write-Host "  - Rules workflow: $rulesWorkflowCheatsheetPath"
-    Write-Host "  - Complete cheatsheet: $completeCheatsheetPath"
+    Write-Host "Master cheatsheet updated successfully: $completeCheatsheetPath"
     
     # Return success
     exit 0

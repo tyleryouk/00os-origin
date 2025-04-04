@@ -1,3 +1,5 @@
+# workflow: rules-workflow | pathway: none | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/direct-mode/audit-project-rules.mdc
+
 # Audit Project Rules
 
 ## File Purpose and Relationship

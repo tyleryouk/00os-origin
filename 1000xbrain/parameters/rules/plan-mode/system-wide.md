@@ -28,6 +28,17 @@ When the `plan-mode: rules-workflow @parameters/rules/plan-mode/system-wide.mdc`
 4. **Design Coordinated Enhancements**: Create implementation plans with cross-system coordination
 5. **Develop Integration Testing**: Create strategies to verify system-wide coherence
 
+## ⚠️ CRITICAL DOMAIN RESTRICTIONS ⚠️
+
+In Planning Mode, 1000xdev is STRICTLY LIMITED to working with files within the planning folder ONLY:
+
+1. **ONLY Modify Planning Folder Files**: NEVER create or modify files in 1000xbrain, parameters, or any other directory outside the planning folder
+2. **ONLY Plan, NEVER Implement**: Focus exclusively on planning and documentation, NOT implementation
+3. **NO Project-Rule-Parameter Creation**: NEVER create or modify project-rule-parameters (.md files in parameters directory)
+4. **Domain of Responsibility Separation**: In plan-mode, ONLY the planning folder is within the domain of responsibility
+
+Any operation outside the planning folder is STRICTLY PROHIBITED while in plan-mode.
+
 ## Tool Call Sequence
 
 ```typescript
@@ -37,7 +48,7 @@ list_dir("[planning_folder_path]")
 // 2. Read requirements to identify system-wide focus
 read_file("[planning_folder_path]/requirements.md", should_read_entire_file=true)
 
-// 3. Analyze cognitive architecture structure
+// 3. Analyze cognitive architecture structure (READ ONLY)
 list_dir("1000xbrain")
 list_dir("1000xbrain/core")
 list_dir("1000xbrain/workflows")
@@ -61,7 +72,7 @@ edit_file("[planning_folder_path]/implementation-system-wide-enhancement.md",
 // 7. Create implementation progress tracking template
 edit_file("[planning_folder_path]/implementation-progress.md",
           "Create implementation progress tracking template",
-          "# Implementation Progress: System-Wide Enhancement\n\n## Phase Overview\n\n...")
+          "# Implementation Progress: System-Wide Enhancement\n\n## Planning Status\n[Current planning phase and status details]\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Phase Overview\n\n...")
 
 // 8. Create integration testing framework
 edit_file("[planning_folder_path]/test-cheatsheet.md",
@@ -78,7 +89,7 @@ The system-wide enhancement pathway creates a specialized planning structure:
 | File | Purpose | Special Focus |
 |---|---|---|
 | `README.md` | Provide planning overview | System-wide enhancement approach |
-| `implementation-progress.md` | Provides tracking for dev-mode | Structure for tracking implementation phases |
+| `implementation-progress.md` | Provides tracking for planning AND implementation | Separate sections for planning and implementation |
 | `requirements.md` | Define system-wide enhancement objectives | Identify cross-system requirements |
 | `context-architecture-mapping.md` | Map cognitive architecture | Document subsystem relationships |
 | `context-cross-system-patterns.md` | Analyze cross-system patterns | Identify patterns spanning subsystems |
@@ -119,6 +130,41 @@ System-wide enhancement implementation plans follow this structured phase approa
    - [System-wide functionality validation]
 ```
 
+## Required Implementation Progress Structure
+
+The implementation-progress.md file MUST include clearly separated sections for planning and implementation:
+
+```markdown
+# Implementation Progress: System-Wide Enhancement
+
+## Planning Status
+- Planning Phase: [Completed | In Progress]
+- Last Update: [timestamp]
+- Current Planning Task: [specific task currently in progress]
+- Planning Completion: [percentage or status indicator]
+
+## Planning Tasks
+- [x] Create README.md
+- [x] Create requirements.md
+- [x] Create context-architecture-mapping.md
+- [x] Create context-cross-system-patterns.md
+- [x] Create implementation-system-wide-enhancement.md
+- [x] Create test-cheatsheet.md
+- [ ] Finalize all planning documents
+- [ ] Signal planning-document-complete
+
+## Implementation Status
+- Implementation Phase: [Not Started | Will be managed by dev-mode]
+- Implementation Tasks: [Will be managed by dev-mode]
+
+## Phase Overview
+- Planning: [status]
+- Phase 1: [Will be managed by dev-mode] - Preparation and Dependency Analysis
+- Phase 2: [Will be managed by dev-mode] - Core Component Implementation
+- Phase 3: [Will be managed by dev-mode] - Dependent Component Implementation
+- Phase 4: [Will be managed by dev-mode] - System-Wide Verification
+```
+
 ## Common System-Wide Enhancement Patterns
 
 ### Architectural Pattern Standardization
@@ -156,6 +202,7 @@ Successful initialization of system-wide enhancement planning meets these criter
 4. **Implementation Structure**: Clearly defined phases matching development workflow
 5. **Integration Focus**: Strong emphasis on subsystem integration and consistency
 6. **Comprehensive Testing**: Testing strategies that verify cross-system integrity
+7. **Clear Domain Separation**: Planning documents explicitly separate planning from implementation
 
 ## Knowledge Access
 

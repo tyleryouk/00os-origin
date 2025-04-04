@@ -1,11 +1,15 @@
 <#
 .SYNOPSIS
-    Wrapper script to update all workflow cheatsheets.
+    Wrapper script to update the master workflow cheatsheet.
 
 .DESCRIPTION
     This script serves as a wrapper for the Update-WorkflowCheatsheets.ps1 script
-    in the report-scripts directory. It handles the new folder structure in 
-    1000xbrain/parameters/rules/ where files are now organized in subfolders.
+    in the report-scripts directory. It now extracts pathway information from 
+    parameter file headers with the format:
+    # workflow: [workflow-type] | pathway: [pathway-name] | message-command: [message-command] | 
+    standard-parameter(s): [standard-parameter] | project-rule-parameter-filepath: [project-rule-parameter-filepath]
+    
+    The script now only generates the master cheatsheet (cs.md) and groups parameters by pathway.
 
 .NOTES
     File Name : Update-Cheatsheets.ps1
@@ -19,7 +23,7 @@ $workspaceRoot = $scriptPath
 $reportScriptsDir = Join-Path $workspaceRoot "report-scripts"
 $cheatsheetScript = Join-Path $reportScriptsDir "Update-WorkflowCheatsheets.ps1"
 
-Write-Host "=== Workflow Cheatsheet Update ==="
+Write-Host "=== Master Workflow Cheatsheet Update ==="
 Write-Host "Starting cheatsheet update process..."
 Write-Host "Script location: $cheatsheetScript"
 
@@ -38,7 +42,7 @@ try {
         exit $LASTEXITCODE
     }
     
-    Write-Host "Cheatsheet update completed successfully!"
+    Write-Host "Master cheatsheet update completed successfully!"
 } catch {
     Write-Error "ERROR: An exception occurred while running the cheatsheet script: $_"
     exit 1

@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: system-wide | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter: parameters/rules/dev-mode/system-wide.mdc
+# workflow: rules-workflow | pathway: none | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/direct-mode/verify-backtick-wrapping.mdc
 
 # Verify Backtick Wrapping
 
