@@ -1,28 +1,5 @@
-# workflow: rules-workflow | pathway: scanning | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/scanning-automation.mdc
+# workflow: rules-workflow | pathway: none | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/direct-mode/scanning-automation.mdc
 
-## File Purpose and Relationship
-
-This file defines the operation of the `plan-mode: rules-workflow @parameters/rules/plan-mode/scanning-automation.mdc` message-command, which initializes planning mode with a focus on scanning automation planning. It should be consulted to understand:
-
-- How to plan scanning automation processes
-- Tool call sequences for scanning implementation
-- Error resolution strategies for scanning issues
-- Output interpretation for scanning results
-
-This file complements:
-- `@parameters/rules/dev-mode/scanning-automation.mdc`: Implementation of scanning automation
-- `@parameters/rules/plan-mode/system-wide.mdc`: System-wide planning capabilities
-- `@parameters/rules/direct-mode/check-extension-format.mdc`: Related extension checking functionality
-
-## Usage as Project-Rule-Parameter
-
-This file contains specialized knowledge access for scanning automation. It should be referenced as a project-rule-parameter when planning scanning automation:
-
-```
-plan-mode: rules-workflow @parameters/rules/plan-mode/scanning-automation.mdc
-```
-
-For other enhancement pathways, see the alternative pathway-specific project-rule-parameters in `@parameters/rules/plan-mode/`.
 
 ## Knowledge Access
 

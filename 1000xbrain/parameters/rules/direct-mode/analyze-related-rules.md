@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: none | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/performance.mdc
+# workflow: rules-workflow | pathway: none | message-command: direct-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/direct-mode/analyze-related-rules.mdc
 
 
 ## File Purpose and Relationship

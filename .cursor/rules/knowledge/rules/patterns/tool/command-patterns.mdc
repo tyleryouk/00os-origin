@@ -11,6 +11,18 @@ alwaysApply: false
 
 This document provides optimized patterns for effective terminal command usage in the 1000xbrain cognitive architecture. These patterns represent proven strategies for executing commands, verifying results, and handling terminal operations.
 
+## ⚠️ CRITICAL: PowerShell Command Chaining Syntax ⚠️
+
+When executing commands in Windows PowerShell:
+
+1. **ALWAYS use semicolon (`;`) for command chaining in PowerShell**
+2. **NEVER use double ampersand (`&&`) in PowerShell**
+
+**CORRECT**: `cd directory; command`  
+**INCORRECT**: `cd directory && command`
+
+See [PowerShell Command Patterns](powershell-command-patterns.md) for detailed PowerShell-specific patterns.
+
 ## Pattern: Command Verification Pattern
 
 ### Overview
@@ -208,6 +220,8 @@ Use this pattern when multiple commands need to be executed in sequence to compl
 ### Examples
 
 ```typescript
+// PowerShell Example (Windows Environment)
+
 // PHASE 1: Initialize Context
 run_terminal_cmd("cd ./front-end", false,
                 "Navigate to front-end directory")
@@ -234,11 +248,17 @@ if (!lintResult.includes("error")) {
 // PHASE 3: Finalize Process
 run_terminal_cmd("cd ..", false,
                 "Return to root directory")
+
+// Advanced PowerShell Example with command chaining
+// IMPORTANT: Use semicolons (;) for command chaining in PowerShell, NEVER use &&
+run_terminal_cmd("cd ./scripts; ./Initialize-Environment.ps1; npm install", false,
+                "Navigate to scripts directory, initialize environment, and install dependencies")
 ```
 
 ### Related Patterns
 - [Command Verification Pattern](#pattern-command-verification-pattern)
 - [Progressive Command Execution](#pattern-progressive-command-execution)
+- [PowerShell Command Patterns](powershell-command-patterns.md)
 
 ## Pattern: Environment-Aware Command Pattern
 
@@ -294,18 +314,33 @@ Use this pattern when commands need to accommodate different operating systems o
 // PHASE 2: Select Compatible Command (Windows)
 // For Windows PowerShell
 const listFilesCommand = "Get-ChildItem -Path . -Recurse -Filter *.ts | Select-Object FullName"
+// Note: For command chaining in PowerShell, always use semicolon
+const navigateAndRunCommand = "cd ./directory; ./script.ps1"
 
 // For Linux/macOS (unused in this example)
 // const listFilesCommand = "find . -name '*.ts' | sort"
+// const navigateAndRunCommand = "cd ./directory && ./script.sh"
 
 // PHASE 3: Execute Optimized Command
 run_terminal_cmd(listFilesCommand, false,
                "List all TypeScript files in the project")
+
+// For environment-specific command chaining
+if (user_os.includes('win')) {
+  // CORRECT for Windows PowerShell - use semicolon (;)
+  run_terminal_cmd("cd 1000xscripts; ./Update-Cheatsheets.ps1", false,
+                 "Update cheatsheets in PowerShell environment")
+} else {
+  // For Unix/Linux environments - use double ampersand (&&)
+  run_terminal_cmd("cd 1000xscripts && ./update-cheatsheets.sh", false,
+                 "Update cheatsheets in Unix environment")
+}
 ```
 
 ### Related Patterns
 - [Command Verification Pattern](#pattern-command-verification-pattern)
 - [Command Error Recovery Pattern](#pattern-command-error-recovery)
+- [PowerShell Command Patterns](powershell-command-patterns.md)
 
 ## Related Knowledge
 
