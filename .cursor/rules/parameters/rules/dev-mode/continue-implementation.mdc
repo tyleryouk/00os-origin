@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: back-end-steam-web-api | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/dev-mode/back-end-steam-web-api.md
+#  mode: dev-mode| workflow: rules-workflow | pathway: none | filepath: @parameters/rules/dev-mode/continue-implementation.mdc | optional-standard-parameter(s): none
 
 ## Overview
 

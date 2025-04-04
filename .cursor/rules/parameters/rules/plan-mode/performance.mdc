@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: performance | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/performance.mdc
+# mode: plan-mode | workflow: rules-workflow | pathway: performance | filepath: @parameters/rules/plan-mode/performance.mdc  | optional-standard-parameter(s): none
 
 ## File Purpose and Relationship
 

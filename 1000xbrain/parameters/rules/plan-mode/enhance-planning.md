@@ -1,4 +1,4 @@
-# workflow: rules-workflow | pathway: none | message-command: plan-mode | standard-parameter(s): none | project-rule-parameter-filepath: parameters/rules/plan-mode/enhance-planning.mdc
+# mode: plan-mode | workflow: rules-workflow | pathway: none | filepath: @parameters/rules/plan-mode/enhance-planning.mdc  | optional-standard-parameter(s): none
 
 # Enhance Planning: Rules Workflow
 
