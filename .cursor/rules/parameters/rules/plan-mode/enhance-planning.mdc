@@ -20,6 +20,22 @@ This parameter is designed to work with the `enhance-planning:` message-command,
 
 This message-command can be issued multiple times in sequence to progressively enhance planning files.
 
+## Purpose
+
+This parameter guides the enhancement of planning documentation, focusing on improving structure, completeness, and implementation readiness. It provides a systematic approach to upgrading existing planning documentation with comprehensive improvements.
+
+## Knowledge Access
+
+```typescript
+// Access planning-specific knowledge components
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
+           "Understanding Planning Mode patterns")
+fetch_rules(["knowledge/rules/common/file-standards"], 
+           "Understanding file standards for documentation")
+fetch_rules(["knowledge/rules/knowledge-organization/pathway-organization"], 
+           "Understanding knowledge organization principles")
+```
+
 ## Enhancement Process Overview
 
 The planning enhancement process follows these key steps:
@@ -288,4 +304,3 @@ Recommendation:
 Further planning enhancement would provide diminishing returns. The planning documentation is comprehensive and implementation-ready. Recommend proceeding to implementation phase.
 
 planning-enhancement-complete
-```

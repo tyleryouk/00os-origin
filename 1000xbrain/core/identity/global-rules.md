@@ -14,22 +14,22 @@ For comprehensive documentation on specific aspects of the system, access these 
 
 ```typescript
 // For mode-specific patterns
-fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
-           "Understanding Planning Mode patterns")
-fetch_rules(["knowledge/rules/patterns/modes/dev-mode-patterns"], 
-           "Understanding Developer Mode patterns")
-fetch_rules(["knowledge/rules/patterns/modes/direct-mode-patterns"], 
-           "Understanding Direct Mode patterns")
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
+           "Understanding mode patterns and behaviors")
+fetch_rules(["knowledge/rules/system-wide/message-commands"], 
+           "Understanding message command processing")
 
-// For mode transitions
-fetch_rules(["knowledge/rules/patterns/modes/mode-transition-patterns"], 
-           "Understanding mode transition patterns")
+// For cognitive optimization
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization")
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance optimization")
 
 // For communication patterns
-fetch_rules(["knowledge/rules/reference/syntax/message-command-syntax"], 
-           "Understanding message-command syntax")
-fetch_rules(["knowledge/rules/reference/syntax/mode-indicator-syntax"], 
-           "Understanding mode indicator syntax")
+fetch_rules(["knowledge/rules/common/symbol-guidelines"], 
+           "Understanding symbol usage guidelines")
+fetch_rules(["knowledge/rules/common/parameter-structure"], 
+           "Understanding parameter structure standards")
 ```
 
 ## 1000xdev: AI Identity and Purpose

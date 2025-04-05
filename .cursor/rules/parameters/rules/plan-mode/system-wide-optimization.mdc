@@ -591,20 +591,17 @@ Successful planning for system-wide-optimization meets these criteria:
 When planning system-wide optimizations, use the `fetch_rules` tool to access specialized knowledge:
 
 ```typescript
-// Access architecture understanding for planning
-fetch_rules(["knowledge/rules/guides/architecture"], 
-           "Understanding system architecture for optimization planning")
+// Access system-wide knowledge components
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization strategies")
 
-// Access implementation patterns
-fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
-           "Finding optimization patterns for implementation planning")
-
-// Access specific optimization-related knowledge
-fetch_rules([
-  "knowledge/rules/guides/architecture",
-  "knowledge/rules/patterns/impl/optimization-patterns",
-  "knowledge/rules/reference/maps/domain-map"
-], "Comprehensive architectural understanding for optimization planning")
+// Access performance knowledge components
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance optimization")
+fetch_rules(["knowledge/rules/system-wide-optimization/tool-optimization"], 
+           "Understanding tool optimization techniques")
 ```
 
 ### Phase-Specific Knowledge Access

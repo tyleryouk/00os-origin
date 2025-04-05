@@ -398,20 +398,19 @@ edit_file("planning/{next-number}-{follow-up-focus}/requirements.md",
 When implementing system-wide enhancements, use the `fetch_rules` tool to access specialized knowledge that enables more effective implementation:
 
 ```typescript
-// Access architecture understanding for system-wide implementation
-fetch_rules(["knowledge/rules/guides/architecture"], 
-           "Understanding system architecture for comprehensive implementation")
+// Access essential system-wide knowledge components
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
+           "Understanding mode patterns and behaviors")
+fetch_rules(["knowledge/rules/system-wide/message-commands"], 
+           "Understanding message command processing")
 
-// Access implementation patterns for consistent changes
-fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"], 
-           "Implementing consistent architectural patterns across the system")
-
-// Access multiple knowledge components for complex implementations
-fetch_rules([
-  "knowledge/rules/guides/architecture",
-  "knowledge/rules/patterns/impl/architecture-patterns",
-  "knowledge/rules/reference/maps/domain-map"
-], "Comprehensive architectural understanding for system-wide implementation")
+// Access optimization knowledge
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization")
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance optimization")
 ```
 
 ### Recommended Knowledge Components
