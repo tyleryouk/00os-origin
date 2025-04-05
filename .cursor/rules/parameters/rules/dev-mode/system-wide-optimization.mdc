@@ -113,37 +113,20 @@ The implementation MUST follow this autonomous protocol:
 6. **Thorough Implementation**: Ensure all aspects of planning are fully implemented
 7. **Comprehensive Verification**: Autonomously verify all implementation work
 
-## Folder-Specific Implementation Focus
+## General System-Wide Implementation Focus
 
-Each planning folder in the system-wide optimization sequence requires specific implementation focus:
+While specific tasks are defined in the planning folder documents, the overall focus for system-wide optimization typically includes areas such as:
 
-1. **93-rules-workflow-system-wide-optimization**: Core Subsystem Optimization
-   - Implement core brain-files consolidation and streamlining
-   - Meet line count reduction targets (<2000 lines total)
-   - Implement message-command format changes
-   - Standardize common-words and terminology
+1.  **Core Subsystem Optimization**: Consolidating and streamlining core brain-files, reducing line counts, implementing format changes (e.g., message-commands), and standardizing terminology.
+2.  **Knowledge & Parameters Optimization**: Reorganizing knowledge files (e.g., by pathway), standardizing parameter formats, converting file types (e.g., README.md to index.md if applicable), and improving knowledge accessibility.
+3.  **Future Enhancements & Documentation**: Documenting further optimization opportunities, planning cognitive architecture evolution, and establishing long-term roadmaps.
+4.  **Knowledge Reorganization**: Implementing pathway-based reorganization, eliminating redundant index files, deduplicating content, and updating parameter references.
 
-2. **94-rules-workflow-system-wide-optimization**: Knowledge & Parameters Optimization
-   - Implement pathway-based knowledge organization
-   - Standardize project-rule-parameters format
-   - Convert README.md files to index.md
-   - Improve knowledge accessibility
-
-3. **95-rules-workflow-system-wide-optimization**: Future Enhancements
-   - Document additional optimization opportunities
-   - Create framework for ongoing enhancement
-   - Plan cognitive architecture evolution
-   - Establish long-term optimization roadmap
-
-4. **99-rules-workflow-system-wide-optimization**: Knowledge Reorganization
-   - Reorganize knowledge components by pathway
-   - Eliminate index files and ensure only one README.md at root
-   - Implement content deduplication across components
-   - Update parameters to use new knowledge structure
+The specific focus for the current implementation phase is determined by reading the `requirements.md` and `implementation-[specific-focus].md` files within the active planning folder.
 
 ### Autonomous Folder Selection and Processing
 
-For any planning folder, 1000xdev will:
+For any planning folder dedicated to system-wide optimization, 1000xdev will:
 
 1. **Autonomous Progress Assessment**: Independently evaluate current implementation state
 2. **Self-Directed Task Identification**: Identify next tasks without user input
@@ -179,12 +162,13 @@ When autonomously transitioning between planning folders:
 read_file("planning/[current_folder]/implementation-progress.md", should_read_entire_file=true)
 
 // 2. Signal completion and prepare for transition without user input
+// Note: The specific content will depend on the planning documents for the *next* phase/folder.
 edit_file("planning/[current_folder]/implementation-progress.md",
-          "Update implementation progress - Implementation complete",
-          "# Implementation Progress: [Current Focus]\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: Complete\n- Current Task: Implementation completed\n- Next Steps: Proceed to [next_folder]\n\n## Detailed Progress\n\n- All implementation tasks complete\n- All optimization targets met\n- Ready for transition to [next_folder]\n...")
+          "Update implementation progress - Implementation complete for this phase",
+          "# Implementation Progress: [Current Focus]\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: Complete\n- Current Task: Implementation completed for [Current Focus]\n- Next Steps: Proceed to next system-wide optimization phase as defined in planning\n\n## Detailed Progress\n\n- All implementation tasks for this phase complete\n- All optimization targets for this phase met\n- Ready for transition\n...")
 
 // 3. Signal completion to Tyler with transition information
-// Include specific next folder information for clear transition
+// e.g., "Implementation complete for Core Optimization phase. Ready to proceed to Knowledge Optimization phase."
 ```
 
 ## Error Handling Patterns

@@ -21,17 +21,23 @@ fetch_rules(["knowledge/rules/reference/syntax/message-command-syntax"],
 
 ## Three-Command System
 
-The simplified system uses a standardized space-delimited format with five components, with NO COLONS between components:
+The simplified system uses a standardized space-delimited format with five components and an optional prompt component, with NO COLONS between components:
 
 1. **plan-mode**: For planning and documentation
-   - Format: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Basic Format: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - With Prompt: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+prompt: Additional guidance or instructions`
    - Example: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none`
-   - Example: `plan-mode rules-workflow enhance-planning @parameters/rules/plan-mode/enhance-planning.mdc none`
+   - Example with prompt: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none
+prompt: Focus on optimizing the knowledge access patterns`
 
 2. **dev-mode**: For code implementation
-   - Format: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Basic Format: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - With Prompt: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+prompt: Additional guidance or instructions`
    - Example: `dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none`
-   - Example: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none`
+   - Example with prompt: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none
+prompt: Make sure to include comprehensive error handling`
 
 3. **direct-mode**: For immediate implementation
    - Standard format: `direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
@@ -50,13 +56,41 @@ This space-only syntax is now the standard for all message-commands.
 
 ## Component Descriptions
 
-Each message-command has five standardized components:
+Each message-command has five standardized components and an optional prompt component:
 
 1. **mode**: The operating mode (plan-mode, dev-mode, direct-mode)
 2. **workflow-type**: The workflow domain (rules-workflow, front-end-workflow, back-end-workflow, scripts-workflow)
 3. **pathway-name**: The specific implementation pathway or "none" if not applicable
 4. **@project-rule-parameter.mdc**: The project rule parameter or "none" if not applicable
 5. **optional-standard-parameter(s)**: Additional parameters or "none" if not applicable
+6. **prompt**: (Optional) Additional guidance or instructions, must start on a new line with the prefix "prompt:"
+
+## Prompt Component Usage
+
+The prompt component allows for providing additional guidance while maintaining the current mode:
+
+1. **Format Requirement**:
+   - Must begin on a new line after the five standard components
+   - Must start with the prefix "prompt:" followed by a space
+   - Can contain multiple lines of text
+   - No special formatting required for the content
+
+2. **Use Cases**:
+   - Providing guidance without switching to direct-mode
+   - Adding context to the current operation
+   - Clarifying implementation details
+   - Suggesting specific approaches or considerations
+
+3. **Examples**:
+   ```
+   plan-mode rules-workflow optimize-architecture @parameters/rules/plan-mode/optimize-architecture.mdc core
+   prompt: Focus on the message-command system and ensure backward compatibility
+   ```
+
+   ```
+   dev-mode front-end-workflow ui-component @parameters/front-end/dev-mode/ui-component.mdc button
+   prompt: Make sure to implement accessibility features and follow the design system
+   ```
 
 ## Project-Rule-Parameter Header System
 
@@ -120,3 +154,4 @@ The keyword "none" is used as an explicit placeholder:
 3. **Explicit "none" Placeholders**: Use "none" explicitly when a component is not applicable
 4. **Project-Rule Prefix**: Always prefix project-rule parameters with `@` symbol
 5. **Knowledge Access**: Use fetch_rules tool for knowledge directory access
+6. **Prompt Format**: Always place the prompt component on a new line with "prompt:" prefix

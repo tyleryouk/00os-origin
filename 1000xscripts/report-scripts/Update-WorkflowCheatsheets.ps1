@@ -22,10 +22,12 @@ $parametersDirectory = Join-Path $rootDirectory "parameters"
 
 $frontEndWorkflowCheatsheetPath = Join-Path $workflowsDirectory "front-end-workflow\front-end-workflow-cheatsheet.md"
 $rulesWorkflowCheatsheetPath = Join-Path $workflowsDirectory "rules-workflow\rules-workflow-cheatsheet.md"
+$qualityWorkflowCheatsheetPath = Join-Path $workflowsDirectory "quality\quality-workflow-cheatsheet.md"
 $completeCheatsheetPath = Join-Path $planningDirectory "cs.md"
 
 $frontEndParametersPath = Join-Path $parametersDirectory "front-end"
 $rulesParametersPath = Join-Path $parametersDirectory "rules"
+$qualityParametersPath = Join-Path $parametersDirectory "quality"
 
 Write-Host "Root directory: $rootDirectory"
 Write-Host "Parameters directory: $parametersDirectory"
@@ -60,17 +62,15 @@ function Get-MessageCommand {
         "loyal to" - meaning which message-command should be used with this parameter.
         
         The function uses several methods to determine the message-command, in order of priority:
-        1. Explicit "Loyal to:" statement in the file
-        2. "Message-Command:" section in the file
-        3. Command format examples in code blocks
-        4. File name inference (based on naming conventions)
+        1. New header format: "# mode: [mode] | workflow: [workflow] | pathway: [pathway] | filepath: [filepath] | optional-standard-parameter(s): [params]"
+        2. Explicit "Loyal to:" statement in the file
+        3. "Message-Command:" section in the file
+        4. Old header format: "# workflow: [workflow-type] | pathway: [pathway-name] | message-command: [message-command] | ..."
+        5. Command format examples in code blocks
+        6. File name inference (based on naming conventions)
         
-        It also extracts the pathway from the header format:
-        # workflow: [workflow-type] | pathway: [pathway-name] | message-command: [message-command] | 
-        standard-parameter(s): [standard-parameter] | project-rule-parameter-filepath: [project-rule-parameter-filepath]
-        
-        This process ensures each parameter is correctly associated with its intended
-        message-command and pathway for accurate cheatsheet generation.
+        This function is updated to handle both the old and new header formats, with priority
+        given to the new format.
     
     .PARAMETER FilePath
         The path to the parameter file to analyze
@@ -86,44 +86,65 @@ function Get-MessageCommand {
     try {
         $content = Get-Content -Path $FilePath -Raw -ErrorAction SilentlyContinue
         
-        # Extract pathway from the header format
-        if ($content -match "#\s+workflow:.+?\|\s*pathway:\s*([^|]+?)\s*\|") {
-            $pathway = $matches[1].Trim()
-        }
-        
-        # Try to find loyalty section - most accurate way to determine message-command
-        if ($content -match "Loyal to:\s*([a-z0-9\-]+)(?::|\s)") {
+        # Extract from new header format (highest priority)
+        # Format: # mode: [mode] | workflow: [workflow] | pathway: [pathway] | filepath: [filepath] | optional-standard-parameter(s): [params]
+        if ($content -match "^#\s+mode:\s*([^|]+?)\s*\|") {
             $msgCmd = $matches[1].Trim()
-        }
-        # Try to find Call Pattern section with explicit Message-Command
-        elseif ($content -match "Message-Command:\s*([a-z0-9\-]+)") {
-            $msgCmd = $matches[1].Trim()
-        }
-        # Extract from header format
-        elseif ($content -match "#\s+workflow:.+?\|\s*message-command:\s*([^|]+?)\s*\|") {
-            $msgCmd = $matches[1].Trim()
-        }
-        # Try to find command format examples
-        elseif ($content -match "`([a-z0-9\-]+):\s+\w+\s+@[\w/\-]+\.mdc") {
-            $msgCmd = $matches[1].Trim()
-        }
-        # Look for more examples in formatted code blocks
-        elseif ($content -match "```(?:\w+)?\n([a-z0-9\-]+):\s+") {
-            $msgCmd = $matches[1].Trim()
-        }
-        
-        # Try to find standard parameters
-        if ($content -match "Standard-Parameters:\s*(.+?)[\r\n]") {
-            $paramString = $matches[1].Trim()
-            if ($paramString -ne "none") {
-                $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
+            
+            # Extract pathway from the new header format
+            if ($content -match "\|\s*pathway:\s*([^|]+?)\s*\|") {
+                $pathway = $matches[1].Trim()
+            }
+            
+            # Extract standard parameters from the new header format
+            if ($content -match "\|\s*optional-standard-parameter\(s\):\s*([^|]+?)(\s*\||$)") {
+                $paramString = $matches[1].Trim()
+                if ($paramString -ne "none") {
+                    $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
+                }
             }
         }
-        # Extract from header format
-        elseif ($content -match "#\s+workflow:.+?\|\s*standard-parameter\(s\):\s*([^|]+?)\s*\|") {
-            $paramString = $matches[1].Trim()
-            if ($paramString -ne "none") {
-                $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
+        # If new header format not found, try the older methods
+        else {
+            # Extract pathway from the old header format
+            if ($content -match "#\s+workflow:.+?\|\s*pathway:\s*([^|]+?)\s*\|") {
+                $pathway = $matches[1].Trim()
+            }
+            
+            # Try to find loyalty section - most accurate way to determine message-command
+            if ($content -match "Loyal to:\s*([a-z0-9\-]+)(?::|\s)") {
+                $msgCmd = $matches[1].Trim()
+            }
+            # Try to find Call Pattern section with explicit Message-Command
+            elseif ($content -match "Message-Command:\s*([a-z0-9\-]+)") {
+                $msgCmd = $matches[1].Trim()
+            }
+            # Extract from old header format
+            elseif ($content -match "#\s+workflow:.+?\|\s*message-command:\s*([^|]+?)\s*\|") {
+                $msgCmd = $matches[1].Trim()
+            }
+            # Try to find command format examples
+            elseif ($content -match "`([a-z0-9\-]+):\s+\w+\s+@[\w/\-]+\.mdc") {
+                $msgCmd = $matches[1].Trim()
+            }
+            # Look for more examples in formatted code blocks
+            elseif ($content -match "```(?:\w+)?\n([a-z0-9\-]+):\s+") {
+                $msgCmd = $matches[1].Trim()
+            }
+            
+            # Try to find standard parameters from old formats
+            if ($content -match "Standard-Parameters:\s*(.+?)[\r\n]") {
+                $paramString = $matches[1].Trim()
+                if ($paramString -ne "none") {
+                    $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
+                }
+            }
+            # Extract from old header format
+            elseif ($content -match "#\s+workflow:.+?\|\s*standard-parameter\(s\):\s*([^|]+?)\s*\|") {
+                $paramString = $matches[1].Trim()
+                if ($paramString -ne "none") {
+                    $stdParams = $paramString -split ",\s*" | ForEach-Object { $_.Trim() }
+                }
             }
         }
         
@@ -313,13 +334,10 @@ function Create-WorkflowCheatsheet {
         Creates a formatted workflow cheatsheet organized by pathway categories
     
     .DESCRIPTION
-        This function takes parameters and creates a consistently formatted cheatsheet 
-        with each section representing a pathway category.
-        The cheatsheet follows this organization pattern by grouping parameters by pathway
-        as defined in their headers.
+        This function takes parameters and creates a cheatsheet listing only the 
+        project-rule-parameter paths, grouped by the pathway defined in their headers.
         
-        This structure makes the cheatsheet more functionally organized based on the
-        parameter's purpose rather than just its file location.
+        This structure makes the cheatsheet a simple list for quick reference.
     
     .PARAMETER WorkflowType
         The type of workflow (e.g., "rules", "front-end")
@@ -341,16 +359,14 @@ function Create-WorkflowCheatsheet {
     $organizedByPathway = @{}
     
     foreach ($param in $Parameters) {
-        $pathway = $param.Pathway
-        if ([string]::IsNullOrEmpty($pathway)) {
-            $pathway = "default"
-        }
+        # Ensure pathway is not null or empty, default if necessary
+        $pathway = if ([string]::IsNullOrEmpty($param.Pathway)) { "none" } else { $param.Pathway } # Changed default to "none" for consistency
         
         if (-not $organizedByPathway.ContainsKey($pathway)) {
-            $organizedByPathway[$pathway] = @()
+            $organizedByPathway[$pathway] = New-Object System.Collections.ArrayList
         }
         
-        $organizedByPathway[$pathway] += $param
+        [void]$organizedByPathway[$pathway].Add($param)
     }
     
     # Process each pathway alphabetically
@@ -359,29 +375,23 @@ function Create-WorkflowCheatsheet {
         [void]$lines.Add("## PATHWAY: $pathway")
         [void]$lines.Add("")
         
-        # Create table for this pathway
-        [void]$lines.Add("| project-rule-parameter | message-command | standard-parameters |")
-        [void]$lines.Add("|------------------------|-----------------|---------------------|")
+        # Remove table header creation
+        # [void]$lines.Add("| project-rule-parameter | message-command | standard-parameters |")
+        # [void]$lines.Add("|------------------------|-----------------|---------------------|")
         
         # Sort parameters by MdcPath
         $sortedParams = $organizedByPathway[$pathway] | Sort-Object -Property MdcPath
         
         foreach ($param in $sortedParams) {
-            # Get the command that this parameter is "loyal to"
-            $loyalCommand = $param.Command
-            
-            # Extract standard parameters
-            $stdParamsString = if ($param.Parameters -and $param.Parameters.Count -gt 0) {
-                $param.Parameters -join ", "
-            } else {
-                "none"
-            }
-            
-            # Remove mode determination and column
-            [void]$lines.Add("| ``$($param.MdcPath)`` | $loyalCommand | $stdParamsString |")
+            # Output only the MdcPath as a list item
+            $line = "- ``$($param.MdcPath)``"
+            [void]$lines.Add($line)
+
+            # Removed the logic for command and parameters string creation
+            # Removed the table row construction
         }
         
-        [void]$lines.Add("")
+        [void]$lines.Add("") # Add a blank line after the list for separation
     }
     
     # Generate the final content
@@ -393,7 +403,8 @@ function Create-WorkflowCheatsheet {
 function Create-CompleteCheatsheet {
     param (
         [string]$FrontEndContent,
-        [string]$RulesContent
+        [string]$RulesContent,
+        [string]$QualityContent
     )
     
     $lines = New-Object System.Collections.ArrayList
@@ -404,8 +415,8 @@ function Create-CompleteCheatsheet {
     [void]$lines.Add("## Quick Navigation")
     [void]$lines.Add("- [Rules Workflow](#rules-workflow-cheatsheet)")
     [void]$lines.Add("- [Front-End Workflow](#front-end-workflow-cheatsheet)")
+    [void]$lines.Add("- [Quality Workflow](#quality-workflow-cheatsheet)")
     [void]$lines.Add("- [Back-End Workflow](#back-end-workflow-cheatsheet)")
-    [void]$lines.Add("- [Documentation Workflow](#documentation-workflow-cheatsheet)")
     [void]$lines.Add("- [Scripts Workflow](#scripts-workflow-cheatsheet)")
     [void]$lines.Add("")
     [void]$lines.Add("---")
@@ -421,14 +432,23 @@ function Create-CompleteCheatsheet {
     [void]$lines.Add("---")
     [void]$lines.Add("")
     
+    # Add quality workflow content if available
+    if (-not [string]::IsNullOrEmpty($QualityContent)) {
+        [void]$lines.Add($QualityContent)
+        [void]$lines.Add("")
+        [void]$lines.Add("---")
+        [void]$lines.Add("")
+    } else {
+        [void]$lines.Add("# QUALITY-Workflow Cheatsheet")
+        [void]$lines.Add("")
+        [void]$lines.Add("> Coming soon")
+        [void]$lines.Add("")
+        [void]$lines.Add("---")
+        [void]$lines.Add("")
+    }
+    
     # Add placeholders
     [void]$lines.Add("# Back-End Workflow Cheatsheet")
-    [void]$lines.Add("")
-    [void]$lines.Add("> Coming soon")
-    [void]$lines.Add("")
-    [void]$lines.Add("---")
-    [void]$lines.Add("")
-    [void]$lines.Add("# Documentation Workflow Cheatsheet")
     [void]$lines.Add("")
     [void]$lines.Add("> Coming soon")
     [void]$lines.Add("")
@@ -488,9 +508,28 @@ try {
         $rulesContent = "# RULES-Workflow Cheatsheet`n`n> No parameters found. Directory does not exist: $rulesParametersPath"
     }
     
+    # Process quality workflow
+    Write-Host "Processing quality workflow..."
+    if (Test-Path $qualityParametersPath) {
+        Write-Host "Quality parameters directory exists at: $qualityParametersPath"
+        
+        # Get subdirectories for logging
+        $subdirs = Get-ChildItem -Path $qualityParametersPath -Directory | Select-Object -ExpandProperty Name
+        Write-Host "Found the following subdirectories in quality parameters:"
+        foreach ($dir in $subdirs) {
+            Write-Host "  - $dir/"
+        }
+        
+        $qualityParams = Get-Parameters -DirectoryPath $qualityParametersPath -WorkflowType "quality"
+        $qualityContent = Create-WorkflowCheatsheet -WorkflowType "quality" -Parameters $qualityParams
+    } else {
+        Write-Warning "Quality parameters directory not found at: $qualityParametersPath"
+        $qualityContent = ""
+    }
+    
     # Create complete cheatsheet
     Write-Host "Creating master cheatsheet..."
-    $completeContent = Create-CompleteCheatsheet -FrontEndContent $frontEndContent -RulesContent $rulesContent
+    $completeContent = Create-CompleteCheatsheet -FrontEndContent $frontEndContent -RulesContent $rulesContent -QualityContent $qualityContent
     
     # Ensure directory exists
     $completeDir = Split-Path -Parent $completeCheatsheetPath

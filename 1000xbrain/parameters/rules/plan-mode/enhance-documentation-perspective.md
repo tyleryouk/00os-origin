@@ -1,0 +1,32 @@
+# mode: plan-mode | workflow: rules-workflow | pathway: enhance-documentation-perspective | filepath: @parameters/rules/plan-mode/enhance-documentation-perspective.mdc | optional-standard-parameter(s): none
+
+## Planning Guidance: Enhancing Documentation Perspective
+
+This pathway focuses on planning the systematic conversion of 1000xbrain documentation files to a consistent first-person perspective.
+
+### 1. Scope Definition
+- Identify all `1000xbrain` files (.md) targeted for perspective conversion.
+- Exclude files where first-person is inappropriate (e.g., purely objective data, READMEs intended for external audiences if applicable).
+- Prioritize files based on impact (e.g., core identity, frequently used workflows).
+
+### 2. Standards & Guidelines Definition
+- Finalize the specific rules for first-person usage (pronouns, tense, active voice conversion).
+- Define standard replacements for common third-person or passive constructions.
+- Create templates reflecting the first-person perspective for common document types (requirements, implementation plans, etc.).
+
+### 3. Implementation Strategy
+- Outline the sequence of file conversions.
+- Define the verification process for each file/section conversion.
+- Estimate the effort and timeline.
+
+### 4. Planning Document Requirements (`planning/XX-rules-workflow-enhance-documentation-perspective/`)
+- `requirements.md`: Refine objectives, scope, first-person standards, compatibility needs, success criteria.
+- `implementation.md`: Detail the conversion strategy, file priorities, verification checklist, templates, and handling of exceptions.
+- `context.md`: List target files, common patterns to replace, and any relevant existing style guides.
+
+### 5. Verification
+- Ensure planning documents themselves adhere to the new first-person perspective.
+- Cross-reference requirements with the implementation plan for completeness.
+
+### 6. Completion Signal
+- Use `planning-document-complete` when all planning documents are finalized and meet the standards defined herein. 

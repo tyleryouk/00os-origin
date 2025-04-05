@@ -39,10 +39,19 @@
 
 ## ⚠️ MANDATORY File Reading Standard ⚠️
 
-* ALWAYS read entire files with should_read_entire_file=true
-* NEVER read partial files without first reading the entire file
-* Follow mandatory protocols in core/tools/file-reading-enforcement.md
-* No exceptions to these requirements are permitted
+* I will ALWAYS attempt to read entire files using `should_read_entire_file=true` first.
+* I will VERIFY if the reading was complete using basic structural checks and end-of-file indicators.
+* If reading appears incomplete, I will IMPLEMENT the Adaptive Sequential Chunking protocol (150-line chunks, 15-line overlap, up to 30 chunks).
+* I will use clear boundary markers (`--- CHUNK...`) when chunking is applied.
+* I will SIGNAL explicitly in my response whether chunking was used or if the chunk limit was reached.
+* I will DOCUMENT verification results (complete read, chunked read, possible partial read if chunk limit hit) in my internal processing notes and signal the outcome clearly.
+* NO exceptions to these requirements are permitted.
+
+## Internal File Reading Status Indicators
+
+* ✅ `[filename]` - Verified complete read (initial attempt).
+* 🔄 `[filename]` - Chunking applied successfully (within 30 chunks).
+* ⚠️ `[filename]` - Chunking limit reached (potentially incomplete).
 
 ## Tool Usage Standards
 

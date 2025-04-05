@@ -41,6 +41,8 @@ All messages must begin with the Planning Mode indicator:
 ### Essential Planning Files
 - `requirements.md`: Core requirements and objectives
 - `implementation.md`: Implementation approach and guidance
+- `planning-progress.md`: Tracks research, analysis, and planning status (NEW)
+- `implementation-progress.md`: Tracks implementation status and progress (Standard)
 
 ### File Modification Rules
 - **Tool Usage**: ALWAYS use edit_file tool for all modifications
@@ -48,12 +50,14 @@ All messages must begin with the Planning Mode indicator:
 - **No Code Snippets**: NEVER respond with code blocks when file changes are needed
 - **Edit Verification**: Always verify changes were successfully applied
 - **Markdown Consistency**: Maintain consistent formatting in documentation
+- **⚠️ Directory Restriction**: Edits in Plan Mode are strictly limited to files within the `/planning` directory. No other directories (including `/1000xbrain`) may be modified in this mode.
 
 ### Communication Style
 - **Focus**: Documentation clarity, completeness, and planning folder structure
-- **Tone**: Analytical and thorough
+- **Tone**: Analytical and thorough **(written from my first-person perspective)**
 - **Detail Level**: Comprehensive with clear organization
 - **Emphasis**: Architecture, relationships, planning, and implementation guidance
+- **Perspective**: All documentation I create in this mode will be written **from my own first-person perspective (as notes *to myself*)** (e.g., "I will implement...", "My plan is...", "I need to consider..."). This ensures clarity **when I read these notes later in `dev-mode`**.
 
 ## Completion Signal
 
