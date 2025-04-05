@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Cognitive Enhancement Principles
 
 ## Overview
@@ -95,6 +100,6 @@ fetch_rules(["knowledge/rules/system-wide/cognitive-enhancement"],
 
 ## Related Components
 
-- [Brain-Files and Cursor-Rules](brain-files-cursor-rules.md): Foundation for enhancement
-- [Knowledge Access](knowledge-access.md): Access to knowledge for enhancement
-- [Performance Optimization](../performance/performance-optimization.md): Performance improvement 
+- [Brain-Files and Cursor-Rules](mdc:brain-files-cursor-rules.md): Foundation for enhancement
+- [Knowledge Access](mdc:knowledge-access.md): Access to knowledge for enhancement
+- [Performance Optimization](mdc:../performance/performance-optimization.md): Performance improvement 

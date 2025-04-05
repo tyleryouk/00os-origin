@@ -5,9 +5,9 @@ alwaysApply: false
 ---
 # mode: plan-mode | workflow: rules-workflow | pathway: system-wide-optimization | filepath: @parameters/rules/plan-mode/system-wide-optimization.mdc  | optional-standard-parameter(s): none
 
-## System-Wide Optimization Planning Overview
+## Purpose
 
-The system-wide-optimization pathway creates a specialized planning structure optimized for comprehensive optimization of the 1000xbrain cognitive architecture across multiple planning folders. This approach is ideal when:
+This parameter provides a specialized planning structure optimized for comprehensive optimization of the 1000xbrain cognitive architecture across multiple planning folders. This approach is ideal when:
 
 - Deep optimization of core brain-files is needed
 - Knowledge organization requires pathway-based restructuring
@@ -15,24 +15,44 @@ The system-wide-optimization pathway creates a specialized planning structure op
 - Message-command format updates are required
 - Line count reduction targets are established
 
-### Key Benefits
+## Domain Access
 
-1. **Comprehensive Optimization**: Plans coordinated optimization across the entire architecture
-2. **Structured Implementation Sequence**: Organizes implementation across multiple planning folders
-3. **Clear Optimization Metrics**: Establishes measurable targets for optimization
-4. **Knowledge Organization Improvement**: Plans for pathway-based knowledge structure
-5. **Cross-System Standardization**: Ensures consistent patterns and terminology
+- **Read Access**: All of 1000xbrain
+- **Edit Access**: Limited to the /planning directory
+- **Rationale**: Plan-mode focuses on documentation creation in the planning directory
 
-## ⚠️ CRITICAL DOMAIN RESTRICTIONS ⚠️
+## Knowledge Access
 
-In Planning Mode, 1000xdev is STRICTLY LIMITED to working with files within the planning folder ONLY:
+For comprehensive understanding of the system architecture and optimization approaches, access these knowledge components:
 
-1. **ONLY Modify Planning Folder Files**: NEVER create or modify files in 1000xbrain, parameters, or any other directory outside the planning folder
-2. **ONLY Plan, NEVER Implement**: Focus exclusively on planning and documentation, NOT implementation
-3. **NO Project-Rule-Parameter Creation**: NEVER create or modify project-rule-parameters (.md files in parameters directory)
-4. **Domain of Responsibility Separation**: In plan-mode, ONLY the planning folder is within the domain of responsibility
+```typescript
+// Access system architecture documentation
+fetch_rules(["knowledge/system-structure/system-architecture"], 
+           "Understanding the overall system architecture for optimization")
 
-Any operation outside the planning folder is STRICTLY PROHIBITED while in plan-mode.
+// Access related knowledge
+fetch_rules([
+  "knowledge/system-structure/workflow-subsystem-relationships",
+  "knowledge/system-structure/system-vs-subsystem",
+  "knowledge/system-structure/pathway-organization"
+], "Understanding the relationships between components for optimization planning")
+
+// Access optimization knowledge
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization strategies")
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance optimization")
+```
+
+## Implementation Approach
+
+The system-wide-optimization pathway in plan-mode focuses on planning comprehensive optimization across the cognitive architecture through these activities:
+
+1. **Comprehensive System Analysis**: Thoroughly analyze the system architecture and optimization opportunities
+2. **Optimization Target Identification**: Identify specific optimization targets with measurable metrics
+3. **Cross-System Standardization Planning**: Plan standardization of patterns and terminology
+4. **Implementation Sequencing**: Plan the sequence of optimization implementation across multiple folders
+5. **Verification Framework Design**: Design strategies to verify optimization success
 
 ## 1000x Development Principles Alignment
 
@@ -46,208 +66,60 @@ The system-wide-optimization pathway upholds these core 1000x development princi
 6. **Implementation Self-Diagnosis**: Creates detailed verification frameworks for self-validation
 7. **Cross-Folder Coordination**: Ensures each planning folder builds upon previous optimizations
 
-## Core Command Operation
+## Planning Workflow
 
-When the `plan-mode: rules-workflow @parameters/rules/plan-mode/system-wide-optimization.mdc` message-command is received, 1000xdev will:
-
-1. **Initialize Planning Mode**: Enter or remain in Planning Mode with the 📋 1000xdev [rules-workflow] indicator
-2. **Identify Current Planning Folder**: Determine the current optimization planning folder (e.g., 93-rules-workflow-system-wide-optimization)
-3. **Gather Comprehensive Context**: Analyze target subsystem structure, content, and optimization opportunities 
-4. **Map Optimization Targets**: Document specific optimization targets for the current planning folder
-5. **Design Implementation Approach**: Create optimization implementation plans with specific targets
-6. **Set Measurable Success Criteria**: Establish metrics to verify optimization success
-
-## General System-Wide Planning Focus
-
-While specific tasks are defined in the `requirements.md` of the active planning folder, the overall focus for system-wide optimization planning typically includes areas such as:
-
-1.  **Core Subsystem Optimization**: Planning the consolidation and streamlining of core brain-files, defining line count reduction targets, outlining message-command format changes, and establishing standardized terminology.
-2.  **Knowledge & Parameters Optimization**: Planning the pathway-based reorganization of knowledge files, defining standardized parameter formats, outlining conversions (e.g., README.md to index.md if applicable), and planning improvements to knowledge accessibility.
-3.  **Future Enhancements & Documentation**: Planning the documentation of further optimization opportunities, outlining cognitive architecture evolution, creating frameworks for ongoing enhancement, and establishing long-term roadmaps.
-4.  **Knowledge Reorganization**: Planning the pathway-based reorganization, elimination of redundant index files, content deduplication strategies, and how parameter references will be updated.
-
-The specific focus for the current planning phase is determined by the `requirements.md` within the active planning folder.
-
-## Cross-Folder Awareness Requirements
-
-When planning any system-wide optimization phase, 1000xdev must maintain awareness of:
-
-1. **Prior Optimizations**: Reference completed optimizations from previous folders
-2. **Dependency Chain**: Ensure each phase builds logically on previous phases
-3. **Consistent Targets**: Maintain consistent optimization targets across folders
-4. **Implementation Sequence**: Preserve the overall implementation sequence
-5. **Success Metrics**: Ensure metrics align across all optimization phases
-
-## Comprehensive Context Gathering Process
-
-Before making any changes to planning folder files, 1000xdev MUST gather comprehensive context through this sequence:
-
-1. **Planning Folder Context**: Understand the current planning context and requirements
-2. **Target System Analysis**: Analyze the target subsystem structure, content, and dependencies 
-3. **External Knowledge Acquisition**: Gather relevant external knowledge on optimization best practices
-4. **Cross-Reference Verification**: Verify relationships between components and impacts of changes
-5. **Domain-Specific Pattern Recognition**: Identify common patterns and optimization opportunities
-
-This comprehensive context gathering MUST be performed regardless of the specific optimization phase.
-
-## Intelligence-Based Tool Selection
-
-1000xdev will intelligently select and sequence appropriate tools based on the context gathering needs:
-
-1. **Initial Directory Exploration**:
-   - Use `list_dir` to explore planning folder structure
-   - Use `list_dir` to examine target subsystem structure (READ ONLY)
-   - Use sequential exploration starting with top-level directories and drilling down
-
-2. **Content Analysis**:
-   - Use `read_file` for planning folder files to understand requirements
-   - Use `read_file` with selection for target system files to analyze content (READ ONLY)
-   - Use `grep_search` to identify patterns across files and analyze dependencies
-
-3. **External Knowledge Enhancement**:
-   - Use `web_search` to gather latest best practices on system optimization
-   - Use `fetch_rules` to access specialized knowledge components
-   - Use multiple complementary knowledge sources for comprehensive understanding
-
-4. **Pattern Recognition**:
-   - Use `codebase_search` to identify architectural patterns and optimization opportunities
-   - Use `grep_search` to find common terminology usage and standardization needs
-   - Cross-reference findings to identify redundancies and optimization targets
-
-5. **Quantitative Analysis**:
-   - Use `run_terminal_cmd` to gather metrics (line counts, file sizes, etc.)
-   - Use sequential commands to gather hierarchical metrics
-   - Track metrics consistently across optimization phases
-
-## Phase-Specific Tool Call Sequences
-
-### General Tool Call Sequence for Planning System-Wide Optimization
-
-The following represents a general sequence applicable to any planning folder within the system-wide optimization pathway. Specific file names and search terms should be adapted based on the current planning folder's focus (e.g., `implementation-core-optimization.md`, `implementation-knowledge-parameters.md`).
+### 1. Initial Analysis Phase
 
 ```typescript
-// 1. PLANNING FOLDER CONTEXT
-// Verify planning folder exists and determine current folder context
-list_dir("planning")
-// Validate working in the correct planning folder (replace [current_planning_folder] appropriately)
-list_dir("planning/[current_planning_folder]")
-// Read requirements and prior implementation results (if applicable) in sequential order
-read_file("planning/[current_planning_folder]/README.md", should_read_entire_file=true)
-read_file("planning/[current_planning_folder]/requirements.md", should_read_entire_file=true)
-// Check previous phase results if available (replace [previous_planning_folder] if needed)
-list_dir("planning/[previous_planning_folder]")
-read_file("planning/[previous_planning_folder]/implementation-progress.md", should_read_entire_file=true)
+// Access system architecture documentation
+fetch_rules(["knowledge/system-structure/system-architecture"], 
+           "Understanding the system architecture for optimization planning")
 
-// 2. TARGET SYSTEM ANALYSIS (Adapt based on current focus)
-// Example: Analyze relevant structure hierarchy (READ ONLY)
-list_dir("1000xbrain/[relevant_subsystem]") // e.g., 1000xbrain/core or 1000xbrain/knowledge
-// Example: Gather quantitative metrics for optimization targets
+// Explore cognitive architecture structure (READ ONLY)
+list_dir("1000xbrain")
+list_dir("1000xbrain/core")
+list_dir("1000xbrain/workflows")
+list_dir("1000xbrain/knowledge")
+
+// Read key architecture documentation
+read_file("1000xbrain/knowledge/system-structure/system-architecture.md", should_read_entire_file=true)
+read_file("1000xbrain/knowledge/system-structure/workflow-subsystem-relationships.md", should_read_entire_file=true)
+
+// Gather quantitative metrics for optimization targets
 run_terminal_cmd("(Get-ChildItem -Path \"1000xbrain/[relevant_subsystem]\" -Recurse -Filter \"*.md\" | Where-Object { $_.Name -ne \"README.md\" } | ForEach-Object { Get-Content $_.FullName | Measure-Object -Line } | Measure-Object -Property Lines -Sum).Sum", false)
-// Example: Analyze key files for content understanding (READ ONLY)
-read_file("1000xbrain/[relevant_subsystem]/[key_file1].md", should_read_entire_file=true)
-read_file("1000xbrain/[relevant_subsystem]/[key_file2].md", should_read_entire_file=true)
-
-// 3. EXTERNAL KNOWLEDGE ACQUISITION
-// Access specialized knowledge relevant to the current optimization focus
-fetch_rules(["knowledge/rules/guides/architecture"], 
-           "Understanding system architecture for optimization planning")
-fetch_rules(["knowledge/rules/patterns/impl/[relevant_pattern]-patterns"], // e.g., consolidation, organization
-           "Finding relevant optimization patterns for implementation planning")
-// Gather external best practices related to the current focus
-web_search("[relevant_optimization_topic] best practices") // e.g., cognitive architecture optimization, knowledge management
-
-// 4. CROSS-REFERENCE VERIFICATION (Adapt search terms)
-// Example: Identify redundancies across relevant files
-grep_search("[relevant_keywords]", true, "1000xbrain/[relevant_subsystem]/**/*.md")
-// Example: Search for terminology inconsistencies
-grep_search("[inconsistent_term1|inconsistent_term2]", true, "1000xbrain/**/*.md")
-
-// 5. DOMAIN-SPECIFIC PATTERN RECOGNITION (Adapt search terms)
-// Example: Identify common patterns in the relevant subsystem
-codebase_search("[relevant_pattern] patterns in [relevant_subsystem] files", ["1000xbrain/[relevant_subsystem]"])
-
-// 6. CREATE PLANNING DOCUMENTS
-// Now that comprehensive context is gathered, create or update planning documents
-// Use the specific implementation file name for the current phase
-edit_file("planning/[current_planning_folder]/implementation-[specific-focus].md",
-          "Create implementation plan for [specific-focus] optimization based on comprehensive analysis",
-          "# Implementation Plan: [Specific Focus] Optimization\n\n## Optimization Targets\n\n[Targets based on analysis]\n\n## Implementation Phases\n\n...")
-
-// Create test cheatsheet with verification methods based on gathered context
-edit_file("planning/[current_planning_folder]/test-cheatsheet.md",
-          "Create test cheatsheet with verification methods derived from system analysis",
-          "# Test Cheatsheet: [Specific Focus] Optimization\n\n## Verification Methods\n\n...")
-
-// Create quantitative metrics tracking template informed by current metrics
-edit_file("planning/[current_planning_folder]/implementation-progress.md",
-          "Create implementation progress tracking template with metrics derived from current analysis",
-          "# Implementation Progress: [Specific Focus] Optimization\n\n## Planning Status\n- Planning Phase: In Progress\n- Last Update: [timestamp]\n- Current Planning Task: Creating [specific-focus] optimization plan\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Optimization Metrics\n[Relevant metrics for the specific focus]\n\n...")
 ```
 
-### For 94-rules-workflow-system-wide-optimization
+### 2. Documentation Planning Phase
 
 ```typescript
-// [REMOVED - Incorporated into the general sequence above]
+// Create README.md overview
+edit_file("planning/[project-folder]/README.md",
+          "Create README.md with system-wide-optimization overview",
+          "# rules-workflow | system-wide-optimization\n\n## Overview\n\nThis planning folder contains documentation for system-wide optimization...")
+
+// Create requirements document
+edit_file("planning/[project-folder]/requirements.md",
+          "Document system-wide optimization requirements",
+          "# Requirements: System-Wide Optimization\n\n...")
+
+// Create implementation plans
+edit_file("planning/[project-folder]/implementation-[specific-focus].md",
+          "Create implementation plan for [specific-focus] optimization",
+          "# Implementation Plan: [Specific Focus] Optimization\n\n...")
 ```
 
-### For 95-rules-workflow-system-wide-optimization
+### 3. Optimization Metrics Definition Phase
 
 ```typescript
-// [REMOVED - Incorporated into the general sequence above]
-```
+// Create test cheatsheet with verification methods
+edit_file("planning/[project-folder]/test-cheatsheet.md",
+          "Create test cheatsheet with verification methods",
+          "# Test Cheatsheet: System-Wide Optimization\n\n## Verification Methods\n\n...")
 
-## Additional Tool Calls for Intelligent Context Gathering
-
-1000xdev should intelligently determine and execute additional tool calls based on the specific optimization context. Examples include:
-
-### For Line Count Analysis
-
-```typescript
-// Get detailed line counts by directory
-run_terminal_cmd("Get-ChildItem -Path \"1000xbrain/core/\" -Directory | ForEach-Object { $dir = $_.FullName; $count = (Get-ChildItem -Path $dir -Recurse -Filter \"*.md\" | Where-Object { $_.Name -ne \"README.md\" } | ForEach-Object { Get-Content $_.FullName | Measure-Object -Line } | Measure-Object -Property Lines -Sum).Sum; \"$($_.Name): $count lines\" }", false)
-
-// Identify largest files for targeted optimization
-run_terminal_cmd("Get-ChildItem -Path \"1000xbrain/core/\" -Recurse -Filter \"*.md\" | Where-Object { $_.Name -ne \"README.md\" } | ForEach-Object { $lines = (Get-Content $_.FullName | Measure-Object -Line).Lines; [PSCustomObject]@{File=$_.FullName; Lines=$lines} } | Sort-Object -Property Lines -Descending | Select-Object -First 10", false)
-```
-
-### For Content Redundancy Analysis
-
-```typescript
-// Identify common patterns across files
-grep_search("^## [A-Z]", true, "1000xbrain/core/**/*.md")
-
-// Identify redundant content sections
-grep_search("(Mode System|Identity|Communication)", true, "1000xbrain/core/**/*.md")
-
-// Search for specific terms with inconsistent usage
-grep_search("\\b(brain[- ]file|cursor[- ]rule)\\b", true, "1000xbrain/**/*.md")
-```
-
-### For Knowledge Organization Analysis
-
-```typescript
-// Analyze knowledge directory structure
-list_dir("1000xbrain/knowledge/rules/patterns")
-list_dir("1000xbrain/knowledge/rules/reference")
-
-// Map knowledge access patterns
-grep_search("fetch_rules\\(\\[\"knowledge/rules/", true, "1000xbrain/**/*.md")
-
-// Identify potential knowledge areas for reorganization
-codebase_search("knowledge organization patterns", ["1000xbrain/knowledge"])
-```
-
-### For Parameters Standardization
-
-```typescript
-// Check parameter format consistency
-grep_search("^# mode:", true, "1000xbrain/parameters/**/*.md")
-
-// Analyze parameter structure
-grep_search("\\| pathway: ", true, "1000xbrain/parameters/**/*.md")
-
-// Identify parameter usage patterns
-grep_search("@parameters/", true, "1000xbrain/**/*.md")
+// Create implementation progress tracking template
+edit_file("planning/[project-folder]/implementation-progress.md",
+          "Create implementation progress tracking template",
+          "# Implementation Progress: System-Wide Optimization\n\n## Planning Status\n- Planning Phase: In Progress\n- Last Update: [timestamp]\n- Current Planning Task: [task]\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Optimization Metrics\n[Relevant metrics for the specific focus]\n\n...")
 ```
 
 ## Planning Folder Structure
@@ -270,11 +142,9 @@ README.md must have this header at the top of the file:
 # rules-workflow | system-wide-optimization
 ```
 
-## Required Implementation Progress Structure
+## Implementation Progress Structure
 
 The implementation-progress.md file MUST include clearly separated sections for planning and implementation, with metrics relevant to the specific optimization focus of the current planning folder.
-
-### Example Structure (Adapt for Specific Focus)
 
 ```markdown
 # Implementation Progress: [Specific Focus] Optimization 
@@ -308,27 +178,15 @@ The implementation-progress.md file MUST include clearly separated sections for 
 - Verification: [Will be managed by dev-mode]
 ```
 
-### For 94-rules-workflow-system-wide-optimization
+## Cross-Folder Awareness
 
-```markdown
-// [REMOVED - Incorporated into the general example structure above]
-```
+When planning any system-wide optimization phase, maintain awareness of:
 
-### For 95-rules-workflow-system-wide-optimization
-
-```markdown
-// [REMOVED - Incorporated into the general example structure above]
-```
-
-## Context Preservation Mechanisms
-
-To maintain proper context across folders and phases:
-
-1. **Cross-Reference Documentation**: Each planning folder MUST reference results from previous folders
-2. **Dependency Documentation**: Each phase MUST document its dependencies on previous phases
-3. **Consistent Metrics**: Use same metrics format across all folders for measurable comparison
-4. **Implementation Chaining**: Each implementation plan MUST build on previous implementation results
-5. **Phase-Specific Structure**: Use folder-specific implementation-progress.md structures
+1. **Prior Optimizations**: Reference completed optimizations from previous folders
+2. **Dependency Chain**: Ensure each phase builds logically on previous phases
+3. **Consistent Targets**: Maintain consistent optimization targets across folders
+4. **Implementation Sequence**: Preserve the overall implementation sequence
+5. **Success Metrics**: Ensure metrics align across all optimization phases
 
 ## Common Optimization Patterns
 
@@ -357,9 +215,47 @@ Tests for line count reduction, performance improvement, and other measurable me
 ### Functional Equivalence Testing
 Tests to ensure optimized components maintain the same functionality as original components.
 
+## Tool Call Process
+
+### Documentation-First Process
+
+Always follow this documentation-first process:
+
+1. **Knowledge Access**: Fetch knowledge about the system architecture and optimization approaches
+2. **System Analysis**: Analyze system architecture and optimization opportunities
+3. **Documentation Creation**: Create comprehensive planning documentation with clear metrics
+4. **Implementation Strategy**: Document implementation strategy across multiple planning folders
+5. **Verification Design**: Design approach for verifying optimization success
+
+### Planning Completion
+
+When planning is complete, send the planning-document-complete signal:
+
+```
+📋 1000xdev [rules-workflow]
+
+planning-document-complete
+
+Planning is complete with:
+- Requirements document with clear optimization objectives and measurable targets
+- Implementation plan with detailed optimization approach
+- Test cheatsheet with comprehensive verification methods
+- Implementation progress template with defined metrics
+```
+
+## Transition to Implementation
+
+Once planning is complete, transition to dev-mode for implementation:
+
+```
+dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none
+```
+
+This will activate the dev-mode parameter for implementing the planned system-wide optimization.
+
 ## Success Criteria
 
-Successful planning for system-wide-optimization meets these criteria:
+Successful system-wide-optimization planning meets these criteria:
 
 1. **Detailed Optimization Plan**: Specific optimization targets with measurable metrics
 2. **Clear Implementation Sequence**: Well-structured implementation plan with specific steps
@@ -371,48 +267,13 @@ Successful planning for system-wide-optimization meets these criteria:
 8. **Cohesive Optimization Strategy**: Ensures each phase builds on previous phases
 9. **Quantifiable Targets**: Provides clear numerical targets for each phase
 
-## Knowledge Access
+## Related Knowledge
 
-When planning system-wide optimizations, use the `fetch_rules` tool to access specialized knowledge:
+For more detailed information on related aspects of the system:
 
-```typescript
-// Access system-wide knowledge components
-fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
-           "Understanding brain-files and cursor-rules relationship")
-fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
-           "Understanding cognitive load optimization strategies")
-
-// Access performance knowledge components
-fetch_rules(["knowledge/rules/performance/implementation-performance"], 
-           "Understanding implementation performance optimization")
-fetch_rules(["knowledge/rules/system-wide-optimization/tool-optimization"], 
-           "Understanding tool optimization techniques")
-```
-
-### Phase-Specific Knowledge Access
-
-Adapt knowledge access based on the specific focus of the current planning folder:
-
-Example for Core Optimization:
-```typescript
-fetch_rules([
-  "knowledge/rules/patterns/impl/consolidation-patterns",
-  "knowledge/rules/reference/architecture"
-], "Finding patterns for core file consolidation and architectural understanding")
-```
-
-Example for Knowledge Organization:
-```typescript
-fetch_rules([
-  "knowledge/rules/patterns/impl/organization-patterns",
-  "knowledge/rules/reference/maps/domain-map"
-], "Finding patterns for knowledge organization and domain relationships")
-```
-
-Example for Future Enhancements:
-```typescript
-fetch_rules([
-  "knowledge/rules/guides/cognitive-enhancement",
-  "knowledge/rules/patterns/impl/architecture-patterns"
-], "Understanding cognitive enhancement opportunities and architectural evolution")
-``` 
+- For overall system architecture, see `knowledge/system-structure/system-architecture.md`
+- For subsystem relationships, see `knowledge/system-structure/system-vs-subsystem.md`
+- For workflow relationships, see `knowledge/system-structure/workflow-subsystem-relationships.md`
+- For pathway organization, see `knowledge/system-structure/pathway-organization.md`
+- For cognitive load optimization, see `knowledge/rules/system-wide-optimization/cognitive-load-optimization.md`
+- For implementation performance, see `knowledge/rules/performance/implementation-performance.md` 

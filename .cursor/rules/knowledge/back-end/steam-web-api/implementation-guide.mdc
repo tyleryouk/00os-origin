@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing Steam Web API functionality in back-end components
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing Steam Web API functionality in back-end components
 
 ## Overview

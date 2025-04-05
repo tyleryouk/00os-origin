@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Pathway Organization
 
 ## Overview
@@ -87,9 +92,9 @@ knowledge/rules/
 ```markdown
 ## Related Components
 
-- [Component Name](../pathway-name/component-name.md): Brief explanation of relationship
-- [Component Name](component-name.md): Brief explanation of relationship (same pathway)
-- [Component Name](../pathway-name/component-name.md): Brief explanation of relationship
+- [Component Name](mdc:../pathway-name/component-name.md): Brief explanation of relationship
+- [Component Name](mdc:component-name.md): Brief explanation of relationship (same pathway)
+- [Component Name](mdc:../pathway-name/component-name.md): Brief explanation of relationship
 ```
 
 ## Important File Structure Rules
@@ -124,6 +129,6 @@ fetch_rules(["knowledge/rules/knowledge-organization/pathway-organization"],
 
 ## Related Components
 
-- [Knowledge Access](../system-wide/knowledge-access.md): Access patterns for pathways
-- [Component Structure](component-structure.md): Structure of individual components
-- [Parameter Integration](parameter-integration.md): Integration with parameters 
+- [Knowledge Access](mdc:../system-wide/knowledge-access.md): Access patterns for pathways
+- [Component Structure](mdc:component-structure.md): Structure of individual components
+- [Parameter Integration](mdc:parameter-integration.md): Integration with parameters 

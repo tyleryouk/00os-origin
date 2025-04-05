@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Parameter-Knowledge Integration Patterns
 
 ## Overview
@@ -210,7 +215,7 @@ fetch_rules(["knowledge/rules/knowledge-organization/parameter-knowledge-integra
 
 ## Related Components
 
-- [Parameter-Knowledge Mapping](parameter-knowledge-mapping.md): Mapping between parameters and knowledge
-- [Parameter-Knowledge Verification](parameter-knowledge-verification.md): Verification procedures
-- [Parameter Structure](../common/parameter-structure.md): Standards for parameter structure 
-- [Knowledge Access](../system-wide/knowledge-access.md): Knowledge access patterns 
+- [Parameter-Knowledge Mapping](mdc:parameter-knowledge-mapping.md): Mapping between parameters and knowledge
+- [Parameter-Knowledge Verification](mdc:parameter-knowledge-verification.md): Verification procedures
+- [Parameter Structure](mdc:../common/parameter-structure.md): Standards for parameter structure 
+- [Knowledge Access](mdc:../system-wide/knowledge-access.md): Knowledge access patterns 

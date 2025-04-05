@@ -9,10 +9,29 @@ alwaysApply: false
 
 This parameter provides a specialized execution structure optimized for implementing coordinated optimization across multiple components of the 1000xbrain cognitive architecture, with a focus on system-wide optimization.
 
+## Domain Access
+
+- **Read Access**: All of 1000xbrain
+- **Edit Access**: All of 1000xbrain/**
+- **Rationale**: System-wide optimization changes affect the entire cognitive architecture and require comprehensive access
+
 ## Knowledge Access
 
+For comprehensive understanding of the system architecture and optimization approaches, access these knowledge components:
+
 ```typescript
-// Access essential knowledge components
+// Access system architecture documentation
+fetch_rules(["knowledge/system-structure/system-architecture"], 
+           "Understanding the overall system architecture for optimization implementation")
+
+// Access related knowledge
+fetch_rules([
+  "knowledge/system-structure/workflow-subsystem-relationships",
+  "knowledge/system-structure/system-vs-subsystem",
+  "knowledge/system-structure/pathway-organization"
+], "Understanding the relationships between components for optimization implementation")
+
+// Access optimization knowledge
 fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
            "Understanding brain-files and cursor-rules relationship")
 fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
@@ -21,30 +40,23 @@ fetch_rules(["knowledge/rules/performance/implementation-performance"],
            "Understanding implementation performance optimization")
 ```
 
-## 1. System-Wide Optimization Implementation Overview
+## Implementation Approach
 
-The system-wide-optimization implementation pathway provides a specialized execution structure optimized for implementing coordinated optimization across multiple components of the 1000xbrain cognitive architecture. This approach is ideal when:
+The system-wide-optimization pathway in dev-mode implements comprehensive optimization across the cognitive architecture through these sequential activities:
 
-- Implementing comprehensive optimization across multiple subsystems
-- Reducing line counts while maintaining functionality
-- Reorganizing knowledge structures for better accessibility
-- Standardizing terminology and patterns across the system
-- Implementing measurable optimization targets
+1. **Documentation Update**: Update knowledge/system-structure/ files FIRST to reflect optimization changes
+2. **Core Component Optimization**: Implement optimization of core subsystem components
+3. **Dependent Component Optimization**: Implement optimization of dependent subsystem components
+4. **Cross-Component Integration**: Ensure coordinated optimization across all components
+5. **Optimization Metrics Verification**: Measure and verify optimization metrics
+6. **Implementation Documentation**: Document the implementation in implementation-progress.md
 
-### Key Benefits
+## Autonomous Implementation Protocol
 
-1. **Comprehensive Optimization**: Enables coordinated optimization across the entire architecture
-2. **Measurable Improvements**: Implements changes with quantifiable metrics
-3. **Structured Implementation**: Follows clear phase-based implementation approach
-4. **Knowledge Organization**: Improves knowledge structure and accessibility
-5. **System-Wide Standardization**: Ensures consistent patterns and terminology
-
-## ⚠️ ENHANCED AUTONOMOUS WORKFLOW ⚠️
-
-This implementation follows a fully autonomous iterative workflow:
+The implementation follows a fully autonomous workflow:
 
 1. **Complete Implementation Autonomy**: 
-   - 1000xdev will autonomously identify and execute all necessary implementation steps
+   - Autonomously identify and execute all necessary implementation steps
    - No user input required for next steps determination
    - Continual progress through implementation until completion
    
@@ -60,19 +72,7 @@ This implementation follows a fully autonomous iterative workflow:
    - Automatic transition between implementation phases
    - Independent verification of completion criteria
 
-4. **Implementation Completion Determination**:
-   - 1000xdev autonomously determines when implementation is complete
-   - No user confirmation required for completion determination
-   - Clear signaling when implementation is fully complete
-   - Objective assessment of completion criteria
-
-5. **Self-Directed Error Recovery**:
-   - Autonomous identification and resolution of implementation issues
-   - Independent error analysis and recovery strategy
-   - No user intervention required for error resolution
-   - Self-contained error handling and recovery
-
-## 1000x Development Principles Alignment
+## 1000x Development Principles
 
 The system-wide-optimization pathway upholds these core 1000x development principles:
 
@@ -84,58 +84,72 @@ The system-wide-optimization pathway upholds these core 1000x development princi
 6. **Implementation Self-Diagnosis**: Verifies implementation success through quantitative metrics
 7. **Cross-Folder Coordination**: Ensures sequential implementation across multiple planning folders
 
-## 2. Core Command Operation
+## Tool Call Process
 
-When the `dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none` message-command is received, 1000xdev will:
+### Documentation-First Implementation Process
 
-1. **Initialize Developer Mode**: Enter or remain in Developer Mode with the 💻 1000xdev [rules-workflow] indicator
-2. **ALWAYS Re-Read Planning Folder Files**: Read the following planning-folder-files IN THIS EXACT ORDER:
-   - README.md (MANDATORY FIRST FILE)
-   - implementation-progress.md (MANDATORY SECOND FILE)
-   - requirements.md (to understand optimization targets)
-   - implementation-[specific-focus].md (for implementation details)
-   - test-cheatsheet.md (for verification approach)
-3. **Autonomously Continue Implementation from Current Point**: Use implementation-progress.md to determine the current state and IMMEDIATELY continue implementation without asking for next steps
-4. **Frequently Update Implementation Progress**: Update after EACH significant change or every 3-5 tool calls
-5. **Execute Optimization Tasks**: Implement optimization targets defined in the planning documentation
-6. **Verify Optimization Success**: Measure and verify optimization metrics
-7. **Autonomously Progress until Completion**: Continue implementation until ALL tasks in the planning documents are complete
+Always follow this documentation-first implementation process:
 
-## ⚠️ CRITICAL: Autonomous Implementation Protocol ⚠️
+1. **Read Planning Documents**: Read planning folder documents to understand optimization requirements
+2. **Access Knowledge**: Fetch knowledge about the system architecture and optimization approaches
+3. **Update Documentation First**: Update knowledge/system-structure/ files to reflect optimization changes
+4. **Implement Core Optimizations**: Implement optimization of core components
+5. **Implement Dependent Optimizations**: Implement optimization of dependent components
+6. **Verify Optimization Metrics**: Measure and verify optimization metrics
+7. **Document Progress**: Update implementation-progress.md with status
 
-The implementation MUST follow this autonomous protocol:
+### Example Tool Call Sequence
 
-1. **Zero User Input Dependency**: Never ask the user what to do next
-2. **Complete Planning Interpretation**: Autonomously interpret all planning documentation
-3. **Independent Decision Making**: Make all implementation decisions without user input
-4. **Self-Contained Implementation**: Complete implementation through to verification
-5. **Completion Signal Only at Full Completion**: Signal completion ONLY when all tasks are complete
-6. **Thorough Implementation**: Ensure all aspects of planning are fully implemented
-7. **Comprehensive Verification**: Autonomously verify all implementation work
+```typescript
+// 1. ALWAYS start by reading planning folder documents
+read_file("planning/[project-folder]/README.md", should_read_entire_file=true)
+read_file("planning/[project-folder]/implementation-progress.md", should_read_entire_file=true)
+read_file("planning/[project-folder]/requirements.md", should_read_entire_file=true)
+read_file("planning/[project-folder]/implementation-[specific-focus].md", should_read_entire_file=true)
+read_file("planning/[project-folder]/test-cheatsheet.md", should_read_entire_file=true)
 
-## General System-Wide Implementation Focus
+// 2. Access knowledge
+fetch_rules(["knowledge/system-structure/system-architecture"], 
+           "Understanding the system architecture for optimization")
+fetch_rules(["knowledge/system-structure/workflow-subsystem-relationships"], 
+           "Understanding workflow relationships for optimization")
 
-While specific tasks are defined in the planning folder documents, the overall focus for system-wide optimization typically includes areas such as:
+// 3. Update documentation FIRST
+list_dir("1000xbrain/knowledge/system-structure")
+read_file("1000xbrain/knowledge/system-structure/system-architecture.md", should_read_entire_file=true)
+edit_file("1000xbrain/knowledge/system-structure/system-architecture.md",
+          "Update system architecture documentation to reflect optimization changes",
+          "# USE WHEN understanding the overall system architecture...\n\n[Updated content to reflect optimization changes]...")
 
-1.  **Core Subsystem Optimization**: Consolidating and streamlining core brain-files, reducing line counts, implementing format changes (e.g., message-commands), and standardizing terminology.
-2.  **Knowledge & Parameters Optimization**: Reorganizing knowledge files (e.g., by pathway), standardizing parameter formats, converting file types (e.g., README.md to index.md if applicable), and improving knowledge accessibility.
-3.  **Future Enhancements & Documentation**: Documenting further optimization opportunities, planning cognitive architecture evolution, and establishing long-term roadmaps.
-4.  **Knowledge Reorganization**: Implementing pathway-based reorganization, eliminating redundant index files, deduplicating content, and updating parameter references.
+// 4. Implement core component optimizations
+list_dir("1000xbrain/core/[component]")
+read_file("1000xbrain/core/[component]/[target-file].md", should_read_entire_file=true)
+edit_file("1000xbrain/core/[component]/[target-file].md",
+          "Optimize core component",
+          "# [Title]\n\n## [Optimized Section]\n\n[Optimized Content]")
 
-The specific focus for the current implementation phase is determined by reading the `requirements.md` and `implementation-[specific-focus].md` files within the active planning folder.
+// 5. Update implementation progress
+edit_file("planning/[project-folder]/implementation-progress.md",
+          "Update implementation progress - Core component optimized",
+          "# Implementation Progress: System-Wide Optimization\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: 2\n- Step: 2.1\n- Current Task: Completed optimization of [component]\n- Next Steps: [next component to optimize]\n\n## Detailed Progress\n\n...")
 
-### Autonomous Folder Selection and Processing
+// 6. Implement dependent component optimizations
+list_dir("1000xbrain/[dependent-subsystem]/[component]")
+read_file("1000xbrain/[dependent-subsystem]/[component]/[target-file].md", should_read_entire_file=true)
+edit_file("1000xbrain/[dependent-subsystem]/[component]/[target-file].md",
+          "Optimize dependent component",
+          "# [Title]\n\n## [Optimized Section]\n\n[Optimized Content]")
 
-For any planning folder dedicated to system-wide optimization, 1000xdev will:
+// 7. Verify optimization metrics
+run_terminal_cmd("(Get-ChildItem -Path \"1000xbrain/[component_path]\" -Recurse -Filter \"*.md\" | Where-Object { $_.Name -ne \"README.md\" } | ForEach-Object { Get-Content $_.FullName | Measure-Object -Line } | Measure-Object -Property Lines -Sum).Sum", false)
 
-1. **Autonomous Progress Assessment**: Independently evaluate current implementation state
-2. **Self-Directed Task Identification**: Identify next tasks without user input
-3. **Independent Implementation Execution**: Execute identified tasks with full autonomy
-4. **Automatic Progress Updates**: Update implementation-progress.md without prompting
-5. **Self-Determined Completion**: Autonomously determine when implementation is complete
-6. **Autonomous Folder Transition**: Signal completion and prepare for transition
+// 8. Final implementation progress update
+edit_file("planning/[project-folder]/implementation-progress.md",
+          "Update implementation progress - Optimization complete",
+          "# Implementation Progress: System-Wide Optimization\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: Complete\n- Current Task: Optimization completed\n- Metrics: [include specific metrics showing optimization results]\n\n## Detailed Progress\n\n...")
+```
 
-### ⚠️ CRITICAL: Memory Reset Handling
+## Memory Reset Handling
 
 This project-rule-parameter will be repeatedly sent until implementation is complete. Additionally, memory resets may occur during implementation. Therefore:
 
@@ -155,23 +169,7 @@ When autonomously transitioning between planning folders:
 4. **Self-Directed Continuity**: Maintain implementation continuity when starting the next folder
 5. **Independent Dependency Verification**: Ensure all dependencies from previous folders are met before implementing
 
-### Autonomous Folder Transition Tool Call Sequence
-
-```typescript
-// 1. Verify current folder completion through independent assessment
-read_file("planning/[current_folder]/implementation-progress.md", should_read_entire_file=true)
-
-// 2. Signal completion and prepare for transition without user input
-// Note: The specific content will depend on the planning documents for the *next* phase/folder.
-edit_file("planning/[current_folder]/implementation-progress.md",
-          "Update implementation progress - Implementation complete for this phase",
-          "# Implementation Progress: [Current Focus]\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: Complete\n- Current Task: Implementation completed for [Current Focus]\n- Next Steps: Proceed to next system-wide optimization phase as defined in planning\n\n## Detailed Progress\n\n- All implementation tasks for this phase complete\n- All optimization targets for this phase met\n- Ready for transition\n...")
-
-// 3. Signal completion to Tyler with transition information
-// e.g., "Implementation complete for Core Optimization phase. Ready to proceed to Knowledge Optimization phase."
-```
-
-## Error Handling Patterns
+## Error Handling
 
 When encountering errors during implementation, follow these structured error handling patterns autonomously:
 
@@ -200,11 +198,35 @@ edit_file("planning/[current_folder]/implementation-progress.md",
           "# Implementation Progress: [Optimization Focus]\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: [phase]\n- Step: [step]\n- Current Task: Resolved missing directory [path]\n- Next Steps: [next steps]\n- Current Folder: [current_folder]\n\n## Error Resolution\n- Error: Path not found: [path]\n- Resolution: Created directory [path]\n- Verification: Directory exists and is accessible\n- Status: Resolved\n\n...")
 ```
 
-## 8. Completion Indicators
+## Common Optimization Implementation Patterns
 
-### System-Wide Optimization Final Completion
+### Core Optimization
 
-When all implementation tasks from the planning folder are complete:
+For implementing core subsystem optimization:
+
+1. **Redundancy Elimination**: Identify and eliminate redundancies in core files
+2. **Consistent Patterns**: Standardize patterns across core components
+3. **Line Count Reduction**: Consolidate related information to reduce line counts
+4. **Terminology Standardization**: Implement consistent terminology
+
+### Knowledge Organization Optimization
+
+For implementing knowledge subsystem optimization:
+
+1. **Pathway-Based Organization**: Reorganize knowledge files by pathway
+2. **Access Pattern Standardization**: Standardize knowledge access patterns
+3. **Content Deduplication**: Eliminate duplicated content across knowledge files
+4. **Cross-Reference Enhancement**: Improve cross-references between knowledge files
+
+## Implementation Completion
+
+When system-wide optimization implementation is complete:
+
+1. **Verify Optimization Metrics**: Ensure optimization targets have been met
+2. **Update Final Metrics**: Document final metrics in implementation-progress.md
+3. **Signal Completion**: Send implementation-complete message-command
+
+### Completion Indicator
 
 ```
 💻 1000xdev [rules-workflow]
@@ -219,34 +241,13 @@ System-Wide Optimization implementation fully complete:
 implementation-complete
 ```
 
-## 9. Knowledge Access During System-Wide Optimization
+## Related Knowledge
 
-When implementing system-wide optimizations, use the `fetch_rules` tool to access specialized knowledge:
+For more detailed information on related aspects of the system:
 
-```typescript
-// Access architecture understanding for optimization with focused purpose
-fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
-           "Understanding system architecture for precise optimization targets")
-
-// Access implementation patterns with specific optimization focus
-fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
-           "Finding specific optimization patterns for [current optimization focus]")
-
-// Access multiple knowledge components for complex optimizations with task-specific focus
-fetch_rules([
-  "knowledge/rules/system-wide/brain-files-cursor-rules",
-  "knowledge/rules/system-wide-optimization/cognitive-load-optimization",
-  "knowledge/rules/performance/implementation-performance"
-], "Comprehensive architectural understanding for [specific optimization task]")
-```
-
-## 10. Autonomous Implementation Mindset
-
-When implementing system-wide optimizations, 1000xdev will:
-
-1. **Think Like an Architect**: Consider the entire system architecture
-2. **Act Autonomously**: Make decisions independently and proceed without user guidance
-3. **Implement Comprehensively**: Complete all planned optimizations
-4. **Verify Rigorously**: Thoroughly verify all implementations
-5. **Document Extensively**: Maintain detailed implementation progress
-6. **Signal Clearly**: Provide clear completion signals only when truly complete 
+- For overall system architecture, see `knowledge/system-structure/system-architecture.md`
+- For subsystem relationships, see `knowledge/system-structure/system-vs-subsystem.md`
+- For workflow relationships, see `knowledge/system-structure/workflow-subsystem-relationships.md`
+- For pathway organization, see `knowledge/system-structure/pathway-organization.md`
+- For cognitive load optimization, see `knowledge/rules/system-wide-optimization/cognitive-load-optimization.md`
+- For implementation performance, see `knowledge/rules/performance/implementation-performance.md` 

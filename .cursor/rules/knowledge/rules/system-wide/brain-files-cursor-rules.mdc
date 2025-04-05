@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Brain-Files and Cursor-Rules Relationship
 
 ## Overview
@@ -70,6 +75,6 @@ fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"],
 
 ## Related Components
 
-- [File Safety](file-safety.md): Guidelines for safe file editing
-- [Symbol Guidelines](../common/symbol-guidelines.md): Proper usage of symbols in documentation
-- [Knowledge Access](knowledge-access.md): How to access knowledge components 
+- [File Safety](mdc:file-safety.md): Guidelines for safe file editing
+- [Symbol Guidelines](mdc:../common/symbol-guidelines.md): Proper usage of symbols in documentation
+- [Knowledge Access](mdc:knowledge-access.md): How to access knowledge components 

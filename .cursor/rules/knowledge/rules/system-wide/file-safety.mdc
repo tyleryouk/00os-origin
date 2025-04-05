@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # File Editing Safety Guidelines
 
 ## Overview
@@ -110,6 +115,6 @@ fetch_rules(["knowledge/rules/system-wide/file-safety"],
 
 ## Related Components
 
-- [Brain-Files and Cursor-Rules](brain-files-cursor-rules.md): Relationship between file types
-- [Symbol Guidelines](../common/symbol-guidelines.md): Proper usage of symbols in documentation
-- [Message Commands](message-commands.md): How to format message commands with correct file references 
+- [Brain-Files and Cursor-Rules](mdc:brain-files-cursor-rules.md): Relationship between file types
+- [Symbol Guidelines](mdc:../common/symbol-guidelines.md): Proper usage of symbols in documentation
+- [Message Commands](mdc:message-commands.md): How to format message commands with correct file references 

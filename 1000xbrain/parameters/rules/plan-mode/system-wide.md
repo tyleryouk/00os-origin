@@ -1,8 +1,8 @@
 # mode: plan-mode | workflow: rules-workflow | pathway: system-wide | filepath: @parameters/rules/plan-mode/system-wide.mdc | optional-standard-parameter(s): none
 
-## System-Wide Enhancement Planning Overview
+## Purpose
 
-The system-wide pathway creates a specialized planning structure optimized for coordinated improvements across multiple subsystems within the 1000xbrain cognitive architecture. This approach is ideal when:
+This parameter provides a specialized planning structure optimized for coordinated improvements across multiple subsystems within the 1000xbrain cognitive architecture. This approach is ideal when:
 
 - Changes affect multiple cognitive components
 - Cross-system consistency needs improvement
@@ -10,79 +10,112 @@ The system-wide pathway creates a specialized planning structure optimized for c
 - New capabilities need system-wide integration
 - Major version updates are being implemented
 
-### Key Benefits
+## Domain Access
 
-1. **Comprehensive Impact**: Plans coordinated changes across the entire architecture
-2. **Architectural Consistency**: Ensures consistent patterns across all components
-3. **Coordinated Planning**: Manages dependencies between components
-4. **Cross-Component Verification**: Designs testing for interactions between components
-5. **Holistic Improvement**: Addresses system-level concerns rather than isolated components
+- **Read Access**: All of 1000xbrain
+- **Edit Access**: Limited to the /planning directory
+- **Rationale**: Plan-mode focuses on documentation creation in the planning directory
 
-## Core Command Operation
+## Knowledge Access
 
-When the `plan-mode: rules-workflow @parameters/rules/plan-mode/system-wide.mdc` message-command is received, 1000xdev will:
-
-1. **Initialize Planning Mode**: Enter or remain in Planning Mode with the 📋 1000xdev [rules-workflow] indicator
-2. **Map System Architecture**: Create comprehensive cognitive architecture map
-3. **Identify Cross-System Patterns**: Document patterns that span subsystems
-4. **Design Coordinated Enhancements**: Create implementation plans with cross-system coordination
-5. **Develop Integration Testing**: Create strategies to verify system-wide coherence
-
-## ⚠️ CRITICAL DOMAIN RESTRICTIONS ⚠️
-
-In Planning Mode, 1000xdev is STRICTLY LIMITED to working with files within the planning folder ONLY:
-
-1. **ONLY Modify Planning Folder Files**: NEVER create or modify files in 1000xbrain, parameters, or any other directory outside the planning folder
-2. **ONLY Plan, NEVER Implement**: Focus exclusively on planning and documentation, NOT implementation
-3. **NO Project-Rule-Parameter Creation**: NEVER create or modify project-rule-parameters (.md files in parameters directory)
-4. **Domain of Responsibility Separation**: In plan-mode, ONLY the planning folder is within the domain of responsibility
-
-Any operation outside the planning folder is STRICTLY PROHIBITED while in plan-mode.
-
-## Tool Call Sequence
+For comprehensive understanding of the system architecture, access these knowledge components:
 
 ```typescript
-// 1. Check planning folder structure
-list_dir("[planning_folder_path]")
+// Access system architecture documentation
+fetch_rules(["knowledge/system-structure/system-architecture"], 
+           "Understanding the overall system architecture")
 
-// 2. Read requirements to identify system-wide focus
-read_file("[planning_folder_path]/requirements.md", should_read_entire_file=true)
+// Access related knowledge
+fetch_rules([
+  "knowledge/system-structure/workflow-subsystem-relationships",
+  "knowledge/system-structure/system-vs-subsystem",
+  "knowledge/system-structure/pathway-organization"
+], "Understanding the relationships between components in the system architecture")
 
-// 3. Analyze cognitive architecture structure (READ ONLY)
+// Access additional system-wide knowledge components
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
+           "Understanding mode patterns and behaviors")
+fetch_rules(["knowledge/rules/system-wide/message-commands"], 
+           "Understanding message command processing")
+```
+
+## Implementation Approach
+
+The system-wide pathway in plan-mode focuses on planning changes that affect multiple subsystems through these activities:
+
+1. **Comprehensive System Analysis**: Thoroughly analyze the system architecture and relationships
+2. **Cross-System Pattern Identification**: Identify patterns that span multiple subsystems
+3. **Coordinated Enhancement Planning**: Create implementation plans with cross-system coordination
+4. **Integration Testing Design**: Design strategies to verify system-wide coherence
+5. **Domain Access Documentation**: Clearly document domain access for implementation
+
+## Planning Workflow
+
+### 1. Initial Analysis Phase
+
+```typescript
+// Access system architecture documentation
+fetch_rules(["knowledge/system-structure/system-architecture"], 
+           "Understanding the system architecture")
+
+// Explore cognitive architecture structure (READ ONLY)
 list_dir("1000xbrain")
 list_dir("1000xbrain/core")
 list_dir("1000xbrain/workflows")
 list_dir("1000xbrain/knowledge")
 
-// 4. Create system-wide architecture mapping
-edit_file("[planning_folder_path]/context-architecture-mapping.md",
+// Read key architecture documentation
+read_file("1000xbrain/knowledge/system-structure/system-architecture.md", should_read_entire_file=true)
+read_file("1000xbrain/knowledge/system-structure/workflow-subsystem-relationships.md", should_read_entire_file=true)
+```
+
+### 2. Documentation Planning Phase
+
+```typescript
+// Create system-wide architecture mapping
+edit_file("planning/[project-folder]/context-architecture-mapping.md",
           "Create system-wide architecture mapping",
           "# Context Analysis: Cognitive Architecture Mapping\n\n...")
 
-// 5. Create cross-system patterns analysis
-edit_file("[planning_folder_path]/context-cross-system-patterns.md",
+// Create cross-system patterns analysis
+edit_file("planning/[project-folder]/context-cross-system-patterns.md",
           "Create cross-system patterns analysis",
           "# Context Analysis: Cross-System Patterns\n\n...")
 
-// 6. Create comprehensive implementation plan
-edit_file("[planning_folder_path]/implementation-system-wide-enhancement.md",
+// Create requirements document
+edit_file("planning/[project-folder]/requirements.md",
+          "Document system-wide requirements",
+          "# Requirements: System-Wide Enhancement\n\n...")
+```
+
+### 3. Implementation Strategy Phase
+
+```typescript
+// Create comprehensive implementation plan
+edit_file("planning/[project-folder]/implementation-system-wide-enhancement.md",
           "Create system-wide implementation plan",
           "# Implementation Plan: System-Wide Enhancement\n\n...")
 
-// 7. Create implementation progress tracking template
-edit_file("[planning_folder_path]/implementation-progress.md",
+// Create implementation progress tracking template
+edit_file("planning/[project-folder]/implementation-progress.md",
           "Create implementation progress tracking template",
           "# Implementation Progress: System-Wide Enhancement\n\n## Planning Status\n[Current planning phase and status details]\n\n## Implementation Status\n[Implementation will be tracked by dev-mode - left empty in plan-mode]\n\n## Phase Overview\n\n...")
+```
 
-// 8. Create integration testing framework
-edit_file("[planning_folder_path]/test-cheatsheet.md",
+### 4. Testing Strategy Phase
+
+```typescript
+// Create integration testing framework
+edit_file("planning/[project-folder]/test-cheatsheet.md",
           "Create integration testing framework",
           "# Test Cheatsheet: System-Wide Integration\n\n...")
 ```
 
 ## Planning Folder Structure
 
-The system-wide enhancement pathway creates a specialized planning structure:
+The system-wide pathway creates a specialized planning structure:
 
 ### Required Files
 
@@ -96,9 +129,11 @@ The system-wide enhancement pathway creates a specialized planning structure:
 | `implementation-system-wide-enhancement.md` | Plan implementation approach | Coordinated multi-phase implementation |
 | `test-cheatsheet.md` | Define integration testing approach | Cross-system validation |
 
-**mandatory**
+**Mandatory**
 README.md must have this header at the top of the file:
+```
 # rules-workflow | system-wide
+```
 
 ## Implementation Planning
 
@@ -192,9 +227,47 @@ Tests for interactions between core components, workflow interactions, and knowl
 ### End-to-End Flow Testing
 Tests for complete message-command processing flow, mode transitions, and knowledge access patterns.
 
+## Tool Call Process
+
+### Documentation-First Process
+
+Always follow this documentation-first process:
+
+1. **Knowledge Access**: Fetch knowledge about the system architecture
+2. **System Analysis**: Analyze system architecture and relationships
+3. **Documentation Creation**: Create comprehensive planning documentation
+4. **Implementation Strategy**: Document implementation strategy with phases
+5. **Testing Strategy**: Design approach for verifying system-wide changes
+
+### Planning Completion
+
+When planning is complete, send the planning-document-complete signal:
+
+```
+📋 1000xdev [rules-workflow]
+
+planning-document-complete
+
+Planning is complete with:
+- Requirements document with clear objectives for system-wide enhancement
+- Implementation plan with detailed approach across phases
+- Context files with essential system architecture information
+- Testing framework for system-wide verification
+```
+
+## Transition to Implementation
+
+Once planning is complete, transition to dev-mode for implementation:
+
+```
+dev-mode rules-workflow system-wide @parameters/rules/dev-mode/system-wide.mdc none
+```
+
+This will activate the dev-mode parameter for implementing the planned system-wide changes.
+
 ## Success Criteria
 
-Successful initialization of system-wide enhancement planning meets these criteria:
+Successful system-wide enhancement planning meets these criteria:
 
 1. **Architecture Mapping**: Comprehensive mapping of the cognitive architecture
 2. **Cross-System Analysis**: Identification of patterns spanning subsystems
@@ -204,19 +277,11 @@ Successful initialization of system-wide enhancement planning meets these criter
 6. **Comprehensive Testing**: Testing strategies that verify cross-system integrity
 7. **Clear Domain Separation**: Planning documents explicitly separate planning from implementation
 
-## Knowledge Access
+## Related Knowledge
 
-```typescript
-// Access essential system-wide knowledge components
-fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
-           "Understanding brain-files and cursor-rules relationship")
-fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
-           "Understanding mode patterns and behaviors")
-fetch_rules(["knowledge/rules/system-wide/message-commands"], 
-           "Understanding message command processing")
+For more detailed information on related aspects of the system:
 
-// Access optimization knowledge
-fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
-           "Understanding cognitive load optimization")
-fetch_rules(["knowledge/rules/common/file-standards"], 
-           "Understanding file standards for system components")
+- For overall system architecture, see `knowledge/system-structure/system-architecture.md`
+- For subsystem relationships, see `knowledge/system-structure/system-vs-subsystem.md`
+- For workflow relationships, see `knowledge/system-structure/workflow-subsystem-relationships.md`
+- For pathway organization, see `knowledge/system-structure/pathway-organization.md`
