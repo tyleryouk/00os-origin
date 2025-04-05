@@ -206,16 +206,17 @@ Successful initialization of system-wide enhancement planning meets these criter
 
 ## Knowledge Access
 
-When planning system-wide enhancements, use the `fetch_rules` tool to access specialized knowledge:
-
 ```typescript
-// Access architecture understanding for planning
-fetch_rules(["knowledge/rules/guides/architecture"], 
-           "Understanding system architecture for comprehensive planning")
+// Access essential system-wide knowledge components
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
+           "Understanding mode patterns and behaviors")
+fetch_rules(["knowledge/rules/system-wide/message-commands"], 
+           "Understanding message command processing")
 
-// Access multiple knowledge components for complex planning
-fetch_rules([
-  "knowledge/rules/guides/architecture",
-  "knowledge/rules/patterns/impl/architecture-patterns",
-  "knowledge/rules/reference/maps/domain-map"
-], "Comprehensive architectural understanding for system-wide planning")
+// Access optimization knowledge
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization")
+fetch_rules(["knowledge/rules/common/file-standards"], 
+           "Understanding file standards for system components")

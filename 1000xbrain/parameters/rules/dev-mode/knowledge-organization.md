@@ -1,19 +1,23 @@
 # mode: dev-mode | workflow: rules-workflow | pathway: knowledge-organization | filepath: @parameters/rules/dev-mode/knowledge-organization.mdc | optional-standard-parameter(s): none
 
-## 1. Purpose
+## Purpose
 
-This parameter guides the implementation of knowledge organization within the 1000xbrain cognitive architecture, focusing on pathway-based organization, file structure standardization, and improved knowledge accessibility.
+This parameter provides a specialized execution structure optimized for implementing knowledge organization improvements across the 1000xbrain cognitive architecture.
 
 ## Knowledge Access
 
 ```typescript
-// Access essential knowledge components immediately
-fetch_rules(["knowledge/rules/pathways/documentation/parameter-template"], 
-           "Understanding standardized parameter template for consistent structure")
-fetch_rules(["knowledge/rules/pathways/documentation/pathway-organization"], 
-           "Understanding pathway organization principles")
-fetch_rules(["knowledge/rules/pathways/architecture/knowledge-organization"], 
-           "Understanding knowledge system architecture")
+// Access knowledge organization components
+fetch_rules(["knowledge/rules/knowledge-organization/pathway-organization"], 
+           "Understanding pathway-based organization principles")
+fetch_rules(["knowledge/rules/common/file-standards"], 
+           "Understanding file standards for knowledge components")
+
+// Access system architecture components
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
+fetch_rules(["knowledge/rules/system-wide/knowledge-access"], 
+           "Understanding knowledge access patterns")
 ```
 
 ## 2. Core Command Operation

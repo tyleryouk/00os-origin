@@ -24,6 +24,26 @@ plan-mode: rules-workflow @parameters/rules/plan-mode-performance.mdc
 
 For other enhancement pathways, see the alternative pathway-specific project-rule-parameters listed in `@parameters/rules/rules-workflow.mdc`.
 
+## Purpose
+
+This parameter guides the planning of performance-focused enhancements across the 1000xbrain cognitive architecture.
+
+## Knowledge Access
+
+```typescript
+// Access performance knowledge components
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance patterns")
+fetch_rules(["knowledge/rules/performance/performance-optimization"], 
+           "Understanding general performance optimization approaches")
+
+// Access system-wide knowledge components
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization strategies")
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding system architecture for performance optimization")
+```
+
 ## 1. Performance Optimization Overview
 
 The performance optimization pathway creates a specialized planning structure optimized for improving system efficiency, response times, and resource utilization within the 1000xbrain cognitive architecture. This approach is ideal when:

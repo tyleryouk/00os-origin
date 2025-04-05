@@ -3,17 +3,17 @@
 ## Knowledge Access
 
 ```typescript
-// Access message-command verification knowledge
-fetch_rules([
-  "knowledge/rules/reference/syntax/message-command-syntax",
-  "knowledge/rules/reference/syntax/parameter-syntax"
-], "Accessing message-command and parameter syntax knowledge")
+// Access message-command and syntax knowledge
+fetch_rules(["knowledge/rules/system-wide/message-commands"], 
+           "Understanding message command processing and syntax")
+fetch_rules(["knowledge/rules/common/parameter-structure"], 
+           "Understanding parameter structure and syntax requirements")
 
-// Access verification process knowledge
-fetch_rules([
-  "knowledge/rules/patterns/impl/validation-logic",
-  "knowledge/rules/patterns/impl/validation-error-handling"
-], "Accessing validation logic and error handling patterns")
+// Access validation patterns
+fetch_rules(["knowledge/rules/common/symbol-guidelines"], 
+           "Understanding symbol usage guidelines for verification")
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
 ```
 
 ## Overview

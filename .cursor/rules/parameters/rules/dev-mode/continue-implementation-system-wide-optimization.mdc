@@ -5,12 +5,20 @@ alwaysApply: false
 ---
 # mode: dev-mode | workflow: rules-workflow | pathway: system-wide-optimization | filepath: @parameters/rules/dev-mode/continue-implementation-system-wide-optimization.mdc | optional-standard-parameter(s): none
 
+## Purpose
+
+This parameter provides a specialized execution structure optimized for continuing implementation of system-wide optimizations across the 1000xbrain cognitive architecture that were previously started.
+
 ## Knowledge Access
 
 ```typescript
-// Access essential optimization knowledge
-fetch_rules(["knowledge/rules/patterns/impl/optimization-patterns"], 
-           "Accessing optimization patterns for continued implementation")
+// Access essential knowledge components
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization strategies")
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance optimization")
 
 // Access context preservation patterns
 fetch_rules(["knowledge/rules/patterns/doc/context-preservation-mechanisms"], 

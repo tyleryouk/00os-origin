@@ -20,6 +20,26 @@ This parameter is designed to work with the `enhance-requirements:` message-comm
 3. **Single-File Focus**: All enhancements must be applied to requirements.md, not to any other file
 4. **Documentation Update**: No other planning documents should be created or modified
 
+## Purpose
+
+This parameter guides the enhancement of requirements documentation, focusing on improving structure, completeness, and implementation readiness.
+
+## Knowledge Access
+
+```typescript
+// Access planning and documentation knowledge
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
+           "Understanding Planning Mode patterns")
+fetch_rules(["knowledge/rules/common/file-standards"], 
+           "Understanding file standards for documentation")
+
+// Access system architecture knowledge
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding system architecture for requirements")
+fetch_rules(["knowledge/rules/knowledge-organization/pathway-organization"], 
+           "Understanding knowledge organization principles")
+```
+
 ## Enhancement Process Overview
 
 The requirements enhancement process follows these key steps:

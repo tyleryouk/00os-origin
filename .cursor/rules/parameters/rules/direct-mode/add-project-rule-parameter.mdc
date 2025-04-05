@@ -8,18 +8,17 @@ alwaysApply: false
 ## Knowledge Access
 
 ```typescript
-// Access parameter template and standards
-fetch_rules([
-  "knowledge/rules/patterns/doc/templates/parameter-template",
-  "knowledge/rules/patterns/doc/file-standards",
-  "knowledge/rules/reference/syntax/parameter-syntax"
-], "Accessing parameter creation standards and templates")
+// Access parameter structure and file standards
+fetch_rules(["knowledge/rules/common/parameter-structure"], 
+           "Understanding parameter structure standards")
+fetch_rules(["knowledge/rules/common/file-standards"], 
+           "Understanding file structure and standards")
 
-// Access reference formatting patterns
-fetch_rules([
-  "knowledge/rules/patterns/doc/reference-format-template", 
-  "knowledge/rules/reference/architecture/brain-files-cursor-rules"
-], "Understanding reference handling between brain-files and cursor-rules")
+// Access reference handling and brain-files relationship
+fetch_rules(["knowledge/rules/common/symbol-guidelines"], 
+           "Understanding symbol usage guidelines")
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding brain-files and cursor-rules relationship")
 ```
 
 ## Overview

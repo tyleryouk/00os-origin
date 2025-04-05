@@ -7,13 +7,17 @@ This file defines the specific operation of the `dev-mode rules-workflow perform
 ## Knowledge Access
 
 ```typescript
-// Access essential performance-related knowledge components
-fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
-           "Understanding implementation patterns for performance optimization")
-fetch_rules(["knowledge/rules/patterns/tool/tool-combinations"], 
-           "Finding optimal tool combinations for performance implementation")
-fetch_rules(["knowledge/rules/reference/guides/implementation-patterns"], 
-           "Accessing implementation pattern reference guides")
+// Access performance knowledge components
+fetch_rules(["knowledge/rules/performance/implementation-performance"], 
+           "Understanding implementation performance patterns")
+fetch_rules(["knowledge/rules/performance/performance-optimization"], 
+           "Understanding general performance optimization approaches")
+
+// Access system-wide knowledge components
+fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimization"], 
+           "Understanding cognitive load optimization strategies")
+fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"], 
+           "Understanding system architecture for performance optimization")
 ```
 
 ## File Purpose and Relationship
@@ -109,201 +113,4 @@ edit_file("[planning_folder_path]/implementation-progress.md",
 
 ### Phase 2: Core Optimization Implementation
 
-```typescript
-// 1. Implement optimization changes
-read_file("1000xbrain/[target_component_path]/[file_to_modify].md", should_read_entire_file=true)
-edit_file("1000xbrain/[target_component_path]/[file_to_modify].md",
-          "Implement performance optimization",
-          "# [Title]\n\n## [Optimized Section]\n\n[Optimized Content]")
-
-// 2. Update implementation progress
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Update implementation progress",
-          "# Implementation Progress: Performance Optimization\n\nOptimization implemented for [component]...")
 ```
-
-### Phase 3: Impact Verification
-
-```typescript
-// 1. Verify optimized implementation
-read_file("1000xbrain/[target_component_path]/[modified_file].md", should_read_entire_file=true)
-
-// 2. Document performance improvement
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Document performance improvement",
-          "# Implementation Progress: Performance Optimization\n\n## Performance Improvement\n\n...")
-```
-
-### Phase 4: Integration and Final Verification
-
-```typescript
-// 1. Verify integration with related components
-list_dir("1000xbrain/[related_component_path]")
-read_file("1000xbrain/[related_component_path]/[integration_file].md", should_read_entire_file=true)
-
-// 2. Final implementation progress update
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Complete implementation progress",
-          "# Implementation Progress: Performance Optimization\n\nImplementation complete...")
-```
-
-## 4. Implementation Progress Tracking
-
-For performance optimizations, implementation progress tracking follows this specialized structure:
-
-```markdown
-# Implementation Progress: Performance Optimization
-
-## Current Status
-- Phase: [current phase number]
-- Step: [current step number]
-- Last Update: [timestamp]
-
-## Performance Targets
-- Target Components: [list of components being optimized]
-- Optimization Goals: [specific performance improvements sought]
-- Baseline Metrics: [baseline performance measurements]
-
-## Phase Overview
-- Phase 1: [status] - Analysis and Baseline Measurement
-- Phase 2: [status] - Core Optimization Implementation
-- Phase 3: [status] - Impact Verification
-- Phase 4: [status] - Integration and Final Verification
-
-## Detailed Progress
-
-### Phase 1: Analysis and Baseline Measurement
-- [x] Step 1.1: [completed step]
-- [x] Step 1.2: [completed step]
-- [ ] Step 1.3: [pending step]
-
-### Phase 2: Core Optimization Implementation
-- [ ] Step 2.1: [pending step]
-- [ ] Step 2.2: [pending step]
-
-### Phase 3: Impact Verification
-- [ ] Step 3.1: [pending step]
-- [ ] Step 3.2: [pending step]
-
-### Phase 4: Integration and Final Verification
-- [ ] Step 4.1: [pending step]
-- [ ] Step 4.2: [pending step]
-
-## Performance Measurements
-- Component 1: [before] → [after] ([improvement percentage])
-- Component 2: [before] → [after] ([improvement percentage])
-```
-
-## 5. Common Performance Optimization Patterns
-
-### Tool Call Optimization
-
-For optimizing tool call patterns:
-
-1. **Consolidated Calls**: Reduce number of tool calls by consolidating related operations
-2. **Selective Reading**: Read only necessary portions of files
-3. **Efficient Search**: Use targeted search queries
-4. **Response Efficiency**: Generate concise, focused responses
-
-### Cognitive Flow Optimization
-
-For optimizing cognitive processing flow:
-
-1. **Streamlined Decision Trees**: Simplify decision processes
-2. **Reduced Memory Usage**: Minimize context requirements
-3. **Clear Pathways**: Define straightforward task processes
-4. **Parallel Processing**: Enable concurrent operations where possible
-
-### File Structure Optimization
-
-For optimizing file structure and organization:
-
-1. **Efficient File Organization**: Organize for quick reference and access
-2. **Reference Minimization**: Reduce cross-references to prevent hallucinations
-3. **Content Consolidation**: Combine related information
-4. **Size Optimization**: Keep files within efficient processing size
-
-## 6. Performance Testing and Verification
-
-Performance optimizations require specialized verification:
-
-### Before/After Measurement
-
-```typescript
-// 1. Document before state
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Document baseline performance",
-          "# Implementation Progress: Performance Optimization\n\n## Baseline\n\n- Component: [metrics]")
-
-// 2. Implement optimization
-edit_file("1000xbrain/[target_component_path]/[file_to_modify].md",
-          "Implement performance optimization",
-          "# [Title]\n\n## [Optimized Section]\n\n[Optimized Content]")
-
-// 3. Document after state
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Document optimized performance",
-          "# Implementation Progress: Performance Optimization\n\n## Optimized\n\n- Component: [metrics]")
-```
-
-### Regression Testing
-
-```typescript
-// 1. Verify functionality is maintained
-read_file("1000xbrain/[target_component_path]/[modified_file].md", should_read_entire_file=true)
-
-// 2. Document regression test results
-edit_file("[planning_folder_path]/implementation-progress.md",
-          "Document regression testing",
-          "# Implementation Progress: Performance Optimization\n\n## Regression Testing\n\n- Functionality: [status]")
-```
-
-## 7. Success Criteria
-
-Successful implementation of performance optimization meets these criteria:
-
-1. **Measurable Improvement**: Quantifiable performance enhancement is achieved
-2. **Maintained Functionality**: All functionality is preserved during optimization
-3. **Scalable Solution**: Optimization scales appropriately with varying loads
-4. **Documentation Clarity**: Performance improvements are clearly documented
-5. **Verification Completeness**: Both performance and functionality are verified
-
-## 8. Implementation Completion
-
-When performance optimization implementation is complete, 1000xdev:
-
-1. **Verifies Performance Requirements**: Ensures all performance goals are met
-2. **Updates Progress**: Marks all phases and steps as complete
-3. **Documents Improvements**: Clearly documents performance gains
-4. **Signals Completion**: Sends `implementation-complete` message-command
-
-### Completion Indicator
-
-```
-💻 1000xdev [rules-workflow]
-
-Performance Optimization Implementation complete:
-- All targeted components optimized
-- Performance improvements verified
-- Functionality maintained
-
-implementation-complete
-```
-
-## 9. Examples
-
-### Example 1: Message-Command Processing Optimization
-
-With planning folder focusing on message-command processing optimization, implementation would:
-- Streamline message-command parsing logic
-- Optimize parameter handling
-- Reduce unnecessary validation steps
-- Verify message-command processing speed improvement
-
-### Example 2: Tool Call Efficiency Optimization
-
-With planning folder focusing on tool call efficiency, implementation would:
-- Reduce number of tool calls by consolidating operations
-- Optimize tool call parameters
-- Implement more efficient response handling
-- Verify tool call efficiency improvement 
