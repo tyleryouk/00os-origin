@@ -1,3 +1,5 @@
+# USE WHEN understanding the pathway concept and organization in the 1000xbrain system
+
 # Pathway Organization
 
 ## Overview

@@ -1,9 +1,11 @@
 ---
-description: 
+description: USE WHEN verifying knowledge integration with parameters in the 1000xbrain system
 globs: 
 alwaysApply: false
 ---
-# Parameter-Knowledge Verification
+# USE WHEN verifying knowledge integration with parameters in the 1000xbrain system
+
+# Parameter Knowledge Verification
 
 ## Overview
 
@@ -159,7 +161,7 @@ fetch_rules(["knowledge/rules/knowledge-organization/parameter-knowledge-verific
 
 ## Related Components
 
-- [Parameter-Knowledge Mapping](mdc:parameter-knowledge-mapping.md): Mapping between parameters and knowledge
-- [Parameter Structure](mdc:../common/parameter-structure.md): Standards for parameter structure
-- [Knowledge Access](mdc:../system-wide/knowledge-access.md): Knowledge access patterns
-- [Pathway Organization](mdc:pathway-organization.md): Pathway organization principles 
+- [Parameter-Knowledge Mapping](parameter-knowledge-mapping.md): Mapping between parameters and knowledge
+- [Parameter Structure](../common/parameter-structure.md): Standards for parameter structure
+- [Knowledge Access](../system-wide/knowledge-access.md): Knowledge access patterns
+- [Pathway Organization](pathway-organization.md): Pathway organization principles 

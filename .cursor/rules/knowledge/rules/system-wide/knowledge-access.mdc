@@ -1,8 +1,10 @@
 ---
-description: 
+description: USE WHEN accessing knowledge components or implementing knowledge access patterns within the 1000xbrain system
 globs: 
 alwaysApply: false
 ---
+# USE WHEN accessing knowledge components or implementing knowledge access patterns within the 1000xbrain system
+
 # Knowledge Access Patterns
 
 ## Overview
@@ -112,6 +114,6 @@ fetch_rules(["knowledge/rules/system-wide/knowledge-access"],
 
 ## Related Components
 
-- [Brain-Files and Cursor-Rules](mdc:brain-files-cursor-rules.md): Understanding file relationships
-- [Parameter Structure](mdc:../common/parameter-structure.md): Parameter formatting
-- [Pathway Organization](mdc:../knowledge-organization/pathway-organization.md): Knowledge organization by pathway 
+- [Brain-Files and Cursor-Rules](brain-files-cursor-rules.md): Understanding file relationships
+- [Parameter Structure](../common/parameter-structure.md): Parameter formatting
+- [Pathway Organization](../knowledge-organization/pathway-organization.md): Knowledge organization by pathway 

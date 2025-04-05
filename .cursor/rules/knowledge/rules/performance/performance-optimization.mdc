@@ -1,8 +1,10 @@
 ---
-description: 
+description: USE WHEN optimizing system performance or implementing performance improvements in the 1000xbrain system
 globs: 
 alwaysApply: false
 ---
+# USE WHEN optimizing system performance or implementing performance improvements in the 1000xbrain system
+
 # Performance Optimization
 
 ## Overview
@@ -89,6 +91,6 @@ fetch_rules(["knowledge/rules/performance/performance-optimization"],
 
 ## Related Components
 
-- [Cognitive Load Optimization](mdc:../system-wide-optimization/cognitive-load-optimization.md): Detailed cognitive load strategies
-- [Memory Management](mdc:../system-wide-optimization/memory-management.md): Memory usage optimization
-- [Tool Optimization](mdc:../system-wide-optimization/tool-optimization.md): Efficient tool usage patterns 
+- [Cognitive Load Optimization](../system-wide-optimization/cognitive-load-optimization.md): Detailed cognitive load strategies
+- [Memory Management](../system-wide-optimization/memory-management.md): Memory usage optimization
+- [Tool Optimization](../system-wide-optimization/tool-optimization.md): Efficient tool usage patterns 

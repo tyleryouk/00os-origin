@@ -1,3 +1,5 @@
+# USE WHEN implementing Planning Mode operations or looking for plan-mode examples and templates
+
 # Plan Mode Examples
 
 ## Overview

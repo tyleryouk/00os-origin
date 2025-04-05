@@ -352,5 +352,5 @@ Scripts meet the standards when they:
 
 ## References
 
-- PowerShell Best Practices: [Microsoft Documentation](mdc:https:/docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-development-guidelines)
-- Script Security Guidelines: [PowerShell Security Documentation](mdc:https:/docs.microsoft.com/en-us/powershell/scripting/learn/remoting/running-remote-commands?view=powershell-7.1) 
+- PowerShell Best Practices: [Microsoft Documentation](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-development-guidelines)
+- Script Security Guidelines: [PowerShell Security Documentation](https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/running-remote-commands?view=powershell-7.1) 

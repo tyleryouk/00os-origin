@@ -1,3 +1,5 @@
+# USE WHEN implementing file editing operations or understanding file safety guidelines for the 1000xbrain system
+
 # File Editing Safety Guidelines
 
 ## Overview

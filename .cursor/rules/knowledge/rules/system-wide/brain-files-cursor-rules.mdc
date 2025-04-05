@@ -1,8 +1,10 @@
 ---
-description: 
+description: USE WHEN understanding the relationship between brain-files and cursor-rules in the 1000xbrain system
 globs: 
 alwaysApply: false
 ---
+# USE WHEN understanding the relationship between brain-files and cursor-rules in the 1000xbrain system
+
 # Brain-Files and Cursor-Rules Relationship
 
 ## Overview
@@ -75,6 +77,6 @@ fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"],
 
 ## Related Components
 
-- [File Safety](mdc:file-safety.md): Guidelines for safe file editing
-- [Symbol Guidelines](mdc:../common/symbol-guidelines.md): Proper usage of symbols in documentation
-- [Knowledge Access](mdc:knowledge-access.md): How to access knowledge components 
+- [File Safety](file-safety.md): Guidelines for safe file editing
+- [Symbol Guidelines](../common/symbol-guidelines.md): Proper usage of symbols in documentation
+- [Knowledge Access](knowledge-access.md): How to access knowledge components 

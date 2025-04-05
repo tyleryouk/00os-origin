@@ -1,3 +1,5 @@
+# USE WHEN integrating knowledge components with parameter files in the 1000xbrain system
+
 # Parameter-Knowledge Integration Patterns
 
 ## Overview

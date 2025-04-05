@@ -1,8 +1,10 @@
 ---
-description: 
+description: USE WHEN implementing file reading operations or handling large file reading challenges
 globs: 
 alwaysApply: false
 ---
+# USE WHEN implementing file reading operations or handling large file reading challenges
+
 # File Reading Implementation Patterns
 
 ## Overview
