@@ -1,4 +1,6 @@
-# Symbol Usage Guidelines
+# USE WHEN implementing or evaluating symbol usage in documentation for the 1000xbrain system
+
+# Symbol Guidelines
 
 ## Overview
 

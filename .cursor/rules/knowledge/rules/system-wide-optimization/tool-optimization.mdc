@@ -1,8 +1,10 @@
 ---
-description: 
+description: USE WHEN optimizing tool usage or implementing tool-related improvements in the 1000xbrain system
 globs: 
 alwaysApply: false
 ---
+# USE WHEN optimizing tool usage or implementing tool-related improvements in the 1000xbrain system
+
 # Tool Optimization
 
 ## Overview
@@ -95,6 +97,6 @@ fetch_rules(["knowledge/rules/system-wide-optimization/tool-optimization"],
 
 ## Related Components
 
-- [Performance Optimization](mdc:../performance/performance-optimization.md): Overall performance optimization
-- [Search Patterns](mdc:search-patterns.md): Specific search optimization patterns
-- [Command Optimization](mdc:command-optimization.md): Terminal command optimization 
+- [Performance Optimization](../performance/performance-optimization.md): Overall performance optimization
+- [Search Patterns](search-patterns.md): Specific search optimization patterns
+- [Command Optimization](command-optimization.md): Terminal command optimization 

@@ -1,3 +1,5 @@
+# USE WHEN accessing knowledge components or implementing knowledge access patterns within the 1000xbrain system
+
 # Knowledge Access Patterns
 
 ## Overview

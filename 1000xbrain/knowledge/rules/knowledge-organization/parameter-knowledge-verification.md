@@ -1,4 +1,6 @@
-# Parameter-Knowledge Verification
+# USE WHEN verifying knowledge integration with parameters in the 1000xbrain system
+
+# Parameter Knowledge Verification
 
 ## Overview
 

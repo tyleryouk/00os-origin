@@ -1,3 +1,5 @@
+# USE WHEN implementing file reading operations or handling large file reading challenges
+
 # File Reading Implementation Patterns
 
 ## Overview

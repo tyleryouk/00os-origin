@@ -1,4 +1,6 @@
-# Cognitive Enhancement Principles
+# USE WHEN enhancing cognitive capabilities or optimizing brain file architecture in the 1000xbrain system
+
+# Cognitive Enhancement Guidelines
 
 ## Overview
 

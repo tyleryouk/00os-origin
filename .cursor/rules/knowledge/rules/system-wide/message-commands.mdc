@@ -1,8 +1,10 @@
 ---
-description: 
+description: USE WHEN implementing or understanding message-command processing in the 1000xbrain system
 globs: 
 alwaysApply: false
 ---
+# USE WHEN implementing or understanding message-command processing in the 1000xbrain system
+
 # Message Commands Architecture
 
 ## Overview
@@ -96,6 +98,6 @@ fetch_rules(["knowledge/rules/system-wide/message-commands"],
 
 ## Related Components
 
-- [Brain-Files and Cursor-Rules](mdc:brain-files-cursor-rules.md): Defines extension usage
-- [File Safety](mdc:file-safety.md): Guidelines for safe file editing
-- [Symbol Guidelines](mdc:../common/symbol-guidelines.md): Proper usage of symbols with @ 
+- [Brain-Files and Cursor-Rules](brain-files-cursor-rules.md): Defines extension usage
+- [File Safety](file-safety.md): Guidelines for safe file editing
+- [Symbol Guidelines](../common/symbol-guidelines.md): Proper usage of symbols with @ 

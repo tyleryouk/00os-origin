@@ -1,3 +1,5 @@
+# USE WHEN implementing or understanding mode-specific behaviors and patterns in the 1000xbrain system
+
 # Mode Patterns
 
 ## Overview

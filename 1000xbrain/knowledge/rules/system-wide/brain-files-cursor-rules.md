@@ -1,3 +1,5 @@
+# USE WHEN understanding the relationship between brain-files and cursor-rules in the 1000xbrain system
+
 # Brain-Files and Cursor-Rules Relationship
 
 ## Overview

@@ -1,3 +1,5 @@
+# USE WHEN mapping knowledge components to parameters in the 1000xbrain system
+
 # Parameter-Knowledge Mapping
 
 ## Overview

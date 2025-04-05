@@ -1,3 +1,5 @@
+# USE WHEN implementing or evaluating parameter structure and formatting in the 1000xbrain system
+
 # Parameter Structure
 
 ## Overview
