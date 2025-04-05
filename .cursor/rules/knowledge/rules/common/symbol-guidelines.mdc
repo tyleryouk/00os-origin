@@ -1,0 +1,99 @@
+# Symbol Usage Guidelines
+
+## Overview
+
+This component defines essential standards for using symbols within the 1000xbrain cognitive architecture, with a focus on the @ symbol and extension usage.
+
+## Core Principles
+
+### 1. @ Symbol Protection Requirements
+
+To avoid hallucinations and incorrect tool calls:
+
+1. **ALWAYS use backticks around @ symbols** in regular text
+2. **NEVER reference .mdc files for editing** - only reference for message-commands
+3. **NEVER reference .md files in message-command parameters** - only use .mdc
+4. **Keep @ symbol references minimal** - excessive @ symbols can cause parsing issues
+5. **Use absolute clarity** when distinguishing between .md files (for editing) and .mdc files (for message-commands)
+
+### 2. Allowed @ Symbol Usage
+
+1. **File Cross-References at Beginning**:
+   - Allowed only in the first 20 lines of files
+   - Example: `@parameters/rules/dev-mode/system-wide.mdc`
+
+2. **Backtick-Wrapped Examples**:
+   - Wrapped in backticks to prevent reference detection
+   - Example: `` `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc` ``
+
+3. **Code Block Examples**:
+   - Used within code blocks with proper backtick wrapping
+
+### 3. Prohibited @ Symbol Usage
+
+1. **Direct Usage in Regular Text**:
+   - Never use @ followed by a path in regular text
+   - INCORRECT: `To verify planning, use @parameters/rules/helpers/verification/verify-planning.mdc`
+   - CORRECT: `To verify planning, use `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc``
+
+2. **In File Names or Headers**:
+   - Never include @ in file names or section headers
+
+3. **Multiple Unwrapped @ Symbols**:
+   - Multiple @ symbols in close proximity can cause parsing issues
+
+### 4. File Structure Discipline
+
+To prevent hallucinations and ensure clean symbol usage:
+
+1. **No Index Files**: Never create or reference index.md files - these cause hallucinations
+2. **No README Files in Subdirectories**: README.md should only exist at the root of 1000xbrain
+3. **Avoid Directory References**: Reference specific components directly, not directories
+
+## Implementation Patterns
+
+### Safe @ Symbol References 
+
+```markdown
+# Safe reference to a file path
+The file is in `core/identity/global-rules.md`
+
+# Safe reference to a message-command parameter
+Use the parameter `@parameters/rules/plan-mode/system-wide.mdc` in your message-command
+```
+
+### Safe Code Block Usage
+
+````markdown
+```typescript
+// Safe reference in a code block
+fetch_rules(["knowledge/rules/system-wide/file-safety"], 
+           "Understanding file safety")
+```
+````
+
+## Integration with Other Components
+
+This component integrates with:
+
+- **File Safety**: Provides symbol-specific usage guidelines
+- **Brain-Files and Cursor-Rules**: Clarifies extension usage with symbols
+- **Message Commands**: Defines symbol usage in message-commands
+
+## Access and Usage
+
+```typescript
+// Access this component for symbol usage guidelines
+fetch_rules(["knowledge/rules/common/symbol-guidelines"], 
+           "Understanding symbol usage guidelines")
+
+// Usage in documentation
+fetch_rules(["knowledge/rules/common/symbol-guidelines"], 
+           "Implementing safe symbol usage in documentation")
+```
+
+## Related Components
+
+- [File Safety](../system-wide/file-safety.md): Guidelines for safe file editing
+- [Brain-Files and Cursor-Rules](../system-wide/brain-files-cursor-rules.md): Relationship between file types
+- [Message Commands](../system-wide/message-commands.md): How to format message commands properly 
