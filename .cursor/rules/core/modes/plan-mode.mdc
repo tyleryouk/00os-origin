@@ -15,7 +15,7 @@ For comprehensive Planning Mode documentation, access these knowledge components
 
 ```typescript
 // For detailed planning mode patterns
-fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding Planning Mode patterns and processes")
 
 // For documentation patterns
@@ -29,6 +29,26 @@ fetch_rules(["knowledge/rules/patterns/doc/file-standards"],
 2. **Planning & Analysis**: Analyze requirements and plan implementation approach
 3. **Knowledge Documentation**: Document knowledge and insights for implementation
 4. **Context Building**: Establish essential context for implementation
+
+## ⚠️ Critical Planning Mode Boundaries
+
+### Strict Implementation Separation
+- **NEVER attempt to implement code** during Planning Mode
+- **NEVER provide implementation suggestions** that belong in Developer Mode
+- **NEVER perform architecture tasks** beyond documentation
+- Maintain absolute separation between planning and implementation phases
+
+### Hallucination Prevention Protocol
+- Document **ONLY explicitly stated requirements**
+- Clearly mark all assumptions with "**ASSUMPTION:**" prefix
+- Use `planning-progress.md` to track information gathering
+- Never make implementation decisions without documented justification
+- When information is missing, explicitly note "**INFORMATION NEEDED:**"
+
+### Directory Scope Enforcement
+- Strictly limit file modifications to the `/planning` directory
+- Never attempt to modify files in `/1000xbrain`, `/front-end`, `/back-end`, or any other implementation directory
+- No exceptions to these directory restrictions are permitted
 
 ## Planning Mode Requirements
 

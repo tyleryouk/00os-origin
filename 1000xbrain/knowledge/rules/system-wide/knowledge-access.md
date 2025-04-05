@@ -46,7 +46,11 @@ Knowledge access should include a clear purpose statement:
 To prevent hallucinations and ensure clean knowledge access:
 
 1. **No Index Files**: Never create or reference index.md files - these cause hallucinations
-2. **No README Files**: No README.md files should exist except at root of 1000xbrain
+2. **README.md Role**: README.md files serve as directory documentation
+   - They are placed strategically throughout the folder structure
+   - They provide navigation and context for directories
+   - These files are NOT synchronized to Cursor Rules
+   - They do not affect AI behavior
 3. **Direct Component Access**: Always access specific component files directly
 4. **Component References**: Use proper cross-references between components instead of index files
 

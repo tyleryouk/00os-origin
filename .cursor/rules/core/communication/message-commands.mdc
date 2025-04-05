@@ -124,11 +124,12 @@ When referring to project-rule-parameters:
 
 ## Valid Workflows
 
-The system supports only these four workflow types:
+The system supports only these five workflow types:
 1. `rules-workflow`: For cognitive architecture enhancement
 2. `front-end-workflow`: For front-end development
 3. `back-end-workflow`: For back-end development
 4. `scripts-workflow`: For scripts development
+5. `quality-workflow`: For quality assurance and monitoring
 
 ## "none" Placeholder Usage
 

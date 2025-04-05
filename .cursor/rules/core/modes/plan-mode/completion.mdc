@@ -13,15 +13,15 @@ For comprehensive Planning Mode completion standards, access these knowledge com
 
 ```typescript
 // For detailed plan-mode completion patterns
-fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding Planning Mode completion patterns")
 
 // For common mode patterns including completion signals
-fetch_rules(["knowledge/rules/patterns/modes/common-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding common completion patterns across all modes")
 
 // For completion-specific patterns
-fetch_rules(["knowledge/rules/patterns/doc/completion-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/cognitive-enhancement"], 
            "Understanding documentation completion patterns")
 ```
 

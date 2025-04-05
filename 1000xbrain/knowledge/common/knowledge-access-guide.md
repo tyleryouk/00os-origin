@@ -1,0 +1,206 @@
+# USE WHEN accessing knowledge from the 1000xbrain system
+
+# Knowledge Access Guide
+
+## Overview
+
+This guide provides comprehensive instructions on how to effectively access and utilize knowledge within the 1000xbrain system. The Knowledge Subsystem is designed to provide specialized, on-demand information through the `fetch_rules` tool.
+
+## Knowledge Access Tool
+
+The primary method for accessing knowledge is the `fetch_rules` tool:
+
+```typescript
+fetch_rules(["knowledge/path/to/knowledge-file"], 
+           "Explanation of why the knowledge is being accessed")
+```
+
+### Parameters
+
+1. **First Parameter**: Array of knowledge file paths
+   - Each path should start with "knowledge/"
+   - Multiple paths can be included for related knowledge
+   - Paths should be as specific as possible
+
+2. **Second Parameter**: Explanation of knowledge purpose
+   - Briefly explain why the knowledge is being accessed
+   - This helps with context tracking and knowledge refinement
+   - Should be clear and specific to the current need
+
+## Best Practices for Knowledge Access
+
+### 1. Access at Decision Points
+
+Access knowledge when making important decisions:
+
+```typescript
+// When determining how to implement a feature
+fetch_rules(["knowledge/front-end/patterns/component-patterns"], 
+           "Understanding component patterns for feature implementation")
+```
+
+### 2. Access for Specialized Knowledge
+
+Access knowledge for specialized domains:
+
+```typescript
+// When working with specific technologies
+fetch_rules(["knowledge/back-end/database/optimization-patterns"], 
+           "Understanding database optimization patterns")
+```
+
+### 3. Access for Implementation Patterns
+
+Access knowledge for implementation guidance:
+
+```typescript
+// When implementing specific patterns
+fetch_rules(["knowledge/scripts/patterns/common-patterns"], 
+           "Understanding common script patterns for implementation")
+```
+
+### 4. Access for Standards
+
+Access knowledge for applicable standards:
+
+```typescript
+// When ensuring compliance with standards
+fetch_rules(["knowledge/quality/standards/quality-standards"], 
+           "Understanding quality standards for implementation")
+```
+
+## Efficient Knowledge Access Patterns
+
+### 1. Focused Access Pattern
+
+Access only what you need for the current task:
+
+```typescript
+// Good - Focused on specific need
+fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+           "Understanding plan-mode implementation patterns")
+
+// Avoid - Too broad and unfocused
+fetch_rules(["knowledge/rules/patterns"], 
+           "Understanding patterns")
+```
+
+### 2. Combined Access Pattern
+
+Access related knowledge together:
+
+```typescript
+// Efficient - Related knowledge combined
+fetch_rules([
+  "knowledge/front-end/patterns/component-patterns",
+  "knowledge/front-end/standards/component-standards"
+], "Understanding component patterns and standards")
+
+// Less efficient - Separate accesses for related topics
+fetch_rules(["knowledge/front-end/patterns/component-patterns"], 
+           "Understanding component patterns")
+// ...later...
+fetch_rules(["knowledge/front-end/standards/component-standards"], 
+           "Understanding component standards")
+```
+
+### 3. Progressive Access Pattern
+
+Start with general knowledge, then access more specific knowledge as needed:
+
+```typescript
+// Initial access for general understanding
+fetch_rules(["knowledge/scripts/standards/script-standards"], 
+           "Understanding overall script standards")
+
+// Later access for specific implementation
+fetch_rules(["knowledge/scripts/patterns/common-patterns"], 
+           "Understanding specific script patterns for implementation")
+```
+
+## Knowledge Access Structure Map
+
+The following map shows the main knowledge areas and how to access them:
+
+```
+knowledge/
+├── rules/                # Cognitive architecture enhancement
+│   ├── patterns/         # Implementation patterns
+│   ├── reference/        # Reference information
+│   └── system-wide/      # System-wide rules information
+│
+├── quality/              # Quality assurance and monitoring
+│   ├── standards/        # Quality standards
+│   ├── monitoring/       # Monitoring frameworks
+│   └── taxonomy/         # Issue classification
+│
+├── front-end/            # Front-end development
+│   ├── patterns/         # Component patterns
+│   └── standards/        # Front-end standards
+│
+├── back-end/             # Back-end development
+│   ├── patterns/         # API patterns
+│   └── standards/        # Back-end standards
+│
+├── scripts/              # Scripts and automation
+│   ├── standards/        # Script standards
+│   ├── patterns/         # Script patterns
+│   └── taxonomy/         # Script classification
+│
+├── system-structure/     # System structure information
+│   └── system-vs-subsystem.md  # System and subsystem relationships
+│
+└── common/               # Common knowledge across workflows
+    └── knowledge-access-guide.md  # This guide
+```
+
+## Common Knowledge Access Examples
+
+### For Planning Activities
+
+```typescript
+// Understanding planning documentation standards
+fetch_rules(["knowledge/rules/patterns/doc/file-standards"], 
+           "Understanding documentation standards for planning")
+
+// Understanding planning mode patterns
+fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+           "Understanding plan-mode patterns")
+```
+
+### For Implementation Activities
+
+```typescript
+// Understanding implementation patterns
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Understanding implementation patterns")
+
+// Understanding error handling
+fetch_rules(["knowledge/rules/patterns/impl/error-handling"], 
+           "Understanding error handling patterns")
+```
+
+### For Quality Assurance
+
+```typescript
+// Understanding quality standards
+fetch_rules(["knowledge/quality/standards/quality-standards"], 
+           "Understanding quality standards")
+
+// Understanding issue classification
+fetch_rules(["knowledge/quality/taxonomy/issue-classification"], 
+           "Understanding issue classification")
+```
+
+## Knowledge Subsystem Enhancement
+
+The Knowledge Subsystem is continuously improved through:
+
+1. **Usage Feedback**: Patterns of knowledge access inform refinements
+2. **Content Expansion**: New knowledge is added based on identified needs
+3. **Structural Optimization**: Organization is refined for more efficient access
+4. **Quality Enhancement**: Existing knowledge is enhanced for clarity and completeness
+
+## Conclusion
+
+Effective knowledge access is critical for optimal functioning of the 1000xbrain cognitive architecture. By following the patterns and practices in this guide, you can efficiently access the specialized knowledge you need, when you need it, enhancing overall system performance and implementation quality. 

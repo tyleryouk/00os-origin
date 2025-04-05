@@ -1,60 +1,42 @@
-# File Management and Synchronization
+# Rules Workflow File Management
 
 ## Overview
 
-This file covers the essential processes for file management, synchronization, and validation in the 1000xbrain cognitive architecture.
+This file provides rules-workflow specific guidance for managing files within the cognitive architecture. For general file editing safety guidelines, refer to `core/communication/file-editing-safety.md` and `core/communication/symbol-guidelines.md`.
 
-## Critical File Structure Requirements
+## Rules Workflow File Management Principles
 
-All brain-files MUST follow these structure requirements:
+### Rules-Specific Directory Structure
 
-1. **NO FRONTMATTER**: Brain-files should NEVER contain frontmatter (the --- enclosed metadata sections).
-2. **NO RULE TYPE SPECIFICATIONS**: Never add rule_type, description, or globs specifications to brain-files.
-3. **DIRECT CONTENT**: All markdown content must begin directly with headers or text.
-4. **STANDARD MARKDOWN**: Use only standard markdown formatting.
+1. **Cognitive Architecture Structure Preservation**:
+   - Maintain the established subsystem structure:
+     - `core/`: Core system files
+     - `workflows/`: Workflow-specific files
+     - `parameters/`: Parameter definitions
+     - `knowledge/`: Knowledge components
 
-Brain-files are pure markdown content only. All rule type designations, glob patterns, and other configuration metadata are handled exclusively in Cursor Rules (.mdc) files by Tyler through the Cursor Settings UI.
+2. **Rules Workflow File Naming**:
+   - Use kebab-case for all file names (e.g., `rules-core.md`)
+   - Include clear context in file names (e.g., `implementation-approaches.md`)
+   - Keep file names concise and descriptive
+   - Follow consistent naming patterns across related files
 
-## File Extension Standards
+### Rules Workflow Validation Process
 
-It is critical to maintain clear distinction between file types:
+For rules-workflow specifically:
 
-| Extension | Purpose | Can Be Edited | Referenced As |
-|-----------|---------|---------------|--------------|
-| `.md` | Source files in 1000xbrain | ✅ YES | In regular paths |
-| `.mdc` | Cursor Project Rules | 🚫 NO | In project-rule-parameters |
+1. **Enhanced Validation Requirements**:
+   - Verify that all cross-references are valid and use proper backticks
+   - Ensure all knowledge access patterns use proper fetch_rules syntax
+   - Validate that all tool usage follows established patterns
+   - Check that all file modifications respect mode boundaries
 
-When referencing files in documentation:
-- Use `.md` when referring to source files: `core/identity/global-rules.md`
-- Use `.mdc` when specifying project-rule-parameters: `@parameters/rules/plan-mode.mdc`
-
-## @ Symbol Usage
-
-For proper @ symbol usage:
-
-1. **Backtick Protection**: Wrap all @ symbols in backticks (e.g., `` `@example.mdc` ``) in regular text
-2. **No Unwrapped Symbols**: Never use unwrapped @ symbols in documentation
-3. **Extension Correctness**: Always use .mdc extension in project-rule-parameters
-4. **README.md Verification**: Check README.md in directories before making changes
-
-## Validation Process
-
-Validate file integrity through these key checks:
-
-1. **Extension Correctness**: Ensure all project-rule-parameter references use `.mdc` extension
-2. **File Existence**: Verify referenced files actually exist
-3. **Naming Consistency**: Check for consistency in naming patterns
-4. **Path Validity**: Validate file paths are correctly formatted
-
-## Common Issues
-
-| Issue | Solution |
-|-------|----------|
-| Inconsistent extensions | Always use .mdc in project-rule-parameters |
-| Reference errors | Wrap @ symbols in backticks |
-| Cognitive integration issues | Ensure correct extension differentiation (.md vs .mdc) |
-| Unwrapped @ symbols | Add backticks around all @ symbols in documentation |
+2. **Rules-Specific Quality Checks**:
+   - Verify knowledge component integration
+   - Ensure functionality-focused organization
+   - Check knowledge access optimization
+   - Validate pattern standardization
 
 ## Conclusion
 
-Proper file management is essential for maintaining the integrity and functionality of the 1000xbrain cognitive architecture. Following these standards ensures synchronization works correctly and prevents AI hallucinations and system errors. 
+For general file editing safety, extension usage, and symbol guidelines, refer to the core communication files. This file provides only the rules-workflow specific guidance for file management. 

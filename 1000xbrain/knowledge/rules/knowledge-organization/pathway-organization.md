@@ -95,9 +95,12 @@ knowledge/rules/
 ## Important File Structure Rules
 
 1. **No Index Files**: Never create index.md files in any directory - these cause hallucinations
-2. **No README Files**: No README.md files should exist in any directory except the root 1000xbrain directory 
+2. **README.md Role**: README.md files serve as directory documentation
+   - They are placed strategically throughout the folder structure
+   - They provide navigation and context for directories  
+   - These files are NOT synchronized to Cursor Rules
+   - They do not affect AI behavior and serve documentation purposes only
 3. **Direct Component Access**: All components are accessed directly through their pathways
-4. **Root README Only**: Only one README.md file exists at the root of 1000xbrain for documentation and Context Pills attachment
 
 ## Integration with Other Components
 

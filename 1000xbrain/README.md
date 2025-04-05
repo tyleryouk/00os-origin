@@ -148,6 +148,29 @@ This cognitive architecture organization offers several key advantages:
 4. **Enhanced Development**: Supports continuous improvement with dedicated memory components
 5. **Clearer Navigation**: Makes it easier to find specific files based on their purpose
 
+## System Structure
+
+The 1000xbrain cognitive architecture is organized as a hierarchical system:
+
+1. **1000xbrain SYSTEM**: The complete cognitive architecture
+   
+2. **Four SUBSYSTEMS**:
+   - **Core Subsystem**: Essential identity and behavior (Always rules)
+   - **Knowledge Subsystem**: Specialized domain knowledge (Agent Requested rules)
+   - **Parameters Subsystem**: Operation-specific frameworks (Manual rules)
+   - **Workflows Subsystem**: Domain-specific implementation guides (Auto Attached rules)
+   
+3. **Five WORKFLOW TYPES** (documented across all subsystems):
+   - rules-workflow
+   - quality-workflow
+   - front-end-workflow
+   - back-end-workflow
+   - scripts-workflow
+
+Each subsystem contains documentation for all five workflow types, but with different purposes, formats, and access methods. This clear separation of concerns enhances cognitive efficiency and prevents hallucinations.
+
+For detailed system organization information, see `core/system-organization.md`.
+
 ## Rule Types & File Organization
 
 The Cursor Project Rules system uses four rule types that determine when rules are attached to the conversation. These rule types generally correspond to the major subsystems:

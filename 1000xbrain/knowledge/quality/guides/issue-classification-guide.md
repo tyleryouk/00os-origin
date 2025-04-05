@@ -1,0 +1,595 @@
+# USE WHEN classifying quality issues within the 1000xbrain system
+
+# Issue Classification Guide
+
+## Overview
+
+This guide provides a comprehensive framework for classifying quality issues within the 1000xbrain cognitive architecture. Proper classification enables effective prioritization, appropriate response, and systematic improvement of the system.
+
+## Classification Dimensions
+
+Quality issues are classified along four primary dimensions:
+
+1. **Type**: The category of quality affected by the issue
+2. **Severity**: The impact and urgency of the issue
+3. **Scope**: The extent of the system affected by the issue
+4. **Source**: The origin or root cause of the issue
+
+## Type Classification
+
+### 1. Structure Issues
+
+Issues related to the organization, architecture, and structural quality of components.
+
+#### 1.1 Organization Issues
+- **Directory Structure Issues**: Problems with directory organization or hierarchy
+- **File Organization Issues**: Problems with file structure or organization
+- **Component Organization Issues**: Problems with component organization
+- **Namespace Issues**: Problems with namespace organization or clarity
+
+#### 1.2 Naming Issues
+- **Inconsistent Naming**: Inconsistency in naming conventions
+- **Unclear Names**: Names that do not clearly indicate purpose
+- **Duplicate Names**: Duplicate or confusingly similar names
+- **Non-standard Names**: Names that do not follow established conventions
+
+#### 1.3 Structure Design Issues
+- **Architecture Issues**: Problems with architectural design
+- **Modularity Issues**: Problems with component modularity
+- **Coupling Issues**: Inappropriate coupling between components
+- **Hierarchy Issues**: Problems with hierarchical relationships
+
+### 2. Content Issues
+
+Issues related to the quality of information and knowledge within components.
+
+#### 2.1 Accuracy Issues
+- **Factual Errors**: Incorrect factual information
+- **Outdated Information**: Information that is no longer current
+- **Technical Inaccuracies**: Incorrect technical information
+- **Inconsistent Information**: Information that contradicts other content
+
+#### 2.2 Completeness Issues
+- **Missing Information**: Critical information that is absent
+- **Incomplete Coverage**: Partial coverage of necessary topics
+- **Insufficient Detail**: Lack of necessary detail
+- **Edge Case Omissions**: Failure to address edge cases
+
+#### 2.3 Clarity Issues
+- **Ambiguous Content**: Content with multiple possible interpretations
+- **Complex Explanations**: Unnecessarily complex explanations
+- **Jargon Overuse**: Excessive use of specialized terminology
+- **Poor Structure**: Content with poor organizational structure
+
+#### 2.4 Consistency Issues
+- **Terminology Inconsistency**: Inconsistent use of terms
+- **Style Inconsistency**: Inconsistent writing or formatting style
+- **Conceptual Inconsistency**: Inconsistent conceptual models
+- **Cross-component Inconsistency**: Inconsistency across components
+
+### 3. Reference Issues
+
+Issues related to references, links, and relationships between components.
+
+#### 3.1 Reference Integrity Issues
+- **Broken References**: References to non-existent targets
+- **Incorrect Paths**: Incorrect file or directory paths
+- **Invalid Links**: Links that do not function correctly
+- **Version Mismatch**: References to incompatible versions
+
+#### 3.2 Reference Usage Issues
+- **Inappropriate References**: References used in inappropriate contexts
+- **Missing References**: Necessary references that are absent
+- **Over-referencing**: Excessive use of references
+- **Unclear Reference Purpose**: Unclear purpose for references
+
+#### 3.3 Cross-Reference Issues
+- **Unidirectional References**: References that should be bidirectional
+- **Reference Network Gaps**: Gaps in the reference network
+- **Circular References**: Problematic circular reference patterns
+- **Reference Inconsistency**: Inconsistent reference patterns
+
+### 4. Implementation Issues
+
+Issues related to the implementation quality of components.
+
+#### 4.1 Tool Usage Issues
+- **Inappropriate Tool Selection**: Selection of inappropriate tools
+- **Inefficient Tool Usage**: Inefficient use of available tools
+- **Tool Sequence Issues**: Problems with tool sequence or combination
+- **Tool Parameter Issues**: Inappropriate tool parameter usage
+
+#### 4.2 Code Quality Issues
+- **Syntax Errors**: Errors in code syntax
+- **Logic Errors**: Errors in code logic
+- **Performance Issues**: Inefficient or slow code
+- **Maintainability Issues**: Code that is difficult to maintain
+
+#### 4.3 Error Handling Issues
+- **Missing Error Handling**: Absent error handling for potential errors
+- **Inappropriate Error Response**: Inappropriate responses to errors
+- **Poor Error Messages**: Unclear or unhelpful error messages
+- **Error Recovery Issues**: Problems with error recovery mechanisms
+
+#### 4.4 Performance Issues
+- **Resource Inefficiency**: Inefficient use of system resources
+- **Slow Response**: Unacceptably slow response times
+- **Scaling Issues**: Problems with scaling under load
+- **Memory Management Issues**: Problems with memory management
+
+### 5. Integration Issues
+
+Issues related to the integration between components and overall system coherence.
+
+#### 5.1 Interface Issues
+- **Interface Inconsistency**: Inconsistency in component interfaces
+- **Interface Incompatibility**: Incompatibility between component interfaces
+- **Interface Complexity**: Unnecessarily complex interfaces
+- **Interface Documentation Issues**: Poorly documented interfaces
+
+#### 5.2 System Coherence Issues
+- **Conceptual Mismatch**: Mismatched conceptual models across components
+- **Functional Redundancy**: Redundant functionality across components
+- **Integration Gaps**: Gaps in integration between components
+- **Workflow Disruption**: Disruption of end-to-end workflows
+
+#### 5.3 Cross-Domain Issues
+- **Domain Boundary Issues**: Problems with domain boundaries
+- **Cross-Domain Consistency**: Inconsistency across domains
+- **Translation Issues**: Problems with translation between domains
+- **End-to-End Quality Issues**: Issues affecting end-to-end quality
+
+## Severity Classification
+
+### 1. Critical Issues
+
+Issues that significantly impact system functionality, integrity, or usability.
+
+#### 1.1 Characteristics
+- Prevents core functionality from working
+- Causes data loss or corruption
+- Creates security vulnerabilities
+- Completely blocks user workflows
+- Affects all or most users
+
+#### 1.2 Examples
+- Broken core functionality
+- System crashes or hangs
+- Data corruption or loss
+- Security breaches
+- Complete workflow blockage
+
+#### 1.3 Response Expectations
+- Immediate attention (within 24 hours)
+- Highest priority for resolution
+- May require emergency fixes
+- Requires verification by multiple reviewers
+- Post-resolution root cause analysis
+
+### 2. Major Issues
+
+Issues that significantly impact functionality or user experience but do not completely prevent core operations.
+
+#### 2.1 Characteristics
+- Significantly degrades functionality
+- Creates substantial user frustration
+- Affects important but non-critical functions
+- Impacts a significant subset of users
+- Has workarounds, but they are difficult or time-consuming
+
+#### 2.2 Examples
+- Significant performance degradation
+- Major usability problems
+- Frequent errors in important functions
+- Loss of non-critical functionality
+- Incorrect results for important operations
+
+#### 2.3 Response Expectations
+- Prompt attention (within 72 hours)
+- High priority for resolution
+- Scheduled fix in near-term
+- Requires thorough verification
+- Documentation of workarounds until fixed
+
+### 3. Minor Issues
+
+Issues that affect non-critical aspects of the system or have easy workarounds.
+
+#### 3.1 Characteristics
+- Affects non-critical functionality
+- Creates minor user inconvenience
+- Has easy workarounds
+- Impacts a small subset of users
+- Does not prevent completion of tasks
+
+#### 3.2 Examples
+- Minor user interface issues
+- Small performance issues
+- Occasional non-critical errors
+- Documentation inconsistencies
+- Feature limitations (not defects)
+
+#### 3.3 Response Expectations
+- Scheduled attention (within 2 weeks)
+- Regular priority for resolution
+- Typically addressed in regular release cycles
+- May be grouped with other similar issues
+- Verification can be standard process
+
+### 4. Trivial Issues
+
+Issues that have minimal impact on functionality or user experience.
+
+#### 4.1 Characteristics
+- Causes no functional problems
+- Creates minimal user inconvenience
+- Does not impact task completion
+- Mostly aesthetic or preferential
+- May not be noticed by most users
+
+#### 4.2 Examples
+- Cosmetic user interface issues
+- Documentation typos or formatting
+- Minor style inconsistencies
+- Non-optimal but functional code
+- Enhancement suggestions (not defects)
+
+#### 4.3 Response Expectations
+- Attention as resources permit
+- Low priority for resolution
+- Often addressed in batches
+- May be deferred to future enhancements
+- Simple verification process
+
+## Scope Classification
+
+### 1. System-Wide Issues
+
+Issues that affect the entire system or multiple subsystems.
+
+#### 1.1 Characteristics
+- Impacts multiple subsystems
+- Affects core architecture or infrastructure
+- Requires coordinated resolution across components
+- Has broad implications for system quality
+- Often related to fundamental patterns or standards
+
+#### 1.2 Examples
+- Architectural flaws
+- System-wide performance issues
+- Global dependency problems
+- Cross-cutting standard violations
+- Central service failures
+
+#### 1.3 Response Approach
+- Requires system-wide planning
+- Involves multiple stakeholders
+- May need phased implementation
+- Requires comprehensive testing
+- Needs careful coordination
+
+### 2. Subsystem Issues
+
+Issues that are contained within a specific subsystem but may affect multiple components.
+
+#### 2.1 Characteristics
+- Impacts multiple components within a subsystem
+- Limited to a specific functional area
+- Requires coordination within subsystem
+- May affect interfaces to other subsystems
+- Often related to subsystem architecture or patterns
+
+#### 2.2 Examples
+- Subsystem architectural issues
+- Subsystem performance problems
+- Subsystem integration issues
+- Pattern inconsistencies within subsystem
+- Subsystem interface problems
+
+#### 2.3 Response Approach
+- Coordinated within subsystem
+- Involves subsystem stakeholders
+- May affect subsystem roadmap
+- Requires subsystem-level testing
+- Consider impacts on dependent subsystems
+
+### 3. Component Issues
+
+Issues that are specific to a single component.
+
+#### 3.1 Characteristics
+- Contained within a single component
+- Limited functional impact
+- Can be resolved by component owner
+- Minimal coordination required
+- Specific to component implementation
+
+#### 3.2 Examples
+- Component-specific bugs
+- Component performance issues
+- Component documentation problems
+- Component-specific pattern violations
+- Internal component inconsistencies
+
+#### 3.3 Response Approach
+- Addressed by component owner
+- Standard component change process
+- Component-level testing
+- Focused scope of change
+- Consider component interfaces
+
+### 4. Localized Issues
+
+Issues that affect a very specific part of a component with minimal broader impact.
+
+#### 4.1 Characteristics
+- Affects a specific function or feature
+- Very limited scope of impact
+- Simple to isolate and fix
+- Minimal risk of regression
+- Highly specific to implementation detail
+
+#### 4.2 Examples
+- Specific function bugs
+- Isolated documentation errors
+- Single instance pattern violations
+- Localized performance issues
+- Specific UI element problems
+
+#### 4.3 Response Approach
+- Quick, targeted fix
+- Minimal review requirements
+- Focused testing
+- Low regression risk
+- Simple deployment
+
+## Source Classification
+
+### 1. Design Sources
+
+Issues originating from design decisions or architectural choices.
+
+#### 1.1 Architecture Issues
+- **Structural Flaws**: Fundamental flaws in system structure
+- **Component Relationship Issues**: Problems with component relationships
+- **Pattern Misapplication**: Incorrect application of architectural patterns
+- **Scaling Limitations**: Design limitations that prevent scaling
+
+#### 1.2 Design Decisions
+- **Over-engineering**: Unnecessarily complex design
+- **Under-engineering**: Overly simplistic design
+- **Inappropriate Abstractions**: Poorly chosen abstractions
+- **Misaligned Requirements**: Design misaligned with requirements
+
+#### 1.3 Standard Issues
+- **Standard Violations**: Violations of established standards
+- **Standard Gaps**: Gaps in existing standards
+- **Standard Conflicts**: Conflicts between different standards
+- **Outdated Standards**: Standards that no longer apply
+
+### 2. Implementation Sources
+
+Issues originating from the implementation process or coding practices.
+
+#### 2.1 Code Issues
+- **Coding Errors**: Simple mistakes in code
+- **Algorithm Issues**: Problems with algorithm implementation
+- **Pattern Implementation Issues**: Poor implementation of design patterns
+- **Optimization Problems**: Issues with code optimization
+
+#### 2.2 Tool Issues
+- **Tool Misuse**: Inappropriate use of tools
+- **Tool Limitations**: Limitations of available tools
+- **Tool Integration Issues**: Problems with tool integration
+- **Tool Configuration Issues**: Issues with tool configuration
+
+#### 2.3 Technical Debt
+- **Expedient Solutions**: Quick fixes that accumulate technical debt
+- **Deferred Refactoring**: Postponed necessary refactoring
+- **Legacy Compatibility**: Compromises for legacy compatibility
+- **Incomplete Implementation**: Partially implemented features
+
+### 3. Process Sources
+
+Issues originating from development, maintenance, or quality processes.
+
+#### 3.1 Workflow Issues
+- **Process Gaps**: Gaps in established processes
+- **Process Violations**: Failures to follow processes
+- **Inefficient Processes**: Processes that are inefficient or ineffective
+- **Process Complexity**: Unnecessarily complex processes
+
+#### 3.2 Communication Issues
+- **Requirement Misunderstanding**: Misunderstanding of requirements
+- **Coordination Failures**: Failures in team coordination
+- **Knowledge Transfer Issues**: Problems with knowledge transfer
+- **Feedback Loop Problems**: Issues with feedback mechanisms
+
+#### 3.3 Resource Issues
+- **Time Constraints**: Issues caused by time pressure
+- **Skill Gaps**: Issues caused by missing skills or expertise
+- **Tool Availability**: Issues caused by tool unavailability
+- **Priority Conflicts**: Issues caused by conflicting priorities
+
+### 4. External Sources
+
+Issues originating from external factors or dependencies.
+
+#### 4.1 Dependency Issues
+- **External API Changes**: Changes to external APIs
+- **Library Compatibility**: Compatibility issues with libraries
+- **Platform Limitations**: Limitations of platforms or environments
+- **Version Conflicts**: Conflicts between dependency versions
+
+#### 4.2 Requirement Changes
+- **Changing Requirements**: Issues caused by requirement changes
+- **Requirement Conflicts**: Conflicts between different requirements
+- **Unclear Requirements**: Issues from unclear or ambiguous requirements
+- **Scope Changes**: Issues resulting from scope changes
+
+#### 4.3 Environmental Factors
+- **Resource Constraints**: Constraints on available resources
+- **Timeline Pressure**: Pressure from aggressive timelines
+- **Organizational Changes**: Changes in organizational structure
+- **Policy Changes**: Changes in policies or guidelines
+
+## Classification Process
+
+### 1. Issue Identification
+
+Start with clear identification of the issue:
+
+1. **Observe**: Identify the specific issue and its manifestation
+2. **Document**: Describe the issue clearly with specific examples
+3. **Reproduce**: If possible, establish steps to reproduce
+4. **Scope**: Determine the components, files, or areas affected
+5. **Impact**: Identify the impact on functionality or user experience
+
+### 2. Type Classification
+
+Determine the primary quality dimension affected:
+
+1. **Review Symptoms**: Examine the specific symptoms or manifestations
+2. **Map to Quality Dimensions**: Map to structure, content, reference, implementation, or integration
+3. **Identify Specific Type**: Determine the specific issue type within the dimension
+4. **Note Secondary Types**: Identify any secondary quality dimensions affected
+5. **Validate Classification**: Verify classification against similar issues
+
+### 3. Severity Assessment
+
+Assess the severity based on impact and urgency:
+
+1. **Functional Impact**: Assess impact on system functionality
+2. **User Impact**: Determine impact on user experience
+3. **Data Impact**: Consider any impact on data integrity
+4. **Workflow Impact**: Evaluate impact on essential workflows
+5. **Assign Severity**: Classify as critical, major, minor, or trivial
+
+### 4. Scope Determination
+
+Determine the scope of the issue:
+
+1. **Component Analysis**: Identify affected components
+2. **Dependency Mapping**: Map dependencies between affected components
+3. **Impact Propagation**: Determine how the issue propagates through the system
+4. **Boundary Identification**: Identify clear boundaries of the issue's impact
+5. **Assign Scope**: Classify as system-wide, subsystem, component, or localized
+
+### 5. Source Analysis
+
+Identify the source or root cause:
+
+1. **History Investigation**: Review the history of affected components
+2. **Pattern Recognition**: Look for patterns in similar issues
+3. **Process Review**: Review the processes that led to the issue
+4. **Root Cause Analysis**: Apply root cause analysis techniques
+5. **Assign Source**: Classify as design, implementation, process, or external
+
+### 6. Classification Documentation
+
+Document the complete classification:
+
+1. **Issue ID**: Assign a unique identifier
+2. **Classification Summary**: Summarize the classification along all dimensions
+3. **Rationale**: Document the rationale for the classification
+4. **Examples**: Include specific examples that illustrate the issue
+5. **Related Issues**: Link to related or similar issues
+
+## Classification Application
+
+### 1. Prioritization
+
+Use classification to determine priority:
+
+- **Critical + System-Wide**: Highest priority, immediate action
+- **Critical + Subsystem/Component**: Very high priority, rapid response
+- **Major + System-Wide/Subsystem**: High priority, scheduled response
+- **Major + Component/Localized**: Medium-high priority, planned response
+- **Minor + Any Scope**: Medium-low priority, regular cycle
+- **Trivial + Any Scope**: Low priority, as resources permit
+
+### 2. Assignment
+
+Use classification to determine appropriate ownership:
+
+- **System-Wide**: System architects or cross-functional team
+- **Subsystem**: Subsystem owner or team
+- **Component**: Component owner
+- **Localized**: Component developer
+- **Design Source**: Architecture team
+- **Implementation Source**: Development team
+- **Process Source**: Process owner or quality team
+- **External Source**: External dependency manager
+
+### 3. Resolution Approach
+
+Use classification to guide resolution approach:
+
+- **Structure Issues**: May require architectural changes or refactoring
+- **Content Issues**: May require review, research, or content revision
+- **Reference Issues**: May require reference validation or network redesign
+- **Implementation Issues**: May require code changes or tool adjustments
+- **Integration Issues**: May require cross-component coordination
+- **Critical Severity**: Requires immediate fixes, possibly emergency process
+- **Major Severity**: Requires dedicated resolution effort
+- **Minor/Trivial Severity**: Can often be batched with similar issues
+- **Design Source**: May require design review or architectural changes
+- **Implementation Source**: May require code review or implementation changes
+- **Process Source**: May require process adjustment
+- **External Source**: May require external coordination
+
+### 4. Reporting and Tracking
+
+Use classification for effective reporting and tracking:
+
+- **Grouping**: Group issues by type, severity, scope, or source
+- **Filtering**: Filter issues based on classification dimensions
+- **Trending**: Track trends in issue classifications over time
+- **Patterns**: Identify patterns in issue occurrence by classification
+- **Metrics**: Calculate quality metrics based on classification data
+
+## Classification Examples
+
+### Example 1: Broken Internal Link
+
+- **Type**: Reference Issue > Reference Integrity Issue > Broken Reference
+- **Severity**: Minor
+- **Scope**: Component
+- **Source**: Implementation > Code Issue
+- **Prioritization**: Medium-low priority
+- **Assignment**: Component owner
+- **Resolution Approach**: Update reference to correct target
+
+### Example 2: Critical Performance Issue
+
+- **Type**: Implementation Issue > Performance Issue > Slow Response
+- **Severity**: Critical
+- **Scope**: System-Wide
+- **Source**: Design > Architecture Issue > Scaling Limitation
+- **Prioritization**: Highest priority
+- **Assignment**: System architecture team
+- **Resolution Approach**: Architectural review and redesign of affected components
+
+### Example 3: Inconsistent Naming Convention
+
+- **Type**: Structure Issue > Naming Issue > Inconsistent Naming
+- **Severity**: Minor
+- **Scope**: Subsystem
+- **Source**: Process > Process Gap > Missing Standard
+- **Prioritization**: Medium-low priority
+- **Assignment**: Subsystem owner
+- **Resolution Approach**: Develop naming convention standard and progressively apply
+
+### Example 4: Content Inaccuracy
+
+- **Type**: Content Issue > Accuracy Issue > Technical Inaccuracy
+- **Severity**: Major
+- **Scope**: Component
+- **Source**: External > Requirement Change
+- **Prioritization**: Medium-high priority
+- **Assignment**: Component owner
+- **Resolution Approach**: Research correct information and update content
+
+## Conclusion
+
+Effective issue classification is essential for quality management within the 1000xbrain cognitive architecture. By consistently applying this classification framework, we can ensure appropriate prioritization, assignment, and resolution of quality issues, leading to systematic improvement of the system over time. 
