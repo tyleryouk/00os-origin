@@ -22,6 +22,10 @@ The following knowledge components are available in this pathway:
 - **brain-files-cursor-rules.md**: Relationship between brain-files and cursor-rules
 - **message-commands.md**: Comprehensive reference for message commands system
 - **mode-system.md**: Detailed information about the mode system architecture
+- **cognitive-enhancement.md**: Guide for enhancing cognitive capabilities
+- **file-safety.md**: Guidelines for safe file editing and management
+- **knowledge-access.md**: System for accessing specialized knowledge
+- **identity.md**: Core identity and role definition
 - **cognitive-architecture-overview.md**: Overview of the cognitive architecture
 - **component-relationships.md**: Relationships between different components
 - **structure-overview.md**: System structure and organization

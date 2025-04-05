@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # mode: dev-mode | workflow: rules-workflow | pathway: system-wide-optimization | filepath: @parameters/rules/dev-mode/continue-implementation-system-wide-optimization.mdc | optional-standard-parameter(s): none
 
 ## Knowledge Access
@@ -118,7 +123,7 @@ edit_file("1000xbrain/knowledge/rules/pathways/[pathway-name]/[component-name].m
 // Update implementation progress
 edit_file("planning/[current_folder]/implementation-progress.md",
           "Update implementation progress with latest changes",
-          "# Implementation Progress: [Focus]\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: [phase]\n- Step: [step]\n- Last Update: [timestamp]\n- Current Task: [current task]\n- Next Steps: [next steps]\n- Implementation Completion: [percentage]%\n\n...")
+          "# Implementation Progress: [Focus]\n\n## Planning Status\n[PRESERVE EXISTING PLANNING STATUS CONTENT]\n\n## Implementation Status\n- Phase: [phase]\n- Step: [step]\n- Current Task: [current task]\n- Next Steps: [next steps]\n\n...")
 ```
 
 ## 5. When to Use Each Parameter
@@ -147,7 +152,6 @@ To maintain implementation continuity:
 4. **Memory Utilization**: Leverage existing memory for implementation knowledge
 5. **Update Tracking**: Continue updating implementation-progress.md for each change
 6. **Self-Contained Responses**: Keep responses self-contained with status indicators
-7. **Explicit Progress Status**: Always indicate current implementation percentage
 
 ## 7. Completion Indicators
 
