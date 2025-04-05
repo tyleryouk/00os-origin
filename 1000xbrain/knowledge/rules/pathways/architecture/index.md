@@ -1,0 +1,63 @@
+# Architecture Pathway
+
+## Overview
+
+The Architecture pathway provides knowledge components focused on understanding the system architecture, cognitive components, and organizational structure of the 1000xbrain cognitive architecture. This pathway is essential for understanding how different components work together and how the cognitive architecture is structured.
+
+## Purpose
+
+This pathway serves several key purposes:
+
+1. **System Understanding**: Providing a comprehensive understanding of the overall system architecture
+2. **Component Relationships**: Documenting relationships between different cognitive components
+3. **Architectural Patterns**: Defining architectural patterns used throughout the system
+4. **Structural Organization**: Explaining the structural organization of the cognitive architecture
+5. **Design Principles**: Documenting the design principles behind the architecture
+
+## Knowledge Components
+
+The following knowledge components are available in this pathway:
+
+### Core Architecture
+- **brain-files-cursor-rules.md**: Relationship between brain-files and cursor-rules
+- **message-commands.md**: Comprehensive reference for message commands system
+- **mode-system.md**: Detailed information about the mode system architecture
+- **cognitive-architecture-overview.md**: Overview of the cognitive architecture
+- **component-relationships.md**: Relationships between different components
+- **structure-overview.md**: System structure and organization
+
+### Mode System Architecture
+- **mode-system.md**: Overview of the mode system architecture
+- **mode-relationships.md**: Relationships between different modes
+- **mode-transitions.md**: Mode transition patterns and protocols
+
+### Knowledge Architecture
+- **knowledge-system-overview.md**: Overview of the knowledge system
+- **knowledge-organization.md**: Organization of knowledge components
+- **knowledge-access-patterns.md**: Patterns for accessing knowledge
+
+### Parameter Architecture
+- **parameter-system-overview.md**: Overview of the parameter system
+- **parameter-organization.md**: Organization of parameters
+- **parameter-access-patterns.md**: Patterns for accessing parameters
+
+## Accessing This Pathway
+
+To access components in this pathway, use the following pattern:
+
+```typescript
+fetch_rules(["knowledge/rules/pathways/architecture/component-name"], 
+           "Purpose for accessing architecture knowledge")
+```
+
+Example:
+```typescript
+fetch_rules(["knowledge/rules/pathways/architecture/brain-files-cursor-rules"], 
+           "Understanding the relationship between brain-files and cursor-rules")
+```
+
+## Related Pathways
+
+- **Optimization Pathway**: For performance and cognitive efficiency
+- **Documentation Pathway**: For documentation standards and organization
+- **Integration Pathway**: For component interactions and cross-domain functionality 

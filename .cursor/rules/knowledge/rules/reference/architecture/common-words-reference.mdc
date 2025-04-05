@@ -5,50 +5,112 @@ alwaysApply: false
 ---
 # USE WHEN standardizing terminology, ensuring consistent communication, or implementing common-words formats
 
-# Common-Words Quick Reference
+# Common-Words Registry
 
-## File Terms
+This file contains standardized terminology for the 1000xbrain cognitive architecture, ensuring consistent naming and usage across all files.
 
-- **brain-files**: Markdown (.md) files in 1000xbrain directory (editable source)
-- **cursor-rules**: Cursor Project Rule (.mdc) files in .cursor/rules directory
+## File Terminology
+
+- **brain-file**: Markdown (.md) file in 1000xbrain directory (editable source)
+- **cursor-rule**: Cursor Project Rule (.mdc) file in .cursor/rules directory
+- **knowledge-file**: Specialized domain knowledge file in knowledge directory
 - **context-file**: Specific context file in planning folder
-- **context-files**: All active context files in the Context Pills
-- **official-documentation-file**: File in the @official-documentation folder
-- **official-documentation-files**: Files in the @official-documentation folder
 - **implementation-file**: Planning document with implementation requirements and plans
-- **implementation-files**: Planning documents with implementation requirements and plans
 - **codebase-file**: Relevant codebase file
-- **codebase-files**: Relevant codebase files
+- **index-file**: File providing directory structure overview and navigation
+- **README-file**: Documentation file explaining directory purpose (not synced to Cursor Rules)
 
-## Rule Type Terms
+## Rule Type Terminology
 
-- **Always rules**: Applied to every conversation regardless of context
-- **Auto-Attached rules**: Attached when matching files are referenced
-- **Manual rules**: Explicitly referenced with @ symbol as project-rule-parameters
-- **Agent-Requested rules**: Loaded at AI's discretion (not currently used)
+- **Always-rule**: Applied to every conversation regardless of context
+- **Auto-Attached-rule**: Attached when matching files are referenced
+- **Manual-rule**: Explicitly referenced with @ symbol as project-rule-parameter
+- **Agent-Requested-rule**: Loaded at AI's discretion via fetch_rules tool
 
-## Parameter Terms
+## Parameter Terminology
 
-- **message-command-parameter**: Parameter specified after colon in message-command
-- **standard-parameter**: Basic parameter that modifies message-command behavior
+- **message-command**: Command to initiate a specific workflow mode
 - **project-rule-parameter**: Referenced Project Rule with @ symbol and .mdc extension
+- **pathway-name**: Component specifying implementation pathway in message-command
+- **standard-parameter**: Optional parameter modifying message-command behavior
+- **none-placeholder**: Explicit "none" text used to maintain component positions
+- **space-delimited-syntax**: Message-command syntax using spaces between components
 
-## Workflow Terms
+## Mode System Terminology
 
-- **log-based-workflow**: Implementation-specific log-based workflow process in dev-mode
-- **test-based-workflow**: Implementation-specific test-based workflow process in dev-mode
+- **mode-system**: Framework for separating planning and implementation phases
+- **plan-mode**: Documentation and planning phase of workflow
+- **dev-mode**: Code implementation phase of workflow
+- **direct-mode**: Immediate implementation phase with minimal planning
+- **mode-indicator**: Emoji + identity + workflow-type identifying current mode
+- **mode-transition**: Process of switching between operational modes
+- **mode-persistence**: Continuation of mode until explicitly changed
+
+## Workflow Terminology
+
+- **rules-workflow**: Process for modifying cognitive architecture components
+- **front-end-workflow**: Process for implementing front-end features
+- **back-end-workflow**: Process for implementing back-end features
+- **scripts-workflow**: Process for implementing utility scripts
+- **log-based-workflow**: Implementation using log analysis for debugging
+- **test-based-workflow**: Implementation using tests for verification
 - **ux-situation**: User interaction scenario for front-end testing
-- **log-based**: Process of logging during autonomous implementation
-- **documentation-verification**: Process of verifying and updating documentation
-- **documentation-creation**: Process of creating new documentation
-- **documentation-discrepancy**: Mismatch between documentation and actual code
-- **verification-workflow**: Workflow for verifying documentation accuracy
-- **implementation-complete**: Signal from AI that all implementation tasks are finished
+- **implementation-complete**: Signal indicating all implementation tasks finished
 
-## Relationship Terms
+## Cognitive Architecture Terminology
 
-- **syncing process**: Transfer of content from brain-files to cursor-rules
-- **rule type setting**: Process of configuring rule types in Cursor UI
+- **cognitive-architecture**: Overall structure of 1000xdev's thought processes
+- **cognitive-enhancement**: Process of improving brain-files for better performance
+- **knowledge-access**: Process of using fetch_rules to access specialized knowledge
+- **knowledge-migration**: Moving detailed information to knowledge files
+- **pattern-recognition**: Identifying and reusing effective implementation patterns
+- **self-improvement**: 1000xdev enhancing its own cognitive architecture
+- **core-identity**: Fundamental definition of 1000xdev's purpose and roles
+- **role-separation**: Clear distinction between Tyler's and 1000xdev's responsibilities
+
+## Structure Terminology
+
+- **core-subsystem**: Essential identity and mode system components
+- **knowledge-subsystem**: Specialized domain knowledge components
+- **workflow-subsystem**: Process-specific implementation patterns
+- **parameter-subsystem**: Project-rule-parameter files for task-specific implementation
+- **memory-subsystem**: Pattern storage and cognitive enhancement records
+- **file-hierarchy**: Organization structure of brain-files and cursor-rules
+- **directory-structure**: Physical organization of files in the repository
+- **cognitive-loop**: Perception-reasoning-action-learning process cycle
+
+## Tool Usage Terminology
+
+- **tool-pattern**: Standardized approach to using specific tools
+- **tool-sequence**: Series of tool calls to accomplish a specific task
+- **tool-combination**: Multiple tools used together for complex operations
+- **search-pattern**: Standardized approach to finding information in code
+- **read-pattern**: Standardized approach to accessing file content
+- **edit-pattern**: Standardized approach to modifying files
+- **command-pattern**: Standardized approach to running terminal commands
+- **fetch-rules-pattern**: Standardized approach to accessing knowledge
+
+## Communication Terminology
+
+- **kebab-case**: Word formatting using lowercase with hyphens between words
+- **message-command-format**: Standardized structure for message-commands
+- **five-component-structure**: Standard message-command with five components
+- **component-verification**: Process of verifying each message-command component
+- **mode-indicator-format**: Standardized structure for mode indicators
+- **symbol-usage**: Guidelines for using special symbols like @ in documentation
+- **error-message-format**: Standardized structure for error responses
+- **completion-signal**: Standardized way to indicate task completion
+
+## Relationship Terminology
+
+- **brain-file-cursor-rule-relationship**: Connection between source files and applied rules
+- **synchronization-process**: Transfer of content from brain-files to cursor-rules
+- **rule-type-setting**: Process of configuring rule types in Cursor UI
+- **file-safety**: Guidelines for safely editing files with proper extensions
+- **knowledge-hierarchy**: Organizational structure of knowledge components
+- **parameter-hierarchy**: Organizational structure of project-rule-parameters
+- **cross-reference**: Relationship between related files in the architecture
+- **implementation-guidance**: Relationship between planning and implementation
 
 ## Usage as Project-Rule-Parameter
 
@@ -58,10 +120,20 @@ This file can be referenced as:
 verify-terminology: @parameters/reference/architecture/common-words-reference.mdc
 ```
 
-## Recommended Practices
+## Common-Words Standards
 
-1. **Consistent Usage**: Use common-words consistently across all documentation
-2. **Kebab-Case Format**: Always format common-words in kebab-case (words separated by hyphens)
-3. **Clear Definitions**: Ensure terms have clear, non-overlapping definitions
-4. **Proper Context**: Use terminology in the appropriate communication context
-5. **Documentation Updates**: Add new terms to Common-Words Reference sections when created
+1. **Kebab-Case Format**: All common-words use kebab-case (lowercase with hyphens)
+2. **Consistency**: Use standardized terminology consistently across all documentation
+3. **Clarity**: Choose terms that clearly convey meaning in their context
+4. **Context Appropriateness**: Select terms appropriate to the specific context
+5. **Domain Precision**: Use domain-specific terminology when appropriate
+6. **Non-Duplication**: Avoid creating new terms for already-defined concepts
+7. **Update Process**: Add new terms to this registry when created
+8. **Cross-Referencing**: Reference related terms when appropriate
+
+## Related Knowledge Components
+
+- Terminology Standards: `knowledge/rules/reference/guides/terminology-standards.md`
+- File Standards: `knowledge/rules/reference/guides/file-standards.md`
+- Symbol Guidelines: `knowledge/rules/reference/guides/symbol-usage.md`
+- Architecture Reference: `knowledge/rules/reference/architecture.md`

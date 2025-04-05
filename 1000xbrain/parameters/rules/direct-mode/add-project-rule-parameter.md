@@ -5,7 +5,7 @@
 ```typescript
 // Access parameter template and standards
 fetch_rules([
-  "knowledge/rules/patterns/doc/parameter-template",
+  "knowledge/rules/patterns/doc/templates/parameter-template",
   "knowledge/rules/patterns/doc/file-standards",
   "knowledge/rules/reference/syntax/parameter-syntax"
 ], "Accessing parameter creation standards and templates")
@@ -72,13 +72,13 @@ This project-rule-parameter provides structured guidance for creating new projec
 1. **Tool Usage Sequence**:
    ```typescript
    // Read template and standards
-   read_file("knowledge/rules/patterns/doc/parameter-template.md")
+   read_file("1000xbrain/knowledge/rules/patterns/doc/templates/parameter-template.md", should_read_entire_file=true)
    
    // Create parameter file using [brain-file-name]
-   edit_file("parameters/rules/[mode]/[brain-file-name]")
+   edit_file("1000xbrain/parameters/rules/[mode]/[brain-file-name]", "Creating new parameter file", "# [Parameter content]")
    
    // Verify structure of the newly created parameter
-   read_file("parameters/rules/[mode]/[brain-file-name]")
+   read_file("1000xbrain/parameters/rules/[mode]/[brain-file-name]", should_read_entire_file=true)
    ```
 
 2. **Content Creation**:
@@ -141,7 +141,7 @@ The [brain-file-name] standard-parameter is utilized throughout this project-rul
 
 2. **In Tool Calls**:
    - Used as a placeholder in edit_file and read_file calls
-   - Example: `edit_file("parameters/rules/[mode]/[brain-file-name]")`
+   - Example: `edit_file("1000xbrain/parameters/rules/[mode]/[brain-file-name]")`
    - The system will replace [brain-file-name] with the actual value provided in the message-command
 
 3. **For Validation**:
@@ -212,7 +212,7 @@ Access these components for additional guidance:
 
 ```typescript
 fetch_rules([
-  "knowledge/rules/patterns/doc/parameter-template",
+  "knowledge/rules/patterns/doc/templates/parameter-template",
   "knowledge/rules/patterns/doc/file-standards",
   "knowledge/rules/patterns/doc/reference-format-template",
   "knowledge/rules/reference/architecture",
