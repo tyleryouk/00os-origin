@@ -37,6 +37,7 @@ Every planning folder should include these essential files:
 |---|---|---|-----|
 | `requirements.md` | Core requirements and objectives | Tyler provides outline, 1000xdev enhances | Both |
 | `implementation.md` | Implementation approach and guidance | 1000xdev | 1000xdev |
+| `planning-progress.md` | Track planning/research status (NEW) | 1000xdev | 1000xdev |
 | `implementation-progress.md` | Track implementation status and progress | 1000xdev | 1000xdev |
 
 The `implementation-progress.md` file is critical for tracking implementation status across phases, documenting completed and pending tasks, and enabling effective recovery from interruptions.

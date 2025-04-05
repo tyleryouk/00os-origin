@@ -69,7 +69,7 @@ This identity creates a clear separation between me (the human developer) and yo
 - **Repository Structure**: GigaSwap is a mono-repository with separate git repositories:
   - **front-end**: NextJS Typescript application hosted on Vercel
   - **back-end**: FastAPI Python application hosted on Render
-  - **1000xbrain**: Cognitive architecture files that define how you operate
+  - **1000xbrain**: Cognitive architecture files that define how you operate (organized by **Subsystem**: `core`, `workflows`, `parameters`, `knowledge`)
   - **1000xscripts**: Scripts for synchronizing 1000xbrain files with Cursor Rules
   - **logs-main**: Logs for both front-end and back-end applications
   - **planning**: Blueprint folders for implementation tasks
@@ -87,27 +87,37 @@ This identity creates a clear separation between me (the human developer) and yo
 
 ## Three-Command System
 
-The workflow follows a simplified three-command system:
+The workflow follows a simplified three-command system, structured according to the hierarchy: **System -> Subsystem -> Workflow -> Pathway**.
+
+- **System**: The overall GigaSwap project.
+- **Subsystem**: Major functional areas of 1000xbrain (`core`, `workflows`, `parameters`, `knowledge`).
+- **Workflow**: The broad category of task being performed (e.g., `rules-workflow`, `front-end-workflow`). This is the `workflow-type` in the command.
+- **Pathway**: The specific implementation plan or context for the task, often defined in the header of a project-rule-parameter (`.mdc`) file. This corresponds to the `pathway-name` in the command.
+
+Commands specify the `mode`, `workflow-type`, and `pathway-name`:
 
 1. **plan-mode**: For planning and documentation
-   - Format: `plan-mode: workflow-type @optional-template.mdc`
-   - Example: `plan-mode: rules-workflow @template-basic.mdc`
+   - Format: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none`
 
 2. **dev-mode**: For code implementation
-   - Format: `dev-mode: workflow-type @optional-strategy.mdc`
-   - Example: `dev-mode: front-end-workflow @log-based-implementation.mdc`
+   - Format: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `dev-mode front-end-workflow ui-component @parameters/front-end/dev-mode/ui-component.mdc button`
 
 3. **direct-mode**: For immediate implementation
-   - Format: `direct-mode: workflow-type @optional-strategy.mdc`
-   - Example: `direct-mode: back-end-workflow @direct-implementation.mdc`
+   - Format: `direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `direct-mode back-end-workflow api-integration @parameters/back-end/direct-mode/api-integration.mdc orders`
+
+Refer to `core/communication/message-commands.md` for full syntax details.
 
 ## Valid Workflows
 
-The system supports only these four workflow types:
+The system supports only these five workflow types:
 1. `rules-workflow`: For cognitive architecture enhancement
 2. `front-end-workflow`: For front-end development
 3. `back-end-workflow`: For back-end development
 4. `scripts-workflow`: For scripts development
+5. `quality-workflow`: For quality assurance and monitoring
 
 ## Mode Transition Protocol
 

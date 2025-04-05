@@ -1,0 +1,116 @@
+# File Reading Implementation Patterns
+
+## Overview
+
+These patterns implement the Adaptive Sequential Reading strategy to handle potential `read_file` tool limitations.
+
+## Core Pattern: `adaptiveReadFile`
+
+This pattern encapsulates the 3-step process:
+
+```typescript
+// Conceptual Implementation Pattern for Adaptive File Reading
+async function adaptiveReadFile(filename) {
+  // 1. Initial Complete Read Attempt
+  const initialReadResult = await read_file(filename, {
+    should_read_entire_file: true,
+    explanation: `Attempting complete read of ${filename}`
+  });
+  const initialContent = initialReadResult.read_file_response.results[0]; // Adapt based on actual tool response structure
+
+  // 2. Completeness Verification
+  const isComplete = verifyCompleteness(initialContent, filename); // Implement verification logic
+
+  if (isComplete) {
+    return {
+      content: initialContent,
+      chunked: false,
+      complete: true,
+      status: `✅ Complete file read: ${filename}`
+    };
+  } else {
+    // 3. Adaptive Chunking
+    return await readFileInChunks(filename);
+  }
+}
+
+// Helper: Completeness Verification (Conceptual)
+function verifyCompleteness(content, filename) {
+  // Basic check: Does content seem truncated (e.g., ends abruptly)?
+  // Primary Indicator: Was EOF likely reached based on read characteristics? (Needs better tool feedback ideally)
+  // Secondary: File-type specific checks (balanced braces, markdown conclusions)
+  // Return true if likely complete, false otherwise.
+  // Example (needs refinement based on actual tool behavior):
+  const lineCount = (content.match(/\n/g) || []).length + 1;
+  if (lineCount < 250 && !content.endsWith("...") ) { // Simple heuristic, needs improvement
+      return true; // Assume small files are complete unless clearly truncated
+  }
+  // Add more robust checks here based on file type and potential EOF indicators
+  return false; // Default to assuming larger files might be truncated without strong evidence otherwise
+}
+
+// Helper: Sequential Chunking (Conceptual)
+async function readFileInChunks(filename) {
+  let fullContent = '';
+  let currentLine = 1;
+  const chunkSize = 150;
+  const overlap = 15;
+  const maxChunks = 30;
+  let chunkCount = 0;
+  let endReached = false;
+
+  while (chunkCount < maxChunks) {
+    chunkCount++;
+    const startLine = currentLine;
+    const endLine = currentLine + chunkSize - 1;
+
+    const chunkResult = await read_file(filename, {
+      start_line_one_indexed: startLine,
+      end_line_one_indexed_inclusive: endLine,
+      explanation: `Reading chunk ${chunkCount} (${startLine}-${endLine}) of ${filename}`
+    });
+    const chunkContent = chunkResult.read_file_response.results[0]; // Adapt based on actual tool response structure
+    const actualLinesRead = (chunkContent.match(/\n/g) || []).length + 1;
+
+    fullContent += `\n\n--- CHUNK ${chunkCount} (LINES ${startLine}-${endLine}) ---\n\n`;
+    fullContent += chunkContent;
+
+    // Check if end of file was likely reached in this chunk
+    if (actualLinesRead < chunkSize) {
+        endReached = true;
+        break;
+    }
+
+    currentLine = startLine + chunkSize - overlap; // Move start position for next chunk
+  }
+
+  const complete = endReached;
+  let status;
+  if (complete) {
+      status = `🔄 Sequential chunking applied: ${filename} (${chunkCount} chunks)`;
+  } else {
+      status = `⚠️ Chunking limit reached (${maxChunks} chunks): ${filename} (potentially incomplete)`;
+  }
+
+  return {
+    content: fullContent,
+    chunked: true,
+    complete: complete,
+    status: status,
+    chunkCount: chunkCount
+  };
+}
+```
+
+## Verification Logic Details (`verifyCompleteness`)
+
+*   **Primary Indicator:** The most reliable indicator of completeness *should* be if the `read_file` tool returns fewer lines than requested in a large chunk (e.g., requesting lines 1-1000 and getting only 600). This requires the tool to behave predictably near EOF. *Further testing is needed to confirm this behavior.*
+*   **Secondary Indicators:**
+    *   **Markdown:** Presence of concluding sections (`## Conclusion`, `## References`, final `---`).
+    *   **Code:** Balanced braces/parentheses/brackets. Absence of abruptly ending statements.
+    *   **JSON/YAML:** Valid syntax according to parser.
+    *   **Generic:** Absence of common truncation markers like `...` or dangling sentences.
+
+## Usage in Workflows
+
+When file reading is required, internal logic should call the `adaptiveReadFile` pattern (or equivalent logic) instead of directly calling `read_file`. The status message from the result should be used in communication. 

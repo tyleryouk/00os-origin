@@ -121,16 +121,16 @@ fetch_rules(["knowledge/rules/reference/contributions/file-standards"])
 
 ## Core Components
 
-| Directory | Purpose | Contents | Impact on AI Cognition |
-|-----------|---------|----------|--------------|
-| [core/](core/) | Fundamental identity and cognitive capabilities | Core identity, mode system, communication protocols | Defines who 1000xdev is and how it operates |
-| [workflows/](workflows/) | Structured processes for different development domains | Rules, front-end, back-end, and documentation workflows | Controls how 1000xdev approaches different tasks |
-| [knowledge/rules/](knowledge/rules/) | Domain-specific implementation details and reference system | Reference guides, implementation patterns, domain knowledge | Provides specialized knowledge for implementation |
-| [knowledge/rules/patterns/tool/](knowledge/rules/patterns/tool/) | Tool usage patterns and utilities | Tool patterns, combinations, and cheatsheets | Effective tool usage patterns and strategies |
-| [knowledge/rules/reference/](knowledge/rules/reference/) | Documentation about the architecture itself | Structure guides, enhancement protocols, references | Architecture documentation and references |
-| [knowledge/rules/patterns/impl/](knowledge/rules/patterns/impl/) | Implementation patterns and learning mechanisms | Development journal, pattern recognition, optimizations | Implementation patterns and optimizations |
+This section outlines the major subsystems of the 1000xbrain cognitive architecture and introduces the overall hierarchy: **System -> Subsystem -> Workflow -> Pathway**.
 
-The knowledge/rules/ directory serves as the primary location for all Agent Requested rules, providing a more organized, reference-optimized structure that can be accessed through the fetch_rules tool.
+| Subsystem Directory | Purpose | Contents | Impact on AI Cognition | Rule Type |
+|-----------|---------|----------|--------------|-----------|
+| [core/](core/) | Fundamental identity and cognitive capabilities | Core identity, mode system, communication protocols | Defines who 1000xdev is and how it operates | Always |
+| [workflows/](workflows/) | Structured processes for different development domains | Specific **Workflow** guides (e.g., `rules-workflow`, `front-end-workflow`) | Controls how 1000xdev approaches different task domains | Auto-Attached |
+| [parameters/](parameters/) | Task-specific implementation details | Defines specific **Pathways** within workflows via parameter files | Provides specialized, granular guidance for tasks | Manual |
+| [knowledge/rules/](knowledge/rules/) | Domain-specific knowledge and reference system | Reference guides, implementation patterns, domain knowledge | Provides specialized knowledge accessible on demand | Agent Requested |
+
+**Workflows** define the broad approach for a category of tasks (e.g., enhancing rules, developing the front-end). **Pathways** provide the specific implementation plan or context for a task within that workflow, often defined in the header of a project-rule-parameter (`.mdc`) file within the `parameters/` subsystem.
 
 For optimal knowledge access, use the reference indexing system:
 
@@ -150,29 +150,29 @@ This cognitive architecture organization offers several key advantages:
 
 ## Rule Types & File Organization
 
-The Cursor Project Rules system uses four rule types that determine when rules are attached to the conversation:
+The Cursor Project Rules system uses four rule types that determine when rules are attached to the conversation. These rule types generally correspond to the major subsystems:
 
-| Rule Type | Purpose | When Applied | Brain-File Impact | Access Method |
-|-----------|---------|--------------|------------------|---------------|
-| **Always** | Core identity and system-wide rules | Attached to every conversation | Shapes fundamental cognition in all contexts | Automatic inclusion |
-| **Auto-Attached** | Workflow-specific guides | Attached when matching files are referenced | Activates specialized cognitive patterns for specific tasks | File pattern matching |
-| **Manual** | Task-specific implementation details | Explicitly referenced with @ symbol | Provides on-demand specialized knowledge | Project-rule-parameters |
-| **Agent-Requested** | Optional supporting knowledge | Loaded at AI's discretion | Enables self-directed learning and adaptation | fetch_rules tool |
+| Rule Type | Subsystem Directory | Purpose | When Applied | Brain-File Impact | Access Method |
+|-----------|----------------------|---------|--------------|------------------|---------------|
+| **Always** | `/core/` | Core identity and system-wide rules | Attached to every conversation | Shapes fundamental cognition in all contexts | Automatic inclusion |
+| **Auto-Attached** | `/workflows/` | **Workflow**-specific guides | Attached when matching files are referenced | Activates specialized cognitive patterns for specific **Workflows** | File pattern matching |
+| **Manual** | `/parameters/` | Task-specific implementation details (defining **Pathways**) | Explicitly referenced with `@` symbol | Provides on-demand specialized knowledge for a specific **Pathway** | Project-rule-parameters |
+| **Agent-Requested** | `/knowledge/rules/` | Optional supporting knowledge | Loaded at AI's discretion via `fetch_rules` | Enables self-directed learning and adaptation | `fetch_rules` tool |
 
-In 1000xbrain, files are organized by cognitive function rather than by rule type, creating a more intuitive architecture.
+In 1000xbrain, files are organized by cognitive function (subsystem) rather than strictly by rule type, creating a more intuitive architecture.
 
-### Directory-Specific Rule Types
+### Directory-Specific Rule Types (Subsystem Mapping)
 
-Each main directory in the 1000xbrain cognitive architecture is associated with a specific rule type:
+Each main subsystem directory in the 1000xbrain cognitive architecture primarily houses files corresponding to a specific rule type:
 
-| Directory | Rule Type | Usage | Cognitive Impact | Access Method |
+| Subsystem Directory | Rule Type | Usage | Cognitive Impact | Access Method |
 |-----------|-----------|-------|-----------------|---------------|
 | `/core/` | **Always** | Fundamental identity and cognitive capabilities | Forms the baseline personality and capabilities | Automatic inclusion |
-| `/workflows/` | **Auto-Attached** | Workflow-specific guides | Shapes task-specific behaviors and approaches | File pattern matching |
-| `/parameters/` | **Manual** | Task-specific implementation details | Provides specialized knowledge on demand | `parameter: @parameters/path.mdc` |
+| `/workflows/` | **Auto-Attached** | **Workflow**-specific guides | Shapes task-specific behaviors and approaches for entire **Workflows** | File pattern matching |
+| `/parameters/` | **Manual** | Task-specific implementation details defining **Pathways** | Provides specialized knowledge on demand for specific **Pathways** | `parameter: @parameters/path.mdc` |
 | `/knowledge/rules/` | **Agent Requested** | Specialized domain expertise | Enables self-directed learning and adaptation | `fetch_rules(["knowledge/rules/path"])` |
 
-This organization ensures that each folder primarily contains files of a single rule type, avoiding confusion and maintaining a clean cognitive architecture.
+This organization ensures that each subsystem folder primarily contains files relating to its designated purpose and associated rule type, clarifying the roles of **Workflows** (broad approaches in `/workflows/`) and **Pathways** (specific guidance via `/parameters/`).
 
 ## Getting Started
 

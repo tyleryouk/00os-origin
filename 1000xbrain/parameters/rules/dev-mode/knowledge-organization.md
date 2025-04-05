@@ -1,4 +1,4 @@
-# mode: dev-mode | workflow: rules-workflow | pathway: knowledge-organization | filepath: @parameters/rules/dev-mode/knowledge-organization.mdc | optional-standard-parameter(s): none
+# mode: dev-mode | workflow: rules-workflow | pathway: none | filepath: @parameters/rules/dev-mode/knowledge-organization.mdc | optional-standard-parameter(s): none
 
 ## Purpose
 

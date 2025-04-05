@@ -35,9 +35,9 @@ This file defines the specific operation of the `dev-mode rules-workflow perform
 - Verification strategies for performance improvements
 
 This file complements:
-- `fetch_rules(["knowledge/rules/reference/guides/implementation-patterns"])`: Implementation continuation protocols
+- `fetch_rules(["knowledge/rules/system-wide/knowledge-access"])`: Implementation continuation protocols
 - `@parameters/rules/plan-mode/performance.mdc`: Planning guidance for performance optimizations
-- `fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"])`: Overall rules workflow
+- `fetch_rules(["knowledge/rules/performance/implementation-performance"])`: Overall rules workflow
 
 ## Usage as Project-Rule-Parameter
 

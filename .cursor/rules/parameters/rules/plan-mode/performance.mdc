@@ -10,8 +10,8 @@ This file defines the specific operation of the `plan-mode: rules-workflow @para
 - File organization for performance optimization planning
 
 This file complements:
-- `fetch_rules(["knowledge/rules/reference/architecture/brain-files-cursor-rules"])`: General planning mode operations
-- `fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"])`: Overall rules workflow
+- `fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"])`: General planning mode operations
+- `fetch_rules(["knowledge/rules/performance/implementation-performance"])`: Overall rules workflow
 - Various other pathway-specific files
 
 ## Usage as Project-Rule-Parameter
@@ -273,7 +273,7 @@ With requirements.md focusing on context processing, this would create:
 
 ## 10. Related Files
 
-- `fetch_rules(["knowledge/rules/reference/architecture/brain-files-cursor-rules"])`: General planning mode operations
-- `fetch_rules(["knowledge/rules/patterns/impl/architecture-patterns"])`: Overall rules workflow
+- `fetch_rules(["knowledge/rules/system-wide/brain-files-cursor-rules"])`: General planning mode operations
+- `fetch_rules(["knowledge/rules/performance/implementation-performance"])`: Overall rules workflow
 - **tools/patterns/performance-patterns.md**: Performance patterns
 - **memory/optimizations/performance-learnings.md**: Previous optimizations 
