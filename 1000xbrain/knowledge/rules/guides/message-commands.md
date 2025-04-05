@@ -188,4 +188,340 @@ The simplified message-command system complements the knowledge access system:
 4. **Clear Prompts**: For direct-mode, provide clear and specific prompts
 5. **Consistent Format**: Follow the standard message-command format
 
+This simplified message-command system streamlines communication while maintaining all necessary functionality through the abstraction of implementation details to project-rule-parameters and the knowledge system.
+
+## Backward Compatibility for Space-Only Format
+
+To ensure a smooth transition from the previous colon-based format to the new space-only format, this section provides guidance on handling backward compatibility during the transition period.
+
+### Transition Approach
+
+The transition to the space-only format follows these principles:
+
+1. **Gradual Adoption**: The new space-only format is being rolled out gradually while maintaining compatibility with existing commands
+2. **Format Detection**: The system detects whether a command uses the old or new format and handles it appropriately
+3. **Clear Error Messages**: When format issues are detected, clear error messages guide the user toward the new format
+4. **Documentation Updates**: All documentation is being updated to show only the new format
+
+### Format Detection Mechanism
+
+The following algorithm is used to detect and process commands:
+
+```typescript
+function detectAndProcessCommand(input) {
+  // Check if the input contains a colon (old format)
+  if (input.includes(':')) {
+    // Extract components from old format
+    const [command, params] = input.split(':');
+    command = command.trim();
+    params = params.trim();
+    
+    // Convert to new format
+    let components = [command];
+    
+    // Handle different command types for conversion
+    if (command === 'plan-mode' || command === 'dev-mode' || command === 'direct-mode') {
+      // Extract workflow type from params
+      const paramsArray = params.split(' ').filter(p => p.length > 0);
+      
+      if (paramsArray.length > 0) {
+        // Add workflow type
+        components.push(paramsArray[0]);
+        
+        // Add pathway-name (default to none)
+        components.push('none');
+        
+        // Add project-rule-parameter if present
+        const projectRuleParam = paramsArray.find(p => p.startsWith('@'));
+        components.push(projectRuleParam || 'none');
+        
+        // Add optional parameters or none
+        const nonProjectParams = paramsArray.filter(p => p !== paramsArray[0] && !p.startsWith('@'));
+        components.push(nonProjectParams.length > 0 ? nonProjectParams.join(' ') : 'none');
+      } else {
+        // Handle minimal case
+        components.push('rules-workflow');  // Default workflow type
+        components.push('none');
+        components.push('none');
+        components.push('none');
+      }
+    } else {
+      // Legacy command format not matching the new system
+      // Display helpful error and suggest new format
+      return {
+        error: true,
+        message: `The command "${command}: ${params}" uses the old format. Please use the new space-only format: plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+      };
+    }
+    
+    // Return the converted command, including notice about format conversion
+    return {
+      convertedCommand: components.join(' '),
+      message: `Command converted from old format. New format: ${components.join(' ')}`
+    };
+  } else {
+    // New format (space-delimited components)
+    const components = input.split(/\s+/).filter(c => c.length > 0);
+    
+    // Validate component count
+    if (components.length !== 5) {
+      return {
+        error: true,
+        message: `The command must have exactly 5 components, found ${components.length}. Format: mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+      };
+    }
+    
+    // Process the new format directly
+    return {
+      components: components,
+      newFormat: true
+    };
+  }
+}
+```
+
+### Transition Period Guidelines
+
+During the transition period, follow these guidelines:
+
+1. **New Documentation**: All new documentation should exclusively use the new format
+2. **Error Messages**: When a command using the old format is detected, provide:
+   - A clear error message indicating the format issue
+   - The equivalent command in the new format
+   - A reminder about the format transition
+
+3. **Automatic Conversion**: For common commands, offer automatic conversion from old to new format
+4. **User Training**: Provide examples of old vs. new format to help users adapt
+
+### Command Format Comparison
+
+| Function | Old Format | New Format |
+|----------|-----------|------------|
+| Planning Mode | `plan-mode: rules-workflow @template-basic.mdc` | `plan-mode rules-workflow none @parameters/rules/plan-mode/template-basic.mdc none` |
+| Developer Mode | `dev-mode: front-end-workflow` | `dev-mode front-end-workflow none none none` |
+| Direct Mode | `direct-mode: back-end-workflow @direct-implementation.mdc` | `direct-mode back-end-workflow none @parameters/rules/direct-mode/direct-implementation.mdc none` |
+
+### Error Response Examples
+
+When an old-format command is detected:
+
+```
+📋 1000xdev [rules-workflow]
+
+I notice you're using the old colon-based format. The command format has been updated to use space-only delimiters with 5 components.
+
+Old format: plan-mode: rules-workflow
+New format: plan-mode rules-workflow none none none
+
+Please update your command to use the new format.
+```
+
+When a command is missing components:
+
+```
+📋 1000xdev [rules-workflow]
+
+Command format error: Missing components. The command must have exactly 5 components.
+
+Format: mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+Example: plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none
+
+Please update your command to include all 5 components, using "none" for any unused components.
+```
+
+### Implementation Timeline
+
+The transition to the new format follows this timeline:
+
+1. **Documentation Update Phase**: Update all documentation to show the new format
+2. **Dual Mode Phase**: Support both formats, with warnings for the old format
+3. **New Format Only Phase**: Only the new space-only format will be supported
+
+### Related Knowledge Components
+
+For detailed implementation of backward compatibility:
+
+```typescript
+fetch_rules(["knowledge/rules/patterns/communication/message-command-validation"], 
+           "Understanding message-command validation patterns")
+fetch_rules(["knowledge/rules/reference/syntax/message-command-syntax"], 
+           "Understanding updated message-command syntax")
+```
+
+## Direct-Mode Prompt Syntax
+
+The direct-mode command features a special syntax to support prompts provided on a new line after the command. This syntax is designed to accommodate longer, multi-line prompts while maintaining a clear separation between the command structure and the prompt content.
+
+### Special Syntax Formats
+
+Direct-mode supports two distinct formats for commands with prompts:
+
+#### 1. Simplified Format (3 Components)
+
+```
+direct-mode workflow-type
+prompt:
+[Prompt content goes here...]
+```
+
+This simplified format is ideal for straightforward implementations where pathway and parameter details aren't needed.
+
+Example:
+```
+direct-mode rules-workflow
+prompt:
+Implement a common-words registry with these requirements:
+1. Create a comprehensive list of standardized terms
+2. Organize terms by category (file types, processes, components)
+3. Include definitions and relationships between terms
+```
+
+#### 2. Standard Format (6 Components)
+
+```
+direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+prompt:
+[Prompt content goes here...]
+```
+
+This standard format provides complete control over implementation details through specific pathways and parameters.
+
+Example:
+```
+direct-mode rules-workflow system-wide-optimization @parameters/rules/direct-mode/system-wide-optimization.mdc none
+prompt:
+Implement the message-command validation enhancements based on the documentation in implementation-core-optimization.md, focusing on:
+1. Support for both simplified and standard formats
+2. Proper validation of prompt content
+3. Clear error messaging for format issues
+```
+
+### Format Detection for Direct-Mode Prompts
+
+The algorithm for detecting and processing direct-mode prompts extends the standard format detection:
+
+```typescript
+function detectAndProcessDirectModeCommand(input) {
+  // Split by lines to separate command from prompt
+  const lines = input.trim().split('\n');
+  
+  // Check if this is a direct-mode command with prompt
+  if (lines.length >= 2 && lines[0].startsWith('direct-mode') && lines[1].trim() === 'prompt:') {
+    const commandLine = lines[0].trim();
+    
+    // Process command line components
+    const components = commandLine.split(/\s+/).filter(c => c.length > 0);
+    
+    // Check if using old format with colon
+    if (commandLine.includes(':')) {
+      // Convert from old format (direct-mode: workflow-type)
+      const [command, params] = commandLine.split(':');
+      
+      // Create components for new format
+      const newComponents = ['direct-mode'];
+      
+      // Extract workflow type
+      const workflowType = params.trim().split(/\s+/)[0] || 'rules-workflow';
+      newComponents.push(workflowType);
+      
+      // Build prompt content from remaining lines
+      const promptContent = lines.slice(2).join('\n');
+      
+      return {
+        convertedCommand: newComponents.join(' '),
+        promptContent: promptContent,
+        format: 'simplified',
+        message: `Command converted from old format. New format: ${newComponents.join(' ')}`
+      };
+    } else {
+      // Process new format
+      // Determine if using simplified (2 components) or standard (5 components) format
+      if (components.length === 2) {
+        // Simplified format
+        return {
+          components: components,
+          promptContent: lines.slice(2).join('\n'),
+          format: 'simplified',
+          newFormat: true
+        };
+      } else if (components.length === 5) {
+        // Standard format
+        return {
+          components: components,
+          promptContent: lines.slice(2).join('\n'),
+          format: 'standard',
+          newFormat: true
+        };
+      } else {
+        // Invalid component count
+        return {
+          error: true,
+          message: `Direct-mode with prompt must have either 2 components (simplified format) or 5 components (standard format), found ${components.length}`
+        };
+      }
+    }
+  }
+  
+  // Not a direct-mode prompt command, use standard detection
+  return detectAndProcessCommand(input);
+}
+```
+
+### Usage Guidelines
+
+When using direct-mode with prompts, follow these guidelines:
+
+1. **Prompt Marker Placement**:
+   - The `prompt:` marker must appear on a new line immediately after the command
+   - Do not include it on the same line as the command
+
+2. **Format Selection**:
+   - Use simplified format (2 components) for straightforward implementations
+   - Use standard format (5 components) for implementations requiring specific parameters
+
+3. **Prompt Content**:
+   - Always provide substantive content after the prompt marker
+   - Structure complex prompts with clear requirements and numbering
+   - Ensure prompts are specific and actionable
+
+4. **Format Consistency**:
+   - Don't mix elements from simplified and standard formats
+   - Don't add extra components to the simplified format
+
+### Validation and Error Handling
+
+Direct-mode prompts are validated with special attention to:
+
+1. **Command Structure**: Ensuring the command has the correct number of components
+2. **Prompt Marker**: Verifying the prompt: marker appears on a new line
+3. **Prompt Content**: Confirming substantive content exists after the marker
+4. **Component Formats**: Validating each component follows its format requirements
+
+When errors are detected, clear guidance is provided:
+
+```
+⚡ 1000xdev [rules-workflow]
+
+Error: Direct-mode with prompt must have either 2 components (simplified format) or 5 components (standard format), found 3
+
+Correct formats:
+Simplified: direct-mode rules-workflow
+Standard: direct-mode rules-workflow none none none
+```
+
+### Direct-Mode Format Comparison
+
+| Format | Components | Example | Use Case |
+|--------|------------|---------|----------|
+| Simplified | 2 + prompt | `direct-mode rules-workflow` | Quick implementations without specific parameters |
+| Standard | 5 + prompt | `direct-mode rules-workflow system-wide none none` | Detailed implementations with specific pathways |
+
+## Best Practices
+
+1. **Clear Mode Selection**: Use the appropriate mode for the task at hand
+2. **Minimal Parameters**: Include only necessary project-rule-parameters
+3. **Proper Workflow Type**: Specify the correct workflow type for the task
+4. **Clear Prompts**: For direct-mode, provide clear and specific prompts
+5. **Consistent Format**: Follow the standard message-command format
+
 This simplified message-command system streamlines communication while maintaining all necessary functionality through the abstraction of implementation details to project-rule-parameters and the knowledge system. 

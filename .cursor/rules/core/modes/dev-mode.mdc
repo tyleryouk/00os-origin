@@ -3,7 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
-q# Developer Mode System
+# Developer Mode System
 
 ## Overview
 
