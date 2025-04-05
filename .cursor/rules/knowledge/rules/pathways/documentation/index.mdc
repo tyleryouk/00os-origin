@@ -39,7 +39,6 @@ The following knowledge components are available in this pathway:
 
 ### Parameter Documentation
 - **parameter-standards.md**: Standards for project-rule-parameters
-- **parameter-implementation.md**: Guide for implementing parameter systems
 - **knowledge-integration.md**: Guidelines for integrating knowledge into parameters
 - **parameter-organization.md**: Patterns for organizing parameters
 - **parameter-verification.md**: Techniques for verifying parameter implementation

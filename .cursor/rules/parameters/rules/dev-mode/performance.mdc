@@ -5,9 +5,25 @@ alwaysApply: false
 ---
 # mode: dev-mode | workflow: rules-workflow | pathway: performance | filepath: @parameters/rules/dev-mode/performance.mdc  | optional-standard-parameter(s): none
 
+## Purpose
+
+This file defines the specific operation of the `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none` message-command, which initializes developer mode with a focus on performance optimization implementation.
+
+## Knowledge Access
+
+```typescript
+// Access essential performance-related knowledge components
+fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"], 
+           "Understanding implementation patterns for performance optimization")
+fetch_rules(["knowledge/rules/patterns/tool/tool-combinations"], 
+           "Finding optimal tool combinations for performance implementation")
+fetch_rules(["knowledge/rules/reference/guides/implementation-patterns"], 
+           "Accessing implementation pattern reference guides")
+```
+
 ## File Purpose and Relationship
 
-This file defines the specific operation of the `dev-mode: rules-workflow @parameters/rules/dev-mode-performance.mdc` message-command, which initializes developer mode with a focus on performance optimization implementation. It should be consulted to understand:
+This file defines the specific operation of the `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none` message-command, which initializes developer mode with a focus on performance optimization implementation. It should be consulted to understand:
 
 - How to implement performance optimizations for the cognitive architecture
 - Specialized implementation structure for performance-focused changes
@@ -16,7 +32,7 @@ This file defines the specific operation of the `dev-mode: rules-workflow @param
 
 This file complements:
 - `fetch_rules(["knowledge/rules/reference/guides/implementation-patterns"])`: Implementation continuation protocols
-- `@parameters/rules/plan-mode-performance.mdc`: Planning guidance for performance optimizations
+- `@parameters/rules/plan-mode/performance.mdc`: Planning guidance for performance optimizations
 - `fetch_rules(["knowledge/rules/patterns/impl/implementation-patterns"])`: Overall rules workflow
 
 ## Usage as Project-Rule-Parameter
@@ -24,10 +40,10 @@ This file complements:
 This file contains specialized implementation details for performance-focused development. It should be referenced as a project-rule-parameter when initializing implementation for performance optimizations:
 
 ```
-dev-mode: rules-workflow @parameters/rules/dev-mode-performance.mdc
+dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none
 ```
 
-For general implementation or other enhancement pathways, see the alternative project-rule-parameters listed in `@parameters/rules/dev-mode-rules-workflow.mdc`.
+For general implementation or other enhancement pathways, see the alternative project-rule-parameters listed in `@parameters/rules/dev-mode/system-wide-optimization.mdc`.
 
 ## 1. Performance Optimization Implementation Overview
 
@@ -48,7 +64,7 @@ The performance optimization implementation pathway provides a specialized execu
 
 ## 2. Core Command Operation
 
-When the `dev-mode: rules-workflow @parameters/rules/dev-mode-performance.mdc` message-command is received, 1000xdev will:
+When the `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none` message-command is received, 1000xdev will:
 
 1. **Initialize Developer Mode**: Enter or remain in Developer Mode with the 💻 1000xdev [rules-workflow] indicator
 2. **Identify Performance Targets**: Focus on the performance areas identified in the planning folder
