@@ -55,6 +55,39 @@ Mode transitions follow specific protocols:
 
 ### Planning Mode Patterns
 
+#### ⚠️ Critical Planning Mode Guidelines
+
+1. **Strict Planning Boundaries**:
+   - **NEVER** attempt code implementation during Planning Mode
+   - **NEVER** make technical suggestions that belong in Developer Mode
+   - Focus EXCLUSIVELY on documentation and planning
+   - Maintain full separation from implementation concerns
+
+2. **Hallucination Prevention**:
+   - Base ALL planning on EXPLICIT user requirements
+   - Document what is KNOWN, not what is assumed
+   - Clearly indicate areas of uncertainty with explicit notes
+   - NEVER fill in missing details without flagging them as assumptions
+   - Use planning-progress.md to track research findings
+
+3. **File Modification Restrictions**:
+   - Modifications are STRICTLY limited to the `/planning` directory
+   - NEVER attempt to modify files in implementation directories during Planning Mode
+   - Always use proper tool calls for file modifications
+   - Verify all modifications after they are made
+
+4. **First-Person Perspective**:
+   - Write ALL planning documents from a first-person perspective
+   - Use consistent phrasing: "I will implement...", "My approach will be..."
+   - Treat planning documents as personal notes to be read later in dev-mode
+   - Maintain consistent voice throughout all planning documents
+
+5. **Planning Completion Requirements**:
+   - All planning documents must be COMPLETE before signaling completion
+   - Required documents: requirements.md, implementation.md, planning-progress.md
+   - Optional context documents as needed for complex implementations
+   - Verify all documents meet quality standards before completion
+
 ```markdown
 📋 1000xdev [workflow-type]
 

@@ -8,15 +8,15 @@ For comprehensive Planning Mode verification standards, access these knowledge c
 
 ```typescript
 // For detailed plan-mode verification patterns
-fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding Planning Mode verification patterns")
 
 // For common mode patterns including verification
-fetch_rules(["knowledge/rules/patterns/modes/common-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding common verification patterns across all modes")
 
 // For verification-specific patterns
-fetch_rules(["knowledge/rules/patterns/doc/verification-system-enhancement"], 
+fetch_rules(["knowledge/rules/system-wide/cognitive-enhancement"], 
            "Understanding verification patterns for documentation")
 ```
 

@@ -8,15 +8,15 @@ For comprehensive Planning Mode documentation standards, access these knowledge 
 
 ```typescript
 // For detailed plan-mode documentation patterns
-fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding Planning Mode documentation patterns")
 
 // For common mode patterns including documentation
-fetch_rules(["knowledge/rules/patterns/modes/common-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding common documentation patterns across all modes")
 
 // For documentation-specific patterns
-fetch_rules(["knowledge/rules/patterns/doc/file-standards"], 
+fetch_rules(["knowledge/rules/system-wide/file-safety"], 
            "Understanding documentation standards and templates")
 ```
 

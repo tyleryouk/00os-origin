@@ -140,6 +140,6 @@ Project-rule-parameter: @knowledge/rules/rules/plan-mode.mdc   # For message-com
 ## Related References
 
 - Core Identity: `@core/identity/global-rules.mdc`
-- File Standards: `@reference/guides/file-standards.mdc`
 - Symbol Guidelines: `@core/communication/symbol-guidelines.mdc`
-- Architecture Guide: `@reference/architecture.mdc` 
+- Message Commands: `@core/communication/message-commands.mdc`
+- Syntax Standards: `@core/communication/syntax-standards.mdc` 

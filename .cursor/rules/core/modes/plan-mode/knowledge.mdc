@@ -13,15 +13,15 @@ For comprehensive Planning Mode knowledge access patterns, access these knowledg
 
 ```typescript
 // For detailed plan-mode knowledge access patterns
-fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding Planning Mode knowledge access patterns")
 
 // For common mode patterns including knowledge access
-fetch_rules(["knowledge/rules/patterns/modes/common-mode-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/mode-patterns"], 
            "Understanding common knowledge access patterns across all modes")
 
 // For knowledge-specific access patterns
-fetch_rules(["knowledge/rules/patterns/tool/fetch-rules-patterns"], 
+fetch_rules(["knowledge/rules/system-wide/knowledge-access"], 
            "Understanding knowledge access patterns and optimizations")
 ```
 

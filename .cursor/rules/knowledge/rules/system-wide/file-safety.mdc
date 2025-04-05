@@ -52,10 +52,12 @@ To prevent hallucinations and ensure system stability:
    - They create unnecessary complexity and navigation issues
    - Direct component access is clearer and more maintainable
 
-2. **Root README Only**: Only one README.md should exist at the root of 1000xbrain
-   - Serves as documentation of 1000xbrain purpose
-   - Functions as attachment point for Context Pills
-   - No README.md files should be created in subdirectories
+2. **README.md Role and Placement**: README.md files serve important documentation purposes
+   - README.md files are placed strategically throughout the folder structure for readability
+   - They provide navigation and context for directories
+   - These files are NOT synchronized to Cursor Rules and do not affect AI behavior
+   - README.md files should follow consistent formatting across the codebase
+   - They serve as directory documentation only
 
 3. **Direct Component Access**: All knowledge access should be through direct component paths
    - Use fetch_rules to access specific components by full path
