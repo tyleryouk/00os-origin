@@ -1,4 +1,4 @@
-q# Developer Mode System
+# Developer Mode System
 
 ## Overview
 

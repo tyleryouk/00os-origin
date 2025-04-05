@@ -1,0 +1,458 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# mode: direct-mode | workflow: rules-workflow | pathway: none | filepath: @parameters/rules/direct-mode/major-key-message-commands.mdc | optional-standard-parameter(s): none
+
+## Knowledge Access
+
+```typescript
+// Access message-command verification knowledge
+fetch_rules([
+  "knowledge/rules/reference/syntax/message-command-syntax",
+  "knowledge/rules/reference/syntax/parameter-syntax"
+], "Accessing message-command and parameter syntax knowledge")
+
+// Access verification process knowledge
+fetch_rules([
+  "knowledge/rules/patterns/impl/validation-logic",
+  "knowledge/rules/patterns/impl/validation-error-handling"
+], "Accessing validation logic and error handling patterns")
+```
+
+## Overview
+
+This project-rule-parameter implements an automated testing process for verifying message-commands against project-rule-parameter headers in planning folders 93, 94, and 95. It provides a comprehensive, standalone system for testing the message-command verification process through a structured, iterative testing cycle that systematically improves the planning-folder-files until they are ready for implementation.
+
+## Tool Call Comparison Testing
+
+A critical aspect of this testing process is comparing the effectiveness of different tool calls for accessing project-rule-parameters. Specifically, we will test:
+
+1. **read_file Method**:
+   ```typescript
+   read_file(`.cursor/rules/${parameter_path}`, should_read_entire_file=true);
+   ```
+
+2. **fetch_rules Method**:
+   ```typescript
+   fetch_rules([parameter_path]);
+   ```
+
+### Tool Call Test Cases
+
+Specific test cases will be devoted to comparing these tool calls:
+
+1. **Tool Call Comparison Test 1**:
+   - Access parameter using read_file
+   - Access same parameter using fetch_rules
+   - Compare results for accuracy, completeness, and performance
+   - Document findings in planning folders
+
+2. **Tool Call Comparison Test 2**:
+   - Test large parameter files with read_file
+   - Test same files with fetch_rules
+   - Evaluate results for context window efficiency
+
+3. **Tool Call Comparison Test 3**:
+   - Test parameters with complex headers using read_file
+   - Test same parameters with fetch_rules
+   - Compare header extraction efficiency
+
+4. **Tool Call Comparison Test 4**:
+   - Test error handling for nonexistent parameters with both tools
+   - Compare error message clarity and usefulness
+
+### Tool Call Evaluation Criteria
+
+The comparative evaluation will assess:
+- **Reliability**: Which tool consistently provides the complete parameter content
+- **Header Extraction**: How effectively each tool helps extract the parameter header
+- **Error Handling**: How clearly each tool reports parameter access errors
+- **Implementation Simplicity**: Which approach requires less code complexity
+- **Performance**: Any difference in response time or cognitive load
+
+## Iterative Testing Process
+
+The testing process follows a structured 5-step cycle that continues until planning is complete:
+
+1. **Test Request**: 1000xdev sends a description of the test case to be evaluated along with the "ready-for-message-command" signal
+2. **Test Submission**: Tyler sends an example message-command matching the requested test case
+3. **Verification Execution**: 1000xdev runs tool calls to verify the message-command against parameter headers
+4. **Planning Enhancement**: 1000xdev uses test results to enhance the planning-folder-files in folders 93, 94, and 95
+5. **Cycle Continuation**: The process repeats with a new test case until planning is complete
+
+### ⚠️ CRITICAL REQUIREMENT: UPDATE PLANNING FILES AFTER EVERY TEST ⚠️
+
+**MANDATORY**: After EVERY message-command verification (even the very first one):
+- You MUST update the relevant planning-folder-files with your findings
+- You MUST use edit_file to make actual changes to the planning documentation
+- You MUST document ALL insights gained from each verification test
+- You MUST NOT wait for multiple tests before updating files
+- You MUST NOT simply state what should be documented - actually document it
+
+This rule is absolutely critical - planning-folder-files must evolve with each test to capture learning incrementally, not just at the end of testing. Every single message-command provides valuable information that must be immediately documented.
+
+Files to update after each test include:
+- **implementation-progress.md**: Add new verification findings
+- **test-cheatsheet.md**: Add new test cases based on insights
+- **message-command-processing-tests.md**: Document verification process improvements
+- **implementation-core-optimization.md**: Update implementation approach
+
+### Completion Signal
+
+When the planning-folder-files are sufficiently enhanced and ready for implementation:
+- 1000xdev sends the signal "ready-for-dev-mode" to indicate readiness to transition
+- This signals the completion of the testing phase and readiness to begin implementation
+
+### Test Case Types
+
+Test requests will systematically cover these categories:
+
+1. **Valid Message-Commands**: Testing properly formed commands
+2. **Component Mismatches**: Testing each component type mismatch
+3. **Error Conditions**: Testing parameter file not found, malformed headers, etc.
+4. **Mode Variations**: Testing the three mode types (plan-mode, dev-mode, direct-mode)
+5. **Variable Parameter Handling**: Testing standard-parameters with bracketed variables
+6. **Tool Call Comparisons**: Testing different tools for parameter access (read_file vs. fetch_rules)
+
+## Implementation Process
+
+### 1. Message-Command Verification Requirements
+
+Every message-command verification MUST:
+
+1. **ALWAYS RUN TOOL CALLS**: NEVER attempt verification without explicit tool calls
+2. **ALWAYS ACCESS THE PARAMETER FILE**: Use either `read_file()` or `fetch_rules()` to access the actual parameter content
+3. **ALWAYS PARSE COMPONENTS**: Explicitly parse both message-command and parameter header components
+4. **ALWAYS INCLUDE MODE INDICATOR**: Every response MUST begin with the correct mode indicator
+5. **ALWAYS SHOW VERIFICATION STEPS**: Show clear component-by-component verification
+6. **NEVER HALLUCINATE PARAMETER CONTENTS**: NEVER make claims about parameter content without accessing it via tool call
+
+### 2. Standard-Parameter Verification Process
+
+When verifying optional-standard-parameter(s), special handling is required:
+
+1. **Bracketed Format in Headers**:
+   - In project-rule-parameter headers, standard parameters appear in brackets: `[parameter-name]`
+   - Example header: `optional-standard-parameter(s): [brain-file-name]`
+   - These brackets indicate this is a variable to be used within the parameter file
+
+2. **Unbracketed Values in Message-Commands**:
+   - In message-commands, the actual values are provided WITHOUT brackets
+   - Example command: `direct-mode rules-workflow none @parameters/rules/direct-mode/add-project-rule-parameter.mdc subsystem-upgrade.md`
+   - Where `subsystem-upgrade.md` is the concrete value for the `[brain-file-name]` variable
+
+3. **Variable Pattern Validation**:
+   - Different variables have specific validation patterns:
+     - `[brain-file-name]`: Must end with `.md`
+     - `[number]`: Must be numeric
+     - Other variables may have their own validation requirements
+
+### 3. Message-Command Syntax Requirements
+
+The message-command syntax must follow these requirements:
+
+1. **Plan-Mode Syntax**:
+   ```
+   plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+   ```
+
+2. **Dev-Mode Syntax**:
+   ```
+   dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+   ```
+
+3. **Direct-Mode Syntax**:
+   ```
+   direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+   prompt:
+   ```
+
+All message-commands must have exactly 5 components:
+1. **mode**: plan-mode, dev-mode, or direct-mode
+2. **workflow-type**: rules-workflow, front-end-workflow, back-end-workflow, or scripts-workflow
+3. **pathway-name**: specific pathway or "none"
+4. **project-rule-parameter**: @filepath.mdc or "none"
+5. **optional-standard-parameter(s)**: specific parameter or "none"
+
+### 4. Verification Process Implementation
+
+#### Using read_file Method
+
+```typescript
+// Access the project-rule-parameter file using read_file
+try {
+  // Strip @ symbol and access file in .cursor/rules directory
+  const parameter_path = project_rule_parameter.substring(1); // Remove @ from start
+  const parameter_content = await read_file(`.cursor/rules/${parameter_path}`, should_read_entire_file=true);
+  
+  // Extract header from parameter content
+  const lines = parameter_content.split('\n');
+  let header_line;
+  for (const line of lines) {
+    if (line.startsWith('# mode:')) {
+      header_line = line;
+      break;
+    }
+  }
+  
+  // Continue with header verification
+  // ...
+} catch (error) {
+  // Handle file access errors
+  return `${mode_indicator}\n\nError: Project-rule-parameter '${project_rule_parameter}' not found`;
+}
+```
+
+#### Using fetch_rules Method
+
+```typescript
+// Access the project-rule-parameter file using fetch_rules
+try {
+  // Strip @ symbol to get parameter path
+  const parameter_path = project_rule_parameter.substring(1); // Remove @ from start
+  
+  // Fetch the parameter content
+  const parameter_content = await fetch_rules([parameter_path]);
+  
+  // Extract header from parameter content
+  // Note: fetch_rules returns content in a potentially different format than read_file
+  const content_text = parameter_content.toString();
+  const lines = content_text.split('\n');
+  let header_line;
+  for (const line of lines) {
+    if (line.startsWith('# mode:')) {
+      header_line = line;
+      break;
+    }
+  }
+  
+  // Continue with header verification
+  // ...
+} catch (error) {
+  // Handle fetch errors
+  return `${mode_indicator}\n\nError: Project-rule-parameter '${project_rule_parameter}' not found or could not be fetched`;
+}
+```
+
+### 5. Complete Verification Process Steps
+
+For each message-command verification:
+
+1. **Initial Message-Command Parsing**:
+   ```typescript
+   // Parse message-command into components
+   const components = message_command.split(' ');
+   const mode = components[0];            // First component: mode
+   const workflow_type = components[1];   // Second component: workflow-type
+   const pathway_name = components[2];    // Third component: pathway-name
+   const project_rule_parameter = components[3]; // Fourth component: @project-rule-parameter.mdc
+   const optional_parameters = components[4];    // Fifth component: optional-standard-parameter(s)
+   ```
+
+2. **Set Mode Indicator**:
+   ```typescript
+   // Set mode indicator based on message-command mode
+   let mode_indicator;
+   switch(mode) {
+     case 'plan-mode':
+       mode_indicator = `📋 1000xdev [${workflow_type}]`;
+       break;
+     case 'dev-mode':
+       mode_indicator = `💻 1000xdev [${workflow_type}]`;
+       break;
+     case 'direct-mode':
+       mode_indicator = `⚡ 1000xdev [${workflow_type}]`;
+       break;
+     default:
+       mode_indicator = `📋 1000xdev [rules-workflow]`; // Default fallback
+   }
+   ```
+
+3. **Project-Rule-Parameter Access Options**:
+   
+   **Option A: Using read_file**
+   ```typescript
+   // Access using read_file
+   const parameter_path = project_rule_parameter.substring(1);
+   const parameter_content = read_file(`.cursor/rules/${parameter_path}`, should_read_entire_file=true);
+   ```
+   
+   **Option B: Using fetch_rules**
+   ```typescript
+   // Access using fetch_rules
+   const parameter_path = project_rule_parameter.substring(1);
+   const parameter_content = fetch_rules([parameter_path]);
+   ```
+
+4. **Header Extraction and Component Verification**:
+   ```typescript
+   // Extract header from parameter content
+   // [Content will vary depending on which access method was used]
+   
+   // Verify components and return appropriate response
+   // [Verification logic remains similar for both methods]
+   ```
+
+## Planning Enhancement Process
+
+After each verification test, the results will be used to:
+
+1. **Update Planning Documentation**:
+   - Enhance message-command verification process in relevant planning folders
+   - Document edge cases and their handling
+   - Refine verification requirements based on test results
+   - **Document tool call comparison findings**
+
+2. **Improve Planning Files**:
+   - Update implementation-progress.md with verification findings
+   - Enhance test-cheatsheet.md with new test cases
+   - Refine implementation-core-optimization.md based on test results
+   - Update requirements.md with improved specifications
+   - **Add tool call comparison results to documentation**
+
+### ⚠️ UPDATE PLANNING FILES AFTER EVERY VERIFICATION ⚠️
+
+**ABSOLUTELY REQUIRED**: After performing any message-command verification:
+1. Use edit_file to update relevant planning-folder-files with ALL findings
+2. NEVER skip documentation after a verification test
+3. Document EVERY specific insight gained from each test
+4. Capture details while they are fresh, not after multiple tests
+5. Be PROACTIVE in enhancing planning documentation
+6. Make SPECIFIC, CONCRETE improvements to the files
+7. DO NOT just say you will document - ACTUALLY document
+8. ALWAYS document before requesting the next test
+
+This requirement ensures that planning documentation evolves continuously with each test, capturing valuable insights immediately rather than waiting until later. EVERY single message-command verification must result in planning-folder-file updates.
+
+3. **Track Improvements**:
+   - Document specific enhancements made to planning folder files
+   - Track progress toward implementation readiness
+   - Identify remaining areas for testing and improvement
+   - **Evaluate optimal tool call approach based on testing**
+
+4. **Target Specific Planning Folders**:
+   - Folder 93: Focus on core components and message-command format
+   - Folder 94: Focus on knowledge and parameters optimization
+   - Folder 95: Focus on future enhancement opportunities
+
+## Usage Guidelines
+
+### Basic Usage
+
+```markdown
+direct-mode rules-workflow none @parameters/rules/direct-mode/major-key-message-commands.mdc none
+prompt: Begin message-command verification testing for planning folders
+```
+
+### Test Cycle Example
+
+1. **Tool Call Comparison Test Request**:
+   ```
+   Please send a message-command to test project-rule-parameter access using both read_file and fetch_rules.
+
+   ready-for-message-command
+   ```
+
+2. **Test Submission**:
+   ```
+   plan-mode rules-workflow none @parameters/rules/plan-mode/system-wide-optimization.mdc none
+   ```
+
+3. **Verification Using Both Tool Calls**:
+   [1000xdev performs verification using both read_file and fetch_rules, comparing results]
+
+4. **Documentation Enhancement**:
+   [1000xdev documents findings regarding tool call effectiveness in planning folders]
+
+5. **Next Test Request**:
+   ```
+   Please send a message-command with a large parameter file to compare tool call efficiency.
+
+   ready-for-message-command
+   ```
+
+6. **Cycle Continues** until planning is complete, then:
+   ```
+   ready-for-dev-mode
+   ```
+
+## Success Criteria
+
+1. **Complete Verification**:
+   - All components properly verified
+   - Tool calls executed for parameter access
+   - Appropriate error messages provided
+   - Mode indicators properly set
+
+2. **Protocol Adherence**:
+   - "ready-for-message-command" signals sent
+   - No execution of parameter instructions during testing
+   - Verification only, no implementation during testing
+   - Clear component-by-component verification
+
+3. **Testing Thoroughness**:
+   - Valid message-commands tested
+   - Component mismatches tested
+   - Error conditions tested
+   - Variable parameter handling tested
+   - Mode indicator persistence verified
+   - **Tool call comparisons thoroughly documented**
+
+4. **Planning Enhancement**:
+   - Planning folder files systematically improved
+   - Documentation updated with verification findings
+   - Implementation approach refined based on testing
+   - Planning sufficiently complete for dev-mode transition
+   - **Optimal tool call approach determined and documented**
+
+5. **Real-Time Documentation**:
+   - Every single message-command verification results in immediate file updates
+   - No testing occurs without corresponding documentation updates
+   - Planning-folder-files show clear evolution through testing process
+   - Each insight is captured in the moment, not summarized later
+   - Documentation is specific and concrete, not vague or abstract
+   - All findings are properly integrated into relevant planning files
+
+## Error Handling
+
+| Issue | Solution |
+|-------|----------|
+| Parameter file not found | Return error with mode indicator |
+| Malformed parameter header | Return error specifying header issue |
+| Component mismatch | Return specific component mismatch error |
+| Bracketed variable mismatch | Validate pattern and return specific error |
+| Syntax errors in message-command | Parse carefully and return appropriate error |
+| **Tool call access failure** | **Test alternative tool call method and document comparison** |
+
+## Common Mistakes to Avoid
+
+1. **Skipping Tool Calls**: NEVER attempt verification without running tool calls to access parameter content
+2. **Hallucinating Parameter Content**: NEVER claim to know parameter content without accessing it via tool call
+3. **Missing Mode Indicators**: NEVER omit the mode indicator from a response
+4. **Incomplete Verification**: ALWAYS check ALL components for matches/mismatches
+5. **Incorrect Error Format**: ALWAYS format error messages with the proper mode indicator and specific error details
+6. **Vague Responses**: ALWAYS provide explicit component-by-component verification
+7. **Actually Executing Parameters**: NEVER execute the parameter actions during verification testing
+8. **Misinterpreting Bracketed Variables**: When a parameter header contains `[variable-name]`, check if the provided value matches the expected pattern, not the exact string
+9. **Using Only One Tool Call Method**: ALWAYS test both read_file and fetch_rules for parameter access in specified test cases
+10. **Skipping Documentation**: NEVER complete a verification test without documenting findings in planning-folder-files
+11. **Deferring Documentation**: NEVER wait for multiple tests before updating documentation
+12. **Abstract Documentation**: NEVER say "should document X" instead of actually documenting X
+13. **Token Documentation**: NEVER make minimal updates to documentation just to satisfy the requirement
+14. **Passive Documentation**: NEVER rely on Tyler to request documentation of specific insights
+
+## Related Knowledge Components
+
+Access these components for additional guidance:
+
+```typescript
+fetch_rules([
+  "knowledge/rules/reference/syntax/message-command-syntax",
+  "knowledge/rules/patterns/impl/validation-logic",
+  "knowledge/rules/patterns/modes/mode-transition-patterns",
+  "knowledge/rules/reference/architecture/brain-files-cursor-rules",
+  "knowledge/rules/patterns/tool/tool-combinations"
+], "Accessing message-command verification and tool call guidance")
+``` 

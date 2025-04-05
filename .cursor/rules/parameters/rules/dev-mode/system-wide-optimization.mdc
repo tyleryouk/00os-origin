@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # mode: dev-mode | workflow: rules-workflow | pathway: system-wide-optimization | filepath: @parameters/rules/dev-mode/system-wide-optimization.mdc  | optional-standard-parameter(s): none
 
 ## 1. System-Wide Optimization Implementation Overview

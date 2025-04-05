@@ -14,10 +14,10 @@ This pattern validates the fundamental format requirements for all message-comma
 
 #### Implementation
 
-1. **Check Command Format**: Verify that the message-command follows the basic format of `command: parameter`
-2. **Verify Colon Presence**: Ensure the command includes a colon separator
-3. **Check Command Case**: Verify the command is in kebab-case (lowercase with hyphens)
-4. **Verify Space After Colon**: Ensure there's a space after the colon before parameters
+1. **Check Command Format**: Verify that the message-command follows the basic space-delimited format of five components
+2. **Check Command Case**: Verify all components use appropriate case (lowercase kebab-case for commands)
+3. **Verify Component Count**: Ensure there are exactly five components (mode, workflow-type, pathway-name, @project-rule-parameter.mdc or "none", optional-standard-parameter(s) or "none")
+4. **Validate "none" Placeholders**: Verify "none" is used appropriately for missing components
 
 #### Usage Context
 
@@ -27,153 +27,211 @@ Use this pattern for initial validation of all message-commands before processin
 
 ```javascript
 function validateBasicFormat(command) {
-  // Check for colon presence
-  if (!command.includes(':')) {
-    return { valid: false, error: 'Missing colon separator' };
+  // Split into components (handle multiple spaces as single delimiter)
+  const components = command.split(/\s+/).filter(c => c.length > 0);
+  
+  // Check component count
+  if (components.length !== 5) {
+    return { 
+      valid: false, 
+      error: `Command must have exactly 5 components, found ${components.length}. Format: mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)` 
+    };
   }
   
-  // Split into command and parameters
-  const [cmd, params] = command.split(':');
+  // Extract components
+  const [mode, workflowType, pathwayName, projectRuleParameter, optionalParams] = components;
   
-  // Check command case (kebab-case)
-  if (cmd !== cmd.toLowerCase() || /[^a-z0-9-]/.test(cmd)) {
-    return { valid: false, error: 'Command must be lowercase kebab-case' };
+  // Check mode case (kebab-case)
+  if (mode !== mode.toLowerCase() || /[^a-z0-9-]/.test(mode)) {
+    return { valid: false, error: 'Mode must be lowercase kebab-case' };
   }
   
-  // Check space after colon
-  if (params && params.charAt(0) !== ' ') {
-    return { valid: false, error: 'Must include space after colon' };
+  // Check workflow-type case
+  if (workflowType !== workflowType.toLowerCase() || /[^a-z0-9-]/.test(workflowType)) {
+    return { valid: false, error: 'Workflow-type must be lowercase kebab-case' };
   }
   
-  return { valid: true };
-}
-```
-
-### Pattern 2: Parameter Validation
-
-This pattern validates parameters based on their type and format requirements.
-
-#### Implementation
-
-1. **Identify Parameter Types**: Distinguish between standard parameters and project-rule-parameters
-2. **Validate Standard Parameters**: Check format, case, and recognize valid options
-3. **Validate Project-Rule-Parameters**: Check format, extension, and path correctness
-4. **Verify Parameter Order**: Ensure project-rule-parameters appear at the end
-
-#### Usage Context
-
-Use this pattern after basic format validation to ensure parameter correctness.
-
-#### Example
-
-```javascript
-function validateParameters(parameters) {
-  // Trim leading space
-  parameters = parameters.trim();
-  
-  // Split parameters by space
-  const paramList = parameters.split(' ').filter(p => p.length > 0);
-  
-  // Check standard parameters (those without @ prefix)
-  const standardParams = paramList.filter(p => !p.startsWith('@'));
-  for (const param of standardParams) {
-    // Verify kebab-case
-    if (param !== param.toLowerCase() || /[^a-z0-9-]/.test(param)) {
-      return { valid: false, error: `Standard parameter '${param}' must be lowercase kebab-case` };
-    }
-    
-    // Verify it's a recognized parameter
-    if (!isRecognizedParameter(param)) {
-      return { valid: false, error: `Unrecognized parameter: ${param}` };
-    }
+  // Check pathway-name case
+  if (pathwayName !== 'none' && (pathwayName !== pathwayName.toLowerCase() || /[^a-z0-9-]/.test(pathwayName))) {
+    return { valid: false, error: 'Pathway-name must be lowercase kebab-case or "none"' };
   }
   
-  // Check project-rule-parameters (those with @ prefix)
-  const projectParams = paramList.filter(p => p.startsWith('@'));
-  
-  // Ensure project-rule-parameters appear at the end
-  const lastStandardIndex = paramList.findLastIndex(p => !p.startsWith('@'));
-  const firstProjectIndex = paramList.findIndex(p => p.startsWith('@'));
-  if (lastStandardIndex > firstProjectIndex && firstProjectIndex !== -1) {
-    return { valid: false, error: 'Project-rule-parameters must appear at the end' };
+  // Check project-rule-parameter format
+  if (projectRuleParameter !== 'none' && !projectRuleParameter.startsWith('@')) {
+    return { valid: false, error: 'Project-rule-parameter must start with @ or be "none"' };
   }
   
-  for (const param of projectParams) {
-    // Verify extension is .mdc
-    if (!param.endsWith('.mdc')) {
-      return { valid: false, error: `Project-rule-parameter must use .mdc extension: ${param}` };
-    }
-    
-    // Verify path format
-    if (!/^@parameters\/rules\/[a-z0-9-/]+\.mdc$/.test(param)) {
-      return { valid: false, error: `Invalid project-rule-parameter path format: ${param}` };
-    }
-    
-    // Verify parameter exists
-    if (!parameterExists(param)) {
-      return { valid: false, error: `Project-rule-parameter not found: ${param}` };
-    }
+  if (projectRuleParameter !== 'none' && !projectRuleParameter.endsWith('.mdc')) {
+    return { valid: false, error: 'Project-rule-parameter must use .mdc extension' };
   }
   
   return { valid: true };
 }
 ```
 
-### Pattern 3: Command-Specific Validation
+### Pattern 2: Component Validation
 
-This pattern validates specific requirements based on the command type.
+This pattern validates each component based on its specific requirements.
 
 #### Implementation
 
-1. **Identify Command Type**: Determine which command is being processed
-2. **Apply Command-Specific Rules**: Check for required parameters for each command
-3. **Verify Parameter Compatibility**: Ensure parameters are compatible with the command
-4. **Check Required Parameters**: Verify all required parameters are present
+1. **Validate Mode Component**: Check that mode is one of plan-mode, dev-mode, or direct-mode
+2. **Validate Workflow Type**: Verify workflow-type is one of the recognized types
+3. **Validate Pathway Name**: Check pathway-name format or explicit "none"
+4. **Validate Project-Rule-Parameter**: Verify format, extension, and path correctness or explicit "none"
+5. **Validate Optional Parameters**: Check format or explicit "none"
 
 #### Usage Context
 
-Use this pattern after basic format and parameter validation to ensure command-specific correctness.
+Use this pattern after basic format validation to ensure each component meets its specific requirements.
 
 #### Example
 
 ```javascript
-function validateCommandSpecific(command, parameters) {
-  // Split parameters
-  const paramList = parameters.trim().split(' ').filter(p => p.length > 0);
+function validateComponents(components) {
+  const [mode, workflowType, pathwayName, projectRuleParameter, optionalParams] = components;
   
-  switch (command) {
-    case 'plan-mode':
-      // Require workflow parameter
-      if (paramList.length === 0 || !isWorkflowType(paramList[0])) {
-        return { valid: false, error: 'plan-mode requires a valid workflow type' };
-      }
-      break;
-      
-    case 'dev-mode':
-      // Require workflow parameter
-      if (paramList.length === 0 || !isWorkflowType(paramList[0])) {
-        return { valid: false, error: 'dev-mode requires a valid workflow type' };
-      }
-      break;
-      
-    case 'direct-mode':
-      // Require workflow parameter
-      if (paramList.length === 0 || !isWorkflowType(paramList[0])) {
-        return { valid: false, error: 'direct-mode requires a valid workflow type' };
-      }
-      break;
-      
-    case 'verify-planning':
-      // Require project-rule-parameter
-      if (paramList.length === 0 || !paramList[0].startsWith('@')) {
-        return { valid: false, error: 'verify-planning requires a project-rule-parameter' };
-      }
-      break;
-      
-    // Add other commands as needed
+  // Validate mode
+  if (!['plan-mode', 'dev-mode', 'direct-mode'].includes(mode)) {
+    return { valid: false, error: `Invalid mode: ${mode}. Must be plan-mode, dev-mode, or direct-mode` };
+  }
+  
+  // Validate workflow-type
+  if (!['rules-workflow', 'front-end-workflow', 'back-end-workflow', 'scripts-workflow'].includes(workflowType)) {
+    return { 
+      valid: false, 
+      error: `Invalid workflow-type: ${workflowType}. Must be rules-workflow, front-end-workflow, back-end-workflow, or scripts-workflow` 
+    };
+  }
+  
+  // Validate pathway-name
+  if (pathwayName !== 'none' && !/^[a-z0-9-]+$/.test(pathwayName)) {
+    return { valid: false, error: `Invalid pathway-name: ${pathwayName}. Must be lowercase kebab-case or "none"` };
+  }
+  
+  // Validate project-rule-parameter
+  if (projectRuleParameter !== 'none') {
+    if (!projectRuleParameter.startsWith('@')) {
+      return { valid: false, error: `Project-rule-parameter must start with @: ${projectRuleParameter}` };
+    }
+    
+    if (!projectRuleParameter.endsWith('.mdc')) {
+      return { valid: false, error: `Project-rule-parameter must use .mdc extension: ${projectRuleParameter}` };
+    }
+    
+    if (!/^@parameters\/rules\/[a-z0-9-/]+\.mdc$/.test(projectRuleParameter)) {
+      return { valid: false, error: `Invalid project-rule-parameter path format: ${projectRuleParameter}` };
+    }
   }
   
   return { valid: true };
+}
+```
+
+### Pattern 3: Header Validation
+
+This pattern validates message-commands against project-rule-parameter headers.
+
+#### Implementation
+
+1. **Read Parameter File**: Access the project-rule-parameter file content
+2. **Extract Header**: Parse the header line from the file
+3. **Compare Components**: Verify each component of the message-command matches the header
+4. **Handle Variable Parameters**: Implement special handling for bracketed parameters
+
+#### Usage Context
+
+Use this pattern when processing a message-command with a project-rule-parameter to ensure alignment.
+
+#### Example
+
+```javascript
+async function validateAgainstHeader(components) {
+  const [mode, workflowType, pathwayName, projectRuleParameter, optionalParams] = components;
+  
+  // Skip header validation if project-rule-parameter is "none"
+  if (projectRuleParameter === 'none') {
+    return { valid: true };
+  }
+  
+  try {
+    // Read the parameter file
+    const parameterPath = `.cursor/rules/${projectRuleParameter.substring(1)}`;
+    const fileContent = await read_file(parameterPath, true);
+    
+    // Extract header (first line after frontmatter)
+    let headerLine = '';
+    const lines = fileContent.split('\n');
+    for (const line of lines) {
+      if (line.startsWith('# mode:')) {
+        headerLine = line;
+        break;
+      }
+    }
+    
+    if (!headerLine) {
+      return { valid: false, error: `Malformed header in project-rule-parameter: ${projectRuleParameter}` };
+    }
+    
+    // Parse header components
+    const headerMode = extractHeaderComponent(headerLine, 'mode');
+    const headerWorkflow = extractHeaderComponent(headerLine, 'workflow');
+    const headerPathway = extractHeaderComponent(headerLine, 'pathway');
+    const headerFilepath = extractHeaderComponent(headerLine, 'filepath');
+    const headerOptional = extractHeaderComponent(headerLine, 'optional-standard-parameter(s)');
+    
+    // Compare components
+    if (mode !== headerMode) {
+      return { 
+        valid: false, 
+        error: `Mode mismatch. Message-command specifies '${mode}' but parameter requires '${headerMode}'` 
+      };
+    }
+    
+    if (workflowType !== headerWorkflow) {
+      return { 
+        valid: false, 
+        error: `Workflow-type mismatch. Message-command specifies '${workflowType}' but parameter requires '${headerWorkflow}'` 
+      };
+    }
+    
+    if (pathwayName !== headerPathway) {
+      return { 
+        valid: false, 
+        error: `Pathway-name mismatch. Message-command specifies '${pathwayName}' but parameter requires '${headerPathway}'` 
+      };
+    }
+    
+    if (projectRuleParameter !== headerFilepath) {
+      return { 
+        valid: false, 
+        error: `Project-rule-parameter mismatch. Message-command specifies '${projectRuleParameter}' but parameter requires '${headerFilepath}'` 
+      };
+    }
+    
+    // Special handling for standard-parameters
+    if (headerOptional.startsWith('[') && headerOptional.endsWith(']')) {
+      // Variable parameter, validate pattern
+      const variableName = headerOptional.substring(1, headerOptional.length - 1);
+      const isValid = validateParameterPattern(variableName, optionalParams);
+      
+      if (!isValid) {
+        return { 
+          valid: false, 
+          error: `Optional-standard-parameter(s) mismatch. Message-command specifies '${optionalParams}' but parameter requires a value matching pattern '${headerOptional}'` 
+        };
+      }
+    } else if (optionalParams !== headerOptional) {
+      return { 
+        valid: false, 
+        error: `Optional-standard-parameter(s) mismatch. Message-command specifies '${optionalParams}' but parameter requires '${headerOptional}'` 
+      };
+    }
+    
+    return { valid: true };
+  } catch (error) {
+    return { valid: false, error: `Project-rule-parameter not found: ${projectRuleParameter}` };
+  }
 }
 ```
 
@@ -195,23 +253,37 @@ Use this pattern when validation fails to provide helpful feedback.
 #### Example
 
 ```javascript
-function generateErrorResponse(command, error) {
-  let response = `I cannot process this message-command as it's incorrect. ${error}\n\n`;
+function generateErrorResponse(mode, error) {
+  // Determine mode indicator
+  let modeIndicator = '';
+  
+  if (mode.startsWith('plan-mode')) {
+    modeIndicator = '📋 1000xdev [rules-workflow]';
+  } else if (mode.startsWith('dev-mode')) {
+    modeIndicator = '💻 1000xdev [rules-workflow]';
+  } else if (mode.startsWith('direct-mode')) {
+    modeIndicator = '⚡ 1000xdev [rules-workflow]';
+  } else {
+    modeIndicator = '1000xdev';
+  }
+  
+  // Format error response with mode indicator
+  let response = `${modeIndicator}\n\n${error}\n\n`;
   
   // Add example of correct format
   switch (true) {
     case error.includes('kebab-case'):
-      response += 'Correct format: plan-mode: rules-workflow\n\n';
+      response += 'Correct format: plan-mode rules-workflow none none none\n\n';
       response += 'Please resubmit using the lowercase kebab-case format.';
       break;
       
-    case error.includes('missing colon'):
-      response += 'Correct format: plan-mode: rules-workflow\n\n';
-      response += 'Please include a colon after the command name.';
+    case error.includes('components'):
+      response += 'Correct format: plan-mode rules-workflow none none none\n\n';
+      response += 'Please include all 5 components with "none" for any unused components.';
       break;
       
     case error.includes('.mdc extension'):
-      response += 'Correct format: plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.mdc\n\n';
+      response += 'Correct format: plan-mode rules-workflow none @parameters/rules/plan-mode/template-basic.mdc none\n\n';
       response += 'Please use .mdc extension for project-rule-parameters.';
       break;
       
@@ -225,14 +297,151 @@ function generateErrorResponse(command, error) {
 }
 ```
 
+### Pattern 5: Direct-Mode Prompt Validation
+
+This pattern validates the special direct-mode syntax with a prompt on a new line.
+
+#### Implementation
+
+1. **Detect Direct-Mode**: Check if the command is a direct-mode command
+2. **Identify Format**: Determine if it's using the standard (6 components) or simplified (3 components) format
+3. **Validate Command Components**: Verify the basic components before the prompt
+4. **Validate Prompt Presence**: Ensure the prompt: appears on a new line
+5. **Validate Prompt Content**: Check that prompt content is provided after the prompt: marker
+
+#### Usage Context
+
+Use this pattern specifically for direct-mode commands that require a prompt on a new line.
+
+#### Example
+
+```javascript
+function validateDirectModePrompt(input) {
+  // Split the input by lines to separate command and prompt
+  const lines = input.trim().split('\n');
+  
+  // Check if we have at least two lines (command and prompt marker)
+  if (lines.length < 2) {
+    return {
+      valid: false,
+      error: "Direct-mode requires a 'prompt:' on a new line after the command"
+    };
+  }
+  
+  // Get the command line and validate it's direct-mode
+  const commandLine = lines[0].trim();
+  const components = commandLine.split(/\s+/).filter(c => c.length > 0);
+  
+  if (components[0] !== 'direct-mode') {
+    return {
+      valid: false,
+      error: "This validation pattern is only for direct-mode commands"
+    };
+  }
+  
+  // Check if second line is the prompt marker
+  if (lines[1].trim() !== 'prompt:') {
+    return {
+      valid: false,
+      error: "Direct-mode requires a 'prompt:' on a new line after the command"
+    };
+  }
+  
+  // Check if there's prompt content after the marker
+  const hasPromptContent = lines.length > 2 && lines.slice(2).some(line => line.trim().length > 0);
+  if (!hasPromptContent) {
+    return {
+      valid: false,
+      error: "Prompt content is required after the 'prompt:' marker"
+    };
+  }
+  
+  // Determine if we're using standard or simplified format
+  if (components.length === 2) {
+    // Simplified format (direct-mode workflow-type)
+    if (!isValidWorkflowType(components[1])) {
+      return {
+        valid: false,
+        error: `Invalid workflow-type: ${components[1]}. Must be rules-workflow, front-end-workflow, back-end-workflow, or scripts-workflow`
+      };
+    }
+    
+    return { 
+      valid: true, 
+      format: 'simplified',
+      workflowType: components[1],
+      promptContent: lines.slice(2).join('\n')
+    };
+  } else if (components.length === 5) {
+    // Standard format (direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s))
+    const [mode, workflowType, pathwayName, projectRuleParameter, optionalParams] = components;
+    
+    // Validate workflow type
+    if (!isValidWorkflowType(workflowType)) {
+      return {
+        valid: false,
+        error: `Invalid workflow-type: ${workflowType}. Must be rules-workflow, front-end-workflow, back-end-workflow, or scripts-workflow`
+      };
+    }
+    
+    // Validate pathway name
+    if (pathwayName !== 'none' && !/^[a-z0-9-]+$/.test(pathwayName)) {
+      return {
+        valid: false,
+        error: `Invalid pathway-name: ${pathwayName}. Must be lowercase kebab-case or "none"`
+      };
+    }
+    
+    // Validate project rule parameter
+    if (projectRuleParameter !== 'none') {
+      if (!projectRuleParameter.startsWith('@')) {
+        return {
+          valid: false,
+          error: `Project-rule-parameter must start with @: ${projectRuleParameter}`
+        };
+      }
+      
+      if (!projectRuleParameter.endsWith('.mdc')) {
+        return {
+          valid: false,
+          error: `Project-rule-parameter must use .mdc extension: ${projectRuleParameter}`
+        };
+      }
+    }
+    
+    return { 
+      valid: true,
+      format: 'standard',
+      workflowType: workflowType,
+      pathwayName: pathwayName,
+      projectRuleParameter: projectRuleParameter,
+      optionalParams: optionalParams,
+      promptContent: lines.slice(2).join('\n')
+    };
+  } else {
+    // Invalid component count
+    return {
+      valid: false,
+      error: `Direct-mode command must have either 2 components (simplified format) or 5 components (standard format), found ${components.length}`
+    };
+  }
+}
+
+// Helper function to validate workflow type
+function isValidWorkflowType(workflowType) {
+  return ['rules-workflow', 'front-end-workflow', 'back-end-workflow', 'scripts-workflow'].includes(workflowType);
+}
+```
+
 ## Implementation Strategy
 
 To implement comprehensive message-command validation, follow this sequence:
 
-1. **Basic Validation First**: Start with basic format validation
-2. **Parameter Validation Second**: Proceed to parameter validation
-3. **Command-Specific Validation Last**: Finally, perform command-specific validation
-4. **Clear Error Responses**: Generate helpful error responses for any failures
+1. **Basic Format Validation First**: Verify the command has 5 space-delimited components
+2. **Component Validation Second**: Validate each component against its requirements
+3. **Header Validation Third**: For commands with project-rule-parameters, validate against headers
+4. **Special Direct-Mode Handling**: If direct-mode, validate prompt syntax and content
+5. **Clear Error Responses**: Generate helpful error responses for any failures
 
 ## Message-Command Validation Rules
 
@@ -241,70 +450,136 @@ The following validation rules should be applied to all message-commands:
 ### 1. Format Rules
 
 1. **Kebab-Case Format**: All message-commands must use kebab-case (lowercase words separated by hyphens)
-   - CORRECT: `verify-planning:`
-   - INCORRECT: `Verify-Planning:`
+   - CORRECT: `plan-mode rules-workflow`
+   - INCORRECT: `Plan-Mode rules-workflow`
 
-2. **Colon Requirement**: Always include colon after message-command
-   - CORRECT: `verify-planning:`
-   - INCORRECT: `verify-planning`
+2. **Space-Only Delimiters**: Use spaces to separate all components (no colons)
+   - CORRECT: `dev-mode rules-workflow none none none`
+   - INCORRECT: `dev-mode: rules-workflow none none none`
 
-3. **Space After Colon**: Always include space after colon when parameters follow
-   - CORRECT: `dev-mode: rules-workflow`
-   - INCORRECT: `dev-mode:rules-workflow`
+3. **Five-Component Structure**: All message-commands must have exactly five components
+   - CORRECT: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none`
+   - INCORRECT: `plan-mode rules-workflow @parameters/rules/plan-mode/enhance-planning.mdc`
 
-4. **No Brackets**: Never use brackets around parameters
-   - CORRECT: `dev-mode: rules-workflow`
-   - INCORRECT: `dev-mode: [rules-workflow]`
+4. **Explicit "none" Placeholders**: Use "none" explicitly when a component is not applicable
+   - CORRECT: `plan-mode rules-workflow none none none`
+   - INCORRECT: `plan-mode rules-workflow`
 
-### 2. Parameter Rules
+### 2. Component Rules
 
-1. **Valid Standard-Parameters**: Use only recognized standard-parameters
-   - CORRECT: `plan-mode: rules-workflow`
-   - INCORRECT: `plan-mode: unknown-workflow`
+1. **Mode Component**: Must be one of plan-mode, dev-mode, or direct-mode
+   - CORRECT: `plan-mode rules-workflow none none none`
+   - INCORRECT: `build-mode rules-workflow none none none`
 
-2. **Extension Requirement**: Always use .mdc extension for project-rule-parameters
-   - CORRECT: `plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.mdc`
-   - INCORRECT: `plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.md`
+2. **Workflow-Type Component**: Must be one of rules-workflow, front-end-workflow, back-end-workflow, scripts-workflow
+   - CORRECT: `dev-mode front-end-workflow none none none`
+   - INCORRECT: `dev-mode database-workflow none none none`
 
-3. **Path Correctness**: Use correct paths for project-rule-parameters
-   - CORRECT: `plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.mdc`
-   - INCORRECT: `plan-mode: rules-workflow @incorrect/path/plan-mode/template-basic.mdc`
+3. **Pathway-Name Component**: Must be a valid kebab-case identifier or "none"
+   - CORRECT: `plan-mode rules-workflow system-wide-optimization none none`
+   - INCORRECT: `plan-mode rules-workflow systemWideOptimization none none`
 
-4. **Parameter Order**: Project-rule-parameters must appear after standard parameters
-   - CORRECT: `plan-mode: rules-workflow @parameters/rules/plan-mode/template-basic.mdc`
-   - INCORRECT: `plan-mode: @parameters/rules/plan-mode/template-basic.mdc rules-workflow`
+4. **Project-Rule-Parameter Component**: Must start with @ and end with .mdc, or be "none"
+   - CORRECT: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none`
+   - INCORRECT: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.md none`
 
-### 3. Command-Specific Rules
+5. **Optional-Standard-Parameter(s) Component**: Must be a valid parameter or "none"
+   - CORRECT: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none`
+   - INCORRECT: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc param1`
 
-1. **Workflow Commands**: Must include a valid workflow type
-   - CORRECT: `plan-mode: rules-workflow`
-   - INCORRECT: `plan-mode:`
+### 3. Header Validation Rules
 
-2. **Project-Rule-Parameter Commands**: Must include a valid project-rule-parameter
-   - CORRECT: `verify-planning: @parameters/rules/helpers/verification/verify-planning.mdc`
-   - INCORRECT: `verify-planning:`
+1. **Mode Match**: The mode component must match the header mode
+   - CORRECT: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none` (when header has mode: plan-mode)
+   - INCORRECT: `dev-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none` (when header has mode: plan-mode)
 
-3. **Completion Signals**: Must not include additional parameters
-   - CORRECT: `planning-document-complete`
-   - INCORRECT: `planning-document-complete: extra-parameter`
+2. **Workflow-Type Match**: The workflow-type component must match the header workflow
+   - CORRECT: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none` (when header has workflow: rules-workflow)
+   - INCORRECT: `dev-mode front-end-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none` (when header has workflow: rules-workflow)
+
+3. **Pathway-Name Match**: The pathway-name component must match the header pathway
+   - CORRECT: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none` (when header has pathway: system-wide-optimization)
+   - INCORRECT: `plan-mode rules-workflow performance @parameters/rules/plan-mode/system-wide-optimization.mdc none` (when header has pathway: system-wide-optimization)
+
+4. **Project-Rule-Parameter Match**: The project-rule-parameter component must match the header filepath
+   - CORRECT: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none` (when header has filepath: @parameters/rules/plan-mode/system-wide-optimization.mdc)
+   - INCORRECT: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/different-file.mdc none` (when header has filepath: @parameters/rules/plan-mode/system-wide-optimization.mdc)
+
+5. **Optional-Standard-Parameter(s) Match**: The optional-standard-parameter(s) component must match the header optional-standard-parameter(s)
+   - CORRECT: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none` (when header has optional-standard-parameter(s): none)
+   - INCORRECT: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc param1` (when header has optional-standard-parameter(s): none)
+
+### 4. Direct-Mode Prompt Rules
+
+1. **Prompt Marker**: The "prompt:" marker must appear on a new line after the command components
+   - CORRECT: 
+     ```
+     direct-mode rules-workflow none none none
+     prompt:
+     Implement feature X
+     ```
+   - INCORRECT: 
+     ```
+     direct-mode rules-workflow none none none prompt:
+     Implement feature X
+     ```
+
+2. **Simplified Format**: For simplified format, only provide mode and workflow-type
+   - CORRECT: 
+     ```
+     direct-mode rules-workflow
+     prompt:
+     Implement feature X
+     ```
+   - INCORRECT: 
+     ```
+     direct-mode rules-workflow none
+     prompt:
+     Implement feature X
+     ```
+
+3. **Standard Format**: For standard format, provide all 5 components
+   - CORRECT: 
+     ```
+     direct-mode rules-workflow system-wide-optimization @parameters/rules/direct-mode/system-wide-optimization.mdc none
+     prompt:
+     Implement feature X
+     ```
+   - INCORRECT: 
+     ```
+     direct-mode rules-workflow system-wide-optimization @parameters/rules/direct-mode/system-wide-optimization.mdc
+     prompt:
+     Implement feature X
+     ```
+
+4. **Prompt Content**: Must provide content after the prompt marker
+   - CORRECT: 
+     ```
+     direct-mode rules-workflow
+     prompt:
+     Implement feature X with these requirements...
+     ```
+   - INCORRECT: 
+     ```
+     direct-mode rules-workflow
+     prompt:
+     ```
 
 ## Error Response Protocol
 
 When a message-command fails validation, respond with:
 
-1. **Error Identification**: Clearly state that the message-command is invalid
-2. **Error Explanation**: Explain specifically what is incorrect
-3. **Correction Suggestion**: Provide the correct format
-4. **Example**: Demonstrate the correct usage
+1. **Mode Indicator**: Include the appropriate mode indicator based on the mode component
+2. **Error Message**: State the specific component mismatch or validation error
+3. **Value Comparison**: Show both the message-command value and the expected value
+4. **Format**: Use the standard error format: `Error: [Component] mismatch. Message-command specifies '[message-value]' but parameter requires '[parameter-value]'`
 
 Example error response:
 
 ```
-I cannot process this message-command as it's incorrect. The format "Plan-Mode: rules-workflow" uses incorrect case.
+💻 1000xdev [rules-workflow]
 
-Correct format: plan-mode: rules-workflow
-
-Please resubmit using the lowercase kebab-case format.
+Error: Mode mismatch. Message-command specifies 'dev-mode' but parameter requires 'plan-mode'
 ```
 
 ## Related Patterns
@@ -316,4 +591,4 @@ Please resubmit using the lowercase kebab-case format.
 
 ## Conclusion
 
-Effective message-command validation ensures clear communication and proper execution of commands in the 1000xbrain cognitive architecture. By implementing these validation patterns, you can prevent errors and maintain consistency in command processing. 
+Effective message-command validation ensures clear communication and proper execution of commands in the 1000xbrain cognitive architecture. By implementing these validation patterns with the space-only format, you can prevent errors and maintain consistency in command processing. 

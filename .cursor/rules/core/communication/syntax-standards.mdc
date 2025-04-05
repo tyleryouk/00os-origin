@@ -25,43 +25,46 @@ fetch_rules(["knowledge/rules/reference/syntax/mode-indicator-syntax"],
 
 ## Three-Command System
 
-The simplified three-command system focuses entirely on mode:
+The simplified three-command system follows a standardized space-delimited format with five components:
 
 1. **plan-mode**: For planning and documentation
-   - Format: `plan-mode: workflow-type @optional-template.mdc`
-   - Example: `plan-mode: rules-workflow @template-basic.mdc`
+   - Format: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none`
 
 2. **dev-mode**: For code implementation
-   - Format: `dev-mode: workflow-type @optional-strategy.mdc`
-   - Example: `dev-mode: front-end-workflow @log-based-implementation.mdc`
+   - Format: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none`
 
 3. **direct-mode**: For immediate implementation
-   - Format: `direct-mode: workflow-type @optional-strategy.mdc`
-   - Example: `direct-mode: front-end-workflow @direct-implementation.mdc`
+   - Format: `direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `direct-mode rules-workflow none @parameters/rules/direct-mode/add-project-rule-parameter.mdc none`
 
 ## Basic Format Requirements
 
 All message-commands must adhere to these strict format requirements:
 
 1. **Kebab-Case Format**: All message-commands must use kebab-case (lowercase words separated by hyphens)
-   - CORRECT: `plan-mode: rules-workflow` 
-   - INCORRECT: `planMode: rules-workflow`
+   - CORRECT: `plan-mode rules-workflow` 
+   - INCORRECT: `planMode rules-workflow`
 
 2. **Lowercase Requirement**: All message-commands must be entirely lowercase
-   - CORRECT: `dev-mode: front-end-workflow`
-   - INCORRECT: `Dev-Mode: front-end-workflow`
+   - CORRECT: `dev-mode front-end-workflow`
+   - INCORRECT: `Dev-Mode front-end-workflow`
 
-3. **Colon Separator**: When using parameters, message-commands must include a colon separator
-   - CORRECT: `verify-planning: @verify-planning.mdc`
-   - INCORRECT: `verify-planning @verify-planning.mdc`
+3. **Space-Only Delimiters**: All components must be separated by spaces (no colons)
+   - CORRECT: `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none`
+   - INCORRECT: `dev-mode: rules-workflow @parameters/rules/dev-mode/performance.mdc`
 
-4. **No Brackets Around Parameters**: Parameters must not be enclosed in brackets
-   - CORRECT: `dev-mode: typescript`
-   - INCORRECT: `dev-mode: [typescript]`
+4. **Explicit "none" Placeholders**: Use "none" explicitly when a component is not applicable
+   - CORRECT: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none`
+   - INCORRECT: `plan-mode rules-workflow @parameters/rules/plan-mode/enhance-planning.mdc`
 
-5. **Space-Separated Multiple Parameters**: Multiple parameters must be separated by spaces
-   - CORRECT: `add-logs: file1.ts file2.ts @add-logs.mdc`
-   - INCORRECT: `add-logs: file1.ts, file2.ts @add-logs.mdc`
+5. **Five-Component Structure**: All message-commands must have exactly five components
+   - mode
+   - workflow-type
+   - pathway-name
+   - @project-rule-parameter.mdc or "none"
+   - optional-standard-parameter(s) or "none"
 
 ## Mode Indicator Requirements
 
@@ -87,28 +90,32 @@ All 1000xdev responses must begin with a mode indicator that follows these stric
 ## Parameter Types
 
 1. **Standard Parameters**:
-   - Specified directly after the message-command and colon
+   - Specified directly in the appropriate position
    - No special formatting required
-   - Multiple values separated by spaces
-   - Example: `dev-mode: typescript`
+   - Multiple values must be quoted if they contain spaces
+   - Example: `dev-mode rules-workflow performance none typescript-file.ts`
 
 2. **Project Rule Parameters**:
    - Always prefixed with the `@` symbol
    - Must match the message-command name with .mdc extension
-   - Always appears at the end of the command
-   - Example: `verify-planning: @verify-planning.mdc`
+   - Always appears in the fourth position
+   - Example: `plan-mode rules-workflow enhance-planning @parameters/rules/plan-mode/enhance-planning.mdc none`
+   
+3. **"none" Placeholder**:
+   - Used explicitly when a component is not needed
+   - Maintains positional integrity of the command
+   - Makes parameter position unambiguous
+   - Example: `plan-mode rules-workflow none none workflow-name`
 
 ## Syntax Distinction Table
 
 | Feature | Message-Commands (Tyler) | Mode Indicators (1000xdev) |
 |---------|--------------------------|----------------------------|
 | Case | lowercase only | Mixed case with emoji |
-| Colons | Required before parameters | Never used |
-| Brackets | Never used | Required around workflow-type |
-| Format | message-command: standard-parameter @message-command.mdc | emoji 1000xdev [workflow-type] |
-| Example | plan-mode: rules-workflow | 📋 1000xdev [rules-workflow] |
-| Example | dev-mode: front-end-workflow | 💻 1000xdev [front-end-workflow] |
-| Example | direct-mode: back-end-workflow | ⚡ 1000xdev [back-end-workflow] |
+| Format | mode workflow-type pathway-name @parameter.mdc optional-params | emoji 1000xdev [workflow-type] |
+| Example | plan-mode rules-workflow system-wide @parameters/rules/plan-mode/system-wide.mdc none | 📋 1000xdev [rules-workflow] |
+| Example | dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none | 💻 1000xdev [rules-workflow] |
+| Example | direct-mode rules-workflow none @parameters/rules/direct-mode/add-project-rule-parameter.mdc none | ⚡ 1000xdev [rules-workflow] |
 
 ## Valid Workflows
 

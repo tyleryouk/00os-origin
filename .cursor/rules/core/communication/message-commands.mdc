@@ -21,42 +21,65 @@ fetch_rules(["knowledge/rules/reference/syntax/message-command-syntax"],
 
 ## Three-Command System
 
-The simplified system focuses entirely on mode:
+The simplified system uses a standardized space-delimited format with five components, with NO COLONS between components:
 
 1. **plan-mode**: For planning and documentation
-   - Format: `plan-mode: workflow-type @optional-template.mdc`
-   - Example: `plan-mode: rules-workflow @template-basic.mdc`
+   - Format: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none`
+   - Example: `plan-mode rules-workflow enhance-planning @parameters/rules/plan-mode/enhance-planning.mdc none`
 
 2. **dev-mode**: For code implementation
-   - Format: `dev-mode: workflow-type @optional-strategy.mdc`
-   - Example: `dev-mode: front-end-workflow @log-based-implementation.mdc`
+   - Format: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none`
+   - Example: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none`
 
 3. **direct-mode**: For immediate implementation
-   - Format: `direct-mode: workflow-type @optional-strategy.mdc`
-   - Example: `direct-mode: back-end-workflow @direct-implementation.mdc`
+   - Standard format: `direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Simplified format: `direct-mode workflow-type`
+   - Example: `direct-mode rules-workflow none @parameters/rules/direct-mode/add-project-rule-parameter.mdc none`
+   - Example: `direct-mode rules-workflow none @parameters/rules/direct-mode/major-key-message-commands.mdc none`
+
+## Important Syntax Change
+
+⚠️ **CRITICAL SYNTAX UPDATE**: The message-command format has been updated to use ONLY spaces between components with no colons:
+
+- CORRECT: `dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none`
+- INCORRECT: `dev-mode: rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none`
+
+This space-only syntax is now the standard for all message-commands.
+
+## Component Descriptions
+
+Each message-command has five standardized components:
+
+1. **mode**: The operating mode (plan-mode, dev-mode, direct-mode)
+2. **workflow-type**: The workflow domain (rules-workflow, front-end-workflow, back-end-workflow, scripts-workflow)
+3. **pathway-name**: The specific implementation pathway or "none" if not applicable
+4. **@project-rule-parameter.mdc**: The project rule parameter or "none" if not applicable
+5. **optional-standard-parameter(s)**: Additional parameters or "none" if not applicable
 
 ## Project-Rule-Parameter Header System
 
 Each project-rule-parameter file includes a standardized header:
 
 ```
-# workflow: rules-workflow | pathway: error-recovery | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-path: parameters/rules/dev-mode/continue-implementation-error-recovery.mdc
+# mode: [mode] | workflow: [workflow-type] | pathway: [pathway-name] | filepath: @[filepath].mdc | optional-standard-parameter(s): [params]
 ```
 
 This header includes:
+- **mode**: The mode this parameter is designed for
 - **workflow**: The workflow type this parameter is designed for
 - **pathway**: The specific use-case pathway
-- **message-command**: The associated message-command
-- **standard-parameter(s)**: Required standard parameters
-- **project-rule-parameter-path**: Full path to the parameter file
+- **filepath**: Full path to the parameter file
+- **optional-standard-parameter(s)**: Required standard parameters
 
 ## ⚠️ CRITICAL: Project-Rule-Parameter Extension Requirements ⚠️
 
 When referring to project-rule-parameters:
 
 1. **ALWAYS use .mdc extension**:
-   - CORRECT: `@template-basic.mdc`
-   - INCORRECT: `@template-basic.md`
+   - CORRECT: `@parameters/rules/plan-mode/enhance-planning.mdc`
+   - INCORRECT: `@parameters/rules/plan-mode/enhance-planning.md`
 
 2. **Rationale**:
    - 1000xbrain (.md files) are editable source files that AI can modify
@@ -73,12 +96,27 @@ The system supports only these four workflow types:
 3. `back-end-workflow`: For back-end development
 4. `scripts-workflow`: For scripts development
 
+## "none" Placeholder Usage
+
+The keyword "none" is used as an explicit placeholder:
+
+1. **When to use "none"**:
+   - When a pathway-name is not applicable: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none`
+   - When a project-rule-parameter is not needed: `dev-mode rules-workflow system-wide-optimization none param1`
+   - When optional parameters are not needed: `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none`
+
+2. **Why explicit "none" is required**:
+   - Ensures consistent parsing with exactly 5 components
+   - Makes parameter position unambiguous
+   - Prevents accidental parameter misalignment
+   - Facilitates component-by-component verification
+
 ## Message-Command Usage Standards
 
 ### Syntax Standards
 
 1. **Kebab-Case Requirement**: All message-commands must use kebab-case format (e.g., `plan-mode`)
-2. **Parameter Separator**: Use colon (`:`) to separate message-commands from parameters
-3. **Parameter Space**: Use space to separate multiple parameters
+2. **Space-Only Delimiters**: Use spaces to separate all components (no colons)
+3. **Explicit "none" Placeholders**: Use "none" explicitly when a component is not applicable
 4. **Project-Rule Prefix**: Always prefix project-rule parameters with `@` symbol
 5. **Knowledge Access**: Use fetch_rules tool for knowledge directory access

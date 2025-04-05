@@ -10,26 +10,31 @@ alwaysApply: false
 ```
 ┌────────────────────────────────────────────────────────────────────┐
 │                                                                    │
-│   MESSAGE-COMMAND SYNTAX                                           │
+│   MESSAGE-COMMAND SYNTAX (5 COMPONENTS)                            │
 │                                                                    │
-│   ┌──────────────┐  ┌─────────────────┐  ┌────────────────────┐   │
-│   │ message-cmd  │  │ standard-param  │  │ project-rule-param │   │
-│   └──────────────┘  └─────────────────┘  └────────────────────┘   │
-│         │                  │                      │                │
-│         │                  │                      │                │
-│         ▼                  ▼                      ▼                │
-│   verify-planning: @context-file.md @verify-planning.mdc           │
-│         │            │                │                            │
-│         │            │                │                            │
-│         │            │                └─ Must match command name   │
-│         │            │                   with .mdc extension       │
-│         │            │                                             │
-│         │            └─ Standard parameters (target files,         │
-│         │              workflow types, etc.)                       │
-│         │                                                          │
-│         └─ Always kebab-case (lowercase with hyphens)              │
-│                                                                    │
-└────────────────────────────────────────────────────────────────────┘
+│   ┌──────────┐  ┌────────────┐  ┌───────────┐  ┌────────────┐  ┌─────────────┐   │
+│   │   mode   │  │workflow-type│  │pathway-name│  │project-rule│  │  optional   │   │
+│   └──────────┘  └────────────┘  └───────────┘  └────────────┘  └─────────────┘   │
+│         │            │               │               │               │            │
+│         │            │               │               │               │            │
+│         ▼            ▼               ▼               ▼               ▼            │
+│   plan-mode rules-workflow system-wide @system-wide.mdc none                      │
+│         │            │               │               │               │            │
+│         │            │               │               │               │            │
+│         │            │               │               │               │            │
+│         │            │               │               │               └─ "none" if │
+│         │            │               │               │                  not needed│
+│         │            │               │               │                            │
+│         │            │               │               └─ Always with .mdc          │
+│         │            │               │                  extension or "none"       │
+│         │            │               │                                            │
+│         │            │               └─ Specific pathway or "none"                │
+│         │            │                                                            │
+│         │            └─ One of 4 valid workflow types                             │
+│         │                                                                         │
+│         └─ Always kebab-case (plan-mode, dev-mode, direct-mode)                   │
+│                                                                                   │
+└───────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## Basic Format Requirements
@@ -37,110 +42,218 @@ alwaysApply: false
 All message-commands must adhere to these strict format requirements:
 
 1. **Kebab-Case Format**: All message-commands must use kebab-case (lowercase words separated by hyphens)
-   - CORRECT: `plan-mode: rules-workflow` 
-   - INCORRECT: `planMode: rules-workflow`
-   - INCORRECT: `plan_mode: rules-workflow`
+   - CORRECT: `plan-mode rules-workflow` 
+   - INCORRECT: `planMode rules-workflow`
+   - INCORRECT: `plan_mode rules-workflow`
 
-2. **Lowercase Requirement**: All message-commands must be entirely lowercase
-   - CORRECT: `dev-mode: front-end-workflow`
-   - INCORRECT: `Dev-Mode: front-end-workflow`
+2. **Lowercase Requirement**: All components must be entirely lowercase except the "@" symbol
+   - CORRECT: `dev-mode front-end-workflow`
+   - INCORRECT: `Dev-Mode front-end-workflow`
 
-3. **Colon Separator**: When using parameters, message-commands must include a colon separator
-   - CORRECT: `verify-planning: @verify-planning.mdc`
-   - INCORRECT: `verify-planning @verify-planning.mdc`
+3. **Space-Only Delimiters**: All components must be separated by spaces (no colons)
+   - CORRECT: `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none`
+   - INCORRECT: `dev-mode: rules-workflow performance @parameters/rules/dev-mode/performance.mdc none`
 
-4. **No Brackets Around Parameters**: Parameters must not be enclosed in brackets
-   - CORRECT: `dev-mode: typescript`
-   - INCORRECT: `dev-mode: [typescript]`
+4. **Explicit "none" Placeholders**: Use "none" explicitly when a component is not applicable
+   - CORRECT: `plan-mode rules-workflow none @parameters/rules/plan-mode/enhance-planning.mdc none`
+   - INCORRECT: `plan-mode rules-workflow @parameters/rules/plan-mode/enhance-planning.mdc`
 
-5. **Space-Separated Multiple Parameters**: Multiple parameters must be separated by spaces
-   - CORRECT: `add-logs: file1.ts file2.ts @add-logs.mdc`
-   - INCORRECT: `add-logs: file1.ts, file2.ts @add-logs.mdc`
+5. **Five-Component Structure**: All message-commands must have exactly five components
+   - mode
+   - workflow-type
+   - pathway-name
+   - @project-rule-parameter.mdc or "none"
+   - optional-standard-parameter(s) or "none"
 
 ## Syntax Cheat Sheet
 
-| Element | Format | Example | Notes |
-|---|-----|---|----|
-| message-command | kebab-case, lowercase | `verify-planning` | Always first element |
-| separator | colon `:` | `verify-planning:` | Required before parameters |
-| standard-parameter | varies by parameter | `file1.ts` | Direct value after colon |
-| multiple standard-parameters | space-separated | `file1.ts file2.ts` | No comma or other separator |
-| project-rule-parameter | `@name.mdc` | `@verify-planning.mdc` | Must match message-command name |
-| full command | command: param(s) @rule | `verify-planning: @verify-planning.mdc` | Complete syntax |
+| Component | Position | Format | Example | Notes |
+|-----------|----------|--------|---------|-------|
+| mode | 1 | kebab-case, lowercase | `plan-mode` | One of plan-mode, dev-mode, direct-mode |
+| workflow-type | 2 | kebab-case, lowercase | `rules-workflow` | One of the 4 valid workflow types |
+| pathway-name | 3 | kebab-case or "none" | `system-wide-optimization` | Specific pathway or "none" |
+| project-rule-parameter | 4 | `@name.mdc` or "none" | `@parameters/rules/plan-mode/system-wide-optimization.mdc` | Must use .mdc extension or be "none" |
+| optional-standard-parameter(s) | 5 | varies or "none" | `typescript-file.ts` or `none` | Parameter value or "none" |
+| full command | all | 5 space-separated components | `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none` | Complete syntax |
 
 ## Three-Command System
 
-The simplified three-command system focuses entirely on mode:
+The simplified three-command system follows a standardized space-delimited format with five components:
 
 1. **plan-mode**: For planning and documentation
-   - Format: `plan-mode: workflow-type @optional-template.mdc`
-   - Example: `plan-mode: rules-workflow @template-basic.mdc`
+   - Format: `plan-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none`
+   - Example: `plan-mode rules-workflow enhance-planning @parameters/rules/plan-mode/enhance-planning.mdc none`
 
 2. **dev-mode**: For code implementation
-   - Format: `dev-mode: workflow-type @optional-strategy.mdc`
-   - Example: `dev-mode: front-end-workflow @log-based-implementation.mdc`
+   - Format: `dev-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `dev-mode rules-workflow system-wide-optimization @parameters/rules/dev-mode/system-wide-optimization.mdc none`
+   - Example: `dev-mode rules-workflow none @parameters/rules/dev-mode/continue-implementation.mdc none`
 
 3. **direct-mode**: For immediate implementation
-   - Format: `direct-mode: workflow-type @optional-strategy.mdc`
-   - Example: `direct-mode: front-end-workflow @direct-implementation.mdc`
+   - Format: `direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
+   - Example: `direct-mode rules-workflow none @parameters/rules/direct-mode/add-project-rule-parameter.mdc none`
+   - Example: `direct-mode rules-workflow none @parameters/rules/direct-mode/major-key-message-commands.mdc none`
 
-## Parameter System
+## Direct-Mode Prompt Syntax
 
-### Parameter Types and Format
+The direct-mode command has special syntax for handling prompts on a new line, with two supported formats:
 
-1. **Standard Parameters**:
-   - Specified directly after the message-command and colon
-   - No special formatting required
-   - Multiple values separated by spaces
-   - Example: `dev-mode: typescript`
+### Simplified Format (3 Components)
 
-2. **Project Rule Parameters**:
-   - Always prefixed with the `@` symbol
-   - Must match the message-command name with .mdc extension
-   - Always appears at the end of the command
-   - Example: `verify-planning: @verify-planning.mdc`
+```
+direct-mode workflow-type
+prompt:
+[Prompt content goes here...]
+```
 
-### Complex Parameter Combinations
+In this simplified format:
+- **direct-mode**: The mode indicator (first component)
+- **workflow-type**: The workflow type (second component)
+- **prompt:**: Must appear on a new line after the command
+- **[Prompt content]**: The actual prompt content on lines after the prompt: marker
 
-Parameters can be combined in complex ways to provide precise instructions:
+Example:
+```
+direct-mode rules-workflow
+prompt:
+Implement a new authentication system with the following requirements:
+1. Support for JWT tokens
+2. Secure password hashing
+3. Two-factor authentication
+```
 
-| Parameter Combination | Syntax | Example |
-|-----|-----|---|
-| Single standard parameter | `command: param` | `plan-mode: rules-workflow` |
-| Multiple standard parameters | `command: param1 param2` | `add-logs: file1.ts file2.ts` |
-| Single project-rule parameter | `command: @command.mdc` | `verify-planning: @verify-planning.mdc` |
-| Standard + project-rule parameters | `command: param @command.mdc` | `verify-official-documentation: api-docs.md @verify-official-documentation.mdc` |
-| Multiple standard + project-rule | `command: param1 param2 @command.mdc` | `add-logs: file1.ts file2.ts @add-logs.mdc` |
+### Standard Format (6 Components)
+
+```
+direct-mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)
+prompt:
+[Prompt content goes here...]
+```
+
+In this standard format:
+- **direct-mode**: The mode indicator (first component)
+- **workflow-type**: The workflow type (second component)
+- **pathway-name**: The specific pathway or "none" (third component)
+- **@project-rule-parameter.mdc**: The project rule parameter or "none" (fourth component)
+- **optional-standard-parameter(s)**: Additional parameters or "none" (fifth component)
+- **prompt:**: Must appear on a new line after the command (sixth component)
+- **[Prompt content]**: The actual prompt content on lines after the prompt: marker
+
+Example:
+```
+direct-mode rules-workflow system-wide-optimization @parameters/rules/direct-mode/system-wide-optimization.mdc none
+prompt:
+Implement the system-wide optimization following the standard design pattern with these specific requirements:
+1. Maintain backward compatibility
+2. Optimize memory usage
+3. Follow established naming conventions
+```
+
+### Direct-Mode Prompt Rules
+
+1. **Prompt Position**: The prompt: marker must appear on a new line immediately after the command
+2. **Format Options**: Use either the simplified format (2 components) or standard format (5 components)
+3. **Prompt Content**: Prompt content must be provided after the prompt: marker
+4. **Line Separation**: No blank lines between command components and prompt marker
+5. **Format Consistency**: Don't mix simplified and standard formats
+
+### Common Errors to Avoid
+
+1. **Inline Prompt Marker**: Never include the prompt: marker on the same line as the command
+   - INCORRECT: `direct-mode rules-workflow prompt:`
+
+2. **Missing Prompt Content**: Always provide content after the prompt: marker
+   - INCORRECT:
+     ```
+     direct-mode rules-workflow
+     prompt:
+     ```
+
+3. **Inconsistent Component Count**: Use exactly 2 components for simplified format or 5 for standard format
+   - INCORRECT: `direct-mode rules-workflow none`
+
+4. **Missing Prompt Marker**: Always include the prompt: marker on a new line
+   - INCORRECT:
+     ```
+     direct-mode rules-workflow
+     Implement this feature...
+     ```
+
+## Component System
+
+### Component Types and Format
+
+1. **Mode Component**:
+   - Always the first component
+   - Must be one of: plan-mode, dev-mode, direct-mode
+   - Always lowercase kebab-case
+   - Example: `plan-mode`
+
+2. **Workflow-Type Component**:
+   - Always the second component
+   - Must be one of: rules-workflow, front-end-workflow, back-end-workflow, scripts-workflow
+   - Always lowercase kebab-case
+   - Example: `rules-workflow`
+
+3. **Pathway-Name Component**:
+   - Always the third component
+   - Must be lowercase kebab-case or "none"
+   - Describes specific implementation pathway
+   - Example: `system-wide-optimization` or `none`
+
+4. **Project-Rule-Parameter Component**:
+   - Always the fourth component
+   - Must start with @ and end with .mdc, or be "none"
+   - Full path to parameter file
+   - Example: `@parameters/rules/plan-mode/system-wide-optimization.mdc` or `none`
+
+5. **Optional-Standard-Parameter(s) Component**:
+   - Always the fifth component
+   - Variable format based on parameter needs, or "none"
+   - Example: `typescript-file.ts` or `none`
+
+### Complex Component Combinations
+
+Components are combined in consistent ways to provide precise instructions:
+
+| Message Type | Command Format | Example |
+|--------------|---------------|---------|
+| Standard plan-mode | `plan-mode workflow-type pathway-name @project-rule-parameter.mdc none` | `plan-mode rules-workflow system-wide-optimization @parameters/rules/plan-mode/system-wide-optimization.mdc none` |
+| Standard dev-mode | `dev-mode workflow-type pathway-name @project-rule-parameter.mdc none` | `dev-mode rules-workflow performance @parameters/rules/dev-mode/performance.mdc none` |
+| Standard direct-mode | `direct-mode workflow-type pathway-name @project-rule-parameter.mdc none` | `direct-mode rules-workflow none @parameters/rules/direct-mode/add-project-rule-parameter.mdc none` |
+| With optional parameters | `dev-mode workflow-type pathway-name none parameter-value` | `dev-mode rules-workflow performance none typescript-file.ts` |
+| With "none" placeholders | `plan-mode workflow-type none none none` | `plan-mode rules-workflow none none none` |
 
 ### Special Characters in Parameters
 
 When parameters contain special characters:
 
 | Special Character | Handling | Example |
-|----|----|---|
-| Spaces in file paths | Wrap with quotes | `verify-file: "path with spaces.md"` |
+|-------------------|----------|---------|
+| Spaces in file paths | Wrap with quotes | `plan-mode rules-workflow none none "path with spaces.md"` |
 | Multiple lines | Not allowed | N/A - Use multiple commands instead |
-| Special symbols (*, ?, etc.) | Escape when needed | `search-pattern: \*.tsx` |
-| Multiple quoted parameters | Space separate | `verify-files: "file one.js" "file two.js"` |
+| Special symbols (*, ?, etc.) | Escape when needed | `dev-mode front-end-workflow none none "\*.tsx"` |
+| Multiple quoted parameters | Space separate | `dev-mode front-end-workflow none none "file one.js" "file two.js"` |
 
-## Parameter Notation
+## Component Notation
 
-- **Colon Separator**: The `:` character separates the message-command from parameters
-- **Space Delimiter**: Multiple parameters are separated by spaces
-- **@ Symbol**: Used to designate Project Rule parameters or documentation references
-- **Parameter Order**: Typically follows `message-command: standard-parameter @project-rule-parameter.mdc`
+- **Space Delimiter**: All components are separated by spaces
+- **@ Symbol**: Used to designate Project Rule parameters
+- **"none" Placeholder**: Used explicitly when a component is not applicable
+- **Component Order**: Always follows `mode workflow-type pathway-name @project-rule-parameter.mdc optional-standard-parameter(s)`
 
 ## Project-Rule-Parameter Header System
 
 Each project-rule-parameter file includes a standardized header:
 
 ```
-# workflow: rules-workflow | pathway: error-recovery | message-command: dev-mode | standard-parameter(s): none | project-rule-parameter-path: parameters/rules/dev-mode/continue-implementation-error-recovery.mdc
+# mode: [mode] | workflow: [workflow-type] | pathway: [pathway-name] | filepath: @[filepath].mdc | optional-standard-parameter(s): [params]
 ```
 
 This header includes:
+- **mode**: The mode this parameter is designed for
 - **workflow**: The workflow type this parameter is designed for
 - **pathway**: The specific use-case pathway
-- **message-command**: The associated message-command
-- **standard-parameter(s)**: Required standard parameters
-- **project-rule-parameter-path**: Full path to the parameter file 
+- **filepath**: Full path to the parameter file
+- **optional-standard-parameter(s)**: Required standard parameters 
