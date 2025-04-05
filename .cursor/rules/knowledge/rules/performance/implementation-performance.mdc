@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Implementation Performance Optimization
 
 ## Overview
@@ -114,7 +119,7 @@ fetch_rules(["knowledge/rules/performance/implementation-performance"],
 
 ## Related Components
 
-- [Cognitive Load Optimization](../system-wide-optimization/cognitive-load-optimization.md): Cognitive load strategies
-- [Tool Optimization](../system-wide-optimization/tool-optimization.md): Tool usage optimization
-- [Mode Patterns](../system-wide/mode-patterns.md): Mode-specific behaviors
-- [Performance Optimization](performance-optimization.md): General performance strategies 
+- [Cognitive Load Optimization](mdc:../system-wide-optimization/cognitive-load-optimization.md): Cognitive load strategies
+- [Tool Optimization](mdc:../system-wide-optimization/tool-optimization.md): Tool usage optimization
+- [Mode Patterns](mdc:../system-wide/mode-patterns.md): Mode-specific behaviors
+- [Performance Optimization](mdc:performance-optimization.md): General performance strategies 

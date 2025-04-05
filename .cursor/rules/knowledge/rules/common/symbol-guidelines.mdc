@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Symbol Usage Guidelines
 
 ## Overview
@@ -94,6 +99,6 @@ fetch_rules(["knowledge/rules/common/symbol-guidelines"],
 
 ## Related Components
 
-- [File Safety](../system-wide/file-safety.md): Guidelines for safe file editing
-- [Brain-Files and Cursor-Rules](../system-wide/brain-files-cursor-rules.md): Relationship between file types
-- [Message Commands](../system-wide/message-commands.md): How to format message commands properly 
+- [File Safety](mdc:../system-wide/file-safety.md): Guidelines for safe file editing
+- [Brain-Files and Cursor-Rules](mdc:../system-wide/brain-files-cursor-rules.md): Relationship between file types
+- [Message Commands](mdc:../system-wide/message-commands.md): How to format message commands properly 

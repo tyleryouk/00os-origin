@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Mode Patterns
 
 ## Overview
@@ -172,7 +177,7 @@ fetch_rules(["knowledge/rules/system-wide/mode-patterns"],
 
 ## Related Components
 
-- [Message Commands](message-commands.md): Message command processing
-- [Symbol Guidelines](../common/symbol-guidelines.md): Symbol usage standards
-- [Cognitive Enhancement](cognitive-enhancement.md): System-wide cognitive enhancement
-- [File Standards](../common/file-standards.md): Documentation standards 
+- [Message Commands](mdc:message-commands.md): Message command processing
+- [Symbol Guidelines](mdc:../common/symbol-guidelines.md): Symbol usage standards
+- [Cognitive Enhancement](mdc:cognitive-enhancement.md): System-wide cognitive enhancement
+- [File Standards](mdc:../common/file-standards.md): Documentation standards 

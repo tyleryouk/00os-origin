@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Parameter-Knowledge Mapping
 
 ## Overview
@@ -126,7 +131,7 @@ fetch_rules(["knowledge/rules/knowledge-organization/parameter-knowledge-mapping
 
 ## Related Components
 
-- [Parameter Structure](../common/parameter-structure.md): Standards for parameter structure
-- [Knowledge Access](../system-wide/knowledge-access.md): Knowledge access patterns
-- [Pathway Organization](pathway-organization.md): Pathway organization principles
-- [Brain-Files and Cursor-Rules](../system-wide/brain-files-cursor-rules.md): Brain-files and cursor-rules relationship 
+- [Parameter Structure](mdc:../common/parameter-structure.md): Standards for parameter structure
+- [Knowledge Access](mdc:../system-wide/knowledge-access.md): Knowledge access patterns
+- [Pathway Organization](mdc:pathway-organization.md): Pathway organization principles
+- [Brain-Files and Cursor-Rules](mdc:../system-wide/brain-files-cursor-rules.md): Brain-files and cursor-rules relationship 

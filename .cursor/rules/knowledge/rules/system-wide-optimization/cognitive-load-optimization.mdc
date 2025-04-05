@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Cognitive Load Optimization
 
 ## Overview
@@ -120,7 +125,7 @@ fetch_rules(["knowledge/rules/system-wide-optimization/cognitive-load-optimizati
 
 ## Related Components
 
-- [Mode Patterns](../system-wide/mode-patterns.md): Mode-specific behaviors
-- [Tool Optimization](tool-optimization.md): Optimizing tool usage
-- [Performance Optimization](../performance/performance-optimization.md): Performance strategies
-- [Pathway Organization](../knowledge-organization/pathway-organization.md): Optimizing knowledge structure 
+- [Mode Patterns](mdc:../system-wide/mode-patterns.md): Mode-specific behaviors
+- [Tool Optimization](mdc:tool-optimization.md): Optimizing tool usage
+- [Performance Optimization](mdc:../performance/performance-optimization.md): Performance strategies
+- [Pathway Organization](mdc:../knowledge-organization/pathway-organization.md): Optimizing knowledge structure 

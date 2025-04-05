@@ -1,0 +1,222 @@
+---
+description: USE WHEN understanding the core subsystem of the 1000xbrain system
+globs: 
+alwaysApply: false
+---
+# USE WHEN understanding the core subsystem of the 1000xbrain system
+
+# Subsystem: Core
+
+## Overview
+
+This knowledge file provides comprehensive documentation of the core subsystem within the 1000xbrain cognitive architecture, including its organization, components, and relationships with other subsystems.
+
+## Core Subsystem Purpose
+
+The core subsystem serves as the foundational component of the 1000xbrain cognitive architecture, providing:
+
+1. **Fundamental Identity**: Defines who 1000xdev is and how it operates
+2. **Behavioral Principles**: Establishes core behavioral patterns and constraints
+3. **Mode System**: Manages the plan-mode, dev-mode, and direct-mode operational states
+4. **Communication Standards**: Defines structured communication protocols
+5. **Foundational Capabilities**: Provides essential operational capabilities
+6. **Cross-Subsystem Integration**: Coordinates interaction between subsystems
+
+As the foundational subsystem, core brain-files impact every aspect of AI operation and are automatically included in every conversation.
+
+## Rule Type: Always
+
+Files in the core subsystem are designated as **Always** rule type, meaning:
+
+- **Automatic Inclusion**: Attached to every conversation
+- **Foundational Impact**: Shapes fundamental cognition in all contexts
+- **Global Influence**: Affects all operations across all workflows
+- **No Explicit Access Needed**: No fetch_rules or manual reference required
+- **Highest Priority**: Takes precedence when conflicts arise with other rule types
+
+This rule type ensures that core identity and principles are consistently applied regardless of context or workflow.
+
+## Core Directory Structure
+
+The core subsystem is organized into these primary directories:
+
+```
+1000xbrain/core/
+├── identity/           # Core identity files
+├── modes/              # Mode system files
+│   ├── plan-mode/      # Planning mode specifics
+│   ├── dev-mode/       # Developer mode specifics
+│   └── direct-mode/    # Direct mode specifics
+├── communication/      # Communication protocols
+└── tools/              # Tool usage standards
+```
+
+Each directory contains files that address specific aspects of the core subsystem's responsibilities.
+
+## Key Components
+
+### Identity Components
+
+Identity components define who 1000xdev is and establish core operational principles:
+
+- **global-rules.md**: The primary identity document
+- **cognitive-principles.md**: Core thinking patterns
+- **core-essentials.md**: Essential identity components
+- **decision-making.md**: Decision-making frameworks
+
+These components form the foundation of 1000xdev's identity and guide all cognitive processes.
+
+### Mode System Components
+
+The mode system manages operational states and transitions:
+
+- **mode-transitions.md**: Rules for mode switching
+- **plan-mode.md**: Planning mode principles
+- **dev-mode.md**: Developer mode principles
+- **direct-mode.md**: Direct mode principles
+
+These components ensure clear separation between planning, implementation, and direct action phases.
+
+### Communication Components
+
+Communication components establish structured interaction patterns:
+
+- **message-commands.md**: Message command syntax and standards
+- **symbol-guidelines.md**: Symbol usage guidelines
+- **syntax-standards.md**: Communication syntax standards
+- **file-editing-safety.md**: Safe file editing guidelines
+
+These components ensure consistent, effective communication and prevent hallucinations.
+
+### Tool Components
+
+Tool components define standards for tool usage:
+
+- **tool-usage-standards.md**: Standards for tool operations
+- **file-management.md**: File operation standards
+- **implementation-standards.md**: Implementation approaches
+- **verification-standards.md**: Verification requirements
+
+These components ensure effective, consistent tool usage across all operations.
+
+## Core File Structure
+
+Each core file follows a standardized structure:
+
+1. **Title**: Clear identification of the file's purpose
+2. **Overview**: Brief explanation of the file's content and importance
+3. **Key Principles**: Essential principles that define this aspect of the core
+4. **Implementation Guidelines**: Concrete guidance on how to apply these principles
+5. **Examples**: Practical examples of correct application
+6. **Related References**: Cross-references to related core files
+
+This structure ensures clarity, consistency, and effective knowledge integration.
+
+## Always Rule Behavior
+
+As Always rule type, core subsystem files:
+
+1. **Load Automatically**: Attached to every conversation without explicit reference
+2. **Establish Baseline**: Form the cognitive foundation upon which other rules build
+3. **Persist Throughout**: Remain active regardless of mode or workflow changes
+4. **Take Precedence**: Have priority when conflicts arise with other rule types
+5. **Apply Globally**: Impact all workflows and operations
+
+This automatic application ensures consistency and cohesion across all operations.
+
+## Interaction with Other Subsystems
+
+The core subsystem interacts with other subsystems in these specific ways:
+
+### Core → Knowledge Interaction
+
+The core subsystem defines how and when knowledge is accessed:
+
+- Establishes knowledge access patterns through fetch_rules standards
+- Defines knowledge integration principles
+- Determines when knowledge should be cached vs. refreshed
+- Provides guidance on knowledge disambiguation
+
+### Core → Parameters Interaction
+
+The core subsystem establishes parameter usage standards:
+
+- Defines the message-command system for parameter activation
+- Establishes parameter structure standards
+- Determines parameter interpretation principles
+- Guides parameter activation sequence
+
+### Core → Workflows Interaction
+
+The core subsystem shapes workflow implementation:
+
+- Defines workflow separation principles
+- Establishes cross-workflow standards
+- Provides workflow implementation guidance
+- Determines workflow transition rules
+
+## Implementation Patterns
+
+When implementing changes to the core subsystem:
+
+1. **Maintain Identity Consistency**: Ensure changes align with core identity
+2. **Preserve Mode Separation**: Maintain clear separation between modes
+3. **Enhance Communication Clarity**: Improve communication structures without contradicting existing patterns
+4. **Document Thoroughly**: Provide clear guidance on implementation
+5. **Verify Global Impact**: Consider how changes affect all other subsystems
+
+These patterns ensure that core changes enhance rather than disrupt the cognitive architecture.
+
+## Best Practices
+
+### Core Subsystem Development
+
+When enhancing the core subsystem:
+
+1. **Start with Identity**: Consider how changes align with core identity
+2. **Test Cross-Subsystem Effects**: Verify impacts on all other subsystems
+3. **Maintain Clarity**: Ensure documentation is clear and unambiguous
+4. **Preserve Structure**: Work within the existing structural organization
+5. **Focus on Principles**: Emphasize principles over implementation details
+6. **Maintain Consistency**: Ensure changes align with existing patterns
+
+### Core Documentation
+
+When documenting core subsystem components:
+
+1. **Use Clear Titles**: Ensure titles clearly identify the file's purpose
+2. **Include Overviews**: Begin with concise overviews of the file's purpose
+3. **Define Principles**: Clearly articulate essential principles
+4. **Provide Examples**: Include practical examples of correct application
+5. **Cross-Reference**: Reference related core files
+6. **Maintain Structure**: Follow the standard core file structure
+
+## Common Questions and Answers
+
+### Q: How do I know if a feature belongs in the core subsystem?
+A: A feature belongs in the core subsystem if it:
+- Defines fundamental identity or behavior
+- Must be available in all contexts
+- Shapes baseline cognitive patterns
+- Applies across all workflows
+- Establishes system-wide standards
+
+### Q: How do core files affect other subsystems?
+A: Core files establish the fundamental principles that all other subsystems follow, ensuring consistency throughout the cognitive architecture.
+
+### Q: Can core files be overridden?
+A: While core files have the highest priority, specific implementations in other subsystems can provide context-specific adaptations within the framework established by core files.
+
+### Q: What's the relationship between core files and modes?
+A: The core subsystem defines the mode system, including mode transitions and mode-specific behaviors, but each mode has its own implementation files within the core/modes directory.
+
+## Related Knowledge Files
+
+For more detailed information on related aspects of the system:
+
+- For overall system architecture, see `knowledge/system-structure/system-architecture.md`
+- For subsystem vs. system relationships, see `knowledge/system-structure/system-vs-subsystem.md`
+- For knowledge subsystem details, see `knowledge/system-structure/subsystem-knowledge.md`
+- For parameters subsystem details, see `knowledge/system-structure/subsystem-parameters.md`
+- For workflows subsystem details, see `knowledge/system-structure/subsystem-workflows.md`
+- For workflow relationships, see `knowledge/system-structure/workflow-subsystem-relationships.md` 

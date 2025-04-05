@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Parameter Structure
 
 ## Overview
@@ -131,6 +136,6 @@ fetch_rules(["knowledge/rules/common/parameter-structure"],
 
 ## Related Components
 
-- [Knowledge Access](../system-wide/knowledge-access.md): Standardized knowledge access patterns
-- [Message Commands](../system-wide/message-commands.md): Message command integration with parameters
-- [File Safety](../system-wide/file-safety.md): File editing safety for parameters 
+- [Knowledge Access](mdc:../system-wide/knowledge-access.md): Standardized knowledge access patterns
+- [Message Commands](mdc:../system-wide/message-commands.md): Message command integration with parameters
+- [File Safety](mdc:../system-wide/file-safety.md): File editing safety for parameters 

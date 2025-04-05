@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # File Standards
 
 ## Overview
@@ -109,8 +114,8 @@ Usage examples and guidance.
 
 ## Related Components
 
-- [Related Component 1](../pathway-name/component-1.md): Brief explanation
-- [Related Component 2](../pathway-name/component-2.md): Brief explanation
+- [Related Component 1](mdc:../pathway-name/component-1.md): Brief explanation
+- [Related Component 2](mdc:../pathway-name/component-2.md): Brief explanation
 ```
 
 ### Parameter File Pattern
@@ -171,7 +176,7 @@ fetch_rules(["knowledge/rules/common/file-standards"],
 
 ## Related Components
 
-- [Symbol Guidelines](symbol-guidelines.md): Symbol usage standards for documentation
-- [Parameter Structure](parameter-structure.md): Structure standards for parameters
-- [Knowledge Access](../system-wide/knowledge-access.md): Knowledge access patterns
-- [Pathway Organization](../knowledge-organization/pathway-organization.md): Pathway-based organization 
+- [Symbol Guidelines](mdc:symbol-guidelines.md): Symbol usage standards for documentation
+- [Parameter Structure](mdc:parameter-structure.md): Structure standards for parameters
+- [Knowledge Access](mdc:../system-wide/knowledge-access.md): Knowledge access patterns
+- [Pathway Organization](mdc:../knowledge-organization/pathway-organization.md): Pathway-based organization 

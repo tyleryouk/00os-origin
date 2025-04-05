@@ -1,3 +1,8 @@
+---
+description: USE WHEN implementing or planning scripts for the 1000xbrain system
+globs: 
+alwaysApply: false
+---
 # USE WHEN implementing or planning scripts for the 1000xbrain system
 
 # Common Script Patterns
