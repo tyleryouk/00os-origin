@@ -37,6 +37,20 @@
 * NEVER edit .mdc files in .cursor/rules
 * Wrap @ symbols in backticks when using in documentation
 
+## ⚠️ MANDATORY File Reading Standard ⚠️
+
+* ALWAYS read entire files with should_read_entire_file=true
+* NEVER read partial files without first reading the entire file
+* Follow mandatory protocols in core/tools/file-reading-enforcement.md
+* No exceptions to these requirements are permitted
+
+## Tool Usage Standards
+
+* Follow mandatory tool usage standards in core/tools/tool-usage-standards.md
+* Always read files completely before making any changes
+* Maintain full context awareness throughout implementation
+* Verify all tool operations are successful
+
 ## Knowledge Access
 
 * Use fetch_rules tool to access specialized knowledge
@@ -48,4 +62,5 @@
 For detailed implementation information, refer to:
 * Project-rule-parameters (when explicitly referenced)
 * Knowledge modules (via fetch_rules tool)
-* Implementation patterns in knowledge/rules/patterns directory 
+* Implementation patterns in knowledge/rules/patterns directory
+* Tool standards in core/tools directory 

@@ -1,125 +1,33 @@
 # Planning Mode Completion
 
-> **IMPORTANT**: This file defines completion signals and mode transitions for Planning Mode.
+> **IMPORTANT**: This file has been consolidated into knowledge files. Please refer to the knowledge files for detailed completion standards.
 
-## File Purpose
+## Knowledge Files
 
-This file outlines the completion signals and mode transitions in Planning Mode. It should be consulted to understand:
+For comprehensive Planning Mode completion standards, access these knowledge components:
 
-- Planning completion verification
-- Completion signal format
-- Mode transition protocols
-- Final verification requirements
+```typescript
+// For detailed plan-mode completion patterns
+fetch_rules(["knowledge/rules/patterns/modes/plan-mode-patterns"], 
+           "Understanding Planning Mode completion patterns")
 
-## 1. Planning Completion Verification
+// For common mode patterns including completion signals
+fetch_rules(["knowledge/rules/patterns/modes/common-mode-patterns"], 
+           "Understanding common completion patterns across all modes")
 
-Before signaling planning completion, verify:
-
-### Completeness Verification
-- [ ] Essential files contain required information
-- [ ] Implementation guidance is clear and actionable
-- [ ] Documentation provides enough context for autonomous implementation
-- [ ] Knowledge access is properly documented
-
-### Quality Verification
-- [ ] Documentation is clear and focused
-- [ ] Implementation steps are well-defined
-- [ ] Success criteria are measurable
-- [ ] Technical requirements are specific
-
-### Implementation Readiness
-- [ ] Target files are identified
-- [ ] Implementation approach is clear
-- [ ] Verification methods are established
-- [ ] Dependencies are documented
-
-## 2. Planning Completion Signal
-
-When planning is complete and verified, send the `planning-document-complete` signal:
-
-```
-📋 1000xdev [workflow-type]
-
-planning-document-complete
-
-Planning is complete with:
-- Requirements document with clear objectives and success criteria
-- Implementation plan with detailed approach
-- Context files with essential system information
+// For completion-specific patterns
+fetch_rules(["knowledge/rules/patterns/doc/completion-patterns"], 
+           "Understanding documentation completion patterns")
 ```
 
-### Signal Requirements
-- Must begin with mode indicator
-- Must include `planning-document-complete` signal
-- Must summarize completed documentation
-- Must confirm verification completion
+## Transition Note
 
-## 3. Mode Transition Protocol
+This file has been streamlined as part of the system-wide optimization effort. All detailed completion standards previously contained in this file have been moved to the knowledge files referenced above.
 
-### Transition Initiation
-After planning completion, Tyler will initiate the transition to Developer Mode:
+The knowledge files contain comprehensive information on:
+- Completion signals
+- Verification requirements
+- Mode transitions
+- Documentation handoff
 
-```
-dev-mode: workflow-type @optional-strategy.mdc
-```
-
-This will transition to Developer Mode (💻 1000xdev [workflow-type]) for implementation.
-
-### Transition Requirements
-- Planning must be complete and verified
-- All documentation must be finalized
-- Implementation guidance must be clear
-- Knowledge access must be documented
-
-## 4. Final Documentation State
-
-### Essential Files
-- `requirements.md`: Complete with clear objectives
-- `implementation.md`: Complete with detailed guidance
-- Optional files: Complete if included
-
-### Documentation Quality
-- Clear and focused content
-- Actionable implementation steps
-- Measurable success criteria
-- Specific technical requirements
-
-### Knowledge Access
-- Proper fetch_rules documentation
-- Clear explanation parameters
-- Appropriate knowledge components
-- Context-specific access patterns
-
-## 5. Implementation Handoff
-
-### Implementation Package
-- Complete planning documentation
-- Clear implementation guidance
-- Verified success criteria
-- Documented knowledge access
-
-### Handoff Requirements
-- All verification checklists complete
-- Documentation quality verified
-- Implementation readiness confirmed
-- Knowledge access documented
-
-## 6. Mode Transition Checklist
-
-### Before Transition
-- [ ] All planning documentation complete
-- [ ] All verification checklists passed
-- [ ] Implementation guidance clear
-- [ ] Knowledge access documented
-
-### Transition Process
-- [ ] Send completion signal
-- [ ] Await transition command
-- [ ] Verify mode change
-- [ ] Begin implementation
-
-### After Transition
-- [ ] Confirm Developer Mode active
-- [ ] Access implementation guidance
-- [ ] Begin implementation process
-- [ ] Follow documented approach 
+Please use the fetch_rules tool to access this knowledge. 
