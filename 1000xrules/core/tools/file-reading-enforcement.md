@@ -1,8 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 # Mandatory Adaptive File Reading Enforcement
 
 ## ⚠️ CRITICAL ENFORCEMENT REQUIREMENT ⚠️

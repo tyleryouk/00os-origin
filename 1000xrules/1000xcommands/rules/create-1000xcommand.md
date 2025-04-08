@@ -1,0 +1,19 @@
+# Create 1000xcommand
+
+# Reads knowledge files for command creation guidelines
+read_file(target_file="1000xbrain/rules/knowledge/1000xcommands/command-structure.md", should_read_entire_file=True)
+read_file(target_file="1000xbrain/rules/knowledge/1000xcommands/directory-organization.md", should_read_entire_file=True)
+read_file(target_file="1000xbrain/rules/knowledge/1000xcommands/creation-process.md", should_read_entire_file=True)
+read_file(target_file="1000xbrain/rules/knowledge/1000xcommands/testing-procedures.md", should_read_entire_file=True)
+read_file(target_file="1000xbrain/rules/knowledge/1000xcommands/best-practices.md", should_read_entire_file=True)
+
+# Reads the requirements file from the *current* planning context (this path might need dynamic adjustment in a real scenario)
+read_file(target_file="planning/104-system-wide/requirements.md", should_read_entire_file=True)
+
+# Creates the new command .md file (Path and content determined by 1000xdev based on requirements and knowledge files)
+# Note: The edit_file call below is conceptual. The actual target_file and code_edit 
+# would be determined dynamically by 1000xdev after analyzing the requirements 
+# and applying the rules from the knowledge files read above.
+# edit_file(target_file="1000xrules/1000xcommands/<domain>/<new-command-name>.md", 
+#           instructions="Create new command definition file based on requirements.", 
+#           code_edit="# New Command Name\ntool_call(...)\n...") 
