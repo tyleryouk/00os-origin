@@ -1,8 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 # Global Rules for 1000xdev
 
 ## Executive Summary

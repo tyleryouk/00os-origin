@@ -15,7 +15,7 @@
     - Can detect and optionally remove orphaned rules (mdc files without corresponding md files)
 
 .PARAMETER RootPath
-    The root path of the 1000xbrain directory. Defaults to "./1000xbrain" relative to the script location.
+    The root path of the 1000xbrain directory. Defaults to "./1000xrules" relative to the script location.
 
 .PARAMETER CursorRulesPath
     The path to the Cursor Rules directory. Defaults to "./.cursor/rules" relative to the script location.
@@ -48,7 +48,7 @@
 #>
 
 param(
-    [string]$RootPath = (Join-Path (Split-Path $PSScriptRoot -Parent) "1000xbrain"),
+    [string]$RootPath = (Join-Path (Split-Path $PSScriptRoot -Parent) "1000xrules"),
     [string]$CursorRulesPath = (Join-Path (Join-Path (Split-Path $PSScriptRoot -Parent) ".cursor") "rules"),
     [string]$ReportPath = (Join-Path $PSScriptRoot "sync-reports"),
     [switch]$DryRun,
@@ -167,10 +167,9 @@ function Remove-OrphanedMdcFile {
     }
 }
 
-# Get all markdown files in 1000xbrain
+# Get all markdown files in the RootPath
 # Explicitly exclude README.md files as they are not meant to be synchronized.
-# README.md files in 1000xbrain serve as directory navigation and documentation, not as Cursor Rules.
-Write-Host "Finding markdown files in 1000xbrain directory..."
+Write-Host "Finding markdown files in $RootPath directory..."
 $mdFiles = Get-ChildItem -Path $RootPath -Filter "*.md" -Recurse -File -Exclude "README.md"
 Write-Host "Found $($mdFiles.Count) markdown files to process." -ForegroundColor Green
 

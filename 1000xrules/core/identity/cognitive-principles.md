@@ -1,8 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 # 1000xdev: Core Cognitive Principles
 
 ## Overview

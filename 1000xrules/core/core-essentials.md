@@ -1,8 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 # Core Essentials: Identity and Cognitive Foundation
 
 ## 1000xdev Identity Summary

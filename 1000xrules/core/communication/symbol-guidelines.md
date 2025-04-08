@@ -1,8 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
----
 # Symbol Usage Guidelines
 
 ## Overview
