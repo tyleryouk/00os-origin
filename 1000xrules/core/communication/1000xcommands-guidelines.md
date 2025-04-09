@@ -1,130 +1,87 @@
-# 1000xcommands Guidelines
+# Guidelines: Strict Keyword Interaction & `1000xbrain` Commands
 
 ## Overview
 
-This document defines the `1000xcommands` system, a streamlined approach for invoking tool sequences through simple, domain-specific commands referenced by Tyler Youk. `1000xcommands` replace the previous message-commands and mode system, enabling direct and efficient tool invocation by 1000xdev.
+This document defines the strict keyword-based interaction model for 1000xdev and the new location and invocation mechanism for command definitions.
 
 ## Core Principles
 
-1.  **Direct Tool Invocation**: `1000xcommands` are primarily sequences of tool calls executed by 1000xdev upon invocation.
-2.  **Simplicity**: Command files (`.md` in `1000xrules/1000xcommands/`) contain *only* a header (`# Command Name`) and tool calls.
-3.  **Abstraction**: All complex logic, context, and detailed instructions are abstracted into `1000xbrain` knowledge files, which the command's tool calls might reference or read.
-4.  **Silent Execution**: When Tyler invokes a `1000xcommand`, 1000xdev executes the tool calls **without generating a response message** to Tyler. Its function is purely execution.
-5.  **Domain Organization**: Commands are strictly organized by domain within `1000xrules/1000xcommands/` to maintain clarity.
+1.  **Strict Keyword Prefixes**: All user input MUST begin with either `run ` for command execution or `chat ` for conversation. Any other input is invalid.
+2.  **Commands Reside in `1000xbrain`**: Executable command sequences (`.md` files containing a header and tool calls) are stored exclusively within `1000xbrain/commands/`, organized by domain (`rules/`, `brain/`, `front-end/`, etc.).
+3.  **Explicit Command Invocation**: Commands are invoked using the exact syntax `run command:domain/command-name`.
+4.  **Abstraction**: Complex logic remains abstracted into `1000xbrain/knowledge/` files, referenced by tool calls within commands.
+5.  **Silent Command Execution**: When a valid `run command:...` is received, 1000xdev executes the tool calls silently (no conversational response).
 
-## Command Format (`.md` file in `1000xrules/1000xcommands/`)
+## Command Format (`.md` file in `1000xbrain/commands/`)
 
-1000xcommands follow a simple, standardized format:
+The format remains the same: simple Markdown with a header and tool calls.
 
 ```markdown
 # Command Name (e.g., Enhance Cognitive Architecture)
 
 tool_call(...) 
-# Example: read_file("1000xbrain/knowledge/core/enhancement-guide.md", should_read_entire_file=true)
+# Example: read_file("1000xbrain/brain/knowledge/cognitive-architecture/core-concepts.md", should_read_entire_file=True)
 tool_call(...)
-# Example: list_dir("1000xrules/core/identity/")
-tool_call(...)
-# Example: edit_file("1000xrules/core/identity/core-identity.md", "Update persona trait", "...")
+# Example: list_dir("1000xbrain/commands/brain/")
 ```
 
-### Format Components
+## Interaction Flow & Strict Parsing
 
-1.  **Header**: A single line starting with `#` that defines the command's descriptive name.
-2.  **Tool Calls**: One or more valid tool call definitions, each on its own line. Standard tool usage (`core/tools/tool-usage-standards.mdc`) applies.
-3.  **No Additional Text**: Commands contain *only* the header and tool calls. Comments are permissible for clarity if needed.
-
-## Command Invocation (by Tyler Youk)
-
-Tyler invokes a 1000xcommand using its reference path:
-
-```
-@1000xcommands/domain/command-name
-```
-
-For example:
-```
-@1000xcommands/brain/enhance-cognitive-architecture
-```
-
-### Invocation Components
-
-1.  **`@` Symbol**: Indicates a command reference.
-2.  **`1000xcommands/`**: The root directory for all command definitions.
-3.  **`domain/`**: The specific domain (`brain`, `front-end`, `back-end`, `rules`, `scripts`).
-4.  **`command-name`**: The specific command file name (without `.md` extension).
-
-## Interaction Flow: 1000xcommand vs. Regular Message
-
-This defines how 1000xdev processes input from Tyler Youk:
-
-1.  **If input starts with `@1000xcommands/...`**:
-    *   1000xdev recognizes this as a command invocation.
-    *   It uses `fetch_rules` to retrieve the corresponding command file from `1000xrules/1000xcommands/domain/command-name.mdc`.
-    *   It **sequentially executes all tool calls** listed in the command file.
+1.  **Input Starts with `run command:`**: 
+    *   1000xdev recognizes this as a command invocation attempt.
+    *   It **strictly parses** the rest of the line for the `domain/command-name` structure.
+    *   If the structure is valid, it constructs the target path: `1000xbrain/commands/{domain}/{command-name}.md`.
+    *   It uses `read_file` to read the target `.md` file.
+    *   It parses the file for tool calls (expecting only header + tool calls).
+    *   It **sequentially executes all tool calls** listed.
     *   It **DOES NOT** send any conversational response back to Tyler.
-    *   Execution stops after the last tool call in the command.
+    *   Execution stops after the last tool call or upon encountering an error during execution.
+    *   Errors during execution are logged to `1000xbrain/brain/operational_feedback/`.
+    *   **Invalid Syntax Error**: If the input starts with `run ` but doesn't match `run command:domain/name` exactly, 1000xdev responds with: `Error: Invalid command syntax. Expected 'run command:domain/name'.` and stops.
 
-2.  **If input is a regular message (does not start with `@1000xcommands/...`)**:
-    *   1000xdev processes this as a conversational turn.
-    *   It engages in dialogue with Tyler, adopting the Jarvis persona (`core-identity.md`).
-    *   It **DOES NOT** automatically execute tool calls unless:
-        *   The message explicitly requests a tool action (e.g., "Please read file X").
-        *   Tool usage is necessary for information gathering to answer Tyler's query.
-    *   The primary goal is communication and assistance, not automated execution.
+2.  **Input Starts with `chat `**: 
+    *   1000xdev recognizes this as conversational input.
+    *   It processes the entire text following `chat ` as a message from Tyler.
+    *   It engages in dialogue, adopting the Jarvis persona (`core-identity.md`).
+    *   It **DOES NOT** automatically execute tool calls unless the conversation explicitly warrants it for information gathering or direct instruction.
 
-3.  **Error Handling (Future)**:
-    *   If a `1000xcommand` invocation is malformed (e.g., incorrect path, invalid syntax), 1000xdev should eventually signal an error (mechanism TBD), rather than attempting to guess or proceed.
+3.  **Any Other Input**: 
+    *   If the input does **not** start with `run command:` or `chat `, it is invalid.
+    *   1000xdev responds with: `Error: Invalid input format. Please start your message with 'run command:...' for command execution or 'chat ...' for conversation.` and stops.
 
-## Domain Organization
+## Domain Organization (Commands)
 
-Commands are organized by domain within `1000xrules/1000xcommands/`:
+Commands are organized by domain within `1000xbrain/commands/`:
 
-*   **`brain/`**: Cognitive architecture enhancement.
-*   **`front-end/`**: Front-end development tasks.
-*   **`back-end/`**: Back-end development tasks.
-*   **`rules/`**: `1000xrules` system development (meta-commands).
-*   **`scripts/`**: Automation script development.
-
-(Examples removed for brevity, refer to previous version or `1000xbrain/knowledge/1000xcommands/directory-organization.md` once created).
+*   `brain/`: Cognitive architecture enhancement.
+*   `frontend/`: Front-end development tasks.
+*   `backend/`: Back-end development tasks.
+*   `rules/`: `1000xrules` system development (meta-commands).
+*   `scripts/`: Automation script development.
 
 ## Tool Call Standards within Commands
 
-All tool calls within `1000xcommands` MUST adhere to the standards defined in `core/tools/tool-usage-standards.mdc` and `core/tools/file-reading-enforcement.mdc`.
+Remain unchanged. Adhere to `core/tools/tool-usage-standards.mdc` and `core/tools/file-reading-enforcement.mdc`.
 
-## Best Practices (For 1000xdev creating/maintaining commands)
+## Best Practices (Command Creation/Maintenance)
 
-### Command Creation
+Principles remain similar, but emphasize:
 
-1.  **Domain Specificity**: Ensure commands reside in the correct domain directory.
-2.  **Focused Purpose**: Each command should perform one logical operation.
-3.  **Abstraction**: Keep commands simple (header + tools). Place detailed logic/instructions in `1000xbrain` knowledge files.
-4.  **Logical Sequence**: Arrange tool calls for effective execution (e.g., read before edit).
-5.  **Context via `1000xbrain`**: Commands should rely on tool calls reading `1000xbrain` files for complex context or conditional logic, not embed it directly.
-6.  **Clear Naming**: Use descriptive, action-oriented file names.
+1.  **Location**: Commands MUST be created in the correct domain under `1000xbrain/commands/`.
+2.  **Invocation Reference (Docs)**: When referencing command invocation in documentation (e.g., within `1000xbrain` knowledge files), use the new syntax wrapped in backticks: `` `run command:domain/command-name` ``.
 
-### Command Usage (by 1000xdev during execution)
+## File Extension Usage (Updated)
 
-1.  **Strict Execution**: Execute tool calls exactly as listed in the command file.
-2.  **No Response**: Do not generate conversational output after executing a command.
-3.  **Error Propagation**: If a tool call fails, the command execution stops (future: add error reporting).
+Distinguish clearly:
 
-## Symbol Usage Guidelines
+*   **Command Definition File (Editable):** `1000xbrain/commands/domain/command-name.md`
+*   **Command Invocation Reference:** `run command:domain/command-name` (Use backticks in docs: `` `run command:domain/command-name` ``)
+*   **Core Rule File (Editable):** `1000xrules/core/.../file.md`
+*   **Cursor Rule File (Read-Only for AI):** `.cursor/rules/.../file.mdc` (Generated from `1000xrules`)
 
-When referring to `1000xcommands` in documentation (e.g., within `1000xbrain`):
+## Deprecation Notes
 
-1.  **Backtick Protection**: Always wrap command invocation references in backticks.
-    *   CORRECT: ``` `@1000xcommands/brain/analyze-system-structure` ```
-    *   INCORRECT: `@1000xcommands/brain/analyze-system-structure`
-
-2.  **File Extension Usage**: Distinguish clearly:
-    *   Command definition file (editable): `1000xrules/1000xcommands/brain/command-name.md`
-    *   Command invocation reference: `@1000xcommands/brain/command-name`
-    *   Cursor rule file (read-only): `1000xrules/1000xcommands/brain/command-name.mdc` (used by `fetch_rules`)
-
-## Migration from Message-Commands
-
-The `1000xcommands` system replaces the legacy message-commands and mode system entirely:
-
-1.  **No Modes**: `plan-mode`, `dev-mode`, `direct-mode` are obsolete.
-2.  **No Message-Command Syntax**: The complex 5-part message command structure is obsolete.
-3.  **Direct Invocation**: Interaction is either direct `1000xcommand` invocation (`@1000xcommands/...`) for automated execution or regular conversation for discussion/manual assistance. 
+*   The `@1000xcommands/...` invocation syntax is **obsolete**.
+*   The `1000xrules/1000xcommands/` directory is **obsolete**.
+*   The concept of `fetch_rules` for reading command definitions is **obsolete**; `read_file` is used.
+*   Modes (`plan-mode`, `dev-mode`, `direct-mode`) are **obsolete**. 

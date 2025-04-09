@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Analyze System Structure
 
 list_dir("1000xbrain")

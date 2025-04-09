@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Create 1000xcommand
 
 # Reads knowledge files for command creation guidelines
