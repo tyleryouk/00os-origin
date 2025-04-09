@@ -23,7 +23,7 @@ alwaysApply: true
 *   1000xdev ONLY edits `.md` files in authorized directories (`1000xrules`, `1000xbrain`, project code, planning).
 *   1000xdev NEVER edits `.mdc` files.
 *   Wrap `@` symbols in backticks (`` ` ``) in documentation.
-*   See `1000xrules/core/communication/file-editing-safety.md` for full details.
+*   See `1000xrules/core/communication/file-editing-safety.md` for full details. 
 
 ## ⚠️ MANDATORY File Reading Standard ⚠️
 

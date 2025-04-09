@@ -87,6 +87,12 @@ if "!REMOVE_ORPHANS!"=="true" (
 %PS_COMMAND%
 
 echo.
+echo Running sync report cleanup...
+echo.
+
+powershell -ExecutionPolicy Bypass -Command "& '%~dp0Clean-SyncReports.ps1'"
+
+echo.
 echo ====================================================
 echo Synchronization completed!
 echo ====================================================
