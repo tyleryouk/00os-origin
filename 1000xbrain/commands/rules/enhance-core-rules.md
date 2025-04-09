@@ -1,10 +1,14 @@
 # Enhance Core Rules
 
+# Read process guidelines first
+read_file(target_file="1000xbrain/rules/processes/rule-enhancement-guidelines.md", should_read_entire_file=True)
+read_file(target_file="1000xbrain/rules/processes/core-rule-enhancement-specifics.md", should_read_entire_file=True)
+
 # Read relevant knowledge files for core rule enhancement guidelines
 # (Example path - actual knowledge files might need creation/verification)
 # read_file(target_file="1000xbrain/rules/knowledge/core/enhancement-guide.md", should_read_entire_file=True)
 read_file(target_file="1000xbrain/rules/knowledge/1000xcommands/best-practices.md", should_read_entire_file=True) # General best practices apply
-read_file(target_file="planning/104-system-wide/research-summary.md", should_read_entire_file=True) # Use research findings
+read_file(target_file="planning/104-system-wide/research-summary-1.md", should_read_entire_file=True) # Use research findings
 
 # Read the requirements file from the current planning context
 read_file(target_file="planning/104-system-wide/requirements.md", should_read_entire_file=True)

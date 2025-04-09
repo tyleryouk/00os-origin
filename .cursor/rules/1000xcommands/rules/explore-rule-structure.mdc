@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Explore Rule Structure
 
 list_dir("1000xrules")
