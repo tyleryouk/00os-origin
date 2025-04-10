@@ -23,15 +23,15 @@ Files in the cognitive architecture system follow a strict distinction between f
     *   **Reference**: Use path `1000xrules/core/.../file.md` in documentation.
 
 2.  **1000xcommand Definition Files (.md)**:
-    *   **Location**: `1000xbrain/commands/<domain>/`.
+    *   **Location**: `1000xcommands/<domain>/.../` (e.g., `1000xcommands/system/brain/`).
     *   **Purpose**: Define sequences of tool calls for specific tasks.
     *   **Editable**: Yes, by 1000xdev.
     *   **Syncs to `.mdc`**: No.
-    *   **Reference**: Use path `1000xbrain/commands/.../file.md` in documentation; use `run command:domain/file` for invocation (wrap in backticks in docs: `` `run command:domain/file` ``).
+    *   **Reference**: Use path `1000xcommands/<domain>/.../file.md` in documentation; use `run command:domain/.../file` for invocation (wrap in backticks in docs: `` `run command:system/brain/file` ``).
 
-3.  **Brain Knowledge/Process Files (.md)**:
-    *   **Location**: `1000xbrain/` and subdirectories (`brain/`, `rules/`, `front-end/`, etc.).
-    *   **Purpose**: Contain domain-specific knowledge, processes, guidelines used by 1000xdev or referenced by `1000xcommands`.
+3.  **Brain Knowledge/Process/Guideline Files (.md)**:
+    *   **Location**: `1000xbrain/` and subdirectories (`system/`, `frontend/`, `backend/`).
+    *   **Purpose**: Contain domain-specific knowledge, processes, and system-wide operational guidelines used by 1000xdev or referenced by `1000xcommands`.
     *   **Editable**: Yes, by 1000xdev.
     *   **Syncs to `.mdc`**: No.
     *   **Reference**: Use path `1000xbrain/.../file.md` in documentation.
@@ -41,7 +41,7 @@ Files in the cognitive architecture system follow a strict distinction between f
     *   **Purpose**: The actual rules applied by the Cursor engine.
     *   **Editable**: **NO**, never by 1000xdev. Only by Tyler via UI.
     *   **Syncs to `.mdc`**: N/A (These *are* the `.mdc` files, generated from `1000xrules`).
-    *   **Reference**: Use path `.cursor/rules/.../file.mdc` when discussing the applied rules; use `fetch_rules` with `1000xrules/.../file.mdc` path for reading.
+    *   **Reference**: Use path `.cursor/rules/.../file.mdc` when discussing the applied rules; use `read_file` if needing to inspect the generated rule content (prefer reading source `.md` in `1000xrules/`).
 
 ## @ Symbol Usage Guidelines
 
@@ -80,7 +80,7 @@ To avoid hallucinations and incorrect tool calls, 1000xdev MUST:
 
 ## Command Invocation Format Summary (Updated)
 
-*   **Standard Format**: `run command:domain/command-name`
-*   **Domains**: `brain`, `frontend`, `backend`, `scripts`, `rules` (relative to `1000xbrain/commands/`).
+*   **Standard Format**: `run command:domain/command-name` (e.g., `run command:system/brain/analyze-structure`)
+*   **Domains**: `system`, `frontend`, `backend`, potentially with sub-paths like `system/brain` (relative to `1000xcommands/`).
 *   **Reference**: `1000xrules/core/communication/1000xcommands-guidelines.md`.
 

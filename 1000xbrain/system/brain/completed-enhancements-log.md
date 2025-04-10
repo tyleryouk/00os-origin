@@ -1,0 +1,3 @@
+# Completed Enhancements / Frameworks Log: System/Brain Domain
+
+*   **System-Wide Change Management Framework (YYYY-MM-DD):** Established foundational knowledge (`system-change-philosophy.md`), processes (`system-change-workflow.md`, `new-planning-cycle-initiation.md`), and placeholder commands (`initiate-plan`, `execute-plan`, `finalize-change`) to standardize and automate system-wide changes and planning cycles. See `1000xplans/system/plan.md` for details. (Note: Plan path updated from original log). 

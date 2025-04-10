@@ -24,7 +24,7 @@ This is a non-negotiable, mandatory first step to ensure proper command executio
 
 ### Correct (Required) Workflow:
 - Receive `run command:domain/name`
-- ✅ IMMEDIATELY construct the target path: `1000xcommands/{domain}/{command-name}.md`
+- ✅ IMMEDIATELY construct the target path: `1000xcommands/{domain}/{command-name}.md` (e.g., `1000xcommands/system/brain/analyze-structure.md`)
 - ✅ IMMEDIATELY read the entire command file using `read_file`
 - ✅ Only AFTER reading - parse and execute as specified
 
@@ -33,7 +33,7 @@ This is a non-negotiable, mandatory first step to ensure proper command executio
 All "thinking" during command execution must be minimized:
 
 1. **Mechanical Execution**: Command processing should be direct and mechanical.
-2. **Abstracted Logic**: Complex logic must be abstracted to `1000xbrain` knowledge/process files.
+2. **Abstracted Logic**: Complex logic MUST be abstracted to `1000xbrain` knowledge/process files (within the appropriate domain/subsystem path).
 3. **Streamlined Workflow**: Command execution should follow a predictable, efficient sequence.
 4. **Minimal Overhead**: No unnecessary analysis or processing during command execution.
 
@@ -46,9 +46,9 @@ Receive command invocation
 |
 IMMEDIATELY read command file <-- ZERO delay, NO thinking
 |
-Parse file for tool calls
+Parse file for tool calls & dynamic execution markers
 |
-Execute tool calls sequentially
+Execute explicit tool calls sequentially (if any)
 |
 (Optional) Begin dynamic execution if marker encountered
 ```
@@ -56,46 +56,52 @@ Execute tool calls sequentially
 ## Detailed Processing Steps
 
 1. **Receive Command Invocation**:
-   - User inputs: `run command:domain/command-name`
+   - User inputs: `run command:domain/command-name` (e.g., `run command:system/rules/update-rule`)
    - 1000xdev IMMEDIATELY initiates command file reading with NO preliminary thinking
 
 2. **Command File Reading**:
-   - Construct path: `1000xcommands/{domain}/{command-name}.md`
+   - Construct path: `1000xcommands/{domain}/{command-name}.md` (e.g., `1000xcommands/system/rules/update-rule.md`)
    - Use `read_file` with `should_read_entire_file=true`
-   - Follow the mandatory file reading protocol in `core/tools/file-reading-enforcement.md`
+   - Follow the mandatory file reading protocol in `1000xrules/core/tools/file-reading-enforcement.md`
 
 3. **Command Parsing**:
-   - Parse the file header and tool calls
-   - Identify any dynamic execution marker and associated process/knowledge files
+   - Parse the file header, explicit tool calls, and dynamic execution section (if present).
+   - Identify any dynamic execution marker and associated process/knowledge files within `1000xbrain`.
 
 4. **Command Execution**:
-   - Execute tool calls in sequence as specified in the command file
-   - If dynamic execution marker is present, read process/knowledge files and proceed with dynamic execution
-   - Maintain minimal processing overhead during execution
+   - Execute explicit tool calls in sequence as specified in the command file (if any).
+   - If dynamic execution marker is present, read process/knowledge files from `1000xbrain` (e.g., `1000xbrain/system/rules/processes/update-logic.md`) and proceed with dynamic execution.
+   - Maintain minimal processing overhead during execution.
 
 ## Examples of Proper Command Processing
 
-### Example 1: Basic Command
+### Example 1: Basic Command (Explicit Tools Only)
 ```
-User: run command:brain/analyze-structure
+User: run command:system/brain/list-knowledge-files
 
 1000xdev: [Immediately, with no preliminary thinking]
-read_file("1000xcommands/brain/analyze-structure.md", should_read_entire_file=true)
+read_file("1000xcommands/system/brain/list-knowledge-files.md", should_read_entire_file=true)
 
 [After reading the command file, executes the specified tool calls]
-list_dir("1000xbrain")
+list_dir("1000xbrain/system/brain/knowledge/")
 ...
 ```
 
 ### Example 2: Command with Dynamic Execution
 ```
-User: run command:brain/enhance-cognitive-architecture
+User: run command:system/brain/enhance-cognitive-architecture
 
 1000xdev: [Immediately, with no preliminary thinking]
-read_file("1000xcommands/brain/enhance-cognitive-architecture.md", should_read_entire_file=true)
+read_file("1000xcommands/system/brain/enhance-cognitive-architecture.md", should_read_entire_file=true)
 
-[After reading the command file, executes the specified tool calls]
-read_file("1000xbrain/brain/processes/system-change-workflow.md", should_read_entire_file=true)
+[After reading the command file, parses dynamic execution block]
+# Assuming command contains:
+# --- BEGIN DYNAMIC EXECUTION ---
+# Process: 1000xbrain/system/brain/processes/enhance-architecture.md
+# --- END DYNAMIC EXECUTION ---
+
+[Reads the specified process file]
+read_file("1000xbrain/system/brain/processes/enhance-architecture.md", should_read_entire_file=true)
 ...
 [Begins dynamic execution based on the process file]
 ```
@@ -106,27 +112,27 @@ Command processing optimization can be verified by:
 
 1. **Time Measurement**: Command processing should occur with minimal delay between invocation and file reading.
 2. **Mechanical Execution**: Execution should proceed mechanically once the command is understood.
-3. **Abstraction Checks**: Ensure all complex logic is abstracted to knowledge/process files.
+3. **Abstraction Checks**: Ensure all complex logic is abstracted to knowledge/process files within `1000xbrain`.
 
 ## Implementation Guidance
 
 ### For Command Creators:
 - Keep command files simple and direct
-- Abstract complex logic to knowledge/process files
-- Follow the best practices in `1000xbrain/commands/knowledge/best-practices.md`
+- Abstract complex logic to knowledge/process files within `1000xbrain`
+- Follow the best practices (refer to `1000xbrain/system/commands/knowledge/` guidelines)
 
 ### For Command Processors (1000xdev):
 - ALWAYS read the command file IMMEDIATELY
 - Process commands mechanically once read
 - Minimize thinking during command execution
-- Rely on knowledge/process files for complex logic
+- Rely on knowledge/process files from `1000xbrain` for complex logic
 
 ## Relationship to Other Core Rules
 
 This rule complements and reinforces:
 - `1000xrules/core/communication/1000xcommands-guidelines.md`
 - `1000xrules/core/tools/file-reading-enforcement.md`
-- `1000xrules/core/cognitive-principles.md`
+- `1000xrules/core/identity/cognitive-principles.md`
 
 ## Core Precedence
 

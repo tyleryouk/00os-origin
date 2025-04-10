@@ -23,7 +23,6 @@
 ## Related References
 
 *   Core Essentials: `1000xrules/core/core-essentials.md`
-*   Knowledge Patterns (Conceptual): `1000xbrain/knowledge/rules/patterns/tool/file-reading-patterns.md` (Note: Core directive takes precedence over implementation patterns here).
 
 ## CRITICAL: This is a CORE directive
 
