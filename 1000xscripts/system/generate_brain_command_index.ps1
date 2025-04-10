@@ -128,8 +128,8 @@ $MarkdownContent += "- `[?]` Needs Review: Passed basic checks but contains elem
 $MarkdownContent += "- `[!]` Failed Auto-Check: Failed one or more automated checks (see notes)."
 $MarkdownContent += "- `[n/a]` No Terminal Cmd: No `run_terminal_cmd` calls found in the command file."
 $MarkdownContent += ""
-$MarkdownContent += "## Commands & Verification Status"
-$MarkdownContent += ""
+# $MarkdownContent += "## Commands & Verification Status"
+# $MarkdownContent += ""
 
 # Regex to find run_terminal_cmd calls and extract the command parameter
 $runCmdRegex = [regex]'(?s)run_terminal_cmd\(.*?command\s*=\s*"(?<command>.*?)"'
@@ -141,73 +141,178 @@ if ($commandFiles.Count -eq 0) {
     $MarkdownContent += "*No commands found in '$($CommandsDirRelative)'.*"
 } else {
     $correctionSummary = @{ Attempted = 0; Successful = 0; Failed = 0 }
-    # Sort files by path for consistent index order
-    $sortedCommandFiles = $commandFiles | Sort-Object DirectoryName, Name
-
-    foreach ($file in $sortedCommandFiles) {
+    
+    # Group files by directory
+    $groupedFiles = @{}
+    $rootFiles = @()
+    
+    foreach ($file in $commandFiles) {
         $CommandName = $file.BaseName
         $FilePath = $file.FullName
         # Calculate relative path from $CommandsRoot for the run command syntax
         $RelativePath = $FilePath.Substring($CommandsRoot.Length).TrimStart('\','/')
         $CommandRunPath = $RelativePath -replace '\.md$', '' -replace '\\', '/' # Remove .md and normalize slashes
-
-        $FileContent = Get-Content -Path $FilePath -Raw
         
-        $matches = $runCmdRegex.Matches($FileContent)
+        # Get parent folder path relative to the system commands folder
+        $parentPath = Split-Path -Parent $RelativePath
         
-        $fileStatus = "Verified" # Overall status for the file
-        $fileReasons = @()      # Combined reasons for the file
-        $hasTerminalCmd = $false
-        $fileCorrectionAttempted = $false
-        $fileCorrectionSuccessful = $false 
+        if ($parentPath -eq "system") {
+            # This is a root level command
+            $rootFiles += @{
+                Name = $CommandName
+                Path = $FilePath
+                RelativePath = $RelativePath
+                RunPath = $CommandRunPath
+            }
+        } else {
+            # Get the subfolder name
+            $subfolder = $parentPath -replace '^system[/\\]', ''
+            
+            if (-not $groupedFiles.ContainsKey($subfolder)) {
+                $groupedFiles[$subfolder] = @()
+            }
+            
+            $groupedFiles[$subfolder] += @{
+                Name = $CommandName
+                Path = $FilePath
+                RelativePath = $RelativePath
+                RunPath = $CommandRunPath
+            }
+        }
+    }
+    
+    # First add root commands section
+    if ($rootFiles.Count -gt 0) {
+        $MarkdownContent += "## Root Commands"
+        $MarkdownContent += ""
+        
+        # Sort root files by name
+        $sortedRootFiles = $rootFiles | Sort-Object { $_.Name }
+        
+        foreach ($file in $sortedRootFiles) {
+            $CommandName = $file.Name
+            $FilePath = $file.Path
+            $CommandRunPath = $file.RunPath
+            
+            $FileContent = Get-Content -Path $FilePath -Raw
+            
+            $matches = $runCmdRegex.Matches($FileContent)
+            
+            $fileStatus = "Verified" # Overall status for the file
+            $fileReasons = @()      # Combined reasons for the file
+            $hasTerminalCmd = $false
+            $fileCorrectionAttempted = $false
+            $fileCorrectionSuccessful = $false 
 
-        if ($matches.Count -gt 0) {
-            $hasTerminalCmd = $true
-            # Note: This assumes only one run_terminal_cmd per file for simplicity of correction logic. 
-            # If multiple exist, only the first match will be corrected by this script.
-            $match = $matches[0] 
-            $commandString = $match.Groups["command"].Value
-            
-            # Perform verification and attempt correction
-            $verificationResult = Verify-And-Correct-TerminalCommand -CommandString $commandString -FullFilePath $FilePath
-            
-            $fileStatus = $verificationResult.Status
-            $fileReasons = $verificationResult.Reasons
-            if ($verificationResult.CorrectionAttempted) {
-                $fileCorrectionAttempted = $true
-                $correctionSummary.Attempted++
-                if ($verificationResult.CorrectionSuccessful) {
-                    $fileCorrectionSuccessful = $true
-                    $correctionSummary.Successful++
-                    # If correction was successful, re-read the file content to get the updated command string for any further checks (if added later)
-                    # $FileContent = Get-Content -Path $FilePath -Raw 
-                } else {
-                    $correctionSummary.Failed++
+            if ($matches.Count -gt 0) {
+                $hasTerminalCmd = $true
+                # Process the command verification same as before
+                $match = $matches[0] 
+                $commandString = $match.Groups["command"].Value
+                
+                # Perform verification and attempt correction
+                $verificationResult = Verify-And-Correct-TerminalCommand -CommandString $commandString -FullFilePath $FilePath
+                
+                $fileStatus = $verificationResult.Status
+                $fileReasons = $verificationResult.Reasons
+                if ($verificationResult.CorrectionAttempted) {
+                    $fileCorrectionAttempted = $true
+                    $correctionSummary.Attempted++
+                    if ($verificationResult.CorrectionSuccessful) {
+                        $fileCorrectionSuccessful = $true
+                        $correctionSummary.Successful++
+                    } else {
+                        $correctionSummary.Failed++
+                    }
+                }
+            }
+
+            # Determine final status marker
+            $statusMarker = "[n/a]"
+            if ($hasTerminalCmd) {
+                switch ($fileStatus) {
+                    "Verified"    { $statusMarker = "[a]" }
+                    "NeedsReview" { $statusMarker = "[?]" }
+                    "Failed"      { $statusMarker = "[!]" }
                 }
             }
             
-            # Aggregate status logic (already handled within Verify-And-Correct-TerminalCommand)
-            
-        } # End if ($matches.Count -gt 0)
-
-        # Determine final status marker
-        $statusMarker = "[n/a]"
-        if ($hasTerminalCmd) {
-            switch ($fileStatus) {
-                "Verified"    { $statusMarker = "[a]" }
-                "NeedsReview" { $statusMarker = "[?]" }
-                "Failed"      { $statusMarker = "[!]" }
+            # Format output line
+            $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
+            if ($fileReasons.Count -gt 0) {
+                $outputLine += " # Notes: " + ($fileReasons -join '; ')
             }
-        }
-        
-        # Format output line using the calculated $CommandRunPath
-        $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
-        if ($fileReasons.Count -gt 0) {
-             $outputLine += " # Notes: " + ($fileReasons -join '; ')
-        }
 
-        $MarkdownContent += $outputLine
-    } # End foreach ($file in $sortedCommandFiles)
+            $MarkdownContent += $outputLine
+        }
+    }
+    
+    # Now process each subfolder group
+    foreach ($subfolder in ($groupedFiles.Keys | Sort-Object)) {
+        $MarkdownContent += ""
+        $MarkdownContent += "## $($subfolder.Substring(0,1).ToUpper() + $subfolder.Substring(1)) Commands"
+        $MarkdownContent += ""
+        
+        # Sort files within each subfolder
+        $sortedFiles = $groupedFiles[$subfolder] | Sort-Object { $_.Name }
+        
+        foreach ($file in $sortedFiles) {
+            $CommandName = $file.Name
+            $FilePath = $file.Path
+            $CommandRunPath = $file.RunPath
+            
+            $FileContent = Get-Content -Path $FilePath -Raw
+            
+            $matches = $runCmdRegex.Matches($FileContent)
+            
+            $fileStatus = "Verified" # Overall status for the file
+            $fileReasons = @()      # Combined reasons for the file
+            $hasTerminalCmd = $false
+            $fileCorrectionAttempted = $false
+            $fileCorrectionSuccessful = $false 
+
+            if ($matches.Count -gt 0) {
+                $hasTerminalCmd = $true
+                # Process the command verification same as before
+                $match = $matches[0] 
+                $commandString = $match.Groups["command"].Value
+                
+                # Perform verification and attempt correction
+                $verificationResult = Verify-And-Correct-TerminalCommand -CommandString $commandString -FullFilePath $FilePath
+                
+                $fileStatus = $verificationResult.Status
+                $fileReasons = $verificationResult.Reasons
+                if ($verificationResult.CorrectionAttempted) {
+                    $fileCorrectionAttempted = $true
+                    $correctionSummary.Attempted++
+                    if ($verificationResult.CorrectionSuccessful) {
+                        $fileCorrectionSuccessful = $true
+                        $correctionSummary.Successful++
+                    } else {
+                        $correctionSummary.Failed++
+                    }
+                }
+            }
+
+            # Determine final status marker
+            $statusMarker = "[n/a]"
+            if ($hasTerminalCmd) {
+                switch ($fileStatus) {
+                    "Verified"    { $statusMarker = "[a]" }
+                    "NeedsReview" { $statusMarker = "[?]" }
+                    "Failed"      { $statusMarker = "[!]" }
+                }
+            }
+            
+            # Format output line
+            $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
+            if ($fileReasons.Count -gt 0) {
+                $outputLine += " # Notes: " + ($fileReasons -join '; ')
+            }
+
+            $MarkdownContent += $outputLine
+        }
+    }
 }
 
 # Write the content to the index file, overwriting existing content
