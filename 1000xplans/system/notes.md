@@ -19,6 +19,11 @@ The terminal command sequence for pushing to git is as follows:
 cd C:\Users\ethde\Desktop\GigaSwap
 ```
 
+1. Ensure you are in correct branch
+```powershell
+cd C:\Users\ethde\Desktop\GigaSwap
+```
+
 2. Read current git status
 ```powershell
 git status
@@ -33,8 +38,14 @@ git add .
 ```powershell
 git commit -m "latest-1000xdev"
 ```
+3. push to main (there is only one branch for this mono-repo)
+```powershell
+git commit -m "latest-1000xdev"
+```
 
-If you integrate pushing git commands, I would like for there to be a standardized process file in which the 1000xcommand will read first before making any changes. I would like the 1000xcommand to have strict explicit tool calls preferably to a script. I would like there to be strict guidelines in the process file to ensure that upon errors there is a strict process, and there is also a success criteria section too. You should be able to read past commits as well (I have git connected with cursor). For me to send you git commits, I can reference @Git. Review @Web for Cursor Documentation on @Git integration in Cursor. 
+If you integrate pushing git commands, I would like for there to be a standardized process file in which the 1000xcommand will read first before making any changes. I would like the 1000xcommand to have strict explicit tool calls preferably to a script. I would like there to be strict guidelines in the process file to ensure that upon errors or unexpected terminal responses there is a strict process. There should also be a success criteria to ensure that you are in the correct branch and that the commit has successfully pushed. You should be able to read past commits as well (I have git connected with cursor). For me to send you git commits, I can reference @Git. Review @Web for Cursor Documentation on @Git integration in Cursor. 
+
+You should only push to the branch 
 
 ## end
 
