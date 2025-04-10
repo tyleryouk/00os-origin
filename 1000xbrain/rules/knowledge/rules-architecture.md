@@ -93,7 +93,7 @@ The rules system includes several types of rules:
 Rules are processed according to this model:
 
 1. **Core Processing**: Core identity and communication rules are always active
-2. **Command Invocation**: Commands are invoked using the `@1000xcommands/domain/command-name` syntax
+2. **Command Invocation**: Commands are invoked using the `` `run command:domain/command-name` `` syntax
 3. **Tool Execution**: Commands trigger specific tool call sequences
 4. **Context Integration**: Results are integrated into the current context
 5. **Knowledge Application**: Domain-specific knowledge is applied to the results

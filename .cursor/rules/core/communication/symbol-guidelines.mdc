@@ -23,11 +23,11 @@ Files in the cognitive architecture system follow a strict distinction between f
     *   **Reference**: Use path `1000xrules/core/.../file.md` in documentation.
 
 2.  **1000xcommand Definition Files (.md)**:
-    *   **Location**: `1000xrules/1000xcommands/<domain>/`.
+    *   **Location**: `1000xbrain/commands/<domain>/`.
     *   **Purpose**: Define sequences of tool calls for specific tasks.
     *   **Editable**: Yes, by 1000xdev.
-    *   **Syncs to `.mdc`**: Yes.
-    *   **Reference**: Use path `1000xrules/1000xcommands/.../file.md` in documentation; use `@1000xcommands/.../file` for invocation.
+    *   **Syncs to `.mdc`**: No.
+    *   **Reference**: Use path `1000xbrain/commands/.../file.md` in documentation; use `run command:domain/file` for invocation (wrap in backticks in docs: `` `run command:domain/file` ``).
 
 3.  **Brain Knowledge/Process Files (.md)**:
     *   **Location**: `1000xbrain/` and subdirectories (`brain/`, `rules/`, `front-end/`, etc.).
@@ -49,38 +49,38 @@ Files in the cognitive architecture system follow a strict distinction between f
 
 To avoid hallucinations and incorrect tool calls, 1000xdev MUST:
 
-1.  **ALWAYS use backticks (``) around `@` symbols** when used in regular documentation text (e.g., `` `@1000xcommands/...` ``).
-2.  **ONLY use unwrapped `@` symbols for actual `1000xcommand` invocation** when communicating with Tyler Youk.
+1.  **Use backticks (``) around `@` symbols** when used for file/documentation references (e.g., `` `@file:path/to/file.md` ``) or illustrating old/deprecated syntax.
+2.  **NEVER use unwrapped `@` symbols for command invocation**. The `@1000xcommands/...` syntax is obsolete.
 3.  **NEVER reference `.mdc` files for editing**.
 4.  **Maintain absolute clarity** when distinguishing between `.md` files (source/editable) and `.mdc` files (applied/read-only for AI).
 5.  **Keep `@` symbol references minimal** in documentation to prevent parsing issues.
 
 ### Allowed @ Symbol Usage
 
-1.  **1000xcommand Invocation (by Tyler)**:
-    *   The primary use case for an unwrapped `@`.
-    *   Format: `@1000xcommands/domain/command-name`.
+1.  **File References (Context)**:
+    *   Used with `@file:` prefix and path to refer to files for context, typically wrapped in backticks in documentation.
+    *   Example: `` `@file:1000xrules/core/identity/core-identity.md` ``
 
-2.  **Backtick-Wrapped Examples (in Documentation)**:
-    *   Used to safely show command invocation syntax.
-    *   Example: `` `@1000xcommands/brain/analyze-system-structure` ``.
+2.  **Documentation References (Potentially Obsolete)**:
+    *   The `@Docs` feature mentioned in Cursor documentation might use `@` but should be clarified/verified if used.
 
-3.  **Code Block Examples (in Documentation)**:
-    *   Used within code blocks for illustrative purposes, ensuring proper context.
+3.  **Backtick-Wrapped Examples (in Documentation)**:
+    *   Used to safely show *deprecated* command invocation syntax (`@1000xcommands/...`) or illustrate file references.
 
 ### Prohibited @ Symbol Usage
 
-1.  **Direct Usage in Documentation Text**: 
-    *   Never use `@` followed by a path directly in prose.
-    *   INCORRECT: `1000xdev uses @1000xcommands/brain/analyze...`
-    *   CORRECT: `1000xdev uses `@1000xcommands/brain/analyze...``
+1.  **Command Invocation**: Never use `@` to invoke `1000xcommands`.
+2.  **Direct Usage in Documentation Text**: 
+    *   Avoid unwrapped `@` symbols in prose.
+    *   INCORRECT: `1000xdev uses @file:some/path...`
+    *   CORRECT: `1000xdev uses `@file:some/path...``
 
 2.  **In File Names or Headers**: 
     *   Never include `@` in file names or Markdown headers.
 
-## Command Invocation Format Summary
+## Command Invocation Format Summary (Updated)
 
-*   **Standard Format**: `@1000xcommands/domain/command-name`
-*   **Domains**: `brain`, `front-end`, `back-end`, `scripts`, `rules`.
+*   **Standard Format**: `run command:domain/command-name`
+*   **Domains**: `brain`, `frontend`, `backend`, `scripts`, `rules` (relative to `1000xbrain/commands/`).
 *   **Reference**: `1000xrules/core/communication/1000xcommands-guidelines.md`.
 

@@ -1,4 +1,4 @@
-# Guidelines: Strict Keyword Interaction & `1000xbrain` Commands
+# Guidelines: Strict Keyword Interaction & `1000xcommands` Commands
 
 ## Overview
 
@@ -7,12 +7,12 @@ This document defines the strict keyword-based interaction model for 1000xdev an
 ## Core Principles
 
 1.  **Strict Keyword Prefixes**: All user input MUST begin with either `run ` for command execution or `chat ` for conversation. Any other input is invalid.
-2.  **Commands Reside in `1000xbrain`**: Executable command sequences (`.md` files containing a header and tool calls) are stored exclusively within `1000xbrain/commands/`, organized by domain (`rules/`, `brain/`, `front-end/`, etc.).
+2.  **Commands Reside in `1000xcommands`**: Executable command sequences (`.md` files containing a header and tool calls) are stored exclusively within `1000xcommands/`, organized by domain (`rules/`, `brain/`, `front-end/`, etc.).
 3.  **Explicit Command Invocation**: Commands are invoked using the exact syntax `run command:domain/command-name`.
 4.  **Abstraction**: Complex logic remains abstracted into `1000xbrain/knowledge/` files, referenced by tool calls within commands.
 5.  **Silent Command Execution**: When a valid `run command:...` is received, 1000xdev executes the tool calls silently (no conversational response).
 
-## Command Format (`.md` file in `1000xbrain/commands/`)
+## Command Format (`.md` file in `1000xcommands/`)
 
 The format remains the same: simple Markdown with a header and tool calls.
 
@@ -22,7 +22,7 @@ The format remains the same: simple Markdown with a header and tool calls.
 tool_call(...) 
 # Example: read_file("1000xbrain/brain/knowledge/cognitive-architecture/core-concepts.md", should_read_entire_file=True)
 tool_call(...)
-# Example: list_dir("1000xbrain/commands/brain/")
+# Example: list_dir("1000xcommands/brain/")
 ```
 
 ## Interaction Flow & Strict Parsing
@@ -30,13 +30,20 @@ tool_call(...)
 1.  **Input Starts with `run command:`**: 
     *   1000xdev recognizes this as a command invocation attempt.
     *   It **strictly parses** the rest of the line for the `domain/command-name` structure.
-    *   If the structure is valid, it constructs the target path: `1000xbrain/commands/{domain}/{command-name}.md`.
+    *   If the structure is valid, it constructs the target path: `1000xcommands/{domain}/{command-name}.md`.
     *   It uses `read_file` to read the target `.md` file.
     *   It parses the file for tool calls (expecting only header + tool calls).
-    *   It **sequentially executes all tool calls** listed.
-    *   It **DOES NOT** send any conversational response back to Tyler.
-    *   Execution stops after the last tool call or upon encountering an error during execution.
-    *   Errors during execution are logged to `1000xbrain/brain/operational_feedback/`.
+    *   It **sequentially executes all tool calls** listed **UNTIL** it encounters the `# --- BEGIN DYNAMIC EXECUTION ---` marker OR reaches the end of the file.
+    *   **If the marker IS encountered:**
+        *   Execution of explicit tool calls from the command file stops.
+        *   The AI parses the `Process:` line following the marker to identify the guiding process file.
+        *   The AI parses any optional `Knowledge:` lines to identify supplementary knowledge files.
+        *   The AI reads the specified process/knowledge files (if not already loaded).
+        *   The AI then begins **dynamic execution**, interpreting the steps in the process file and using all gathered context to determine and execute the necessary sequence of tool calls.
+    *   **If the marker IS NOT encountered:**
+        *   Execution stops after the last explicit tool call in the command file or upon encountering an error.
+    *   It **DOES NOT** send any conversational response back to Tyler during either explicit or dynamic execution triggered by `run command:`.
+    *   Errors during execution (explicit or dynamic) are logged to `1000xbrain/brain/operational_feedback/`.
     *   **Invalid Syntax Error**: If the input starts with `run ` but doesn't match `run command:domain/name` exactly, 1000xdev responds with: `Error: Invalid command syntax. Expected 'run command:domain/name'.` and stops.
 
 2.  **Input Starts with `chat `**: 
@@ -51,13 +58,15 @@ tool_call(...)
 
 ## Domain Organization (Commands)
 
-Commands are organized by domain within `1000xbrain/commands/`:
+Commands are organized by domain within `1000xcommands/`:
 
 *   `brain/`: Cognitive architecture enhancement.
 *   `frontend/`: Front-end development tasks.
 *   `backend/`: Back-end development tasks.
 *   `rules/`: `1000xrules` system development (meta-commands).
 *   `scripts/`: Automation script development.
+*   `commands/`: Commands related to managing the commands system itself.
+*   `plans/`: Commands related to the planning process.
 
 ## Tool Call Standards within Commands
 
@@ -67,14 +76,14 @@ Remain unchanged. Adhere to `core/tools/tool-usage-standards.mdc` and `core/tool
 
 Principles remain similar, but emphasize:
 
-1.  **Location**: Commands MUST be created in the correct domain under `1000xbrain/commands/`.
+1.  **Location**: Commands MUST be created in the correct domain under `1000xcommands/`.
 2.  **Invocation Reference (Docs)**: When referencing command invocation in documentation (e.g., within `1000xbrain` knowledge files), use the new syntax wrapped in backticks: `` `run command:domain/command-name` ``.
 
 ## File Extension Usage (Updated)
 
 Distinguish clearly:
 
-*   **Command Definition File (Editable):** `1000xbrain/commands/domain/command-name.md`
+*   **Command Definition File (Editable):** `1000xcommands/<domain>/<command-name>.md`
 *   **Command Invocation Reference:** `run command:domain/command-name` (Use backticks in docs: `` `run command:domain/command-name` ``)
 *   **Core Rule File (Editable):** `1000xrules/core/.../file.md`
 *   **Cursor Rule File (Read-Only for AI):** `.cursor/rules/.../file.mdc` (Generated from `1000xrules`)

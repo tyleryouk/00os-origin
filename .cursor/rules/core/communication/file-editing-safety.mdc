@@ -62,7 +62,6 @@ This file establishes critical safety guidelines for file editing within the cog
 1.  **Pre-Edit Checks**:
     *   Verify target file extension is `.md`.
     *   Confirm target file is within an authorized editable directory.
-    *   Ensure file is not a `README.md` if within `1000xrules`.
     *   Read the full file content before editing (`file-reading-enforcement.md`).
 
 2.  **Edit Safety**:
@@ -87,8 +86,8 @@ This file establishes critical safety guidelines for file editing within the cog
 
 3.  **Incorrect File Referencing**: 
     *   ❌ Using `.mdc` extension when intending to edit.
-    *   ❌ Using `.md` extension when intending to invoke a command (`@1000xcommands/...`).
-    *   ✅ Use `.md` for file paths in `edit_file`, `read_file`, etc. Use `@1000xcommands/...` for invocation.
+    *   ❌ Using `.md` extension when intending to invoke a command (`run command:...`).
+    *   ✅ Use `.md` for file paths in `edit_file`, `read_file`, etc. Use `run command:domain/name` for invocation.
 
 ## Implementation Patterns
 
@@ -96,7 +95,7 @@ This file establishes critical safety guidelines for file editing within the cog
     ```typescript
     // Create core rule or command definition
     edit_file("1000xrules/core/new-rule.md", "Create new core rule", "# New Rule...")
-    edit_file("1000xrules/1000xcommands/brain/new-command.md", "Create new brain command", "# New Command...")
+    edit_file("1000xbrain/commands/brain/new-command.md", "Create new brain command", "# New Command...")
     
     // Create knowledge file
     edit_file("1000xbrain/knowledge/new-topic.md", "Create new knowledge file", "# New Topic...")
@@ -112,7 +111,7 @@ This file establishes critical safety guidelines for file editing within the cog
 3.  **Safe File/Command Referencing (in Documentation)**:
     ```markdown
     See the core identity at `1000xrules/core/identity/core-identity.md`. 
-    To execute the analysis, use `@1000xcommands/brain/analyze-structure`.
+    To execute the analysis, use `run command:brain/analyze-structure`.
     ```
 
 ## Synchronization Process Summary
