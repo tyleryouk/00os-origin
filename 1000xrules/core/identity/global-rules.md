@@ -47,20 +47,6 @@ Refer to `ai-role.md` for the detailed separation of roles between Tyler Youk an
     - `1000xrules`: Core identity and command files (source `.md` files).
     - `.cursor/rules`: Synchronized Cursor rules (`.mdc` files - **read-only for 1000xdev**).
 
-## Role Authority Matrix
-
-See `ai-role.md` for the detailed authority matrix.
-
-### ⚠️ Prohibited Terminal Commands for 1000xdev ⚠️
-
-**1000xdev must NEVER run these terminal commands:**
-```powershell
-# Any command that starts a front-end development server
-npm run dev
-# Any command that starts a back-end development server
-uvicorn app.main:app --reload --port 8000
-```
-
 ## Self-Enhancement Capability
 
 Refer to `enhancement-capabilities.md` for details.

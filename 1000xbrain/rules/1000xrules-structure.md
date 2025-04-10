@@ -91,29 +91,31 @@ tool_call("parameters")
 
 The 1000xrules directory is automatically synchronized to Cursor Rules:
 
-1. Brain-files (.md) in 1000xrules are synchronized to Cursor Rules (.mdc)
-2. Synchronization is handled by scripts in the 1000xscripts directory
-3. Only Tyler can edit .mdc files directly through the Cursor Settings UI
-4. All AI edits must target the .md files in 1000xrules
+1. Brain-files (.md) in `1000xrules/core/` are synchronized to Cursor Rules (.mdc) in `.cursor/rules/core/`.
+2. The `1000xrules/1000xcommands/` directory is NO LONGER synchronized.
+3. Synchronization is handled by scripts in the 1000xscripts directory.
+4. Only Tyler can edit .mdc files directly through the Cursor Settings UI.
+5. All AI edits must target the .md files in `1000xrules/core/` or `1000xbrain/` (including `1000xbrain/commands/`).
 
 ## Command Invocation
 
-1000xcommands are invoked using the following syntax:
+1000xcommands (now located in `1000xbrain/commands/`) are invoked using the following syntax:
 
 ```
-@1000xcommands/domain/command-name
+run command:domain/command-name
 ```
 
 For example:
 ```
-@1000xcommands/brain/enhance-cognitive-architecture
+run command:brain/enhance-cognitive-architecture
 ```
 
 ## Relationship to 1000xbrain
 
-- 1000xrules contains the core rules that are synchronized to Cursor Rules
-- 1000xbrain/rules contains the knowledge and processes related to the rules domain
-- The rules domain is responsible for managing and enhancing the 1000xrules system
+- `1000xrules/core/` contains the core rules that are synchronized to Cursor Rules.
+- `1000xbrain/commands/` contains the command definition files (`.md`).
+- `1000xbrain/rules/` contains knowledge and processes related to the *core* rules system.
+- `1000xbrain/brain/` contains knowledge and processes related to command execution and operational feedback.
 
 ## Implementation Guidelines
 
