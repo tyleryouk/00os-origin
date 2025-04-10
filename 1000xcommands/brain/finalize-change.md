@@ -3,7 +3,7 @@
 # Overview: Performs final verification (placeholder) and resets the brain planning files for the next cycle via a PowerShell script.
 
 # Step 1: Execute the PowerShell script to finalize the cycle and reset the plan.
-default_api.run_terminal_cmd(
+run_terminal_cmd(
     command="powershell -ExecutionPolicy Bypass -File .\\1000xscripts\\brain\\finalize_brain_change.ps1",
     is_background=False,
     explanation="Run the PowerShell script that performs final verification (placeholder) and resets the brain plan."
