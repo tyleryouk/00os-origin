@@ -10,7 +10,18 @@
     *   Use `list_dir` to check `1000xbrain/system/major-changes/operational_feedback/`.
     *   **(Error Handling)**: If directory doesn't exist, create it using terminal command.
 
-2.  **Create or Update Cycle Log**:
+2.  **Create/Update User Request Template in Notes**:
+    *   Use `read_file` to read the current `1000xplans/system/notes.md`.
+    *   Extract and preserve the Tyler Youk section (between `## Tyler Youk` and `## end`).
+    *   Use `edit_file` to update notes.md with a structured format that includes:
+        *   The preserved Tyler Youk section
+        *   A new USER REQUEST SECTION template for the user to fill out
+        *   The 1000XDEV NOTES section with implementation details
+    *   The template should clearly instruct the user to:
+        *   Fill out the request details
+        *   Run `run command:system/major-changes/2` after completing the template
+
+3.  **Create or Update Cycle Log**:
     *   Use `read_file` to check if `1000xbrain/system/major-changes/operational_feedback/current_cycle.md` exists.
     *   If it exists, read it to check the status of any existing cycle.
     *   If it doesn't exist or shows a completed cycle, create a new cycle log.
@@ -25,14 +36,14 @@
         
         ## Change Request
         
-        *To be documented in assessment phase*
+        *Waiting for user to fill out request in 1000xplans/system/notes.md*
         
         ## Current Phase
         
-        Initiation completed. Ready for assessment.
+        Initiation completed. Template created in notes.md. Waiting for user to fill out request and run command 2.
         ```
 
-3.  **Create Empty Change Request Document**:
+4.  **Create Empty Change Request Document**:
     *   Create `1000xbrain/system/major-changes/operational_feedback/change_request.md`
     *   Use `edit_file` to initialize with structure:
         ```
@@ -40,25 +51,27 @@
         
         **Date Requested**: [current-date]
         **Requestor**: Tyler Youk
-        **Status**: Awaiting Assessment
+        **Status**: Awaiting User Input
         
         ## Request Description
         
-        *To be filled during assessment phase*
+        *Waiting for user to fill out request in 1000xplans/system/notes.md*
         
         ## Requirements
         
-        *To be filled during assessment phase*
+        *Waiting for user to fill out request in 1000xplans/system/notes.md*
         
         ## Scope
         
-        *To be filled during assessment phase*
+        *To be determined after user provides request details*
         
         ## Success Criteria
         
-        *To be filled during assessment phase*
+        *To be determined after user provides request details*
         ```
 
-4.  **Signal Completion**:
+5.  **Signal Completion**:
     *   Indicate that the cycle has been successfully initiated.
-    *   Note that the next step is to assess the change request using `run command:system/major-changes/2`. 
+    *   Clearly instruct the user to:
+        *   Fill out the USER REQUEST SECTION in `1000xplans/system/notes.md`
+        *   Run `run command:system/major-changes/2` after completing the request details. 
