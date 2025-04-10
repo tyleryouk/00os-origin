@@ -29,11 +29,12 @@ git status
 git add .
 ```
 
-2. Read current git status
+2. git commit (use latest-1000xdev if you can't think of commit messages, every commit message should be tagged with 1000xdev)
 ```powershell
-git status
+git commit -m "latest-1000xdev"
 ```
 
+If you integrate pushing git commands, I would like for there to be a standardized process file in which the 1000xcommand will read first before making any changes. I would like the 1000xcommand to have strict explicit tool calls preferably to a script. I would like there to be strict guidelines in the process file to ensure that upon errors there is a strict process, and there is also a success criteria section too. You should be able to read past commits as well (I have git connected with cursor). For me to send you git commits, I can reference @Git. Review @Web for Cursor Documentation on @Git integration in Cursor. 
 
 ## end
 
