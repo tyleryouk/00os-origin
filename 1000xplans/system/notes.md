@@ -88,12 +88,15 @@ I have assessed the request to create a new cycle management system called "cycl
 - Centralization of knowledge and processes is critical for maintaining consistency
 - Priority is marked as "High"
 - The implementation will use "cycle-manager" as the name (instead of "manage-cycles")
+- A unified cycle model will be implemented where all cycles can operate autonomously by default but will process user input when available
+- This unified model eliminates the need for separate autonomous and major-changes cycle types
 
 **Next Steps:**
 1. Create implementation plan for cycle-manager
 2. Set up directory structure in 1000xcommands/system/cycle-manager/
 3. Create corresponding knowledge/processes in 1000xbrain/system/cycle-manager/
 4. Implement standardized templates and guidelines
+5. Design the unified cycle approach with both autonomous and user-directed capabilities
 
 The original request has been preserved in `1000xbrain/system/major-changes/operational_feedback/original_request.md` for reference throughout the implementation process.
 
@@ -267,21 +270,4 @@ The implementation will be executed using the autonomous workflow:
 3. Verification will use `run command:system/autonomous/5`
 4. Completion will use `run command:system/autonomous/7`
 
-This creates an interesting pattern where the autonomous workflow is being used to implement its complementary major-changes workflow.
-
-### References
-
-- Existing autonomous workflow structure in `1000xcommands/system/autonomous/`
-- Process files in `1000xbrain/system/autonomous/processes/`
-- Knowledge files in `1000xbrain/system/autonomous/knowledge/` 
-
-### Operational Enhancements
-
-- Notes.md now has a standardized format with dedicated sections for:
-  - Tyler's permanent notes (Tyler Youk section)
-  - User request section for major changes workflow
-  - 1000xdev implementation notes
-
-- Major-changes workflow now reads directly from the USER REQUEST SECTION in notes.md
-- This provides a clear interface for Tyler to specify change requests
-- The section is cleared after processing to prepare for the next request 
+This creates an interesting pattern where the autonomous workflow is being used to implement its complementary major-changes workflow. 
