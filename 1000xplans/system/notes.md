@@ -7,6 +7,34 @@ First thing you need to do is update the 1000xcommands in autonomous and major-c
 
 What I am assuming you are doing, is that you are using the guidelines to create processes and knowledge-base-files? I feel like it would just the be the easiest to utilize the guidelines during the cycle of the 1000xcommand workflow cycle so that certain guidelines are standards for every cycle, rather than using the guidelines to create process and knowledge-base-files. This allows us to change guidelines while maintianing alingment with all process-files, knowledge-base-files, and 1000xcommands.
 
+
+At some point, you are going to need to delete the documentation of old cycles in 1000xbrain\system\autonomous\operational_feedback . Note that this repository gets pushed to github frequently, so there is really no need to keep documentation of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback .
+
+I am also confident in your abilities now and would like to give you access to push to github. Create a script which will push the root directory to github. Note that this is a mono-repository, and the front-end and back-end applications have their own git configurations and do not get pushed when we push the root directory (front-end and back-end will only get pushed if we manually configure the root directory git to include these two inner repositories). I do not want to change the current settings to push the front-end and back-end directories.
+
+The terminal command sequence for pushing to git is as follows:
+
+1. Ensure you are in GigaSwap root directory
+```powershell
+cd C:\Users\ethde\Desktop\GigaSwap
+```
+
+2. Read current git status
+```powershell
+git status
+```
+
+3. git add
+```powershell
+git add .
+```
+
+2. Read current git status
+```powershell
+git status
+```
+
+
 ## end
 
 
