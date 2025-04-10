@@ -41,10 +41,18 @@
         *   Summarize change request in the Change Request section
         *   Update Current Phase to indicate assessment is complete and planning will begin
 
-6.  **Preserve Template in Notes.md**:
+6.  **Create Backup of Original Request**:
+    *   Use `edit_file` to create or update `1000xbrain/system/major-changes/operational_feedback/original_request.md`:
+        *   Store the complete original USER REQUEST SECTION content
+        *   Add metadata (date, time, etc.)
+        *   This ensures the original request is preserved throughout the cycle
     *   Use `read_file` to read the current `1000xplans/system/notes.md`.
     *   Extract and preserve the Tyler Youk section (between `## Tyler Youk` and `## end`).
     *   Extract and preserve the 1000XDEV NOTES section.
+    *   Use `edit_file` to update the 1000XDEV NOTES section in notes.md:
+        *   Add a summary of the assessment findings at the top
+        *   Add reference to where the original request is stored
+        *   Note that original request content is preserved in operational_feedback
     *   Use `edit_file` to update notes.md:
         *   Restore the template with placeholders in the USER REQUEST SECTION
         *   This prepares the file for the next change request
@@ -52,4 +60,5 @@
 7.  **Signal Completion**:
     *   Indicate that assessment is complete.
     *   Summarize key findings from the assessment.
+    *   Note that the original request has been preserved in operational_feedback for reference.
     *   Note that the next step is to create an implementation plan using `run command:system/major-changes/3`. 
