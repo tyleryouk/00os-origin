@@ -30,6 +30,14 @@ High
 Overwrite the 1000xdev notes below, they are outdated. I will also likely send you chat messages to enhance the plan and research before we start making changes.
 ```
 
+## Additional Request (2024-05-28)
+
+```
+Let's actually change the format of all cycles so that all cycles are default autonomous, with the option for me to write in requests in User Request upon a new cycle. However, all possible enhancements should be documented in 1000xbrain so that if no User Request is read during the second stage, then you autonomously cycle with the enhancements you found from the previous cycle.
+
+There should only be a possible user request created in 1, and read in 2. If you feel like there is a better system, let me know.
+```
+
 ## Notes for Implementation
 
 1. The request describes creating a new cycle management system initially called "manage-cycles"
@@ -39,5 +47,12 @@ Overwrite the 1000xdev notes below, they are outdated. I will also likely send y
    - 1000xcommands/system/cycle-manager/
    - 1000xbrain/system/cycle-manager/
 5. The priority for this request is marked as "High"
+6. A unified cycle model will be implemented with the following characteristics:
+   - All cycles should be capable of running autonomously by default
+   - Cycles should check for user input in stage 2 and adapt accordingly
+   - If user input exists, process as user-directed request
+   - If no user input exists, proceed autonomously based on documented potential enhancements
+   - This eliminates the need for separate autonomous and major-changes cycle types
+7. Potential enhancements should be documented in 1000xbrain for each cycle
 
 This original request will be preserved for reference throughout the cycle implementation process. 
