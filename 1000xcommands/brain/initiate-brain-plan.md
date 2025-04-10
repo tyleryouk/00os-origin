@@ -3,7 +3,7 @@
 # Overview: Creates the standard planning file structure in 1000xplans/brain/
 
 # Step 1: Read the process definition containing templates
-default_api.read_file(
+read_file(
     target_file="1000xbrain/brain/processes/new-planning-cycle-initiation.md", 
     should_read_entire_file=True,
     explanation="Read the standard process definition containing planning file templates."
@@ -18,7 +18,7 @@ default_api.read_file(
 # Remove previous static edit_file calls for plan.md, implementation-progress.md, notes.md etc.
 
 # Step 3: Create README.md (Explicit step, can remain or be moved into process)
-default_api.edit_file(
+edit_file(
     target_file="1000xplans/brain/README.md", 
     instructions="Create the README file for the brain plan.",
     code_edit="# Brain Domain Plan: [Plan Title/Objective]\\n\\n## Overview\\n\\n[Provide a concise summary of the plan's goals, scope, and context.]\\n"

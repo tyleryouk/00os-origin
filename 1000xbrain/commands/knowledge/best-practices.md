@@ -11,7 +11,8 @@ This document provides best practices for designing, creating, and maintaining e
 3.  **Trigger Dynamic Execution**: Use the `# --- BEGIN DYNAMIC EXECUTION ---` marker (followed by `Process:` and optional `Knowledge:` lines) in the command file to explicitly delegate complex execution flow to the AI, guided by the specified process file. See `1000xbrain/commands/knowledge/command-structure.md`.
 4.  **Single Responsibility**: Each command should have a single, well-defined purpose (e.g., 'initiate analysis', 'execute planned changes', 'finalize component X').
 5.  **Idempotency (Where Possible)**: Design commands or the processes they trigger so that re-execution is safe where applicable.
-6.  **Context Gathering First**: Commands should typically start by explicitly listing tool calls (`read_file`, `list_dir`) needed to gather context *before* the dynamic execution marker.
+6.  **Context Gathering First**: Commands should typically start by explicitly listing tool calls (`read_file`, `list_dir`) needed to gather context *before* the dynamic execution marker. **Exception:** If context (like target domain) is passed conceptually via the invocation, the dynamic process can handle loading.
+7.  **Parameterization (Conceptual)**: For commands intended to operate across different domains (e.g., planning continuation), design them to conceptually accept a domain parameter via invocation. The dynamic process file referenced by the command will then be responsible for identifying this domain and loading the appropriate context files (e.g., `1000xplans/<domain>/plan.md`). This promotes reusability over creating domain-specific command variants.
 
 ## Creation Best Practices
 

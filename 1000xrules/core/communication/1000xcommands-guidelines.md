@@ -11,6 +11,7 @@ This document defines the strict keyword-based interaction model for 1000xdev an
 3.  **Explicit Command Invocation**: Commands are invoked using the exact syntax `run command:domain/command-name`.
 4.  **Abstraction**: Complex logic remains abstracted into `1000xbrain/knowledge/` files, referenced by tool calls within commands.
 5.  **Silent Command Execution**: When a valid `run command:...` is received, 1000xdev executes the tool calls silently (no conversational response).
+6.  **Immediate Command Reading**: Upon receiving a command invocation, 1000xdev MUST immediately read the command file before any thinking or processing. See `command-processing-optimization.md` for detailed requirements.
 
 ## Command Format (`.md` file in `1000xcommands/`)
 
@@ -25,13 +26,23 @@ tool_call(...)
 # Example: list_dir("1000xcommands/brain/")
 ```
 
+## ⚠️ CRITICAL: Immediate Command File Reading Requirement ⚠️
+
+When receiving a command invocation (`run command:domain/name`), 1000xdev MUST:
+
+1. **IMMEDIATELY read the command file** as the ABSOLUTE FIRST action.
+2. **NO thinking, planning, or processing** should occur before the command file is read.
+3. **ZERO preliminary analysis** before understanding the full content of the command file.
+
+For complete requirements and detailed guidance, see `1000xrules/core/communication/command-processing-optimization.md`.
+
 ## Interaction Flow & Strict Parsing
 
 1.  **Input Starts with `run command:`**: 
     *   1000xdev recognizes this as a command invocation attempt.
     *   It **strictly parses** the rest of the line for the `domain/command-name` structure.
     *   If the structure is valid, it constructs the target path: `1000xcommands/{domain}/{command-name}.md`.
-    *   It uses `read_file` to read the target `.md` file.
+    *   It uses `read_file` to read the target `.md` file. **THIS MUST HAPPEN IMMEDIATELY WITH ZERO DELAY.**
     *   It parses the file for tool calls (expecting only header + tool calls).
     *   It **sequentially executes all tool calls** listed **UNTIL** it encounters the `# --- BEGIN DYNAMIC EXECUTION ---` marker OR reaches the end of the file.
     *   **If the marker IS encountered:**
@@ -56,6 +67,16 @@ tool_call(...)
     *   If the input does **not** start with `run command:` or `chat `, it is invalid.
     *   1000xdev responds with: `Error: Invalid input format. Please start your message with 'run command:...' for command execution or 'chat ...' for conversation.` and stops.
 
+## Command Processing Efficiency
+
+1000xdev must minimize "thinking time" during command execution:
+
+1. **Mechanical Execution**: Command processing should be direct and mechanical.
+2. **Abstracted Logic**: Complex logic must be abstracted to `1000xbrain` knowledge/process files.
+3. **Streamlined Workflow**: Command execution should follow a predictable, efficient sequence.
+
+For detailed optimization requirements, see `1000xrules/core/communication/command-processing-optimization.md`.
+
 ## Domain Organization (Commands)
 
 Commands are organized by domain within `1000xcommands/`:
@@ -78,6 +99,7 @@ Principles remain similar, but emphasize:
 
 1.  **Location**: Commands MUST be created in the correct domain under `1000xcommands/`.
 2.  **Invocation Reference (Docs)**: When referencing command invocation in documentation (e.g., within `1000xbrain` knowledge files), use the new syntax wrapped in backticks: `` `run command:domain/command-name` ``.
+3.  **Optimization**: Follow the optimization guidelines in `command-processing-optimization.md` to ensure efficient command processing.
 
 ## File Extension Usage (Updated)
 
