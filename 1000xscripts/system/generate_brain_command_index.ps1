@@ -99,6 +99,30 @@ function Verify-And-Correct-TerminalCommand {
     }
 }
 
+# Function to get command header from file
+function Get-CommandHeader {
+    param(
+        [string]$FilePath
+    )
+    
+    try {
+        # Read just the first line of the file
+        $firstLine = Get-Content -Path $FilePath -TotalCount 1 -ErrorAction Stop
+        
+        # Check if the first line is a Markdown header (starts with #)
+        if ($firstLine -match '^\s*#\s+(.+)$') {
+            # Return the header text without the # prefix
+            return $matches[1].Trim()
+        } else {
+            # Return empty string if no header found
+            return ""
+        }
+    } catch {
+        Write-Host "Warning: Could not read header from file '$FilePath': $($_.Exception.Message)" -ForegroundColor Yellow
+        return ""
+    }
+}
+
 # Get the directory of the current script
 $ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
 $ProjectRoot = Join-Path -Path $ScriptDirectory -ChildPath "../../" -Resolve
@@ -149,6 +173,10 @@ if ($commandFiles.Count -eq 0) {
     foreach ($file in $commandFiles) {
         $CommandName = $file.BaseName
         $FilePath = $file.FullName
+        
+        # Get the command header from the first line
+        $CommandHeader = Get-CommandHeader -FilePath $FilePath
+        
         # Calculate relative path from $CommandsRoot for the run command syntax
         $RelativePath = $FilePath.Substring($CommandsRoot.Length).TrimStart('\','/')
         $CommandRunPath = $RelativePath -replace '\.md$', '' -replace '\\', '/' # Remove .md and normalize slashes
@@ -163,6 +191,7 @@ if ($commandFiles.Count -eq 0) {
                 Path = $FilePath
                 RelativePath = $RelativePath
                 RunPath = $CommandRunPath
+                Header = $CommandHeader
             }
         } else {
             # Get the subfolder name
@@ -177,6 +206,7 @@ if ($commandFiles.Count -eq 0) {
                 Path = $FilePath
                 RelativePath = $RelativePath
                 RunPath = $CommandRunPath
+                Header = $CommandHeader
             }
         }
     }
@@ -193,6 +223,7 @@ if ($commandFiles.Count -eq 0) {
             $CommandName = $file.Name
             $FilePath = $file.Path
             $CommandRunPath = $file.RunPath
+            $CommandHeader = $file.Header
             
             $FileContent = Get-Content -Path $FilePath -Raw
             
@@ -237,8 +268,13 @@ if ($commandFiles.Count -eq 0) {
                 }
             }
             
-            # Format output line
-            $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
+            # Format output line using header if available, otherwise use file name
+            if ([string]::IsNullOrWhiteSpace($CommandHeader)) {
+                $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
+            } else {
+                $outputLine = "- $statusMarker **$CommandHeader** - ``run command:$CommandRunPath``"
+            }
+            
             if ($fileReasons.Count -gt 0) {
                 $outputLine += " # Notes: " + ($fileReasons -join '; ')
             }
@@ -260,6 +296,7 @@ if ($commandFiles.Count -eq 0) {
             $CommandName = $file.Name
             $FilePath = $file.Path
             $CommandRunPath = $file.RunPath
+            $CommandHeader = $file.Header
             
             $FileContent = Get-Content -Path $FilePath -Raw
             
@@ -304,8 +341,13 @@ if ($commandFiles.Count -eq 0) {
                 }
             }
             
-            # Format output line
-            $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
+            # Format output line using header if available, otherwise use file name
+            if ([string]::IsNullOrWhiteSpace($CommandHeader)) {
+                $outputLine = "- $statusMarker $CommandName - ``run command:$CommandRunPath``"
+            } else {
+                $outputLine = "- $statusMarker **$CommandHeader** - ``run command:$CommandRunPath``"
+            }
+            
             if ($fileReasons.Count -gt 0) {
                 $outputLine += " # Notes: " + ($fileReasons -join '; ')
             }
@@ -319,5 +361,6 @@ if ($commandFiles.Count -eq 0) {
 Set-Content -Path $IndexFile -Value ($MarkdownContent -join [Environment]::NewLine)
 
 Write-Host "Successfully generated command index with automated verification/correction at '$($IndexFileRelative)'"
+Write-Host "Command headers have been added to the index where available"
 Write-Host "Corrections Summary: Attempted=$($correctionSummary.Attempted), Successful=$($correctionSummary.Successful), Failed=$($correctionSummary.Failed)"
 Write-Host "Review commands marked '[?]' or '[!]' in the index file, especially those where correction failed." 
