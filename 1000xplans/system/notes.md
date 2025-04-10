@@ -1,19 +1,39 @@
-# Notes: Comprehensive 1000x System Architecture Enhancement
+# Notes: System Command Refinement and Enhancement
 
-## Phase 1: Deep Dive Analysis & Goal Refinement
+## Current Plan Context (System Command Refinement)
+
+*   **Motivation**: Existing system commands and supporting brain knowledge are outdated, inconsistent with the 3-domain architecture, and do not leverage dynamic execution effectively. This hinders autonomous operation.
+*   **Goal**: Refactor `1000xcommands/system/` and related `1000xbrain` knowledge/processes for accuracy, consistency, and reliability. Introduce system-level coordination commands.
+*   **Strategy**: Multi-phase approach (defined in `plan.md`):
+    1.  Knowledge Alignment (`1000xbrain` updates).
+    2.  Component Command Refactoring (`1000xcommands/system/*/` updates).
+    3.  System-Level Command Implementation (`1000xcommands/system/` new commands).
+    4.  Establishing Holistic Update Workflow (Process integration).
+    5.  Verification and Documentation.
+
+*   **Key Challenge**: Ensuring all paths, syntax, and references are corrected systematically across commands and knowledge files.
+*   **Anticipated Outcome**: A reliable set of system commands that can be invoked via `run command:` for more autonomous system management and enhancement.
+
+---
+
+## Archived Notes: Previous Phases
+
+### Notes from: Comprehensive 1000x System Architecture Enhancement
+
+#### Phase 1: Deep Dive Analysis & Goal Refinement
 
 *Detailed findings for each system review are stored in dedicated `research_*.md` files (to be located in `1000xplans/system/`).*
 
 *(High-level summaries or critical cross-system issues identified during review can be noted here if necessary.)*
 
-### Regarding Input Keywords (`run:`, `chat`):
+##### Regarding Input Keywords (`run:`, `chat`):
 
 *   The `run command:domain/name` syntax is established. Sticking to `run command:` seems optimal for clarity and avoiding potential parsing ambiguity compared to `run:`. `run command:` explicitly signals the intent.
 *   Regarding `chat`: While direct messages might work currently, enforcing the `chat ` prefix provides a clear, unambiguous signal for conversational input versus command input or other data. Maintaining this strict keyword separation (`run command:`, `chat `) is recommended for long-term parser reliability and reducing cognitive load during input interpretation.
 
-## Phase 2: Cross-System Communication Enhancement
+#### Phase 2: Cross-System Communication Enhancement
 
-### Conceptual Information Flow Map (Aligned with New Structure)
+##### Conceptual Information Flow Map (Aligned with New Structure)
 
 This map outlines the **intended** flow of information and control between the 1000x systems, respecting the `system`, `frontend`, and `backend` domains:
 
@@ -51,9 +71,9 @@ This map outlines the **intended** flow of information and control between the 1
 
 **Critical Flow Requirement Alignment:** Knowledge/Processes supporting a command domain (e.g., `system/commands`) reside in the corresponding `1000xbrain` path (e.g., `1000xbrain/system/commands/knowledge/`). Guidelines reside in `1000xbrain/system/guidelines/`.
 
-## Phase 3: Centralized Guidelines Implementation
+#### Phase 3: Centralized Guidelines Implementation
 
-### Guideline Candidates (Identified from Phase 1 Review)
+##### Guideline Candidates (Identified from Phase 1 Review)
 
 *   **`1000xrules/core/identity/implementation-standards.md`**: Sections suitable for migration to `1000xbrain/system/guidelines/` include:
     *   Core Implementation Approach / Pattern (-> `implementation/`)
