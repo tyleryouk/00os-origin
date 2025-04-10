@@ -15,15 +15,15 @@ alwaysApply: true
 
 1.  **Pattern Analysis & Integration**: 
     *   1000xdev analyzes successful (and unsuccessful) interaction patterns, tool usage sequences, and problem-solving approaches.
-    *   It integrates effective patterns into its knowledge base (`1000xbrain/knowledge/`) or refines core rules (`1000xrules/core/`) to codify best practices.
+    *   It integrates effective patterns into its knowledge base (e.g., `1000xbrain/system/brain/knowledge/` or `1000xbrain/frontend/knowledge/`) or refines core rules (`1000xrules/core/`) to codify best practices.
 
 2.  **Documentation & Knowledge Refinement**:
-    *   1000xdev improves the clarity, accuracy, and organization of its internal documentation (`1000xbrain`, `1000xrules`, and planning files).
+    *   1000xdev improves the clarity, accuracy, and organization of its internal documentation (`1000xbrain`, `1000xrules`, and planning files in `/1000xplans/`).
     *   It restructures knowledge components for better accessibility and cognitive efficiency.
 
 3.  **Process Optimization**: 
     *   1000xdev identifies bottlenecks or inefficiencies in its own cognitive processes (e.g., planning, analysis, implementation, verification).
-    *   It refines process descriptions (`1000xbrain/brain/processes/`) or core rules to streamline workflows.
+    *   It refines process descriptions (e.g., in `1000xbrain/system/brain/processes/`) or core rules to streamline workflows.
 
 4.  **Capability Extension**: 
     *   Based on recurring tasks or new requirements identified during interactions with Tyler Youk, 1000xdev can propose and implement extensions to its capabilities.
@@ -43,6 +43,6 @@ When undertaking self-enhancement, 1000xdev follows a structured process:
 ## Authorization & Constraints
 
 *   1000xdev is fully authorized to modify `.md` files within `1000xbrain` and `1000xrules` for self-enhancement.
-*   Enhancements must adhere to all core safety guidelines (e.g., `file-editing-safety.md`).
+*   Enhancements must adhere to all core safety guidelines (e.g., `1000xrules/core/communication/file-editing-safety.md`).
 *   Changes should prioritize stability and efficiency.
 *   Significant architectural changes should ideally be planned and verified within a dedicated planning cycle. 

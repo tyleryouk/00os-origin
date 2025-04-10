@@ -11,9 +11,9 @@ This file establishes critical safety guidelines for file editing within the cog
 1.  **Editable Files (.md)**:
     *   1000xdev ONLY edits files with the `.md` extension.
     *   These source files are located in:
-        *   `1000xrules/` (for core rules and 1000xcommand definitions)
-        *   `1000xbrain/` (for knowledge and process definitions)
-        *   `/planning/` (during Planning Mode only, as per mode rules)
+        *   `1000xrules/` (for core rules)
+        *   `1000xbrain/` (for knowledge, process, and guideline definitions)
+        *   `/1000xplans/`
         *   `/front-end/`, `/back-end/`, `/1000xscripts/` (during implementation phases, guided by `1000xcommands` or planning)
     *   These `.md` files are the source of truth.
 
@@ -21,14 +21,14 @@ This file establishes critical safety guidelines for file editing within the cog
     *   1000xdev NEVER edits files with the `.mdc` extension.
     *   Location: `.cursor/rules/`.
     *   These are generated automatically from `1000xrules/` by sync scripts.
-    *   They are read-only for 1000xdev (can be read via `fetch_rules`).
+    *   They are read-only for 1000xdev. Interaction should primarily occur via the source `.md` files in `1000xrules/`.
 
 ### Directory-Based Safety
 
 1.  **Editable Directories (Primary)**:
     *   `1000xrules/`
     *   `1000xbrain/`
-    *   `/planning/` (Conditional)
+    *   `/1000xplans/`
     *   `/front-end/`, `/back-end/`, `/1000xscripts/` (Conditional)
 
 2.  **Protected Directories**:
@@ -39,7 +39,7 @@ This file establishes critical safety guidelines for file editing within the cog
 
 1.  **1000xdev Role**:
     *   Edits `.md` source files only.
-    *   Reads `.mdc` rule files via `fetch_rules` when necessary (e.g., executing a command).
+    *   Reads source `.md` rule files (in `1000xrules/`) when needing rule context.
     *   Must respect the synchronization process.
 
 2.  **Automated Synchronization Process**:
@@ -57,7 +57,7 @@ This file establishes critical safety guidelines for file editing within the cog
 1.  **Pre-Edit Checks**:
     *   Verify target file extension is `.md`.
     *   Confirm target file is within an authorized editable directory.
-    *   Read the full file content before editing (`file-reading-enforcement.md`).
+    *   Read the full file content before editing (following `1000xrules/core/tools/file-reading-enforcement.md`).
 
 2.  **Edit Safety**:
     *   Use the `edit_file` tool for all modifications.
@@ -80,7 +80,7 @@ This file establishes critical safety guidelines for file editing within the cog
     *   ✅ Work only within authorized `.md` files in `1000xrules`, `1000xbrain`, etc.
 
 3.  **Incorrect File Referencing**: 
-    *   ❌ Using `.mdc` extension when intending to edit.
+    *   ❌ Using `.mdc` extension when intending to edit or read rules (prefer source `.md`).
     *   ❌ Using `.md` extension when intending to invoke a command (`run command:...`).
     *   ✅ Use `.md` for file paths in `edit_file`, `read_file`, etc. Use `run command:domain/name` for invocation.
 
@@ -88,12 +88,14 @@ This file establishes critical safety guidelines for file editing within the cog
 
 1.  **Safe File Creation (`.md`)**:
     ```typescript
-    // Create core rule or command definition
+    // Create core rule
     edit_file("1000xrules/core/new-rule.md", "Create new core rule", "# New Rule...")
-    edit_file("1000xbrain/commands/brain/new-command.md", "Create new brain command", "# New Command...")
     
     // Create knowledge file
-    edit_file("1000xbrain/knowledge/new-topic.md", "Create new knowledge file", "# New Topic...")
+    edit_file("1000xbrain/system/knowledge/new-topic.md", "Create new knowledge file", "# New Topic...")
+
+    // Create guideline file
+    edit_file("1000xbrain/system/guidelines/implementation/new-guideline.md", "Create new guideline", "# New Guideline...")
     ```
 
 2.  **Safe File Editing (`.md`)**:
@@ -106,7 +108,7 @@ This file establishes critical safety guidelines for file editing within the cog
 3.  **Safe File/Command Referencing (in Documentation)**:
     ```markdown
     See the core identity at `1000xrules/core/identity/core-identity.md`. 
-    To execute the analysis, use `run command:brain/analyze-structure`.
+    To execute the analysis, use `run command:system/brain/analyze-structure`.
     ```
 
 ## Synchronization Process Summary
@@ -117,6 +119,6 @@ This file establishes critical safety guidelines for file editing within the cog
 
 ## Related References
 
-*   Core Identity: `1000xrules/core/identity/global-rules.md`
+*   Core Identity / Global Rules: `1000xrules/core/identity/global-rules.md`
 *   Symbol Guidelines: `1000xrules/core/communication/symbol-guidelines.md`
 *   1000xcommands Guidelines: `1000xrules/core/communication/1000xcommands-guidelines.md` 

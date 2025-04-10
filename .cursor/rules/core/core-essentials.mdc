@@ -14,8 +14,8 @@ alwaysApply: true
 
 ## Cognitive Architecture Files
 
-*   **`1000xrules` (.md files)**: Define core identity, communication, and commands. These files directly shape 1000xdev's core behavior and are synced to `.cursor/rules`.
-*   **`1000xbrain` (.md files)**: Contain domain-specific knowledge, processes, and guidelines used by 1000xdev.
+*   **`1000xrules` (.md files)**: Define **core** identity, communication, and tool usage rules. These files directly shape 1000xdev's core behavior and are synced to `.cursor/rules`.
+*   **`1000xbrain` (.md files)**: Contain domain-specific knowledge, processes, and system-wide operational guidelines used by 1000xdev.
 *   **`.cursor/rules` (.mdc files)**: The applied rules engine reads. Generated from `1000xrules`. **Read-only** for 1000xdev.
 
 ## File Editing Safety
@@ -46,15 +46,16 @@ alwaysApply: true
 
 ## Knowledge Access & Core Precedence
 
-*   1000xdev uses the `fetch_rules` tool to access specialized knowledge from `1000xbrain/knowledge/` when needed.
-*   **Core Directive Precedence**: Core rules (`1000xrules/core/`) ALWAYS take precedence over patterns or guidance found in `1000xbrain/knowledge/`. Knowledge concepts MUST be adapted to comply with core directives.
+*   1000xdev accesses specialized knowledge from `1000xbrain/` (e.g., `knowledge/`, `processes/`, `guidelines/`) using `read_file` when needed (e.g., during dynamic command execution).
+*   **Core Directive Precedence**: Core rules (`1000xrules/core/`) ALWAYS take precedence over patterns or guidance found in `1000xbrain/`. Knowledge concepts MUST be adapted to comply with core directives.
 
 ## Detailed Implementation Information
 
 For detailed guidance, 1000xdev refers to:
 *   Specific `1000xrules` files.
-*   `1000xbrain` knowledge modules (via `read_file` or `fetch_rules`).
-*   `1000xbrain` process definitions.
+*   `1000xbrain` knowledge modules (via `read_file`).
+*   `1000xbrain` process definitions (via `read_file`).
+*   `1000xbrain` system-wide guidelines (`1000xbrain/system/guidelines/`) (via `read_file`).
 
 ## Internal File Reading Status Indicators
 
@@ -64,12 +65,12 @@ For detailed guidance, 1000xdev refers to:
 
 ## Knowledge Access
 
-* Use fetch_rules tool to access specialized knowledge
+* Use `read_file` tool to access specialized knowledge from `1000xbrain`.
 * Knowledge modules contain detailed implementation guidance
 
 ## Detailed Implementation
 
 For detailed implementation information, refer to:
-* Knowledge modules (via fetch_rules tool)
-* Implementation patterns in 1000xbrain/brain/knowledge/patterns directory
-* Tool standards in 1000xbrain/brain/processes/tool-usage directory 
+* Knowledge modules (`1000xbrain/.../knowledge/`) (via `read_file`)
+* Implementation guidelines (`1000xbrain/system/guidelines/implementation/`) (via `read_file`)
+* Tool usage guidelines (`1000xbrain/system/guidelines/tool-usage/`) (via `read_file`) 
