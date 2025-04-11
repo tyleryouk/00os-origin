@@ -9,16 +9,16 @@
 # 3. Run `1000xscripts/system/list-cycles.ps1` in terminal to see all available cycles.
 
 # Directive: Enhancement
-# Target Cycle: system/cycle-manager
-# Enhancement Name: Enhance 1000xplans
+# Target Cycle: system/autonomous
+# Enhancement Name: Enhance sequential 1000xcommand cycle of system/autonomous
 # Priority: High
+# Operation Mode: 
 
 # Enhancement Details
-*1000xplan enhancements*
-I noticed you never use 1000xplans\system\implementation-progress.md 1000xplans\plan.md and 1000xplans\system\requirements.md. Given that you only use notes within 1000xplans\system\ , see if there is a way to enhance 1000xsystem as a whole. I noticed when searching for enhancements, it is easier for you to use operational-feedback rather than 1000xplans. We can make 1000xplans more of my domains, where you read what I have to say in 1000xplans\system\notes.md . The other file in 1000xplans\system\ that I will keep is commands-index.md. Maybe, we can make 1000xplans more of my domain only? You almost never write to notes either, you only write to notes.md to update the USER REQUEST SECTION. Let me know what you think in terms of the utilization of 1000xplans. 
+Enhance the 1000xcommand cycle of system/autonomous. Make as many tool calls as you can. Optimize where you can (delete files that aren't used). This is a very important cycle that will be used for autonomous system-wide enhancements for all 1000xsystems.
 
 # Focus Areas (Optional)
-1000xplans usage within each cycle.
+[Specific files or components that should receive attention]
 
 # --- DIRECTIVE REFERENCE ---
 # Enhancement: Add new functionality or improve existing features
@@ -31,11 +31,54 @@ I noticed you never use 1000xplans\system\implementation-progress.md 1000xplans\
 
 ## Tyler Youk notes 
 
+
+*Project Agnostic Goal*
+The goal of the 1000xsystems is to be fully project agnostic, so that if I take the 1000xsystems and move them to another folder, they will work as intended. The structure of the project folders will always be:
+
+project-folder/
+- .cursor
+- 1000xbrain
+- 1000xcommands
+- 1000xplans
+- 1000xrules
+- 1000xscripts
+- (project-directory-folders)
+- (root-project-files)
+
+In this particular proejct, the structure is:
+GigaSwap/
+- .cursor
+- 1000xbrain
+- 1000xcommands
+- 1000xplans
+- 1000xrules
+- 1000xscripts
+- back-end
+- front-end
+- logs-main
+- .gitignore
+
+Example, I want to copy this system into a new project that I am working on. If I copy your brain and it's subsystems to the new project folder, the directory structure will look like:
+- .cursor
+- 1000xbrain
+- 1000xcommands
+- 1000xplans
+- 1000xrules
+- 1000xscripts
+- p3_handout
+- p3_strict_instructions
+
+To make the 1000xsystems project agnostic, here are suggestions of changes to the 1000xsystems. Review the suggestions, then make at least 50 tool calls to the 1000xsystems to thoroughly analyze the current state of the 1000xsystems. 50 tool calls is a minimum, even though I would prefer that you conduct more to get a holistic view of the 1000xsystems.
+
+Possible changes to 1000xsystems:
+- Ensure all filepaths are relative (I am pretty sure all filepaths are already relative, however, you will need to grep search through the 1000xsystems to check). If there are places where filepaths are not relative and include \GigaSwap\, then there needs to be some system to set the root path (e.g for this project, the root path will be C:\Users\ethde\Desktop\GigaSwap).
+
+- There are many instances where the domains: front-end, back-end, and system are specified. This is good for this project, but I would rather centralize the documentation of domains so that if I switch this system to another 
+
+
+
 *Remove all usages of date, low priority*
 You keep adding incorrect dates. Remove any instruction in 1000xbrain and 1000xrules stating to use dates. Stop using dates. The dates are known thorugh git version control. Stop using dates for the templates or any other type of documentation. 
-
-*Another one*
-Create clear distinction between autonomous and user-directed within USER REQUEST SECTION, so that I can clearly state to run an autonomous cycle if I have no request
 
 *file size, high priority*
 All file sizes for all cycles should be less than 250 lines. 1000xcommands are always within 250 lines, however there are times when the planning folder files in 1000xplans and the knowledge/process/operational-enhancement files are over 250 lines. You will mainly need to address the standards for creating files in 1000xbrain throughout the cycle (specifically operational-enhancements, which is dynamically updated throughout the cycle process)
@@ -43,10 +86,17 @@ All file sizes for all cycles should be less than 250 lines. 1000xcommands are a
 *Creation of front-end cycle, steam-api*
 Create an autonomous cycle within front-end to autonomously integrate the Steam API.
 All 1000xsystem based errors (tool calls etc), should be reported to the cycle-manager. This will seperate concerns so that during the front-end cycle you can focus on front-end implementation, and all cycle related issues or even enhancements requests will be abstracted to the cycle-manager for a system based cycle iteration (not a front-end cycle based iteration). All reports for cycle issues or enhancements should go to 1000xbrain\system\cycle-manager\operational-feedback\front-end-cycles\ (create new folder). Note that ALL front-end related knowledge and processes should be abstracted to the 1000xbrain\front-end\ domain (seperate part of your brain is designated for front-end). We still want to keep this 1000xsystem project agnostic, so that if I decide to create a new project it will be easy to do so.
+**Context**
+GigaSwap is a full-stack application with a front-end and back-end. You may need to make tool calls to both front-end and back-end to fully understand the applications. The goal is to create a crypto based marketplace for CS2 Skins, which can be digitally transferred through the steamwebapi.com. A lot of the functionality has been created for the front-end, however, there needs to be major upgrades. The authentication system is currently through metamask, which we need to switch to a steam based login (login with Steam). Still keep the connect wallet functionality for later usage (trading functionality). It would be best if you make extensive tool calls to both the front-end and the back-end. It also may be best to maybe even create a new domain called full-stack which will be focused on external API integration and in the cycle you will make changes to both the front-end and back-end, rather than going back-end first then front-end. No cycles have been created yet for front-end nor back-end, so let me know what you think.
+
+
 
 *Creation of back-end cycle, steam-api*
 Create an autonomous cycle within front-end to autonomously integrate the Steam API.
 All 1000xsystem based errors (tool calls etc), should be reported to the cycle-manager. This will seperate concerns so that the back-end cycle can focus on back-end implementation, and will abstract the tool call and cycle errors or even optimization requests to cycle-manager. All reports should go to 1000xbrain\system\cycle-manager\operational-feedback\back-end-cycles\ (create new folder). Note that ALL back-end related knowledge and processes should be abstracted to the 1000xbrain\back-end\ domain (seperate part of your brain is designated for front-end). We still want to keep this 1000xsystem project agnostic, so that if I decide to create a new project it will be easy to do so.
+This new cycle should be focused on integrating the Steam Web API documented here:
+https://www.steamwebapi.com/hub/api-overview
+
 
 *Better documentation and guidelines for 1000xcommands*
 In one implementation, you created 1000xcommands wrong. cycle-manager is very important because it managers the 7 step sequential 1000xcommand cycle of ALL cycles, including its own cycle. You can not mess up 1000xcommands when working in the cycle cycle-manager.

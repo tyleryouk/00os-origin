@@ -1,28 +1,40 @@
 # Process: Autonomous Refinement
 
-# Defines the initial steps for the refine-enhancements command.
+## Goal: Address failures identified during verification and implement corrections.
 
-## Goal: Address failures identified during verification.
+## Steps:
 
-## Steps (Initial Placeholder Logic):
+1.  **Analyze Verification Results**:
+    *   Read verification_results.md from operational_feedback.
+    *   Categorize issues by severity and type.
+    *   Identify specific files and changes needed.
+    *   **(Error Handling)**: If verification results not found, log error and stop.
 
-1.  **Read Verification Log**:
-    *   Use `read_file` to read `1000xbrain/system/autonomous/operational_feedback/verification_log.md`.
-    *   Identify the specific errors or failed checks reported (e.g., file not found, basic structure error, deferred checks failed during manual run).
+2.  **Prioritize Issues**:
+    *   Sort issues by impact and complexity.
+    *   Group related issues for efficient resolution.
+    *   Determine which issues can be safely addressed automatically.
+    *   **(Error Handling)**: If no fixable issues found, log status and signal completion.
 
-2.  **Attempt Basic Automated Fixes (Future Enhancement)**:
-    *   **(Future)** Analyze specific errors and attempt simple fixes (e.g., recreate a missing file based on the implementation log if possible, attempt minor markdown correction).
-    *   For now, this step logs that automated fixes are not yet implemented for the detected errors.
+3.  **Apply Corrective Actions**:
+    *   For each fixable issue:
+        *   Read the affected file.
+        *   Apply appropriate corrections based on issue type.
+        *   Verify the fix addresses the root cause.
+    *   **(Error Handling)**: Log any failed correction attempts.
 
-3.  **Log Need for Manual Review / Failure**:
-    *   If automated fixes were not attempted or failed, log a clear message indicating the verification failure requires manual review.
-    *   Reference the specific errors from the verification log.
-    *   Write this message to `1000xbrain/system/autonomous/operational_feedback/refinement_log.md`.
+4.  **Update Refinement Log**:
+    *   Create or update refinement_log.md in operational_feedback.
+    *   Document all corrective actions taken.
+    *   Note any issues that could not be resolved automatically.
+    *   **(Error Handling)**: Ensure at least minimal status is logged.
 
-4.  **Stop the Cycle**:
-    *   Signal that refinement failed (requires manual intervention) and the autonomous cycle should stop.
-    *   **(Future Enhancement)**: Implement actual analysis and automated correction attempts using `edit_file` based on common error patterns.
+5.  **Update Cycle State**:
+    *   Update current_state.md to reflect refinement completion.
+    *   Set next phase to re-verification.
+    *   **(Error Handling)**: If update fails, log error but proceed.
 
-4.  **(Alternative Future Path)**: If simple automated corrections *were* attempted:
-    *   Execute corrective `edit_file` calls.
-    *   Signal readiness to re-run `verify-enhancements`. 
+6.  **Determine Next Steps**:
+    *   If all critical issues resolved: Signal readiness for re-verification.
+    *   If some issues remain unfixed: Document limitations.
+    *   Recommend appropriate next command (cmd:5 for re-verification). 
