@@ -31,19 +31,29 @@
         ```markdown
         ## USER REQUEST SECTION
 
-        [Your change request description goes here]
+        # --- TEMPLATE START ---
+        # Instructions:
+        # 1. Replace bracketed placeholders with your request details.
+        # 2. All directive fields are required - they help automate processing.
+        # 3. Run `1000xscripts/system/list-cycles.ps1` in terminal to see all available cycles.
 
-        # Change Request
-        [Specific change request]
+        # Directive: [Enhancement|Fix|Refactor|Analysis]
+        # Target Cycle: [domain/cycle-name]
+        # Enhancement Name: [Brief descriptive name]
+        # Priority: [High|Medium|Low]
 
-        # Requirements
-        [Detailed requirements]
+        # Enhancement Details
+        [Provide a clear description of what needs to be done. Be specific about requirements.]
 
-        # Priority
-        [High/Medium/Low]
+        # Focus Areas (Optional)
+        [Specific files or components that should receive attention]
 
-        # Additional Notes
-        [Any additional context or notes]
+        # --- DIRECTIVE REFERENCE ---
+        # Enhancement: Add new functionality or improve existing features
+        # Fix: Correct problems or issues in existing functionality
+        # Refactor: Restructure code without changing functionality
+        # Analysis: Evaluate component(s) without making changes
+        # --- TEMPLATE END ---
 
         ## END USER REQUEST SECTION
         ```
@@ -108,3 +118,8 @@
 4. **Potential Enhancements**:
    * Always include some initial potential enhancements
    * These enable autonomous operation if no user input is provided 
+
+5. **Optimized 1000xplans Usage**:
+   * Follow the guidelines in `1000xbrain/system/cycle-manager/knowledge/1000xplans-usage.md`
+   * Only write to the USER REQUEST SECTION template in notes.md
+   * Remember that 1000xplans is primarily Tyler's domain for input 

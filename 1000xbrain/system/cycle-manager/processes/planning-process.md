@@ -56,7 +56,6 @@
         ```markdown
         # Implementation Plan: [Brief Description]
 
-        **Date**: [current-date]
         **Mode**: [USER_DIRECTED/AUTONOMOUS]
         **Priority**: [from change_request.md]
         **Status**: Planning Phase
@@ -197,4 +196,10 @@ The implementation plan should:
 4. **Implementation Efficiency**:
    * Optimize for efficient implementation
    * Reuse existing components when possible
-   * Consider long-term maintainability 
+   * Consider long-term maintainability
+
+5. **Optimized 1000xplans Usage**:
+   * Follow the guidelines in `1000xbrain/system/cycle-manager/knowledge/1000xplans-usage.md`
+   * Do not create implementation plans in 1000xplans directory
+   * Always store plans in operational_feedback for proper tracking
+   * Remember that implementation artifacts belong in operational_feedback, not 1000xplans 
