@@ -1,39 +1,102 @@
 # System Enhancement Notes: Major Changes Workflow
 
-## Tyler Youk
+## USER REQUEST SECTION
 
-*Updating other 1000xcommands that aren't in cycle format (legacy)*
-All of the other subfolders in 1000xcommands\system\ and 1000xbrain\system\ are now depreciated. Additionally, I have not actually used any of the other 1000xcommands because they were all recently created. Note that this system is very new (which you can tell if you read the Git version control commits). Originally, all we had before was 1000xbrain. 
+# --- TEMPLATE START ---
+# Instructions:
+# 1. Replace bracketed placeholders `[...]` with your request details.
+# 2. Use the `# Directive:` line to specify the type of action (e.g., Enhancement, Fix, Refactor).
+# 3. Use the `# Target Cycle:` line to specify the cycle to modify (e.g., system/autonomous, system/cycle-manager).
+#    - Available cycles: system/autonomous, system/cycle-manager, system/major-changes
+#    - Run `1000xscripts/system/list-cycles.ps1` in terminal for a complete list of available cycles.
+# 4. Keep details concise and clear.
 
-I was planning on deleting the other folders in 1000xbrain\system\ and 1000xcommands\system\ entirely. This is so that in the future, if we lose connection, you are not confused by these non-cycle folders and outdated knowledge and processes.
+# Directive: [Enhancement/Fix/Refactor/Analysis]
+# Target Cycle: [domain/cycle-name]
+# Enhancement Name: [Brief Name of Change]
+# Priority: [High/Medium/Low]
 
-We are keeping the cycles:
-autonomous
-cycle-manager
-major-changes
+# Enhancement Details
+# [Provide a clear description of the change or enhancement needed.]
+# [Use bullet points for specific requirements if applicable.]
 
-Which means, we are keeping the subfolders:
-1000xbrain\system\autonomous
-1000xbrain\system\cycle-manager
-1000xbrain\system\guidelines
-1000xbrain\system\major-changes
+# Focus Areas (Optional)
+# [Optionally list specific areas or files to focus on.]
+
+# --- TEMPLATE END ---
+
+# --- CURRENT REQUEST START ---
+# Directive: Enhancement
+# Target Cycle: system/cycle-manager
+# Enhancement Name: Directive System Implementation
+# Priority: High
+
+# Enhancement Details
+Implement the directive system for simplified cycle analysis and management:
+
+1. Enhance `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md` to include specific checks for analyzing cycle-manager itself
+2. Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md` to support the directive format
+3. Create `1000xscripts/system/list-cycles.ps1` to dynamically list available cycles
+4. Update the USER REQUEST SECTION template to be more efficient and include references to available directives and all cycles throughout the domains front-end, back-end, and system. There are currently only 3 cycles: autonomous, cycle-manager, major-changes. It may be easier to name the cycles by the filepath of the 1000xcommand folder, examples:
 1000xcommands\system\autonomous
 1000xcommands\system\cycle-manager
 1000xcommands\system\major-changes
 
+# Focus Areas
+- Steps 1 and 2 of the cycle guidelines to optimize the USER REQUEST SECTION format
+- Implementation of the directive parsing system
+- Creation of the list-cycles script
+- Documentation of available directives
 
-Would you rather:
-1. Update each folder individually. Context on outdated subfolders:
-`brain` for the main grandaddy master system 1000xbrain
-`plans` for the subsystem 1000xplans
-`commands` for the subsystem 1000xcommands
-`rules` for the subsystem 1000xrules
-`scripts` for the subsystem 1000xscripts
+## END USER REQUEST SECTION
+# --- CURRENT REQUEST END ---
 
-2. Delete then only create cycles that we see necessary. I just don't see how a 1000xbrian enhancement folder is necessary, when all changes to 1000xbrain are really system-wide changes. Maybe if we say brain-focus? But I feel like adding those now will just add complexity. We can just add them when the time is right. For now, all we really need are autonomous, major-changes, and cycle-manager.
+## Tyler Youk notes 
+
+*file size, high priority*
+All file sizes for all cycles should be less than 250 lines. 1000xcommands are always within 250 lines, however there are times when the planning folder files in 1000xplans and the knowledge/process/operational-enhancement files are over 250 lines. You will mainly need to address the standards for creating files in 1000xbrain throughout the cycle (specifically operational-enhancements, which is dynamically updated throughout the cycle process)
+
+# --- CURRENT REQUEST START ---
+# Directive: Enhancement
+# Target Cycle: cycle-manager
+# Enhancement Name: Directive System Implementation
+# Priority: High
+
+# Enhancement Details
+Implement the directive system for simplified cycle analysis and management as described in the proposed solution (lines 308-323 of notes.md), including:
+
+1. Enhance `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md` to include specific checks for analyzing cycle-manager itself
+2. Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md` to support the directive format
+3. Create `1000xscripts/system/list-cycles.ps1` to dynamically list available cycles
+4. Update the USER REQUEST SECTION template to be more efficient and include references to available directives and all cycles throughout the domains front-end, back-end, and system. There are currently only 3 cycles: autonomous, cycle-manager, major-changes. It may be easier to name the cycles by the filepath of the 1000xcommand folder, examples:
+1000xcommands\system\autonomous
+1000xcommands\system\cycle-manager
+1000xcommands\system\major-changes
+
+# Focus Areas
+- Steps 1 and 2 of the cycle guidelines to optimize the USER REQUEST SECTION format
+- Implementation of the directive parsing system
+- Creation of the list-cycles script
+- Documentation of available directives
+
+#### Old legacy USER REQUEST SECTION STRUCTURE
+
+#### Directive system for simplified cycle analysis
+Implement the directive system for simplified cycle analysis and management as described in the proposed solution (lines 308-323 of notes.md), including:
+
+1. Enhance `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md` to include specific checks for analyzing cycle-manager itself
+2. Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md` to support the directive format
+3. Create `1000xscripts/system/list-cycles.ps1` to dynamically list available cycles
+4. Update the USER REQUEST SECTION template to be more efficient and include references to available directives and all cycles throughout the domains front-end, back-end, and system.
+
+#### Focus Areas
+- Steps 1 and 2 of the cycle guidelines to optimize the USER REQUEST SECTION format
+- Implementation of the directive parsing system
+- Creation of the list-cycles script
+- Documentation of available directives
 
 *operational_feedback folder enhancement*
-At some point, you are going to need to delete the documentation of old cycles in 1000xbrain\system\autonomous\operational_feedback and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep documentation of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback .
+At some point, you are going to need to delete the documentation of old cycles in 1000xbrain\system\autonomous\operational_feedback and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep documentation of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback . The usage of operational_feedback folder for all cycles should be standardized.
 
 *pushing to git autonomously*
 I am also confident in your abilities now and would like to give you access to push to github. Create a script which will push the root directory to github. Note that this is a mono-repository, and the front-end and back-end applications have their own git configurations and do not get pushed when we push the root directory (front-end and back-end will only get pushed if we manually configure the root directory git to include these two inner repositories). I do not want to change the current settings to push the front-end and back-end directories.
@@ -81,32 +144,32 @@ If you integrate pushing git commands, I would like for there to be a standardiz
 
 You should only push to the branch 
 
+*Adding script list.ps1 to execute at the end of every cycle*
+
+*Enhancement to cycle-manager*
+During the implementation process (4), there are often times when you will to take a break. Which of the following options would you recommend:
+1. Modifying the guidelines of the 4th step of all cycles to expect repeated runs of `run command:system/{cycle-name}/4` until the implementation is complete
+2. Create a continuation 1000xcommand (4-continue?) `run command:system/{cycle-name}/4`
+3. Other suggestions for continuing implementation when you take breaks, or if the implementation is spread out over phases and you stop after the first phase? Try to keep any new suggestions simple.
+
+#### streamlined way to identify cycles
+There should be a streamlined way to identify cycles. I want to be able to write in the User Request Section: `Enhance the cycle {cycle-name} to do {x and y}`. The cycle-name can be distinct so that you clearly understand the cycle-name when reading my plain english. I can also use the filepath to the 1000xcommand folder if that makes it easier? 
+
+#### New cycle to "oversee" cycle-manager directly?
+
+**context**
+cycle-manager should be the centralized manager for all cycles, that looks over and watches all cycles. 
+
+When looking at ways to enhance the cycle of cycle-manager itself, would you recommend creating a third party perspective. Like an executive boss for cycle-mangaer? This could help with enhancing cycle-manager itself (help cycle-manager with finding enhancements for all other cycles, changing cycle-manager's thought process so that cycle-manager does not think the same way and look for the same types of enhancements). A third party perspective could also look at cycle-manager and see potential issues or bottlenecks in its management processes.
+
+**Current state of cycle-manager**
+Right now, cycle-manager should actively analyze and manager ALL cycles including it's own cycle to ensure ALL cycles follow specific guidelines. Right now, cycle-manager is responsible for creating the guidelines that govern all cycles, and ensuring that these guidelines are enforced for all cycles.
+
+Respond with what you think would be the simplest solution: creating a third party cycle to oversee cycle-manger, or continue to enhance cycle-manager to efficiently manager ALL cycles including its own. Continue to enhance cycle-manager so that it can manage its own cycle along with the guidelines and structure of every other cycle, or create a new cycle which serves as a third party perspective.
+
+
+
 ## end
-
-## USER REQUEST SECTION
-
-I really like the 7 step sequential 1000xcommands in both 1000xcommands\system\autonomous\ and 1000xcommands\system\major-changes\ . I want to standardize this 7 step sequential 1000xcommand process in the guidelines of 1000xbrain\system\guidelines\ so that every folder within 1000xcommands\back-end\ 1000xcommands\front-end\ 1000xcommands\system\ includes the same 7 step sequential 1000xcommands tailored towards the cycle. Essentially, every 1000xcommand should be within a cycle. There should be no one-off 1000xcommands anymore. 
-
-To do ensure alignment among every cycle within the 1000xcommands\domain\ folders (where domain is back-end, front-end and system), I want you to create a new cycle called manage-cycles with the filepath 1000xcommands\system\manage-cycles\ . Just like autonomous and major-changes, manage-cycles should have 7 sequential 1000xcommands with the names 1, 2, 3, 4, 5, 6 and 7 respectively.
-
-manage-cycles is responsible for creating cycles, enhancing cycles, and optimizing cycles (reducing clutter). I want manage-cycles to be so great that we can use manage-cycles to not only create cycles within 1000xcommands\system\ , but ALSO within 1000xcommands\front-end\ and 1000xcommands\back-end\ . 1000xcommands in manage-cycles should make explicit tool calls an dynamic tool calls to 1000xbrain\system\guidelines\ and 1000xbrain\system\manage-cycles (new folder). This is so that every cycle is standardized, so that if we find ways to enhance the cycles, all we need to do is make changes to manage-cycle 1000xcommands and relevant 1000xbrain files and then we can systematically make changes to every cycle. This will reduce the number of outdated files and cycles within the 1000xsystem. This is because we will continously find ways to enhance the cycles, and I want to centralized the knowledge and processes for managing and creating cycles so that when the cycle process is updated, we can easily update every cycle. Again, manage-cycles will be responsible for creating cycles, enhancing cycles, and optimizing cycles for all domains. manage-cycles\1 should create a user request section just like this. I think this user request section would be good for all cycles that aren't fully autonomous. This is what I mean by we will be making changes to the cycle guidelines frequently, there are many enhancements we could make to this 7 step sequential process.
-
-**Before we start**
-If you feel like there is a better name than manage-cycles, please respond to me with the better name. Chat to me directly first before making any changes.
-
-# Change Request
-Create new cycle called (choose name of cycle) within 1000xcommands\system\ 
-
-# Requirements
-New cycle should make explicit and dynamic tool calls to 1000xbrain\system\(new-name) (new folder) and 1000xbrain\system\guidelines\ . If you see ways to further enhance the centralization of cycle guidelines, then let me know.
-
-# Priority
-High
-
-# Additional Notes
-Overwrite the 1000xdev notes below, they are outdated. I will also likely send you chat messages to enhance the plan and research before we start making changes.
-
-## END USER REQUEST SECTION
 
 ## 1000XDEV NOTES
 
@@ -304,3 +367,29 @@ The implementation will be executed using the autonomous workflow:
 4. Completion will use `run command:system/autonomous/7`
 
 This creates an interesting pattern where the autonomous workflow is being used to implement its complementary major-changes workflow. 
+
+### Cycle Manager Self-Analysis Refinement (YYYY-MM-DD)
+
+**Context:** Discussion on improving how `cycle-manager` analyzes itself and how Tyler can trigger this analysis.
+
+**Assessment:**
+- The existing `cycle-analysis-process.md` is designed to analyze any cycle, including `cycle-manager` itself.
+- Creating a separate, dedicated self-analysis process file for `cycle-manager` would add unnecessary complexity and redundancy.
+- Triggering self-analysis via the standard `USER REQUEST SECTION` change request format can be verbose for routine checks.
+
+**Proposed Solution:**
+1.  **Enhance Existing Process:** Refine `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md` to include specific checks, focuses, or sub-routines that are activated when `cycle-manager` is the target cycle being analyzed. This ensures thorough self-examination without needing a separate process file.
+2.  **Add Request Directive:** Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md` to recognize a new, simplified format within the `USER REQUEST SECTION` specifically for triggering analysis. Example format:
+    ```markdown
+    ## USER REQUEST SECTION
+
+    # Directive: Analyze Cycle
+    # Target Cycle: cycle-manager
+    # Analysis Focus: [Optional: e.g., Bottlenecks]
+    # Directive Notes: [Optional: Add specific context or instructions here.]
+
+    ## END USER REQUEST SECTION
+    ```
+    This allows Tyler to initiate `cycle-manager` self-analysis (or analysis of any cycle) directly without writing a full change request narrative.
+
+**Rationale:** This approach leverages existing structures, maintains simplicity, and provides a streamlined user interaction for triggering cycle analysis. 

@@ -9,11 +9,10 @@
 1.  **Create Cycle Tracking Information**:
     *   Use `edit_file` to create/update `1000xbrain/system/cycle-manager/operational_feedback/current_cycle.md`:
         ```markdown
-        # Current Cycle-Manager Cycle
+        # Current Cycle
 
-        **Cycle ID**: [yyyy-MM-dd]-[nn]
+        **Cycle ID**: [identifier]
         **Status**: Initialized
-        **Date Started**: [current-date]
 
         ## Current Phase
 
@@ -22,7 +21,7 @@
     *   **(Error Handling)**: If file creation fails, retry with alternative path or notify of error
 
 2.  **Generate Unique Cycle Identifier**:
-    *   Generate a unique ID based on date and sequence number
+    *   Generate a unique ID based on identifier pattern
     *   Update the ID in the current_cycle.md file
     
 3.  **Create USER REQUEST SECTION Template**:

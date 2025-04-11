@@ -174,3 +174,41 @@ This enhancement should be planned after the completion of the current implement
 
 After plan approval, proceed to implementation phase by executing:
 `run command:system/autonomous/4`
+
+## Cycle Manager Enhancements Plan (Cycle CM-003)
+
+**Goal:** Enhance the cycle-manager system to support global directives, provide dynamic cycle listing, and standardize the notes file structure across all cycles.
+
+**Phases:**
+
+1.  **Knowledge and Script Creation:**
+    *   Create `1000xbrain/system/cycle-manager/knowledge/available-directives.md`.
+        *   Define initial directive: `Analyze Cycle`.
+        *   Document structure and usage.
+    *   Create `1000xscripts/system/list-cycles.ps1`.
+        *   Implement logic to scan `1000xcommands/` subdirectories (system, frontend, backend) for cycle patterns (e.g., directories containing numbered `[1-7].md` files).
+        *   Output a formatted list of cycle names/paths.
+    *   (Optional) Create `1000xcommands/system/info/list-cycles.md` to wrap the script execution.
+
+2.  **Process Modification:**
+    *   Modify `1000xbrain/system/cycle-manager/processes/initiation-process.md`:
+        *   Update the `notes.md` template creation step to reflect the new `USER REQUEST SECTION` (top), `Tyler Youk notes`, `1000XDEV NOTES` structure.
+        *   Add references in the template to `available-directives.md` and the cycle listing script/command.
+        *   Ensure this structure is propagated when creating notes for *new* cycles managed by `cycle-manager`.
+    *   Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md`:
+        *   Add logic to detect the `# Directive:` field.
+        *   If directive is found, parse `# Target Cycle:`, `# Analysis Focus:`, and `# Directive Notes:`.
+        *   Bypass standard change request parsing and prepare for direct action based on the directive.
+        *   Handle cases where the directive is invalid or the target cycle doesn't exist.
+    *   Modify `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md`:
+        *   Add capability to accept optional `Analysis Focus` and `Directive Notes` parameters.
+        *   Implement logic to tailor analysis based on focus parameter (if provided).
+        *   Incorporate information from `Directive Notes` into the analysis context.
+        *   Add specific checks/logic to run when the target cycle is `cycle-manager` itself.
+
+3.  **Testing and Validation:**
+    *   Test the `list-cycles.ps1` script.
+    *   Test the `Analyze Cycle` directive targeting `cycle-manager` and another sample cycle.
+    *   Test with and without `Analysis Focus` and `Directive Notes`.
+    *   Verify the new `notes.md` structure is correctly applied during a test cycle initiation.
+    *   Ensure standard change requests still function correctly.

@@ -2,38 +2,58 @@
 
 This document tracks potential enhancements for autonomous operation of the cycle-manager.
 
+## Enhance Cycle Creation Templates
+**Priority**: Medium
+**Description**: Improve templates used when creating new cycles
+**Impact**: More consistent cycle implementation
+**Implementation Notes**: Update templates in cycle-creation-process.md
+
 ## Add Cycle Validation Feature
 **Priority**: High
-**Description**: Create a validation feature that checks cycles against standardization guidelines
-**Impact**: Ensures all cycles maintain standards compliance and follows best practices
-**Implementation Notes**: Create a new process file for validation and integrate with existing processes
+**Description**: Add functionality to validate cycles against standards
+**Impact**: Ensures all cycles maintain standards compliance
+**Implementation Notes**: Create new process file for validation
 
-## Implement Cycle Migration Tool
+## Complete Process File Updates
+**Priority**: High
+**Complexity**: Medium
+**Description**: Complete updates to remaining process files across all three cycles
+**Impact**: Reduces cognitive load and improves efficiency
+**Implementation Notes**: Update all remaining process files to follow minimalist standards
+**Status**: Pending
+
+## Command File Optimization
 **Priority**: Medium
-**Description**: Create functionality to migrate non-compliant cycles to follow the standardized approach
-**Impact**: Simplifies conversion of legacy cycles to the new unified model
-**Implementation Notes**: Create specialized process files for different migration patterns
+**Complexity**: Medium
+**Description**: Update all command files in the three core cycles to use optimized processes
+**Impact**: Ensures consistent implementation of minimalist standards
+**Implementation Notes**: Update all command files to remove date references and streamline operations
+**Status**: Pending
 
-## Enhance Command Templates
+## Validation Mechanism
 **Priority**: Medium
-**Description**: Improve templates used when creating new cycles with more robust examples
-**Impact**: Produces more consistent cycle implementations with better documentation
-**Implementation Notes**: Update templates in cycle-creation-process.md with expanded examples
+**Complexity**: High
+**Description**: Create a validation mechanism to ensure cycles adhere to minimalist standards
+**Impact**: Automates compliance verification across all cycles
+**Implementation Notes**: Create new process for validating cycle documentation against minimalist standards
+**Status**: Pending
 
-## Create Cycle Documentation Generator
-**Priority**: Medium
-**Description**: Implement automated documentation generation for new and existing cycles
-**Impact**: Ensures consistent, comprehensive documentation across all cycles
-**Implementation Notes**: Create process for extracting cycle information and generating README files
+## Improve list-cycles.ps1 Error Handling
 
-## Add Cycle Usage Analytics
-**Priority**: Low
-**Description**: Track usage patterns of different cycles to guide optimization priorities
-**Impact**: Enables data-driven decisions about which cycles to enhance or consolidate
-**Implementation Notes**: Create tracking mechanism for cycle invocations and results
+* **Priority**: Low
+* **Complexity**: Low
+* **Dependencies**: None
+* **Description**: Add more robust error handling to the `1000xscripts/system/list-cycles.ps1` script, such as handling potentially malformed cycle directory names or unexpected file system issues.
+* **Implementation Notes**: Modify the PowerShell script to include additional `try-catch` blocks or validation logic.
+* **Success Criteria**: Script handles common errors gracefully without crashing and provides informative error messages.
+* **Status**: Pending
 
-## Implement Cross-Domain Cycle Dependencies
-**Priority**: Low
-**Description**: Add support for cycles that span multiple domains with appropriate coordination
-**Impact**: Enables more complex workflows that cross domain boundaries
-**Implementation Notes**: Create coordination mechanism between cycles in different domains 
+## Integrate list-cycles.ps1 into Workflow
+
+* **Priority**: Low
+* **Complexity**: Medium
+* **Dependencies**: None
+* **Description**: Add a step to a relevant cycle-manager process (e.g., requirement analysis or planning) to optionally run `list-cycles.ps1` and include its output in operational feedback or present it to the user.
+* **Implementation Notes**: Modify a process file to include a `run_terminal_cmd` call for the script and handle its output.
+* **Success Criteria**: The script output can be easily accessed as part of the cycle workflow when needed.
+* **Status**: Pending

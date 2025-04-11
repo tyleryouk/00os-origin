@@ -7,7 +7,8 @@
 - [a] Auto-Verified: Passed all automated checks.
 - [?] Needs Review: Passed basic checks but contains elements requiring manual review (see notes).
 - [!] Failed Auto-Check: Failed one or more automated checks (see notes).
-- [n/a] No Terminal Cmd: No un_terminal_cmd calls found in the command file.
+- [n/a] No Terminal Cmd: No 
+un_terminal_cmd calls found in the command file.
 
 ## Root Commands
 
@@ -76,3 +77,14 @@
 - [n/a] **Command: List Script Files** - `run command:system/scripts/list-scripts`
 - [n/a] **Command: Update Script File** - `run command:system/scripts/update-script`
 - [n/a] **Command: Verify Script File Syntax (Basic)** - `run command:system/scripts/verify-script`
+
+### System Cycles
+
+- [Active] **Command: Major Changes Cycle** - `run command:system/major-changes/[1-7]`
+    - *Status*: Completed cycle `20240528-01` (Cycle Manager Implementation).
+- [Active] **Command: Cycle Manager** - `run command:system/cycle-manager/[1-7]`
+    - *Status*: Newly implemented. Ready for testing/use.
+- [Active] **Command: Autonomous System Cycle** - `run command:system/autonomous/[1-7]`
+    - *Status*: Operational. (Integration with cycle-manager pending).
+- [Active] **Command: Update Rule** - `run command:system/rules/update-rule`
+- [Active] **Command: Create Guideline** - `run command:system/guidelines/create-guideline`
