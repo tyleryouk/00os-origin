@@ -10,15 +10,13 @@
 # 2. All directive fields are required - they help automate processing.
 # 3. Run `1000xscripts/system/list-cycles.ps1` in terminal to see all available cycles.
 
-# Directive: [Enhancement/Fix/Refactor/Analysis]
-# Target Cycle: [system/cycle-manager | system/autonomous | system/major-changes | frontend/main | backend/main | All Cycles | System]
+# Directive: [Enhancement | Fix | Refactor | Analysis]
+# Target Cycle: [system/cycle-manager | system/autonomous | system/major-changes]
 # Enhancement Name: [Brief descriptive name]
-# Priority: [High/Medium/Low]
-# Operation Mode: [USER_DIRECTED/AUTONOMOUS]
+# Priority: [High | Medium | Low]
 
 # Enhancement Details
-
-[Detailed description of the requested enhancement, fix, refactor, or analysis. Include specific goals, requirements, and any relevant context.]
+[Detailed description of what you want to enhance, fix, refactor, or analyze]
 
 # Focus Areas (Optional)
 [Specific files or components that should receive attention]
@@ -28,6 +26,11 @@
 # Fix: Correct problems or issues in existing functionality
 # Refactor: Restructure code without changing functionality
 # Analysis: Evaluate component(s) without making changes
+
+# --- CYCLE LIST ---
+# system/autonomous
+# system/cycle-manager
+# system/major-changes
 # --- TEMPLATE END ---
 
 ## END USER REQUEST SECTION 
