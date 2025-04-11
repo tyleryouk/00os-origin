@@ -6,12 +6,27 @@
 
 ## Steps:
 
-1.  **Check Cycle Status**:
+1.  **Initialize Cycle Information**:
+    *   Define the output path for cycle list:
+        ```
+        $cycleListPath = "1000xbrain/system/cycle-manager/operational_feedback/cycle_list.md"
+        ```
+    *   Use `run_terminal_cmd` to run the list-cycles script with direct output:
+        ```
+        run_terminal_cmd("1000xscripts/system/list-cycles.ps1 -OutputFile \"$cycleListPath\" | cat", is_background=false)
+        ```
+    *   Read the cycle list file to verify it was created/updated:
+        ```
+        read_file("1000xbrain/system/cycle-manager/operational_feedback/cycle_list.md", should_read_entire_file=true)
+        ```
+    *   **(Error Handling)**: If the script fails, log the error but continue with previously stored cycle information if available.
+
+2.  **Check Cycle Status**:
     *   Use `read_file` to check `1000xbrain/system/cycle-manager/operational_feedback/current_cycle.md`.
     *   Verify that initialization has been completed.
     *   **(Error Handling)**: If initialization is not complete, log error and suggest running initialization.
 
-2.  **Check for User Input**:
+3.  **Check for User Input**:
     *   Use `read_file` to read `1000xplans/system/user_request.md`.
     *   Extract the content from the USER REQUEST SECTION.
     *   Determine if the section contains valid user input (beyond templated placeholders).
@@ -22,13 +37,13 @@
         * Extract `# Priority:` value if present
     *   **NEW**: Validate directive values:
         * Check if Directive is one of: Enhancement, Fix, Refactor, Analysis
-        * Verify Target Cycle follows format: domain/cycle-name
+        * Verify Target Cycle follows format: domain/cycle-name and exists in the list from step 1
         * Check Priority is one of: High, Medium, Low
     *   **(Error Handling)**: 
         * If the file doesn't exist or the section is missing, log error and suggest creating it.
         * If directive values are invalid, note this but continue processing with available values.
 
-3.  **Determine Operation Mode**:
+4.  **Determine Operation Mode**:
     *   Based on user input check:
         *   If valid user input exists, set mode to USER_DIRECTED.
         *   If no valid user input (empty or just template), set mode to AUTONOMOUS.
@@ -38,13 +53,13 @@
         ```
     *   **(Error Handling)**: Document mode determination process.
 
-4.  **Process User-Directed Mode** (if applicable):
+5.  **Process User-Directed Mode** (if applicable):
     *   If mode is USER_DIRECTED:
         *   Parse the user request into structured components:
-            *   **NEW**: Directive (validated from step 2)
-            *   **NEW**: Target Cycle (validated from step 2)
-            *   **NEW**: Enhancement Name (from step 2)
-            *   Priority (validated from step 2)
+            *   **NEW**: Directive (validated from step 3)
+            *   **NEW**: Target Cycle (validated from step 3)
+            *   **NEW**: Enhancement Name (from step 3)
+            *   Priority (validated from step 3)
             *   Change request description
             *   Requirements
             *   Additional notes
@@ -86,7 +101,7 @@
         *   **NEW**: If directive validation identified issues, document them in Special Considerations.
     *   **(Error Handling)**: If user input is ambiguous, document uncertainties and assumptions. If directives are missing or invalid, use defaults and document the decision.
 
-5.  **Process Autonomous Mode** (if applicable):
+6.  **Process Autonomous Mode** (if applicable):
     *   If mode is AUTONOMOUS:
         *   Use `read_file` to check `1000xbrain/system/cycle-manager/operational_feedback/potential_enhancements.md`.
         *   If the file exists:
@@ -137,7 +152,7 @@
             *   Use a template for a system scan enhancement
     *   **(Error Handling)**: If enhancement selection fails, create a basic enhancement opportunity.
 
-6.  **Analyze Requirements**:
+7.  **Analyze Requirements**:
     *   Regardless of mode, analyze the requirements:
         *   Identify affected components
         *   Determine technical approach
@@ -154,7 +169,7 @@
         ```
     *   **(Error Handling)**: If analysis reveals impossible requirements, document concerns.
 
-7.  **Update Cycle Status**:
+8.  **Update Cycle Status**:
     *   Use `edit_file` to update `1000xbrain/system/cycle-manager/operational_feedback/current_cycle.md`:
         *   Update Status to "Requirements Analyzed"
         *   Update Current Phase to indicate requirement analysis is complete
@@ -162,7 +177,7 @@
         *   Document the determined operation mode
         *   **NEW**: Include directive and target cycle information if available
 
-8.  **Signal Completion**:
+9.  **Signal Completion**:
     *   Indicate that requirement analysis is complete.
     *   Summarize the operation mode and key requirements.
     *   **NEW**: Include directive and target cycle in the summary if available.
