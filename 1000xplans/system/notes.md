@@ -1,8 +1,8 @@
 ## 1000xnotes 
 
 
-
-*Project Agnostic Goal*
+## IMPORTANT 
+#### *Project Agnostic Goal*
 The goal of the 1000xsystems is to be fully project agnostic, so that if I take the 1000xsystems and move them to another folder, they will work as intended. The structure of the project folders including the 1000xsystems will always be:
 
 project-folder/
@@ -51,18 +51,21 @@ Possible changes to 1000xsystems:
 
 - Note that if it is the easiest to just keep all documentation of the front-end and back-end domains in 1000xsystems as is, let me know and I can just move the 1000xsystems over to the new project folder, then ask you to manually change all of the domain documentation from `front-end` and `back-end` to the new project. 
 
-*Remove all usages of date, low priority*
-You keep adding incorrect dates. Remove any instruction in 1000xbrain and 1000xrules stating to use dates. Stop using dates. The dates are known thorugh git version control. Stop using dates for the templates or any other type of documentation. 
 
-*file size, high priority*
-All file sizes for all cycles should be less than 250 lines. 1000xcommands are always within 250 lines, however there are times when the planning folder files in 1000xplans and the knowledge/process/operational-enhancement files are over 250 lines. You will mainly need to address the standards for creating files in 1000xbrain throughout the cycle (specifically operational-enhancements, which is dynamically updated throughout the cycle process)
 
+#### *file size, high priority*
+All file sizes for within every cycle should be less than 250 lines. 1000xcommands are always within 250 lines, however there are times when the planning folder files in 1000xplans and the knowledge/process/operational-enhancement files are over 250 lines. You will mainly need to address the standards for creating files in 1000xbrain throughout the cycle (specifically operational-enhancements, which is dynamically updated throughout the cycle process)
+
+#### *operational_feedback folder enhancement*
+At some point, you are going to need to delete the logs of old cycles in the files within 1000xbrain\system\autonomous\operational_feedback\ and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep logs of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback . The usage of operational_feedback folder for all cycles should be standardized. It would be preferred if all old logs are deleted. This should be a guideline for all cycles. Less is more.
+
+
+## Later 1
 *Creation of front-end cycle, steam-api*
 Create an autonomous cycle within front-end to autonomously integrate the Steam API.
 All 1000xsystem based errors (tool calls etc), should be reported to the cycle-manager. This will seperate concerns so that during the front-end cycle you can focus on front-end implementation, and all cycle related issues or even enhancements requests will be abstracted to the cycle-manager for a system based cycle iteration (not a front-end cycle based iteration). All reports for cycle issues or enhancements should go to 1000xbrain\system\cycle-manager\operational-feedback\front-end-cycles\ (create new folder). Note that ALL front-end related knowledge and processes should be abstracted to the 1000xbrain\front-end\ domain (seperate part of your brain is designated for front-end). We still want to keep this 1000xsystem project agnostic, so that if I decide to create a new project it will be easy to do so.
 **Context**
 GigaSwap is a full-stack application with a front-end and back-end. You may need to make tool calls to both front-end and back-end to fully understand the applications. The goal is to create a crypto based marketplace for CS2 Skins, which can be digitally transferred through the steamwebapi.com. A lot of the functionality has been created for the front-end, however, there needs to be major upgrades. The authentication system is currently through metamask, which we need to switch to a steam based login (login with Steam). Still keep the connect wallet functionality for later usage (trading functionality). It would be best if you make extensive tool calls to both the front-end and the back-end. It also may be best to maybe even create a new domain called full-stack which will be focused on external API integration and in the cycle you will make changes to both the front-end and back-end, rather than going back-end first then front-end. No cycles have been created yet for front-end nor back-end, so let me know what you think.
-
 
 
 *Creation of back-end cycle, steam-api*
@@ -71,10 +74,9 @@ All 1000xsystem based errors (tool calls etc), should be reported to the cycle-m
 This new cycle should be focused on integrating the Steam Web API documented here:
 https://www.steamwebapi.com/hub/api-overview
 
-*operational_feedback folder enhancement*
-At some point, you are going to need to delete the documentation of old cycles in 1000xbrain\system\autonomous\operational_feedback and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep documentation of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback . The usage of operational_feedback folder for all cycles should be standardized.
 
-*pushing to git autonomously*
+## Later 2
+#### pushing to git autonomously | cycle-manager | major-changes
 I am also confident in your abilities now and would like to give you access to push to github. Create a script which will push the root directory to github. Note that this is a mono-repository, and the front-end and back-end applications have their own git configurations and do not get pushed when we push the root directory (front-end and back-end will only get pushed if we manually configure the root directory git to include these two inner repositories). I do not want to change the current settings to push the front-end and back-end directories.
 
 The terminal command sequence for pushing to git is as follows:
@@ -120,27 +122,15 @@ If you integrate pushing git commands, I would like for there to be a standardiz
 
 You should only push to the branch 
 
-*Adding script list.ps1 to execute at the end of every cycle*
 
-*Enhancement to cycle-manager*
+#### Enhancement to cycle-manager | cycle-manager
 During the implementation process (4), there are often times when you will to take a break. Which of the following options would you recommend:
 1. Modifying the guidelines of the 4th step of all cycles to expect repeated runs of `run command:system/{cycle-name}/4` until the implementation is complete
 2. Create a continuation 1000xcommand (4-continue?) `run command:system/{cycle-name}/4`
 3. Other suggestions for continuing implementation when you take breaks, or if the implementation is spread out over phases and you stop after the first phase? Try to keep any new suggestions simple.
 
-#### streamlined way to identify cycles
-There should be a streamlined way to identify cycles. I want to be able to write in the User Request Section: `Enhance the cycle {cycle-name} to do {x and y}`. The cycle-name can be distinct so that you clearly understand the cycle-name when reading my plain english. I can also use the filepath to the 1000xcommand folder if that makes it easier? 
+#### Remove all usages of date | cycle-manager
+You keep adding incorrect dates. Remove any instruction in 1000xbrain and 1000xrules stating to use dates. Stop using dates. The dates are known thorugh git version control. Stop using dates for the templates or any other type of documentation. 
 
-#### New cycle to "oversee" cycle-manager directly?
-
-**context**
-cycle-manager should be the centralized manager for all cycles, that looks over and watches all cycles. 
-
-When looking at ways to enhance the cycle of cycle-manager itself, would you recommend creating a third party perspective. Like an executive boss for cycle-mangaer? This could help with enhancing cycle-manager itself (help cycle-manager with finding enhancements for all other cycles, changing cycle-manager's thought process so that cycle-manager does not think the same way and look for the same types of enhancements). A third party perspective could also look at cycle-manager and see potential issues or bottlenecks in its management processes.
-
-**Current state of cycle-manager**
-Right now, cycle-manager should actively analyze and manager ALL cycles including it's own cycle to ensure ALL cycles follow specific guidelines. Right now, cycle-manager is responsible for creating the guidelines that govern all cycles, and ensuring that these guidelines are enforced for all cycles.
-
-Respond with what you think would be the simplest solution: creating a third party cycle to oversee cycle-manger, or continue to enhance cycle-manager to efficiently manager ALL cycles including its own. Continue to enhance cycle-manager so that it can manage its own cycle along with the guidelines and structure of every other cycle, or create a new cycle which serves as a third party perspective.
-
-## 1000XDEV NOTES
+#### Script | cycle-manager
+script list.ps1 should execute in cycle-manager step 7 to create an accurate list of all cycles at the end of the cycle. The list of cycles is only used in cycle-manager.

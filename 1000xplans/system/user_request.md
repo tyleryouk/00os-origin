@@ -5,73 +5,29 @@
 ## USER REQUEST SECTION
 
 # --- TEMPLATE START ---
-# ===== INSTRUCTIONS =====
-# 1. Replace the examples below with your own request details
-# 2. Keep the field labels exactly as they are (e.g., "Directive:", "Target Cycle:")
-# 3. All fields marked [REQUIRED] must be filled out
-# 4. Delete these instruction lines and all example content when submitting
+# Instructions:
+# 1. Replace bracketed placeholders with your request details.
+# 2. All directive fields are required - they help automate processing.
+# 3. Run `1000xscripts/system/list-cycles.ps1` in terminal to see all available cycles.
 
-# Directive: [REQUIRED - Choose one]
-# Enhancement (Add new functionality or improve existing features)
-# Fix (Correct problems in existing functionality)
-# Refactor (Restructure code without changing behavior)
-# Analysis (Evaluate components without making changes)
-Directive: Enhancement
+# Directive: [Fix]
+# Target Cycle: [system/cycle-manager]
+# Enhancement Name: Delete all legacy files
+# Priority: [High]
 
-# Target Cycle: [REQUIRED - Choose one available cycle]
-# Available options:
-# - system/autonomous (For general system improvements)
-# - system/cycle-manager (For cycle management enhancements)
-# - system/major-changes (For significant architectural changes)
-Target Cycle: system/cycle-manager
+# Enhancement Details
+Delete all legacy files from system/cycle-manager. Engrain the less is more principe for all cycles. You keep adding more and more files, leaving many files to be unused. You are not doing a good job of optimizing. The more files that are in these cycles, the more cognitive load and the higher likelyhood of hallucinations.
 
-# Enhancement Name: [REQUIRED - Brief descriptive title]
-Enhancement Name: Improve Template Clarity For New Users
+# Focus Areas (Optional)
+1000xbrain/system/cycle-manager
+1000xcommands/system/cycle-manager
+Potentially the guidelines as well in 1000xbrain/system/guidelines
 
-# Priority: [REQUIRED - Choose one]
-# High (Urgent, blocking other work)
-# Medium (Important but not urgent)
-# Low (Nice to have, can be scheduled later)
-Priority: Medium
-
-# Enhancement Details: [REQUIRED - Detailed description]
-# Provide a clear explanation of what you want to accomplish
-Enhancement Details:
-Make this USER REQUEST SECTION template more intuitive for first-time users.
-Add clearer examples and better formatting to reduce confusion.
-Ensure the template clearly distinguishes between required and optional fields.
-
-# Focus Areas: [OPTIONAL - Specific components to address]
-# List specific files, components or aspects that need attention
-Focus Areas:
-The USER REQUEST SECTION template in user_request.md
-
-# --- EXAMPLE REQUESTS ---
-# 
-# EXAMPLE 1 - Enhancement:
-# Directive: Enhancement
-# Target Cycle: system/autonomous
-# Enhancement Name: Add Dark Mode Support
-# Priority: Medium
-# Enhancement Details:
-# Implement a dark mode color scheme for the front-end interface.
-# Add a toggle switch in the user settings panel.
-# Ensure all components have appropriate dark theme styling.
-#
-# EXAMPLE 2 - Fix:
-# Directive: Fix
-# Target Cycle: system/cycle-manager
-# Enhancement Name: Correct Cycle ID Assignment
-# Priority: High
-# Enhancement Details:
-# The system sometimes assigns duplicate cycle IDs.
-# Fix the ID generation logic to ensure uniqueness.
-# Add validation to prevent conflicts.
-#
-# --- CYCLE LIST ---
-# system/autonomous
-# system/cycle-manager
-# system/major-changes
+# --- DIRECTIVE REFERENCE ---
+# Enhancement: Add new functionality or improve existing features
+# Fix: Correct problems or issues in existing functionality
+# Refactor: Restructure code without changing functionality
+# Analysis: Evaluate component(s) without making changes
 # --- TEMPLATE END ---
 
 ## END USER REQUEST SECTION 

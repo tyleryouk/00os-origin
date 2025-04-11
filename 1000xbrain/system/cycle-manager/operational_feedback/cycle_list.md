@@ -6,9 +6,10 @@ This file maintains a list of all available cycles in the system. It is used by 
 
 - system/autonomous
 - system/cycle-manager
+- system/enhancement-cycle
 - system/major-changes
 
-## Total cycles: 3
+## Total cycles: 4
 
 ## Usage in Directive Format
 ```
