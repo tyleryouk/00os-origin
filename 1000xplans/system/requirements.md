@@ -84,3 +84,28 @@ The implementation will be considered complete when:
 ## Priority
 
 This implementation has HIGH priority as it establishes a core workflow for explicit change management.
+
+## Enhancements (Cycle CM-003)
+
+1.  **Standardized Notes Structure:**
+    *   **Requirement:** Restructure notes files across all cycles to follow the format: `## USER REQUEST SECTION`, `## Tyler Youk notes`, `## 1000XDEV NOTES`.
+    *   **Rationale:** Improve clarity and consistency, making active requests highly visible.
+    *   **Implementation:** Update `1000xbrain/system/cycle-manager/processes/initiation-process.md` and relevant templates.
+
+2.  **Global Directives Implementation:**
+    *   **Requirement:** Implement a system for global directives (e.g., `Analyze Cycle`) recognized within the `USER REQUEST SECTION` to trigger specific, pre-defined system actions.
+    *   **Rationale:** Provide a streamlined way to invoke common system operations without a full change request.
+    *   **Implementation:**
+        *   Create `1000xbrain/system/cycle-manager/knowledge/available-directives.md` to list and define directives.
+        *   Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md` to parse and act on `# Directive:`, `# Target Cycle:`, `# Analysis Focus:`, and `# Directive Notes:` fields.
+        *   Enhance `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md` to accept focus parameters and utilize directive notes.
+
+3.  **Cycle Listing Capability:**
+    *   **Requirement:** Create a script (`1000xscripts/system/list-cycles.ps1`) to dynamically list available cycles by scanning `1000xcommands/`.
+    *   **Rationale:** Provide an accurate, up-to-date list of cycles for use in directives or requests.
+    *   **Implementation:** Develop the PowerShell script.
+    *   **Optional:** Create a simple command (`run command:system/info/list-cycles`) to execute the script.
+
+4.  **Updated USER REQUEST SECTION Template:**
+    *   **Requirement:** Update the template within `initiation-process.md` (and reflected in `notes.md`) to reference the `available-directives.md` file and the cycle listing script/command.
+    *   **Rationale:** Guide the user on how to use the new directive system effectively.

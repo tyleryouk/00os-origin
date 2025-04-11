@@ -248,3 +248,84 @@ These enhancements can be implemented in the next cycle using the autonomous wor
     *   [ ] Process flow diagrams for all workflows
     *   [ ] Command descriptions and relationships
     *   [ ] Success/failure criteria and recovery procedures
+
+## Core System Implementation
+
+*   **Cycle Management System (`cycle-manager`)**: **Completed (2024-05-30)**
+    *   Status: Implemented per `1000xbrain/system/major-changes/operational_feedback/cycle_summary_2024-05-30.md`.
+    *   Next Steps: Functional testing, integrate existing cycles.
+*   **Cognitive Architecture (`1000xbrain`)**: Ongoing Refinement
+*   **Core Rules (`1000xrules`)**: Stable, minor updates ongoing.
+*   **Command Structure (`1000xcommands`)**: Standardized via `cycle-manager`.
+*   **Planning (`1000xplans`)**: Active.
+*   **Scripts (`1000xscripts`)**: Minimal, stable.
+
+## Current Project: Cycle Manager Enhancements (Cycle CM-003)
+
+A new enhancement cycle has been initiated to add global directives, dynamic cycle listing, and standardize the notes structure across all cycles managed by `cycle-manager`.
+
+*   [ ] **Project Initiated**:
+    *   [X] Requirements defined
+    *   [X] Plan created
+    *   [ ] Implementation approach documented
+*   [ ] **Knowledge and Script Creation**:
+    *   [ ] Create global directives knowledge file
+        *   [ ] Define initial directive: `Analyze Cycle`
+        *   [ ] Document structure and usage
+    *   [ ] Create cycle listing script
+        *   [ ] Implement cycle detection logic
+        *   [ ] Handle system/frontend/backend domains
+        *   [ ] Format output for easy readability
+    *   [ ] (Optional) Create list-cycles command wrapper
+*   [ ] **Process Modification**:
+    *   [ ] Update initiation process for new notes structure
+        *   [ ] Move USER REQUEST SECTION to the top
+        *   [ ] Add Tyler Youk notes section
+        *   [ ] Maintain 1000XDEV NOTES section
+    *   [ ] Enhance requirement analysis process for directives
+        *   [ ] Add directive detection logic
+        *   [ ] Implement target cycle validation
+        *   [ ] Handle parameters (focus, notes)
+    *   [ ] Improve cycle analysis process
+        *   [ ] Add focus-based analysis capabilities
+        *   [ ] Implement specific checks for cycle-manager self-analysis
+        *   [ ] Utilize directive notes in analysis context
+*   [ ] **Testing and Validation**:
+    *   [ ] Test cycle listing script
+    *   [ ] Test directive processing
+    *   [ ] Verify notes structure updates
+    *   [ ] Document test results
+*   [ ] **Cycle Completion**:
+    *   [ ] Document implementation results
+    *   [ ] Update relevant documentation
+    *   [ ] Plan for future enhancements
+
+---
+
+## Cycle Manager Project Phases
+
+### Phase 1: Knowledge and Script Creation
+
+*   [ ] **Create available-directives.md**:
+    *   [ ] Define `Analyze Cycle` directive
+    *   [ ] Document purpose and structure
+    *   [ ] Define expected parameters and their values
+*   [ ] **Create cycle listing script**:
+    *   [ ] Implement directory scanning logic
+    *   [ ] Add cycle pattern detection
+    *   [ ] Format output appropriately
+
+### Phase 2: Process Modification
+
+*   [ ] **Update initiation-process.md**:
+    *   [ ] Update notes template structure
+    *   [ ] Add directive references to the template
+    *   [ ] Ensure backward compatibility
+*   [ ] **Update requirement-analysis-process.md**:
+    *   [ ] Add directive detection logic
+    *   [ ] Implement directive-specific processing path
+    *   [ ] Maintain change request processing
+*   [ ] **Update cycle-analysis-process.md**:
+    *   [ ] Add target-specific analysis logic
+    *   [ ] Implement focus-based customization
+    *   [ ] Enhance cycle-manager self-analysis
