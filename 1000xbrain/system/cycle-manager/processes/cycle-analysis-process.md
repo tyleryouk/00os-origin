@@ -78,10 +78,30 @@
         * Inconsistent naming conventions
         * Date usage patterns
         * Excessive metadata
-    *   **NEW**: If analyzing `cycle-manager`, apply additional specific checks:
-        * Check for adherence to cycle management guidelines within its own processes.
-        * Look for opportunities to improve the monitoring/management capabilities themselves.
-        * Verify self-consistency (e.g., does its `requirement-analysis-process.md` correctly handle its own potential directives?).
+    *   **If analyzing `cycle-manager`, apply additional specific checks**:
+        * Check for adherence to cycle management guidelines within its own processes
+        * Look for opportunities to improve the monitoring/management capabilities themselves
+        * Verify self-consistency (e.g., does its `requirement-analysis-process.md` correctly handle its own potential directives?)
+        * Evaluate directive system implementation and parsing
+        * Examine robustness of cycle-manager's self-management capabilities
+        * Assess cross-cycle consistency enforcement mechanisms
+        * Verify template consistency across all managed cycles
+        * Check operational feedback management for cycle-manager itself
+        * Evaluate how well cycle-manager handles its own enhancement tracking
+        * Test for circular dependencies or recursive issues in self-management
+        * **NEW**: Analyze directive-specific processing in requirement-analysis-process.md:
+            * Verify complete parsing of all directive fields (Directive, Target Cycle, Enhancement Name, Priority)
+            * Check validation of directive values against standard options (Enhancement, Fix, Refactor, Analysis)
+            * Evaluate error handling for invalid or missing directive information
+            * Assess how directive information flows through the cycle process
+        * **NEW**: Check for directive documentation completeness:
+            * Verify documentation exists for all standard directives
+            * Ensure usage examples are provided for each directive type
+            * Check cross-referencing between directive documentation and templates
+        * **NEW**: Evaluate USER REQUEST SECTION template directive support:
+            * Analyze template clarity for directive specification
+            * Check instructions for directive usage
+            * Verify examples of proper directive formatting
     *   Tag identified patterns for enhancement consideration.
     *   **(Error Handling)**: If pattern detection fails, log error and proceed with simple analysis.
 
@@ -149,6 +169,32 @@ The analysis uses these pattern detection rules to identify enhancement opportun
 * **Knowledge Reuse**: Detect opportunities for knowledge sharing
 * **Process Reuse**: Identify opportunities for process reuse
 
+## Cycle-Manager Self-Analysis Patterns
+
+When analyzing the cycle-manager itself, apply these additional pattern checks:
+
+### Self-Management Patterns
+
+* **Directive Handling**: Verify that cycle-manager correctly handles its own directives
+* **Self-Monitoring**: Check for mechanisms to monitor and improve itself
+* **Template Consistency**: Ensure cycle-manager follows its own template guidelines
+* **Documentation Standards**: Verify cycle-manager adheres to its own documentation standards
+
+### Cross-Cycle Governance
+
+* **Governance Mechanisms**: Assess mechanisms for enforcing standards across cycles
+* **Adaptation Capabilities**: Check how cycle-manager adapts to changes in requirements
+* **Consistency Enforcement**: Evaluate how effectively cycle-manager ensures consistency
+
+### Directive System Analysis
+
+* **Directive Parsing**: Verify robustness of directive parsing in requirement-analysis-process.md
+* **Directive Validation**: Check for validation of directive values against standards
+* **Directive Documentation**: Ensure comprehensive documentation of available directives
+* **Template Support**: Confirm USER REQUEST SECTION template properly supports directives
+* **Directive Flow**: Trace how directive information flows through the cycle process
+* **Error Handling**: Assess error handling for invalid or missing directive information
+
 ## Implementation Considerations
 
 1. **Non-Disruptive Analysis**: Analysis should not disrupt or modify cycle operations
@@ -159,4 +205,4 @@ The analysis uses these pattern detection rules to identify enhancement opportun
 
 ## Integration with Enhancement Tracking
 
-The analysis process integrates with the enhancement tracking schema defined in `1000xbrain/system/cycle-manager/knowledge/enhancement-tracking-schema.md` and feeds directly into the enhancement registry at `1000xbrain/system/cycle-manager/operational_feedback/enhancement_registry.md`. 
+The analysis process integrates with the enhancement tracking schema defined in `1000xbrain/system/cycle-manager/knowledge/enhancement-tracking-schema.md` and feeds directly into the enhancement registry at `1000xbrain/system/cycle-manager/operational_feedback/enhancement_registry.md`.

@@ -1,41 +1,44 @@
 # Change Request Details
 
-**Date Requested**: 2024-07-09
 **Requestor**: Tyler Youk
-**Status**: Analysis Completed
+**Status**: Analysis Complete
 **Directive**: Enhancement
-**Target Cycle**: cycle-manager
+**Target Cycle**: system/cycle-manager
+**Enhancement Name**: Enhance 1000xplans
 **Priority**: High
 
 ## Request Description
 
-Implement a new directive system for simplified cycle analysis and management within the cycle-manager itself.
+Enhance the usage of the 1000xplans directory to make it more user-focused and efficient within the system architecture. Tyler notes that the 1000xplans directory is currently underutilized, with only notes.md and commands-index.md being actively used. Files like implementation-progress.md, plan.md, and requirements.md are unused. Tyler suggests making 1000xplans primarily his domain for input, with 1000xdev primarily reading from - rather than writing to - files in this directory (except for updating the USER REQUEST SECTION template).
 
 ## Requirements
 
-1.  Enhance `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md` to include specific checks for analyzing the cycle-manager cycle.
-2.  Modify `1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md` to support parsing the new directive format (e.g., `# Directive: Enhancement`, `# Target Cycle: {cycle-name}`).
-3.  Create a new script `1000xscripts/system/list-cycles.ps1` that dynamically lists available cycles by inspecting the `1000xcommands/` directory structure (system, front-end, back-end domains).
-4.  Update the template within the USER REQUEST SECTION in `1000xplans/system/notes.md` to:
-    *   Be more efficient.
-    *   Include references to available directives (e.g., Enhancement, Fix, Refactor).
-    *   Include references/instructions on how to specify target cycles dynamically, potentially using the output of the `list-cycles.ps1` script or suggesting the cycle folder path convention (e.g., `system/cycle-manager`).
+1. Evaluate the current usage of the 1000xplans directory structure and identify optimization opportunities
+2. Redesign the 1000xplans structure to serve primarily as Tyler's domain for input
+3. Ensure seamless integration with operational_feedback in 1000xbrain which is currently preferred for tracking
+4. Maintain minimal necessary files to reduce redundancy and improve efficiency
+5. Preserve commands-index.md as an essential reference file
+6. Establish clear guidelines for when and how 1000xdev should interact with 1000xplans files
 
 ## Scope
 
--   Modifications to two core process files within `1000xbrain/system/cycle-manager/processes/`.
--   Creation of one new script in `1000xscripts/system/`.
--   Update to one planning file template (`1000xplans/system/notes.md`).
--   Documentation of the new directive system (implied, likely within relevant process/guideline files).
+- Analysis of current 1000xplans usage patterns across all cycles
+- Review of files that can be deprecated/removed vs. retained
+- Defining a clear role separation between 1000xplans and 1000xbrain/operational_feedback
+- Updating relevant process files to reflect the new structure and guidelines
+- Documentation of the new approach for 1000xplans usage
 
 ## Success Criteria
 
--   The `requirement-analysis-process.md` correctly parses the `# Directive:` and `# Target Cycle:` lines.
--   The `cycle-analysis-process.md` includes logic specific to analyzing the `cycle-manager` cycle.
--   The `list-cycles.ps1` script correctly identifies and lists cycle command folders (e.g., `system/autonomous`, `system/cycle-manager`, `system/major-changes`).
--   The USER REQUEST SECTION template in `notes.md` is updated with the new format, directive info, and cycle referencing guidance.
+1. Clearly defined purpose for the 1000xplans directory that optimizes Tyler's workflow
+2. Elimination of redundant or unused files while preserving essential functionality
+3. Documented guidelines for how 1000xdev interacts with 1000xplans
+4. Seamless integration with the operational_feedback tracking in 1000xbrain
+5. Approval from Tyler confirming the new structure better meets his needs
 
 ## Special Considerations
 
--   The `list-cycles.ps1` script needs robust logic to handle different domain folders (system, front-end, back-end) and potential variations in naming.
--   The update to the USER REQUEST SECTION template should be clear and easy for the user (Tyler) to follow. 
+1. The primary goal is to optimize for Tyler's workflow, making it easier for him to provide input and direction
+2. The changes should reduce cognitive load by eliminating unnecessary files/structures
+3. Any changes should maintain compatibility with existing cycles and processes
+4. Tyler specifically mentioned notes.md and commands-index.md should be retained 

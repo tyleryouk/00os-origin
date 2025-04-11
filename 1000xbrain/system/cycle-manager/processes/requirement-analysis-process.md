@@ -15,8 +15,18 @@
     *   Use `read_file` to read `1000xplans/system/notes.md`.
     *   Extract the content from the USER REQUEST SECTION.
     *   Determine if the section contains valid user input (beyond templated placeholders).
-    *   **NEW**: Parse `# Directive:` and `# Target Cycle:` lines if present.
-    *   **(Error Handling)**: If the file doesn't exist or the section is missing, log error and suggest creating it.
+    *   **NEW**: Parse directive information:
+        * Extract `# Directive:` value if present 
+        * Extract `# Target Cycle:` value if present
+        * Extract `# Enhancement Name:` value if present
+        * Extract `# Priority:` value if present
+    *   **NEW**: Validate directive values:
+        * Check if Directive is one of: Enhancement, Fix, Refactor, Analysis
+        * Verify Target Cycle follows format: domain/cycle-name
+        * Check Priority is one of: High, Medium, Low
+    *   **(Error Handling)**: 
+        * If the file doesn't exist or the section is missing, log error and suggest creating it.
+        * If directive values are invalid, note this but continue processing with available values.
 
 3.  **Determine Operation Mode**:
     *   Based on user input check:
@@ -31,11 +41,12 @@
 4.  **Process User-Directed Mode** (if applicable):
     *   If mode is USER_DIRECTED:
         *   Parse the user request into structured components:
-            *   **NEW**: Directive (if parsed)
-            *   **NEW**: Target Cycle (if parsed)
+            *   **NEW**: Directive (validated from step 2)
+            *   **NEW**: Target Cycle (validated from step 2)
+            *   **NEW**: Enhancement Name (from step 2)
+            *   Priority (validated from step 2)
             *   Change request description
             *   Requirements
-            *   Priority
             *   Additional notes
         *   Create a requirements document (`change_request.md`):
             ```
@@ -45,12 +56,12 @@
             ```markdown
             # Change Request Details
 
-            **Date Requested**: [current-date]
             **Requestor**: Tyler Youk
             **Status**: Analysis Pending
-            **Directive**: [Parsed Directive or N/A]
-            **Target Cycle**: [Parsed Target Cycle or N/A]
-            **Priority**: [from user input]
+            **Directive**: [Validated Directive or N/A]
+            **Target Cycle**: [Validated Target Cycle or N/A]
+            **Enhancement Name**: [Parsed Enhancement Name or N/A]
+            **Priority**: [Validated Priority or Medium]
 
             ## Request Description
 
@@ -72,7 +83,8 @@
 
             [Any special notes or considerations]
             ```
-    *   **(Error Handling)**: If user input is ambiguous, document uncertainties and assumptions. If directives are missing, mark as N/A.
+        *   **NEW**: If directive validation identified issues, document them in Special Considerations.
+    *   **(Error Handling)**: If user input is ambiguous, document uncertainties and assumptions. If directives are missing or invalid, use defaults and document the decision.
 
 5.  **Process Autonomous Mode** (if applicable):
     *   If mode is AUTONOMOUS:
@@ -90,10 +102,12 @@
                 ```markdown
                 # Enhancement Implementation Details
 
-                **Date Selected**: [current-date]
-                **Enhancement**: [Enhancement title]
+                **Requestor**: Autonomous System
                 **Status**: Analysis Completed
+                **Enhancement**: [Enhancement title]
                 **Priority**: [from enhancement]
+                **Directive**: Enhancement
+                **Target Cycle**: [determined from context or default to cycle-manager]
 
                 ## Enhancement Description
 
@@ -129,6 +143,11 @@
         *   Determine technical approach
         *   Identify potential challenges
         *   Establish success criteria if not already defined
+        *   **NEW**: For directive-based requirements, include directive-specific analysis:
+            * For Enhancement: Focus on feature integration and user experience
+            * For Fix: Focus on root cause analysis and regression prevention
+            * For Refactor: Focus on maintaining functionality while improving structure
+            * For Analysis: Focus on thorough examination without implementation bias
     *   Update the change_request.md with the analysis:
         ```
         edit_file("1000xbrain/system/cycle-manager/operational_feedback/change_request.md", "Update with analysis", "...")
@@ -141,10 +160,12 @@
         *   Update Current Phase to indicate requirement analysis is complete
         *   Add reference to the change_request.md
         *   Document the determined operation mode
+        *   **NEW**: Include directive and target cycle information if available
 
 8.  **Signal Completion**:
     *   Indicate that requirement analysis is complete.
     *   Summarize the operation mode and key requirements.
+    *   **NEW**: Include directive and target cycle in the summary if available.
     *   Note that the next step is planning using `run command:system/cycle-manager/3`.
 
 ## Operation Mode Determination
@@ -163,6 +184,23 @@ The determination between USER_DIRECTED and AUTONOMOUS modes is a critical funct
 * No specific change request is provided
 * System will select enhancement from potential_enhancements.md
 
+## Directive Validation Rules
+
+* **Directive Values**: Must be one of:
+  * Enhancement - Request for new features or improvements
+  * Fix - Request to correct problems or issues
+  * Refactor - Request to restructure without changing functionality 
+  * Analysis - Request for assessment without implementation
+
+* **Target Cycle Format**: Must follow pattern domain/cycle-name, where:
+  * domain is one of: system, frontend, backend
+  * cycle-name is a valid cycle name within that domain
+  
+* **Priority Values**: Must be one of:
+  * High - Urgent or critical changes
+  * Medium - Important but not immediate
+  * Low - Desirable but can be deferred
+
 ## Template Structures
 
 ### Change Request Template (USER_DIRECTED)
@@ -170,11 +208,11 @@ The determination between USER_DIRECTED and AUTONOMOUS modes is a critical funct
 ```markdown
 # Change Request Details
 
-**Date Requested**: [current-date]
 **Requestor**: Tyler Youk
 **Status**: Analysis Pending
-**Directive**: [Enhancement/Fix/Refactor/N/A]
-**Target Cycle**: [system/cycle-name | frontend/cycle-name | backend/cycle-name | N/A]
+**Directive**: [Enhancement/Fix/Refactor/Analysis]
+**Target Cycle**: [system/cycle-name | frontend/cycle-name | backend/cycle-name]
+**Enhancement Name**: [Brief descriptive name]
 **Priority**: [High/Medium/Low]
 
 ## Request Description
@@ -203,10 +241,12 @@ The determination between USER_DIRECTED and AUTONOMOUS modes is a critical funct
 ```markdown
 # Enhancement Implementation Details
 
-**Date Selected**: [current-date]
-**Enhancement**: [Enhancement title]
+**Requestor**: Autonomous System
 **Status**: Analysis Completed
+**Enhancement**: [Enhancement title]
 **Priority**: [High/Medium/Low]
+**Directive**: Enhancement
+**Target Cycle**: [system/cycle-name | N/A]
 
 ## Enhancement Description
 
@@ -246,4 +286,15 @@ The determination between USER_DIRECTED and AUTONOMOUS modes is a critical funct
 
 4. **Success Criteria Definition**:
    * Always define clear, measurable success criteria
-   * These will be crucial for verification 
+   * These will be crucial for verification
+   
+5. **Directive Validation**:
+   * Validate directive values but allow processing to continue with defaults if invalid
+   * Document validation issues in the special considerations section
+   * For missing directives in user-directed mode, default to "Enhancement"
+
+6. **Optimized 1000xplans Usage**:
+   * Follow the guidelines in `1000xbrain/system/cycle-manager/knowledge/1000xplans-usage.md`
+   * Remember that 1000xplans is primarily Tyler's domain for input
+   * Only read from notes.md; write all analysis to the operational_feedback directory
+   * Ensure all implementation tracking occurs in operational_feedback files 
