@@ -46,7 +46,7 @@ All cycle-manager commands follow a standardized structure:
 ### 5. Verification
 
 **Command File**: `1000xcommands/system/cycle-manager/5.md`
-**Process Reference**: `1000xbrain/system/cycle-manager/processes/cycle-verification-process.md`
+**Process Reference**: `1000xbrain/system/cycle-manager/processes/verification-process.md`
 **Function**: Verifies that implementation meets requirements
 **Output File**: `1000xbrain/system/cycle-manager/operational_feedback/verification_report.md`
 **Next Step**: `run command:system/cycle-manager/6` or `run command:system/cycle-manager/7`
@@ -65,6 +65,14 @@ All cycle-manager commands follow a standardized structure:
 **Function**: Finalizes the cycle and documents results
 **Output File**: `1000xbrain/system/cycle-manager/operational_feedback/completion_summary.md`
 **Next Step**: `run command:system/cycle-manager/1` (for next cycle)
+
+### Enhancement Cycle Command
+
+**Command File**: `1000xcommands/system/enhancement-cycle/1.md`
+**Process Reference**: `1000xbrain/system/enhancement-cycle/processes/enhancement-cycle-process.md`
+**Function**: Automatically selects and implements the highest priority enhancement
+**Output Files**: Various operational feedback files in enhancement-cycle directory
+**Next Step**: Run the same command again for next enhancement
 
 ## File Path Standards
 
@@ -86,7 +94,7 @@ Operational feedback files are stored in `1000xbrain/system/cycle-manager/operat
 * `implementation_log.md` - Log of implementation actions
 * `verification_report.md` - Results of the verification process
 * `completion_summary.md` - Summary of cycle completion
-* `enhancement_registry.md` - Registry of enhancement opportunities
+* `unified_enhancements.md` - Repository of enhancement opportunities
 
 ## Standardization Notes
 
@@ -102,3 +110,8 @@ Operational feedback files are stored in `1000xbrain/system/cycle-manager/operat
    * Use the full path relative to the repository root
    * Always wrap in backticks
    * Use consistent terminology (report, not results) 
+
+4. **Enhancement Management**: 
+   * Enhancement records are maintained in `unified_enhancements.md`
+   * Enhancement management is handled through `enhancement-management-process.md`
+   * Specialized enhancement implementation is available through `enhancement-cycle` command 

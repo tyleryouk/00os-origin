@@ -38,13 +38,13 @@
 
 3.  **Process Autonomous Operation** (if applicable):
     *   If operation_mode is AUTONOMOUS:
-        *   Check for potential enhancements:
+        *   Check for available enhancements:
             ```
-            read_file("1000xbrain/<domain>/<cycle-name>/operational_feedback/potential_enhancements.md", should_read_entire_file=true)
+            read_file("1000xbrain/<domain>/<cycle-name>/operational_feedback/unified_enhancements.md", should_read_entire_file=true)
             ```
         *   If enhancements exist:
-            *   Select the highest priority enhancement based on criteria
-            *   Update its status to "Selected"
+            *   Select the highest priority enhancement using criteria from enhancement-management-process.md
+            *   Update its status to "implementing"
             *   Document it as the current requirement:
                 ```
                 edit_file("1000xbrain/<domain>/<cycle-name>/operational_feedback/change_request.md", "Document selected enhancement", "...")
@@ -108,10 +108,12 @@
         edit_file("1000xbrain/<domain>/<cycle-name>/operational_feedback/current_cycle.md", "Mark cycle as complete", "...")
         ```
     *   If user-directed, summarize changes made to fulfill the request
-    *   If autonomous, update the enhancement status to "Completed"
-    *   Document potential future enhancements for subsequent autonomous operations:
+    *   If autonomous:
+        *   If enhancement was successfully implemented, remove it from unified_enhancements.md
+        *   If implementation was partial, update status to "in-progress"
+    *   Document any new enhancement opportunities identified during the cycle:
         ```
-        edit_file("1000xbrain/<domain>/<cycle-name>/operational_feedback/potential_enhancements.md", "Update enhancements", "...")
+        edit_file("1000xbrain/<domain>/<cycle-name>/operational_feedback/unified_enhancements.md", "Update enhancements", "...")
         ```
     *   **(Error Handling)**: Ensure consistent completion state even if previous steps had issues.
 
@@ -127,7 +129,6 @@
 ```markdown
 # Change Request Details
 
-**Date Requested**: [current-date]
 **Requestor**: Tyler Youk
 **Status**: Analysis Completed
 
@@ -157,13 +158,14 @@
 ```markdown
 # Enhancement Implementation Details
 
-**Date Selected**: [current-date]
 **Enhancement**: [Enhancement title]
 **Status**: Analysis Completed
+**Priority**: [Priority level]
+**ID**: [Enhancement ID]
 
 ## Enhancement Description
 
-[Description from potential_enhancements.md]
+[Description from unified_enhancements.md]
 
 ## Implementation Requirements
 
@@ -182,26 +184,13 @@
 [Any special notes or considerations]
 ```
 
-### potential_enhancements.md Template:
+## Integration with Enhancement Management
 
-```markdown
-# Potential Enhancements
+This unified execution process integrates with the enhancement management process:
 
-## [Enhancement Title 1]
-
-* **Priority**: [High/Medium/Low]
-* **Complexity**: [High/Medium/Low]
-* **Dependencies**: [List of dependencies, if any]
-* **Description**: [Detailed description]
-* **Implementation Notes**: [Key implementation details]
-* **Success Criteria**: [Verification criteria]
-* **Status**: [Pending/Selected/Completed/Deferred]
-* **Date Added**: [YYYY-MM-DD]
-
-## [Enhancement Title 2]
-
-* [Details as above]
-```
+1. **Enhancement Selection**: Uses the selection criteria from enhancement-management-process.md to choose enhancements
+2. **Status Updates**: Follows the enhancement lifecycle defined in enhancement-management-process.md
+3. **Completion Handling**: Updates enhancement status or removes completed enhancements according to guidelines
 
 ## Integration with Command Sequence
 

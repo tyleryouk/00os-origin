@@ -8,11 +8,11 @@ This document defines standardized patterns used to identify enhancement opportu
 
 Enhancement patterns are organized into the following categories:
 
-1. **Structural Patterns**: Related to file organization, directory structure, and architecture
-2. **Process Patterns**: Related to workflow processes and sequences
-3. **Documentation Patterns**: Related to documentation quality and efficiency
-4. **Performance Patterns**: Related to operational efficiency and resource usage
-5. **Integration Patterns**: Related to cross-cycle and cross-domain integration
+1. **Structural Patterns (SP-xxx)**: Related to file organization, directory structure, and architecture
+2. **Process Patterns (PP-xxx)**: Related to workflow processes and sequences
+3. **Documentation Patterns (DP-xxx)**: Related to documentation quality and efficiency
+4. **Performance Patterns (PEP-xxx)**: Related to operational efficiency and resource usage
+5. **Integration Patterns (IP-xxx)**: Related to cross-cycle and cross-domain integration
 
 ## Structural Patterns
 
@@ -248,22 +248,32 @@ Enhancement patterns are organized into the following categories:
 **Pattern ID**: IP-003  
 **Description**: Similar processes are duplicated across cycles rather than shared  
 **Detection Signs**:
-- Nearly identical process files in different cycles
-- Duplicate implementation of common operations
-- Limited reuse of process components
-- Inconsistent versions of similar processes
+- Similar process implementations in multiple cycles
+- Lack of shared process components
+- Redundant implementation of common functions
+- Inconsistent implementations of similar processes
 
 **Potential Enhancement**:
 - Create shared process components
-- Implement process inheritance mechanisms
-- Centralize common operations
-- Ensure consistent process implementations
+- Standardize common process implementations
+- Promote process reuse
+- Ensure consistency across similar processes
 
-## Pattern Application
+## Usage with Enhancement Management
 
-These patterns are used by:
+Pattern detection results feed directly into the enhancement management process:
 
-1. **Cycle Analysis Process**: `1000xbrain/system/cycle-manager/processes/cycle-analysis-process.md`
-2. **Cycle Monitoring Process**: `1000xbrain/system/cycle-manager/processes/cycle-monitoring-process.md`
+1. **Automatic Enhancement Creation**: When patterns are detected, they can be automatically transformed into enhancement records in the unified enhancement repository.
 
-Pattern detection results feed into the enhancement registry at `1000xbrain/system/cycle-manager/operational_feedback/enhancement_registry.md` using the schema defined in `1000xbrain/system/cycle-manager/knowledge/enhancement-tracking-schema.md`. 
+2. **Impact Assessment**: Pattern detection includes severity assessment that informs the impact ratings in enhancement records.
+
+3. **Implementation Guidance**: Each pattern includes potential enhancement suggestions that can be used to create implementation plans.
+
+4. **Categorization**: Pattern categories map directly to enhancement tags for consistent categorization.
+
+To use these patterns with the enhancement management process:
+
+1. **Pattern Detection**: Apply these patterns during cycle analysis and monitoring
+2. **Record Creation**: Create enhancement records in unified_enhancements.md using the standard schema
+3. **Prioritization**: Use impact assessment from pattern detection to inform priority
+4. **Implementation**: Use potential enhancement suggestions as a starting point for implementation 

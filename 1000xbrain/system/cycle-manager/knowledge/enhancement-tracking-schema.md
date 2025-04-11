@@ -8,101 +8,88 @@ This document defines the standardized schema for tracking enhancement opportuni
 
 ### Enhancement Record Structure
 
-Each enhancement opportunity is tracked using the following standardized schema:
+Each enhancement is tracked using the following standardized schema:
 
 ```markdown
-## [Enhancement Title]
+### [Enhancement Title]
 
-**ID**: [auto-generated unique identifier]
-**Cycle Type**: [autonomous/cycle-manager/major-changes/all]
-**Category**: [structure/process/documentation/performance/integration]
+**ID**: ENH-[DOMAIN]-[NUMBER]
+**Status**: [identified/implementing/in-progress]
 **Priority**: [high/medium/low]
-**Complexity**: [high/medium/low]
-**Status**: [identified/planned/implemented/verified/rejected]
-**Source**: [user-defined/auto-detected/monitoring]
+**Tags**: [process/documentation/integration/structural/performance]
+**Cycle Type**: [all/cycle-manager/autonomous/major-changes]
+**Source**: [user/auto-detected/monitoring]
 
-### Description
+#### Description
+[Concise description of the enhancement opportunity]
 
-[Detailed description of the enhancement opportunity]
+#### Impact
+* Efficiency: [high/medium/low] - [brief explanation]
+* Maintainability: [high/medium/low] - [brief explanation]
+* User Experience: [high/medium/low] - [brief explanation]
 
-### Impact Assessment
+#### Implementation
+* [Key implementation task or consideration]
+* [Additional tasks as needed]
 
-* **Efficiency Impact**: [high/medium/low] - [brief explanation]
-* **Maintainability Impact**: [high/medium/low] - [brief explanation]
-* **User Experience Impact**: [high/medium/low] - [brief explanation]
+#### Success Criteria
+* [Specific, measurable criteria for completion]
+* [Additional criteria as needed]
 
-### Implementation Notes
-
-[Key considerations for implementation]
-
-### Success Criteria
-
-* [Criterion 1]
-* [Criterion 2]
-
-### Related Enhancements
-
-* [ID of related enhancement 1]
-* [ID of related enhancement 2]
-
-### Activity Log
-
-* **[timestamp]**: [status change or action taken]
+#### Related
+* [IDs of related enhancements if applicable]
 ```
 
-## ID Generation
+## Repository Structure
 
-Enhancement IDs follow the format `ENH-[cycle-type]-[sequential-number]`. For example:
-* `ENH-AUTO-001` (first enhancement for autonomous cycles)
-* `ENH-CM-001` (first enhancement for cycle-manager)
-* `ENH-MC-001` (first enhancement for major-changes)
-* `ENH-ALL-001` (first enhancement affecting all cycle types)
+The unified enhancement repository contains only active enhancement opportunities that need attention or implementation. Once an enhancement is fully implemented, it should be removed from the repository since Git version control provides historical tracking.
 
-## Categories
+## ID Convention
 
-Enhancements are categorized into the following types:
+Enhancement IDs follow the format `ENH-[DOMAIN]-[NUMBER]`:
+* `ENH-ALL-001` (enhancement affecting all cycles)
+* `ENH-CM-001` (enhancement for cycle-manager)
+* `ENH-AUTO-001` (enhancement for autonomous cycles)
+* `ENH-MC-001` (enhancement for major-changes)
 
-* **Structure**: Changes to file organization, directory structure, or component relationships
-* **Process**: Improvements to operational processes, workflows, or execution steps
-* **Documentation**: Enhancements to documentation, templates, or knowledge representation
-* **Performance**: Optimizations to improve efficiency, reduce overhead, or streamline operations
-* **Integration**: Improvements to how cycle types interact or integrate with other systems
+## Tags
 
-## Priority Calculation
+Enhancements are tagged with one or more of the following types:
 
-Priority is calculated based on a combination of factors:
+* **process**: Improvements to operational processes, workflows, or execution steps
+* **documentation**: Enhancements to documentation, templates, or knowledge representation
+* **integration**: Improvements to how cycle types interact or integrate with other systems
+* **structural**: Changes to file organization, directory structure, or component relationships
+* **performance**: Optimizations to improve efficiency, reduce overhead, or streamline operations
 
-1. **Impact Scores**: Combined score from efficiency, maintainability, and user experience impacts
-2. **Urgency**: How soon the enhancement should be implemented
-3. **Dependencies**: Whether other enhancements depend on this one
-4. **Complexity**: Inverse relationship (lower complexity can increase priority)
+## Status Types
 
-## Status Flow
+Enhancements use the following status indicators:
 
-Enhancements follow this status progression:
-
-1. **Identified**: Enhancement opportunity has been detected
-2. **Planned**: Implementation approach has been defined
-3. **Implemented**: Changes have been made to implement the enhancement
-4. **Verified**: Enhancement has been verified as successful
-5. **Rejected**: Enhancement was determined to be unnecessary or not beneficial
-
-Alternatively, an enhancement may be marked as **Deferred** if it's valid but not currently prioritized.
+* **identified**: Enhancement opportunity has been detected but not yet worked on
+* **implementing**: Currently being implemented in an active cycle
+* **in-progress**: Implementation has started but spans multiple cycles
 
 ## Source Types
 
-* **User-defined**: Explicitly requested by Tyler Youk
-* **Auto-detected**: Automatically identified by analysis processes
-* **Monitoring**: Detected through ongoing cycle monitoring
+* **user**: Explicitly requested by Tyler Youk
+* **auto-detected**: Automatically identified by analysis processes
+* **monitoring**: Detected through ongoing cycle monitoring
 
-## Usage Guidelines
+## Repository Maintenance
 
-1. **Consistency**: Always use the complete schema for all enhancements
-2. **Objectivity**: Provide objective assessments of impact and priority
-3. **Details**: Include sufficient detail for implementation without additional context
-4. **Tracking**: Maintain the activity log for all status changes and actions
-5. **Cross-referencing**: Always note related enhancements to maintain visibility of dependencies
+The unified enhancement repository is maintained at `1000xbrain/system/cycle-manager/operational_feedback/unified_enhancements.md` and should be updated:
 
-## Implementation in Registry
+1. When new enhancement opportunities are identified
+2. When enhancement status changes
+3. When implementation begins in a cycle
+4. When an enhancement is completed (remove from repository)
 
-The schema defined here is used in the centralized enhancement registry located at `1000xbrain/system/cycle-manager/operational_feedback/enhancement_registry.md`. 
+## Simplified Usage Guidelines
+
+1. **Less is More**: Keep the repository focused only on active enhancements that need implementation
+2. **Remove Completed Work**: Once an enhancement is implemented, remove it from the repository 
+3. **Focus on Next Actions**: Emphasize what needs to be done next rather than historical tracking
+4. **Relevance**: Only track enhancements that are relevant for upcoming cycles
+5. **Simplicity**: Use tags instead of complex categorization, and simple high/medium/low priorities
+6. **Impact Assessment**: Focus on efficiency, maintainability, and user experience impact 
