@@ -3,61 +3,62 @@
 **Requestor**: Tyler Youk
 **Status**: Analysis Completed
 **Directive**: Enhancement
-**Target Cycle**: system/autonomous
-**Enhancement Name**: Enhance sequential 1000xcommand cycle of system/autonomous
-**Priority**: High
+**Target Cycle**: All Cycles | System
+**Enhancement Name**: USER REQUEST new file
+**Priority**: Medium
 **Operation Mode**: USER_DIRECTED
 
 ## Request Description
 
-Enhance the 1000xcommand cycle of system/autonomous with a focus on making extensive tool calls and optimizing the cycle structure. This cycle is identified as very important as it will be used for autonomous system-wide enhancements across all 1000xsystems.
+Create a new dedicated file within 1000xplans/system/ to store the USER REQUEST section, separating it from the notes.md file. This separation is needed because when the USER REQUEST section is in notes.md, Tyler's personal notes get stored in the context, and sometimes those notes are accidentally implemented when they were just meant as personal notes. This enhancement will create a clearer separation between files that should be read and updated by 1000xdev and files that are exclusively for Tyler's use.
 
 ## Requirements
 
-1. **Performance Optimization**:
-   * Make extensive tool calls throughout the cycle to gather complete information
-   * Optimize cycle structure for efficient operation
-   * Remove unused files to reduce clutter
+1. **File Separation**:
+   * Create a new dedicated file in 1000xplans/system/ specifically for the USER REQUEST section
+   * Keep notes.md and commands-index.md as files exclusively for Tyler's use
+   * Ensure the new file follows a clear naming convention that indicates its purpose
 
-2. **Cycle Structure Enhancement**:
-   * Analyze and improve the sequential 7-step command structure
-   * Ensure consistent implementation across all cycle steps
-   * Optimize the command flow for autonomous operation
+2. **Guidelines Update**:
+   * Update all relevant guidelines to specify reading and updating the new USER REQUEST file
+   * Make it clear in documentation that all cycles should use this new file instead of notes.md
+   * Ensure process files reference the correct file for USER REQUEST input
 
-3. **Codebase Cleanup**:
-   * Identify and remove any unused files
-   * Standardize file structure for better maintainability
-   * Implement 250-line maximum file size standard
+3. **Cycle Integration**:
+   * Modify all system cycles to utilize the new USER REQUEST file in steps 1 and 2
+   * Update process files to read from the new location
+   * Ensure the template structure is preserved in the new file
+
+4. **"All Cycles | System" Support**:
+   * Ensure "All Cycles | System" is recognized as a valid target cycle option
+   * Implement logic to handle this option within the cycle-manager processes
+   * Create guidelines for how this option should be processed
 
 ## Scope
 
-The enhancement will focus on the system/autonomous cycle, specifically:
+The enhancement will focus on:
 
-1. All command files in 1000xcommands/system/autonomous/
-2. All process files referenced by these commands
-3. Any supporting knowledge files used by the cycle
-4. Operational feedback structure for the cycle
-
-This enhancement does not involve modifying other cycles directly, but establishes patterns that may be applied to other cycles in the future.
+1. File structure within 1000xplans/system/
+2. Process files that reference USER REQUEST section content
+3. Guidelines and documentation related to USER REQUEST handling
+4. Cycle initialization and requirement analysis processes
+5. All system cycles that need to be updated to use the new file
 
 ## Success Criteria
 
-1. All system/autonomous command files follow consistent structure and patterns
-2. Command files make appropriate tool calls to gather complete information
-3. Process files are optimized with clear, well-structured steps
-4. File size limits (250 lines) are respected across all created/modified files
-5. Unused files are removed or marked for deprecation
-6. The cycle functions correctly when executed as a complete sequence
-7. Operational feedback is properly managed throughout the cycle
+1. A new dedicated file for USER REQUEST is created in 1000xplans/system/
+2. All system cycles correctly read from and update the new file instead of notes.md
+3. Clear documentation exists explaining the purpose and usage of each file
+4. All process files are updated to reference the correct file
+5. "All Cycles | System" is properly supported as a target cycle option
+6. Tyler can maintain personal notes in notes.md without them being treated as implementation instructions
 
 ## Special Considerations
 
-1. This cycle is identified as particularly important as it serves as the foundation for autonomous system-wide enhancements.
+1. The system should maintain backwards compatibility during the transition period.
 
-2. System/autonomous cycle should follow the same 7-step sequential structure as other cycles, including cycle-manager itself.
+2. The standardized structure of the USER REQUEST section should be preserved in the new file.
 
-3. The enhancement should maintain project agnosticism, ensuring the cycle can be used across different projects without modification.
+3. The implementation should be consistent with the "less is more" principle, keeping the number of cycles to a minimum (less than 10 throughout front-end, back-end, and system).
 
-4. The cycle should implement the optimization guidance regarding file size limits (max 250 lines) and elimination of date usage.
-
-5. Consider standardizing the operational_feedback approach with the provision that old cycle documentation can be overwritten, as mentioned in Tyler's notes about operational_feedback folder enhancement. 
+4. Consistent file naming and clear documentation is essential to avoid confusion between which files are for Tyler's use only and which are for 1000xdev to read and update. 

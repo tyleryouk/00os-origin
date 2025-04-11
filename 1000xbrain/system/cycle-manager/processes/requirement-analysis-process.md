@@ -12,7 +12,7 @@
     *   **(Error Handling)**: If initialization is not complete, log error and suggest running initialization.
 
 2.  **Check for User Input**:
-    *   Use `read_file` to read `1000xplans/system/notes.md`.
+    *   Use `read_file` to read `1000xplans/system/user_request.md`.
     *   Extract the content from the USER REQUEST SECTION.
     *   Determine if the section contains valid user input (beyond templated placeholders).
     *   **NEW**: Parse directive information:
@@ -174,7 +174,7 @@ The determination between USER_DIRECTED and AUTONOMOUS modes is a critical funct
 
 ### USER_DIRECTED Mode Criteria
 
-* USER REQUEST SECTION in notes.md contains non-template content
+* USER REQUEST SECTION in user_request.md contains non-template content
 * Change request section contains specific instructions
 * Requirements section contains concrete requirements
 
@@ -296,5 +296,5 @@ The determination between USER_DIRECTED and AUTONOMOUS modes is a critical funct
 6. **Optimized 1000xplans Usage**:
    * Follow the guidelines in `1000xbrain/system/cycle-manager/knowledge/1000xplans-usage.md`
    * Remember that 1000xplans is primarily Tyler's domain for input
-   * Only read from notes.md; write all analysis to the operational_feedback directory
+   * Only read from user_request.md; write all analysis to the operational_feedback directory
    * Ensure all implementation tracking occurs in operational_feedback files 
