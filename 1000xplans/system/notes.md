@@ -1,8 +1,41 @@
 # System Enhancement Notes: Major Changes Workflow
 
 ## Tyler Youk
+
+*Updating other 1000xcommands that aren't in cycle format (legacy)*
+All of the other subfolders in 1000xcommands\system\ and 1000xbrain\system\ are now depreciated. Additionally, I have not actually used any of the other 1000xcommands because they were all recently created. Note that this system is very new (which you can tell if you read the Git version control commits). Originally, all we had before was 1000xbrain. 
+
+I was planning on deleting the other folders in 1000xbrain\system\ and 1000xcommands\system\ entirely. This is so that in the future, if we lose connection, you are not confused by these non-cycle folders and outdated knowledge and processes.
+
+We are keeping the cycles:
+autonomous
+cycle-manager
+major-changes
+
+Which means, we are keeping the subfolders:
+1000xbrain\system\autonomous
+1000xbrain\system\cycle-manager
+1000xbrain\system\guidelines
+1000xbrain\system\major-changes
+1000xcommands\system\autonomous
+1000xcommands\system\cycle-manager
+1000xcommands\system\major-changes
+
+
+Would you rather:
+1. Update each folder individually. Context on outdated subfolders:
+`brain` for the main grandaddy master system 1000xbrain
+`plans` for the subsystem 1000xplans
+`commands` for the subsystem 1000xcommands
+`rules` for the subsystem 1000xrules
+`scripts` for the subsystem 1000xscripts
+
+2. Delete then only create cycles that we see necessary. I just don't see how a 1000xbrian enhancement folder is necessary, when all changes to 1000xbrain are really system-wide changes. Maybe if we say brain-focus? But I feel like adding those now will just add complexity. We can just add them when the time is right. For now, all we really need are autonomous, major-changes, and cycle-manager.
+
+*operational_feedback folder enhancement*
 At some point, you are going to need to delete the documentation of old cycles in 1000xbrain\system\autonomous\operational_feedback and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep documentation of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback .
 
+*pushing to git autonomously*
 I am also confident in your abilities now and would like to give you access to push to github. Create a script which will push the root directory to github. Note that this is a mono-repository, and the front-end and back-end applications have their own git configurations and do not get pushed when we push the root directory (front-end and back-end will only get pushed if we manually configure the root directory git to include these two inner repositories). I do not want to change the current settings to push the front-end and back-end directories.
 
 The terminal command sequence for pushing to git is as follows:
