@@ -9,20 +9,34 @@
 
 ## Steps:
 
-1. **Define Target Directories**:
+1. **Process USER REQUEST SECTION**:
+   * Check for USER REQUEST SECTION content in the repository
+   * Parse the section to extract:
+     * Request Summary
+     * Constraints
+     * Success Criteria
+     * Priority
+     * Mode (USER_DIRECTED/AUTONOMOUS)
+   * Use this information to guide the research focus and approach
+   * If operating in USER_DIRECTED mode, prioritize areas mentioned in the Request Summary
+   * **(Error Handling)**: If USER REQUEST SECTION is not found, assume AUTONOMOUS mode and proceed with general system analysis
+
+2. **Define Target Directories**:
    * List the primary system component directories:
      * `1000xrules/`
      * `1000xscripts/`
      * `1000xbrain/` (excluding `/system/autonomous/operational_feedback/`)
      * `1000xcommands/` (excluding `/system/autonomous/`)
      * `1000xplans/`
+   * If USER_DIRECTED mode is active, filter or prioritize directories based on Request Summary
 
-2. **Initial Directory Scan**:
+3. **Initial Directory Scan**:
    * For each target directory, use `list_dir` recursively to build a complete file inventory
    * Record file path, name, extension, size, and location metadata for each file
    * Group files by component type (rule, script, brain, command, plan)
+   * Apply any constraints from USER REQUEST SECTION to filter relevant files
 
-3. **Content Analysis**:
+4. **Content Analysis**:
    * For each file (starting with smaller files and prioritizing .md files):
      * Use `read_file` to extract content
      * **Lexical Analysis**:
@@ -37,8 +51,11 @@
        * Compare content to expected patterns for the file type
        * Check for consistency with related files
        * Verify appropriate level of detail for the component type
+     * **USER REQUEST Alignment**:
+       * If in USER_DIRECTED mode, assess how each file relates to the Request Summary
+       * Tag files that directly impact Success Criteria
 
-4. **Pattern Recognition**:
+5. **Pattern Recognition**:
    * Apply pattern detection across files following pattern-recognition-principles.md:
      * **Similarity Detection**:
        * Compare files with similar names/purposes for duplicated content
@@ -51,8 +68,10 @@
      * **File Relationship Analysis**:
        * Identify incomplete file groups (e.g., missing knowledge file for process)
        * Check for orphaned files (no references from other components)
+     * **USER REQUEST Pattern Analysis**:
+       * If in USER_DIRECTED mode, identify patterns relevant to the requested enhancement
 
-5. **Complexity Assessment**:
+6. **Complexity Assessment**:
    * For each file, calculate complexity metrics following complexity-metrics.md:
      * **Structural Complexity**:
        * Measure nesting depth, branching complexity
@@ -70,18 +89,20 @@
        * Normalize scores within each component type
        * Flag files exceeding complexity thresholds for their type
 
-6. **Prioritization**:
+7. **Prioritization**:
    * Combine findings from all analysis types
    * Apply priority calculation formula:
      * Priority = (Content Issues × 0.3) + (Pattern Issues × 0.3) + (Complexity Score × 0.4)
+   * If in USER_DIRECTED mode, apply additional weighting based on alignment with Request Summary
    * Sort findings by priority score
 
-7. **Structure Findings**:
+8. **Structure Findings**:
    * Organize findings into categories:
      * **Content Quality Issues**: Placeholder content, minimal implementations
      * **Pattern Inconsistencies**: Deviations from standards, redundancies
      * **Complexity Hotspots**: Components exceeding complexity thresholds
      * **Structural Problems**: Missing files, incomplete relationships
+     * **USER REQUEST Alignment**: How findings relate to the requested enhancement (if applicable)
    * For each finding, include:
      * File Path
      * Issue Category
@@ -89,17 +110,22 @@
      * Severity (High/Medium/Low)
      * Priority Score
      * Recommended Action
+     * Relation to USER REQUEST (if in USER_DIRECTED mode)
 
-8. **Generate Research Report**:
+9. **Generate Research Report**:
    * Use `edit_file` to create a structured research findings report at:
      `1000xbrain/system/autonomous/operational_feedback/research_findings.md`
    * Format should include:
+     * Operation Mode (USER_DIRECTED/AUTONOMOUS)
+     * USER REQUEST SECTION Summary (if in USER_DIRECTED mode)
      * Executive Summary
      * Methodology
      * Prioritized Findings (categorized)
      * Statistical Analysis
      * Recommended Focus Areas
+     * Alignment with Success Criteria (if in USER_DIRECTED mode)
 
-9. **Signal Completion**:
-   * Update completion log with summary of research phase
-   * Indicate that research findings are ready for the planning phase 
+10. **Signal Completion**:
+    * Update completion log with summary of research phase
+    * Indicate that research findings are ready for the planning phase
+    * Include operation mode in the completion signal 

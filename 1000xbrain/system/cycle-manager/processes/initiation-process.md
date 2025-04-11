@@ -25,9 +25,9 @@
     *   Update the ID in the current_cycle.md file
     
 3.  **Create USER REQUEST SECTION Template**:
-    *   Use `read_file` to check if `1000xplans/system/notes.md` exists
+    *   Use `read_file` to check if `1000xplans/system/user_request.md` exists
     *   If it exists, extract existing USER REQUEST SECTION if present
-    *   Use `edit_file` to update or create `1000xplans/system/notes.md` with standardized USER REQUEST SECTION:
+    *   Use `edit_file` to update or create `1000xplans/system/user_request.md` with standardized USER REQUEST SECTION:
         ```markdown
         ## USER REQUEST SECTION
 
@@ -103,8 +103,8 @@
 ## Special Considerations
 
 1. **User Request Template Handling**:
-   * If a USER REQUEST SECTION already exists in notes.md, preserve any user input
-   * If notes.md doesn't exist, create it with the template
+   * If a USER REQUEST SECTION already exists in user_request.md, preserve any user input
+   * If user_request.md doesn't exist, create it with the template
    * Always ensure the USER REQUEST SECTION structure is consistent
 
 2. **Cycle Management**:
@@ -121,5 +121,5 @@
 
 5. **Optimized 1000xplans Usage**:
    * Follow the guidelines in `1000xbrain/system/cycle-manager/knowledge/1000xplans-usage.md`
-   * Only write to the USER REQUEST SECTION template in notes.md
+   * Only write to the USER REQUEST SECTION template in user_request.md
    * Remember that 1000xplans is primarily Tyler's domain for input 

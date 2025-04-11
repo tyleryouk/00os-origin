@@ -1,220 +1,192 @@
-# Implementation Plan: Enhance Sequential 1000xcommand Cycle of system/autonomous
+# Implementation Plan: Create Dedicated USER REQUEST File System
 
 **Mode**: USER_DIRECTED
-**Priority**: High
+**Priority**: Medium
 **Status**: Planning Phase
 
 ## Overview
 
-This implementation plan details the approach for enhancing the sequential 1000xcommand cycle of system/autonomous, focusing on optimizing performance through extensive tool calls, improving cycle structure, and cleaning up unused files. The system/autonomous cycle is a critical component as it serves as the foundation for autonomous system-wide enhancements across all 1000xsystems.
+This implementation plan details the approach for creating a dedicated USER REQUEST file in 1000xplans/system/ separate from notes.md, and updating all system cycles to use this new file. This will create a clear separation between files exclusively for Tyler's use and files that 1000xdev should read and update, preventing accidental implementation of personal notes.
 
 ## Goal
 
-Optimize and enhance the system/autonomous cycle to improve its efficiency, consistency, and effectiveness through comprehensive tool usage, standardized structure, and codebase cleanup.
+Create a dedicated file for USER REQUEST content in 1000xplans/system/, update all relevant process files and guidelines to reference this new file, and implement support for "All Cycles | System" as a valid target cycle option.
 
 ## Implementation Phases
 
-### Phase 1: Analysis and Structure Assessment
+### Phase 1: File Creation and Structure
 
-* Analyze current system/autonomous command and process files
-* Evaluate tool call patterns and identify optimization opportunities
-* Map dependencies between files and components
-* Identify unused or redundant files
-* Determine structural inconsistencies across the cycle
+* Create new USER REQUEST file in 1000xplans/system/
+* Define clear documentation about file purpose and ownership
+* Update template structure in the new file
 
-### Phase 2: Command File Enhancement
+### Phase 2: Guidelines and Knowledge Update
 
-* Update command files with consistent structure and format
-* Implement extensive tool call patterns for comprehensive information gathering
-* Optimize dynamic execution references
-* Standardize next step guidance and command chaining
-* Ensure all command files follow the 7-step sequential structure
+* Update all relevant guidelines and knowledge files
+* Create documentation about the new file structure
+* Define clear guidelines for file usage and ownership
 
-### Phase 3: Process File Optimization
+### Phase 3: Process File Updates
 
-* Update process files with clear, structured steps
-* Implement file size limitations (250 lines maximum)
-* Remove date references from templates and documentation
-* Standardize error handling patterns
-* Enhance process flow and guidance
+* Update initialization and requirement analysis processes
+* Modify processes to reference the new file
+* Implement support for "All Cycles | System" target
 
-### Phase 4: Knowledge and Documentation Updates
+### Phase 4: System Cycle Updates
 
-* Update or create knowledge files to support enhanced processes
-* Develop consistent guidelines for operational feedback
-* Implement standardized documentation patterns
-* Create reference documentation for the enhanced cycle
+* Update all system cycles to use the new file
+* Ensure backward compatibility during transition
+* Test cycle functionality with the new structure
 
 ### Phase 5: Testing and Verification
 
-* Test the complete cycle sequence
-* Verify success criteria are met
-* Document verification results
-* Prepare for refinement if necessary
+* Test the new file structure with various scenarios
+* Verify all cycles function correctly with the new file
+* Ensure all success criteria are met
 
 ## Detailed Task Breakdown
 
-### Phase 1: Analysis and Structure Assessment
+### Phase 1: File Creation and Structure
 
-1. **Analyze Command Files**:
-   * Review all 7 command files in 1000xcommands/system/autonomous/
-   * Identify inconsistencies in structure, format, and dynamic execution
-   * Document tool call patterns and opportunities for enhancement
-   * Files affected: All command files in 1000xcommands/system/autonomous/
+1. **Create USER REQUEST File**:
+   * Create file 1000xplans/system/user_request.md with appropriate naming
+   * Implement standard USER REQUEST template
+   * Add clear documentation about file purpose
+   * Files affected: 
+     * 1000xplans/system/user_request.md (new)
 
-2. **Analyze Process Files**:
-   * Review all process files referenced by command files
-   * Identify files exceeding 250-line limit
-   * Document optimization opportunities
-   * Files affected: All process files in 1000xbrain/system/autonomous/processes/
+2. **Update Existing USER REQUEST Content**:
+   * Migrate current USER REQUEST content from notes.md to user_request.md
+   * Remove USER REQUEST section from notes.md
+   * Add header in notes.md indicating it's for Tyler's use only
+   * Files affected:
+     * 1000xplans/system/notes.md
+     * 1000xplans/system/user_request.md
 
-3. **Map Dependencies**:
-   * Create a dependency map between command and process files
-   * Identify knowledge files referenced by processes
-   * Document operational feedback structure and usage
-   * Output: Dependency map documented in implementation log
+3. **Document File Structure**:
+   * Create clear documentation about the purpose of each file
+   * Add headers indicating file ownership and purpose
+   * Files affected:
+     * 1000xplans/system/notes.md
+     * 1000xplans/system/commands-index.md
+     * 1000xplans/system/user_request.md
 
-4. **Identify Unused Files**:
-   * Search for unused or redundant files across the system/autonomous structure
-   * Determine candidates for removal or deprecation
-   * Document findings in implementation log
-   * Files affected: Any unused files in 1000xbrain/system/autonomous/ and subdirectories
+### Phase 2: Guidelines and Knowledge Update
 
-### Phase 2: Command File Enhancement
+1. **Create File Usage Knowledge File**:
+   * Create comprehensive documentation of the new file structure
+   * Define which files are for Tyler's use only vs. 1000xdev use
+   * Specify how USER REQUEST content should be handled
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/knowledge/1000xplans-usage.md (update)
+     * 1000xbrain/system/cycle-manager/knowledge/user-request-handling.md (new)
 
-1. **Standardize Command File Structure**:
-   * Update all command files to follow consistent format:
-     * Clear descriptive title
-     * Dynamic execution reference to appropriate process file
-     * Explicit tool calls for initialization if needed
-     * Clear next step guidance
-   * Files affected: All 7 command files in 1000xcommands/system/autonomous/
+2. **Update Core Guidelines**:
+   * Update core guidelines to reference the new file structure
+   * Ensure all relevant documentation is consistent
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/knowledge/*
+     * 1000xbrain/system/guidelines/*
 
-2. **Implement Enhanced Tool Call Patterns**:
-   * Update command files with explicit initialization tool calls where appropriate
-   * Ensure comprehensive information gathering at each step
-   * Optimize for resource efficiency
-   * Files affected: All command files requiring enhanced tool calls
+3. **Define "All Cycles | System" Guidelines**:
+   * Create documentation on how to handle "All Cycles | System" target
+   * Define standard process for applying changes to all system cycles
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/knowledge/target-cycle-handling.md (new)
 
-3. **Fix Next Step Guidance**:
-   * Standardize next step guidance across all command files
-   * Ensure clear command chaining instructions
-   * Fix inconsistent command references
-   * Files affected: All command files with next step guidance
+### Phase 3: Process File Updates
 
-4. **Optimize Dynamic Execution References**:
-   * Update dynamic execution markers with appropriate process and knowledge references
-   * Ensure consistent format across all files
-   * Files affected: All command files with dynamic execution sections
+1. **Update Initialization Process**:
+   * Modify initiation process to create/update user_request.md instead of notes.md
+   * Ensure template is properly maintained in user_request.md
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/processes/initiation-process.md
 
-### Phase 3: Process File Optimization
+2. **Update Requirement Analysis Process**:
+   * Modify requirement analysis process to read from user_request.md
+   * Update parsing logic to handle "All Cycles | System" target
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/processes/requirement-analysis-process.md
 
-1. **Restructure Large Process Files**:
-   * Identify process files exceeding 250-line limit
-   * Restructure content to stay within limits
-   * Consider splitting files if necessary
-   * Files affected: Any process files exceeding size limit
+3. **Update Other Core Processes**:
+   * Ensure all processes that reference USER REQUEST content use the new file
+   * Implement handling for "All Cycles | System" target in relevant processes
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/processes/*.md
+     * 1000xbrain/system/autonomous/processes/*.md (if referencing USER REQUEST)
 
-2. **Standardize Process Steps**:
-   * Implement consistent step structure across all process files
-   * Ensure clear numbering and descriptions
-   * Add appropriate error handling to each step
-   * Files affected: All process files
+### Phase 4: System Cycle Updates
 
-3. **Remove Date References**:
-   * Remove date references from process files
-   * Update templates to exclude dates
-   * Replace with version control references where needed
-   * Files affected: Any process files with date references
+1. **Identify All System Cycles**:
+   * Create inventory of all existing system cycles
+   * Analyze how each cycle uses USER REQUEST content
+   * Files affected:
+     * Documentation only (analysis)
 
-4. **Enhance Error Handling**:
-   * Implement standardized error handling across all process files
-   * Ensure appropriate recovery mechanisms
-   * Add logging to operational feedback
-   * Files affected: All process files requiring error handling enhancement
+2. **Update System Cycles**:
+   * Modify each system cycle's initialization and requirement analysis
+   * Ensure all cycles read from user_request.md instead of notes.md
+   * Files affected:
+     * 1000xbrain/system/*/processes/initiation-process.md
+     * 1000xbrain/system/*/processes/requirement-analysis-process.md
 
-### Phase 4: Knowledge and Documentation Updates
-
-1. **Update Knowledge Files**:
-   * Review and update knowledge files referenced by processes
-   * Create new knowledge files where needed
-   * Ensure alignment with enhanced processes
-   * Files affected: Knowledge files in 1000xbrain/system/autonomous/knowledge/
-
-2. **Standardize Operational Feedback**:
-   * Implement consistent operational feedback structure
-   * Create template for cycle documentation
-   * Add guidance for overwriting old cycle documentation
-   * Files affected: Operational feedback templates and references
-
-3. **Create Cycle Reference Documentation**:
-   * Update README.md with enhanced cycle information
-   * Document command sequence and dependencies
-   * Provide usage examples and guidance
-   * Files affected: 1000xcommands/system/autonomous/README.md
-
-4. **Create Implementation Guidelines**:
-   * Document best practices for future cycle enhancements
-   * Create reference for tool call patterns
-   * Document file size and structure standards
-   * Files affected: New or updated guideline files
+3. **Implement "All Cycles" Logic**:
+   * Create handling for "All Cycles | System" target option
+   * Implement logic to apply changes across cycles when this target is specified
+   * Files affected:
+     * 1000xbrain/system/cycle-manager/processes/planning-process.md
+     * 1000xbrain/system/cycle-manager/processes/implementation-process.md
 
 ### Phase 5: Testing and Verification
 
-1. **Test Individual Commands**:
-   * Test each command file independently
-   * Verify correct dynamic execution
-   * Document results
-   * Files affected: All command files
+1. **Test File Structure**:
+   * Verify new file structure works correctly
+   * Test template creation and preservation
+   * Files affected:
+     * Testing only (no file modifications)
 
-2. **Test Complete Cycle**:
-   * Test the entire 7-step sequence
-   * Verify correct state management between steps
-   * Document results
-   * Files affected: All cycle components
+2. **Test Cycle Functionality**:
+   * Verify all cycles properly use user_request.md
+   * Test with various USER REQUEST content
+   * Files affected:
+     * Testing only (no file modifications)
 
-3. **Verify Success Criteria**:
-   * Check all success criteria defined in change request
-   * Document verification results
-   * Identify any outstanding issues
-   * Files affected: Verification documentation
-
-4. **Prepare for Refinement**:
-   * Document any issues requiring refinement
-   * Create refinement plan if necessary
-   * Files affected: Refinement documentation
+3. **Verify "All Cycles" Support**:
+   * Test "All Cycles | System" target option
+   * Verify changes are properly applied across cycles
+   * Files affected:
+     * Testing only (no file modifications)
 
 ## Dependencies
 
-* Command file updates depend on analysis completion
-* Process file optimization depends on command file structure decisions
-* Knowledge file updates depend on process file changes
-* Testing depends on completion of all file updates
-* Verification depends on successful testing
+* Phase 1 (File Creation) must be completed before other phases
+* Process updates (Phase 3) should be implemented before system cycle updates (Phase 4)
+* Knowledge and guidelines (Phase 2) should be updated before process modifications
+* Testing (Phase 5) must occur after all implementation phases
 
 ## Success Criteria
 
-1. All system/autonomous command files follow consistent structure and patterns
-2. Command files make appropriate tool calls to gather complete information
-3. Process files are optimized with clear, well-structured steps
-4. File size limits (250 lines) are respected across all created/modified files
-5. Unused files are removed or marked for deprecation
-6. The cycle functions correctly when executed as a complete sequence
-7. Operational feedback is properly managed throughout the cycle
+1. A dedicated user_request.md file exists in 1000xplans/system/
+2. All system cycles read from and update user_request.md instead of notes.md
+3. Clear documentation exists explaining the purpose and usage of each file
+4. Process files are updated to reference the correct file location
+5. "All Cycles | System" is properly supported as a target cycle option
+6. Tyler can maintain personal notes in notes.md without them being treated as implementation instructions
+7. All changes maintain backward compatibility during the transition period
 
 ## Risk Assessment
 
-* **Risk**: Command chaining may not work as expected after updates
-  * **Mitigation**: Test each transition carefully and document exact commands
+* **Risk**: Cycles may still reference notes.md during transition
+  * **Mitigation**: Implement robust error handling that checks both locations during transition
 
-* **Risk**: Process file restructuring may break functionality
-  * **Mitigation**: Implement changes incrementally with testing after each change
+* **Risk**: Process updates may introduce inconsistencies
+  * **Mitigation**: Apply systematic approach to update all processes, followed by thorough testing
 
-* **Risk**: File size limit may be challenging for complex processes
-  * **Mitigation**: Consider breaking large processes into logical sub-processes with clear references
+* **Risk**: "All Cycles | System" implementation complexity
+  * **Mitigation**: Create clear, well-documented approach for handling this target option
 
-* **Risk**: Removing unused files may affect undocumented dependencies
-  * **Mitigation**: Deprecate files first with clear warnings before removal
+* **Risk**: User confusion during transition
+  * **Mitigation**: Provide clear documentation about the changes and transition period
 
 ## Next Steps
 
