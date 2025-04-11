@@ -1,6 +1,6 @@
 # Process: Enhancement Management
 
-# Defines the consolidated process for managing enhancements through their complete lifecycle.
+# Defines the consolidated process for managing enhancements through their complete lifecycle, including identification, prioritization, and suggestion.
 
 ## Goal: Provide a streamlined approach for identifying, prioritizing, and implementing enhancement opportunities across all cycle types.
 
@@ -27,18 +27,64 @@
     *   **(Error Handling)**: If repository update fails, log error and retry with minimal changes
 
 3.  **Prioritize Enhancements**:
-    *   For each enhancement, determine priority based on:
-        * Impact assessment (efficiency, maintainability, user experience)
-        * Effort required (implementation complexity)
-        * Dependencies (whether other enhancements depend on this one)
-        * Source (user requests get higher priority)
-    *   Assign a simple priority level:
-        * High: Critical improvements with high impact or user-requested
-        * Medium: Important improvements with moderate impact
-        * Low: Nice-to-have improvements with lower impact
-    *   **(Error Handling)**: If prioritization is unclear, default to medium priority and flag for review
+    *   Calculate base priority score for each enhancement:
+        ```
+        Base Score = 
+            (Efficiency Impact * 0.3) + 
+            (Maintainability Impact * 0.3) + 
+            (User Experience Impact * 0.4)
+        ```
+        Where impact values are mapped:
+        * high = 3
+        * medium = 2
+        * low = 1
+    *   Apply complexity modifier:
+        ```
+        Complexity Modifier =
+            high = 0.8
+            medium = 1.0
+            low = 1.2
+        ```
+    *   Apply dependency weighting:
+        * For each dependent enhancement, add 0.5 to the adjusted score
+    *   Apply source weighting:
+        ```
+        Source Modifier =
+            user-defined = 1.3
+            auto-detected = 1.0
+            monitoring = 1.1
+        ```
+    *   Calculate final priority score and map to priority levels:
+        ```
+        Final Score = (Base Score * Complexity Modifier) * Source Modifier
+        
+        Final Score > 3.5 = high
+        2.5 <= Final Score <= 3.5 = medium
+        Final Score < 2.5 = low
+        ```
+    *   **(Error Handling)**: If prioritization components are missing, use reasonable defaults and flag for review
 
-4.  **Select Enhancement for Implementation**:
+4.  **Generate Enhancement Suggestions**:
+    *   Determine operational context (autonomous or user-directed)
+    *   Filter relevant enhancements based on context:
+        * For autonomous operation: focus on high-priority enhancements
+        * For user-directed: focus on enhancements relevant to user request
+    *   Apply suggestion selection heuristics:
+        * For autonomous operation:
+            * Priority balance (high 70%, medium 25%, low 5%)
+            * Complexity preference (prefer lower complexity for quick wins)
+            * Category distribution (balance across enhancement types)
+            * Dependency awareness (prerequisites before dependent enhancements)
+        * For user-directed operation:
+            * Relevance matching (match to user interests)
+            * Context sensitivity (relevant to current activity)
+            * Value proposition (emphasize high-impact)
+    *   Format suggestions appropriately:
+        * For autonomous operation: detailed implementation guidance
+        * For user-directed operation: concise, actionable suggestions
+    *   **(Error Handling)**: If suggestion generation fails, provide simplified suggestions based on priority alone
+
+5.  **Select Enhancement for Implementation**:
     *   For autonomous operation:
         * Select the highest priority enhancement that hasn't been implemented
         * Consider context (active development areas, recent changes)
@@ -47,7 +93,7 @@
         * Focus on user-specified enhancement
     *   **(Error Handling)**: If selection is ambiguous, choose based on highest impact score
 
-5.  **Prepare for Implementation**:
+6.  **Prepare for Implementation**:
     *   Update the selected enhancement status to "implementing"
     *   Create an implementation plan using `edit_file`:
         ```
@@ -59,12 +105,12 @@
         ```
     *   **(Error Handling)**: If preparation fails, log error and revert status to "identified"
 
-6.  **Implement Enhancement**:
+7.  **Implement Enhancement**:
     *   Execute the implementation plan according to the process in `implementation-process.md`
     *   Track progress in the implementation log
     *   **(Error Handling)**: Handle errors during implementation according to the implementation process
 
-7.  **Verify Implementation**:
+8.  **Verify Implementation**:
     *   Verify the implementation against the enhancement's success criteria
     *   Document verification results:
         ```
@@ -72,7 +118,7 @@
         ```
     *   **(Error Handling)**: If verification fails, document issues for refinement
 
-8.  **Update Enhancement Status**:
+9.  **Update Enhancement Status**:
     *   If implementation is successful:
         * Remove the enhancement from unified_enhancements.md (completed)
     *   If implementation is partial:
@@ -83,37 +129,78 @@
         * Document the issues encountered
     *   **(Error Handling)**: Ensure at least basic status updates are applied
 
-9.  **Identify New Enhancement Opportunities**:
-    *   Based on the implementation experience:
-        * Identify new enhancement opportunities
-        * Record using the standard process (Step 2)
-    *   **(Error Handling)**: If new opportunity identification fails, proceed with existing enhancements
+10. **Record Suggestion Activity**:
+    *   For suggested enhancements, update the activity log
+    *   Track which suggestions were implemented, rejected, or deferred
+    *   **(Error Handling)**: If activity logging fails, ensure core enhancement status is still updated
 
-## Selection Criteria
+## Weighting Factors Explanation
 
-When selecting enhancements for implementation, use these criteria:
+### Impact Weights
 
-### Priority Determination
+* **Efficiency Impact (30%)**: Measures how much an enhancement improves operational efficiency.
+* **Maintainability Impact (30%)**: Measures how much an enhancement improves long-term maintainability.
+* **User Experience Impact (40%)**: Measures how much an enhancement improves the experience for Tyler Youk.
 
-Priority is based on a holistic assessment of:
+### Complexity Modifiers
 
-1. **Impact Assessment**:
-   * Efficiency impact (operational performance)
-   * Maintainability impact (long-term maintainability)
-   * User experience impact (experience for Tyler Youk)
+* **High Complexity (0.8)**: More complex enhancements are slightly deprioritized to favor quick wins.
+* **Medium Complexity (1.0)**: Neutral modifier.
+* **Low Complexity (1.2)**: Less complex enhancements are slightly prioritized for efficiency.
 
-2. **Effort vs. Impact**:
-   * Focus on high-impact, lower-effort enhancements first
-   * Consider quick wins that provide immediate value
+### Source Modifiers
 
-3. **Dependencies**:
-   * Implement prerequisites before dependent enhancements
-   * Consider the dependency chain when prioritizing
+* **User-defined (1.3)**: Explicitly requested by Tyler Youk, highest priority.
+* **Monitoring (1.1)**: Detected through ongoing cycle monitoring, medium-high priority.
+* **Auto-detected (1.0)**: Identified through standard analysis, baseline priority.
 
-4. **Source Priority**:
-   * User-defined: highest priority
-   * Monitoring-detected: medium-high priority
-   * Auto-detected: standard priority
+## Suggestion Formats
+
+### Autonomous Implementation Format
+
+```markdown
+# Selected Enhancement for Autonomous Implementation
+
+## Enhancement: [Enhancement Title]
+
+**ID**: [Enhancement ID]
+**Priority**: [Priority Level]
+**Impact**: [Impact Assessment Summary]
+
+### Implementation Approach
+
+[Implementation guidance including steps, components to modify, and approach]
+
+### Expected Benefits
+
+[Description of expected benefits and improvements]
+
+### Success Criteria
+
+[Clear criteria for successful implementation]
+```
+
+### User-Directed Suggestion Format
+
+```markdown
+# Enhancement Suggestion
+
+Would you like to implement this enhancement opportunity?
+
+## [Enhancement Title]
+
+**Benefit**: [Concise benefit statement]
+**Complexity**: [Complexity level]
+**Impact Areas**: [Affected components or processes]
+
+### Brief Implementation Plan
+
+[Condensed implementation approach]
+
+### Alternatives
+
+[Optional alternative approaches if applicable]
+```
 
 ## Enhancement Lifecycle
 
@@ -174,4 +261,12 @@ The enhancement management process integrates with pattern detection to automati
 
 4. **Incremental Approach**:
    * For complex enhancements, use an incremental approach
-   * Define clear milestones and success criteria for each increment 
+   * Define clear milestones and success criteria for each increment
+
+5. **Suggestion Timing**: 
+   * Make suggestions at appropriate times (cycle transitions, user queries)
+   * Limit suggestions to prevent overload (usually 1-3 at a time)
+
+6. **Objectivity**: 
+   * Prioritization should be as objective as possible, using the defined formulas
+   * Apply the same criteria to all enhancements regardless of cycle type 
