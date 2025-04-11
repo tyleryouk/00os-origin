@@ -1,8 +1,27 @@
 ## 1000xnotes 
 
 
+
 ## IMPORTANT 
-#### *Project Agnostic Goal*
+### Ensure all three core cycles are solid (still need to work on autonomous)
+autonomous does not follow the same 7 step sequential 1000xcommand sequence as cycle-manager. Example:
+autonomous cycle does not have the same enhancement tracking procedure as cycle-manager.
+
+**Assume everything in autonomous is currently wrong and start over**
+
+autonomous is designed for autonomous system-wide enhancements and optimizations, focused on the less is more principle, throughout ALL 1000xsystems. autonomous should utilize 1000xbrain\system\guidelines\ and first make changes to the guidelines before making changes to the rest of the 1000xsystems. This provides backwards compatibility and maintainability for system-wide changes, centralizing all system configurations to 1000xbrain\system\guidelines (autonomous and major-changes are both for system-wide changes and utilize guidelines as the central hub for all system-wide guidelines).
+
+
+autonomous and major-changes should log enhancements to their own operational-feedback folder. However, ALL cycle related bugs/errors/enhancements (i.e. tool call errors) should go to the operational-feedback folder of cycle-manager. Think of this like reporting issues to management. cycle related issues must be resolved by cycle-manager to ensure accuracy.
+
+while you are in autonomous cycle -> identify system-wide optimizations and enhancements, tailored towards consolidation and optimization, focused on the less is more principle -> log in 1000xbrain\system\autonomous\operational-feedback
+
+while you are in major-changes cycle -> system-wide optimizations and enhancements, tailored towards major changes and new features for the system -> log in 1000xbrain\system\autonomous\operational-feedback
+
+while you are in autonomous cycle -> identify autonomous  -> log in 1000xbrain\system\autonomous\operational-feedback
+
+
+#### Project Agnostic Goal | autonomous | Autonomous | 
 The goal of the 1000xsystems is to be fully project agnostic, so that if I take the 1000xsystems and move them to another folder, they will work as intended. The structure of the project folders including the 1000xsystems will always be:
 
 project-folder/

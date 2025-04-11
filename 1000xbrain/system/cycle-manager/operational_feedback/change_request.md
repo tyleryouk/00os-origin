@@ -3,50 +3,49 @@
 **Requestor**: Tyler Youk
 **Status**: Analysis Completed
 **Directive**: Fix
-**Target Cycle**: system/cycle-manager
-**Enhancement Name**: Delete all legacy files
+**Target Cycle**: system/major-changes
+**Enhancement Name**: Completely fix system/major-changes
 **Priority**: High
 
 ## Request Description
 
-Delete all legacy files from system/cycle-manager. Engrain the "less is more" principle for all cycles. There are concerns about adding too many files, with many being unused. This creates cognitive load and increases the likelihood of hallucinations. The request focuses on optimizing by reducing the number of files in the system.
+The system/major-changes cycle does not follow the same 7-step sequential command structure as cycle-manager. For example, major-changes/1 attempted to write the USER REQUEST to notes.md instead of user_request.md. The major-changes cycle requires significant updates to align with the standardized cycle approach.
+
+User has indicated that the major-changes cycle should be designed for system-wide changes throughout ALL 1000xsystems. It should utilize 1000xbrain\system\guidelines\ and first make changes to the guidelines before making changes to the rest of the 1000xsystems. This approach provides backwards compatibility and maintainability for system-wide changes, centralizing all system configurations to 1000xbrain\system\guidelines\.
 
 ## Requirements
 
-1. Identify and delete all legacy files that are no longer needed in the system/cycle-manager
-2. Apply the "less is more" principle across the codebase
-3. Reduce the total number of files to minimize cognitive load
-4. Ensure remaining files are actively used and necessary
-5. Maintain system functionality while reducing complexity
-6. Avoid creating new files unless absolutely necessary
+1. Restructure system/major-changes to follow the standardized 7-step sequential command structure (like cycle-manager)
+2. Ensure major-changes uses user_request.md instead of notes.md for user input
+3. Implement a workflow where major-changes first updates guidelines in 1000xbrain\system\guidelines\ before modifying other 1000xsystems
+4. Create proper documentation and process files to support the restructuring
+5. Ensure backward compatibility with existing 1000xsystems while implementing these changes
+6. Validate that all steps in the cycle operate correctly after implementation
 
 ## Scope
 
-* Primary Focus Areas:
-  * 1000xbrain/system/cycle-manager - Process files, knowledge files, and operational feedback
-  * 1000xcommands/system/cycle-manager - Command files and related documentation
-  * 1000xbrain/system/guidelines - Guidelines related to cycle-manager
+This change will affect:
+- 1000xcommands\system\major-changes\ - Complete restructuring of all command files
+- 1000xbrain\system\major-changes\ - Updating processes, knowledge, and operational feedback
+- 1000xbrain\system\guidelines\ - Ensuring guidelines support the major-changes operational model
 
-* File Types to Consider:
-  * Deprecated process files (especially those with .deprecated extension)
-  * Redundant documentation files
-  * Unused knowledge files
-  * Historical operational feedback that's no longer relevant
-  * Any files marked as legacy from previous cycles
+The implementation will require:
+- Analysis of the current major-changes structure
+- Development of a new 7-step workflow model
+- Creation/update of all supporting files and processes
+- Verification testing of the updated cycle
 
 ## Success Criteria
 
-* Significant reduction in the total number of files in the system/cycle-manager
-* No functionality loss despite file reduction
-* Clear documentation of which files were removed and why
-* Implementation of guidelines to prevent future file proliferation
-* Remaining system adheres to the "less is more" principle
-* System operations remain stable with fewer files
+1. The system/major-changes cycle follows the standardized 7-step sequential command structure
+2. All commands (1-7) in major-changes function correctly and follow the same pattern as cycle-manager
+3. The cycle uses user_request.md instead of notes.md for user input
+4. The cycle first updates guidelines in 1000xbrain\system\guidelines\ before making system-wide changes
+5. All documentation accurately reflects the updated implementation
+6. The cycle can be successfully executed from start to finish
 
 ## Special Considerations
 
-* Some files may be referenced by other components and require careful handling before deletion
-* Consider redirects or consolidation for content that might still be valuable
-* This request aligns with the previously completed ENH-CM-007 (Update Legacy Enhancement File References)
-* The request specifically mentions "Delete all legacy files" but requires analysis to identify which files are truly legacy versus essential
-* Focus on reducing complexity while maintaining full functionality 
+1. The current major-changes implementation appears to be significantly different from the cycle-manager standard, so a complete redesign may be more efficient than incremental fixes.
+2. The implementation should maintain consistency with the cycle-manager pattern while supporting the unique requirements of system-wide changes.
+3. Clear documentation will be needed to explain the purpose and usage of major-changes vs. other cycles. 

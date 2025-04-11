@@ -1,74 +1,80 @@
 # Change Request Details
 
-**Date Requested**: 2024-05-28
+**Date Requested**: 2024-05-30
 **Requestor**: Tyler Youk
-**Status**: Assessment Completed
+**Status**: Analysis Completed
+**Directive**: Enhancement
+**Target Cycle**: system/major-changes
+**Enhancement Name**: Project Agnostic 1000xsystems
+**Priority**: High
 
 ## Request Description
 
-Create a standardized "Cycle Management System" (cycle-manager) to ensure consistency across all command cycles. This system will be responsible for creating new cycles, enhancing existing cycles, and optimizing/reducing clutter in the codebase. The goal is to establish a centralized approach for cycle management that can be applied across all domains (system, front-end, and back-end). The system will implement a unified cycle model that can operate in both autonomous and user-directed modes.
+Create a project-agnostic configuration for all 1000xsystems (1000xbrain, 1000xcommands, 1000xplans, 1000xrules, 1000xscripts) to ensure they can be transferred to any project while maintaining full functionality. The system should work in any project folder structure as long as the 1000xsystems maintain their relative positions. This enables Tyler and 1000xdev to work on any project together by transferring the 1000xsystems without requiring project-specific modifications.
 
 ## Requirements
 
-1. **Structural Requirements**:
-   * Create a new cycle called "cycle-manager" in `1000xcommands/system/cycle-manager/`
-   * Implement the standard 7-step sequential 1000xcommands (1.md through 7.md)
-   * Follow the same pattern as existing autonomous and major-changes cycles
-   * Create a corresponding knowledge/process structure in `1000xbrain/system/cycle-manager/`
+1. **Path Handling Requirements**:
+   * Ensure all filepaths in the 1000xsystems are relative, never absolute
+   * Implement a system to set and detect the project root path
+   * Replace any hardcoded references to "GigaSwap" with project-agnostic alternatives
+   * Create a configuration system to handle project-specific settings
 
-2. **Functional Requirements**:
-   * Enable creation of new cycles within any domain (system, front-end, back-end)
-   * Enable enhancement of existing cycles through centralized knowledge/processes
-   * Enable optimization of cycles to reduce clutter and outdated files
-   * Standardize the USER REQUEST SECTION format across all cycles
-   * Implement a unified cycle model that works in both autonomous and user-directed modes
+2. **Domain Configuration Requirements**:
+   * Centralize domain definitions (front-end, back-end, system) to allow easy updates when moving to a new project
+   * Create a configuration or initialization system that defines project-specific domains
+   * Ensure domain references are dynamic rather than hardcoded
 
-3. **Integration Requirements**:
-   * Make explicit and dynamic tool calls to `1000xbrain/system/cycle-manager/` (new folder)
-   * Make explicit and dynamic tool calls to `1000xbrain/system/guidelines/`
-   * Centralize cycle knowledge and processes to allow systematic updates to all cycles
-   * Ensure all cycles follow the same standardized 7-step approach
+3. **System Structure Requirements**:
+   * Maintain consistent directory structure for 1000xsystems regardless of project
+   * Ensure scripts can operate correctly in any project environment
+   * Create documentation for the standard project folder structure
 
-4. **Unified Cycle Model Requirements**:
-   * All cycles should be capable of running autonomously by default
-   * Cycles should check for user input in stage 2 and adapt accordingly
-   * If user input exists, process as user-directed request
-   * If no user input exists, proceed autonomously based on documented potential enhancements
-   * Potential enhancements should be documented in 1000xbrain for each cycle
-   * USER REQUEST SECTION should be created in stage 1 and checked in stage 2
+4. **Initialization Requirements**:
+   * Create a system initialization process for when 1000xsystems are first moved to a new project
+   * Include domain configuration as part of the initialization
+   * Provide guidance for updating project-specific references
 
 ## Scope
 
-* **Command Files**: 
-  * `/1000xcommands/system/cycle-manager/` - New cycle command files (1.md through 7.md)
-  * Corresponding README.md documentation
+* **Configuration/Root Files**: 
+  * Root configuration system for project-agnostic operation
+  * Project initialization scripts/processes
+  * Domain definition and configuration files
 
-* **Brain Components**:
-  * `/1000xbrain/system/cycle-manager/` - New folder for cycle management knowledge/processes
-  * `/1000xbrain/system/guidelines/` - Updates to standardize cycle guidelines
+* **1000xbrain Components**:
+  * System knowledge and processes for project-agnostic operation
+  * Guidelines updates for relative paths and domain references
+  * Configuration management components
 
-* **Operational Components**:
-  * `/1000xbrain/system/cycle-manager/operational_feedback/` - For tracking cycle operations
+* **1000xscripts Components**:
+  * Updates to scripts that may contain path-specific or project-specific references
+  * Create or update initialization scripts
+  * Update list-cycles.ps1 and other system scripts for project-agnostic operation
 
-* **Affected Systems**:
-  * All existing cycles in system, front-end, and back-end domains
-  * Future cycles across all domains
+* **1000xcommands Components**:
+  * Updates to ensure all commands use relative paths
+  * Updates to centralize domain references
+
+* **1000xrules Components**:
+  * Updates to ensure all rules use relative paths
+  * Updates to centralize domain references
 
 ## Success Criteria
 
-1. A fully functional cycle-manager cycle is created with all 7 sequential commands
-2. The cycle can successfully create new standardized cycles in any domain
-3. The cycle can enhance existing cycles through centralized knowledge/processes
-4. The cycle implements the unified model for both autonomous and user-directed operation
-5. All cycle-related knowledge and processes are centralized for easy updates
-6. Documentation clearly explains the purpose and usage of the cycle-manager system
-7. One-off commands are replaced with standardized cycle-based approaches
-8. Each cycle documents potential enhancements for autonomous operation
+1. All file paths in 1000xsystems are relative, not absolute
+2. A root configuration system exists to define project-specific settings
+3. Domain references are centralized and easily configurable
+4. Scripts operate correctly regardless of project context
+5. Documentation clearly explains how to transfer 1000xsystems to a new project
+6. A initialization process exists for setting up 1000xsystems in a new project
+7. No hardcoded references to "GigaSwap" exist in the 1000xsystems
+8. The system works in multiple project structures as long as the 1000xsystems maintain their relative positions
 
 ## Special Considerations
 
-1. Tyler has indicated that the cycle management system will likely undergo frequent enhancements
-2. The USER REQUEST SECTION format should be preserved and standardized across cycles
-3. The solution should minimize duplication and favor centralization of cycle knowledge/processes
-4. Tyler Youk has confirmed "cycle-manager" as the preferred name for this cycle
-5. The unified cycle model eliminates the need for separate autonomous and major-changes cycle types 
+1. This enhancement primarily affects the system domain, as front-end and back-end domain configurations are not yet fully developed
+2. The project folder structure will always include the five 1000xsystems folders plus project-specific folders
+3. The solution should minimize the work required when transferring to a new project
+4. Absolute paths in PowerShell scripts require special attention
+5. Guidelines should be updated before modifying the rest of the systems to ensure consistency 
