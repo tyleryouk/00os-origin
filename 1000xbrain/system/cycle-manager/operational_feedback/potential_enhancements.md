@@ -2,6 +2,12 @@
 
 This document tracks potential enhancements for autonomous operation of the cycle-manager.
 
+## Improve Template Clarity For New Users
+**Priority**: Medium
+**Description**: Enhance the user_request.md template to be more intuitive for first-time users
+**Impact**: Reduces learning curve and improves user experience
+**Implementation Notes**: Simplify template language, add clear examples directly in template comments
+
 ## Complete System Cycle Updates
 **Priority**: High
 **Description**: Update all system cycles (autonomous, major-changes) to use the new user_request.md file
@@ -321,3 +327,21 @@ This document tracks potential enhancements for autonomous operation of the cycl
 * **Implementation Notes**: Develop automated tests that validate script behavior across various input scenarios and edge cases
 * **Success Criteria**: Tests can identify common issues like parsing errors before scripts are deployed to production
 * **Status**: Pending
+
+## Enhance Enhancement Tracking Schema
+**Priority**: High
+**Description**: Simplify the enhancement tracking schema to align with the simplified structure in the enhancement registry
+**Impact**: More consistent enhancement tracking across all cycles
+**Implementation Notes**: Update enhancement-tracking-schema.md to remove complexity and focus on active enhancements
+
+## Improve Cycle Status Reporting
+**Priority**: Medium
+**Description**: Enhance how cycle status is reported and visualized
+**Impact**: Better visibility into cycle progress
+**Implementation Notes**: Create new status visualization format in current_cycle.md
+
+## Streamline Command Processing
+**Priority**: Medium
+**Description**: Optimize command processing workflow to reduce execution time
+**Impact**: Faster cycle execution with less overhead
+**Implementation Notes**: Update command files and processes to minimize unnecessary steps

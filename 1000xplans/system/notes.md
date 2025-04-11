@@ -1,5 +1,7 @@
 ## 1000xnotes 
 
+
+
 *Project Agnostic Goal*
 The goal of the 1000xsystems is to be fully project agnostic, so that if I take the 1000xsystems and move them to another folder, they will work as intended. The structure of the project folders including the 1000xsystems will always be:
 
@@ -68,10 +70,6 @@ Create an autonomous cycle within front-end to autonomously integrate the Steam 
 All 1000xsystem based errors (tool calls etc), should be reported to the cycle-manager. This will seperate concerns so that the back-end cycle can focus on back-end implementation, and will abstract the tool call and cycle errors or even optimization requests to cycle-manager. All reports should go to 1000xbrain\system\cycle-manager\operational-feedback\back-end-cycles\ (create new folder). Note that ALL back-end related knowledge and processes should be abstracted to the 1000xbrain\back-end\ domain (seperate part of your brain is designated for front-end). We still want to keep this 1000xsystem project agnostic, so that if I decide to create a new project it will be easy to do so.
 This new cycle should be focused on integrating the Steam Web API documented here:
 https://www.steamwebapi.com/hub/api-overview
-
-
-*Better documentation and guidelines for 1000xcommands*
-In one implementation, you created 1000xcommands wrong. cycle-manager is very important because it managers the 7 step sequential 1000xcommand cycle of ALL cycles, including its own cycle. You can not mess up 1000xcommands when working in the cycle cycle-manager.
 
 *operational_feedback folder enhancement*
 At some point, you are going to need to delete the documentation of old cycles in 1000xbrain\system\autonomous\operational_feedback and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep documentation of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback . The usage of operational_feedback folder for all cycles should be standardized.
