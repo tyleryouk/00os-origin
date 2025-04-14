@@ -6,7 +6,7 @@
 - Category: system
 - Permissions: system.write
 - Author: 00reaper
-- Version: 1.1
+- Version: 1.2
 
 ## Input
 - subcommand: Optional subcommand (currently supports "status")
@@ -72,7 +72,7 @@ try {
     syncCmd += ' ' + params.join(' ');
   }
   
-  // Add dry-run flag
+  // Only add dry-run flag if explicitly requested
   if (isDryRun) {
     syncCmd += ' -DryRun';
   }
