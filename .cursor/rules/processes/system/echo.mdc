@@ -2,6 +2,7 @@
 description: USE WHEN you want to echo
 globs: 
 alwaysApply: false
+type: agent
 ---
 # Echo Process
 

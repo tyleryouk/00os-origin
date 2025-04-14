@@ -2,11 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
----
----
-description: System component - state-manager
-globs: 
-alwaysApply: true
+type: manual
 ---
 # 00OS State Manager
 
