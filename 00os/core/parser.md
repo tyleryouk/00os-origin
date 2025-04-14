@@ -1,0 +1,274 @@
+# 00OS Command Parser
+
+The command parser is responsible for interpreting user input as commands for the 00OS terminal interface. It identifies commands, parameters, and arguments, then routes them to the appropriate process handler.
+
+## Functionality
+
+- Command prefix detection
+- Parameter extraction
+- Command routing
+- Process execution triggers
+
+## Overview
+The command parser is the core component of 00OS that interprets user input as structured commands. It serves as the entry point for all user interactions with the system.
+
+## Parser Implementation
+
+```javascript
+/**
+ * 00OS Command Parser
+ * 
+ * Parses user input into structured command objects that can be executed
+ * by the 00OS execution engine.
+ */
+
+// Command structure object
+const CommandStructure = {
+  command: null,     // Primary command (required)
+  subcommand: null,  // Subcommand (optional)
+  options: {},       // Key-value pairs for options
+  flags: [],         // Boolean flags
+  arguments: [],     // Positional arguments
+  rawInput: null     // Original unparsed input
+};
+
+/**
+ * Parse a user input string into a command structure
+ * @param {string} input - Raw user input
+ * @returns {Object} Parsed command structure
+ */
+function parseCommand(input) {
+  // Create new command structure
+  const cmd = {...CommandStructure, rawInput: input};
+  
+  // Handle empty input
+  if (!input || input.trim() === '') {
+    return {
+      error: 'EMPTY_COMMAND',
+      message: 'No command provided.',
+      rawInput: input
+    };
+  }
+  
+  // Tokenize input (handles quoted arguments and escapes)
+  const tokens = tokenizeInput(input);
+  
+  // First token is always the command
+  cmd.command = tokens[0].toLowerCase();
+  
+  // Process remaining tokens
+  let i = 1;
+  while (i < tokens.length) {
+    const token = tokens[i];
+    
+    // Handle subcommand (if no subcommand set and token doesn't start with - or --)
+    if (!cmd.subcommand && !token.startsWith('-')) {
+      cmd.subcommand = token;
+    }
+    // Handle options with values (--option=value or --option value)
+    else if (token.startsWith('--')) {
+      const optionName = token.substring(2);
+      if (optionName.includes('=')) {
+        // Handle --option=value format
+        const [name, value] = optionName.split('=', 2);
+        cmd.options[name] = value;
+      } else if (i + 1 < tokens.length && !tokens[i + 1].startsWith('-')) {
+        // Handle --option value format
+        cmd.options[optionName] = tokens[i + 1];
+        i++; // Skip the next token as it's the value
+      } else {
+        // Handle --option (boolean flag)
+        cmd.flags.push(optionName);
+      }
+    }
+    // Handle short options (-o)
+    else if (token.startsWith('-') && token.length > 1) {
+      // Handle as flag (-o)
+      const flagName = token.substring(1);
+      cmd.flags.push(flagName);
+    }
+    // Handle arguments
+    else {
+      cmd.arguments.push(token);
+    }
+    
+    i++;
+  }
+  
+  return cmd;
+}
+
+/**
+ * Tokenize input string, handling quotes and escapes
+ * @param {string} input - Raw input string
+ * @returns {string[]} Array of tokens
+ */
+function tokenizeInput(input) {
+  const tokens = [];
+  let current = '';
+  let inQuotes = false;
+  let quoteChar = '';
+  let escaped = false;
+  
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+    
+    // Handle escape character
+    if (char === '\\' && !escaped) {
+      escaped = true;
+      continue;
+    }
+    
+    // Handle quotes
+    if ((char === '"' || char === "'") && !escaped) {
+      if (!inQuotes) {
+        // Start quoted section
+        inQuotes = true;
+        quoteChar = char;
+      } else if (char === quoteChar) {
+        // End quoted section
+        inQuotes = false;
+      } else {
+        // Different quote character inside quotes
+        current += char;
+      }
+      continue;
+    }
+    
+    // Handle spaces (token separators)
+    if (char === ' ' && !inQuotes && !escaped) {
+      if (current) {
+        tokens.push(current);
+        current = '';
+      }
+      continue;
+    }
+    
+    // Add character to current token
+    current += char;
+    escaped = false;
+  }
+  
+  // Add final token if any
+  if (current) {
+    tokens.push(current);
+  }
+  
+  return tokens;
+}
+
+/**
+ * Validate a parsed command structure against the command registry
+ * @param {Object} cmd - Parsed command structure
+ * @returns {Object} Validation result with potential errors
+ */
+function validateCommand(cmd) {
+  // Check if command exists in registry
+  if (!commandRegistry[cmd.command]) {
+    return {
+      valid: false,
+      error: 'COMMAND_NOT_FOUND',
+      message: `Command not found: ${cmd.command}`
+    };
+  }
+  
+  const commandDef = commandRegistry[cmd.command];
+  
+  // Validate subcommand if required
+  if (commandDef.requiresSubcommand && !cmd.subcommand) {
+    return {
+      valid: false,
+      error: 'SUBCOMMAND_REQUIRED',
+      message: `Subcommand required for ${cmd.command}`
+    };
+  }
+  
+  // Validate required arguments
+  if (commandDef.requiredArgs && cmd.arguments.length < commandDef.requiredArgs) {
+    return {
+      valid: false,
+      error: 'MISSING_ARGUMENTS',
+      message: `Command ${cmd.command} requires at least ${commandDef.requiredArgs} argument(s)`
+    };
+  }
+  
+  return {
+    valid: true,
+    command: commandDef
+  };
+}
+
+// Export functions for system use
+module.exports = {
+  parseCommand,
+  validateCommand
+};
+```
+
+## Integration with 00OS
+
+The command parser is integrated into the 00OS engine as follows:
+
+1. User input is received by the system
+2. Input is passed to `parseCommand()` function
+3. The resulting command structure is validated against the registry
+4. If valid, the command is passed to the execution engine
+5. If invalid, an error message is returned to the user
+
+## Error Handling
+
+The parser handles several error types:
+
+- `EMPTY_COMMAND`: No command was provided
+- `COMMAND_NOT_FOUND`: Command doesn't exist in registry
+- `SUBCOMMAND_REQUIRED`: Subcommand is required but missing
+- `MISSING_ARGUMENTS`: Required arguments are missing
+- `INVALID_OPTION`: Option is not valid for the command
+- `SYNTAX_ERROR`: General syntax error in command
+
+## Command Registry Integration
+
+The parser works with the command registry (defined in `registry.md`) to validate commands and fetch metadata.
+
+## Example Usage
+
+```javascript
+// Example input processing
+const input = 'dev execute project --verbose';
+const parsedCommand = parseCommand(input);
+
+// Result:
+// {
+//   command: 'dev',
+//   subcommand: 'execute',
+//   options: {},
+//   flags: ['verbose'],
+//   arguments: ['project'],
+//   rawInput: 'dev execute project --verbose'
+// }
+
+// Validate command
+const validationResult = validateCommand(parsedCommand);
+
+// If valid, proceed to execution
+if (validationResult.valid) {
+  executeCommand(parsedCommand, validationResult.command);
+} else {
+  // Handle error
+  console.error(validationResult.message);
+}
+```
+
+## Future Enhancements
+
+1. **Advanced Tokenization**
+   - Support for more complex quoting rules
+   - Better handling of escape sequences
+
+2. **Command Aliasing**
+   - Support for user-defined aliases
+   - Alias expansion in parser
+
+3. **Context-Aware Parsing**
+   - Parse based on previous commands
+   - Support for command history references 

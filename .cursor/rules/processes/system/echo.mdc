@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Echo Process
+
+The echo process is a simple system utility that repeats the provided input back to the user. It demonstrates basic process handling in 00OS.
+
+## Usage
+
+```
+> echo [text to echo]
+```
+
+## Parameters
+
+- `text`: The text content to echo back to the user
+
+## Examples
+
+```
+> echo Hello, 00OS!
+Hello, 00OS!
+``` 

@@ -1,0 +1,387 @@
+---
+name: file-list
+description: List directory contents
+version: 1.0.0
+author: 00reaper
+permissions: [basic, file-read]
+inputs:
+  - name: path
+    type: string
+    required: true
+    description: Path to list contents of
+  - name: detailed
+    type: boolean
+    required: false
+    default: false
+    description: Show detailed information
+  - name: filter
+    type: string
+    required: false
+    description: Filter pattern for files (glob)
+outputs:
+  - name: files
+    type: array
+    description: List of files and directories
+  - name: count
+    type: number
+    description: Total number of items
+---
+
+# Process: File List
+
+## Metadata
+- Description: Lists files and directories at the specified path
+- Category: tools
+- Permissions: file.read
+- Author: 00reaper
+- Version: 1.0
+
+## Input
+- path: Path to list contents of (optional, defaults to current directory)
+- detailed: Flag to show detailed information (--detailed)
+- recursive: Flag to list subdirectories recursively (--recursive)
+
+## Output
+- Formatted list of files and directories
+
+## Execution
+
+This process lists the contents of a directory, providing file and directory information in a formatted display. It supports both `> file list [path]` and the shorthand alias `> ls [path]`.
+
+### Basic Directory Listing
+
+For basic directory listing (`> file list /path` or `> ls /path`), the process will:
+
+1. Validate the requested path exists
+2. Retrieve the list of files and directories
+3. Format and display the content list
+4. Add appropriate indicators for directories, files, and special items
+
+Basic output format:
+```
+✅ Contents of directory: [path]
+
+[dir]  directory_name/
+[file] filename.ext
+[link] symlink_name -> target
+```
+
+### Detailed Directory Listing
+
+When the `--detailed` flag is used (`> file list /path --detailed` or `> ls /path --detailed`), the process will include additional information:
+
+1. File/directory size
+2. Last modified date
+3. File type or extension
+4. Line count for text files
+
+Detailed output format:
+```
+✅ Contents of directory: [path]
+
+[dir]  directory_name/ (5 items)
+[file] filename.md (4.5KB, 183 lines, modified: 2025-01-15)
+[file] config.json (1.2KB, modified: 2025-01-10)
+[link] symlink_name -> target
+```
+
+### Recursive Directory Listing
+
+When the `--recursive` flag is used (`> file list /path --recursive` or `> ls /path --recursive`), the process will:
+
+1. List the contents of the specified directory
+2. List the contents of all subdirectories
+3. Use indentation to show directory hierarchy
+
+Recursive output format:
+```
+✅ Contents of directory: [path] (recursive)
+
+[dir]  directory1/
+  [file] file1.md
+  [file] file2.md
+  [dir]  subdirectory/
+    [file] subfile1.md
+    [file] subfile2.md
+[dir]  directory2/
+  [file] file3.md
+```
+
+### Empty Directory Handling
+
+For empty directories, the process will display:
+```
+✅ Contents of directory: [path]
+
+Directory is empty.
+```
+
+### Error Handling
+
+#### Non-existent Path
+```
+❌ Error: Path '[path]' does not exist.
+
+Suggestions:
+- Check the spelling of the path
+- Use 'file list /' to see root directory contents
+- Use 'pwd' to see current directory
+```
+
+#### Permission Error
+```
+❌ Error: Cannot access '[path]'. Permission denied.
+
+You need file.read.advanced permission to access this directory.
+Use 'identity permissions request file.read.advanced' to request access.
+```
+
+#### Invalid Path Format
+```
+❌ Error: Invalid path format '[path]'.
+
+Paths should be in the format '/directory/subdirectory' or 'directory/subdirectory'.
+```
+
+### Implementation Logic
+
+```javascript
+function listDirectory(path, detailed = false, recursive = false) {
+  try {
+    // Validate the path exists
+    if (!directoryExists(path)) {
+      return formatError(`Path '${path}' does not exist.`, [
+        "Check the spelling of the path",
+        "Use 'file list /' to see root directory contents",
+        "Use 'pwd' to see current directory"
+      ]);
+    }
+    
+    // Get directory contents
+    const contents = getDirectoryContents(path);
+    
+    // If directory is empty
+    if (contents.length === 0) {
+      return formatSuccess(`Contents of directory: ${path}\n\nDirectory is empty.`);
+    }
+    
+    // Format the header
+    let output = `Contents of directory: ${path}${recursive ? ' (recursive)' : ''}\n\n`;
+    
+    // Format the contents based on the flags
+    if (recursive) {
+      output += formatRecursiveContents(path, contents, detailed);
+    } else {
+      output += formatContents(contents, detailed);
+    }
+    
+    return formatSuccess(output);
+  } catch (error) {
+    // Handle errors
+    if (error.code === 'PERMISSION_DENIED') {
+      return formatError(`Cannot access '${path}'. Permission denied.`, [
+        "You need file.read.advanced permission to access this directory.",
+        "Use 'identity permissions request file.read.advanced' to request access."
+      ]);
+    }
+    
+    // Generic error
+    return formatError(`Error listing directory: ${error.message}`);
+  }
+}
+
+function formatContents(contents, detailed) {
+  let output = '';
+  
+  // Sort directories first, then files
+  const sortedContents = contents.sort((a, b) => {
+    if (a.type === 'dir' && b.type !== 'dir') return -1;
+    if (a.type !== 'dir' && b.type === 'dir') return 1;
+    return a.name.localeCompare(b.name);
+  });
+  
+  // Format each item
+  for (const item of sortedContents) {
+    if (item.type === 'dir') {
+      if (detailed) {
+        output += `[dir]  ${item.name}/ (${item.itemCount} items)\n`;
+      } else {
+        output += `[dir]  ${item.name}/\n`;
+      }
+    } else if (item.type === 'file') {
+      if (detailed) {
+        const details = [];
+        if (item.size) details.push(formatSize(item.size));
+        if (item.lineCount) details.push(`${item.lineCount} lines`);
+        if (item.modifiedDate) details.push(`modified: ${item.modifiedDate}`);
+        
+        output += `[file] ${item.name} (${details.join(', ')})\n`;
+      } else {
+        output += `[file] ${item.name}\n`;
+      }
+    } else if (item.type === 'link') {
+      output += `[link] ${item.name} -> ${item.target}\n`;
+    }
+  }
+  
+  return output;
+}
+
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+function formatError(message, suggestions = []) {
+  let output = `❌ Error: ${message}\n`;
+  
+  if (suggestions.length > 0) {
+    output += '\nSuggestions:\n';
+    for (const suggestion of suggestions) {
+      output += `- ${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+```
+
+### Helper Functions
+
+The process relies on these helper functions:
+
+1. `directoryExists(path)`: Verifies if a directory exists
+2. `getDirectoryContents(path)`: Retrieves files and directories at the specified path
+3. `formatSize(bytes)`: Converts byte size to human-readable format (KB, MB, etc.)
+4. `formatRecursiveContents(path, contents, detailed)`: Formats directory contents recursively
+
+### Tool Integration
+
+This process integrates with the following system tools:
+- `list_dir`: For retrieving directory contents
+- `read_file`: For analyzing file properties when detailed information is requested
+
+### Alias Support
+
+The system will recognize both `> file list` and `> ls` as valid ways to invoke this process, supporting users familiar with traditional command line interfaces.
+
+## Initialization
+```javascript
+// Initialize variables
+const path = inputs.path;
+const detailed = inputs.detailed || false;
+const filter = inputs.filter || null;
+
+// Initialize tools access
+const fs = tools.fs;
+
+// Initialize output structure
+const output = {
+  path: path,
+  items: [],
+  count: 0,
+  timestamp: new Date().toISOString()
+};
+```
+
+## Execution
+```javascript
+try {
+  // Read directory contents
+  const items = fs.readDirectory(path, filter);
+  
+  // Process each item
+  for (const item of items) {
+    const itemInfo = {
+      name: item.name,
+      type: item.isDirectory ? 'directory' : 'file'
+    };
+    
+    // Add detailed information if requested
+    if (detailed) {
+      itemInfo.size = item.size;
+      itemInfo.created = item.createdAt;
+      itemInfo.modified = item.modifiedAt;
+      itemInfo.extension = item.extension;
+      itemInfo.permissions = item.permissions;
+    }
+    
+    // Add to output items
+    output.items.push(itemInfo);
+  }
+  
+  // Set count in output
+  output.count = output.items.length;
+  
+} catch (error) {
+  // Handle errors
+  throw new Error(`Failed to list directory: ${error.message}`);
+}
+```
+
+## Output
+```javascript
+// Format output based on detailed flag
+if (detailed) {
+  // Create detailed table output
+  let tableOutput = `# Directory Contents: ${output.path}\n\n`;
+  tableOutput += `Total items: ${output.count}\n\n`;
+  
+  // Create table header
+  tableOutput += `| Name | Type | Size | Modified | Extension |\n`;
+  tableOutput += `| ---- | ---- | ---- | -------- | --------- |\n`;
+  
+  // Add rows for each item
+  for (const item of output.items) {
+    const size = item.size ? formatSize(item.size) : '-';
+    const modified = item.modified ? new Date(item.modified).toLocaleString() : '-';
+    const extension = item.extension || '-';
+    
+    tableOutput += `| ${item.name} | ${item.type} | ${size} | ${modified} | ${extension} |\n`;
+  }
+  
+  // Return both structured data and formatted table
+  return {
+    structured: output,
+    formatted: tableOutput
+  };
+  
+} else {
+  // Create simple list output
+  let listOutput = `# Directory Contents: ${output.path}\n\n`;
+  listOutput += `Total items: ${output.count}\n\n`;
+  
+  // Group by type
+  const directories = output.items.filter(item => item.type === 'directory');
+  const files = output.items.filter(item => item.type === 'file');
+  
+  // Add directories
+  if (directories.length > 0) {
+    listOutput += `## Directories\n\n`;
+    directories.forEach(dir => {
+      listOutput += `- ${dir.name}/\n`;
+    });
+    listOutput += `\n`;
+  }
+  
+  // Add files
+  if (files.length > 0) {
+    listOutput += `## Files\n\n`;
+    files.forEach(file => {
+      listOutput += `- ${file.name}\n`;
+    });
+  }
+  
+  // Return both structured data and formatted list
+  return {
+    structured: output,
+    formatted: listOutput
+  };
+}
+
+// Helper function to format file sizes
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+  if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  return (bytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+} 
