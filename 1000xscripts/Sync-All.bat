@@ -37,13 +37,13 @@ goto :parse_args
 
 echo.
 echo ====================================================
-echo 1000xbrain to Cursor Rules Synchronization
+echo 00OS to Cursor Rules Synchronization
 echo ====================================================
 echo.
 
-echo Running simplified synchronization with path matching...
+echo Running synchronization from 00os directory...
 echo This will:
-echo 1. Find all markdown files in 1000xbrain (excluding README.md files)
+echo 1. Find all markdown files in 00os (excluding README.md files)
 echo 2. Update corresponding Cursor Rules with content (preserving frontmatter)
 echo 3. Create new Cursor Rules for files that don't have a corresponding rule
 echo 4. Generate a detailed synchronization report
@@ -58,7 +58,8 @@ echo.
 
 echo Important Notes:
 echo - README.md files are explicitly excluded from synchronization
-echo - README.md files in 1000xbrain serve as directory navigation and documentation, not as Cursor Rules
+echo - 00os is now the sole source of truth for Cursor Rules
+echo - Frontmatter in .mdc files is preserved during synchronization
 
 if "!DETECT_ORPHANS!"=="true" (
   echo - Orphaned Cursor Rules detection is ENABLED
@@ -74,7 +75,7 @@ echo.
 echo Starting synchronization...
 echo.
 
-set PS_COMMAND=powershell -ExecutionPolicy Bypass -Command "& '%~dp0Sync-CursorRules.ps1'"
+set PS_COMMAND=powershell -ExecutionPolicy Bypass -Command "& '%~dp0Sync-CursorRules.ps1' -RootPath '%~dp0..\00os'"
 
 if "!DETECT_ORPHANS!"=="true" (
   set PS_COMMAND=!PS_COMMAND! -DetectOrphans

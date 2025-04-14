@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Synchronizes content from 1000xbrain markdown files to Cursor Project Rules.
+    Synchronizes content from 00os markdown files to Cursor Project Rules.
 
 .DESCRIPTION
-    This script synchronizes content from 1000xbrain markdown files to their
+    This script synchronizes content from 00os markdown files to their
     corresponding Cursor Project Rules (.mdc files), preserving existing
     frontmatter in the .mdc files.
     
@@ -13,9 +13,10 @@
     - Explicitly excludes README.md files
     - Uses strict path matching to preserve directory structure
     - Can detect and optionally remove orphaned rules (mdc files without corresponding md files)
+    - Handles special 00OS process files and command structures
 
 .PARAMETER RootPath
-    The root path of the 1000xbrain directory. Defaults to "./1000xrules" relative to the script location.
+    The root path of the source directory. Defaults to "./00os" for the new operating system structure.
 
 .PARAMETER CursorRulesPath
     The path to the Cursor Rules directory. Defaults to "./.cursor/rules" relative to the script location.
@@ -34,21 +35,21 @@
     This parameter implies -DetectOrphans.
 
 .EXAMPLE
-    .\Sync-CursorRules.ps1 -DryRun
+    .\Sync-CursorRules.ps1 -RootPath "./00os" -DryRun
 
 .EXAMPLE
-    .\Sync-CursorRules.ps1 -DetectOrphans
+    .\Sync-CursorRules.ps1 -RootPath "./00os" -DetectOrphans
 
 .EXAMPLE
-    .\Sync-CursorRules.ps1 -RemoveOrphans
+    .\Sync-CursorRules.ps1 -RootPath "./00os" -RemoveOrphans
 
 .NOTES
-    Author: 1000xdev
-    Version: 1.1
+    Author: 00reaper
+    Version: 2.0
 #>
 
 param(
-    [string]$RootPath = (Join-Path (Split-Path $PSScriptRoot -Parent) "1000xrules"),
+    [string]$RootPath = (Join-Path (Split-Path $PSScriptRoot -Parent) "00os"),
     [string]$CursorRulesPath = (Join-Path (Join-Path (Split-Path $PSScriptRoot -Parent) ".cursor") "rules"),
     [string]$ReportPath = (Join-Path $PSScriptRoot "sync-reports"),
     [switch]$DryRun,
@@ -76,13 +77,16 @@ if (-not (Test-Path $ReportPath)) {
     Write-Host "Created report directory: $ReportPath" -ForegroundColor Green
 }
 
+# Extract source name for reporting
+$sourceName = Split-Path -Leaf $RootPath
+
 # Display banner
 Write-Host "==============================================="
 Write-Host "Cursor Rules Synchronization Tool"
 Write-Host "==============================================="
 Write-Host ""
 Write-Host "Options:"
-Write-Host "- Root Path: $RootPath"
+Write-Host "- Source Directory: $RootPath"
 Write-Host "- Cursor Rules Path: $CursorRulesPath"
 Write-Host "- Dry Run: $($DryRun.ToString())"
 if ($DetectOrphans) {
@@ -111,7 +115,7 @@ function Find-CorrespondingMdcFile {
         [string]$markdownFile
     )
     
-    # Get relative path from 1000xbrain root
+    # Get relative path from source root
     $relativePath = $markdownFile.Replace($RootPath, "").TrimStart("\", "/")
     
     # Create the expected mdc file path, preserving the directory structure
@@ -165,6 +169,79 @@ function Remove-OrphanedMdcFile {
         Write-Host "  Error removing file: $_" -ForegroundColor Red
         return $false
     }
+}
+
+# Function to determine if a file is a special 00OS file
+function Is-OSOSFile {
+    param(
+        [string]$filePath
+    )
+    
+    # Check if this is from 00os and is a process or special file
+    if ($RootPath -match "00os" -and ($filePath -match "processes/" -or $filePath -match "core/")) {
+        return $true
+    }
+    
+    return $false
+}
+
+# Function to generate special frontmatter for 00OS files if needed
+function Get-OSOSFrontmatter {
+    param(
+        [string]$filePath
+    )
+    
+    # Initialize empty frontmatter
+    $frontmatter = ""
+    
+    # Generate special frontmatter for process files
+    if ($filePath -match "processes/") {
+        $relativePath = $filePath.Replace($RootPath, "").TrimStart("\", "/")
+        $processName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
+        $processCategory = $relativePath.Split('/')[1]  # Gets the category (system, tools, etc.)
+        
+        $frontmatter = @"
+---
+rule_type: Agent Requested
+enabled: true
+description: |
+  Process: $processName
+  Category: $processCategory
+  Used to handle commands related to this process category.
+---
+
+"@
+    }
+    # Generate special frontmatter for core files
+    elseif ($filePath -match "core/") {
+        $componentName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
+        
+        $frontmatter = @"
+---
+rule_type: Always
+enabled: true
+description: |
+  00OS Core Component: $componentName
+---
+
+"@
+    }
+    # Generate special frontmatter for config files
+    elseif ($filePath -match "config/") {
+        $componentName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
+        
+        $frontmatter = @"
+---
+rule_type: Always
+enabled: true
+description: |
+  00OS Configuration: $componentName
+---
+
+"@
+    }
+    
+    return $frontmatter
 }
 
 # Get all markdown files in the RootPath
@@ -244,7 +321,16 @@ foreach ($mdFile in $mdFiles) {
                 # Get content without frontmatter
                 $content = Get-ContentWithoutFrontmatter -filePath $mdFilePath
                 
-                # Create new file with content only (no frontmatter)
+                # Check if special 00OS frontmatter is needed
+                $isOSOSFile = Is-OSOSFile -filePath $mdFilePath
+                if ($isOSOSFile) {
+                    $osFrontmatter = Get-OSOSFrontmatter -filePath $mdFilePath
+                    if ($osFrontmatter) {
+                        $content = $osFrontmatter + $content
+                    }
+                }
+                
+                # Create new file with content
                 Set-Content -Path $newMdcPath -Value $content -NoNewline
                 Write-Host "  Created new file: $newMdcPath" -ForegroundColor Green
                 $createdFiles += "Created: $relativePath -> $($newMdcPath.Replace($CursorRulesPath, ''))"
@@ -299,6 +385,7 @@ $report = @"
 Generated: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
 
 ## Summary
+- Source: $sourceName
 - Mode: $(if ($DryRun) { "Dry Run (no changes made)" } else { "Live Run (changes applied)" })
 - Total files processed: $($mdFiles.Count)
 - Files updated: $($updatedFiles.Count)
@@ -340,6 +427,7 @@ $(if ($removedOrphanFiles.Count -gt 0) { ($removedOrphanFiles | ForEach-Object {
 
 - README.md files are explicitly excluded from synchronization
 - Frontmatter in .mdc files is always preserved during synchronization
+- 00OS process files are handled with special formatting
 - Rule types must be managed through the Cursor UI
 "@
 
@@ -349,6 +437,7 @@ Set-Content -Path $reportFile -Value $report
 Write-Host ""
 Write-Host "Synchronization Complete!"
 Write-Host "=========================="
+Write-Host "Source: $sourceName"
 Write-Host "Total files processed: $($mdFiles.Count)"
 Write-Host "Files updated: $($updatedFiles.Count)" -ForegroundColor $(if ($updatedFiles.Count -gt 0) { "Green" } else { "Gray" })
 Write-Host "Files created: $($createdFiles.Count)" -ForegroundColor $(if ($createdFiles.Count -gt 0) { "Green" } else { "Gray" })

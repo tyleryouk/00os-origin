@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Terminal Configuration
+
+This configuration file controls the behavior and appearance of the 00OS terminal interface.
+
+## Settings
+
+- `prefix`: The command prefix character(s) to identify terminal commands (default: `>`)
+- `theme`: Visual styling for the terminal output
+- `history`: Maximum number of commands to store in history
+- `autoComplete`: Enable/disable command auto-completion 

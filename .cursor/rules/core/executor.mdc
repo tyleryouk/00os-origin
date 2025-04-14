@@ -1,0 +1,486 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# 00OS Process Executor
+
+## Overview
+The Process Executor is responsible for loading, initializing, and executing processes after they've been validated by the command parser and registry. It provides an isolated execution environment for each process, manages its lifecycle, and handles errors and exceptions.
+
+## Executor Implementation
+
+```javascript
+/**
+ * 00OS Process Executor
+ * 
+ * Responsible for loading and executing processes, managing their lifecycle,
+ * and handling errors and exceptions.
+ */
+
+const registry = require('./registry.js');
+const permissions = require('./permissions.js');
+
+/**
+ * Execute a command using the appropriate process
+ * @param {Object} commandStructure - Parsed command structure from parser
+ * @param {Object} processDefinition - Process definition from registry
+ * @returns {Object} Execution result
+ */
+async function executeCommand(commandStructure, processDefinition) {
+  try {
+    // Load the process
+    const process = await registry.loadProcess(processDefinition.processPath);
+    
+    if (!process) {
+      throw new Error(`Failed to load process: ${processDefinition.processPath}`);
+    }
+    
+    // Check permissions
+    const permissionCheck = await permissions.checkPermissions(
+      process.metadata.permissions || ['basic']
+    );
+    
+    if (!permissionCheck.granted) {
+      throw new Error(`Permission denied: ${permissionCheck.message}`);
+    }
+    
+    // Map command arguments to process inputs
+    const processInputs = mapCommandToProcessInputs(commandStructure, process.metadata.inputs);
+    
+    // Execute the process
+    const result = await executeProcess(process, processInputs);
+    
+    // Return the execution result
+    return {
+      success: true,
+      result: result,
+      process: processDefinition.name
+    };
+  } catch (error) {
+    // Handle execution error
+    return {
+      success: false,
+      error: error.message,
+      process: processDefinition.name,
+      code: error.code || 'EXECUTION_ERROR'
+    };
+  }
+}
+
+/**
+ * Map command structure to process inputs
+ * @param {Object} commandStructure - Parsed command structure
+ * @param {Array} processInputs - Process input definitions
+ * @returns {Object} Mapped inputs
+ */
+function mapCommandToProcessInputs(commandStructure, processInputs = []) {
+  const inputs = {};
+  
+  // If no process inputs defined, return empty object
+  if (!processInputs || processInputs.length === 0) {
+    return inputs;
+  }
+  
+  // Map positional arguments
+  let argIndex = 0;
+  for (const input of processInputs) {
+    // Skip inputs that are explicitly set by options
+    if (commandStructure.options[input.name] !== undefined) {
+      continue;
+    }
+    
+    // If input is a flag and flag is present, set to true
+    if (input.type === 'boolean' && commandStructure.flags.includes(input.name)) {
+      inputs[input.name] = true;
+      continue;
+    }
+    
+    // Map positional argument if available
+    if (argIndex < commandStructure.arguments.length) {
+      inputs[input.name] = convertValue(commandStructure.arguments[argIndex], input.type);
+      argIndex++;
+    } else if (input.required) {
+      throw new Error(`Missing required input: ${input.name}`);
+    } else {
+      // Use default value if available
+      inputs[input.name] = input.default !== undefined ? input.default : null;
+    }
+  }
+  
+  // Map options
+  for (const [key, value] of Object.entries(commandStructure.options)) {
+    const inputDef = processInputs.find(input => input.name === key);
+    
+    if (inputDef) {
+      inputs[key] = convertValue(value, inputDef.type);
+    }
+  }
+  
+  // Map flags (boolean options)
+  for (const flag of commandStructure.flags) {
+    const inputDef = processInputs.find(input => input.name === flag);
+    
+    if (inputDef && inputDef.type === 'boolean') {
+      inputs[flag] = true;
+    }
+  }
+  
+  return inputs;
+}
+
+/**
+ * Convert string value to the appropriate type
+ * @param {string} value - Input value
+ * @param {string} type - Target type
+ * @returns {any} Converted value
+ */
+function convertValue(value, type) {
+  switch (type) {
+    case 'number':
+      return Number(value);
+    case 'boolean':
+      return value === 'true' || value === '1' || value === 'yes';
+    case 'object':
+      try {
+        return JSON.parse(value);
+      } catch (e) {
+        return value;
+      }
+    case 'array':
+      try {
+        return JSON.parse(value);
+      } catch (e) {
+        return value.split(',').map(v => v.trim());
+      }
+    default:
+      return value;
+  }
+}
+
+/**
+ * Execute a process with the provided inputs
+ * @param {Object} process - Loaded process
+ * @param {Object} inputs - Process inputs
+ * @returns {Object} Process output
+ */
+async function executeProcess(process, inputs) {
+  // Create execution context
+  const context = createExecutionContext(process, inputs);
+  
+  try {
+    // Run initialization block
+    if (process.blocks.initialization) {
+      await executeBlock(process.blocks.initialization, context);
+    }
+    
+    // Run execution block
+    await executeBlock(process.blocks.execution, context);
+    
+    // Run output block and return result
+    if (process.blocks.output) {
+      return await executeBlock(process.blocks.output, context);
+    }
+    
+    // Default output if no output block
+    return {
+      status: 'success',
+      message: `${process.metadata.name} executed successfully`
+    };
+  } catch (error) {
+    // Handle block execution error
+    throw new Error(`Process execution error: ${error.message}`);
+  }
+}
+
+/**
+ * Create execution context for a process
+ * @param {Object} process - Loaded process
+ * @param {Object} inputs - Process inputs
+ * @returns {Object} Execution context
+ */
+function createExecutionContext(process, inputs) {
+  return {
+    process: {
+      name: process.metadata.name,
+      version: process.metadata.version,
+      path: process.path
+    },
+    inputs: inputs,
+    state: {},
+    tools: getToolsForProcess(process.metadata.permissions || ['basic'])
+  };
+}
+
+/**
+ * Get available tools based on permissions
+ * @param {Array} permissions - Process permissions
+ * @returns {Object} Available tools
+ */
+function getToolsForProcess(processPermissions) {
+  const tools = {
+    // Basic tools available to all processes
+    log: console.log,
+    error: console.error
+  };
+  
+  // Add file tools if process has file permissions
+  if (processPermissions.includes('file-read')) {
+    tools.readFile = async (path) => {
+      // Implementation of readFile
+    };
+  }
+  
+  if (processPermissions.includes('file-write')) {
+    tools.writeFile = async (path, content) => {
+      // Implementation of writeFile
+    };
+  }
+  
+  // Add system tools if process has system permissions
+  if (processPermissions.includes('system-read')) {
+    tools.getSystemInfo = async () => {
+      // Implementation of getSystemInfo
+    };
+  }
+  
+  return tools;
+}
+
+/**
+ * Execute a code block within a process
+ * @param {string} blockCode - Code block to execute
+ * @param {Object} context - Execution context
+ * @returns {any} Block result
+ */
+async function executeBlock(blockCode, context) {
+  // Create function from code block
+  const func = new Function(
+    'process', 'inputs', 'state', 'tools',
+    `
+    try {
+      ${blockCode}
+    } catch (error) {
+      throw new Error(\`Block execution error: \${error.message}\`);
+    }
+    `
+  );
+  
+  // Execute function with context
+  return func(
+    context.process,
+    context.inputs,
+    context.state,
+    context.tools
+  );
+}
+
+// Export functions for system use
+module.exports = {
+  executeCommand,
+  executeProcess
+};
+```
+
+## Process Lifecycle Management
+
+The executor manages the complete lifecycle of a process:
+
+1. **Loading**: Process file is loaded from the file system
+2. **Permission Check**: Verify process has necessary permissions
+3. **Input Mapping**: Map command arguments to process inputs
+4. **Initialization**: Execute the initialization block
+5. **Execution**: Execute the main execution block
+6. **Output Generation**: Execute the output block
+7. **Cleanup**: Release resources and finalize execution
+
+## Execution Context
+
+Each process executes within a controlled context that provides:
+
+- **Process Metadata**: Information about the executing process
+- **Input Parameters**: Command arguments mapped to process inputs
+- **State Object**: For maintaining state during execution
+- **Available Tools**: Tools available based on permissions
+
+## Error Handling
+
+The executor implements a robust error handling system:
+
+```javascript
+/**
+ * Handle execution errors and format for response
+ * @param {Error} error - Execution error
+ * @param {string} processName - Name of the process
+ * @returns {Object} Formatted error response
+ */
+function handleExecutionError(error, processName) {
+  // Determine error type
+  let errorType = 'EXECUTION_ERROR';
+  let errorMessage = error.message;
+  
+  if (error.code) {
+    errorType = error.code;
+  } else if (error.message.includes('Permission denied')) {
+    errorType = 'PERMISSION_ERROR';
+  } else if (error.message.includes('Missing required input')) {
+    errorType = 'INPUT_ERROR';
+  }
+  
+  // Format error response
+  return {
+    success: false,
+    error: errorMessage,
+    code: errorType,
+    process: processName,
+    timestamp: new Date().toISOString()
+  };
+}
+```
+
+## Tool Integration
+
+The executor provides tools to processes based on their declared permissions:
+
+- **Basic Tools**: Available to all processes (logging, etc.)
+- **File Tools**: Available to processes with file permissions
+- **System Tools**: Available to processes with system permissions
+- **Network Tools**: Available to processes with network permissions
+
+## Advanced Features
+
+### Asynchronous Execution
+
+Processes can execute asynchronously in the background:
+
+```javascript
+/**
+ * Execute a process in the background
+ * @param {string} processPath - Path to process file
+ * @param {Object} inputs - Process inputs
+ * @returns {string} Job ID
+ */
+async function executeBackground(processPath, inputs) {
+  // Generate unique job ID
+  const jobId = generateJobId();
+  
+  // Start background execution
+  backgroundJobs[jobId] = {
+    status: 'running',
+    processPath,
+    inputs,
+    startTime: Date.now()
+  };
+  
+  // Execute in background
+  setTimeout(async () => {
+    try {
+      const process = await registry.loadProcess(processPath);
+      const result = await executeProcess(process, inputs);
+      
+      // Update job status
+      backgroundJobs[jobId] = {
+        ...backgroundJobs[jobId],
+        status: 'completed',
+        result,
+        endTime: Date.now()
+      };
+    } catch (error) {
+      // Handle error
+      backgroundJobs[jobId] = {
+        ...backgroundJobs[jobId],
+        status: 'failed',
+        error: error.message,
+        endTime: Date.now()
+      };
+    }
+  }, 0);
+  
+  return jobId;
+}
+```
+
+### Process Monitoring
+
+The executor tracks process execution for monitoring:
+
+```javascript
+/**
+ * Get status of all running processes
+ * @returns {Array} Process status information
+ */
+function getProcessStatus() {
+  const status = [];
+  
+  // Add active processes
+  for (const [id, process] of Object.entries(activeProcesses)) {
+    status.push({
+      id,
+      name: process.name,
+      startTime: process.startTime,
+      duration: Date.now() - process.startTime,
+      status: 'active'
+    });
+  }
+  
+  // Add background jobs
+  for (const [id, job] of Object.entries(backgroundJobs)) {
+    status.push({
+      id,
+      name: job.processPath,
+      startTime: job.startTime,
+      duration: job.endTime ? job.endTime - job.startTime : Date.now() - job.startTime,
+      status: job.status
+    });
+  }
+  
+  return status;
+}
+```
+
+### Process Interruption
+
+Processes can be interrupted if they run too long:
+
+```javascript
+/**
+ * Terminate a running process
+ * @param {string} processId - Process ID to terminate
+ * @returns {boolean} Success status
+ */
+function terminateProcess(processId) {
+  if (activeProcesses[processId]) {
+    // Mark as terminated
+    activeProcesses[processId].terminated = true;
+    delete activeProcesses[processId];
+    return true;
+  }
+  
+  if (backgroundJobs[processId]) {
+    // Mark background job as terminated
+    backgroundJobs[processId].status = 'terminated';
+    backgroundJobs[processId].endTime = Date.now();
+    return true;
+  }
+  
+  return false;
+}
+```
+
+## Future Enhancements
+
+1. **Process Isolation**
+   - Execute processes in isolated sandbox environments
+   - Prevent processes from affecting each other
+
+2. **Resource Constraints**
+   - Set execution time limits for processes
+   - Limit memory and CPU usage
+
+3. **Execution Optimization**
+   - Process caching for frequently used processes
+   - Parallel execution for independent processes
+
+4. **Advanced Debugging**
+   - Step-by-step execution for debugging
+   - Execution tracing and logging 

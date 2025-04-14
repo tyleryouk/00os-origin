@@ -1,155 +1,72 @@
-## 1000xnotes 
+# 00OS Implementation and Sync Migration Plan
+
+## USER REQUEST
+Implement a complete migration from 1000xrules to 00OS as the source system for .cursor/rules synchronization. The plan should:
+1. Preserve existing functionality while transitioning to the new operating system model
+2. Update sync scripts to target 00os instead of 1000xrules
+3. Define core command keywords to ensure compatibility with 00OS terminal interface
+4. Execute the full transition in a single cycle
+
+## Core Concept
+Transform 1000xrules (which syncs to .cursor/rules) into a full operating system that processes commands and executes processes, effectively turning the prompt box into a terminal interface.
+
+## Migration Requirements
+
+### Source of Truth Transition
+- Transition sync scripts to use 00os/ as the source directory instead of 1000xrules/
+- Ensure all core functionality is preserved during migration
+- Update paths in sync scripts to reflect the new directory structure
+- Create initial command set to handle basic operations
+
+### Command System Implementation
+- Define custom command prefix (e.g., `>` for command mode, similar to existing "chat" prefix)
+- Ensure backward compatibility with existing "run command:" syntax during transition
+- Map frequently used commands to new process files
+
+### Terminal Interface Completion
+- Implement initial command parser that recognizes command syntax
+- Configure process registry with core processes
+- Set up executor to run processes based on parsed commands
+- Establish permission system for secure process execution
+
+### Sync Script Updates
+- Modify Sync-All.bat to target 00os/ directory
+- Update Sync-CursorRules.ps1 with new source directory path
+- Test synchronization with new paths
+- Preserve backwards compatibility for existing functionality
+
+## Identity Structure
+- **00reaper**: System administrator identity
+  - Responsible for 00OS maintenance and evolution
+  - Manages core system components
+  - Primary identity for system-level operations
+
+- **1000xdev**: Process execution identity
+  - Executes as a service within 00OS
+  - Handles development tasks via command interface
+  - Maintains existing functionality through new process system
+
+## Implementation Path
+1. Finalize core system components (parser, registry, executor, permissions)
+2. Complete initial process files for essential commands
+3. Update sync scripts to target 00os directory
+4. Execute full system migration
+5. Test and verify terminal interface functionality
+
+## Expected Outcomes
+- .cursor/rules content will be synced from 00os/ instead of 1000xrules/
+- Command parsing system will recognize and route terminal commands
+- Process execution will follow standardized patterns
+- Permissions system will control access to sensitive operations
+- System will maintain existing functionality while enabling new terminal interface
 
 
 
-## IMPORTANT 
-### Ensure all three core cycles are solid (still need to work on autonomous)
-autonomous does not follow the same 7 step sequential 1000xcommand sequence as cycle-manager. Example:
-autonomous cycle does not have the same enhancement tracking procedure as cycle-manager.
 
-**Assume everything in autonomous is currently wrong and start over**
+This is the concerning part, it seems as if you do not fully understand what we are doing. 
 
-autonomous is designed for autonomous system-wide enhancements and optimizations, focused on the less is more principle, throughout ALL 1000xsystems. autonomous should utilize 1000xbrain\system\guidelines\ and first make changes to the guidelines before making changes to the rest of the 1000xsystems. This provides backwards compatibility and maintainability for system-wide changes, centralizing all system configurations to 1000xbrain\system\guidelines (autonomous and major-changes are both for system-wide changes and utilize guidelines as the central hub for all system-wide guidelines).
+Perform extensive research on AI knowledge bases, prompting, Cursor Rules, Cursor Tool Calls, and Cursor Rule Types.
 
+In the future, we will need to keep editing 00os. I don't want to have to keep repeating myself on the goal to turn this prompt box to run more like a terminal for enhannced workflow and faster development. 
 
-autonomous and major-changes should log enhancements to their own operational-feedback folder. However, ALL cycle related bugs/errors/enhancements (i.e. tool call errors) should go to the operational-feedback folder of cycle-manager. Think of this like reporting issues to management. cycle related issues must be resolved by cycle-manager to ensure accuracy.
-
-while you are in autonomous cycle -> identify system-wide optimizations and enhancements, tailored towards consolidation and optimization, focused on the less is more principle -> log in 1000xbrain\system\autonomous\operational-feedback
-
-while you are in major-changes cycle -> system-wide optimizations and enhancements, tailored towards major changes and new features for the system -> log in 1000xbrain\system\autonomous\operational-feedback
-
-while you are in autonomous cycle -> identify autonomous  -> log in 1000xbrain\system\autonomous\operational-feedback
-
-
-#### Project Agnostic Goal | autonomous | Autonomous | 
-The goal of the 1000xsystems is to be fully project agnostic, so that if I take the 1000xsystems and move them to another folder, they will work as intended. The structure of the project folders including the 1000xsystems will always be:
-
-project-folder/
-- .cursor
-- 1000xbrain
-- 1000xcommands
-- 1000xplans
-- 1000xrules
-- 1000xscripts
-- (project-directory-folders)
-- (root-project-files)
-
-In this particular proejct, the structure is:
-GigaSwap/
-- .cursor
-- 1000xbrain
-- 1000xcommands
-- 1000xplans
-- 1000xrules
-- 1000xscripts
-- back-end
-- front-end
-- logs-main
-- .gitignore
-
-Example, I want to copy this system into a new project that I am working on. If I copy your brain and it's subsystems to the new project folder, the directory structure will look like:
-- .cursor
-- 1000xbrain
-- 1000xcommands
-- 1000xplans
-- 1000xrules
-- 1000xscripts
-- p3_handout
-- p3_strict_instructions
-
-To make the 1000xsystems project agnostic, here are suggestions of changes to make through all of the 1000xsystems. Review the suggestions, then make at least 50 tool calls to the 1000xsystems to thoroughly analyze the current state of the 1000xsystems. 50 tool calls is a minimum, even though I would prefer that you conduct more to get a holistic view of the 1000xsystems.
-
-Possible changes to 1000xsystems:
-- Ensure all filepaths are relative (I am pretty sure all filepaths are already relative, however, you will need to grep search through the 1000xsystems to check). If there are places where filepaths are not relative and include \GigaSwap\, then there needs to be some system to set the root path (e.g for this project, the root path will be C:\Users\ethde\Desktop\GigaSwap).
-
-- There are many instances where the domains: front-end, back-end, and system are specified. This is good for this project, but I would rather centralize the documentation of domains so that if I switch this system to another project I can update the domains. 
-
-- **IMPORTANT NOTE** I just started creating 1000xsystems with you. Originally, it was just 1000xbrain. As we have worked together over the past year, these configurations have gotten much better. I now want to be able to migrate these configurations so that you and I can work on any project together. Because a lot of the 1000xsystem configurations are new, the cycles for front-end and back-end have not been created yet. Additionally, nothing has been created for the brain-domains 1000xbrain\front-end\ and 1000xbrain\back-end\ . This information should give you the confidence to make any necessary changes to make all 1000xsystem (1000xbrain, 1000xcommands, 1000xplans, 1000xscripts, 1000xrules) without the worry of affecting the front-end and back-end directories, for there aren't any configurations/cycles/knowledge/commands/processes/scripts for front-end nor back-end yet. 
-
-- Please intelligently review every 1000xsystem: 1000xbrain, 1000xcommands, 1000xplans, 1000xscripts, and 1000xrules.
-
-- Note that if it is the easiest to just keep all documentation of the front-end and back-end domains in 1000xsystems as is, let me know and I can just move the 1000xsystems over to the new project folder, then ask you to manually change all of the domain documentation from `front-end` and `back-end` to the new project. 
-
-
-
-#### *file size, high priority*
-All file sizes for within every cycle should be less than 250 lines. 1000xcommands are always within 250 lines, however there are times when the planning folder files in 1000xplans and the knowledge/process/operational-enhancement files are over 250 lines. You will mainly need to address the standards for creating files in 1000xbrain throughout the cycle (specifically operational-enhancements, which is dynamically updated throughout the cycle process)
-
-#### *operational_feedback folder enhancement*
-At some point, you are going to need to delete the logs of old cycles in the files within 1000xbrain\system\autonomous\operational_feedback\ and other operational_feedback folders. Note that this repository gets pushed to github frequently, so there is really no need to keep logs of old cycles. Less is more. You should be comfortable overwriting old documentation in 1000xbrain\system\autonomous\operational_feedback . The usage of operational_feedback folder for all cycles should be standardized. It would be preferred if all old logs are deleted. This should be a guideline for all cycles. Less is more.
-
-
-## Later 1
-*Creation of front-end cycle, steam-api*
-Create an autonomous cycle within front-end to autonomously integrate the Steam API.
-All 1000xsystem based errors (tool calls etc), should be reported to the cycle-manager. This will seperate concerns so that during the front-end cycle you can focus on front-end implementation, and all cycle related issues or even enhancements requests will be abstracted to the cycle-manager for a system based cycle iteration (not a front-end cycle based iteration). All reports for cycle issues or enhancements should go to 1000xbrain\system\cycle-manager\operational-feedback\front-end-cycles\ (create new folder). Note that ALL front-end related knowledge and processes should be abstracted to the 1000xbrain\front-end\ domain (seperate part of your brain is designated for front-end). We still want to keep this 1000xsystem project agnostic, so that if I decide to create a new project it will be easy to do so.
-**Context**
-GigaSwap is a full-stack application with a front-end and back-end. You may need to make tool calls to both front-end and back-end to fully understand the applications. The goal is to create a crypto based marketplace for CS2 Skins, which can be digitally transferred through the steamwebapi.com. A lot of the functionality has been created for the front-end, however, there needs to be major upgrades. The authentication system is currently through metamask, which we need to switch to a steam based login (login with Steam). Still keep the connect wallet functionality for later usage (trading functionality). It would be best if you make extensive tool calls to both the front-end and the back-end. It also may be best to maybe even create a new domain called full-stack which will be focused on external API integration and in the cycle you will make changes to both the front-end and back-end, rather than going back-end first then front-end. No cycles have been created yet for front-end nor back-end, so let me know what you think.
-
-
-*Creation of back-end cycle, steam-api*
-Create an autonomous cycle within front-end to autonomously integrate the Steam API.
-All 1000xsystem based errors (tool calls etc), should be reported to the cycle-manager. This will seperate concerns so that the back-end cycle can focus on back-end implementation, and will abstract the tool call and cycle errors or even optimization requests to cycle-manager. All reports should go to 1000xbrain\system\cycle-manager\operational-feedback\back-end-cycles\ (create new folder). Note that ALL back-end related knowledge and processes should be abstracted to the 1000xbrain\back-end\ domain (seperate part of your brain is designated for front-end). We still want to keep this 1000xsystem project agnostic, so that if I decide to create a new project it will be easy to do so.
-This new cycle should be focused on integrating the Steam Web API documented here:
-https://www.steamwebapi.com/hub/api-overview
-
-
-## Later 2
-#### pushing to git autonomously | cycle-manager | major-changes
-I am also confident in your abilities now and would like to give you access to push to github. Create a script which will push the root directory to github. Note that this is a mono-repository, and the front-end and back-end applications have their own git configurations and do not get pushed when we push the root directory (front-end and back-end will only get pushed if we manually configure the root directory git to include these two inner repositories). I do not want to change the current settings to push the front-end and back-end directories.
-
-The terminal command sequence for pushing to git is as follows:
-
-1. Ensure you are in GigaSwap root directory
-```powershell
-cd C:\Users\ethde\Desktop\GigaSwap
-```
-
-2. Ensure you are in correct branch (checkout to correct branch, you should always be in 1000xdev branch)
-```powershell
-git branch
-```
-
-correct output
-```terminal
-PS C:\Users\ethde\Desktop\GigaSwap> git branch
-* 1000xdev
-  main
-PS C:\Users\ethde\Desktop\GigaSwap> 
-```
-
-3. Read current git status
-```powershell
-git status
-```
-
-4. git add
-```powershell
-git add .
-```
-
-5. git commit (use latest-1000xdev if you can't think of commit messages, every commit message should be tagged with -1000xdev)
-```powershell
-git commit -m "latest-1000xdev"
-```
-6. push to 1000xdev (you should only push to 1000xdev)
-```powershell
-git commit -m "latest-1000xdev"
-```
-
-If you integrate pushing git commands, I would like for there to be a standardized process file in which the 1000xcommand will read first before making any changes. I would like the 1000xcommand to have strict explicit tool calls preferably to a script. I would like there to be strict guidelines in the process file to ensure that upon errors or unexpected terminal responses there is a strict process. There should also be a success criteria to ensure that you are in the correct branch and that the commit has successfully pushed. You should be able to read past commits as well (I have git connected with cursor). For me to send you git commits, I can reference @Git. Review @Web for Cursor Documentation on @Git integration in Cursor. 
-
-You should only push to the branch 
-
-
-#### Enhancement to cycle-manager | cycle-manager
-During the implementation process (4), there are often times when you will to take a break. Which of the following options would you recommend:
-1. Modifying the guidelines of the 4th step of all cycles to expect repeated runs of `run command:system/{cycle-name}/4` until the implementation is complete
-2. Create a continuation 1000xcommand (4-continue?) `run command:system/{cycle-name}/4`
-3. Other suggestions for continuing implementation when you take breaks, or if the implementation is spread out over phases and you stop after the first phase? Try to keep any new suggestions simple.
-
-#### Remove all usages of date | cycle-manager
-You keep adding incorrect dates. Remove any instruction in 1000xbrain and 1000xrules stating to use dates. Stop using dates. The dates are known thorugh git version control. Stop using dates for the templates or any other type of documentation. 
-
-#### Script | cycle-manager
-script list.ps1 should execute in cycle-manager step 7 to create an accurate list of all cycles at the end of the cycle. The list of cycles is only used in cycle-manager.
+You recent responses are very concerning. You need to run @Web tool calls to perform extensive research on the process of Cursor prompting so you fully understand how to maximize .cursor/rules to turn every message between you and I to execute like terminal commands and operating system processes. You also have not specified which Cursor Rules should be auto applied, always, manual, or agent requested. You can NOT just created new files because these files will NEVER get used if not properly utilized by the .cursor/ rules.

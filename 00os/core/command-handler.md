@@ -1,0 +1,290 @@
+# 00OS Command Handler
+
+## Overview
+
+This component is responsible for identifying, parsing, and routing commands that use the 00OS terminal interface syntax (using the `>` prefix). It serves as the entry point for command processing within the 00OS system.
+
+## Command Syntax Detection
+
+When a user enters a message, this handler checks if it matches the command syntax:
+
+```
+> [command] [subcommand] [arguments] [--flags]
+```
+
+Examples:
+- `> help`
+- `> file list /00os/processes`
+- `> system status --detailed`
+
+## Command Processing Flow
+
+1. **Detection**: Identify if the input starts with the command prefix (`>`)
+2. **Tokenization**: Split the command into its constituent parts
+3. **Command Lookup**: Find the appropriate process for the command
+4. **Permission Check**: Verify the user has permission to execute the command
+5. **Process Execution**: Execute the command through the appropriate process file
+6. **Response Formatting**: Format and return the result to the user
+
+## Implementation
+
+### Command Detection
+
+```javascript
+// Check if user input is a command (starts with >)
+function isCommand(input) {
+  // Remove leading whitespace
+  const trimmedInput = input.trim();
+  
+  // Check if it starts with >
+  return trimmedInput.startsWith('>');
+}
+```
+
+### Command Tokenization
+
+```javascript
+// Parse command into components
+function parseCommand(input) {
+  // Remove > prefix and trim whitespace
+  const commandString = input.trim().substring(1).trim();
+  
+  // Initialize result object
+  const result = {
+    command: '',
+    subcommand: '',
+    args: [],
+    flags: {}
+  };
+  
+  // Split into tokens
+  const tokens = commandString.match(/(?:[^\s"]+|"[^"]*")+/g) || [];
+  
+  // First token is the command
+  if (tokens.length > 0) {
+    result.command = tokens[0];
+    
+    // Second token is the subcommand if it doesn't start with -- and isn't preceded by a flag
+    if (tokens.length > 1 && !tokens[1].startsWith('--')) {
+      result.subcommand = tokens[1];
+      
+      // Remaining tokens are args or flags
+      for (let i = 2; i < tokens.length; i++) {
+        const token = tokens[i];
+        
+        if (token.startsWith('--')) {
+          // Flag with value
+          if (i < tokens.length - 1 && !tokens[i+1].startsWith('--')) {
+            result.flags[token.substring(2)] = tokens[i+1];
+            i++; // Skip the value token
+          } else {
+            // Flag without value (boolean flag)
+            result.flags[token.substring(2)] = true;
+          }
+        } else {
+          // Argument
+          result.args.push(token);
+        }
+      }
+    } else {
+      // No subcommand, remaining tokens are args or flags
+      for (let i = 1; i < tokens.length; i++) {
+        const token = tokens[i];
+        
+        if (token.startsWith('--')) {
+          // Flag with value
+          if (i < tokens.length - 1 && !tokens[i+1].startsWith('--')) {
+            result.flags[token.substring(2)] = tokens[i+1];
+            i++; // Skip the value token
+          } else {
+            // Flag without value (boolean flag)
+            result.flags[token.substring(2)] = true;
+          }
+        } else {
+          // Argument
+          result.args.push(token);
+        }
+      }
+    }
+  }
+  
+  return result;
+}
+```
+
+### Process Lookup
+
+```javascript
+// Find the process file for the command
+function findProcess(command, subcommand) {
+  // Standard paths for processes based on command categories
+  const systemCommands = ['system', 'config', 'help', 'version'];
+  const fileCommands = ['file', 'cd', 'pwd', 'ls'];
+  const processCommands = ['process', 'service'];
+  const identityCommands = ['identity', 'permissions'];
+  const toolCommands = ['tools', 'shell'];
+  
+  let processPath = '';
+  
+  // Determine category based on command
+  if (systemCommands.includes(command)) {
+    processPath = `/00os/processes/system/${command}`;
+    if (subcommand) processPath += `-${subcommand}`;
+  } else if (fileCommands.includes(command)) {
+    processPath = `/00os/processes/tools/${command}`;
+    if (subcommand) processPath += `-${subcommand}`;
+  } else if (processCommands.includes(command)) {
+    processPath = `/00os/processes/services/${command}`;
+    if (subcommand) processPath += `-${subcommand}`;
+  } else if (identityCommands.includes(command)) {
+    processPath = `/00os/processes/system/${command}`;
+    if (subcommand) processPath += `-${subcommand}`;
+  } else if (toolCommands.includes(command)) {
+    processPath = `/00os/processes/tools/${command}`;
+    if (subcommand) processPath += `-${subcommand}`;
+  } else {
+    // Try to find a custom process
+    processPath = `/00os/processes/apps/${command}`;
+    if (subcommand) processPath += `-${subcommand}`;
+  }
+  
+  return processPath + '.md';
+}
+```
+
+### Permission Checking
+
+```javascript
+// Check if the user has permission to execute the command
+function checkPermissions(command, subcommand) {
+  // For now, allow all commands
+  // In the future, this will integrate with the permissions system
+  return true;
+}
+```
+
+### Legacy Command Support
+
+To ensure backward compatibility during the transition, the system also recognizes the legacy command format:
+
+```javascript
+// Check if the input is a legacy command
+function isLegacyCommand(input) {
+  return input.trim().startsWith('run command:');
+}
+
+// Convert legacy command to new format
+function convertLegacyCommand(input) {
+  // Extract the command path
+  const commandPath = input.trim().substring('run command:'.length).trim();
+  
+  // Split into domain and command
+  const [domain, command] = commandPath.split('/');
+  
+  // Map to new command format
+  if (domain === 'system') {
+    return `> system ${command}`;
+  } else if (domain === 'tools') {
+    return `> tools ${command}`;
+  } else if (domain === 'frontend') {
+    return `> frontend ${command}`;
+  } else if (domain === 'backend') {
+    return `> backend ${command}`;
+  } else {
+    // Default mapping
+    return `> ${domain} ${command}`;
+  }
+}
+```
+
+### Response Formatting
+
+```javascript
+// Format the command response
+function formatResponse(response, success = true) {
+  // Status indicator based on success
+  const status = success ? '✅' : '❌';
+  
+  // Return formatted response
+  return `${status} ${response}`;
+}
+```
+
+## Main Processing Function
+
+```javascript
+// Main function to process a command
+function processCommand(input) {
+  // Check if this is a command
+  if (!isCommand(input)) {
+    // Check if it's a legacy command
+    if (isLegacyCommand(input)) {
+      // Convert and process as new command
+      return processCommand(convertLegacyCommand(input));
+    }
+    
+    // Not a command, return null to let the system handle it normally
+    return null;
+  }
+  
+  try {
+    // Parse the command
+    const parsedCommand = parseCommand(input);
+    
+    // Find the process file
+    const processFile = findProcess(parsedCommand.command, parsedCommand.subcommand);
+    
+    // Check permissions
+    if (!checkPermissions(parsedCommand.command, parsedCommand.subcommand)) {
+      return formatResponse(`Error: You don't have permission to execute this command.`, false);
+    }
+    
+    // Execute the process
+    // This would be implemented by reading the process file and executing its instructions
+    const result = executeProcess(processFile, parsedCommand);
+    
+    // Return the formatted result
+    return formatResponse(result);
+  } catch (error) {
+    // Return error response
+    return formatResponse(`Error: ${error.message}`, false);
+  }
+}
+```
+
+## Integration with Cursor Rules
+
+This command handler integrates with the Cursor rules system by intercepting user input before it's processed by the general knowledge base. When a message is identified as a command (starting with `>`), it's routed through this handler instead of being treated as a regular message.
+
+This allows 00OS to transform the prompt box into a terminal interface while maintaining the ability to have regular conversations when needed.
+
+## Fallback Mechanism
+
+If a command isn't recognized or can't be processed, the system provides helpful error messages and suggestions:
+
+```
+❌ Error: Command 'unknown' not found
+Suggestions:
+- Use 'help' to see available commands
+- Check the spelling of your command
+- Try 'system list-commands' to see all available commands
+```
+
+## Example Command Flows
+
+1. **Basic Command**: `> help`
+   - Detected as a command
+   - Parsed: command="help", no subcommand, no args, no flags
+   - Process: `/00os/processes/system/help.md`
+   - Result: Help system output
+
+2. **Command with Subcommand**: `> file list /00os/processes`
+   - Detected as a command
+   - Parsed: command="file", subcommand="list", args=["/00os/processes"]
+   - Process: `/00os/processes/tools/file-list.md`
+   - Result: List of files in the processes directory
+
+3. **Legacy Command**: `run command:system/status`
+   - Detected as a legacy command
+   - Converted to: `> system status`
+   - Processed as a new-format command 

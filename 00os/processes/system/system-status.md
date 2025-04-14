@@ -1,0 +1,331 @@
+# Process: System Status
+
+## Metadata
+- Description: Displays status information about the 00OS system
+- Category: system
+- Permissions: system.status
+- Author: 00reaper
+- Version: 1.0
+
+## Input
+- detailed: Flag to show detailed information (--detailed)
+- components: Specific components to check (--components=parser,registry,executor)
+
+## Output
+- Formatted system status information
+
+## Execution
+
+This process displays information about the current state of the 00OS system, including component status, process statistics, and system configuration. It is invoked with the command `> system status`.
+
+### Basic Status Output
+
+For basic status information (`> system status`), the process will:
+
+1. Check the status of core system components
+2. Retrieve basic process statistics
+3. Format and display a summary view
+
+Basic output format:
+```
+✅ 00OS System Status
+
+SYSTEM INFORMATION:
+  - Version: 1.0.0
+  - Uptime: 4 days, 7 hours
+  - Active Identity: 00reaper
+
+COMPONENT STATUS:
+  ✅ Parser      : Operational
+  ✅ Registry    : Operational
+  ✅ Executor    : Operational
+  ✅ Permissions : Operational
+
+PROCESS STATISTICS:
+  - Total Processes: 35
+  - Active Processes: 3
+  - Last Process: system-status (now)
+
+Use '> system status --detailed' for more information.
+```
+
+### Detailed Status Output
+
+When the `--detailed` flag is used (`> system status --detailed`), the process will include additional information:
+
+1. Detailed component status with version and last update
+2. Memory usage and performance metrics
+3. Recent system events
+4. Configuration settings
+
+Detailed output format:
+```
+✅ 00OS System Status (Detailed)
+
+SYSTEM INFORMATION:
+  - Version: 1.0.0 (Build 2025-01-15)
+  - Uptime: 4 days, 7 hours, 23 minutes
+  - Active Identity: 00reaper
+  - Permission Level: system.admin
+
+COMPONENT STATUS:
+  ✅ Parser (v1.2.1)
+    - Last Updated: 2025-01-10
+    - Commands Processed: 152
+    - Processing Time Avg: 12ms
+  
+  ✅ Registry (v1.1.0)
+    - Last Updated: 2025-01-05
+    - Registered Processes: 35
+    - Process Categories: 5
+  
+  ✅ Executor (v1.3.2)
+    - Last Updated: 2025-01-15
+    - Processes Executed: 89
+    - Success Rate: 98.9%
+  
+  ✅ Permissions (v1.0.5)
+    - Last Updated: 2025-01-02
+    - Permission Checks: 211
+    - Denied Operations: 3
+
+PROCESS STATISTICS:
+  - Total Processes: 35
+  - Active Processes: 3
+  - Recent Processes:
+    1. system-status (now)
+    2. file-list (2 minutes ago)
+    3. help (5 minutes ago)
+
+SYSTEM EVENTS:
+  - System update completed (2025-01-15 09:45)
+  - New process 'backup' added (2025-01-14 16:30)
+  - Permission system updated (2025-01-12 11:15)
+
+CONFIGURATION:
+  - Debug Mode: false
+  - Log Level: info
+  - Default Permission Level: user.basic
+  - Process Timeout: 60s
+```
+
+### Component-Specific Status
+
+When specific components are requested (`> system status --components=parser,executor`), the process will only display information about those components:
+
+```
+✅ 00OS System Status (Components: parser, executor)
+
+SYSTEM INFORMATION:
+  - Version: 1.0.0
+  - Active Identity: 00reaper
+
+COMPONENT STATUS:
+  ✅ Parser (v1.2.1)
+    - Commands Processed: 152
+    - Processing Time Avg: 12ms
+  
+  ✅ Executor (v1.3.2)
+    - Processes Executed: 89
+    - Success Rate: 98.9%
+```
+
+### Error Handling
+
+#### Component Not Found
+```
+❌ Error: Component 'invalid' not found.
+
+Available components:
+- parser
+- registry
+- executor
+- permissions
+
+Use '> system status' to check all components.
+```
+
+#### Permission Error
+```
+❌ Error: Insufficient permissions to access detailed system information.
+
+You need system.admin permission to view detailed status.
+Use 'identity permissions request system.admin' to request access.
+```
+
+### Implementation Logic
+
+```javascript
+function getSystemStatus(detailed = false, components = []) {
+  try {
+    // Get basic system information
+    const systemInfo = getSystemInfo();
+    
+    // Get components to check
+    const componentsToCheck = components.length > 0 
+      ? components 
+      : ['parser', 'registry', 'executor', 'permissions'];
+    
+    // Validate components
+    const invalidComponents = componentsToCheck.filter(c => !isValidComponent(c));
+    if (invalidComponents.length > 0) {
+      return formatError(`Component '${invalidComponents[0]}' not found.`, [
+        "Available components:",
+        "- parser",
+        "- registry",
+        "- executor",
+        "- permissions",
+        "",
+        "Use '> system status' to check all components."
+      ]);
+    }
+    
+    // Check if user has permissions for detailed view
+    if (detailed && !hasPermission('system.admin')) {
+      return formatError("Insufficient permissions to access detailed system information.", [
+        "You need system.admin permission to view detailed status.",
+        "Use 'identity permissions request system.admin' to request access."
+      ]);
+    }
+    
+    // Format output header
+    let output = `00OS System Status`;
+    if (detailed) output += ` (Detailed)`;
+    if (components.length > 0) output += ` (Components: ${components.join(', ')})`;
+    output += `\n\n`;
+    
+    // Add system information
+    output += `SYSTEM INFORMATION:\n`;
+    output += `  - Version: ${systemInfo.version}`;
+    if (detailed) output += ` (Build ${systemInfo.buildDate})`;
+    output += `\n`;
+    
+    if (detailed) {
+      output += `  - Uptime: ${formatUptime(systemInfo.uptime, true)}\n`;
+    } else if (systemInfo.uptime) {
+      output += `  - Uptime: ${formatUptime(systemInfo.uptime)}\n`;
+    }
+    
+    output += `  - Active Identity: ${systemInfo.activeIdentity}\n`;
+    
+    if (detailed) {
+      output += `  - Permission Level: ${systemInfo.permissionLevel}\n`;
+    }
+    
+    output += `\n`;
+    
+    // Add component status
+    output += `COMPONENT STATUS:\n`;
+    
+    // Get status of each component
+    for (const component of componentsToCheck) {
+      const status = getComponentStatus(component);
+      const statusIcon = status.operational ? '✅' : '❌';
+      
+      if (detailed) {
+        output += `  ${statusIcon} ${status.name} (v${status.version})\n`;
+        output += `    - Last Updated: ${status.lastUpdated}\n`;
+        
+        // Add component-specific metrics
+        for (const [key, value] of Object.entries(status.metrics)) {
+          output += `    - ${key}: ${value}\n`;
+        }
+        
+        // Add space between components
+        output += `  \n`;
+      } else {
+        output += `  ${statusIcon} ${status.name.padEnd(12)}: ${status.operational ? 'Operational' : 'Error'}\n`;
+      }
+    }
+    
+    // Only show process statistics for full status (not component specific)
+    if (components.length === 0) {
+      // Add process statistics
+      const processStats = getProcessStats();
+      
+      output += `\nPROCESS STATISTICS:\n`;
+      output += `  - Total Processes: ${processStats.total}\n`;
+      output += `  - Active Processes: ${processStats.active}\n`;
+      
+      if (detailed) {
+        output += `  - Recent Processes:\n`;
+        for (let i = 0; i < processStats.recent.length; i++) {
+          const process = processStats.recent[i];
+          output += `    ${i+1}. ${process.name} (${process.timeAgo})\n`;
+        }
+      } else {
+        output += `  - Last Process: ${processStats.recent[0].name} (${processStats.recent[0].timeAgo})\n`;
+      }
+    }
+    
+    // Add detailed sections if requested
+    if (detailed && components.length === 0) {
+      // System events
+      const events = getSystemEvents();
+      
+      output += `\nSYSTEM EVENTS:\n`;
+      for (const event of events) {
+        output += `  - ${event.description} (${event.timestamp})\n`;
+      }
+      
+      // Configuration
+      const config = getSystemConfig();
+      
+      output += `\nCONFIGURATION:\n`;
+      for (const [key, value] of Object.entries(config)) {
+        output += `  - ${key}: ${value}\n`;
+      }
+    }
+    
+    // Add hint for detailed view
+    if (!detailed && components.length === 0) {
+      output += `\nUse '> system status --detailed' for more information.\n`;
+    }
+    
+    return formatSuccess(output);
+  } catch (error) {
+    // Handle errors
+    return formatError(`Error retrieving system status: ${error.message}`);
+  }
+}
+
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+function formatError(message, suggestions = []) {
+  let output = `❌ Error: ${message}\n`;
+  
+  if (suggestions.length > 0) {
+    output += '\n';
+    for (const suggestion of suggestions) {
+      output += `${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+
+function formatUptime(uptime, detailed = false) {
+  if (detailed) {
+    return `${uptime.days} days, ${uptime.hours} hours, ${uptime.minutes} minutes`;
+  }
+  return `${uptime.days} days, ${uptime.hours} hours`;
+}
+```
+
+### Helper Functions
+
+The process relies on these helper functions:
+
+1. `getSystemInfo()`: Retrieves basic system information
+2. `getComponentStatus(component)`: Gets the status of a specific component
+3. `getProcessStats()`: Retrieves process statistics
+4. `getSystemEvents()`: Gets recent system events
+5. `getSystemConfig()`: Retrieves system configuration
+6. `isValidComponent(component)`: Verifies if a component exists
+7. `hasPermission(permission)`: Checks if the user has the required permission
+
+### Integration with 00OS
+
+This process integrates with core system components to gather status information and present a unified view of the system's health and activity. It serves as both a diagnostic tool and a system monitor for 00OS. 
