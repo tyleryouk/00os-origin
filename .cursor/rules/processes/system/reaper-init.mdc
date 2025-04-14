@@ -1,3 +1,8 @@
+---
+description: Use when you want to execute reaper-init
+globs: 
+alwaysApply: false
+---
 # Process: reaper-init
 
 ## Metadata

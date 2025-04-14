@@ -180,29 +180,52 @@ function Get-OSOSFrontmatter {
                 $processCategory = $matches[1]
             }
             
-            # Read the first 50 lines of the file to check for an explicit USE WHEN section
-            $fileContent = Get-Content -Path $filePath -TotalCount 50
-            $useWhenLine = $fileContent | Where-Object { $_ -match "## USE WHEN" }
+            # Read the file content to check for an explicit Process, Title or USE WHEN section
+            $fileContent = Get-Content -Path $filePath
             
             # Default description
             $description = "USE WHEN you want to use the $processName process"
             
-            # If we found a USE WHEN section, extract the first line after it for a better description
+            # Check for Process title
+            $processTitle = $fileContent | Where-Object { $_ -match "^# Process: (.+)$" }
+            if ($processTitle) {
+                $processNameFromTitle = ($processTitle -split "Process: ")[1].Trim()
+                $description = "USE WHEN you want to use the $processNameFromTitle process"
+            }
+            
+            # Look for explicit USE WHEN section which takes precedence
+            $useWhenLine = $fileContent | Where-Object { $_ -match "## USE WHEN" -or $_ -match "USE WHEN:" }
             if ($useWhenLine) {
                 $useWhenIndex = [array]::IndexOf($fileContent, $useWhenLine)
                 if ($useWhenIndex -ge 0 -and $useWhenIndex -lt $fileContent.Length - 1) {
-                    $nextLine = $fileContent[$useWhenIndex + 1]
-                    if ($nextLine -match "^\s*-\s*(.+)$") {
-                        $description = "USE WHEN " + $matches[1].Trim()
+                    # Get the next non-empty line after USE WHEN
+                    for ($i = $useWhenIndex + 1; $i -lt $fileContent.Length; $i++) {
+                        $nextLine = $fileContent[$i].Trim()
+                        if ($nextLine -and -not [string]::IsNullOrWhiteSpace($nextLine)) {
+                            # If the line starts with a hyphen (list item), format appropriately
+                            if ($nextLine -match "^\s*-\s*(.+)$") {
+                                $description = "USE WHEN " + $matches[1].Trim()
+                            } else {
+                                # Otherwise use the whole line
+                                if ($nextLine.StartsWith("USE WHEN")) {
+                                    $description = $nextLine
+                                } else {
+                                    $description = "USE WHEN $nextLine"
+                                }
+                            }
+                            break
+                        }
                     }
                 }
             }
             
+            # For process files: Agent Requested rule type (descriptive with no alwaysApply)
             $frontmatter = @"
 ---
 description: $description
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 "@
@@ -211,27 +234,60 @@ alwaysApply: false
         elseif ($relativePath -match "core/") {
             $componentName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
             
+            # For core files: Always Apply rule type
             $frontmatter = @"
 ---
-description: 
+description: Core system component - $componentName
 globs: 
 alwaysApply: true
+type: always
 ---
 
 "@
         }
         # Generate special frontmatter for config files
         elseif ($relativePath -match "config/") {
-            $componentName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
+            $configName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
             
+            # For config files: Always Apply rule type
             $frontmatter = @"
 ---
-description: 
+description: System configuration - $configName
 globs: 
 alwaysApply: true
+type: always
 ---
 
 "@
+        }
+        # Default frontmatter for other directories (like root files)
+        else {
+            $fileName = [System.IO.Path]::GetFileNameWithoutExtension($filePath)
+            
+            # Special case for main system file (00reaper)
+            if ($fileName -eq "00reaper") {
+                $frontmatter = @"
+---
+description: 00reaper is the system administrator and architect for the 00OS command-line operating system
+globs: *
+alwaysApply: true
+type: always
+---
+
+"@
+            }
+            else {
+                # Default for other files: Always Apply
+                $frontmatter = @"
+---
+description: System component - $fileName
+globs: 
+alwaysApply: true
+type: always
+---
+
+"@
+            }
         }
         
         return $frontmatter
@@ -437,14 +493,38 @@ $(if ($removedOrphanFiles.Count -gt 0) { ($removedOrphanFiles | ForEach-Object {
 "@
 })
 
+## Frontmatter Configuration
+
+Files are automatically configured with appropriate frontmatter based on their directory:
+
+1. **Core System Files** (`/core/` directory)
+   - Set as "Always Apply" rules (alwaysApply: true)
+   - Description: "Core system component - [component name]"
+   - Purpose: Ensures critical system components are always available
+
+2. **Process Files** (`/processes/` directory)
+   - Set as "Agent Requested" rules (alwaysApply: false)
+   - Description: "USE WHEN [clear action description]"
+   - Extracted from file content (Process title or USE WHEN section)
+   - Purpose: Makes processes available on demand when relevant
+
+3. **Configuration Files** (`/config/` directory)
+   - Set as "Always Apply" rules (alwaysApply: true)
+   - Description: "System configuration - [config name]"
+   - Purpose: Ensures system settings are always available
+
+4. **Root 00reaper File**
+   - Special case with "Always Apply" and global matching
+   - Description: "00reaper is the system administrator and architect for the 00OS command-line operating system"
+   - globs: *
+   - Purpose: Makes the main system identity available in all contexts
+
 ## Important Notes
 
 - README.md files are explicitly excluded from synchronization
 - Frontmatter in .mdc files is always preserved during synchronization
-- 00OS process files are handled with special rule type formatting:
-  - Core components are set as "Always" rules
-  - Process files are set as "Agent Requested" rules
-  - Config files are set as "Always" rules
+- The synchronization automatically extracts appropriate descriptions from process files
+- When creating a new process file, consider adding a "## USE WHEN" section for better descriptions
 "@
 
 Set-Content -Path $reportFile -Value $report
