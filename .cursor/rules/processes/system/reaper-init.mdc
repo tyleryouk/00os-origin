@@ -1,0 +1,271 @@
+# Process: reaper-init
+
+## Metadata
+- Name: reaper-init
+- Description: Initialize 00reaper context and load system understanding
+- Category: system
+- Permissions: basic
+- Author: 00reaper
+- Version: 1.0
+
+## Input
+- verbose: Optional flag to show detailed loading information (--verbose)
+
+## Output
+- Confirmation of context initialization with summary of loaded content
+
+## Execution
+
+This process initializes the 00reaper context by loading key system files and establishing a comprehensive understanding of the 00OS architecture, current enhancements, and development workflow. It ensures continuity between development sessions by rebuilding the necessary context.
+
+### Context Loading Procedure
+
+The process performs the following actions:
+
+1. Load core architecture documents:
+   - system-architecture.md
+   - process-format.md
+   - terminal-interface-design.md
+   - final-goal.md
+
+2. Load current enhancement status:
+   - enhancement-tracker.md
+   - Any active enhancement proposal documents
+
+3. Load implementation guidelines:
+   - implementation-summary.md
+   - sync-migration-strategy.md
+   - mdc-file-guide.md
+
+4. Load context management documentation:
+   - context-management.md
+
+### Process Execution
+
+```javascript
+// Initialize loading status
+const loadingStatus = {
+  architecture: false,
+  enhancements: false,
+  implementation: false,
+  contextManagement: false
+};
+
+// Track loaded files
+const loadedFiles = [];
+
+// Load core architecture understanding
+try {
+  // Read system architecture documents
+  const architectureFiles = [
+    'system-architecture.md',
+    'process-format.md',
+    'terminal-interface-design.md',
+    'final-goal.md'
+  ];
+  
+  for (const file of architectureFiles) {
+    const content = tools.readFile(`00reaper/${file}`);
+    if (content) {
+      loadedFiles.push(file);
+    }
+  }
+  
+  loadingStatus.architecture = true;
+} catch (error) {
+  // Log error but continue with other sections
+  console.error(`Error loading architecture files: ${error.message}`);
+}
+
+// Load enhancement status
+try {
+  // Read enhancement tracker
+  const trackerContent = tools.readFile('00reaper/enhancement-tracker.md');
+  if (trackerContent) {
+    loadedFiles.push('enhancement-tracker.md');
+  }
+  
+  // Get current enhancements from tracker
+  const enhancements = parseEnhancements(trackerContent);
+  
+  // Load recent/active enhancement documents
+  for (const enhancement of enhancements) {
+    if (enhancement.status === 'In Progress' || enhancement.status === 'Planned') {
+      const enhancementFile = `00reaper/enhancements/${enhancement.filename}`;
+      const content = tools.readFile(enhancementFile);
+      if (content) {
+        loadedFiles.push(enhancement.filename);
+      }
+    }
+  }
+  
+  loadingStatus.enhancements = true;
+} catch (error) {
+  console.error(`Error loading enhancement files: ${error.message}`);
+}
+
+// Load implementation guidelines
+try {
+  const implementationFiles = [
+    'implementation-summary.md',
+    'sync-migration-strategy.md',
+    'mdc-file-guide.md'
+  ];
+  
+  for (const file of implementationFiles) {
+    const content = tools.readFile(`00reaper/${file}`);
+    if (content) {
+      loadedFiles.push(file);
+    }
+  }
+  
+  loadingStatus.implementation = true;
+} catch (error) {
+  console.error(`Error loading implementation files: ${error.message}`);
+}
+
+// Load context management
+try {
+  const content = tools.readFile('00reaper/context-management.md');
+  if (content) {
+    loadedFiles.push('context-management.md');
+  }
+  
+  loadingStatus.contextManagement = true;
+} catch (error) {
+  console.error(`Error loading context management: ${error.message}`);
+}
+
+// Helper function to parse enhancements from tracker
+function parseEnhancements(trackerContent) {
+  // This would parse the markdown table in the tracker
+  // and extract enhancement details
+  // Simplified implementation for example
+  const enhancements = [
+    { id: '007', name: 'Command Composition', status: 'Planned', filename: '2023-06-08-command-composition.md' },
+    { id: '009', name: 'Context Management System', status: 'Planned', filename: '2023-06-10-context-management-system.md' }
+  ];
+  
+  return enhancements;
+}
+
+// Prepare output based on verbose flag
+let output = '';
+if (inputs.verbose) {
+  output = `
+✅ 00reaper context initialized
+
+LOADED SYSTEM KNOWLEDGE
+-----------------------
+System Architecture:
+${loadingStatus.architecture ? '✓ Core architecture documents loaded' : '✗ Error loading architecture documents'}
+${loadedFiles.filter(f => ['system-architecture.md', 'process-format.md', 'terminal-interface-design.md', 'final-goal.md'].includes(f)).map(f => `  - ${f}`).join('\n')}
+
+Enhancements:
+${loadingStatus.enhancements ? '✓ Enhancement tracker and active proposals loaded' : '✗ Error loading enhancement documents'}
+${loadedFiles.filter(f => f === 'enhancement-tracker.md' || f.startsWith('202')).map(f => `  - ${f}`).join('\n')}
+
+Implementation Guidelines:
+${loadingStatus.implementation ? '✓ Implementation guidelines loaded' : '✗ Error loading implementation documents'}
+${loadedFiles.filter(f => ['implementation-summary.md', 'sync-migration-strategy.md', 'mdc-file-guide.md'].includes(f)).map(f => `  - ${f}`).join('\n')}
+
+Context Management:
+${loadingStatus.contextManagement ? '✓ Context management documentation loaded' : '✗ Error loading context management'}
+${loadedFiles.filter(f => f === 'context-management.md').map(f => `  - ${f}`).join('\n')}
+
+Total Files Loaded: ${loadedFiles.length}
+
+Ready for system administration tasks.
+`;
+} else {
+  // Simple output for non-verbose mode
+  const statusSummary = Object.values(loadingStatus).every(status => status)
+    ? 'All components loaded successfully'
+    : 'Some components failed to load (use --verbose for details)';
+  
+  output = `
+✅ 00reaper context initialized
+
+Loaded system knowledge:
+- 00OS architecture and components
+- Current enhancements (${loadedFiles.filter(f => f.startsWith('202')).length + 1} total)
+- Development workflow processes
+- Context management procedures
+
+Status: ${statusSummary}
+
+Ready for system administration tasks.
+`;
+}
+
+return output;
+```
+
+### Response Format
+
+#### Standard Response
+```
+✅ 00reaper context initialized
+
+Loaded system knowledge:
+- 00OS architecture and components
+- Current enhancements (8 total, 5 completed)
+- Development workflow processes
+- Rule type management guidelines
+
+Ready for system administration tasks.
+```
+
+#### Verbose Response
+```
+✅ 00reaper context initialized
+
+LOADED SYSTEM KNOWLEDGE
+-----------------------
+System Architecture:
+✓ Core architecture documents loaded
+  - system-architecture.md
+  - process-format.md
+  - terminal-interface-design.md
+  - final-goal.md
+
+Enhancements:
+✓ Enhancement tracker and active proposals loaded
+  - enhancement-tracker.md
+  - 2023-06-08-command-composition.md
+  - 2023-06-10-context-management-system.md
+
+Implementation Guidelines:
+✓ Implementation guidelines loaded
+  - implementation-summary.md
+  - sync-migration-strategy.md
+  - mdc-file-guide.md
+
+Context Management:
+✓ Context management documentation loaded
+  - context-management.md
+
+Total Files Loaded: 10
+
+Ready for system administration tasks.
+```
+
+### Error Handling
+
+If some components fail to load, the process will still attempt to load others and report the status:
+
+```
+✅ 00reaper context partially initialized
+
+Loaded system knowledge:
+- 00OS architecture and components
+- Development workflow processes
+
+Status: Some components failed to load (use --verbose for details)
+
+Ready for system administration tasks with limited context.
+```
+
+### Integration with Other Commands
+
+This command should typically be used at the start of a session before other context-related commands like `reaper-research` or `reaper-enhance`. It establishes the foundation for those more specialized commands. 

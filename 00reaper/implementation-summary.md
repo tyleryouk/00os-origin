@@ -94,4 +94,64 @@ The transformation of 1000xrules into 00OS provides several key benefits:
 5. Process executes with argument `/00os/processes` and flag `detailed`
 6. Result is formatted and returned to the user
 
-This transformation achieves the goal of turning the prompt box into a terminal command box, processing messages as if through an operating system. 
+This transformation achieves the goal of turning the prompt box into a terminal command box, processing messages as if through an operating system.
+
+## Development Workflow for 00OS Enhancements
+
+To establish a clear system for ongoing enhancements to 00OS, the following workflow should be followed:
+
+### 1. Enhancement Documentation and Planning
+
+All proposed enhancements should be documented in a central location within the 00reaper directory:
+- `/00reaper/enhancements/` - Create this directory to track all enhancement proposals
+- Each enhancement should have its own markdown file following this naming convention: `YYYY-MM-DD-enhancement-name.md`
+- Enhancement proposals should include:
+  - Clear problem statement or opportunity
+  - Proposed implementation approach
+  - Components affected
+  - Expected benefits
+  - Testing plan
+
+### 2. Development Process
+
+1. **Context Loading**: Always begin work sessions by loading the 00reaper directory in context to ensure full understanding of the system architecture and goals
+2. **Enhancement Selection**: Reference specific enhancement documents during discussions
+3. **Implementation**: Develop new components or modifications in the 00os directory first
+4. **Sync Testing**: Test synchronization to ensure changes will properly convert to .cursor/rules
+5. **Documentation Updates**: Update relevant documentation to reflect changes
+
+### 3. Rule Type Management
+
+When implementing new components, explicitly specify the appropriate rule type in the frontmatter:
+- `alwaysApply: true` - For core system components that need to be available at all times
+- `alwaysApply: false` with descriptive `description` - For process files and optional components
+- `globs` - For components that should be automatically loaded based on file context
+
+### 4. Synchronization Understanding
+
+Always maintain awareness that:
+1. 00os is the development environment where we build and test enhancements
+2. .cursor/rules is where Cursor actually loads rules from
+3. The synchronization process converts .md files to .mdc files with proper frontmatter
+4. This separation exists to:
+   - Avoid frontmatter editing issues
+   - Provide better version control
+   - Allow testing before deployment
+   - Keep development separate from production
+
+### 5. Progress Tracking
+
+Create a central enhancement tracking document:
+- `/00reaper/enhancement-tracker.md` - Track all enhancements, their status, and implementation notes
+- This document will serve as the historical record of all changes and decisions
+- Include links to specific enhancement documents and implementation details
+
+### 6. Session Continuity
+
+To ensure continuity between development sessions:
+1. Begin each session by reviewing the enhancement tracker
+2. Reference specific prior discussions by linking to the tracker
+3. Summarize progress at the end of each session
+4. Update the tracker with new decisions and implementations
+
+This workflow will ensure a systematic approach to enhancing 00OS while maintaining clear documentation and understanding of the system's purpose and architecture. 
