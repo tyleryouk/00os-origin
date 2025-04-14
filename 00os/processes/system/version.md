@@ -1,0 +1,274 @@
+---
+name: version
+description: Display system version information
+version: 1.0.0
+author: 00reaper
+permissions: [basic]
+inputs:
+  - name: detailed
+    type: boolean
+    required: false
+    default: false
+    description: Show detailed version information
+outputs:
+  - name: version
+    type: object
+    description: Version information
+---
+
+# Process: Version
+
+## Metadata
+- Description: Displays 00OS version information
+- Category: system
+- Permissions: user.basic
+- Author: 00reaper
+- Version: 1.0
+
+## Input
+- detailed: Flag to show detailed information (--detailed)
+
+## Output
+- Formatted version information
+
+## Execution
+
+This process displays information about the 00OS version, including core components and build information. It is invoked with the command `> version`.
+
+### Basic Version Information
+
+For basic version information (`> version`), the process will:
+
+1. Display the current 00OS version
+2. Show build information
+3. List core component versions
+
+Basic output format:
+```
+✅ 00OS Version Information
+
+VERSION: 0.1.0 (Alpha)
+BUILD: 20240601-001
+KERNEL: 00kernel v0.1.0
+SHELL: 00shell v0.1.0
+
+COMPONENTS:
+  - Command Parser: v0.1.0
+  - Process Manager: v0.1.0
+  - Identity Controller: v0.1.0
+
+Use '> version --detailed' for more information.
+```
+
+### Detailed Version Information
+
+When the `--detailed` flag is used (`> version --detailed`), the process will include additional information:
+
+1. Detailed component versioning
+2. Build history
+3. System compatibility
+4. Framework integration details
+
+Detailed output format:
+```
+✅ 00OS Version Information (Detailed)
+
+SYSTEM INFORMATION:
+  - Version: 0.1.0 (Alpha)
+  - Build: 20240601-001
+  - Release Date: June 1, 2024
+  - Architecture: Cursor Rules-based
+
+CORE COMPONENTS:
+  - Command Parser (v0.1.0)
+    - Last Updated: 2024-06-01
+    - Features: Command tokenization, parameter parsing
+  
+  - Process Manager (v0.1.0)
+    - Last Updated: 2024-06-01
+    - Features: Process execution, lifecycle management
+  
+  - Identity Controller (v0.1.0)
+    - Last Updated: 2024-06-01
+    - Features: Permission management, identity switching
+
+FRAMEWORK INTEGRATION:
+  - Cursor AI: Compatible with v1.0+
+  - Command Interface: Terminal-style with '>' prefix
+  - Rules Backend: .cursor/rules implementation
+
+BUILD HISTORY:
+  - 20240601-001: Initial Alpha Release
+    - Implemented core command handling
+    - Added basic system processes
+    - Established identity framework
+```
+
+### Help Information
+
+If the `--help` flag is used (`> version --help`), the process will display help information:
+
+```
+COMMAND: version
+DESCRIPTION:
+  Displays system version information including core components
+
+USAGE:
+  > version             - Display basic version information
+  > version --detailed  - Display detailed version information
+
+OPTIONS:
+  --help      - Display this help information
+  --detailed  - Show additional version details
+```
+
+### Error Handling
+
+If an invalid parameter is provided, the process will display an error message:
+
+```
+❌ Error: Invalid parameter for 'version' command.
+
+Available options:
+  --detailed  - Show detailed version information
+  --help      - Display help information
+
+For basic usage, simply type:
+  > version
+```
+
+### Implementation Logic
+
+```javascript
+function getVersionInfo(detailed = false) {
+  try {
+    // Basic version information
+    const basicInfo = {
+      version: "0.1.0",
+      buildId: "20240601-001",
+      stage: "Alpha",
+      kernel: "00kernel v0.1.0",
+      shell: "00shell v0.1.0",
+      components: [
+        { name: "Command Parser", version: "0.1.0" },
+        { name: "Process Manager", version: "0.1.0" },
+        { name: "Identity Controller", version: "0.1.0" }
+      ]
+    };
+    
+    // Format basic output
+    let output = `00OS Version Information\n\n`;
+    output += `VERSION: ${basicInfo.version} (${basicInfo.stage})\n`;
+    output += `BUILD: ${basicInfo.buildId}\n`;
+    output += `KERNEL: ${basicInfo.kernel}\n`;
+    output += `SHELL: ${basicInfo.shell}\n\n`;
+    output += `COMPONENTS:\n`;
+    
+    for (const component of basicInfo.components) {
+      output += `  - ${component.name}: v${component.version}\n`;
+    }
+    
+    // If detailed is not requested, return basic info
+    if (!detailed) {
+      output += `\nUse '> version --detailed' for more information.\n`;
+      return formatSuccess(output);
+    }
+    
+    // Detailed version information
+    const detailedInfo = {
+      releaseDate: "June 1, 2024",
+      architecture: "Cursor Rules-based",
+      componentDetails: [
+        {
+          name: "Command Parser",
+          version: "0.1.0",
+          lastUpdated: "2024-06-01",
+          features: ["Command tokenization", "Parameter parsing"]
+        },
+        {
+          name: "Process Manager",
+          version: "0.1.0",
+          lastUpdated: "2024-06-01",
+          features: ["Process execution", "Lifecycle management"]
+        },
+        {
+          name: "Identity Controller",
+          version: "0.1.0",
+          lastUpdated: "2024-06-01",
+          features: ["Permission management", "Identity switching"]
+        }
+      ],
+      integration: {
+        cursorVersion: "Compatible with v1.0+",
+        commandInterface: "Terminal-style with '>' prefix",
+        rulesBackend: ".cursor/rules implementation"
+      },
+      buildHistory: [
+        {
+          buildId: "20240601-001",
+          description: "Initial Alpha Release",
+          changes: [
+            "Implemented core command handling",
+            "Added basic system processes",
+            "Established identity framework"
+          ]
+        }
+      ]
+    };
+    
+    // Format detailed output
+    output = `00OS Version Information (Detailed)\n\n`;
+    output += `SYSTEM INFORMATION:\n`;
+    output += `  - Version: ${basicInfo.version} (${basicInfo.stage})\n`;
+    output += `  - Build: ${basicInfo.buildId}\n`;
+    output += `  - Release Date: ${detailedInfo.releaseDate}\n`;
+    output += `  - Architecture: ${detailedInfo.architecture}\n\n`;
+    
+    output += `CORE COMPONENTS:\n`;
+    for (const component of detailedInfo.componentDetails) {
+      output += `  - ${component.name} (v${component.version})\n`;
+      output += `    - Last Updated: ${component.lastUpdated}\n`;
+      output += `    - Features: ${component.features.join(', ')}\n`;
+      output += `  \n`;
+    }
+    
+    output += `FRAMEWORK INTEGRATION:\n`;
+    output += `  - Cursor AI: ${detailedInfo.integration.cursorVersion}\n`;
+    output += `  - Command Interface: ${detailedInfo.integration.commandInterface}\n`;
+    output += `  - Rules Backend: ${detailedInfo.integration.rulesBackend}\n\n`;
+    
+    output += `BUILD HISTORY:\n`;
+    for (const build of detailedInfo.buildHistory) {
+      output += `  - ${build.buildId}: ${build.description}\n`;
+      for (const change of build.changes) {
+        output += `    - ${change}\n`;
+      }
+    }
+    
+    return formatSuccess(output);
+  } catch (error) {
+    return formatError(`Error retrieving version information: ${error.message}`);
+  }
+}
+
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+function formatError(message, suggestions = []) {
+  let output = `❌ Error: ${message}\n`;
+  
+  if (suggestions.length > 0) {
+    output += '\n';
+    for (const suggestion of suggestions) {
+      output += `${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+```
+
+### Integration with 00OS
+
+This process integrates with the 00OS system to provide version information about the operating system and its components. It serves as both an informational tool and a diagnostic reference for users of the 00OS environment. 

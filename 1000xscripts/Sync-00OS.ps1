@@ -180,14 +180,29 @@ function Get-OSOSFrontmatter {
                 $processCategory = $matches[1]
             }
             
+            # Read the first 50 lines of the file to check for an explicit USE WHEN section
+            $fileContent = Get-Content -Path $filePath -TotalCount 50
+            $useWhenLine = $fileContent | Where-Object { $_ -match "## USE WHEN" }
+            
+            # Default description
+            $description = "USE WHEN you want to use the $processName process"
+            
+            # If we found a USE WHEN section, extract the first line after it for a better description
+            if ($useWhenLine) {
+                $useWhenIndex = [array]::IndexOf($fileContent, $useWhenLine)
+                if ($useWhenIndex -ge 0 -and $useWhenIndex -lt $fileContent.Length - 1) {
+                    $nextLine = $fileContent[$useWhenIndex + 1]
+                    if ($nextLine -match "^\s*-\s*(.+)$") {
+                        $description = "USE WHEN " + $matches[1].Trim()
+                    }
+                }
+            }
+            
             $frontmatter = @"
 ---
-rule_type: Agent Requested
-enabled: true
-description: |
-  Process: $processName
-  Category: $processCategory
-  Used to handle commands related to this process category.
+description: $description
+globs: 
+alwaysApply: false
 ---
 
 "@
@@ -198,10 +213,9 @@ description: |
             
             $frontmatter = @"
 ---
-rule_type: Always
-enabled: true
-description: |
-  00OS Core Component: $componentName
+description: 
+globs: 
+alwaysApply: true
 ---
 
 "@
@@ -212,10 +226,9 @@ description: |
             
             $frontmatter = @"
 ---
-rule_type: Always
-enabled: true
-description: |
-  00OS Configuration: $componentName
+description: 
+globs: 
+alwaysApply: true
 ---
 
 "@

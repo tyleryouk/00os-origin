@@ -1,7 +1,7 @@
 ---
-description: 
+description: USE WHEN you want help
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 
 # Process: Help
