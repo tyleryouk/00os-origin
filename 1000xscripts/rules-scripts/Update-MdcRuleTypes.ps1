@@ -92,11 +92,11 @@ foreach ($mdcFile in $mdcFiles) {
             continue
         }
         
-        $frontmatterRaw = $matches[1]
+        $frontmatterRaw = $matches[1] # Store original raw frontmatter
         $frontmatterHash = ConvertFrom-Frontmatter -Frontmatter $frontmatterRaw
         
         # Check if type is already set
-        $originalType = $frontmatterHash["type"]
+        # $originalType = $frontmatterHash["type"] # No longer needed for comparison here
         
         # Determine the correct rule type based on PATH first
         $forceAlways = $false
@@ -121,33 +121,44 @@ foreach ($mdcFile in $mdcFiles) {
         elseif ($relativePathNormalized -match "^processes/") {
             $newType = "agent"
             Write-Host "  Rule type forced to 'agent' based on path: $relativeMdcPath" -ForegroundColor Cyan
+            
+            # Ensure description exists and follows USE WHEN format if empty
+            if (-not $frontmatterHash.ContainsKey("description") -or [string]::IsNullOrWhiteSpace($frontmatterHash["description"])) {
+                $fileNameOnly = $mdcFile.BaseName # Get filename without extension
+                $newDescription = "USE WHEN you want to execute $fileNameOnly"
+                $frontmatterHash["description"] = $newDescription
+                Write-Host "  Populating empty description with: $newDescription" -ForegroundColor Yellow
+            }
         }
         
-        # Compare final target type with original type
-        if ($originalType -eq $newType) {
-            Write-Host "  Rule type is already correct: $newType" -ForegroundColor Gray
-            $unchangedFiles += "Type already correct ($newType): $($mdcFile.Name)"
+        # Always set the final calculated type in the hash
+        $frontmatterHash["type"] = $newType
+
+        # Re-generate the frontmatter string using the potentially updated hash
+        $newFrontmatterString = ConvertTo-Frontmatter -FrontmatterHash $frontmatterHash
+
+        # Compare the NEW frontmatter string with the ORIGINAL raw frontmatter string
+        if ($newFrontmatterString -eq $frontmatterRaw) {
+            Write-Host "  Frontmatter is already correct." -ForegroundColor Gray
+            $unchangedFiles += "Frontmatter already correct: $($mdcFile.Name)"
             continue
         }
         
-        # Update the type
-        $frontmatterHash["type"] = $newType
-        
-        # Convert to frontmatter string
-        $newFrontmatter = ConvertTo-Frontmatter -FrontmatterHash $frontmatterHash
-        
+        # If frontmatter differs, construct new content and update file
+        Write-Host "  Frontmatter requires update." -ForegroundColor Yellow
+
         # Replace frontmatter in the content
-        $newContent = $content -replace "(?sm)^---\r?\n.*?\r?\n---\r?\n", "---`n$newFrontmatter`n---`n"
+        $newContent = $content -replace "(?sm)^---\r?\n.*?\r?\n---\r?\n", "---`n$newFrontmatterString`n---`n"
         
         # Update the file
         if (-not $WhatIf) {
             Set-Content -Path $mdcFilePath -Value $newContent -NoNewline
-            Write-Host "  Updated rule type from '$originalType' to '$newType'" -ForegroundColor Green
+            Write-Host "  Updated frontmatter in $($mdcFile.Name)" -ForegroundColor Green
         } else {
-            Write-Host "  Would update rule type from '$originalType' to '$newType'" -ForegroundColor Yellow
+            Write-Host "  Would update frontmatter in $($mdcFile.Name)" -ForegroundColor Yellow
         }
         
-        $updatedFiles += "Updated type from '$originalType' to '$newType': $($mdcFile.Name)"
+        $updatedFiles += "Updated frontmatter: $($mdcFile.Name)" # Log update
     } 
     catch {
         Write-Host "  Error processing file: $_" -ForegroundColor Red
