@@ -1,8 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: false
-type: always
+alwaysApply: true
 ---
 # 00OS Command Handler
 

@@ -1,7 +1,7 @@
 ---
-description: System component - reaper-update
+description: USE WHEN you want to execute reaper-update
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
 # Process: reaper-update
