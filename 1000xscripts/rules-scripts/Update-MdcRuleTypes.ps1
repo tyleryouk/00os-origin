@@ -98,23 +98,32 @@ foreach ($mdcFile in $mdcFiles) {
         # Check if type is already set
         $originalType = $frontmatterHash["type"]
         
-        # Determine the correct rule type based on frontmatter
+        # Determine the correct rule type based on PATH first
+        $forceAlways = $false
+        $relativeMdcPath = $mdcFilePath.Replace($CursorRulesPath, "").TrimStart("\", "/")
+        $relativePathNormalized = $relativeMdcPath -replace '\\', '/' # Normalize separators - Corrected regex
+        
+        # Check if path forces 'always'
+        if ($relativePathNormalized -match "^core/" -or `
+            $relativePathNormalized -match "^config/" -or `
+            (-not ($relativePathNormalized -match "/"))) { # Check if it's in the root
+            
+            $forceAlways = $true
+        }
+        
+        # Determine the final target type
         $newType = $null
-        
-        if ($frontmatterHash.ContainsKey("alwaysApply") -and $frontmatterHash["alwaysApply"] -eq "true") {
+        if ($forceAlways) {
             $newType = "always"
-        }
-        elseif ($frontmatterHash.ContainsKey("description") -and -not [string]::IsNullOrWhiteSpace($frontmatterHash["description"])) {
+            Write-Host "  Rule type forced to 'always' based on path: $relativeMdcPath" -ForegroundColor Magenta
+        } 
+        # NEW: Check if path is processes/
+        elseif ($relativePathNormalized -match "^processes/") {
             $newType = "agent"
-        }
-        elseif ($frontmatterHash.ContainsKey("globs") -and -not [string]::IsNullOrWhiteSpace($frontmatterHash["globs"])) {
-            $newType = "auto"
-        }
-        else {
-            $newType = "manual"
+            Write-Host "  Rule type forced to 'agent' based on path: $relativeMdcPath" -ForegroundColor Cyan
         }
         
-        # Compare with existing type
+        # Compare final target type with original type
         if ($originalType -eq $newType) {
             Write-Host "  Rule type is already correct: $newType" -ForegroundColor Gray
             $unchangedFiles += "Type already correct ($newType): $($mdcFile.Name)"

@@ -1,8 +1,8 @@
 ---
-description: System component - counter
+description: 
 globs: 
-alwaysApply: true
-type: always
+alwaysApply: false
+type: agent
 ---
 # Process: counter
 

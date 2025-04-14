@@ -2,7 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
-type: manual
+type: agent
 ---
 # Process: state
 
