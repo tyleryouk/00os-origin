@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
 # Process: reaper-sync
 
 ## Metadata
@@ -251,188 +256,67 @@ function getSyncDifferences() {
 /**
  * Formats the synchronization results for display
  */
-function formatSyncResults(output, error, exitCode, verbose, isDryRun) {
-  const resultPrefix = isDryRun ? '🔍 DRY RUN' : (exitCode === 0 ? '✅ SYNC COMPLETED' : '❌ SYNC FAILED');
-  
-  // Extract key information from the output
-  const fileStats = extractFileStats(output);
-  
-  // Create basic output
-  let formattedOutput = `
-${resultPrefix}
+function formatSyncResults(output, error, exitCode, isVerbose, isDryRun) {
+  if (exitCode !== 0) {
+    return `❌ Synchronization failed with exit code ${exitCode}\n\nError:\n${error}`;
+  }
 
-${fileStats ? `Files processed: ${fileStats.total}
-- ${fileStats.synced} synchronized
-- ${fileStats.created} created
-- ${fileStats.errors} errors` : 'No file statistics available'}
+  // Parse the output to extract key statistics
+  const stats = extractSyncStats(output);
+  
+  // Format the basic results
+  let result = `
+✅ 00OS to Cursor Rules Synchronization Complete
+
+${isDryRun ? '[DRY RUN - No changes were made]' : ''}
+Files processed: ${stats.processed || 'unknown'}
+Files updated: ${stats.updated || 0}
+Files created: ${stats.created || 0}
+Files skipped: ${stats.skipped || 0}
+Errors: ${stats.errors || 0}
 `;
 
-  // Add error information if present
-  if (error && error.length > 0) {
-    formattedOutput += `
-ERROR:
-${error}`;
+  // If verbose, include the entire output
+  if (isVerbose) {
+    result += `\nDETAILED OUTPUT\n${'-'.repeat(20)}\n${output}`;
+  } else {
+    result += `\nUse 'reaper-sync --verbose' for detailed output.`;
   }
-  
-  // Add verbose output if requested
-  if (verbose) {
-    formattedOutput += `
-DETAILED OUTPUT:
---------------
-${output}`;
-  } else if (exitCode !== 0) {
-    formattedOutput += `
-Use 'reaper-sync --verbose' for detailed error information.`;
-  }
-  
-  // Add dry run notice
-  if (isDryRun) {
-    formattedOutput += `
-NOTE: This was a dry run. No actual changes were made.
-Use 'reaper-sync' without --dry-run to perform actual synchronization.`;
-  }
-  
-  return formattedOutput;
+
+  return result;
 }
 
 /**
- * Extracts file statistics from the sync output
+ * Extract synchronization statistics from the output
  */
-function extractFileStats(output) {
-  // This would parse the actual output to extract real statistics
-  // For this example, we'll use regex to extract from our simulated output
+function extractSyncStats(output) {
+  const stats = {
+    processed: 0,
+    updated: 0,
+    created: 0,
+    skipped: 0,
+    errors: 0
+  };
+
+  // Look for the summary section in the output
+  const summaryMatch = output.match(/Total files processed: (\d+)\s+Files updated: (\d+)\s+Files created: (\d+)\s+Files skipped: (\d+)\s+Errors: (\d+)/);
   
-  const matches = output.match(/Processed (\d+) files:[\s\S]*?- (\d+) files synchronized[\s\S]*?- (\d+) new files[\s\S]*?- (\d+) files with errors/);
-  
-  if (matches && matches.length >= 5) {
-    return {
-      total: parseInt(matches[1], 10),
-      synced: parseInt(matches[2], 10),
-      created: parseInt(matches[3], 10),
-      errors: parseInt(matches[4], 10)
-    };
+  if (summaryMatch) {
+    stats.processed = parseInt(summaryMatch[1]);
+    stats.updated = parseInt(summaryMatch[2]);
+    stats.created = parseInt(summaryMatch[3]);
+    stats.skipped = parseInt(summaryMatch[4]);
+    stats.errors = parseInt(summaryMatch[5]);
   }
-  
-  // If we can't parse the output, return null
-  return null;
+
+  return stats;
 }
 
 /**
- * Logs a sync event to the history
+ * Logs a synchronization event to the sync history
  */
 function logSyncEvent(message) {
-  // This would append to a sync history file
-  // For this example, we'll just log to the console
+  // In a real implementation, this would append to a sync history file
   console.log(`[${new Date().toISOString()}] ${message}`);
 }
 ```
-
-### Response Format
-
-#### Standard Sync Response
-```
-✅ SYNC COMPLETED
-
-Files processed: 27
-- 25 synchronized
-- 2 created
-- 0 errors
-```
-
-#### Verbose Sync Response
-```
-✅ SYNC COMPLETED
-
-Files processed: 27
-- 25 synchronized
-- 2 created
-- 0 errors
-
-DETAILED OUTPUT:
---------------
-====================================================
-00OS to Cursor Rules Synchronization
-====================================================
-
-Running synchronization from 00os directory...
-This will:
-1. Find all markdown files in 00os (excluding README.md files)
-2. Update corresponding Cursor Rules with content (preserving frontmatter)
-3. Create new Cursor Rules for files that don't have a corresponding rule
-4. Generate a detailed synchronization report
-
-Starting synchronization...
-
-Processed 27 files:
-- 25 files synchronized successfully
-- 2 new files created
-- 0 files with errors
-
-Synchronization report saved to: 1000xscripts/sync-reports/sync-report-20230615-120145.json
-
-Running sync report cleanup...
-
-====================================================
-Synchronization completed!
-====================================================
-```
-
-#### Status Response
-```
-✅ 00OS Sync Status
-
-Last synchronization: 2023-06-15 11:45:22
-Status: Successful
-Files processed: 27
-
-Current differences:
-- 1 new files in 00os
-- 2 modified files
-- 1 orphaned files in .cursor/rules
-
-Use 'reaper-sync status --verbose' for detailed information.
-Use 'reaper-sync' to perform synchronization.
-```
-
-#### Dry Run Response
-```
-🔍 DRY RUN
-
-Files processed: 27
-- 25 synchronized
-- 2 created
-- 0 errors
-
-NOTE: This was a dry run. No actual changes were made.
-Use 'reaper-sync' without --dry-run to perform actual synchronization.
-```
-
-### Error Handling
-
-If the synchronization process encounters errors, the command provides detailed information:
-
-```
-❌ SYNC FAILED
-
-Files processed: 15
-- 10 synchronized
-- 0 created
-- 5 errors
-
-ERROR:
-Access denied to .cursor/rules directory
-
-Use 'reaper-sync --verbose' for detailed error information.
-```
-
-### Integration with Other Commands
-
-This command complements other system management commands and enables direct control over the synchronization process from within the 00OS environment. It bridges the gap between development work in the 00os directory and deployment to the .cursor/rules directory where rules are accessed by Cursor.
-
-### Future Enhancements
-
-Potential future enhancements include:
-- AI-driven sync decisions based on file changes and context
-- Bidirectional sync for specific scenarios
-- Scheduled synchronization
-- Change preview capabilities 

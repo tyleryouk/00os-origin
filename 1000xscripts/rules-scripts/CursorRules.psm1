@@ -233,19 +233,47 @@ function Update-MdcFile {
         $mdContent = Get-Content -Path $mdFile -Raw
         
         # Extract frontmatter from .mdc file - ALWAYS PRESERVE THIS
-        $mdcFrontmatter = ""
+        $mdcFrontmatterFull = ""
+        $mdcFrontmatterHash = @{}
         if ($mdcContent -match "(?sm)^---\r?\n(.*?)\r?\n---\r?\n") {
-            $mdcFrontmatter = $matches[0]
+            $mdcFrontmatterFull = $matches[0]
+            $mdcFrontmatterRaw = $matches[1]
+            $mdcFrontmatterHash = ConvertFrom-Frontmatter -Frontmatter $mdcFrontmatterRaw
         }
         
         # Extract content from .md file (removing its frontmatter)
         $mdContentNoFrontmatter = $mdContent
+        $mdFrontmatterHash = @{}
         if ($mdContent -match "(?sm)^---\r?\n(.*?)\r?\n---\r?\n") {
             $mdContentNoFrontmatter = $mdContent.Substring($matches[0].Length)
+            $mdFrontmatterRaw = $matches[1]
+            $mdFrontmatterHash = ConvertFrom-Frontmatter -Frontmatter $mdFrontmatterRaw
         }
         
-        # Combine .mdc frontmatter with .md content
-        $newMdcContent = $mdcFrontmatter + $mdContentNoFrontmatter
+        # IMPORTANT: Always preserve the existing rule type if present
+        if (-not $mdcFrontmatterHash.ContainsKey("type") -and 
+            $mdFrontmatterHash.ContainsKey("alwaysApply")) {
+            # Determine type based on alwaysApply and description/globs
+            if ($mdFrontmatterHash["alwaysApply"] -eq "true") {
+                $mdcFrontmatterHash["type"] = "always"
+            }
+            elseif ($mdFrontmatterHash.ContainsKey("description") -and -not [string]::IsNullOrWhiteSpace($mdFrontmatterHash["description"])) {
+                $mdcFrontmatterHash["type"] = "agent"
+            }
+            elseif ($mdFrontmatterHash.ContainsKey("globs") -and -not [string]::IsNullOrWhiteSpace($mdFrontmatterHash["globs"])) {
+                $mdcFrontmatterHash["type"] = "auto"
+            }
+            else {
+                $mdcFrontmatterHash["type"] = "manual"
+            }
+        }
+        
+        # Reconstruct frontmatter with preserved type
+        $frontmatter = ConvertTo-Frontmatter -FrontmatterHash $mdcFrontmatterHash
+        $newMdcFrontmatter = "---`n$frontmatter`n---`n"
+        
+        # Combine new frontmatter with .md content
+        $newMdcContent = $newMdcFrontmatter + $mdContentNoFrontmatter
         
         # Update the file if it's different
         if ($newMdcContent -ne $mdcContent) {
@@ -301,16 +329,39 @@ function New-MdcFile {
         # Apply standardization
         $mdFrontmatterHash = Format-Frontmatter -FrontmatterHash $mdFrontmatterHash
         
-        # Set proper rule type based on alwaysApply
+        # Set proper rule type based on frontmatter
         if ($mdFrontmatterHash.ContainsKey("alwaysApply")) {
-            if ($mdFrontmatterHash["alwaysApply"] -eq "True") {
+            if ($mdFrontmatterHash["alwaysApply"] -eq "true") {
+                # Always Apply rule type
+                $mdFrontmatterHash["type"] = "always"
+            } 
+            elseif ($mdFrontmatterHash.ContainsKey("description") -and -not [string]::IsNullOrWhiteSpace($mdFrontmatterHash["description"])) {
+                # Agent Requested rule type - has description but not always apply
+                $mdFrontmatterHash["type"] = "agent"
+            }
+            elseif ($mdFrontmatterHash.ContainsKey("globs") -and -not [string]::IsNullOrWhiteSpace($mdFrontmatterHash["globs"])) {
+                # Auto Attached rule type - has globs but not always apply
                 $mdFrontmatterHash["type"] = "auto"
-            } else {
+            }
+            else {
+                # Default to manual if no special conditions met
                 $mdFrontmatterHash["type"] = "manual"
             }
-        } else {
-            # Default to manual if alwaysApply is not specified
-            $mdFrontmatterHash["type"] = "manual"
+        } 
+        else {
+            # Check for description or globs to determine type
+            if ($mdFrontmatterHash.ContainsKey("description") -and -not [string]::IsNullOrWhiteSpace($mdFrontmatterHash["description"])) {
+                # Agent Requested rule type
+                $mdFrontmatterHash["type"] = "agent"
+            }
+            elseif ($mdFrontmatterHash.ContainsKey("globs") -and -not [string]::IsNullOrWhiteSpace($mdFrontmatterHash["globs"])) {
+                # Auto Attached rule type
+                $mdFrontmatterHash["type"] = "auto"
+            }
+            else {
+                # Default to manual
+                $mdFrontmatterHash["type"] = "manual"
+            }
         }
         
         # Convert to frontmatter string

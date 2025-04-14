@@ -1,0 +1,399 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Process: state
+
+## Metadata
+- Name: state
+- Description: Manage state data across processes and sessions
+- Category: system
+- Permissions: system.state
+- Author: 00reaper
+- Version: 1.0
+
+## Input
+- subcommand: Required subcommand (get, set, list, delete, clear)
+- key: State key for operations that require it (get, set, delete)
+- value: Value to set (for set subcommand)
+- scope: Optional state scope (global, process, user, session)
+- namespace: Optional namespace for process scope
+- ttl: Optional time-to-live in seconds (--ttl)
+- json: Flag to parse/format as JSON (--json)
+- format: Flag to format output (--format)
+
+## Output
+- Formatted state operation result
+
+## Execution
+
+This process provides a command interface for the 00OS state management system, allowing users to store, retrieve, and manage state data across processes and sessions.
+
+### Command Usage
+
+```
+> state get <key> [--scope=<scope>] [--namespace=<namespace>] [--format]
+> state set <key> <value> [--scope=<scope>] [--namespace=<namespace>] [--ttl=<seconds>] [--json]
+> state list [--scope=<scope>] [--namespace=<namespace>] [--format]
+> state delete <key> [--scope=<scope>] [--namespace=<namespace>]
+> state clear [--scope=<scope>] [--namespace=<namespace>]
+```
+
+### Subcommands
+
+- **get**: Retrieve a value from state
+- **set**: Store a value in state
+- **list**: List all keys in a state scope
+- **delete**: Remove a value from state
+- **clear**: Clear all values in a scope or namespace
+
+### Process Execution
+
+```javascript
+// Get required state manager
+const stateManager = require('../../core/state-manager.js');
+
+// Parse inputs
+const subcommand = inputs.subcommand;
+const key = inputs.key;
+const value = inputs.value;
+const scope = inputs.scope || 'session';
+const namespace = inputs.namespace || null;
+const ttl = inputs.ttl ? parseInt(inputs.ttl) * 1000 : null; // Convert to milliseconds
+const useJson = inputs.json === true;
+const formatOutput = inputs.format === true;
+
+// Validate inputs
+if (!subcommand) {
+  return formatError('Missing required subcommand (get, set, list, delete, clear)');
+}
+
+// Check permissions based on scope
+if (scope === 'global' && !hasPermission('global.read') && (subcommand === 'get' || subcommand === 'list')) {
+  return formatError('Permission denied: global.read permission required');
+}
+
+if (scope === 'global' && !hasPermission('global.write') && (subcommand === 'set' || subcommand === 'delete' || subcommand === 'clear')) {
+  return formatError('Permission denied: global.write permission required');
+}
+
+// Execute appropriate subcommand
+try {
+  switch (subcommand) {
+    case 'get':
+      return handleGet(key, scope, namespace, formatOutput);
+      
+    case 'set':
+      return handleSet(key, value, scope, namespace, ttl, useJson);
+      
+    case 'list':
+      return handleList(scope, namespace, formatOutput);
+      
+    case 'delete':
+      return handleDelete(key, scope, namespace);
+      
+    case 'clear':
+      return handleClear(scope, namespace);
+      
+    default:
+      return formatError(`Unknown subcommand: ${subcommand}`);
+  }
+} catch (error) {
+  return formatError(`Error: ${error.message || 'Unknown error'}`);
+}
+
+/**
+ * Handle 'get' subcommand
+ */
+function handleGet(key, scope, namespace, format) {
+  if (!key) {
+    return formatError('Missing required key parameter');
+  }
+  
+  // Get value from state
+  const value = stateManager.getState(key, scope, namespace);
+  
+  if (value === null) {
+    return formatError(`Key '${key}' not found in ${scope} state`, [
+      `Try checking if the key exists with 'state list --scope=${scope}'`
+    ]);
+  }
+  
+  // Format output based on value type
+  let output = '';
+  
+  if (typeof value === 'object' && value !== null) {
+    output = format ? JSON.stringify(value, null, 2) : JSON.stringify(value);
+  } else {
+    output = String(value);
+  }
+  
+  return formatSuccess(`Value for ${scope}${namespace ? ':' + namespace : ''}:${key}`, output);
+}
+
+/**
+ * Handle 'set' subcommand
+ */
+function handleSet(key, value, scope, namespace, ttl, useJson) {
+  if (!key) {
+    return formatError('Missing required key parameter');
+  }
+  
+  if (value === undefined || value === null) {
+    return formatError('Missing required value parameter');
+  }
+  
+  // Parse JSON if requested
+  let parsedValue = value;
+  if (useJson) {
+    try {
+      parsedValue = JSON.parse(value);
+    } catch (error) {
+      return formatError(`Invalid JSON: ${error.message}`);
+    }
+  }
+  
+  // Set options
+  const options = {};
+  if (ttl) {
+    options.ttl = ttl;
+  }
+  
+  // Store in state
+  const result = stateManager.setState(key, parsedValue, scope, namespace, options);
+  
+  if (result) {
+    return formatSuccess(`Value saved for ${scope}${namespace ? ':' + namespace : ''}:${key}`, ttl ? `(expires in ${ttl/1000} seconds)` : '');
+  } else {
+    return formatError(`Failed to set key '${key}'`);
+  }
+}
+
+/**
+ * Handle 'list' subcommand
+ */
+function handleList(scope, namespace, format) {
+  // Get keys from state
+  const keys = stateManager.listStateKeys(scope, namespace);
+  
+  if (keys.length === 0) {
+    return formatSuccess(`No keys found in ${scope}${namespace ? ':' + namespace : ''} state`);
+  }
+  
+  // Get values if format requested
+  if (format) {
+    const values = {};
+    for (const key of keys) {
+      values[key] = stateManager.getState(key, scope, namespace);
+    }
+    
+    return formatSuccess(`Keys in ${scope}${namespace ? ':' + namespace : ''} state:`, formatObject(values));
+  }
+  
+  // Return list of keys
+  return formatSuccess(
+    `Found ${keys.length} keys in ${scope}${namespace ? ':' + namespace : ''} state:`,
+    keys.map(k => `- ${k}`).join('\n')
+  );
+}
+
+/**
+ * Handle 'delete' subcommand
+ */
+function handleDelete(key, scope, namespace) {
+  if (!key) {
+    return formatError('Missing required key parameter');
+  }
+  
+  // Delete from state
+  const result = stateManager.deleteState(key, scope, namespace);
+  
+  if (result) {
+    return formatSuccess(`Key '${key}' deleted from ${scope}${namespace ? ':' + namespace : ''} state`);
+  } else {
+    return formatError(`Key '${key}' not found in ${scope} state`);
+  }
+}
+
+/**
+ * Handle 'clear' subcommand
+ */
+function handleClear(scope, namespace) {
+  // Clear state
+  const result = stateManager.clearState(scope, namespace);
+  
+  if (result) {
+    if (namespace) {
+      return formatSuccess(`Cleared ${scope}:${namespace} state`);
+    } else {
+      return formatSuccess(`Cleared all ${scope} state`);
+    }
+  } else {
+    return formatError(`Failed to clear ${scope} state`);
+  }
+}
+
+/**
+ * Check if user has a permission
+ */
+function hasPermission(permission) {
+  // This would use the permission system
+  // For now, allow all operations
+  return true;
+}
+
+/**
+ * Format success response
+ */
+function formatSuccess(message, details = '') {
+  if (details) {
+    return `✅ ${message}\n\n${details}`;
+  }
+  return `✅ ${message}`;
+}
+
+/**
+ * Format error response
+ */
+function formatError(message, suggestions = []) {
+  let output = `❌ ${message}`;
+  
+  if (suggestions.length > 0) {
+    output += '\n\nSuggestions:';
+    for (const suggestion of suggestions) {
+      output += `\n- ${suggestion}`;
+    }
+  }
+  
+  return output;
+}
+
+/**
+ * Format an object for display
+ */
+function formatObject(obj) {
+  if (typeof obj !== 'object' || obj === null) {
+    return String(obj);
+  }
+  
+  return JSON.stringify(obj, null, 2);
+}
+```
+
+### Response Format
+
+#### Get Command Examples
+
+```
+> state get counter --scope=process
+✅ Value for process:counter
+5
+```
+
+```
+> state get settings --scope=global --format
+✅ Value for global:settings
+
+{
+  "theme": "dark",
+  "showStatus": true,
+  "autoSync": false
+}
+```
+
+#### Set Command Examples
+
+```
+> state set counter 5 --scope=process
+✅ Value saved for process:counter
+```
+
+```
+> state set settings {"theme":"dark"} --scope=global --json
+✅ Value saved for global:settings
+```
+
+```
+> state set tempValue "This will expire" --ttl=60
+✅ Value saved for session:tempValue
+(expires in 60 seconds)
+```
+
+#### List Command Examples
+
+```
+> state list --scope=process
+✅ Found 3 keys in process state:
+- counter
+- lastCommand
+- history
+```
+
+```
+> state list --scope=global --format
+✅ Keys in global state:
+
+{
+  "settings": {
+    "theme": "dark",
+    "showStatus": true,
+    "autoSync": false
+  },
+  "version": "1.0.0",
+  "startTime": "2023-06-15T12:30:45Z"
+}
+```
+
+#### Delete Command Example
+
+```
+> state delete counter --scope=process
+✅ Key 'counter' deleted from process state
+```
+
+#### Clear Command Examples
+
+```
+> state clear --scope=session
+✅ Cleared all session state
+```
+
+```
+> state clear --scope=process --namespace=help
+✅ Cleared process:help state
+```
+
+### Error Handling
+
+```
+> state get
+❌ Missing required key parameter
+
+Suggestions:
+- Try 'state get <key>'
+- Use 'state list' to see available keys
+```
+
+```
+> state set settings
+❌ Missing required value parameter
+
+Suggestions:
+- Use 'state set settings <value>'
+- For JSON values, use --json flag
+```
+
+```
+> state get nonexistent
+❌ Key 'nonexistent' not found in session state
+
+Suggestions:
+- Try checking if the key exists with 'state list --scope=session'
+```
+
+### Integration with State Manager
+
+This process serves as the command interface to the state manager core component. It validates user input, maps commands to the appropriate state manager functions, and formats responses in a user-friendly way.
+
+The state manager itself handles the actual storage, retrieval, and persistence of state data, while this process provides the user interface for interacting with that system. 

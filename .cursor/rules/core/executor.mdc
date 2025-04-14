@@ -20,6 +20,7 @@ The Process Executor is responsible for loading, initializing, and executing pro
 
 const registry = require('./registry.js');
 const permissions = require('./permissions.js');
+const stateManager = require('./state-manager.js');
 
 /**
  * Execute a command using the appropriate process
@@ -200,15 +201,47 @@ async function executeProcess(process, inputs) {
  * @returns {Object} Execution context
  */
 function createExecutionContext(process, inputs) {
+  // Get process name for state namespacing
+  const processName = process.metadata.name;
+  
   return {
     process: {
-      name: process.metadata.name,
+      name: processName,
       version: process.metadata.version,
       path: process.path
     },
     inputs: inputs,
     state: {},
-    tools: getToolsForProcess(process.metadata.permissions || ['basic'])
+    tools: {
+      ...getToolsForProcess(process.metadata.permissions || ['basic']),
+      // Add state management tools
+      state: createProcessStateTools(processName)
+    }
+  };
+}
+
+/**
+ * Create state management tools for a process
+ * @param {string} processName - Name of the process for namespacing
+ * @returns {Object} State management tools
+ */
+function createProcessStateTools(processName) {
+  return {
+    get: (key, scope = 'process') => {
+      return stateManager.getState(key, scope, processName);
+    },
+    set: (key, value, scope = 'process', options = {}) => {
+      return stateManager.setState(key, value, scope, processName, options);
+    },
+    delete: (key, scope = 'process') => {
+      return stateManager.deleteState(key, scope, processName);
+    },
+    list: (scope = 'process') => {
+      return stateManager.listStateKeys(scope, processName);
+    },
+    clear: (scope = 'process') => {
+      return stateManager.clearState(scope, processName);
+    }
   };
 }
 
@@ -301,6 +334,7 @@ Each process executes within a controlled context that provides:
 - **Process Metadata**: Information about the executing process
 - **Input Parameters**: Command arguments mapped to process inputs
 - **State Object**: For maintaining state during execution
+- **State Tools**: For accessing persistent state between executions
 - **Available Tools**: Tools available based on permissions
 
 ## Error Handling
@@ -346,6 +380,16 @@ The executor provides tools to processes based on their declared permissions:
 - **File Tools**: Available to processes with file permissions
 - **System Tools**: Available to processes with system permissions
 - **Network Tools**: Available to processes with network permissions
+- **State Tools**: Available to processes with state permissions
+
+## State Management Integration
+
+The executor integrates with the state management system to provide processes with access to persistent state:
+
+1. **State Initialization**: The process's state context is initialized on startup
+2. **Namespaced Access**: State is namespaced by process name to avoid conflicts
+3. **Permission Control**: Access to different state scopes is controlled by permissions
+4. **Cleanup**: State is properly maintained after process completion
 
 ## Advanced Features
 
