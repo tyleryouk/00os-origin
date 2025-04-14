@@ -1,5 +1,5 @@
 ---
-description: 
+description: USE WHEN you want to execute version
 globs: 
 alwaysApply: false
 type: agent

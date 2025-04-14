@@ -1,5 +1,5 @@
 ---
-description: USE WHEN you want to echo
+description: USE WHEN you want to execute echo
 globs: 
 alwaysApply: false
 type: agent

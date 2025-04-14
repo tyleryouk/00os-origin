@@ -6,7 +6,7 @@
 - Category: system
 - Permissions: system.write
 - Author: 00reaper
-- Version: 1.0
+- Version: 1.1
 
 ## Input
 - subcommand: Optional subcommand (currently supports "status")
@@ -65,16 +65,16 @@ let exitCode = 0;
 
 try {
   // Build the command to execute
-  let syncCmd = '.\\1000xscripts\\Sync-00OS.bat';
+  let syncCmd = '.\\1000xscripts\\Sync-00OS-Complete.ps1';
   
   // Add parameters
   if (params.length > 0) {
     syncCmd += ' ' + params.join(' ');
   }
   
-  // Add dry-run flag handling for PowerShell script
+  // Add dry-run flag
   if (isDryRun) {
-    syncCmd = syncCmd.replace('Sync-00OS.bat', 'Sync-00OS.bat -WhatIf');
+    syncCmd += ' -DryRun';
   }
   
   // Log the sync start
@@ -83,7 +83,7 @@ try {
   // Execute the sync script - ACTUAL COMMAND EXECUTION
   const result = tools.run_terminal_cmd({
     command: syncCmd,
-    explanation: 'Running sync process to update .cursor/rules from 00os',
+    explanation: 'Running complete sync process to update .cursor/rules from 00os',
     is_background: false
   });
   

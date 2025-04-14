@@ -1,5 +1,5 @@
 ---
-description: 
+description: USE WHEN you want to execute file-list
 globs: 
 alwaysApply: false
 type: agent

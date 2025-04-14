@@ -61,6 +61,8 @@ COMMON COMMANDS:
   > help                    - Display this help information
   > help [command]          - Get detailed help for a specific command
   > system status           - Check system status
+  > reaper-init             - Initialize 00reaper context
+  > reaper-update           - Update 00reaper context between sessions
   > file list [directory]   - List files in a directory
   > version                 - Display system version
 
@@ -68,6 +70,7 @@ EXAMPLES:
   > help file               - Get help about file commands
   > file list /00os         - List files in the /00os directory
   > system config list      - List system configuration
+  > reaper-update --message="Added new command" - Update context with message
 
 For detailed help on a specific command, type:
   > help [command]
