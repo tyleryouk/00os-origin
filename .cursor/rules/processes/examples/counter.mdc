@@ -2,6 +2,7 @@
 description: System component - counter
 globs: 
 alwaysApply: true
+type: always
 ---
 # Process: counter
 

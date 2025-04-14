@@ -43,6 +43,12 @@
 - Ensures processes receive appropriate resources
 - Handles process errors and exceptions
 
+### Context Management
+- Loads comprehensive system knowledge at initialization
+- Maintains consistent understanding across development sessions
+- Categorizes knowledge into logical organizational units
+- Ensures high-fidelity knowledge retention between sessions
+
 ## Communication Protocol
 
 ### Syntax
@@ -138,4 +144,75 @@ The command handler component is automatically invoked when a message starts wit
 3. Pass the command to the process for execution
 4. Return the formatted result
 
-By integrating with this system, 00reaper provides a consistent terminal-like experience while maintaining the full context and capabilities of the AI assistant. 
+By integrating with this system, 00reaper provides a consistent terminal-like experience while maintaining the full context and capabilities of the AI assistant.
+
+## Context Initialization System
+
+The reaper-init command provides a comprehensive context initialization system that ensures continuity and high-fidelity understanding across development sessions.
+
+### Knowledge Categories
+
+When executing `> reaper-init`, the system loads and processes:
+
+1. **Core Understanding**
+   - Complete system architecture and purpose
+   - Terminal-based command interface design
+   - Dual-mode interaction paradigm (conversational/command)
+   - Design principles and objectives
+
+2. **Implementation Strategy**
+   - Process definition and execution approach
+   - Synchronization between 00os and .cursor/rules
+   - Rule type mapping and frontmatter requirements
+   - Documentation standards
+
+3. **Interface Design**
+   - Terminal interface specifications
+   - Command parsing and routing mechanisms
+   - Response formatting and standardization
+   - Error handling protocols
+
+4. **Development Workflow**
+   - Enhancement tracking and implementation
+   - Session continuity management
+   - Context preservation techniques
+   - Knowledge organization
+
+### Usage Options
+
+The reaper-init command supports several modes:
+
+```
+> reaper-init
+```
+Standard initialization with basic status reporting.
+
+```
+> reaper-init --verbose
+```
+Detailed initialization with comprehensive file loading status.
+
+```
+> reaper-init --focus=architecture
+```
+Prioritized loading of architecture-related documents.
+
+```
+> reaper-init --focus=sync
+```
+Prioritized loading of synchronization-related documents.
+
+```
+> reaper-init --focus=processes
+```
+Prioritized loading of process-related documents.
+
+### Integration Benefits
+
+This context initialization system provides several key benefits:
+
+1. **Development Continuity**: Maintains consistent understanding across sessions
+2. **Knowledge Retention**: Preserves detailed system knowledge without repetition
+3. **Focus Flexibility**: Allows targeted knowledge loading for specific tasks
+4. **Status Awareness**: Provides clear metrics on knowledge loading status
+5. **Error Resilience**: Continues functioning even when some files cannot be loaded 

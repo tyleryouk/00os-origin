@@ -1,276 +1,359 @@
 ---
-description: Use when you want to execute reaper-init
+description: USE WHEN you want to execute reaper-init
 globs: 
 alwaysApply: false
+type: agent
 ---
 # Process: reaper-init
 
 ## Metadata
 - Name: reaper-init
-- Description: Initialize 00reaper context and load system understanding
+- Description: Initialize 00reaper context and load comprehensive system understanding
 - Category: system
 - Permissions: basic
 - Author: 00reaper
-- Version: 1.0
+- Version: 2.0
 
 ## Input
 - verbose: Optional flag to show detailed loading information (--verbose)
+- focus: Optional area to emphasize in initialization (architecture|sync|processes)
 
 ## Output
 - Confirmation of context initialization with summary of loaded content
 
 ## Execution
 
-This process initializes the 00reaper context by loading key system files and establishing a comprehensive understanding of the 00OS architecture, current enhancements, and development workflow. It ensures continuity between development sessions by rebuilding the necessary context.
+This process initializes the 00reaper context by comprehensively loading all essential system files and establishing a complete understanding of the 00OS architecture, purpose, implementation strategy, and development workflow. It ensures a high-fidelity rebuilding of the necessary context at the start of each development session.
 
 ### Context Loading Procedure
 
-The process performs the following actions:
+The process performs the following comprehensive actions:
 
-1. Load core architecture documents:
-   - system-architecture.md
-   - process-format.md
-   - terminal-interface-design.md
-   - final-goal.md
+1. **Core Understanding** (Critical Context):
+   - understanding-00os.md - Complete overview of the 00OS system
+   - final-goal.md - Defined target state and objectives
+   - system-architecture.md - Detailed system architecture and components
 
-2. Load current enhancement status:
-   - enhancement-tracker.md
-   - Any active enhancement proposal documents
+2. **Implementation Strategy** (Development Framework):
+   - process-implementation-strategy.md - Strategy for process development
+   - sync-migration-strategy.md - Strategy for syncing between 00os and .cursor/rules
+   - implementation-summary.md - Summary of implementation approach
+   - mdc-file-guide.md - Guide for .mdc file format and requirements
 
-3. Load implementation guidelines:
-   - implementation-summary.md
-   - sync-migration-strategy.md
-   - mdc-file-guide.md
+3. **Interface Design** (Command Flow and UX):
+   - terminal-interface-design.md - Terminal interface implementation
+   - terminal-interface-goals.md - Goals and objectives for the terminal interface
+   - command-parser.md - Command parsing architecture
+   - terminal-implementation-plan.md - Implementation plan for terminal features
+   
+4. **Process Format** (Command Execution):
+   - process-format.md - Standard format for process files
+   
+5. **Knowledge Management** (Session Continuity):
+   - context-management.md - Context management between sessions
+   - user-rules.md - Rules for user interaction
+   
+6. **Enhancement Tracking** (Current and Future Development):
+   - enhancement-tracker.md - Current enhancement status
+   - Active enhancement proposals - Currently in-progress enhancements
 
-4. Load context management documentation:
-   - context-management.md
+7. **Research and Notes** (Background Information):
+   - ai-terminal-research.md - Background research on AI terminals
+   - notes.md - General development notes
 
 ### Process Execution
 
 ```javascript
-// Initialize loading status
+// Initialize loading status for each section
 const loadingStatus = {
-  architecture: false,
-  enhancements: false,
-  implementation: false,
-  contextManagement: false
+  coreUnderstanding: false,
+  implementationStrategy: false,
+  interfaceDesign: false,
+  processFormat: false,
+  knowledgeManagement: false,
+  enhancementTracking: false,
+  researchNotes: false
 };
 
 // Track loaded files
 const loadedFiles = [];
+const failedFiles = [];
 
-// Load core architecture understanding
-try {
-  // Read system architecture documents
-  const architectureFiles = [
-    'system-architecture.md',
-    'process-format.md',
+// Create comprehensive file map for organized loading
+const fileMap = {
+  coreUnderstanding: [
+    'understanding-00os.md',
+    'final-goal.md',
+    'system-architecture.md'
+  ],
+  implementationStrategy: [
+    'process-implementation-strategy.md',
+    'sync-migration-strategy.md',
+    'implementation-summary.md',
+    'mdc-file-guide.md'
+  ],
+  interfaceDesign: [
     'terminal-interface-design.md',
-    'final-goal.md'
-  ];
-  
-  for (const file of architectureFiles) {
-    const content = tools.readFile(`00reaper/${file}`);
-    if (content) {
-      loadedFiles.push(file);
-    }
+    'terminal-interface-goals.md',
+    'command-parser.md',
+    'terminal-implementation-plan.md'
+  ],
+  processFormat: [
+    'process-format.md'
+  ],
+  knowledgeManagement: [
+    'context-management.md',
+    'user-rules.md'
+  ],
+  enhancementTracking: [
+    'enhancement-tracker.md'
+  ],
+  researchNotes: [
+    'ai-terminal-research.md',
+    'notes.md'
+  ]
+};
+
+// Focus loading priority based on input if specified
+let loadingPriority = Object.keys(fileMap);
+if (inputs.focus) {
+  // Move the specified focus area to the front of the loading queue
+  switch (inputs.focus.toLowerCase()) {
+    case 'architecture':
+      loadingPriority = moveToFront(loadingPriority, ['coreUnderstanding', 'processFormat']);
+      break;
+    case 'sync':
+      loadingPriority = moveToFront(loadingPriority, ['implementationStrategy']);
+      break;
+    case 'processes':
+      loadingPriority = moveToFront(loadingPriority, ['processFormat', 'implementationStrategy']);
+      break;
+    default:
+      // Use default priority
+      break;
   }
-  
-  loadingStatus.architecture = true;
-} catch (error) {
-  // Log error but continue with other sections
-  console.error(`Error loading architecture files: ${error.message}`);
 }
 
-// Load enhancement status
+// Helper to prioritize certain categories
+function moveToFront(array, items) {
+  // Remove items from original array
+  const filtered = array.filter(item => !items.includes(item));
+  // Add items to the front
+  return [...items, ...filtered];
+}
+
+// Process each category in priority order
+for (const category of loadingPriority) {
+  try {
+    for (const file of fileMap[category]) {
+      try {
+        const content = tools.readFile(`00reaper/${file}`);
+        if (content) {
+          loadedFiles.push(file);
+        }
+      } catch (error) {
+        failedFiles.push({file, error: error.message});
+      }
+    }
+    loadingStatus[category] = true;
+  } catch (error) {
+    console.error(`Error loading ${category} files: ${error.message}`);
+  }
+}
+
+// Load enhancement files
 try {
-  // Read enhancement tracker
+  // Parse the enhancement tracker to load active enhancements
   const trackerContent = tools.readFile('00reaper/enhancement-tracker.md');
   if (trackerContent) {
-    loadedFiles.push('enhancement-tracker.md');
-  }
-  
-  // Get current enhancements from tracker
-  const enhancements = parseEnhancements(trackerContent);
-  
-  // Load recent/active enhancement documents
-  for (const enhancement of enhancements) {
-    if (enhancement.status === 'In Progress' || enhancement.status === 'Planned') {
-      const enhancementFile = `00reaper/enhancements/${enhancement.filename}`;
-      const content = tools.readFile(enhancementFile);
-      if (content) {
-        loadedFiles.push(enhancement.filename);
+    // Extract active enhancements (simplified implementation)
+    const activeEnhancements = parseEnhancements(trackerContent);
+    
+    // Load each active enhancement
+    for (const enhancement of activeEnhancements) {
+      if (enhancement.status === 'In Progress' || enhancement.status === 'Planned') {
+        try {
+          const enhancementFile = `00reaper/enhancements/${enhancement.filename}`;
+          const content = tools.readFile(enhancementFile);
+          if (content) {
+            loadedFiles.push(`enhancements/${enhancement.filename}`);
+          }
+        } catch (enhError) {
+          failedFiles.push({file: `enhancements/${enhancement.filename}`, error: enhError.message});
+        }
       }
     }
   }
-  
-  loadingStatus.enhancements = true;
 } catch (error) {
-  console.error(`Error loading enhancement files: ${error.message}`);
-}
-
-// Load implementation guidelines
-try {
-  const implementationFiles = [
-    'implementation-summary.md',
-    'sync-migration-strategy.md',
-    'mdc-file-guide.md'
-  ];
-  
-  for (const file of implementationFiles) {
-    const content = tools.readFile(`00reaper/${file}`);
-    if (content) {
-      loadedFiles.push(file);
-    }
-  }
-  
-  loadingStatus.implementation = true;
-} catch (error) {
-  console.error(`Error loading implementation files: ${error.message}`);
-}
-
-// Load context management
-try {
-  const content = tools.readFile('00reaper/context-management.md');
-  if (content) {
-    loadedFiles.push('context-management.md');
-  }
-  
-  loadingStatus.contextManagement = true;
-} catch (error) {
-  console.error(`Error loading context management: ${error.message}`);
+  console.error(`Error processing enhancements: ${error.message}`);
 }
 
 // Helper function to parse enhancements from tracker
 function parseEnhancements(trackerContent) {
   // This would parse the markdown table in the tracker
-  // and extract enhancement details
   // Simplified implementation for example
-  const enhancements = [
-    { id: '007', name: 'Command Composition', status: 'Planned', filename: '2023-06-08-command-composition.md' },
-    { id: '009', name: 'Context Management System', status: 'Planned', filename: '2023-06-10-context-management-system.md' }
+  return [
+    { id: 'ENH001', name: 'Command Composition', status: 'In Progress', filename: 'command-composition.md' },
+    { id: 'ENH002', name: 'Context Management System', status: 'Planned', filename: 'context-management-system.md' },
+    { id: 'ENH003', name: 'Process Permission System', status: 'In Progress', filename: 'process-permission-system.md' }
   ];
-  
-  return enhancements;
 }
+
+// Calculate statistics
+const allCategories = Object.keys(loadingStatus);
+const loadedCategories = allCategories.filter(cat => loadingStatus[cat]);
+const successRate = Math.round((loadedFiles.length / (loadedFiles.length + failedFiles.length)) * 100);
+const systemUnderstandingLevel = Math.round((loadedCategories.length / allCategories.length) * 100);
 
 // Prepare output based on verbose flag
 let output = '';
 if (inputs.verbose) {
   output = `
-✅ 00reaper context initialized
+✅ 00reaper context initialized - System Understanding Level: ${systemUnderstandingLevel}%
 
 LOADED SYSTEM KNOWLEDGE
------------------------
-System Architecture:
-${loadingStatus.architecture ? '✓ Core architecture documents loaded' : '✗ Error loading architecture documents'}
-${loadedFiles.filter(f => ['system-architecture.md', 'process-format.md', 'terminal-interface-design.md', 'final-goal.md'].includes(f)).map(f => `  - ${f}`).join('\n')}
+=======================
 
-Enhancements:
-${loadingStatus.enhancements ? '✓ Enhancement tracker and active proposals loaded' : '✗ Error loading enhancement documents'}
-${loadedFiles.filter(f => f === 'enhancement-tracker.md' || f.startsWith('202')).map(f => `  - ${f}`).join('\n')}
+Core Understanding:
+${loadingStatus.coreUnderstanding ? '✓ Loaded' : '✗ Failed'}
+${fileMap.coreUnderstanding.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
 
-Implementation Guidelines:
-${loadingStatus.implementation ? '✓ Implementation guidelines loaded' : '✗ Error loading implementation documents'}
-${loadedFiles.filter(f => ['implementation-summary.md', 'sync-migration-strategy.md', 'mdc-file-guide.md'].includes(f)).map(f => `  - ${f}`).join('\n')}
+Implementation Strategy:
+${loadingStatus.implementationStrategy ? '✓ Loaded' : '✗ Failed'}
+${fileMap.implementationStrategy.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
 
-Context Management:
-${loadingStatus.contextManagement ? '✓ Context management documentation loaded' : '✗ Error loading context management'}
-${loadedFiles.filter(f => f === 'context-management.md').map(f => `  - ${f}`).join('\n')}
+Interface Design:
+${loadingStatus.interfaceDesign ? '✓ Loaded' : '✗ Failed'}
+${fileMap.interfaceDesign.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
 
-Total Files Loaded: ${loadedFiles.length}
+Process Format:
+${loadingStatus.processFormat ? '✓ Loaded' : '✗ Failed'}
+${fileMap.processFormat.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
+
+Knowledge Management:
+${loadingStatus.knowledgeManagement ? '✓ Loaded' : '✗ Failed'}
+${fileMap.knowledgeManagement.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
+
+Enhancement Tracking:
+${loadingStatus.enhancementTracking ? '✓ Loaded' : '✗ Failed'}
+${fileMap.enhancementTracking.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
+
+Research and Notes:
+${loadingStatus.researchNotes ? '✓ Loaded' : '✗ Failed'}
+${fileMap.researchNotes.map(f => `  ${loadedFiles.includes(f) ? '✓' : '✗'} ${f}`).join('\n')}
+
+Active Enhancements:
+${loadedFiles.filter(f => f.startsWith('enhancements/')).map(f => `  ✓ ${f}`).join('\n') || '  None loaded'}
+
+STATISTICS
+==========
+Total Files: ${loadedFiles.length + failedFiles.length}
+Successfully Loaded: ${loadedFiles.length} (${successRate}%)
+Failed to Load: ${failedFiles.length}
+System Understanding: ${systemUnderstandingLevel}%
+
+${failedFiles.length > 0 ? 'FAILED FILES\n===========\n' + failedFiles.map(f => `${f.file}: ${f.error}`).join('\n') : ''}
 
 Ready for system administration tasks.
 `;
 } else {
   // Simple output for non-verbose mode
-  const statusSummary = Object.values(loadingStatus).every(status => status)
-    ? 'All components loaded successfully'
-    : 'Some components failed to load (use --verbose for details)';
+  const sectionStatus = [];
+  if (loadingStatus.coreUnderstanding) sectionStatus.push("Core Understanding");
+  if (loadingStatus.implementationStrategy) sectionStatus.push("Implementation Strategy");
+  if (loadingStatus.interfaceDesign) sectionStatus.push("Interface Design");
+  if (loadingStatus.processFormat) sectionStatus.push("Process Format");
+  if (loadingStatus.knowledgeManagement) sectionStatus.push("Knowledge Management");
+  if (loadingStatus.enhancementTracking) sectionStatus.push("Enhancement Tracking");
   
   output = `
-✅ 00reaper context initialized
+✅ 00reaper context initialized - System Understanding Level: ${systemUnderstandingLevel}%
 
-Loaded system knowledge:
-- 00OS architecture and components
-- Current enhancements (${loadedFiles.filter(f => f.startsWith('202')).length + 1} total)
-- Development workflow processes
-- Context management procedures
+00OS SYSTEM KNOWLEDGE LOADED
+============================
 
-Status: ${statusSummary}
+System Architecture:
+- ${loadingStatus.coreUnderstanding ? '✓' : '✗'} Core architecture, purpose and design principles
+- ${loadingStatus.coreUnderstanding ? '✓' : '✗'} Terminal-based command system architecture
+- ${loadingStatus.coreUnderstanding ? '✓' : '✗'} Dual-mode interface (conversational/command)
 
-Ready for system administration tasks.
-`;
+Implementation:
+- ${loadingStatus.implementationStrategy ? '✓' : '✗'} Process implementation strategy
+- ${loadingStatus.implementationStrategy ? '✓' : '✗'} 00OS to Cursor rules synchronization
+- ${loadingStatus.processFormat ? '✓' : '✗'} Process format specifications
+
+Interface:
+- ${loadingStatus.interfaceDesign ? '✓' : '✗'} Terminal interface design
+- ${loadingStatus.interfaceDesign ? '✓' : '✗'} Command parsing workflow
+- ${loadingStatus.interfaceDesign ? '✓' : '✗'} Response formatting standards
+
+Workflows:
+- ${loadingStatus.enhancementTracking ? '✓' : '✗'} Enhancement tracking system
+- ${loadingStatus.knowledgeManagement ? '✓' : '✗'} Context management techniques
+- ${loadingStatus.knowledgeManagement ? '✓' : '✗'} Development session workflow
+
+Statistics:
+- Total Files Loaded: ${loadedFiles.length}/${loadedFiles.length + failedFiles.length}
+- Categories Initialized: ${loadedCategories.length}/${allCategories.length}
+- System Understanding: ${systemUnderstandingLevel}%
+
+Ready to continue 00OS development and administration.
+${failedFiles.length > 0 ? `\n⚠️ Warning: ${failedFiles.length} files failed to load. Use --verbose for details.` : ''}`;
 }
 
+// Return the formatted output
 return output;
 ```
 
-### Response Format
+### Knowledge Areas Initialized
 
-#### Standard Response
-```
-✅ 00reaper context initialized
+When this process is executed, the AI agent gains a comprehensive understanding of:
 
-Loaded system knowledge:
-- 00OS architecture and components
-- Current enhancements (8 total, 5 completed)
-- Development workflow processes
-- Rule type management guidelines
+1. **System Architecture and Purpose**
+   - Complete understanding of 00OS as a terminal interface for AI
+   - Dual-mode interface with command and conversational capabilities
+   - Core vision, objectives, and architectural components
 
-Ready for system administration tasks.
-```
+2. **Process-Based Architecture**
+   - Process definition standards and format
+   - Parsing, validation, and execution workflow
+   - Command routing and response formatting
 
-#### Verbose Response
-```
-✅ 00reaper context initialized
+3. **Synchronization Strategy**
+   - 00os to .cursor/rules synchronization workflow
+   - Frontmatter requirements and MDC file standards
+   - Rule type mapping and management
 
-LOADED SYSTEM KNOWLEDGE
------------------------
-System Architecture:
-✓ Core architecture documents loaded
-  - system-architecture.md
-  - process-format.md
-  - terminal-interface-design.md
-  - final-goal.md
+4. **Development Context**
+   - Current enhancement status and priorities
+   - Implementation roadmap and guidelines
+   - Context management between development sessions
 
-Enhancements:
-✓ Enhancement tracker and active proposals loaded
-  - enhancement-tracker.md
-  - 2023-06-08-command-composition.md
-  - 2023-06-10-context-management-system.md
+5. **Terminal Features**
+   - Command syntax and parsing rules
+   - Response formatting standards
+   - Error handling protocols
 
-Implementation Guidelines:
-✓ Implementation guidelines loaded
-  - implementation-summary.md
-  - sync-migration-strategy.md
-  - mdc-file-guide.md
+By executing this process at the beginning of a session, the agent acquires a complete understanding of the 00OS system without requiring repeated explanations, ensuring continuity of development context.
 
-Context Management:
-✓ Context management documentation loaded
-  - context-management.md
+### Usage
 
-Total Files Loaded: 10
-
-Ready for system administration tasks.
-```
-
-### Error Handling
-
-If some components fail to load, the process will still attempt to load others and report the status:
+To initialize the context:
 
 ```
-✅ 00reaper context partially initialized
-
-Loaded system knowledge:
-- 00OS architecture and components
-- Development workflow processes
-
-Status: Some components failed to load (use --verbose for details)
-
-Ready for system administration tasks with limited context.
+> reaper-init
 ```
 
-### Integration with Other Commands
+For detailed loading information:
 
-This command should typically be used at the start of a session before other context-related commands like `reaper-research` or `reaper-enhance`. It establishes the foundation for those more specialized commands. 
+```
+> reaper-init --verbose
+```
+
+To focus on a specific area:
+
+```
+> reaper-init --focus=architecture
+> reaper-init --focus=sync
+> reaper-init --focus=processes
+``` 

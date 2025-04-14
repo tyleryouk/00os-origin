@@ -2,6 +2,7 @@
 description: USE WHEN you want help
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: Help

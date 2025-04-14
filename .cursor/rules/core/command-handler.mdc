@@ -2,11 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
----
----
-description: 
-globs: 
-alwaysApply: true
+type: manual
 ---
 # 00OS Command Handler
 

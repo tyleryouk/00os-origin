@@ -2,6 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
+type: manual
 ---
 # Test File
 
