@@ -1,5 +1,5 @@
 ---
-description: USE WHEN you want to execute reaper-update
+description: USE WHEN  you want to execute reaper-update
 globs: 
 alwaysApply: false
 type: agent

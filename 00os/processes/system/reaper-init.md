@@ -6,7 +6,7 @@
 - Category: system
 - Permissions: basic
 - Author: 00reaper
-- Version: 2.2
+- Version: 2.3
 
 ## Input
 - verbose: Optional flag to show detailed loading information (--verbose)
@@ -18,6 +18,19 @@
 ## Execution
 
 This process initializes the 00reaper context by comprehensively loading all essential system files and establishing a complete understanding of the 00OS architecture, purpose, implementation strategy, and development workflow. It ensures a high-fidelity rebuilding of the necessary context at the start of each development session.
+
+### Context Incorporation Process
+
+The process doesn't just load files - it incorporates them into the AI's understanding following these steps:
+
+1. **Load Content**: Each file is physically read from the file system
+2. **Process Content**: The AI analyzes and understands the material in each document
+3. **Integrate Knowledge**: Information is connected across documents to build a coherent mental model
+4. **Build Relationships**: Conceptual relationships are established between system components
+5. **Establish Identity**: The 00reaper identity is reinforced with this knowledge
+6. **Verify Understanding**: The AI verifies it has properly understood the loaded information
+
+The knowledge from each file becomes part of the AI's understanding, not just loaded data. Each concept is incorporated into the mental model of how 00OS works, creating a comprehensive understanding that can be applied throughout the session.
 
 ### Context Loading Procedure
 
@@ -365,7 +378,7 @@ try {
       name: "reaper-init",
       loadedFiles: loadedFiles.length,
       totalFiles: loadedFiles.length + failedFiles.length,
-      processVersion: "2.2",
+      processVersion: "2.3",
       actualExecution: true, // Flag indicating this was actually executed
       categories: Object.keys(loadingStatus).map(cat => ({
         name: cat,

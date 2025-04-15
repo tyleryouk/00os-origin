@@ -13,7 +13,7 @@ We've successfully defined the architecture and implemented the core components 
 ### Implementation Components
 
 #### Core Operating System
-- **00reaper/global-rules.md**: Defined the system administrator identity
+- **00reaper/user-rules.md**: Defined the system administrator identity
 - **00reaper/command-parser.md**: Detailed the command parsing system
 - **00reaper/process-format.md**: Specified the standardized process file format
 - **00reaper/system-architecture.md**: Provided comprehensive system architecture overview
@@ -42,7 +42,7 @@ We've established the following directory structure:
 ## Integration with Cursor
 
 The system leverages Cursor's rules system by:
-1. Using `.cursor/rules` as the knowledge base for the LLM
+1. Using `.cursor/rules/` as the knowledge base for the LLM
 2. Implementing command parsing and routing in the rules
 3. Transforming the chat interface into a command-line interface
 
