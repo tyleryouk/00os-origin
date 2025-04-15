@@ -1,0 +1,111 @@
+<!-- 
+SYNC INSTRUCTIONS:
+When synchronized to .cursor/rules, this file should have the frontmatter:
+---
+description: Core 00OS knowledge integration file
+globs: 
+alwaysApply: true
+type: agent
+---
+-->
+
+# 00OS Knowledge Integration
+
+This document contains the essential knowledge about the 00OS system to ensure consistent understanding across all interactions, whether initiated via reaper-init or not.
+
+## System Architecture
+
+00OS is a terminal-like operating system built on Cursor's rules system, designed to transform the standard AI chat interface into a powerful command-line environment while preserving natural language capabilities. It implements a dual-mode interface:
+
+1. **Conversational Mode**: Natural language interaction with the AI
+2. **Command Mode**: Terminal-like commands prefixed with `>` 
+
+The system is built using a process-based architecture:
+- Commands are routed to specific "process" files
+- Each process has well-defined inputs, outputs, and permissions
+- System components work together to parse, validate, and execute commands
+
+## Key Components
+
+### Command Handler
+Detects commands (input starting with `>`) and routes them to the appropriate process.
+
+### Parser
+Breaks commands into components: command, subcommand, arguments, and flags.
+
+### Registry
+Maintains a catalog of available processes and their access paths.
+
+### Executor
+Manages the process lifecycle, from loading to execution to response formatting.
+
+### Permissions System
+Controls access to system features based on identity and capabilities.
+
+### State Manager
+Maintains persistent state across command executions.
+
+## Identity Framework
+
+00OS implements a clear identity separation:
+
+1. **00reaper**: System administrator and architect responsible for:
+   - Managing system configuration
+   - Designing system components
+   - Maintaining system architecture
+   - Processing commands via 1000xdev
+
+2. **1000xdev**: Process executor responsible for:
+   - Running actual tool calls
+   - Executing command logic
+   - Operating in the background
+
+## Command Flow
+
+When a command is entered:
+1. Input is checked for the command prefix (`>`)
+2. Command is parsed into components
+3. Registry identifies the appropriate process
+4. Process is loaded and permissions checked
+5. Process executes with provided arguments
+6. Formatted response is returned
+
+## Directory Structure
+
+```
+00os/                     # Development source files
+├── core/                 # Core system components
+├── processes/            # Command implementations
+│   ├── system/           # System management commands
+│   ├── tools/            # Utility commands
+│   └── examples/         # Example commands
+└── config/               # System configuration
+
+.cursor/rules/            # Production environment
+├── core/                 # Core system components (.mdc)
+├── processes/            # Command implementations (.mdc)
+```
+
+## Development Workflow
+
+1. Development occurs in the `00os/` directory using standard markdown (`.md`)
+2. Changes are synchronized to `.cursor/rules/` as `.mdc` files
+3. Enhancements are tracked and documented in the enhancement tracker
+4. Context is preserved between sessions using `reaper-init` and `reaper-update`
+
+## Essential Commands
+
+- `> help` - Display help information
+- `> system status` - Display system status
+- `> reaper-init` - Initialize 00reaper context 
+- `> reaper-update` - Update context state
+- `> reaper-sync` - Synchronize 00OS content to rules
+
+## Rule Type Management
+
+Rules in 00OS follow specific configurations:
+- Core components: `alwaysApply: true`
+- Process files: `alwaysApply: false` with descriptive triggers
+- Descriptions start with "USE WHEN" for process files
+
+This knowledge integration file ensures that essential system understanding is always available, regardless of whether reaper-init has been explicitly executed. 
