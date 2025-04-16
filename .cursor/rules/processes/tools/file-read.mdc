@@ -2,6 +2,7 @@
 description: USE WHEN you want to execute file-read
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: File Read

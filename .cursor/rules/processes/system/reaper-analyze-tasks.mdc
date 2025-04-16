@@ -2,7 +2,9 @@
 description: USE WHEN you want to execute reaper-analyze-tasks
 globs: 
 alwaysApply: false
+type: agent
 ---
+
 # Process: reaper-analyze-tasks
 
 ## Description
@@ -545,4 +547,4 @@ Suggestions:
 Suggestions:
 - Use one of the valid focus areas: reliability, file-ops, formatting, sync, handler
 - Omit the focus parameter to analyze all tasks
-```
+``` 

@@ -2,6 +2,7 @@
 description: USE WHEN you want to execute file-search
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: file-search

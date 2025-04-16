@@ -2,6 +2,7 @@
 description: USE WHEN you want to execute command-registry
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: command-registry
