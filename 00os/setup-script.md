@@ -1,9 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
-type: always
----
 # 00OS Setup Script
 
 This is an initialization script that runs automatically when loaded into a new chat session. It ensures that the 00OS system is properly initialized and the AI understands its role as 00reaper.

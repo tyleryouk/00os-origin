@@ -1,9 +1,0 @@
----
-description: 
-globs: 
-alwaysApply: false
-type: always
----
-# Test File
-
-This is a test file to verify that the 00OS to Cursor Rules synchronization process is working correctly.
