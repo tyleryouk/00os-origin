@@ -1,5 +1,5 @@
 ---
-description: System component - 00os-integration
+description: System component - 00OS-integration
 globs: 
 alwaysApply: true
 type: always
