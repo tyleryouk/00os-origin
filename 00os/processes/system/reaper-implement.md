@@ -1,0 +1,632 @@
+---
+name: reaper-implement
+description: Create a structured implementation environment for a specific request
+version: 1.0
+author: 00reaper
+permissions: [basic, file-read]
+inputs:
+  - name: req-id
+    type: string
+    required: true
+    description: Request ID to implement (e.g., 001, 002)
+  - name: mode
+    type: string
+    required: false
+    default: plan
+    description: Implementation mode (plan, scaffold, full)
+outputs:
+  - name: implementation
+    type: string
+    description: Implementation plan and/or scaffolding
+---
+
+# Process: reaper-implement
+
+## Description
+Creates a structured implementation environment for addressing a specific request from user_requests.md. Loads the request details, identifies relevant files that need modification, generates scaffolding for necessary changes, and sets up proper error handling and testing.
+
+## Execution
+
+```javascript
+// Main execution function
+async function execute() {
+  try {
+    // Get input parameters
+    const reqId = inputs["req-id"];
+    const mode = inputs.mode || "plan";
+    
+    // Validate inputs
+    if (!reqId) {
+      return formatError("Missing required parameter: req-id", "VALIDATION_ERROR", [
+        "Specify a request ID to implement",
+        "Example: > reaper-implement 002"
+      ]);
+    }
+    
+    // Validate mode
+    const validModes = ["plan", "scaffold", "full"];
+    if (!validModes.includes(mode)) {
+      return formatError(`Invalid mode: ${mode}`, "VALIDATION_ERROR", [
+        "Use one of the valid modes: plan, scaffold, full",
+        "Example: > reaper-implement 002 --mode=scaffold"
+      ]);
+    }
+    
+    // Read user_requests.md to get task details
+    const taskDetails = await getTaskDetails(reqId);
+    
+    // Identify files that need modification
+    const relevantFiles = await identifyRelevantFiles(taskDetails);
+    
+    // Generate implementation approach based on mode
+    if (mode === "plan") {
+      return generateImplementationPlan(taskDetails, relevantFiles);
+    } else if (mode === "scaffold") {
+      return generateScaffolding(taskDetails, relevantFiles);
+    } else if (mode === "full") {
+      return generateFullImplementation(taskDetails, relevantFiles);
+    }
+  } catch (error) {
+    return formatError(`Error implementing request: ${error.message}`, "EXECUTION_ERROR");
+  }
+}
+
+// Get task details from user_requests.md
+async function getTaskDetails(reqId) {
+  try {
+    const userRequestsPath = "00reaper/00OS-commands/user_requests.md";
+    const paddedReqId = reqId.padStart(3, '0');
+    
+    // Read the file
+    const fileResult = await tools.call('read_file', {
+      target_file: userRequestsPath,
+      should_read_entire_file: true,
+      explanation: "Reading user_requests.md to get task details"
+    });
+    
+    if (!fileResult || !fileResult.content) {
+      throw new Error("Failed to read user_requests.md");
+    }
+    
+    // Parse out the specific request details
+    const reqPattern = new RegExp(`### REQ-${paddedReqId}:[^#]*(?=###|##|$)`, 's');
+    const reqMatch = fileResult.content.match(reqPattern);
+    
+    if (!reqMatch) {
+      throw new Error(`Request REQ-${paddedReqId} not found in user_requests.md`);
+    }
+    
+    const reqContent = reqMatch[0];
+    
+    // Extract task details
+    const titleMatch = reqContent.match(/### REQ-\d+:\s*(.*?)(?:\r?\n)/);
+    const title = titleMatch ? titleMatch[1].trim() : `Unknown Request ${paddedReqId}`;
+    
+    // Extract requirements
+    const requirementsPattern = /#### Requirements\s+([\s\S]*?)(?=####|$)/;
+    const requirementsMatch = reqContent.match(requirementsPattern);
+    const requirements = requirementsMatch 
+      ? parseListItems(requirementsMatch[1]) 
+      : [];
+    
+    // Extract implementation plan
+    const planPattern = /#### Implementation Plan\s+([\s\S]*?)(?=####|$)/;
+    const planMatch = reqContent.match(planPattern);
+    const implementationPlan = planMatch 
+      ? parseListItems(planMatch[1]) 
+      : [];
+    
+    // Extract progress updates
+    const progressPattern = /#### Progress Updates\s+([\s\S]*?)(?=####|$)/;
+    const progressMatch = reqContent.match(progressPattern);
+    const progressUpdates = progressMatch 
+      ? parseListItems(progressMatch[1]) 
+      : [];
+    
+    // Extract active requests to find priority and status
+    const activeReqPattern = new RegExp(`\\|\\s*${paddedReqId}\\s*\\|[^\\|]*\\|[^\\|]*\\|([^\\|]*)\\|([^\\|]*)\\|`);
+    const activeReqMatch = fileResult.content.match(activeReqPattern);
+    
+    let priority = "Unknown";
+    let status = "Unknown";
+    
+    if (activeReqMatch) {
+      priority = activeReqMatch[1].trim();
+      status = activeReqMatch[2].trim();
+    }
+    
+    return {
+      id: paddedReqId,
+      title,
+      requirements,
+      implementationPlan,
+      progressUpdates,
+      priority,
+      status
+    };
+  } catch (error) {
+    throw new Error(`Error getting task details: ${error.message}`);
+  }
+}
+
+// Parse list items from markdown
+function parseListItems(content) {
+  if (!content) return [];
+  
+  return content.split('\n')
+    .filter(line => line.trim().startsWith('-'))
+    .map(line => line.trim().substring(1).trim());
+}
+
+// Identify files relevant to the implementation
+async function identifyRelevantFiles(taskDetails) {
+  const relevantFiles = [];
+  
+  // Try to extract file paths from implementation plan
+  for (const step of taskDetails.implementationPlan) {
+    const filePathMatch = step.match(/(?:in|create|update|implement|modify|edit)\s+(?:file|process|command)?\s*[:`"]?([\/\w\.-]+\.[a-zA-Z]+)/i);
+    if (filePathMatch) {
+      relevantFiles.push({
+        path: filePathMatch[1],
+        reason: step,
+        exists: await checkFileExists(filePathMatch[1])
+      });
+    }
+  }
+  
+  // Add task-specific files based on task type
+  const taskTitle = taskDetails.title.toLowerCase();
+  
+  if (taskTitle.includes("file search")) {
+    relevantFiles.push({
+      path: "00OS/processes/tools/file-search.md",
+      reason: "Implementation of file search command",
+      exists: await checkFileExists("00OS/processes/tools/file-search.md")
+    });
+    
+    // Add common patterns file for reference
+    relevantFiles.push({
+      path: "00reaper/00OS-commands/common-patterns.md",
+      reason: "Reference for file operation patterns",
+      exists: await checkFileExists("00reaper/00OS-commands/common-patterns.md")
+    });
+  }
+  
+  if (taskTitle.includes("command execution") || taskTitle.includes("reliability")) {
+    relevantFiles.push({
+      path: "00OS/core/command-handler.md",
+      reason: "Core command handler implementation",
+      exists: await checkFileExists("00OS/core/command-handler.md")
+    });
+    
+    relevantFiles.push({
+      path: "00OS/core/executor.md",
+      reason: "Process execution implementation",
+      exists: await checkFileExists("00OS/core/executor.md")
+    });
+  }
+  
+  if (taskTitle.includes("sync") || taskTitle.includes("synchronization")) {
+    relevantFiles.push({
+      path: "00OS/processes/system/reaper-sync.md",
+      reason: "Synchronization command implementation",
+      exists: await checkFileExists("00OS/processes/system/reaper-sync.md")
+    });
+  }
+  
+  if (taskTitle.includes("command handler") || taskTitle.includes("parser")) {
+    relevantFiles.push({
+      path: "00OS/core/parser.md",
+      reason: "Command parsing implementation",
+      exists: await checkFileExists("00OS/core/parser.md")
+    });
+    
+    relevantFiles.push({
+      path: "00OS/core/command-handler.md",
+      reason: "Command handling implementation",
+      exists: await checkFileExists("00OS/core/command-handler.md")
+    });
+  }
+  
+  if (taskTitle.includes("response format") || taskTitle.includes("standardization")) {
+    relevantFiles.push({
+      path: "00reaper/00OS-commands/common-patterns.md",
+      reason: "Common patterns for response formatting",
+      exists: await checkFileExists("00reaper/00OS-commands/common-patterns.md")
+    });
+  }
+  
+  if (taskTitle.includes("reaper-analyze-tasks")) {
+    relevantFiles.push({
+      path: "00OS/processes/system/reaper-analyze-tasks.md",
+      reason: "Task analysis command implementation",
+      exists: await checkFileExists("00OS/processes/system/reaper-analyze-tasks.md")
+    });
+  }
+  
+  if (taskTitle.includes("reaper-implement")) {
+    relevantFiles.push({
+      path: "00OS/processes/system/reaper-implement.md",
+      reason: "Implementation command implementation",
+      exists: await checkFileExists("00OS/processes/system/reaper-implement.md")
+    });
+  }
+  
+  // Add command registry for reference
+  relevantFiles.push({
+    path: "00reaper/00OS-commands/command-registry.md",
+    reason: "Command registry for reference",
+    exists: await checkFileExists("00reaper/00OS-commands/command-registry.md")
+  });
+  
+  // Add command guidelines for reference
+  relevantFiles.push({
+    path: "00reaper/00OS-commands/00OS-command-guidelines.md",
+    reason: "Command guidelines for reference",
+    exists: await checkFileExists("00reaper/00OS-commands/00OS-command-guidelines.md")
+  });
+  
+  // Remove duplicates
+  const uniqueFiles = [];
+  const paths = new Set();
+  
+  for (const file of relevantFiles) {
+    if (!paths.has(file.path)) {
+      paths.add(file.path);
+      uniqueFiles.push(file);
+    }
+  }
+  
+  return uniqueFiles;
+}
+
+// Check if a file exists
+async function checkFileExists(filePath) {
+  try {
+    // Try to read the file metadata
+    const result = await tools.call('read_file', {
+      target_file: filePath,
+      offset: 0,
+      limit: 1,
+      explanation: `Checking if ${filePath} exists`
+    });
+    
+    return !!result && !result.error;
+  } catch (error) {
+    return false;
+  }
+}
+
+// Generate implementation plan
+function generateImplementationPlan(taskDetails, relevantFiles) {
+  let output = `✅ Implementation Plan for REQ-${taskDetails.id}: ${taskDetails.title}\n\n`;
+  
+  // Task details section
+  output += "## Task Details\n\n";
+  output += `**ID**: REQ-${taskDetails.id}\n`;
+  output += `**Title**: ${taskDetails.title}\n`;
+  output += `**Priority**: ${taskDetails.priority}\n`;
+  output += `**Status**: ${taskDetails.status}\n\n`;
+  
+  // Requirements section
+  output += "## Requirements\n\n";
+  if (taskDetails.requirements && taskDetails.requirements.length > 0) {
+    for (const req of taskDetails.requirements) {
+      output += `- ${req}\n`;
+    }
+  } else {
+    output += "No specific requirements found.\n";
+  }
+  output += "\n";
+  
+  // Implementation steps section
+  output += "## Implementation Steps\n\n";
+  if (taskDetails.implementationPlan && taskDetails.implementationPlan.length > 0) {
+    for (let i = 0; i < taskDetails.implementationPlan.length; i++) {
+      output += `${i + 1}. ${taskDetails.implementationPlan[i]}\n`;
+    }
+  } else {
+    output += "No implementation steps specified.\n";
+  }
+  output += "\n";
+  
+  // Relevant files section
+  output += "## Relevant Files\n\n";
+  if (relevantFiles && relevantFiles.length > 0) {
+    for (const file of relevantFiles) {
+      const existsStatus = file.exists ? "✅ Exists" : "❌ Not found";
+      output += `- ${file.path} (${existsStatus})\n`;
+      output += `  Reason: ${file.reason}\n\n`;
+    }
+  } else {
+    output += "No relevant files identified.\n";
+  }
+  output += "\n";
+  
+  // Progress tracking section
+  output += "## Progress Tracking\n\n";
+  output += "Current Progress:\n";
+  if (taskDetails.progressUpdates && taskDetails.progressUpdates.length > 0) {
+    for (const update of taskDetails.progressUpdates) {
+      output += `- ${update}\n`;
+    }
+  } else {
+    output += "No progress updates available.\n";
+  }
+  output += "\n";
+  
+  // Next steps section
+  output += "## Recommended Next Steps\n\n";
+  output += "1. Review relevant files to understand current implementation\n";
+  output += "2. Create or update necessary files according to the implementation plan\n";
+  output += "3. Test changes with appropriate test cases\n";
+  output += "4. Update progress in user_requests.md\n";
+  output += "5. Run synchronization script if needed\n";
+  
+  return output;
+}
+
+// Generate implementation scaffolding
+async function generateScaffolding(taskDetails, relevantFiles) {
+  let output = `✅ Implementation Scaffolding for REQ-${taskDetails.id}: ${taskDetails.title}\n\n`;
+  
+  // Basic implementation plan first
+  output += generateImplementationPlan(taskDetails, relevantFiles);
+  
+  // Add scaffolding templates based on the task type
+  output += "\n## Implementation Scaffolding\n\n";
+  
+  const taskTitle = taskDetails.title.toLowerCase();
+  
+  // File search command scaffolding
+  if (taskTitle.includes("file search")) {
+    output += "### File Search Command Template\n\n";
+    output += "```javascript\n";
+    output += "// Main execution function\n";
+    output += "async function execute() {\n";
+    output += "  try {\n";
+    output += "    // Get parameters\n";
+    output += "    const searchPattern = inputs.pattern;\n";
+    output += "    const searchPath = inputs.path;\n";
+    output += "    const isRecursive = inputs.recursive || false;\n";
+    output += "    \n";
+    output += "    // Validate inputs\n";
+    output += "    // TODO: Add input validation\n";
+    output += "    \n";
+    output += "    // Search for files\n";
+    output += "    // TODO: Implement file search logic\n";
+    output += "    \n";
+    output += "    // Format and return the results\n";
+    output += "    return formatSuccess('Search results');\n";
+    output += "  } catch (error) {\n";
+    output += "    return formatError(`Error during search: ${error.message}`, \"EXECUTION_ERROR\");\n";
+    output += "  }\n";
+    output += "}\n";
+    output += "```\n\n";
+  }
+  
+  // Command handler improvements scaffolding
+  if (taskTitle.includes("command handler") || taskTitle.includes("parser")) {
+    output += "### Enhanced Command Parsing Template\n\n";
+    output += "```javascript\n";
+    output += "// Improved tokenization function with quote and escape handling\n";
+    output += "function tokenizeInput(input) {\n";
+    output += "  const tokens = [];\n";
+    output += "  let current = '';\n";
+    output += "  let inQuotes = false;\n";
+    output += "  let quoteChar = '';\n";
+    output += "  let escaped = false;\n";
+    output += "  \n";
+    output += "  // TODO: Implement enhanced tokenization\n";
+    output += "  \n";
+    output += "  return tokens;\n";
+    output += "}\n";
+    output += "```\n\n";
+  }
+  
+  // Synchronization process improvements
+  if (taskTitle.includes("sync") || taskTitle.includes("synchronization")) {
+    output += "### Improved Synchronization Template\n\n";
+    output += "```javascript\n";
+    output += "// Execute PowerShell synchronization script\n";
+    output += "async function executeSyncScript() {\n";
+    output += "  try {\n";
+    output += "    // TODO: Implement robust script execution\n";
+    output += "    \n";
+    output += "    // Verify script execution\n";
+    output += "    // TODO: Add verification steps\n";
+    output += "    \n";
+    output += "    return { success: true, message: 'Synchronization completed successfully' };\n";
+    output += "  } catch (error) {\n";
+    output += "    return { success: false, error: error.message };\n";
+    output += "  }\n";
+    output += "}\n";
+    output += "```\n\n";
+  }
+  
+  // Response formatting standardization
+  if (taskTitle.includes("response format") || taskTitle.includes("standardization")) {
+    output += "### Standard Formatting Functions\n\n";
+    output += "```javascript\n";
+    output += "// Format success message\n";
+    output += "function formatSuccess(message, data = null) {\n";
+    output += "  let output = `✅ ${message}`;\n";
+    output += "  \n";
+    output += "  if (data) {\n";
+    output += "    // TODO: Format data based on type\n";
+    output += "  }\n";
+    output += "  \n";
+    output += "  return output;\n";
+    output += "}\n\n";
+    output += "// Format error message\n";
+    output += "function formatError(message, code, suggestions = []) {\n";
+    output += "  let output = `❌ Error [${code}]: ${message}\\n\\n`;\n";
+    output += "  \n";
+    output += "  // TODO: Add context-aware suggestions\n";
+    output += "  \n";
+    output += "  return output;\n";
+    output += "}\n";
+    output += "```\n\n";
+  }
+  
+  // Generic command implementation template
+  if (!output.includes("### ")) {
+    output += "### Generic Command Template\n\n";
+    output += "```javascript\n";
+    output += "// Main execution function\n";
+    output += "async function execute() {\n";
+    output += "  try {\n";
+    output += "    // Get input parameters\n";
+    output += "    // TODO: Extract input parameters\n";
+    output += "    \n";
+    output += "    // Validate inputs\n";
+    output += "    // TODO: Add input validation\n";
+    output += "    \n";
+    output += "    // Process logic\n";
+    output += "    // TODO: Implement main functionality\n";
+    output += "    \n";
+    output += "    // Format and return result\n";
+    output += "    return formatSuccess('Command executed successfully');\n";
+    output += "  } catch (error) {\n";
+    output += "    return formatError(`Error: ${error.message}`, \"EXECUTION_ERROR\");\n";
+    output += "  }\n";
+    output += "}\n";
+    output += "```\n\n";
+  }
+  
+  // Test case templates
+  output += "## Test Cases\n\n";
+  output += "```\n";
+  output += "# Basic functionality test\n";
+  output += `> ${getCommandFromTask(taskDetails)}\n\n`;
+  output += "# Error handling test\n";
+  output += `> ${getCommandFromTask(taskDetails)} --invalid-param=test\n\n`;
+  output += "# Edge case test\n";
+  output += `> ${getCommandFromTask(taskDetails)} \"with quoted parameter\"\n`;
+  output += "```\n\n";
+  
+  // Progress tracking template
+  output += "## Progress Update Template\n\n";
+  output += "```markdown\n";
+  output += `#### Progress Updates\n`;
+  for (const update of taskDetails.progressUpdates) {
+    output += `- ${update}\n`;
+  }
+  output += `- ${getCurrentDate()}: Started implementation\n`;
+  output += `- ${getCurrentDate()}: [Add your progress here]\n`;
+  output += "```\n";
+  
+  return output;
+}
+
+// Generate a full implementation (simplified for now)
+async function generateFullImplementation(taskDetails, relevantFiles) {
+  // For now, just provide scaffolding with a note
+  let output = generateScaffolding(taskDetails, relevantFiles);
+  
+  output += "\n## Full Implementation Note\n\n";
+  output += "The full implementation mode provides scaffolding and recommends file content changes. ";
+  output += "To complete the implementation:\n\n";
+  output += "1. Review the scaffolding provided above\n";
+  output += "2. Modify the relevant files according to the implementation plan\n";
+  output += "3. Test the changes with the provided test cases\n";
+  output += "4. Update progress in user_requests.md\n\n";
+  
+  output += "Use the edit_file tool to make the necessary changes to each file.\n";
+  
+  return output;
+}
+
+// Get a command string based on the task
+function getCommandFromTask(taskDetails) {
+  const taskTitle = taskDetails.title.toLowerCase();
+  
+  if (taskTitle.includes("file search")) {
+    return "file search pattern /path/to/search";
+  }
+  
+  if (taskTitle.includes("reaper-analyze-tasks")) {
+    return "reaper-analyze-tasks";
+  }
+  
+  if (taskTitle.includes("reaper-implement")) {
+    return "reaper-implement 001";
+  }
+  
+  if (taskTitle.includes("sync") || taskTitle.includes("synchronization")) {
+    return "reaper-sync";
+  }
+  
+  return "command-name argument1 argument2 --flag=value";
+}
+
+// Get current date string
+function getCurrentDate() {
+  const date = new Date();
+  return `${date.getFullYear()}-${padZero(date.getMonth() + 1)}-${padZero(date.getDate())}`;
+}
+
+// Pad with zero
+function padZero(num) {
+  return num.toString().padStart(2, '0');
+}
+
+// Format success message
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+// Format error message
+function formatError(message, code, suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n\n`;
+  
+  if (suggestions.length > 0) {
+    output += "Suggestions:\n";
+    for (const suggestion of suggestions) {
+      output += `- ${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+
+// Execute the command
+execute();
+```
+
+## Example Usage
+
+### Generate Implementation Plan
+```
+> reaper-implement 002
+```
+
+### Generate Implementation Scaffolding
+```
+> reaper-implement 002 --mode=scaffold
+```
+
+### Generate Full Implementation
+```
+> reaper-implement 002 --mode=full
+```
+
+## Error Handling
+
+### Invalid Request ID
+```
+❌ Error [EXECUTION_ERROR]: Error getting task details: Request REQ-999 not found in user_requests.md
+
+Suggestions:
+- Check that the request ID exists in user_requests.md
+- Use a valid request ID from the Active Requests table
+```
+
+### Invalid Mode
+```
+❌ Error [VALIDATION_ERROR]: Invalid mode: test
+
+Suggestions:
+- Use one of the valid modes: plan, scaffold, full
+- Example: > reaper-implement 002 --mode=scaffold
+``` 

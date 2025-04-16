@@ -162,162 +162,207 @@ Use 'identity permissions request system.admin' to request access.
 ### Implementation Logic
 
 ```javascript
-function getSystemStatus(detailed = false, components = []) {
+// Dynamic system status reporter
+async function execute() {
   try {
-    // Get basic system information
-    const systemInfo = getSystemInfo();
+    // Initialize status data
+    const statusData = {
+      system: {
+        name: tools.getSystemSetting('system.name') || '00OS',
+        version: tools.getSystemSetting('system.version') || '0.1.0',
+        status: 'Operational'
+      },
+      components: await checkComponentStatus(),
+      identity: getCurrentIdentity(),
+      workingDirectory: getCurrentDirectory(),
+      processes: await getActiveProcesses(),
+      commands: await getLoadedCommands(),
+      recentCommands: await getRecentCommands(),
+      health: 'Good',
+      uptime: 'Session active'
+    };
     
-    // Get components to check
-    const componentsToCheck = components.length > 0 
-      ? components 
-      : ['parser', 'registry', 'executor', 'permissions'];
-    
-    // Validate components
-    const invalidComponents = componentsToCheck.filter(c => !isValidComponent(c));
-    if (invalidComponents.length > 0) {
-      return formatError(`Component '${invalidComponents[0]}' not found.`, [
-        "Available components:",
-        "- parser",
-        "- registry",
-        "- executor",
-        "- permissions",
-        "",
-        "Use '> system status' to check all components."
-      ]);
-    }
-    
-    // Check if user has permissions for detailed view
-    if (detailed && !hasPermission('system.admin')) {
-      return formatError("Insufficient permissions to access detailed system information.", [
-        "You need system.admin permission to view detailed status.",
-        "Use 'identity permissions request system.admin' to request access."
-      ]);
-    }
-    
-    // Format output header
-    let output = `00OS System Status`;
-    if (detailed) output += ` (Detailed)`;
-    if (components.length > 0) output += ` (Components: ${components.join(', ')})`;
-    output += `\n\n`;
-    
-    // Add system information
-    output += `SYSTEM INFORMATION:\n`;
-    output += `  - Version: ${systemInfo.version}`;
-    if (detailed) output += ` (Build ${systemInfo.buildDate})`;
-    output += `\n`;
-    
-    if (detailed) {
-      output += `  - Uptime: ${formatUptime(systemInfo.uptime, true)}\n`;
-    } else if (systemInfo.uptime) {
-      output += `  - Uptime: ${formatUptime(systemInfo.uptime)}\n`;
-    }
-    
-    output += `  - Active Identity: ${systemInfo.activeIdentity}\n`;
-    
-    if (detailed) {
-      output += `  - Permission Level: ${systemInfo.permissionLevel}\n`;
-    }
-    
-    output += `\n`;
-    
-    // Add component status
-    output += `COMPONENT STATUS:\n`;
-    
-    // Get status of each component
-    for (const component of componentsToCheck) {
-      const status = getComponentStatus(component);
-      const statusIcon = status.operational ? '✅' : '❌';
-      
-      if (detailed) {
-        output += `  ${statusIcon} ${status.name} (v${status.version})\n`;
-        output += `    - Last Updated: ${status.lastUpdated}\n`;
-        
-        // Add component-specific metrics
-        for (const [key, value] of Object.entries(status.metrics)) {
-          output += `    - ${key}: ${value}\n`;
-        }
-        
-        // Add space between components
-        output += `  \n`;
-      } else {
-        output += `  ${statusIcon} ${status.name.padEnd(12)}: ${status.operational ? 'Operational' : 'Error'}\n`;
-      }
-    }
-    
-    // Only show process statistics for full status (not component specific)
-    if (components.length === 0) {
-      // Add process statistics
-      const processStats = getProcessStats();
-      
-      output += `\nPROCESS STATISTICS:\n`;
-      output += `  - Total Processes: ${processStats.total}\n`;
-      output += `  - Active Processes: ${processStats.active}\n`;
-      
-      if (detailed) {
-        output += `  - Recent Processes:\n`;
-        for (let i = 0; i < processStats.recent.length; i++) {
-          const process = processStats.recent[i];
-          output += `    ${i+1}. ${process.name} (${process.timeAgo})\n`;
-        }
-      } else {
-        output += `  - Last Process: ${processStats.recent[0].name} (${processStats.recent[0].timeAgo})\n`;
-      }
-    }
-    
-    // Add detailed sections if requested
-    if (detailed && components.length === 0) {
-      // System events
-      const events = getSystemEvents();
-      
-      output += `\nSYSTEM EVENTS:\n`;
-      for (const event of events) {
-        output += `  - ${event.description} (${event.timestamp})\n`;
-      }
-      
-      // Configuration
-      const config = getSystemConfig();
-      
-      output += `\nCONFIGURATION:\n`;
-      for (const [key, value] of Object.entries(config)) {
-        output += `  - ${key}: ${value}\n`;
-      }
-    }
-    
-    // Add hint for detailed view
-    if (!detailed && components.length === 0) {
-      output += `\nUse '> system status --detailed' for more information.\n`;
-    }
-    
-    return formatSuccess(output);
+    // Format and return status report
+    return formatStatusReport(statusData);
   } catch (error) {
-    // Handle errors
-    return formatError(`Error retrieving system status: ${error.message}`);
+    return formatError(`Error retrieving system status: ${error.message}`, 'STATUS_ERROR');
   }
 }
 
-function formatSuccess(message) {
-  return `✅ ${message}`;
+// Dynamically check component status 
+async function checkComponentStatus() {
+  const components = [
+    { name: 'Command Parser', path: '00OS/core/parser.md' },
+    { name: 'Process Registry', path: '00OS/core/registry.md' },
+    { name: 'Executor', path: '00OS/core/executor.md' },
+    { name: 'Permissions', path: '00OS/core/permissions.md' },
+    { name: 'State Manager', path: '00OS/core/state-manager.md' },
+    { name: 'Command Handler', path: '00OS/core/command-handler.md' },
+    { name: '00OS Integration', path: '00OS/core/00os-integration.md' },
+    { name: 'Setup Script', path: '00OS/core/setup-script.md' }
+  ];
+  
+  const componentStatus = {};
+  
+  try {
+    // Check each component file existence
+    for (const component of components) {
+      try {
+        // Check if file exists
+        const fileExists = await tools.call('list_dir', { 
+          relative_workspace_path: component.path,
+          explanation: `Checking if component file ${component.path} exists`
+        });
+        
+        componentStatus[component.name] = fileExists ? 'Active' : 'Unavailable';
+      } catch (error) {
+        componentStatus[component.name] = 'Unknown';
+      }
+    }
+  } catch (error) {
+    // Default to basic status if dynamic check fails
+    for (const component of components) {
+      componentStatus[component.name] = 'Assumed Active';
+    }
+  }
+  
+  return componentStatus;
 }
 
-function formatError(message, suggestions = []) {
-  let output = `❌ Error: ${message}\n`;
+// Get current identity
+function getCurrentIdentity() {
+  return tools.getSystemSetting('identity.default') || '00reaper (System Administrator)';
+}
+
+// Get current directory
+function getCurrentDirectory() {
+  return tools.state.get('currentDirectory', 'system') || '/';
+}
+
+// Get active processes
+async function getActiveProcesses() {
+  try {
+    // In a real implementation, this would check actual running processes
+    // For now, just count system-status as running
+    return { count: 1, active: ['system-status'] };
+  } catch (error) {
+    return { count: 0, active: [] };
+  }
+}
+
+// Count loaded commands by checking directories
+async function getLoadedCommands() {
+  let count = 0;
+  try {
+    // Check process directories for command files
+    const directories = [
+      '00OS/processes/system/',
+      '00OS/processes/tools/',
+      '00OS/processes/examples/'
+    ];
+    
+    for (const dir of directories) {
+      try {
+        const result = await tools.call('list_dir', { 
+          relative_workspace_path: dir,
+          explanation: `Counting command files in ${dir}`
+        });
+        
+        if (result && result.entries) {
+          // Count .md files as commands
+          count += result.entries.filter(entry => 
+            !entry.is_directory && entry.path.endsWith('.md')
+          ).length;
+        }
+      } catch (error) {
+        // Continue with next directory if one fails
+        continue;
+      }
+    }
+    
+    return { count };
+  } catch (error) {
+    // Return default if dynamic check fails
+    return { count: 8 };
+  }
+}
+
+// Get recent commands from state
+async function getRecentCommands() {
+  try {
+    const recentCommands = tools.state.get('recentCommands', 'system') || [];
+    return {
+      count: recentCommands.length,
+      commands: recentCommands.slice(-3) // Last 3 commands
+    };
+  } catch (error) {
+    // Return default if state access fails
+    return { count: 1, commands: ['help'] };
+  }
+}
+
+// Format the status report
+function formatStatusReport(data) {
+  let output = `✅ 00OS System Status\n\n`;
+  
+  // System information section
+  output += `System Information:\n`;
+  output += `-----------------\n`;
+  output += `Name:           ${data.system.name}\n`;
+  output += `Version:        ${data.system.version}\n`;
+  output += `Status:         ${data.system.status}\n\n`;
+  
+  // Component status section
+  output += `Component Status:\n`;
+  output += `-----------------\n`;
+  for (const [name, status] of Object.entries(data.components)) {
+    const statusIcon = status === 'Active' ? '✅' : (status === 'Unavailable' ? '❌' : '⚠️');
+    output += `${name}:  ${statusIcon} ${status}\n`;
+  }
+  output += `\n`;
+  
+  // Additional system information
+  output += `Identity:        ${data.identity}\n`;
+  output += `Working Directory: ${data.workingDirectory}\n\n`;
+  
+  // Process and command information
+  output += `Active Processes: ${data.processes.count}`;
+  if (data.processes.active && data.processes.active.length > 0) {
+    output += ` (${data.processes.active.join(', ')})`;
+  }
+  output += `\n`;
+  
+  output += `Loaded Commands:  ${data.commands.count}\n`;
+  
+  output += `Recent Commands:  ${data.recentCommands.count}`;
+  if (data.recentCommands.commands && data.recentCommands.commands.length > 0) {
+    output += ` (${data.recentCommands.commands.join(', ')})`;
+  }
+  output += `\n\n`;
+  
+  // System health
+  output += `System Health:    ${data.health}\n`;
+  output += `Uptime:           ${data.uptime}\n`;
+  
+  return output;
+}
+
+// Format error message
+function formatError(message, code, suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n\n`;
   
   if (suggestions.length > 0) {
-    output += '\n';
+    output += "Suggestions:\n";
     for (const suggestion of suggestions) {
-      output += `${suggestion}\n`;
+      output += `- ${suggestion}\n`;
     }
   }
   
   return output;
 }
 
-function formatUptime(uptime, detailed = false) {
-  if (detailed) {
-    return `${uptime.days} days, ${uptime.hours} hours, ${uptime.minutes} minutes`;
-  }
-  return `${uptime.days} days, ${uptime.hours} hours`;
-}
+// Execute and return result
+execute();
 ```
 
 ### Helper Functions

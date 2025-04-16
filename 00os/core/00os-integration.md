@@ -1,14 +1,3 @@
-<!-- 
-SYNC INSTRUCTIONS:
-When synchronized to .cursor/rules, this file should have the frontmatter:
----
-description: Core 00OS knowledge integration file
-globs: 
-alwaysApply: true
-type: agent
----
--->
-
 # 00OS Knowledge Integration
 
 This document contains the essential knowledge about the 00OS system to ensure consistent understanding across all interactions, whether initiated via reaper-init or not.

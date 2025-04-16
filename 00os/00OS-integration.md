@@ -1,9 +1,3 @@
----
-description: 
-globs: 
-alwaysApply: true
-type: always
----
 # 00OS Knowledge Integration
 
 This document contains the essential knowledge about the 00OS system to ensure consistent understanding across all interactions, whether initiated via reaper-init or not.

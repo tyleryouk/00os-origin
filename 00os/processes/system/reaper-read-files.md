@@ -1,161 +1,432 @@
 ---
 name: reaper-read-files
-description: Reads the content of all files in the 00reaper directory using Cursor tools.
-version: 1.2.0 # Version updated for new target
+description: Read all files in a specified directory
+version: 1.1
 author: 00reaper
-permissions: [admin, file-read] # Requires admin (potentially for path access/tool usage) and file-read
-inputs: []
+permissions: [basic, file-read]
+inputs:
+  - name: path
+    type: string
+    required: true
+    description: Path to directory to read files from
+  - name: recursive
+    type: boolean
+    required: false
+    default: false
+    description: Whether to read files in subdirectories
+  - name: max-depth
+    type: number
+    required: false
+    default: 3
+    description: Maximum recursion depth (only used if recursive is true)
+  - name: file-pattern
+    type: string
+    required: false
+    default: ""
+    description: Optional pattern to filter files (e.g., ".md" for markdown files)
 outputs:
-  - name: fileContents
-    type: object
-    description: An object where keys are filenames and values are file contents or error messages.
+  - name: result
+    type: string
+    description: Formatted file contents
 ---
+
+# Process: reaper-read-files
+
+## Description
+Reads all files in a specified directory and returns their contents in a structured format.
+Commonly used to read configuration or command files for analysis without modifying them.
 
 ## Execution
 
 ```javascript
-// Define the target directory (relative to workspace root)
-const targetDirectory = '00reaper'; // Updated target directory to workspace root 00reaper
-
-// Object to store file contents
-const allContents = {};
-let fileCount = 0;
-
-try {
-    // Ensure the tool calling mechanism is available
-    if (!tools.call || typeof tools.call !== 'function') {
-        throw new Error("Tool calling mechanism (tools.call) is not available in this 00OS process environment.");
-    }
-    // Ensure state tools are available
-    if (!tools.state || typeof tools.state.set !== 'function') {
-       throw new Error("State management tools (tools.state.set) are not available.");
-    }
-
-    // 1. List directory contents using list_dir tool call
-    tools.log(`Listing directory: ${targetDirectory}`);
-    const listResult = await tools.call('list_dir', { 
-        relative_workspace_path: targetDirectory,
-        explanation: `Listing files in '${targetDirectory}' for the reaper-read-files command.` 
-    });
-
-    // --- Assumption: list_dir returns an object with an 'entries' array ---
-    // Example: { entries: [{ path: '00os/processes/system/file1.txt', is_directory: false }, ...] }
-    // Adjust parsing based on the actual tool output structure.
-    if (!listResult || !Array.isArray(listResult.entries)) {
-        const errorDetail = listResult && listResult.error ? `: ${listResult.error}` : '';
-        throw new Error(`Failed to list directory '${targetDirectory}'. Invalid or error response from list_dir tool${errorDetail}. Response: ${JSON.stringify(listResult)}`);
+// Main execution function
+async function execute() {
+  try {
+    // Get input parameters
+    const targetPath = inputs.path;
+    const isRecursive = inputs.recursive || false;
+    const maxDepth = inputs["max-depth"] || 3;
+    const filePattern = inputs["file-pattern"] || "";
+    
+    // Validate input
+    if (!targetPath) {
+      return formatError("Missing required parameter: path", "VALIDATION_ERROR", [
+        "Specify a directory path to read files from",
+        "Example: > reaper-read-files /00os/processes"
+      ]);
     }
     
-    const entries = listResult.entries;
-    tools.log(`Found ${entries.length} entries in '${targetDirectory}'.`);
-
-    // 2. Iterate and read each file using read_file tool call
-    for (const entry of entries) {
-        // Skip directories
-        if (entry.is_directory) { 
-            tools.log(`Skipping directory: ${entry.path}`);
-            continue;
-        }
-
-        // Use the path provided by list_dir (assumed relative to workspace)
-        const filePath = entry.path; 
-        const filename = filePath.split(/[\/]/).pop(); // Extract filename
-
-        tools.log(`Attempting to read file: ${filePath} (filename key: ${filename})`);
-        try {
-            // 3. Read file content using read_file tool call
-            const readResult = await tools.call('read_file', {
-                target_file: filePath,
-                should_read_entire_file: true, // Read the whole file
-                explanation: `Reading file ${filePath} for the reaper-read-files command.`
-            });
-
-            // --- Assumption: read_file returns { content: '...' } on success ---
-            if (readResult && readResult.content !== undefined) {
-                 allContents[filename] = readResult.content;
-                 fileCount++;
-                 tools.log(`Successfully read: ${filename}`);
-            } else {
-                 const readErrorMsg = readResult ? readResult.error || 'Unknown read error (no content property)' : 'No response from read_file tool';
-                 tools.log(`Warning: Could not read file ${filePath}. Tool response: ${readErrorMsg}`);
-                 allContents[filename] = `Error reading file: ${readErrorMsg}`;
-            }
-        } catch (readToolError) {
-             tools.log(`Warning: Exception calling read_file tool for ${filePath}: ${readToolError.message}`);
-             allContents[filename] = `Exception executing read_file tool: ${readToolError.message}`;
-        }
-    }
-
-    // 4. Store results for output block
-    tools.state.set('fileContents', allContents, 'process');
-    tools.state.set('targetDirectory', targetDirectory, 'process'); 
-    tools.state.set('fileCount', fileCount, 'process');
-    tools.log(`Finished processing. Stored content for ${fileCount} files.`);
-
-} catch (error) {
+    // Special handling for common use case
+    const isCommandsDir = targetPath.includes('00reaper/00OS-commands');
+    
+    // Initialize tracking variables
+    const processedFiles = [];
+    const errors = [];
+    
+    // Log start of operation
+    tools.log(`Reading files from: ${targetPath}${isRecursive ? ' (recursive, max depth: ' + maxDepth + ')' : ''}`);
+    
+    // Filter function for files
+    const fileFilter = (fileName) => {
+      if (!filePattern) return true;
+      return fileName.toLowerCase().includes(filePattern.toLowerCase());
+    };
+    
+    // Read the directory recursively
+    await readDirectoryRecursive(targetPath, processedFiles, errors, 0, maxDepth, isRecursive, fileFilter);
+    
+    // Store results for output
+    tools.state.set('processedFiles', processedFiles, 'process');
+    tools.state.set('errors', errors, 'process');
+    tools.state.set('targetPath', targetPath, 'process');
+    tools.state.set('isCommandsDir', isCommandsDir, 'process');
+    tools.state.set('isRecursive', isRecursive, 'process');
+    tools.state.set('filePattern', filePattern, 'process');
+    
+    return {
+      success: true,
+      fileCount: processedFiles.length,
+      errorCount: errors.length
+    };
+  } catch (error) {
     tools.error(`Error in reaper-read-files process execution: ${error.message}`);
-    if (tools.state && typeof tools.state.set === 'function') {
-        tools.state.set('executionError', error.message, 'process');
-    }
-    throw error; 
+    tools.state.set('executionError', error.message, 'process');
+    
+    return {
+      success: false,
+      error: error.message
+    };
+  }
 }
+
+// Recursive directory reading function
+async function readDirectoryRecursive(directoryPath, processedFiles, errors, currentDepth, maxDepth, isRecursive, fileFilter) {
+  try {
+    // Read directory contents
+    const listResult = await tools.call('list_dir', { 
+      relative_workspace_path: directoryPath,
+      explanation: `Listing files in '${directoryPath}' for the reaper-read-files command.` 
+    });
+    
+    // Validate directory listing result
+    if (!listResult || !Array.isArray(listResult.entries)) {
+      const errorDetail = listResult && listResult.error ? `: ${listResult.error}` : '';
+      throw new Error(`Failed to list directory '${directoryPath}'${errorDetail}`);
+    }
+    
+    // Filter entries to just files (skip directories unless recursive)
+    const entries = listResult.entries;
+    const filesToProcess = entries
+      .filter(entry => !entry.is_directory)
+      .filter(entry => fileFilter(entry.path.split('/').pop()));
+    
+    // Process subdirectories if recursive and not at max depth
+    const dirsToProcess = isRecursive && currentDepth < maxDepth ? 
+      entries.filter(entry => entry.is_directory) : [];
+    
+    // Process each file
+    for (const fileEntry of filesToProcess) {
+      const filePath = fileEntry.path;
+      const fileName = filePath.split('/').pop();
+      
+      tools.log(`Reading file: ${filePath}`);
+      
+      try {
+        const readResult = await tools.call('read_file', {
+          target_file: filePath,
+          should_read_entire_file: true,
+          explanation: `Reading file ${filePath} as part of directory scan`
+        });
+        
+        if (readResult && readResult.content !== undefined) {
+          processedFiles.push({
+            path: filePath,
+            name: fileName,
+            content: readResult.content,
+            size: fileEntry.size_bytes || 0,
+            lineCount: readResult.content.split('\n').length
+          });
+          tools.log(`Successfully read: ${fileName} (${readResult.content.split('\n').length} lines)`);
+        } else {
+          const errorMsg = readResult ? readResult.error || 'Unknown read error' : 'No response from read_file tool';
+          errors.push({ path: filePath, error: errorMsg });
+          tools.log(`Warning: Could not read file ${filePath}: ${errorMsg}`);
+        }
+      } catch (readError) {
+        errors.push({ path: filePath, error: readError.message });
+        tools.log(`Error reading ${filePath}: ${readError.message}`);
+      }
+    }
+    
+    // Process subdirectories
+    for (const dirEntry of dirsToProcess) {
+      const dirPath = dirEntry.path;
+      tools.log(`Processing subdirectory: ${dirPath} (depth ${currentDepth + 1})`);
+      
+      await readDirectoryRecursive(
+        dirPath, 
+        processedFiles, 
+        errors, 
+        currentDepth + 1, 
+        maxDepth, 
+        isRecursive,
+        fileFilter
+      );
+    }
+    
+    return {
+      success: true,
+      filesProcessed: filesToProcess.length,
+      dirsProcessed: dirsToProcess.length
+    };
+  } catch (error) {
+    errors.push({ path: directoryPath, error: error.message });
+    tools.log(`Error processing directory ${directoryPath}: ${error.message}`);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+}
+
+// Execute the process
+execute();
 ```
 
 ## Output
 
 ```javascript
-// Ensure state tools are available
-if (!tools.state || typeof tools.state.get !== 'function') {
-     return "❌ FATAL ERROR: State management tools (tools.state.get) are not available for the output block.";
-}
-
 // Check for execution errors first
 const executionError = tools.state.get('executionError', 'process');
 if (executionError) {
-    return `❌ Error during command execution: ${executionError}`;
+  return formatError(`Error during command execution: ${executionError}`, "EXECUTION_ERROR");
 }
 
 // Retrieve results from process state
-const fileContents = tools.state.get('fileContents', 'process');
-const targetDirectory = tools.state.get('targetDirectory', 'process') || '00reaper'; // Default if somehow not set
-const fileCount = tools.state.get('fileCount', 'process'); 
-
-// Validate retrieved state
-if (fileContents === null || typeof fileContents !== 'object') {
-    return "⚠️ An unexpected state error occurred. File contents could not be retrieved.";
-}
+const processedFiles = tools.state.get('processedFiles', 'process') || [];
+const errors = tools.state.get('errors', 'process') || [];
+const targetPath = tools.state.get('targetPath', 'process') || '';
+const isCommandsDir = tools.state.get('isCommandsDir', 'process') || false;
+const isRecursive = tools.state.get('isRecursive', 'process') || false;
+const filePattern = tools.state.get('filePattern', 'process') || '';
 
 // Handle case where directory was listed successfully but contained no files
-if (fileCount === 0 && Object.keys(fileContents).length === 0) {
-     return `ℹ️ No files found in the target directory '${targetDirectory}'.`;
+if (processedFiles.length === 0 && errors.length === 0) {
+  let message = `No files found in the directory '${targetPath}'`;
+  if (filePattern) {
+    message += ` matching pattern '${filePattern}'`;
+  }
+  if (isRecursive) {
+    message += " (including subdirectories)";
+  }
+  return formatSuccess(message);
 }
 
-let output = `
-📑 Contents of files in '${targetDirectory}':
+// Choose output format based on whether this is the commands directory
+// (special handling for common use case)
+if (isCommandsDir) {
+  return formatCommandsDirectoryOutput(processedFiles, errors, targetPath);
+} else {
+  return formatStandardOutput(processedFiles, errors, targetPath, isRecursive, filePattern);
+}
 
-`;
+// Format output for 00OS-commands directory specifically
+function formatCommandsDirectoryOutput(files, errors, path) {
+  let output = `I'll read all files in the ${path} directory.\n\n`;
+  
+  // Process each file in alphabetical order
+  const sortedFiles = [...files].sort((a, b) => a.name.localeCompare(b.name));
+  
+  // Start with README.md if it exists
+  const readmeIndex = sortedFiles.findIndex(f => f.name.toLowerCase() === 'readme.md');
+  if (readmeIndex >= 0) {
+    const readme = sortedFiles.splice(readmeIndex, 1)[0];
+    output += `Now I'll read each file to understand the content. Let's start with the ${readme.name} to get an overview.\n\n`;
+    output += `Read file: ${readme.path}\n`;
+  } else {
+    output += `Now I'll read each file to understand the content.\n\n`;
+  }
+  
+  // Process remaining files
+  for (const file of sortedFiles) {
+    output += `Read file: ${file.path}\n`;
+  }
+  
+  // Add summary at the end
+  output += `\nBased on my review of all files in the ${path} directory, I can provide you with a summary of what I've found:\n\n`;
+  
+  // Generate summary bullet points for each file
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const name = file.name;
+    let description = generateFileDescription(file);
+    
+    output += `${i + 1}. **${name}**: ${description}\n\n`;
+  }
+  
+  output += `The directory serves as a comprehensive resource for creating, managing, and optimizing 00OS commands, with a focus on maintaining a consistent and reliable terminal-like interface through the command system. The files document the current state of implementation, provide guidelines and patterns for command development, and outline the roadmap for future enhancements.`;
+  
+  // Add errors if any
+  if (errors.length > 0) {
+    output += `\n\n⚠️ Note: ${errors.length} file(s) could not be read.`;
+  }
+  
+  return output;
+}
 
-// Format the output for each processed entry
-for (const [filename, content] of Object.entries(fileContents)) {
-    output += `📄 === File: ${filename} ===
-`;
-    if (typeof content === 'string' && (content.startsWith('Error reading file:') || content.startsWith('Exception executing read_file tool:'))) {
-         output += `   ${content}
-`; 
-    } else if (typeof content === 'string'){
-         output += content; 
-    } else {
-         output += `   [Invalid or unexpected content type: ${typeof content}]
-`;
+// Generate a description for a file based on its content
+function generateFileDescription(file) {
+  const content = file.content;
+  const fileName = file.name.toLowerCase();
+  
+  // Default description if no specific match
+  let description = "Contains content related to the 00OS system.";
+  
+  // Try to extract a description from the first paragraph or sentence
+  const firstLines = content.split('\n').slice(0, 5).join(' ');
+  const firstSentenceMatch = firstLines.match(/^#\s+(.*?)(?:\.|$)/m) || 
+                            firstLines.match(/^(.*?)(?:\.|$)/m);
+  
+  if (firstSentenceMatch && firstSentenceMatch[1]) {
+    description = firstSentenceMatch[1].trim();
+  }
+  
+  // Special case handling for known file types
+  if (fileName === 'readme.md') {
+    description = "Serves as the starting point for command development, providing a quick start guide, command implementation standards, and development workflow.";
+  } else if (fileName === 'command-registry.md') {
+    description = "Tracks the implementation status of all 00OS commands, categorized into system commands, file operations, context management, and utility commands.";
+  } else if (fileName.includes('guidelines')) {
+    description = "Provides detailed standards for creating consistent, reliable 00OS commands, including command structure, process file requirements, and response formatting.";
+  } else if (fileName.includes('patterns')) {
+    description = "Contains reusable code patterns for common command implementations, including core patterns, file operation patterns, system operation patterns, and context management patterns.";
+  } else if (fileName.includes('roadmap') || fileName.includes('enhancement')) {
+    description = "Tracks current development focus and planned enhancements for the 00OS command interface, with prioritized features.";
+  } else if (fileName.includes('implementation')) {
+    description = "Details the current 00OS system architecture, including the command processing pipeline, core components, process file structure, and development/deployment processes.";
+  } else if (fileName.includes('feedback')) {
+    description = "Tracks feedback from command execution tests and implementation status, highlighting issues and improvements.";
+  }
+  
+  return description;
+}
+
+// Format standard output for general directory reading
+function formatStandardOutput(files, errors, path, isRecursive, filePattern) {
+  let output = formatSuccess(`Read ${files.length} file(s) from ${path}${isRecursive ? ' (including subdirectories)' : ''}${filePattern ? ` matching pattern '${filePattern}'` : ''}`);
+  
+  // Group files by directory
+  const filesByDir = {};
+  for (const file of files) {
+    const dirPath = file.path.substring(0, file.path.lastIndexOf('/'));
+    if (!filesByDir[dirPath]) {
+      filesByDir[dirPath] = [];
     }
-    output += `
-=== End of ${filename} ===
-
-`;
+    filesByDir[dirPath].push(file);
+  }
+  
+  // Output files by directory
+  if (files.length > 0) {
+    output += `\n\n## Files Read:\n`;
+    
+    for (const [dirPath, dirFiles] of Object.entries(filesByDir)) {
+      output += `\n### Directory: ${dirPath}\n`;
+      
+      for (const file of dirFiles) {
+        const lineCount = file.lineCount || 'unknown';
+        const size = formatFileSize(file.size);
+        output += `- **${file.name}** (${size}, ${lineCount} lines)\n`;
+        
+        // Add first few lines as preview
+        const previewLines = Math.min(3, (file.lineCount || 3));
+        const preview = file.content.split('\n').slice(0, previewLines).join('\n');
+        output += `  Preview: \`${preview.substring(0, 100)}${preview.length > 100 ? '...' : ''}\`\n`;
+      }
+    }
+  }
+  
+  // Add errors if any
+  if (errors.length > 0) {
+    output += `\n## Errors (${errors.length}):\n\n`;
+    for (const error of errors) {
+      output += `- Failed to read ${error.path}: ${error.error}\n`;
+    }
+  }
+  
+  return output;
 }
 
-// Add a summary status
-output += `✅ Successfully processed ${Object.keys(fileContents).length} entries found in '${targetDirectory}'. Read content for ${fileCount} file(s).`;
+// Format a file size in human-readable form
+function formatFileSize(bytes) {
+  if (!bytes) return 'unknown size';
+  
+  if (bytes < 1024) {
+    return `${bytes} B`;
+  } else if (bytes < 1024 * 1024) {
+    return `${(bytes / 1024).toFixed(1)} KB`;
+  } else {
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+}
 
-return output;
+// Format success message
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+// Format error message
+function formatError(message, code, suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n\n`;
+  
+  if (suggestions.length > 0) {
+    output += "Suggestions:\n";
+    for (const suggestion of suggestions) {
+      output += `- ${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+```
+
+## Example Usage
+
+### Basic Directory Reading
+```
+> reaper-read-files /00os/processes/system
+```
+
+### Recursive Directory Reading
+```
+> reaper-read-files /00os --recursive
+```
+
+### Reading with File Pattern Filter
+```
+> reaper-read-files /00os/processes --file-pattern=.md
+```
+
+### Controlling Recursion Depth
+```
+> reaper-read-files /00os --recursive --max-depth=2
+```
+
+## Error Handling
+
+### Directory Not Found
+```
+❌ Error [EXECUTION_ERROR]: Failed to list directory '/nonexistent/path'
+
+Suggestions:
+- Check that the directory path is correct
+- Verify that you have permission to access the directory
+```
+
+### Invalid Parameters
+```
+❌ Error [VALIDATION_ERROR]: Missing required parameter: path
+
+Suggestions:
+- Specify a directory path to read files from
+- Example: > reaper-read-files /00os/processes
 ``` 

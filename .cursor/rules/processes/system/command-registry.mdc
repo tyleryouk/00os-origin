@@ -1,0 +1,124 @@
+---
+description: USE WHEN you want to execute command-registry
+globs: 
+alwaysApply: false
+---
+
+# Process: command-registry
+
+## Description
+Displays the current implementation status of all 00OS commands, categorized by their function.
+
+## Command Registry
+
+### System Commands
+| Command | Status | Process File | Description |
+|---------|--------|--------------|-------------|
+| `help` | ✅ | system/help.md | Display command help information |
+| `system status` | ✅ | system/system-status.md | Show system status and health |
+| `echo` | ✅ | system/echo.md | Echo a message back to user |
+| `version` | ✅ | system/version.md | Display system version information |
+| `reaper-init` | ✅ | system/reaper-init.md | Initialize system context |
+| `reaper-update` | ✅ | system/reaper-update.md | Update context state |
+| `reaper-sync` | ✅ | system/reaper-sync.md | Sync 00OS contents to .cursor/rules |
+| `reaper-read-files` | ✅ | system/reaper-read-files.md | Read files in a directory |
+| `command-registry` | ✅ | system/command-registry.md | List available commands and status |
+
+### File Operations
+| Command | Status | Process File | Description |
+|---------|--------|--------------|-------------|
+| `file list` | ✅ | tools/file-list.md | List files in directory |
+| `file read` | ✅ | tools/file-read.md | View file contents |
+| `file search` | ✅ | tools/file-search.md | Find files by pattern |
+
+### Utility Commands
+| Command | Status | Process File | Description |
+|---------|--------|--------------|-------------|
+| `calculator` | ✅ | tools/calculator.md | Perform calculations |
+| `state` | ✅ | system/state.md | Manage system state |
+
+### Example Commands
+| Command | Status | Process File | Description |
+|---------|--------|--------------|-------------|
+| `counter` | ✅ | examples/counter.md | Example counter implementation |
+
+## Status Legend
+- ✅ Implemented and tested
+- 🔄 In development
+- 📅 Planned
+- ❌ Deprecated
+
+## Implementation Priority
+1. Enhance `file search` command with regular expression support
+2. Add command aliasing support
+3. Implement command piping functionality
+4. Develop file write command
+5. Add recursive directory support to file operations
+
+## Development Sync Process
+
+For development, always use the PowerShell script to sync changes to the rules directory:
+
+```
+.\1000xscripts\Sync-00OS-Complete.ps1
+```
+
+This script performs a complete synchronization of all 00OS files to the .cursor/rules/ directory, including:
+- File content updates
+- Rule type configuration
+- Frontmatter formatting
+
+## Execution
+
+```javascript
+// Main execution function
+function execute() {
+  try {
+    // Return the formatted registry
+    return formatRegistry();
+  } catch (error) {
+    return formatError(error.message, "EXECUTION_ERROR");
+  }
+}
+
+// Format the registry output
+function formatRegistry() {
+  // Return the static registry content above
+  return `✅ 00OS Command Registry
+
+This registry tracks all available commands in the 00OS system.
+
+## System Commands
+- help - Display command help information
+- system status - Show system status and health
+- echo - Echo a message back to user
+- version - Display system version information
+- reaper-init - Initialize system context
+- reaper-update - Update context state
+- reaper-sync - Sync 00OS contents to .cursor/rules
+- reaper-read-files - Read files in a directory
+- command-registry - List available commands and status
+
+## File Operations
+- file list - List files in directory
+- file read - View file contents
+- file search - Find files by pattern
+
+## Utility Commands
+- calculator - Perform calculations
+- state - Manage system state
+
+## Example Commands
+- counter - Example counter implementation
+
+For detailed command help, use: > help [command]`;
+}
+
+// Format error message
+function formatError(message, code) {
+  return `❌ Error [${code}]: ${message}`;
+}
+
+// Execute the command
+execute();
+``` 
