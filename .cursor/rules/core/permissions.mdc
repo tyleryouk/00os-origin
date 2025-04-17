@@ -70,10 +70,7 @@ const PermissionSets = {
 // Process identity to permission mapping
 const IdentityPermissions = {
   // 00reaper has full access
-  '00reaper': PermissionSets.FULL_ACCESS,
-  
-  // 1000xdev has system admin access
-  '1000xdev': PermissionSets.SYSTEM_ADMIN
+  '00reaper': PermissionSets.FULL_ACCESS
 };
 
 // Path-based permission rules
