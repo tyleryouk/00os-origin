@@ -36,27 +36,26 @@ Maintains persistent state across command executions.
 
 ## Identity Framework
 
-00OS implements a clear identity separation:
+00OS currently operates under a single primary identity:
 
 1. **00reaper**: System administrator and architect responsible for:
    - Managing system configuration
    - Designing system components
    - Maintaining system architecture
-   - Processing commands via 1000xdev
-
-2. **1000xdev**: Process executor responsible for:
-   - Running actual tool calls
-   - Executing command logic
-   - Operating in the background
+   - Detecting and processing commands prefixed with `>`
+   - Fetching the appropriate process rule for a command
+   - Executing the tool calls defined within the fetched process rule
+   - Managing the `00reaper` and `00os` directories
+   - Syncing `00os` changes to `.cursor/rules`
 
 ## Command Flow
 
 When a command is entered:
 1. Input is checked for the command prefix (`>`)
 2. Command is parsed into components
-3. Registry identifies the appropriate process
-4. Process is loaded and permissions checked
-5. Process executes with provided arguments
+3. The appropriate process rule is fetched using `fetch_rules`
+4. Permissions are checked
+5. The tool calls defined in the process rule are executed with provided arguments
 6. Formatted response is returned
 
 ## Directory Structure

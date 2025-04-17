@@ -220,7 +220,7 @@ function formatResponse(response, success = true) {
 
 ```javascript
 // Main function to process a command
-function processCommand(input) {
+async function processCommand(input) {
   // Check if this is a command
   if (!isCommand(input)) {
     // Check if it's a legacy command
@@ -237,22 +237,46 @@ function processCommand(input) {
     // Parse the command
     const parsedCommand = parseCommand(input);
     
-    // Find the process file
-    const processFile = findProcess(parsedCommand.command, parsedCommand.subcommand);
-    
-    // Check permissions
+    // Determine the expected process path (remove leading '/')
+    const processRuleName = findProcess(parsedCommand.command, parsedCommand.subcommand)
+                                .replace(/^\/00os\//, ''); // Rules are relative to 00os
+
+    // **** NEW STEP: Fetch the rule for the determined process ****
+    try {
+        // Attempt to fetch the rule using its derived name
+        // Note: fetch_rules needs the rule name *without* the extension usually
+        const ruleNameWithoutExt = processRuleName.replace(/\.md$/, '');
+        await tools.call('fetch_rules', {
+            rule_names: [ruleNameWithoutExt],
+            explanation: `Fetching process rule '${ruleNameWithoutExt}' to handle the command '${parsedCommand.command}${parsedCommand.subcommand ? ' ' + parsedCommand.subcommand : ''}'.`
+        });
+        // We assume the fetched rule will be available in the context for subsequent execution
+        // The actual execution logic needs to be adapted to use the fetched rule content.
+        tools.log(`Successfully fetched rule: ${ruleNameWithoutExt}`);
+    } catch (fetchError) {
+        tools.error(`Failed to fetch rule for process '${processRuleName}': ${fetchError.message}`);
+        // Optionally return an error, or attempt fallback/logging
+        // For now, log the error and continue, but this might need refinement
+        // depending on how critical fetching the rule is for execution.
+        // Consider returning a specific error format if fetch fails.
+        // return formatResponse(`Error: Could not find or fetch process rule for command '${parsedCommand.command}'.`, false);
+    }
+    // ************************************************************
+
+    // Check permissions (using original parsed command parts)
     if (!checkPermissions(parsedCommand.command, parsedCommand.subcommand)) {
       return formatResponse(`Error: You don't have permission to execute this command.`, false);
     }
     
-    // Execute the process
-    // This would be implemented by reading the process file and executing its instructions
-    const result = executeProcess(processFile, parsedCommand);
+    // Execute the process (conceptually - assumes fetched rule content is used)
+    // TODO: Update executeProcess to actually use the fetched rule content
+    const result = executeProcess(processRuleName, parsedCommand); // Pass rule name for now
     
     // Return the formatted result
     return formatResponse(result);
   } catch (error) {
     // Return error response
+    tools.error(`Error processing command: ${error.message}`); // Log the error
     return formatResponse(`Error: ${error.message}`, false);
   }
 }

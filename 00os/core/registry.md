@@ -76,7 +76,7 @@ const processRegistry = {
   // Development operations
   dev: {
     name: 'dev',
-    description: 'Execute development tasks with 1000xdev',
+    description: 'Execute development tasks',
     requiresSubcommand: true,
     subcommands: {
       execute: {
