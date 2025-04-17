@@ -1,190 +1,160 @@
 # 00OS User Requests and Implementation Tracking
 
-This file serves as the central tracking system for user-requested changes to 00OS. It should be read at the beginning of each work session using in conjunction to reading all other files in the base folder 00reaper/00OS-commands.
-
-```
-> reaper-read-files 00reaper/00OS-commands
-```
+This file serves as the central tracking system for user-requested changes to 00OS, with a focus on implementing the tool call-based approach as described in `major-changes.md`.
 
 ## Active Requests
 | ID | Date | Request | Priority | Status | Notes |
 |----|------|---------|----------|--------|-------|
-| 001 | 2023-05-20 | Strengthen Command Execution Reliability | High | Planning | Initial assessment complete |
-| 002 | 2023-05-20 | Implement File Search Command | High | Planning | Listed in roadmap as high priority |
-| 003 | 2023-05-20 | Standardize Response Formatting | Medium | Planning | Need consistent output structure |
-| 004 | 2023-05-20 | Improve Synchronization Process | Medium | Planning | Fix reaper-sync command issues |
-| 005 | 2023-05-20 | Refactor Command Handler | High | Planning | Prepare for command piping |
-| 006 | 2023-05-21 | Create reaper-analyze-tasks Command | High | Planning | New workflow command for task analysis |
-| 007 | 2023-05-21 | Create reaper-implement Command | High | Planning | New workflow command for implementation |
+| 001 | 2023-05-22 | Implement Tool Call Based Command Structure | High | In Progress | Fundamental architectural change |
+| 002 | 2023-05-22 | Create Process Template with Tool Call Pattern | High | Planning | Create standardized template |
+| 003 | 2023-05-22 | Update Core Commands to Use Tool Calls | High | Planning | Start with essential commands |
+| 004 | 2023-05-22 | Implement Fetch-Rules Integration | High | Planning | Crucial for command discovery |
+| 005 | 2023-05-22 | Create Command Testing Framework | Medium | Planning | Ensure reliability |
+| 006 | 2023-05-22 | Improve Error Handling for Tool Calls | Medium | Planning | Enhance user experience |
 
 ## Request Details
 
-### REQ-NEW: Create new stand-alone 00OS command reaper-init-00OS-commands (no subcommands and )
-00OS command to create:
-> reaper-init-00OS-commands
-
-reaper-init-00OS-commands should act the exact same as:
-> reaper-read-files 00reaper/00OS-commands 
-Where you will simply read all files in 00reaper/00OS-commands, that's it. You also don't need to respond with anything. All you simply need to do is read the files, that's it.
-
-This is so that I can send you:
-> reaper-init-00OS-commands
-
-Rather than writing out
-> reaper-read-files 00reaper/00OS-commands
-
-This will also allow us to strengthen reaper-init. reaper-init should be the initialization of 
-
-### REQ-001: Strengthen Command Execution Reliability
+### REQ-001: Implement Tool Call Based Command Structure
 #### Requirements
-- Fix inconsistent behavior in command execution
-- Implement robust command detection and routing
-- Add comprehensive error handling with useful recovery suggestions
-- Ensure all commands execute consistently through the standard interface
+- Reconfigure command pipeline to focus on tool call execution
+- Remove any terminal command executions that run 00OS commands
+- Create proper command detection and parameter parsing
+- Implement process selection using fetch_rules
+- Document the updated command structure
 
 #### Implementation Plan
-- Audit current command execution pipeline
-- Identify points of failure in the execution flow
-- Implement standardized error handling across all commands
-- Add verification steps at each stage of command processing
-- Test with a variety of command scenarios
+- Review major-changes.md for detailed approach
+- Update current-implementation.md with the new structure
+- Create a standardized approach for all commands
+- Test with simple commands to verify functionality
+- Document best practices for tool call implementation
 
 #### Progress Updates
-- 2023-05-20: Initial assessment complete, identified issues in operational-feedback.md
-- 2023-05-20: Prioritized as first task for improved workflow
+- 2023-05-22: Initial planning complete, concept defined in major-changes.md
 
-### REQ-002: Implement File Search Command
+### REQ-002: Create Process Template with Tool Call Pattern
 #### Requirements
-- Complete the file search implementation (tools/file-search.md)
-- Support pattern-based file searching
-- Include recursive directory searching option
-- Implement clear, formatted output of search results
+- Design a standard template for process files
+- Include proper metadata, parameter validation, and error handling
+- Define standardized tool call patterns for common operations
+- Ensure consistency across all commands
+- Document usage with examples
 
 #### Implementation Plan
-- Review existing file operation patterns
-- Implement core search functionality
-- Add recursive option with depth control
-- Implement formatted output with file details
-- Add error handling for common search issues
+- Create template file with appropriate sections
+- Include clear examples for various tool call types
+- Design validation patterns for common parameters
+- Document error handling approaches
+- Test template with sample commands
 
 #### Progress Updates
-- 2023-05-20: Identified as high priority in command registry
-- 2023-05-20: Initial planning complete
+- 2023-05-22: Initial concept defined based on tool call requirements
 
-### REQ-003: Standardize Response Formatting
+### REQ-003: Update Core Commands to Use Tool Calls
 #### Requirements
-- Create consistent output format across all commands
-- Improve visual structure for better readability
-- Ensure all commands follow the ✅/❌/⚠️ prefix convention
-- Implement standard section formatting for complex outputs
+- Identify essential commands for initial update
+- Rewrite command implementations to use tool calls
+- Ensure proper parameter validation and error handling
+- Test commands with various inputs
+- Document command behaviors
 
 #### Implementation Plan
-- Create standard formatting functions in common-patterns.md
-- Update existing commands to use standard formatters
-- Implement consistent error code system
-- Add documentation for response format standards
+- Start with help, echo, file-list, and file-read commands
+- Implement standardized tool call patterns
+- Add comprehensive error handling
+- Test commands with various inputs
+- Update documentation with examples
 
 #### Progress Updates
-- 2023-05-20: Initial requirements defined
-- 2023-05-20: Identified inconsistencies in current commands
+- 2023-05-22: Identified priority commands for implementation
 
-### REQ-004: Improve Synchronization Process
+### REQ-004: Implement Fetch-Rules Integration
 #### Requirements
-- Make reaper-sync command consistently trigger the PowerShell script
-- Add verification steps to confirm synchronization success
-- Implement proper error handling for sync failures
-- Provide clear feedback on sync operations
+- Create process for fetching command definitions using fetch_rules
+- Implement command name to process file mapping
+- Handle subcommands and parameter passing
+- Ensure error handling for missing commands
+- Document implementation pattern
 
 #### Implementation Plan
-- Review current reaper-sync implementation
-- Implement reliable script execution mechanism
-- Add verification of actual file changes
-- Implement detailed logging of sync operations
-- Update documentation to clarify sync workflow
-
-#### Progress Updates
-- 2023-05-20: Issues identified in operational-feedback.md
-- 2023-05-20: Initial planning complete
-
-### REQ-005: Refactor Command Handler
-#### Requirements
-- Enhance command parsing for better argument handling
-- Add support for quoted arguments and escape sequences
-- Prepare foundation for command piping
-- Ensure backward compatibility with existing commands
-
-#### Implementation Plan
-- Review current parser implementation
-- Implement enhanced tokenization logic
-- Add support for complex argument syntax
-- Design interface for future command piping
+- Design standardized approach for fetch_rules usage
+- Create mapping between command names and process files
+- Implement parameter extraction and validation
+- Add error handling for missing or invalid commands
 - Test with various command formats
 
 #### Progress Updates
-- 2023-05-20: Identified as prerequisite for planned command piping feature
-- 2023-05-20: Initial requirements defined
+- 2023-05-22: Initial concept defined based on tool call approach
 
-### REQ-006: Create reaper-analyze-tasks Command
+### REQ-005: Create Command Testing Framework
 #### Requirements
-- Create a specialized command for analyzing current tasks and priorities
-- Analyze the state of all requests in user_requests.md
-- Identify highest priority tasks based on status and dependencies
-- Highlight blocking issues and dependencies
-- Generate a suggested action plan with specific next steps
+- Design testing framework for command verification
+- Include unit tests for command functions
+- Create integration tests for command interactions
+- Implement automated testing for command validation
+- Document testing patterns and requirements
 
 #### Implementation Plan
-- Create process file in system directory: system/reaper-analyze-tasks.md
-- Implement file reading functionality for user_requests.md
-- Develop priority analysis algorithm
-- Implement dependency tracking between tasks
-- Create formatted output with actionable recommendations
-- Integrate with existing workflow documentation
+- Follow test-driven development approach
+- Create test cases for various command scenarios
+- Implement test helpers for common operations
+- Document standard testing patterns
+- Apply to all new commands
 
 #### Progress Updates
-- 2023-05-21: Initial concept defined based on workflow needs
-- 2023-05-21: Added to user_requests.md as a new feature
+- 2023-05-22: Initial concept defined in testing-framework.md
 
-### REQ-007: Create reaper-implement Command
+### REQ-006: Improve Error Handling for Tool Calls
 #### Requirements
-- Create a specialized command for implementing changes to 00OS
-- Accept REQ-ID parameter to focus on specific request
-- Load request details and relevant implementation files
-- Create structured implementation environment
-- Track changes made during implementation
-- Generate appropriate test procedures
+- Standardize error codes and messages
+- Create helpful suggestions for common errors
+- Implement recovery mechanisms for failed tool calls
+- Ensure consistent formatting for error responses
+- Document error handling patterns
 
 #### Implementation Plan
-- Create process file in system directory: system/reaper-implement.md
-- Implement REQ-ID parameter handling
-- Develop file identification algorithm for required changes
-- Create scaffolding generator for implementation
-- Implement change tracking functionality
-- Add test procedure generation
-- Integrate with existing workflow
+- Define standard error codes and messages
+- Create templates for error formatting
+- Implement recovery suggestions
+- Standardize response format
+- Document best practices
 
 #### Progress Updates
-- 2023-05-21: Initial concept defined based on workflow needs
-- 2023-05-21: Added to user_requests.md as a new feature
+- 2023-05-22: Initial requirements defined
+
+## Implementation Guidelines
+
+### Tool Call Based Implementation
+
+All 00OS commands must follow this implementation pattern:
+
+1. **Command Detection**: Identify input with `>` prefix
+2. **Process Selection**: Use fetch_rules to get the appropriate process
+3. **Parameter Parsing**: Extract arguments, options, and flags
+4. **Tool Call Execution**: Execute tool calls as defined in the process
+5. **Response Formatting**: Format results with standardized indicators
+
+### Key Implementation Notes
+
+- Commands must NEVER try to execute terminal commands that run themselves
+- All functionality should be implemented through native Cursor tool calls
+- Keep tool calls to a minimum by reading larger sections or using targeted searches
+- Provide meaningful error messages and recovery suggestions
+- Follow the response format standards (✅, ❌, ⚠️)
 
 ## Session Workflow
 
 ### Starting a New Session
-1. Read all files in base folder
-   ```
-   > reaper-read-files 00reaper/00OS-commands
-   ```
-2. Review current implementation state as needed
-3. Load specific request details or implementation files
+1. Review major-changes.md for overall approach
+2. Check current implementation status
+3. Review specific request details
 
 ### During Session
-- Focus on active requests based on priority
-- Document progress in real-time
-- Use standard patterns from common-patterns.md
+- Focus on implementing tool call based commands
+- Test command execution with various inputs
+- Document progress and findings
 
 ### Ending a Session
 - Update progress notes for worked-on requests
 - Document any new issues encountered
-- Summarize accomplishments and next steps
-
-## Implementation Notes
-This file will be updated at the end of each session to reflect current progress and priorities. When starting a new session, reading this file first will provide immediate context on active work items. 
+- Identify next steps for implementation 
