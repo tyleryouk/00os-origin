@@ -1,0 +1,293 @@
+---
+description: System component - chain
+globs: 
+alwaysApply: true
+type: agent
+---
+
+# Process: chain
+
+## Metadata
+- Description: Execute multiple commands in sequence
+- Category: system
+- Permissions: [basic, execution]
+- Author: 00reaper
+- Version: 1.0.0
+
+## Input
+- commands: String containing multiple commands separated by '|' or ';'
+- verbose: Flag to show detailed execution information
+
+## Output
+- Array of results from each command execution
+
+## Execution
+```javascript
+// Main execution function
+async function execute() {
+  try {
+    // Check if commands are provided
+    if (!inputs.commands) {
+      return formatError('No commands provided', [
+        'Specify multiple commands separated by "|" or ";"',
+        'Example: chain echo Hello | echo World'
+      ]);
+    }
+
+    // Parse command string into separate commands
+    const separator = inputs.commands.includes('|') ? '|' : ';';
+    const commands = inputs.commands.split(separator).map(cmd => cmd.trim());
+    
+    if (commands.length < 2) {
+      return formatError('Chain requires at least two commands', [
+        'Use the chain command to execute multiple commands in sequence',
+        'Example: chain echo Hello | echo World'
+      ]);
+    }
+
+    // Execute each command in sequence
+    const results = [];
+    const verbose = inputs.verbose === true;
+    
+    for (let i = 0; i < commands.length; i++) {
+      const cmd = commands[i];
+      if (!cmd) continue;
+      
+      try {
+        // Log execution if verbose
+        if (verbose) {
+          tools.log(`Executing command ${i+1}/${commands.length}: ${cmd}`);
+        }
+        
+        // Execute the command by fetching and running the appropriate process
+        const commandParts = parseCommand(cmd);
+        const result = await executeCommand(commandParts.command, commandParts.args);
+        
+        // Store result
+        results.push({
+          command: cmd,
+          success: result.success !== false,
+          result: result
+        });
+        
+        // Log result if verbose
+        if (verbose) {
+          tools.log(`Command ${i+1} result: ${result.success ? 'Success' : 'Failure'}`);
+        }
+      } catch (cmdError) {
+        // Handle command execution error
+        results.push({
+          command: cmd,
+          success: false,
+          error: cmdError.message
+        });
+        
+        // Log error if verbose
+        if (verbose) {
+          tools.log(`Command ${i+1} error: ${cmdError.message}`);
+        }
+      }
+    }
+    
+    // Format the final response
+    return formatChainResults(commands, results, verbose);
+  } catch (error) {
+    // Handle general execution error
+    return formatError(`Error executing command chain: ${error.message}`, [
+      'Check the syntax of your commands',
+      'Ensure each command is properly formatted',
+      'Try running commands individually first'
+    ]);
+  }
+}
+
+// Parse a command string into command and arguments
+function parseCommand(commandStr) {
+  // Remove leading '>' if present (user might include it by habit)
+  const cleanCommand = commandStr.startsWith('>') 
+    ? commandStr.substring(1).trim() 
+    : commandStr.trim();
+    
+  // Split into command and arguments
+  const parts = cleanCommand.split(' ');
+  const command = parts[0];
+  const args = parts.slice(1);
+  
+  return { command, args };
+}
+
+// Execute a single command by fetching and running its process
+async function executeCommand(command, args) {
+  try {
+    // Fetch the command process
+    const process = await tools.call('fetch_rules', {
+      rule_names: [`processes/system/${command}`]
+    });
+    
+    if (!process) {
+      // Try tool commands if system command not found
+      const toolProcess = await tools.call('fetch_rules', {
+        rule_names: [`processes/tools/${command}`]
+      });
+      
+      if (!toolProcess) {
+        // Try examples if tool command not found
+        const exampleProcess = await tools.call('fetch_rules', {
+          rule_names: [`processes/examples/${command}`]
+        });
+        
+        if (!exampleProcess) {
+          return {
+            success: false,
+            message: `❌ Command '${command}' not found`
+          };
+        }
+      }
+    }
+    
+    // Here we would execute the process, but for now we'll simulate execution
+    // In a full implementation, this would properly execute the command's process
+    
+    // For demonstration, we'll handle a few basic commands directly
+    if (command === 'echo') {
+      return {
+        success: true,
+        message: `✅ ${args.join(' ')}`
+      };
+    } else if (command === 'help') {
+      return {
+        success: true,
+        message: `✅ Help information for ${args[0] || 'all commands'}`
+      };
+    } else {
+      // Placeholder for other commands
+      return {
+        success: true,
+        message: `✅ Executed ${command} with args: ${args.join(' ')}`
+      };
+    }
+  } catch (error) {
+    return {
+      success: false,
+      message: `❌ Error executing ${command}: ${error.message}`
+    };
+  }
+}
+
+// Format the final results of the chain execution
+function formatChainResults(commands, results, verbose) {
+  let output = `✅ Executed command chain with ${results.length} commands\n\n`;
+  
+  // Calculate success rate
+  const successCount = results.filter(r => r.success).length;
+  const successRate = Math.round((successCount / results.length) * 100);
+  
+  output += `Success rate: ${successRate}% (${successCount}/${results.length})\n\n`;
+  
+  // Add detailed results if verbose
+  if (verbose) {
+    output += 'Command Results:\n';
+    output += '---------------\n\n';
+    
+    results.forEach((result, index) => {
+      output += `Command ${index+1}: ${commands[index]}\n`;
+      output += `Status: ${result.success ? '✅ Success' : '❌ Failed'}\n`;
+      
+      if (result.result && result.result.message) {
+        output += `Output: ${result.result.message}\n`;
+      } else if (!result.success && result.error) {
+        output += `Error: ${result.error}\n`;
+      }
+      
+      output += '\n';
+    });
+  } else {
+    // Just show a summary of results
+    output += 'Results:\n';
+    
+    results.forEach((result, index) => {
+      const icon = result.success ? '✅' : '❌';
+      output += `${icon} ${commands[index]}\n`;
+    });
+  }
+  
+  return output;
+}
+
+// Format error messages
+function formatError(message, suggestions = []) {
+  let output = `❌ Error: ${message}\n\n`;
+  
+  if (suggestions && suggestions.length > 0) {
+    output += 'Suggestions:\n';
+    suggestions.forEach(suggestion => {
+      output += `- ${suggestion}\n`;
+    });
+  }
+  
+  return output;
+}
+```
+
+## Usage Examples
+
+### Basic Command Chaining
+```
+> chain echo Hello | echo World
+✅ Executed command chain with 2 commands
+
+Success rate: 100% (2/2)
+
+Results:
+✅ echo Hello
+✅ echo World
+```
+
+### Chaining with Verbose Output
+```
+> chain echo Hello | help echo --verbose
+✅ Executed command chain with 2 commands
+
+Success rate: 100% (2/2)
+
+Command Results:
+---------------
+
+Command 1: echo Hello
+Status: ✅ Success
+Output: ✅ Hello
+
+Command 2: help echo
+Status: ✅ Success
+Output: ✅ Help information for echo
+
+```
+
+### Error Handling in Chain
+```
+> chain echo Hello | unknown-command | echo World
+✅ Executed command chain with 3 commands
+
+Success rate: 67% (2/3)
+
+Results:
+✅ echo Hello
+❌ unknown-command
+✅ echo World
+```
+
+## Implementation Notes
+
+This command enables basic command chaining functionality, a foundational feature for building more complex workflows. It executes each command sequentially and collects the results, providing either a summary or detailed output based on the verbose flag.
+
+In a full implementation, the command would properly execute each process by:
+1. Fetching the appropriate process file
+2. Parsing and validating inputs
+3. Executing the process with the given arguments
+4. Formatting and passing results to the next command if needed
+
+Future enhancements could include:
+- Passing outputs from one command as inputs to the next
+- Conditional execution based on success/failure
+- Parallel execution of commands
+- Storing chain results in state for later use 
