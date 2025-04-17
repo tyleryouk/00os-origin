@@ -9,20 +9,29 @@ This document defines the comprehensive standards for developing, implementing, 
 The fundamental goal of 00OS commands is to create processes **based on tool call patterns** to automate development workflows. Commands must:
 
 1.  **Use Native Tool Calls**: Rely exclusively on Cursor's built-in tools (`read_file`, `edit_file`, `list_dir`, `fetch_rules`, etc.) for all functionality. **NEVER** use `run_terminal_cmd` to execute another 00OS command (`> ...`) as this causes infinite loops.
-2.  **Follow Consistent Structure**: Adhere to the defined process file structure, metadata requirements, and response formats.
-3.  **Implement Robust Error Handling**: Include specific error codes, clear messages, and actionable recovery suggestions.
-4.  **Optimize Tool Calls**: Design efficient tool call sequences to minimize execution time and avoid hitting usage limits.
-5.  **Maintain Clarity**: Ensure command logic, documentation, and tests are easy to understand and maintain.
+2.  **ALWAYS Fetch Process Rules**: Every command execution MUST begin with a `fetch_rules` call to retrieve the corresponding process rule.
+3.  **Follow Consistent Structure**: Adhere to the defined process file structure, metadata requirements, and response formats.
+4.  **Implement Robust Error Handling**: Include specific error codes, clear messages, and actionable recovery suggestions.
+5.  **Optimize Tool Calls**: Design efficient tool call sequences to minimize execution time and avoid hitting usage limits.
+6.  **Maintain Clarity**: Ensure command logic, documentation, and tests are easy to understand and maintain.
 
 ## Command Processing Flow
 
 00OS commands follow a standardized processing pipeline:
 
-1.  **Command Detection**: User input prefixed with `>` is identified as a command.
-2.  **Process Selection**: The command handler uses `fetch_rules` to retrieve the appropriate process definition based on the command name.
+1.  **Command Detection**: User input prefixed with `>` is identified as a command. This prefix is fixed and hardcoded in the command handler.
+2.  **Process Selection**: The command handler uses `fetch_rules` to retrieve the appropriate process definition based on the command name. **This step is MANDATORY and must not be skipped.**
 3.  **Parameter Parsing**: Arguments, options, and flags are extracted and validated against the process definition.
 4.  **Tool Call Execution**: The process executes its defined sequence of Cursor tool calls, potentially using results from previous calls.
 5.  **Response Formatting**: The final result is formatted using standard indicators (✅, ❌, ⚠️) and returned to the user.
+
+## Fixed System Properties
+
+Some aspects of the 00OS system are fixed and cannot be changed through configuration:
+
+1. **Command Prefix**: The `>` character is hardcoded in the command handler as the command prefix identifier.
+2. **Process Fetching**: The `fetch_rules` step is non-optional and must be executed for every command.
+3. **Process Execution Flow**: The command handler must allow the fetched rule to control the execution flow and must never attempt to execute commands directly.
 
 ## Process File Standards
 
@@ -139,7 +148,7 @@ Process files (typically `.md` containing JavaScript blocks) must include:
 *   **Search Tools**: `read_file`, `list_dir`, `codebase_search`, `grep_search`, `file_search`, `web_search`
 *   **Edit Tools**: `edit_file`, `reapply`, `delete_file`
 *   **Terminal Tools**: `run_terminal_cmd` (Use with extreme caution, **never** to run `>` commands)
-*   **Other Tools**: `fetch_rules`
+*   **Other Tools**: `fetch_rules` (REQUIRED for command processing)
 
 *(Refer to tool documentation for specific parameters and limits)*
 
@@ -176,6 +185,7 @@ Commands *must* return a consistent response object:
 *   `TOOL_CALL_ERROR`: An underlying tool call failed.
 *   `NOT_FOUND_ERROR`: A requested resource (file, etc.) was not found.
 *   `PERMISSION_ERROR`: Insufficient permissions to perform the action.
+*   `PROCESS_NOT_FOUND`: The process rule for a command could not be found.
 
 ## Command Categories & Naming
 
@@ -188,6 +198,22 @@ Commands *must* return a consistent response object:
 *   Validate required parameters early in the `execute` function.
 *   Provide sensible defaults for optional parameters/flags.
 *   Use helper functions for complex parsing if needed (e.g., flag parsing).
+
+## Command Handler Design
+
+The command handler that processes user input must:
+
+1. Detect the `>` prefix at the start of input (after trimming whitespace)
+2. Parse the command into its components (command, subcommand, args, flags)
+3. Determine the appropriate process rule path
+4. Use `fetch_rules` to retrieve the process definition - this step is MANDATORY
+5. Allow the fetched rule to control the execution flow
+6. Format and return the response using standard indicators
+
+Under no circumstances should the command handler attempt to:
+- Execute the command directly without fetching its rule
+- Use `run_terminal_cmd` to run another command with the `>` prefix
+- Skip the `fetch_rules` step in the process
 
 ## Examples
 

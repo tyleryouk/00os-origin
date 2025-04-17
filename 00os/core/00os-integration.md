@@ -52,11 +52,30 @@ Maintains persistent state across command executions.
 
 When a command is entered:
 1. Input is checked for the command prefix (`>`)
-2. Command is parsed into components
-3. The appropriate process rule is fetched using `fetch_rules`
+2. Command is parsed into components (command, subcommand, arguments, flags)
+3. The appropriate process rule is fetched using `fetch_rules` - this step is MANDATORY
 4. Permissions are checked
-5. The tool calls defined in the process rule are executed with provided arguments
-6. Formatted response is returned
+5. The fetched process rule defines and executes the tool calls with provided arguments
+6. Formatted response is returned to the user
+
+### Critical Path For Command Processing
+
+For 00OS to function correctly, the command flow MUST follow these exact steps:
+
+1. **Command Detection**: Recognize input starting with `>` prefix.
+2. **Command Parsing**: Parse input into structured components.
+3. **Process Selection**: Map command to appropriate process file path.
+4. **Rule Fetching**: Use `fetch_rules` to load the process rule - this is non-optional.
+5. **Permission Checking**: Verify permission to execute the command.
+6. **Process Execution**: Allow the fetched rule to guide tool call execution.
+7. **Response Formatting**: Return formatted results using standard indicators (✅, ❌, ⚠️).
+
+The `fetch_rules` step ensures that the correct process instructions are available to guide tool calls. Commands should NEVER attempt to execute themselves through terminal commands as this creates infinite loops.
+
+Correct command execution depends on:
+- First fetching the rule with `fetch_rules`
+- Then allowing the fetched rule to define the tool calls
+- Never attempting to execute the command again within its own process
 
 ## Directory Structure
 
