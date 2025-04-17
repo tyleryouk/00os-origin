@@ -1,19 +1,23 @@
 # 00OS Command Implementation Guidelines
 
-This document provides standards for creating consistent, reliable 00OS commands.
+This document provides standards for creating consistent, reliable 00OS commands using Cursor's tool call capabilities.
 
-## Command Structure
+## Core Principles
 
-All commands follow this syntax:
-```
-> [command] [subcommand] [arguments] [--flags]
-```
+The fundamental goal of 00OS commands is to create processes **based on tool call patterns** to automate development workflows. Commands should:
 
-Examples:
-- `> help` - Display help information
-- `> system status` - Show system status
-- `> file list /path` - List files in directory
-- `> echo Hello, world!` - Echo a message
+1. Use native Cursor tool calls rather than terminal commands
+2. Follow a consistent structure and response format 
+3. Implement robust error handling with recovery suggestions
+4. Optimize tool call sequences for efficiency
+
+## Command Processing Flow
+
+1. User sends command with `>` prefix 
+2. Command handler detects command and parses parameters
+3. `fetch_rules` retrieves the appropriate process
+4. Process executes a sequence of tool calls
+5. Formatted response is returned to user
 
 ## Process File Requirements
 
@@ -41,89 +45,106 @@ outputs:
 ### Core Structure
 Every process file should include:
 1. Clear description section
-2. Well-documented execution code
-3. Error handling with specific codes
-4. Consistent response formatting
+2. Parameter validation function
+3. Tool call execution sequence
+4. Error handling with specific codes
+5. Consistent response formatting
 
-## Implementation Patterns
+## Tool Call Implementation Pattern
 
-### Standard Execution Pattern
 ```javascript
-function execute() {
+// Input validation
+function validateInput(args, flags) {
+  // Validation logic
+  return { valid: true/false, error: "Error message if invalid" };
+}
+
+// Execution logic - defines tool call sequence
+async function execute(args, flags) {
+  // Validate input
+  const validation = validateInput(args, flags);
+  if (!validation.valid) {
+    return {
+      success: false,
+      message: `❌ Error: ${validation.error}`,
+      suggestions: [...] // Recovery suggestions
+    };
+  }
+  
   try {
-    // Validate inputs first
-    const validationErrors = validateInputs(inputs);
-    if (validationErrors.length > 0) {
-      return formatError(validationErrors.join("\n"), "VALIDATION_ERROR");
-    }
-    
-    // Process logic
-    const result = performOperation();
-    
-    // Return formatted success
-    return formatSuccess(result);
-  } catch (error) {
-    return formatError(error.message, "EXECUTION_ERROR");
-  }
-}
-```
-
-### Response Formatting
-Always use these standard formatters:
-```javascript
-function formatSuccess(result) {
-  return `✅ ${result}`;
-}
-
-function formatError(message, code, suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}\n\n`;
-  
-  if (suggestions.length > 0) {
-    output += "Suggestions:\n";
-    suggestions.forEach(suggestion => {
-      output += `- ${suggestion}\n`;
+    // Execute tool calls in sequence
+    const result1 = await tools.call('tool_name', {
+      param1: 'value1',
+      param2: 'value2',
+      explanation: 'Purpose of this tool call'
     });
+    
+    const result2 = await tools.call('another_tool', {
+      param1: result1.output, // Use result from previous call
+      explanation: 'Purpose of this tool call'
+    });
+    
+    // Process results
+    const processedResult = processResults(result1, result2);
+    
+    // Return formatted response
+    return {
+      success: true,
+      message: `✅ Command executed successfully`,
+      data: processedResult
+    };
+  } catch (error) {
+    // Handle errors
+    return {
+      success: false,
+      message: `❌ Error: ${error.message}`,
+      code: determineErrorCode(error),
+      suggestions: generateSuggestions(error)
+    };
   }
-  
-  return output;
 }
 ```
 
-## Development Workflow
+## Cursor Tool Types
 
-### Command Implementation Process
-1. Create or update process file in the appropriate directory:
-   - `/00OS/processes/system/` - For system commands
-   - `/00OS/processes/tools/` - For utility commands
-   - `/00OS/processes/examples/` - For example commands
+### Search Tools
+- `read_file`: Reads file contents (up to 750 lines in MAX mode, 250 in regular)
+- `list_dir`: Lists directory contents without reading files
+- `codebase_search`: Performs semantic search within codebase
+- `grep_search`: Searches for exact patterns within files
+- `file_search`: Finds files by name using fuzzy matching
+- `web_search`: Searches the web for information
 
-2. Sync changes to the rules directory using the PowerShell script:
-   ```
-   .\Sync-00OS-Complete.ps1
-   ```
-   
-3. Test the command execution
-4. Document any issues or improvements in operational-feedback.md
+### Edit Tools
+- `edit_file`: Creates or modifies files
+- `reapply`: Re-applies edits when previous attempts weren't successful
+- `delete_file`: Removes files from the system
 
-### Sync Process
-The synchronization script handles:
-- Copying files from 00OS directory to .cursor/rules/
-- Converting .md files to .mdc format
-- Setting proper rule types based on file location:
-  - Core components → `alwaysApply: true` 
-  - Process files → `alwaysApply: false` with descriptive triggers
-- Generating a sync report
+### Terminal Tools
+- `run_terminal_cmd`: Executes terminal commands and returns results
 
-Always run this script after making changes to ensure they're properly deployed.
+### Other Tools
+- `fetch_rules`: Retrieves Cursor rules by name or description
 
-## Best Practices
+## Tool Call Best Practices
 
-1. **Input Validation**: Always validate all inputs before processing
-2. **Dynamic Discovery**: Use directory scanning over hardcoded lists
-3. **Error Handling**: Include specific error codes and helpful suggestions
-4. **Consistency**: Follow existing patterns for similar commands
-5. **Documentation**: Include clear descriptions and examples
-6. **Testing**: Test commands in isolation before integration
+### Efficiency
+- Limit total tool calls (25 per request limit, 200 in MAX mode)
+- Read larger sections of files at once
+- Stop tool calls once you have the information you need
+- Use targeted searches before broad file reads
+
+### Chaining
+- Chain tool calls in logical sequences
+- Use results from one tool call to inform the next
+- Cache results to avoid redundant tool calls
+- Process data between calls to minimize total calls
+
+### Error Handling
+- Handle tool call failures gracefully
+- Provide alternative approaches when primary methods fail
+- Include specific error codes and helpful suggestions
+- Format error responses consistently
 
 ## Response Format Standards
 
@@ -139,3 +160,89 @@ Error codes should be specific and descriptive:
 - `EXECUTION_ERROR`: Error during command execution
 - `NOT_FOUND_ERROR`: Requested resource not found
 - `PERMISSION_ERROR`: Insufficient permissions
+- `TOOL_CALL_ERROR`: Error during tool call execution
+
+## Example Command Implementation
+
+### Command: file-read
+
+```javascript
+// Validate input parameters
+function validateInput(args) {
+  if (!args || args.length === 0) {
+    return {
+      valid: false,
+      error: "Missing file path parameter",
+      suggestions: ["Provide a file path to read"]
+    };
+  }
+  return { valid: true };
+}
+
+// Main execution function
+async function execute(args, flags) {
+  // Validate input
+  const validation = validateInput(args);
+  if (!validation.valid) {
+    return {
+      success: false,
+      message: `❌ Error: ${validation.error}`,
+      suggestions: validation.suggestions
+    };
+  }
+  
+  const filePath = args[0];
+  
+  try {
+    // Execute read_file tool call
+    const fileContent = await tools.call("read_file", {
+      target_file: filePath,
+      should_read_entire_file: true,
+      explanation: `Reading contents of ${filePath}`
+    });
+    
+    // Check for errors in tool call response
+    if (!fileContent || !fileContent.content) {
+      return {
+        success: false,
+        message: `❌ Error: Failed to read file contents`,
+        code: "TOOL_CALL_ERROR",
+        suggestions: [
+          "Check if the file exists",
+          "Verify file path is correct"
+        ]
+      };
+    }
+    
+    // Return formatted response
+    return {
+      success: true,
+      message: `✅ File contents of ${filePath}:`,
+      data: {
+        path: filePath,
+        content: fileContent.content
+      }
+    };
+  } catch (error) {
+    // Handle errors
+    return {
+      success: false,
+      message: `❌ Error: ${error.message}`,
+      code: "EXECUTION_ERROR",
+      suggestions: [
+        "Check if the file exists",
+        "Verify file path is correct",
+        "Ensure you have permission to read the file"
+      ]
+    };
+  }
+}
+```
+
+## Important Notes
+
+1. **NEVER** implement commands that run terminal commands which then try to execute the same 00OS command - this creates an infinite loop
+2. Always use native Cursor tool calls for functionality
+3. Provide meaningful error messages with recovery suggestions
+4. Test commands thoroughly with various inputs
+5. Document command behavior and examples

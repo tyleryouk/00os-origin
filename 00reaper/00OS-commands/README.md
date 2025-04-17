@@ -2,31 +2,37 @@
 
 This directory serves as the central hub for creating, managing, and optimizing 00OS commands. Read this file first at the beginning of each development session.
 
-## Quick Start Guide
+## Key Concepts
 
-1. **Start with reading all base folder files:**
-   - Read all files in the 00reaper/00OS-commands directory:
-     ```
-     > reaper-read-files 00reaper/00OS-commands
-     ```
-   - This loads the complete context including:
-     - `user_requests.md` - Active work items and tracking
-     - `command-registry.md` - Command status
-     - `operational-feedback.md` - Recent feedback
-     - `enhancement-roadmap.md` - Prioritized work
+### Tool Call Based Command Execution
 
-2. **Development Workflow:**
-   ```
-   Read All Files → Plan Changes → Implement Changes → Sync → Test → Update Progress → Iterate
-   ```
+The goal of 00OS commands is to create processes **based on tool call patterns** to automate the development process:
 
-3. **File Structure:**
-   - `README.md` - This starting guide
-   - `user_requests.md` - Active work items and implementation tracking
-   - `command-registry.md` - Current command implementation status
-   - `common-patterns.md` - Reusable implementation patterns
-   - `operational-feedback.md` - Command execution feedback
-   - `enhancement-roadmap.md` - Prioritized enhancement queue
+1. User sends a command starting with `>` 
+2. We make a `fetch_rules` tool call to get the appropriate process
+3. We execute a sequence of tool calls as defined in the process
+4. We return formatted results with standardized indicators (✅, ❌, ⚠️)
+
+### Core Command Workflow
+
+```
+Command Detection → Process Selection → Parameter Parsing → Tool Call Execution → Response Formatting
+```
+
+## Development Workflow
+
+```
+Read Major Changes → Update Implementation → Create/Update Commands → Test Commands → Document Feedback → Iterate
+```
+
+## File Structure
+
+- `major-changes.md` - Primary source of truth for 00OS commands approach
+- `command-standards.md` - Standards for command implementation
+- `testing-framework.md` - Framework for testing commands
+- `testing-guide.md` - Detailed testing procedures
+- `current-implementation.md` - Up-to-date implementation details
+- `user_requests.md` - Prioritized implementation tracking
 
 ## Command Implementation Standards
 
@@ -67,10 +73,47 @@ Detailed description of what the command does.
 ## Execution
 
 ```javascript
-function execute() {
-  // Validate inputs
-  // Process logic
-  // Return formatted result
+// Input validation
+function validateInput(args, flags) {
+  // Validation logic
+  return { valid: true/false, error: "Error message if invalid" };
+}
+
+// Execution logic - defines tool call sequence
+async function execute(args, flags) {
+  // Validate input
+  const validation = validateInput(args, flags);
+  if (!validation.valid) {
+    return {
+      success: false,
+      message: `❌ Error: ${validation.error}`,
+      suggestions: [...] // Recovery suggestions
+    };
+  }
+  
+  try {
+    // Execute tool calls in sequence
+    const result1 = await tools.call('tool_name', {...});
+    const result2 = await tools.call('tool_name', {...});
+    
+    // Process results
+    const processedResult = processResults(result1, result2);
+    
+    // Return formatted response
+    return {
+      success: true,
+      message: `✅ Command executed successfully`,
+      data: processedResult
+    };
+  } catch (error) {
+    // Handle errors
+    return {
+      success: false,
+      message: `❌ Error: ${error.message}`,
+      code: determineErrorCode(error),
+      suggestions: generateSuggestions(error)
+    };
+  }
 }
 ```
 
@@ -81,74 +124,53 @@ function execute() {
 ⚠️ Warning: [Warning message]
 ```
 
-## Current Focus Areas
+## Cursor Tool Types
 
-1. **Command Execution Reliability:**
-   - Fixing inconsistent behavior in command execution
-   - Implementing robust error handling
-   - Ensuring consistent operation of all commands
+1. **Search Tools**
+   - `read_file`: Reads file contents
+   - `list_dir`: Lists directory contents
+   - `codebase_search`: Searches codebase semantically
+   - `grep_search`: Searches for patterns in files
+   - `file_search`: Finds files by name
+   - `web_search`: Searches the web
 
-2. **File Operations:**
-   - Directory listing and file reading
-   - Implementing file search functionality
-   - Adding recursive operations support
+2. **Edit Tools**
+   - `edit_file`: Edits file content
+   - `reapply`: Re-applies an edit
+   - `delete_file`: Deletes a file
 
-3. **Response Standardization:**
-   - Consistent formatting across all commands
-   - Improved visual structure for outputs
-   - Standard error handling patterns
+3. **Terminal Tools**
+   - `run_terminal_cmd`: Executes terminal commands
 
-4. **Command Handler Enhancements:**
-   - Better argument parsing
-   - Support for complex command syntax
-   - Foundation for command piping
+4. **Other Tools**
+   - `fetch_rules`: Retrieves Cursor rules
 
-## Structured Session Workflow
+## Tool Call Best Practices
 
-To maintain continuity between development sessions:
+1. **Minimize Tool Calls**
+   - Read larger sections of files at once
+   - Stop tool calls once you have the information you need
+   - Use targeted searches before broad file reads
 
-1. **Begin each session** by reading all files in the base folder:
-   ```
-   > reaper-read-files 00reaper/00OS-commands
-   ```
+2. **Optimize Sequences**
+   - Chain tool calls in logical sequences
+   - Use results from one tool call to inform the next
+   - Handle errors gracefully with fallback approaches
 
-2. **During the session:**
-   - Focus on specific requests based on priority
-   - Document progress directly in user_requests.md
-   - Use patterns from common-patterns.md for implementation
-
-3. **End each session** by updating progress in user_requests.md
-
-This structured approach ensures context preservation between sessions and clear tracking of implementation progress.
+3. **Format Responses Consistently**
+   - Use standard prefixes (✅, ❌, ⚠️)
+   - Include helpful context in error messages
+   - Provide actionable suggestions when errors occur
 
 ## Development Process
 
-1. Update process implementations in `00OS/processes/`
-2. **Sync changes to .cursor/rules/ using the synchronization script:**
-   ```
-   .\Sync-00OS-Complete.ps1
-   ```
-   This script will:
-   - Copy all 00OS files to the .cursor/rules/ directory
-   - Update frontmatter for proper rule types
-   - Generate a sync report
+The correct flow for creating 00OS commands:
 
-3. Test command execution using the command prefix:
-   ```
-   > [command] [arguments]
-   ```
+1. Update process implementation in `00OS/processes/`
+2. Sync changes to .cursor/rules/ using the synchronization script
+3. Test command execution using the command prefix: `> [command] [arguments]`
+4. Document feedback and update tracking
 
-4. Document feedback in `operational-feedback.md`
-5. Update progress in `user_requests.md`
-6. Implement improvements based on feedback
+## Note
 
-## Command Pipeline Architecture
-
-```
-Input → Command Handler → Parser → Registry → Executor → Process → Response
-```
-
-Always ensure changes maintain compatibility with this processing pipeline.
-
-## Note by Tyler [TYLER]
-You are allowed to make changes to any files in 00reaper/00OS-commands/. If you want to change the workflow, solution, or guidelines for 00OS commands you are allowed to do so.
+When implementing 00OS commands, remember that the core goal is to leverage Cursor's tool calls to automate workflows. Commands should NEVER try to run terminal commands that execute themselves - this creates an infinite loop and will not work.

@@ -1,0 +1,889 @@
+---
+description: System component - command-registry
+globs: 
+alwaysApply: true
+type: always
+---
+# Command Registry
+
+The Command Registry serves as the central catalog of all available commands in the 00OS environment. It maintains command metadata, validation rules, and routing information used by the command handler and executor components.
+
+## Overview
+
+The Command Registry has the following key responsibilities:
+
+1. Maintaining a catalog of all available commands and their metadata
+2. Providing command lookup and discovery capabilities
+3. Storing command validation rules and requirements
+4. Managing command paths and process information
+5. Supporting command versioning and dependencies
+6. Controlling command availability and permissions
+7. Facilitating command aliasing and shortcuts
+
+## Core Interface
+
+```javascript
+interface CommandRegistry {
+  getCommand(name: string): CommandDefinition | null;
+  getAllCommands(): CommandDefinition[];
+  getCommandsByCategory(category: string): CommandDefinition[];
+  registerCommand(command: CommandDefinition): boolean;
+  updateCommand(name: string, updates: Partial<CommandDefinition>): boolean;
+  deregisterCommand(name: string): boolean;
+  hasCommand(name: string): boolean;
+  getCommandAlias(alias: string): string | null;
+  registerAlias(alias: string, command: string): boolean;
+}
+
+interface CommandDefinition {
+  name: string;
+  description: string;
+  category: string;
+  processPath: string;
+  version: string;
+  author?: string;
+  permissions: string[];
+  disabled?: boolean;
+  timeout?: number;
+  subcommands?: Record<string, SubcommandDefinition>;
+  validator?: (command: ParsedCommand) => ValidationResult;
+  requiredArgs?: number;
+  flags?: FlagDefinition[];
+  aliases?: string[];
+  examples?: CommandExample[];
+  helpText?: string;
+  hidden?: boolean;
+}
+
+interface SubcommandDefinition {
+  name: string;
+  description: string;
+  processPath?: string;
+  requiredArgs?: number;
+  permissions?: string[];
+  validator?: (command: ParsedCommand) => ValidationResult;
+  flags?: FlagDefinition[];
+  examples?: CommandExample[];
+  helpText?: string;
+}
+
+interface FlagDefinition {
+  name: string;
+  description: string;
+  type: 'boolean' | 'string' | 'number';
+  required?: boolean;
+  default?: any;
+}
+
+interface CommandExample {
+  command: string;
+  description: string;
+}
+```
+
+## Implementation
+
+### Registry Storage
+
+```javascript
+/**
+ * Command Registry Implementation
+ * 
+ * Central repository of all command definitions in the system.
+ */
+
+// Main registry storage
+const commandDefinitions = new Map();
+
+// Command aliases mapping
+const commandAliases = new Map();
+
+// Command categories
+const commandCategories = new Set([
+  'system',     // System management commands
+  'file',       // File operations
+  'tools',      // Utility tools
+  'workflow',   // Workflow management
+  'network',    // Network operations
+  'application' // Application-specific commands
+]);
+
+/**
+ * Get a command definition by name
+ * @param {string} name - Command name
+ * @returns {CommandDefinition|null} Command definition or null if not found
+ */
+function getCommand(name) {
+  // Check for direct match
+  if (commandDefinitions.has(name)) {
+    return { ...commandDefinitions.get(name) };
+  }
+  
+  // Check aliases
+  const aliasTarget = commandAliases.get(name);
+  if (aliasTarget && commandDefinitions.has(aliasTarget)) {
+    return { ...commandDefinitions.get(aliasTarget) };
+  }
+  
+  return null;
+}
+
+/**
+ * Get all registered commands
+ * @returns {CommandDefinition[]} Array of all command definitions
+ */
+function getAllCommands() {
+  return Array.from(commandDefinitions.values())
+    .filter(cmd => !cmd.hidden)
+    .map(cmd => ({ ...cmd }));
+}
+
+/**
+ * Get commands by category
+ * @param {string} category - Category name
+ * @returns {CommandDefinition[]} Array of command definitions in the category
+ */
+function getCommandsByCategory(category) {
+  return Array.from(commandDefinitions.values())
+    .filter(cmd => cmd.category === category && !cmd.hidden)
+    .map(cmd => ({ ...cmd }));
+}
+
+/**
+ * Register a new command
+ * @param {CommandDefinition} command - Command definition
+ * @returns {boolean} Success status
+ */
+function registerCommand(command) {
+  // Validate command definition
+  if (!command.name || !command.description || !command.processPath) {
+    console.error('Invalid command definition:', command);
+    return false;
+  }
+  
+  // Add to registry
+  commandDefinitions.set(command.name, { ...command });
+  
+  // Register command category
+  if (command.category) {
+    commandCategories.add(command.category);
+  }
+  
+  // Register aliases if any
+  if (command.aliases && Array.isArray(command.aliases)) {
+    for (const alias of command.aliases) {
+      commandAliases.set(alias, command.name);
+    }
+  }
+  
+  return true;
+}
+
+/**
+ * Update an existing command
+ * @param {string} name - Command name
+ * @param {Partial<CommandDefinition>} updates - Command updates
+ * @returns {boolean} Success status
+ */
+function updateCommand(name, updates) {
+  // Check if command exists
+  if (!commandDefinitions.has(name)) {
+    return false;
+  }
+  
+  // Get current definition
+  const currentDef = commandDefinitions.get(name);
+  
+  // Update command
+  commandDefinitions.set(name, { 
+    ...currentDef, 
+    ...updates,
+    // Ensure name isn't changed
+    name: currentDef.name
+  });
+  
+  // Handle alias updates if present
+  if (updates.aliases) {
+    // Remove old aliases
+    if (currentDef.aliases) {
+      for (const alias of currentDef.aliases) {
+        if (commandAliases.get(alias) === name) {
+          commandAliases.delete(alias);
+        }
+      }
+    }
+    
+    // Add new aliases
+    for (const alias of updates.aliases) {
+      commandAliases.set(alias, name);
+    }
+  }
+  
+  return true;
+}
+
+/**
+ * Deregister a command
+ * @param {string} name - Command name
+ * @returns {boolean} Success status
+ */
+function deregisterCommand(name) {
+  // Check if command exists
+  if (!commandDefinitions.has(name)) {
+    return false;
+  }
+  
+  // Get command definition
+  const commandDef = commandDefinitions.get(name);
+  
+  // Remove aliases if any
+  if (commandDef.aliases) {
+    for (const alias of commandDef.aliases) {
+      commandAliases.delete(alias);
+    }
+  }
+  
+  // Remove command
+  commandDefinitions.delete(name);
+  
+  return true;
+}
+
+/**
+ * Check if a command exists
+ * @param {string} name - Command name
+ * @returns {boolean} Whether the command exists
+ */
+function hasCommand(name) {
+  return commandDefinitions.has(name) || commandAliases.has(name);
+}
+
+/**
+ * Get command name for an alias
+ * @param {string} alias - Command alias
+ * @returns {string|null} Command name or null if not found
+ */
+function getCommandAlias(alias) {
+  return commandAliases.get(alias) || null;
+}
+
+/**
+ * Register a command alias
+ * @param {string} alias - Alias name
+ * @param {string} command - Target command name
+ * @returns {boolean} Success status
+ */
+function registerAlias(alias, command) {
+  // Check if target command exists
+  if (!commandDefinitions.has(command)) {
+    return false;
+  }
+  
+  // Register alias
+  commandAliases.set(alias, command);
+  
+  // Update command's aliases list
+  const commandDef = commandDefinitions.get(command);
+  const aliases = commandDef.aliases || [];
+  if (!aliases.includes(alias)) {
+    commandDefinitions.set(command, {
+      ...commandDef,
+      aliases: [...aliases, alias]
+    });
+  }
+  
+  return true;
+}
+
+/**
+ * Get all command aliases
+ * @returns {Object} Map of aliases to commands
+ */
+function getAllAliases() {
+  return Object.fromEntries(commandAliases);
+}
+
+/**
+ * Get all command categories
+ * @returns {string[]} Array of category names
+ */
+function getAllCategories() {
+  return Array.from(commandCategories);
+}
+```
+
+### Command Discovery
+
+```javascript
+/**
+ * Discover commands from the file system
+ * @param {string} basePath - Base path to search for commands
+ * @returns {Promise<CommandDefinition[]>} Discovered commands
+ */
+async function discoverCommands(basePath = '/00os/processes') {
+  const discoveredCommands = [];
+  
+  try {
+    // Get category directories
+    const categories = await listDirectories(basePath);
+    
+    // Process each category
+    for (const category of categories) {
+      const categoryPath = `${basePath}/${category}`;
+      
+      // Get command files
+      const commandFiles = await listFiles(categoryPath, '.md');
+      
+      // Process each command file
+      for (const file of commandFiles) {
+        try {
+          // Read command file
+          const commandPath = `${categoryPath}/${file}`;
+          const commandContent = await readFile(commandPath);
+          
+          // Parse command definition
+          const commandDef = parseCommandFile(commandContent, commandPath, category);
+          
+          if (commandDef) {
+            discoveredCommands.push(commandDef);
+          }
+        } catch (error) {
+          console.error(`Error processing command file ${file}:`, error);
+        }
+      }
+    }
+    
+    return discoveredCommands;
+  } catch (error) {
+    console.error('Error discovering commands:', error);
+    return [];
+  }
+}
+
+/**
+ * Parse a command file to extract command definition
+ * @param {string} content - File content
+ * @param {string} filePath - File path
+ * @param {string} category - Command category
+ * @returns {CommandDefinition|null} Command definition or null if invalid
+ */
+function parseCommandFile(content, filePath, category) {
+  try {
+    // Extract frontmatter
+    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+    
+    if (!frontmatterMatch) {
+      console.warn(`No frontmatter found in command file: ${filePath}`);
+      return null;
+    }
+    
+    // Parse frontmatter
+    const frontmatter = parseFrontmatter(frontmatterMatch[1]);
+    
+    // Extract command name from filename if not in frontmatter
+    let commandName = frontmatter.name;
+    if (!commandName) {
+      const filename = filePath.split('/').pop();
+      commandName = filename.replace(/\.md$/, '');
+    }
+    
+    // Build command definition
+    const commandDef = {
+      name: commandName,
+      description: frontmatter.description || `${commandName} command`,
+      category: category,
+      processPath: filePath,
+      version: frontmatter.version || '1.0.0',
+      author: frontmatter.author,
+      permissions: frontmatter.permissions || ['basic'],
+      disabled: frontmatter.disabled === true,
+      timeout: frontmatter.timeout,
+      requiredArgs: getRequiredArgsCount(frontmatter.inputs)
+    };
+    
+    // Add inputs as flags
+    if (frontmatter.inputs && Array.isArray(frontmatter.inputs)) {
+      commandDef.flags = frontmatter.inputs.map(input => ({
+        name: input.name,
+        description: input.description || `${input.name} parameter`,
+        type: input.type || 'string',
+        required: input.required === true,
+        default: input.default
+      }));
+    }
+    
+    // Add examples if available
+    if (frontmatter.examples && Array.isArray(frontmatter.examples)) {
+      commandDef.examples = frontmatter.examples;
+    }
+    
+    // Check for subcommands
+    if (frontmatter.subcommands && typeof frontmatter.subcommands === 'object') {
+      commandDef.subcommands = {};
+      
+      for (const [subName, subDef] of Object.entries(frontmatter.subcommands)) {
+        commandDef.subcommands[subName] = {
+          name: subName,
+          description: subDef.description || `${subName} subcommand`,
+          processPath: subDef.processPath || filePath,
+          requiredArgs: getRequiredArgsCount(subDef.inputs),
+          permissions: subDef.permissions || commandDef.permissions,
+          flags: subDef.inputs ? subDef.inputs.map(input => ({
+            name: input.name,
+            description: input.description || `${input.name} parameter`,
+            type: input.type || 'string',
+            required: input.required === true,
+            default: input.default
+          })) : []
+        };
+      }
+    }
+    
+    return commandDef;
+  } catch (error) {
+    console.error(`Error parsing command file ${filePath}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Get count of required arguments from inputs array
+ * @param {Array} inputs - Command inputs
+ * @returns {number} Count of required arguments
+ */
+function getRequiredArgsCount(inputs) {
+  if (!inputs || !Array.isArray(inputs)) {
+    return 0;
+  }
+  
+  return inputs.filter(input => input.required === true).length;
+}
+
+/**
+ * Parse frontmatter YAML to object
+ * @param {string} frontmatter - Frontmatter YAML
+ * @returns {Object} Parsed frontmatter
+ */
+function parseFrontmatter(frontmatter) {
+  // Simple frontmatter parser (in real implementation, use a YAML parser)
+  const result = {};
+  
+  // Split into lines
+  const lines = frontmatter.split('\n');
+  
+  for (const line of lines) {
+    // Skip empty lines
+    if (!line.trim()) continue;
+    
+    // Split by first colon
+    const colonIndex = line.indexOf(':');
+    if (colonIndex === -1) continue;
+    
+    const key = line.slice(0, colonIndex).trim();
+    const value = line.slice(colonIndex + 1).trim();
+    
+    // Parse value
+    if (value === 'true') {
+      result[key] = true;
+    } else if (value === 'false') {
+      result[key] = false;
+    } else if (value === 'null') {
+      result[key] = null;
+    } else if (/^\d+$/.test(value)) {
+      result[key] = parseInt(value, 10);
+    } else if (/^\d+\.\d+$/.test(value)) {
+      result[key] = parseFloat(value);
+    } else if (value.startsWith('[') && value.endsWith(']')) {
+      // Simple array parsing
+      result[key] = value
+        .slice(1, -1)
+        .split(',')
+        .map(v => v.trim());
+    } else {
+      result[key] = value;
+    }
+  }
+  
+  return result;
+}
+```
+
+### Registry Initialization
+
+```javascript
+/**
+ * Initialize the command registry
+ * @returns {Promise<boolean>} Success status
+ */
+async function initializeRegistry() {
+  try {
+    // Clear existing registry
+    commandDefinitions.clear();
+    commandAliases.clear();
+    
+    // Discover commands
+    const discoveredCommands = await discoverCommands();
+    
+    // Register discovered commands
+    for (const command of discoveredCommands) {
+      registerCommand(command);
+    }
+    
+    // Register common aliases
+    registerDefaultAliases();
+    
+    return true;
+  } catch (error) {
+    console.error('Error initializing command registry:', error);
+    return false;
+  }
+}
+
+/**
+ * Register default aliases
+ */
+function registerDefaultAliases() {
+  const defaultAliases = {
+    'ls': 'file-list',
+    'cat': 'file-read',
+    'echo': 'echo',
+    'help': 'help',
+    'status': 'system-status',
+    'ver': 'version',
+    'init': 'reaper-init',
+    'update': 'reaper-update',
+    'sync': 'reaper-sync'
+  };
+  
+  for (const [alias, command] of Object.entries(defaultAliases)) {
+    if (commandDefinitions.has(command)) {
+      registerAlias(alias, command);
+    }
+  }
+}
+```
+
+### Command Validation Rules
+
+```javascript
+/**
+ * Get validation rules for a command
+ * @param {string} command - Command name
+ * @returns {Object|null} Validation rules or null if not found
+ */
+function getCommandValidationRules(command) {
+  const commandDef = getCommand(command);
+  
+  if (!commandDef) {
+    return null;
+  }
+  
+  return {
+    requiredArgs: commandDef.requiredArgs || 0,
+    flags: commandDef.flags ? commandDef.flags.map(f => f.name) : [],
+    requiredFlags: commandDef.flags 
+      ? commandDef.flags.filter(f => f.required).map(f => f.name) 
+      : [],
+    permissions: commandDef.permissions || ['basic']
+  };
+}
+
+/**
+ * Create validator function for a command
+ * @param {string} command - Command name
+ * @returns {Function|null} Validator function or null if not found
+ */
+function createCommandValidator(command) {
+  const rules = getCommandValidationRules(command);
+  
+  if (!rules) {
+    return null;
+  }
+  
+  return function validateCommand(parsedCommand) {
+    // Initialize validation result
+    const result = {
+      valid: true,
+      details: {},
+      suggestions: []
+    };
+    
+    // Check required args
+    if (parsedCommand.args.length < rules.requiredArgs) {
+      return {
+        valid: false,
+        error: `Command ${command} requires at least ${rules.requiredArgs} argument(s)`,
+        details: { 
+          requiredArgs: rules.requiredArgs,
+          providedArgs: parsedCommand.args.length
+        },
+        suggestions: [
+          `Use > help ${command} to see required arguments`
+        ]
+      };
+    }
+    
+    // Check required flags
+    for (const requiredFlag of rules.requiredFlags) {
+      if (!parsedCommand.flags[requiredFlag]) {
+        return {
+          valid: false,
+          error: `Command ${command} requires the --${requiredFlag} flag`,
+          details: { missingFlag: requiredFlag },
+          suggestions: [
+            `Add the --${requiredFlag} flag to your command`,
+            `Use > help ${command} to see required flags`
+          ]
+        };
+      }
+    }
+    
+    // Check unknown flags
+    const unknownFlags = Object.keys(parsedCommand.flags).filter(
+      flag => !rules.flags.includes(flag)
+    );
+    
+    if (unknownFlags.length > 0) {
+      result.valid = true; // Still valid, just a warning
+      result.details.unknownFlags = unknownFlags;
+      result.suggestions.push(
+        `Unknown flag(s): ${unknownFlags.map(f => `--${f}`).join(', ')}`,
+        `Use > help ${command} to see available flags`
+      );
+    }
+    
+    return result;
+  };
+}
+```
+
+### Command Registry Export
+
+```javascript
+// Export registry functions
+module.exports = {
+  getCommand,
+  getAllCommands,
+  getCommandsByCategory,
+  registerCommand,
+  updateCommand,
+  deregisterCommand,
+  hasCommand,
+  getCommandAlias,
+  registerAlias,
+  getAllAliases,
+  getAllCategories,
+  discoverCommands,
+  initializeRegistry,
+  getCommandValidationRules,
+  createCommandValidator
+};
+```
+
+## Command Registry File
+
+The registry maintains a dynamic index of all commands in the system, but it can also be exported to a JSON file for faster loading:
+
+```javascript
+/**
+ * Export the registry to JSON
+ * @param {string} filePath - Path to save the registry JSON
+ * @returns {Promise<boolean>} Success status
+ */
+async function exportRegistryToJson(filePath = '/00os/processes/system/command-registry.json') {
+  try {
+    // Prepare registry data
+    const registryData = {
+      commands: Object.fromEntries(commandDefinitions),
+      aliases: Object.fromEntries(commandAliases),
+      categories: Array.from(commandCategories)
+    };
+    
+    // Serialize to JSON
+    const json = JSON.stringify(registryData, null, 2);
+    
+    // Write to file
+    await writeFile(filePath, json);
+    
+    return true;
+  } catch (error) {
+    console.error('Error exporting registry:', error);
+    return false;
+  }
+}
+
+/**
+ * Import registry from JSON
+ * @param {string} filePath - Path to registry JSON file
+ * @returns {Promise<boolean>} Success status
+ */
+async function importRegistryFromJson(filePath = '/00os/processes/system/command-registry.json') {
+  try {
+    // Read file
+    const json = await readFile(filePath);
+    
+    // Parse JSON
+    const registryData = JSON.parse(json);
+    
+    // Clear existing registry
+    commandDefinitions.clear();
+    commandAliases.clear();
+    commandCategories.clear();
+    
+    // Import commands
+    for (const [name, command] of Object.entries(registryData.commands)) {
+      commandDefinitions.set(name, command);
+    }
+    
+    // Import aliases
+    for (const [alias, command] of Object.entries(registryData.aliases)) {
+      commandAliases.set(alias, command);
+    }
+    
+    // Import categories
+    for (const category of registryData.categories) {
+      commandCategories.add(category);
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Error importing registry:', error);
+    return false;
+  }
+}
+```
+
+## Integration with Command Handler
+
+The Command Registry integrates with the Command Handler to provide command lookup and validation:
+
+```javascript
+/**
+ * Check if a command exists
+ * @param {string} command - Command to check
+ * @returns {boolean} Whether the command exists
+ */
+function checkCommandExists(command) {
+  return hasCommand(command);
+}
+
+/**
+ * Get a validator for a command
+ * @param {string} command - Command name
+ * @returns {Function|null} Validator function or null
+ */
+function getCommandValidator(command) {
+  // Get command definition
+  const commandDef = getCommand(command);
+  
+  // Use custom validator if provided
+  if (commandDef && commandDef.validator) {
+    return commandDef.validator;
+  }
+  
+  // Create default validator based on command rules
+  return createCommandValidator(command);
+}
+
+/**
+ * Get command shortcuts
+ * @returns {Object} Map of shortcuts to commands
+ */
+function getCommandShortcuts() {
+  return getAllAliases();
+}
+```
+
+## Command Versioning
+
+The registry supports command versioning to track changes and ensure compatibility:
+
+```javascript
+/**
+ * Get command version
+ * @param {string} command - Command name
+ * @returns {string|null} Command version or null if not found
+ */
+function getCommandVersion(command) {
+  const commandDef = getCommand(command);
+  return commandDef ? commandDef.version : null;
+}
+
+/**
+ * Check if command version meets minimum requirement
+ * @param {string} command - Command name
+ * @param {string} minVersion - Minimum version required
+ * @returns {boolean} Whether command meets version requirement
+ */
+function checkCommandVersion(command, minVersion) {
+  const version = getCommandVersion(command);
+  
+  if (!version) {
+    return false;
+  }
+  
+  // Compare versions (simple implementation)
+  const [major1, minor1, patch1] = version.split('.').map(Number);
+  const [major2, minor2, patch2] = minVersion.split('.').map(Number);
+  
+  if (major1 > major2) return true;
+  if (major1 < major2) return false;
+  
+  if (minor1 > minor2) return true;
+  if (minor1 < minor2) return false;
+  
+  return patch1 >= patch2;
+}
+```
+
+## Command Dependencies
+
+The registry can track command dependencies to ensure required commands are available:
+
+```javascript
+/**
+ * Check command dependencies
+ * @param {string} command - Command name
+ * @returns {Object} Dependency check result
+ */
+function checkCommandDependencies(command) {
+  const commandDef = getCommand(command);
+  
+  if (!commandDef || !commandDef.dependencies) {
+    return { satisfied: true };
+  }
+  
+  const missingDependencies = [];
+  const versionMismatches = [];
+  
+  // Check each dependency
+  for (const [depName, depVersion] of Object.entries(commandDef.dependencies)) {
+    if (!hasCommand(depName)) {
+      missingDependencies.push(depName);
+    } else if (!checkCommandVersion(depName, depVersion)) {
+      versionMismatches.push({
+        name: depName,
+        required: depVersion,
+        available: getCommandVersion(depName)
+      });
+    }
+  }
+  
+  return {
+    satisfied: missingDependencies.length === 0 && versionMismatches.length === 0,
+    missingDependencies,
+    versionMismatches
+  };
+}
+```
+
+## Future Enhancements
+
+1. **Command Bundles**: Group related commands into bundles
+2. **Command Deployment**: Deploy and update commands from remote sources
+3. **Permission Management**: Advanced permission management for commands
+4. **Command Metrics**: Track command usage and performance metrics
+5. **Command Documentation**: Generate documentation from command metadata
+6. **Command Testing**: Automated testing for command functionality
+7. **Command Registry Replication**: Synchronize registry across multiple instances
+8. **Command Registry API**: Expose registry functionality via API 

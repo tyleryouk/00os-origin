@@ -2,7 +2,6 @@
 description: 
 globs: 
 alwaysApply: true
-type: always
 ---
 # 00OS Command Parser
 
