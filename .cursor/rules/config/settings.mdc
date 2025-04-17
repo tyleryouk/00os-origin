@@ -20,7 +20,8 @@ This file contains the system settings for 00OS. These settings control various 
   },
   
   "parser": {
-    "commandPrefix": "",
+    "_prefixComment": "NOTE: The '>' command prefix is hardcoded in core components and cannot be changed through settings",
+    "commandPrefix": ">",
     "subcommandRequired": false,
     "caseSensitive": false,
     "maxCommandLength": 1000,

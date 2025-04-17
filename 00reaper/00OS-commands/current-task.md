@@ -1,24 +1,32 @@
 # Current Task
 
-**Goal:** Standardize the relationship between 00OS commands (user messages) and 00OS processes. 
-As soon as a 00OS command is received, which is understood by the reading of > at the start, a fetch_rules tool call should be made to the appropriate process. I ran some tests, and right now, only the following 00OS commands make fetch_rules tool calls to its corresponding 00OS process **half** of the time (still not 100%):
-> counter
-> chain
-> command-registry
-> echo
-> help
-> reaper-analyze-tasks
-> reaper-init
-> reaper-read-files
-> reaper-sync
-> state
-> system-status
-> version
-> calculator
-> file-list
-> file-read
-> file-search
-> system-monitor
+**Goal:** Ensure 100% consistency in command processing with fetch_rules for all 00OS commands.
+
+**Status:** The configuration system has been standardized to eliminate confusion about command prefix configurability. The `terminal.md` file has been removed and all configuration is now centralized in `settings.md`. The command prefix ('>') is now explicitly documented as a hardcoded system property in the parser section of the settings file.
+
+**Next Steps:**
+1. Verify that all command handler implementations consistently use `fetch_rules` to retrieve the appropriate process.
+2. Ensure that commands never attempt to execute themselves through terminal commands, which would create infinite loops.
+3. Update any remaining documentation that might suggest the command prefix is configurable.
+
+## Key Requirements:
+1. **Mandatory Process Fetching**: Every command with the `>` prefix MUST trigger a `fetch_rules` call to retrieve the corresponding process.
+2. **No Self-Execution**: Commands should never try to execute themselves via `run_terminal_cmd`. All execution must happen through the process defined in the fetched rule.
+3. **Consistent Error Handling**: If a process rule cannot be found, a standardized error message should be returned.
+4. **Clear Documentation**: All documentation should consistently describe the `>` prefix as a fixed system property.
+
+## Implementation Notes:
+- The command handler's `isCommand()` function hardcodes the `>` prefix detection
+- The settings file now includes a comment explicitly stating the command prefix is hardcoded
+- The parser configuration value has been updated to match the actual hardcoded value for documentation purposes
+- Configuration has been simplified by removing the redundant terminal.md file
+
+## Testing Approach:
+1. Test all commands in the registry with various argument/flag combinations
+2. Verify that `fetch_rules` is called in 100% of cases when a command starts with `>`
+3. Check error cases (non-existent commands, invalid syntax, etc.) to ensure proper handling
+
+This approach will ensure that the relationship between 00OS commands and processes is fully standardized and that all commands utilize the `fetch_rules` mechanism consistently.
 
 #### AI Thinking Process
 I see that in your thinking process, there is still some confusion (thinking process of real > reaper-sync 00OS command execution below):
@@ -81,3 +89,7 @@ Ran tool
 ```
 
 The `reaper-read-files` command is designed to read the contents of these files. Shall I proceed with reading them?
+
+## inconsistency
+You should have read the files directly rather than say anything to me
+

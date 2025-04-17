@@ -8,15 +8,15 @@ This directory serves as the central hub for creating, managing, and optimizing 
 
 The goal of 00OS commands is to create processes **based on tool call patterns** to automate the development process:
 
-1. User sends a command starting with `>` 
-2. We make a `fetch_rules` tool call to get the appropriate process
+1. User sends a command starting with `>` (this prefix is fixed and hardcoded)
+2. We make a `fetch_rules` tool call to get the appropriate process - **this step is MANDATORY**
 3. We execute a sequence of tool calls as defined in the process
 4. We return formatted results with standardized indicators (✅, ❌, ⚠️)
 
 ### Core Command Workflow
 
 ```
-Command Detection → Process Selection → Parameter Parsing → Tool Call Execution → Response Formatting
+Command Detection → Process Rule Fetching (using fetch_rules) → Parameter Parsing → Tool Call Execution → Response Formatting
 ```
 
 ## Development Workflow (NEW)
@@ -135,6 +135,13 @@ async function execute(args, flags) {
 ⚠️ Warning: [Warning message]
 ```
 
+## Critical Implementation Requirements
+
+1. **Command Prefix**: The '>' prefix for commands is hardcoded in the command handler and is not configurable.
+2. **Mandatory fetch_rules**: Every command MUST trigger a fetch_rules call to retrieve its process definition.
+3. **No Self-Execution**: Commands should NEVER attempt to execute themselves via run_terminal_cmd.
+4. **Process-Driven Execution**: Allow the fetched process to control the execution flow.
+
 ## Cursor Tool Types
 
 1. **Search Tools**
@@ -154,7 +161,7 @@ async function execute(args, flags) {
    - `run_terminal_cmd`: Executes terminal commands
 
 4. **Other Tools**
-   - `fetch_rules`: Retrieves Cursor rules
+   - `fetch_rules`: Retrieves Cursor rules (MANDATORY for command processing)
 
 ## Tool Call Best Practices
 
