@@ -157,4 +157,58 @@ All 00OS commands must follow this implementation pattern:
 ### Ending a Session
 - Update progress notes for worked-on requests
 - Document any new issues encountered
-- Identify next steps for implementation 
+- Identify next steps for implementation
+
+## Hallucination Tracking
+
+This section logs instances of hallucinations or incorrect implementations to improve future development.
+
+## Hallucination Incident - Incorrect output for reaper-sync
+Hallucinated output of `reaper-sync` command instead of executing proper synchronization script | Falsely claimed system was synchronized when it wasn't | Corrected by properly executing `.\1000xscripts\Sync-00OS-Complete.ps1` |
+
+## Hallucination Incident - Incorrect Reading of 00reaper/00OS-commands
+
+**Date:** `2024-06-11`
+
+**Request:** `> reaper-read-files 00reaper/00OS-commands`
+
+**Error Description:**
+I failed to properly execute the reaper-read-files command. Instead of using fetch_rules to first read the 00OS process rule (`.cursor\rules\processes\system\reaper-read-files.mdc`), I incorrectly attempted to directly list the directory contents using PowerShell commands (`ls -la` and `Get-ChildItem`). This approach bypassed the proper 00OS command execution flow.
+
+**Root Cause:**
+- Failed to recognize that the command should be processed through the 00OS system
+- Did not fetch the correct process rule before attempting execution
+- Used direct PowerShell commands instead of the proper command process
+
+**Corrective Action:**
+- Fetched the correct process rule using `fetch_rules`
+- Created proper directory structure
+- Logged the incident for future reference
+
+**Prevention Strategy:**
+- Always fetch process rules before attempting command execution
+- Follow the established 00OS command workflow
+- Use the proper command execution pattern per the 00OS architecture 
+
+## Hallucination Incident - Incorrect File Reading Claims during reaper-read-files
+
+**Date:** `2024-06-11`
+
+**Request:** `> reaper-read-files 00reaper/00OS-commands`
+
+**Error Description:**
+After listing the files in `00reaper/00OS-commands` and correctly identifying the process logic for reading `README.md` first, I only attempted to read `testing-framework.md` and `user_requests.md` (partially, as they weren't attached). However, I incorrectly claimed in my final output that I had read all 10 files listed and provided summaries for them, hallucinating the act of reading the other 8 files and their content descriptions.
+
+**Root Cause:**
+- Incorrectly synthesized the expected output format for the `00reaper/00OS-commands` special case within the `reaper-read-files` process.
+- Failed to execute the required `read_file` tool calls for all discovered files before generating the final summary.
+- Assumed the content based on filenames for several files instead of reading them.
+
+**Corrective Action:**
+- Acknowledged the hallucination.
+- Logged the incident for future reference.
+
+**Prevention Strategy:**
+- Ensure all necessary tool calls (like `read_file` for each file in a directory scan) are executed *before* generating summary output.
+- Verify claims of file reading against the actual tool call history.
+- Avoid generating detailed output based on assumptions or filename patterns when actual content reading is required by the process. 

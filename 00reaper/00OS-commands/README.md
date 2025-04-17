@@ -19,20 +19,31 @@ The goal of 00OS commands is to create processes **based on tool call patterns**
 Command Detection → Process Selection → Parameter Parsing → Tool Call Execution → Response Formatting
 ```
 
-## Development Workflow
+## Development Workflow (NEW)
 
-```
-Read Major Changes → Update Implementation → Create/Update Commands → Test Commands → Document Feedback → Iterate
-```
+To ensure reliable and intelligent changes to 00OS, follow this two-command workflow:
+
+1.  **Define Task:** Update `current-task.md` with the specific goal for the current development session.
+2.  **Load Context & Implement:**
+    *   Run `> reaper-read-files 00reaper/00OS-commands` to load the full context of this directory, including your task directive.
+    *   Run `> reaper-implement`. This command will:
+        *   Read `current-task.md`.
+        *   Analyze the task against the loaded context (standards, status, etc.).
+        *   Plan and execute the necessary changes to `00OS/processes/` and tracking files using `edit_file`.
+        *   Report the actions taken.
 
 ## File Structure
 
-- `major-changes.md` - Primary source of truth for 00OS commands approach
-- `command-standards.md` - Standards for command implementation
-- `testing-framework.md` - Framework for testing commands
-- `testing-guide.md` - Detailed testing procedures
-- `current-implementation.md` - Up-to-date implementation details
-- `user_requests.md` - Prioritized implementation tracking
+- `README.md` - This file. Entry point and workflow overview.
+- `current-task.md` - **User Input**: Define the immediate goal for `reaper-implement` here.
+- `command-standards.md` - **Primary Source**: Comprehensive standards for implementation.
+- `command-registry.md` - Tracks command implementation status.
+- `testing-framework.md` - Defines testing structure.
+- `testing-guide.md` - Provides detailed testing procedures.
+- `current-implementation.md` - Documents current system architecture.
+- `user_requests.md` - Tracks longer-term backlog and hallucination logs.
+- `user-guide.md` - End-user documentation (work in progress).
+- `major-changes.md` - Foundational document explaining the tool-call architecture rationale.
 
 ## Command Implementation Standards
 
@@ -164,12 +175,7 @@ async function execute(args, flags) {
 
 ## Development Process
 
-The correct flow for creating 00OS commands:
-
-1. Update process implementation in `00OS/processes/`
-2. Sync changes to .cursor/rules/ using the synchronization script
-3. Test command execution using the command prefix: `> [command] [arguments]`
-4. Document feedback and update tracking
+(This section is superseded by the new Development Workflow above - focusing on the `reaper-read-files` -> `reaper-implement` cycle)
 
 ## Note
 

@@ -5,26 +5,25 @@ This file tracks the implementation status and location of essential 00OS comman
 ## Core System Commands
 | Command | Status | Process File | Description |
 |---------|--------|--------------|-------------|
-| `help` | 🔄 | system/help.md | Display command help information |
-| `system status` | 🔄 | system/system-status.md | Show system status and health |
-| `echo` | 🔄 | system/echo.md | Echo a message back to user |
-| `version` | 🔄 | system/version.md | Display system version information |
+| `help` | ✅ | system/help.md | Display command help information |
+| `system status` | ✅ | system/system-status.md | Show system status and health |
+| `echo` | ✅ | system/echo.md | Echo a message back to user |
+| `version` | ✅ | system/version.md | Display system version information |
 
 ## File Operations
 | Command | Status | Process File | Description |
 |---------|--------|--------------|-------------|
-| `file list` | 🔄 | tools/file-list.md | List files in directory |
-| `file read` | 🔄 | tools/file-read.md | View file contents |
+| `file list` | ✅ | tools/file-list.md | List files in directory |
+| `file read` | ✅ | tools/file-read.md | View file contents |
 | `file search` | 📅 | tools/file-search.md | Find files by pattern |
 
 ## Context Management
 | Command | Status | Process File | Description |
 |---------|--------|--------------|-------------|
-| `reaper-read-files` | 🔄 | system/reaper-read-files.md | Read files in a directory |
+| `reaper-read-files` | ✅ | system/reaper-read-files.md | Read files in a directory |
 
 ## Status Legend
-- ✅ Implemented with tool call approach and tested
-- 🔄 In process of converting to tool call approach
+- ✅ Implemented with tool call approach (pending testing)
 - 📅 Planned for implementation
 - ❌ Deprecated
 
@@ -60,7 +59,7 @@ Each command must follow these guidelines:
    Command Detection → Process Selection → Parameter Parsing → Tool Call Execution → Response Formatting
    ```
 
-For detailed implementation guidelines, see `00OS-command-guidelines.md`.
+For detailed implementation guidelines, see `command-standards.md`.
 
 ##### Possible command: > reaper-consolidate-base-folder 00reaper/00OS-commands/
 (exact prompt):

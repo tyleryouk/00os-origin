@@ -1,398 +1,247 @@
-# 00OS Command Standards
+# 00OS Command Development Standards
 
 ## Overview
 
-This document defines the standards for implementing commands in the 00OS environment. Following these standards ensures consistency, reliability, and maintainability across all command implementations.
+This document defines the comprehensive standards for developing, implementing, and maintaining commands in the 00OS environment. Following these standards ensures consistency, reliability, and maintainability across all command implementations, leveraging Cursor's tool call capabilities effectively.
 
-## Command Structure
+## Core Principles
 
-### File Structure
+The fundamental goal of 00OS commands is to create processes **based on tool call patterns** to automate development workflows. Commands must:
 
-Each command must be implemented in its own process file following this structure:
+1.  **Use Native Tool Calls**: Rely exclusively on Cursor's built-in tools (`read_file`, `edit_file`, `list_dir`, `fetch_rules`, etc.) for all functionality. **NEVER** use `run_terminal_cmd` to execute another 00OS command (`> ...`) as this causes infinite loops.
+2.  **Follow Consistent Structure**: Adhere to the defined process file structure, metadata requirements, and response formats.
+3.  **Implement Robust Error Handling**: Include specific error codes, clear messages, and actionable recovery suggestions.
+4.  **Optimize Tool Calls**: Design efficient tool call sequences to minimize execution time and avoid hitting usage limits.
+5.  **Maintain Clarity**: Ensure command logic, documentation, and tests are easy to understand and maintain.
 
-```
-00os/processes/
-  ├── system/           # Core system commands
-  │   ├── echo.js
-  │   ├── help.js
-  │   └── ...
-  ├── tools/            # Utility commands
-  │   ├── calculator.js
-  │   ├── file-list.js
-  │   └── ...
-  └── apps/             # Application commands
-      ├── counter.js
-      └── ...
-```
+## Command Processing Flow
 
-### Command File Template
+00OS commands follow a standardized processing pipeline:
 
-Each command file must follow this template:
+1.  **Command Detection**: User input prefixed with `>` is identified as a command.
+2.  **Process Selection**: The command handler uses `fetch_rules` to retrieve the appropriate process definition based on the command name.
+3.  **Parameter Parsing**: Arguments, options, and flags are extracted and validated against the process definition.
+4.  **Tool Call Execution**: The process executes its defined sequence of Cursor tool calls, potentially using results from previous calls.
+5.  **Response Formatting**: The final result is formatted using standard indicators (✅, ❌, ⚠️) and returned to the user.
 
-```javascript
-/**
- * @command command-name
- * @description Brief description of what the command does
- * @category system|tools|apps
- * @usage command-name [arguments] [--flags]
- * @example command-name arg1 --flag1
- */
+## Process File Standards
 
-module.exports = {
-  /**
-   * Command metadata
-   */
-  metadata: {
-    name: 'command-name',
-    description: 'Brief description of what the command does',
-    usage: 'command-name [arguments] [--flags]',
-    examples: [
-      { 
-        command: 'command-name arg1 --flag1', 
-        description: 'Description of what this example does' 
+Each command must be implemented in its own process file within the `00os/processes/` directory, categorized appropriately (e.g., `system/`, `tools/`, `apps/`).
+
+### Process File Structure
+
+Process files (typically `.md` containing JavaScript blocks) must include:
+
+1.  **Metadata (YAML Frontmatter):**
+    ```yaml
+    ---
+    name: command-name         # Unique command identifier
+    description: Brief description # Concise explanation
+    version: 1.0.0             # Semantic versioning
+    author: 00reaper           # Author identifier
+    permissions: [basic]     # List of required permissions (e.g., file-read, system-write)
+    inputs:                  # Definition of arguments and flags
+      - name: param1
+        type: string         # Data type (string, number, boolean, object, array)
+        required: true       # Whether the parameter is mandatory
+        description: Parameter description
+      - name: flag1
+        type: boolean
+        required: false
+        default: false       # Default value if not provided
+        description: Flag description
+    outputs:                 # Definition of expected output structure (optional)
+      - name: result
+        type: string
+        description: Primary command output
+    ---
+    ```
+
+2.  **Description Section (Markdown):**
+    ```markdown
+    # Process: command-name
+
+    ## Description
+    Detailed explanation of the command's purpose, functionality, and usage scenarios.
+    ```
+
+3.  **Execution Logic (JavaScript Block):**
+    ```javascript
+    ## Execution
+
+    ```javascript
+    // Optional: Input validation helper function
+    function validateInput(args, flags) {
+      // ... validation logic ...
+      if (!args || args.length < 1 /* based on required inputs */) {
+        return { valid: false, error: "Missing required parameter...", suggestions: ["..." ] };
       }
-    ],
-    category: 'system|tools|apps',
-    permissions: [
-      'filesystem:read',
-      'network:connect'
-      // Add required permissions
-    ]
-  },
-
-  /**
-   * Execute the command
-   * @param {string[]} args - Command arguments
-   * @param {Object} env - Execution environment
-   * @param {Object} options - Command options
-   * @returns {Object} Command result
-   */
-  execute: (args, env, options = {}) => {
-    try {
-      // Parameter validation
-      if (args.length < 1) {
-        return {
-          success: false,
-          message: '❌ Error: Missing required argument',
-          suggestions: ['Try: command-name <required-arg>']
-        };
-      }
-
-      // Command implementation
-      const result = performAction(args, options);
-
-      // Return success response
-      return {
-        success: true,
-        message: `✅ Command executed successfully: ${result}`,
-        data: result // Optional structured data
-      };
-    } catch (error) {
-      // Error handling
-      return {
-        success: false,
-        message: `❌ Error: ${error.message}`,
-        error: error,
-        suggestions: getSuggestions(error)
-      };
+      // ... other checks ...
+      return { valid: true };
     }
-  }
-};
 
-/**
- * Helper functions can be defined below
- */
-```
+    // Main execution function
+    async function execute(args, flags) {
+      // 1. Validate Input
+      const validation = validateInput(args, flags);
+      if (!validation.valid) {
+        return formatError(validation.error, "VALIDATION_ERROR", validation.suggestions);
+      }
+
+      // 2. Execute Tool Call Sequence
+      try {
+        const result1 = await tools.call('tool_name', { /* params */ explanation: '...' });
+        // Check result1 for errors if necessary
+
+        const result2 = await tools.call('another_tool', { /* params using result1 */ explanation: '...' });
+        // Check result2 for errors
+
+        // 3. Process Results
+        const processedData = processToolResults(result1, result2);
+
+        // 4. Format Success Response
+        return formatSuccess("Command executed successfully", processedData);
+
+      } catch (error) {
+        // 5. Handle Errors
+        tools.error(`Execution error in command-name: ${error.message}`); // Log the error
+        return formatError(error.message, determineErrorCode(error), generateSuggestions(error));
+      }
+    }
+
+    // Optional: Helper functions for processing, formatting, error handling
+    function processToolResults(res1, res2) { /* ... */ return {}; }
+    function determineErrorCode(error) { /* ... */ return "EXECUTION_ERROR"; }
+    function generateSuggestions(error) { /* ... */ return ["Check logs", "Verify parameters"]; }
+
+    // Standard Formatting Helpers (should be globally available or imported)
+    function formatSuccess(message, data = null) {
+      const response = { success: true, message: `✅ ${message}` };
+      if (data) response.data = data;
+      return response;
+    }
+
+    function formatError(message, code = "EXECUTION_ERROR", suggestions = []) {
+      const response = { success: false, message: `❌ Error [${code}]: ${message}` };
+      if (suggestions && suggestions.length > 0) response.suggestions = suggestions;
+      return response;
+    }
+
+    // Call the main execution function
+    execute(inputs.args, inputs.flags); // Assuming args/flags are passed via an 'inputs' object
+    ```
+    ```
+
+## Tool Call Standards
+
+### Available Tool Types
+
+*   **Search Tools**: `read_file`, `list_dir`, `codebase_search`, `grep_search`, `file_search`, `web_search`
+*   **Edit Tools**: `edit_file`, `reapply`, `delete_file`
+*   **Terminal Tools**: `run_terminal_cmd` (Use with extreme caution, **never** to run `>` commands)
+*   **Other Tools**: `fetch_rules`
+
+*(Refer to tool documentation for specific parameters and limits)*
+
+### Best Practices
+
+*   **Efficiency**: Minimize total calls (respect limits: 25 default, 200 MAX). Read larger file sections. Stop calls when info is obtained. Use targeted searches first.
+*   **Chaining**: Sequence calls logically. Use results from previous calls. Cache results if applicable within the process execution. Process data between calls.
+*   **Error Handling**: Check tool call results for errors. Handle failures gracefully (e.g., retry, alternative approach). Provide specific error codes (`TOOL_CALL_ERROR`) and helpful suggestions.
+*   **Explanations**: Always provide a clear `explanation` parameter for each tool call, describing its purpose within the command's workflow.
 
 ## Command Response Format
 
-Commands must return a consistent response object with these properties:
+Commands *must* return a consistent response object:
 
 ```javascript
 {
-  success: true|false,  // Boolean indicating success or failure
-  message: "Message for user", // Human-readable message
-  data: {}, // Optional structured data
-  error: {}, // Error object (only for failures)
-  suggestions: [] // Suggested actions (especially for failures)
+  success: true|false,       // Boolean indicating success/failure
+  message: "✅/❌/⚠️ Message", // Human-readable status message with indicator
+  data: {},                  // Optional: Structured data for successful response
+  suggestions: [],           // Optional: Actionable suggestions, especially for errors
+  // Only for success: false
+  // error: { code: "ERROR_CODE", details: "..." } // Optional: Structured error details
 }
 ```
 
-### Success Response Example
+### Standard Indicators:
+*   `✅`: Success
+*   `❌`: Error
+*   `⚠️`: Warning (for successful operations with caveats)
+
+### Standard Error Codes:
+*   `VALIDATION_ERROR`: Invalid input parameters.
+*   `EXECUTION_ERROR`: General error during command logic execution.
+*   `TOOL_CALL_ERROR`: An underlying tool call failed.
+*   `NOT_FOUND_ERROR`: A requested resource (file, etc.) was not found.
+*   `PERMISSION_ERROR`: Insufficient permissions to perform the action.
+
+## Command Categories & Naming
+
+*   **Categories**: `system`, `tools`, `apps` (place files in corresponding `00os/processes/` subdirectories).
+*   **Command Names**: Lowercase, hyphen-separated (e.g., `file-list`).
+*   **Arguments/Flags**: Descriptive names. Use `<required>` and `[optional]` notation in usage/help text. Flags use `--flag-name` (boolean) or `--flag-name=value`.
+
+## Parameter Processing
+
+*   Validate required parameters early in the `execute` function.
+*   Provide sensible defaults for optional parameters/flags.
+*   Use helper functions for complex parsing if needed (e.g., flag parsing).
+
+## Examples
+
+*(This section should contain examples of well-structured commands)*
+
+### Example: `file-read`
+
+*(Include the file-read example from the guidelines here)*
 
 ```javascript
-{
-  success: true,
-  message: "✅ File contents read successfully:",
-  data: {
-    content: "File content here",
-    path: "/path/to/file.txt",
-    size: 1024
+async function execute(args, flags) {
+  // 1. Validate Input
+  if (!args || args.length === 0) {
+    return formatError("Missing file path parameter", "VALIDATION_ERROR", ["Provide a file path to read"]);
+  }
+  const filePath = args[0];
+
+  // 2. Execute Tool Call Sequence
+  try {
+    const readResult = await tools.call("read_file", {
+      target_file: filePath,
+      should_read_entire_file: true, // Or determine based on flags/needs
+      explanation: `Reading contents of ${filePath}`
+    });
+
+    // Check tool call result carefully
+    if (!readResult || readResult.content === undefined || readResult.error) {
+       const errorMsg = readResult?.error || "Failed to read file contents";
+       return formatError(errorMsg, "TOOL_CALL_ERROR", [
+          "Check if the file exists at the specified path",
+          "Verify permissions to read the file"
+        ]);
+    }
+
+    // 3. Process Results (Minimal for file-read)
+    const processedData = {
+        path: filePath,
+        content: readResult.content,
+        lineCount: readResult.content.split('\n').length
+    };
+
+    // 4. Format Success Response
+    return formatSuccess(`File contents of ${filePath} read successfully`, processedData);
+
+  } catch (error) {
+    // 5. Handle Errors
+    tools.error(`Execution error in file-read for ${filePath}: ${error.message}`);
+    return formatError(error.message, "EXECUTION_ERROR", [
+        "Verify the file path is correct",
+        "Check file system permissions",
+        "Review system logs for details"
+    ]);
   }
 }
 ```
 
-### Error Response Example
-
-```javascript
-{
-  success: false,
-  message: "❌ Error: File not found",
-  error: {
-    code: "FILE_NOT_FOUND",
-    details: "The file /path/to/file.txt does not exist"
-  },
-  suggestions: [
-    "Check if the file path is correct",
-    "Try running '> file list /path/to' to see available files"
-  ]
-}
-```
-
-## Command Categories
-
-Commands are organized into these categories:
-
-1. **System Commands** (`system/`)
-   - Core functionality for the 00OS environment
-   - Example: `help`, `echo`, `version`
-
-2. **Tool Commands** (`tools/`)
-   - Utility functions for common tasks
-   - Example: `calculator`, `file-list`, `file-read`
-
-3. **Application Commands** (`apps/`)
-   - More complex applications with state
-   - Example: `counter`, `todo`
-
-## Command Naming Conventions
-
-1. **Command Names**
-   - Use lowercase letters
-   - Use hyphens for multi-word commands
-   - Be descriptive but concise
-   - Examples: `file-list`, `system-status`
-
-2. **Arguments and Parameters**
-   - Use descriptive names
-   - Required parameters: `<parameter-name>`
-   - Optional parameters: `[parameter-name]`
-
-3. **Flags**
-   - Prefix with double dash: `--flag-name`
-   - Boolean flags don't require values
-   - Value flags: `--flag-name=value`
-
-## Parameter Processing
-
-### Required Parameters
-
-Validate required parameters at the start of command execution:
-
-```javascript
-if (!args[0]) {
-  return {
-    success: false,
-    message: '❌ Error: Missing required parameter <file-path>',
-    suggestions: ['Try: file-read <file-path>']
-  };
-}
-```
-
-### Optional Parameters
-
-Provide defaults for optional parameters:
-
-```javascript
-const limit = args[1] ? parseInt(args[1], 10) : 10;
-```
-
-### Flags
-
-Parse flags using a helper function:
-
-```javascript
-const parseFlags = (args) => {
-  const flags = {};
-  const cleanArgs = [];
-  
-  args.forEach(arg => {
-    if (arg.startsWith('--')) {
-      const [key, value] = arg.substring(2).split('=');
-      flags[key] = value !== undefined ? value : true;
-    } else {
-      cleanArgs.push(arg);
-    }
-  });
-  
-  return { flags, args: cleanArgs };
-};
-
-const { flags, args: cleanArgs } = parseFlags(args);
-```
-
-## Error Handling
-
-### Error Types
-
-Define specific error types:
-
-```javascript
-const ErrorTypes = {
-  PARAMETER_MISSING: 'PARAMETER_MISSING',
-  INVALID_PARAMETER: 'INVALID_PARAMETER',
-  RESOURCE_NOT_FOUND: 'RESOURCE_NOT_FOUND',
-  PERMISSION_DENIED: 'PERMISSION_DENIED',
-  EXECUTION_ERROR: 'EXECUTION_ERROR'
-};
-```
-
-### Error Creation
-
-Create structured errors:
-
-```javascript
-const createError = (type, message, details = {}) => {
-  return {
-    type,
-    message,
-    details,
-    timestamp: new Date().toISOString()
-  };
-};
-```
-
-### Error Response
-
-Return consistent error responses:
-
-```javascript
-return {
-  success: false,
-  message: `❌ Error: ${error.message}`,
-  error: createError(ErrorTypes.RESOURCE_NOT_FOUND, error.message, { path }),
-  suggestions: [
-    'Check if the file exists',
-    `Run '> file list ${path}' to see available files`
-  ]
-};
-```
-
-## Command Documentation
-
-### In-Code Documentation
-
-Use JSDoc-style comments for code documentation:
-
-```javascript
-/**
- * Process the file contents
- * @param {string} content - File content to process
- * @param {Object} options - Processing options
- * @param {boolean} options.trim - Whether to trim whitespace
- * @param {number} options.limit - Maximum number of lines
- * @returns {string} Processed content
- */
-function processContent(content, options = {}) {
-  // Implementation
-}
-```
-
-### Help Text
-
-Every command must provide comprehensive help information:
-
-```javascript
-const helpText = `
-Command: file-read
-Description: Read the contents of a file
-Usage: file-read <file-path> [line-limit] [--raw] [--no-line-numbers]
-
-Arguments:
-  <file-path>     Path to the file to read (required)
-  [line-limit]    Maximum number of lines to display (default: all)
-
-Flags:
-  --raw           Display raw file contents without formatting
-  --no-line-numbers  Hide line numbers in output
-
-Examples:
-  > file-read /path/to/file.txt
-  > file-read /path/to/file.txt 20
-  > file-read /path/to/file.txt --raw
-`;
-```
-
-## Command Testing
-
-Commands must include tests as specified in the testing framework document:
-
-1. **Unit tests** - Test core functionality
-2. **Error condition tests** - Test handling of invalid inputs
-3. **Integration tests** - Test interactions with other commands
-
-## Command Implementation Checklist
-
-Before submitting a command implementation, verify:
-
-- [ ] Command follows the standard file structure
-- [ ] Metadata is complete and accurate
-- [ ] Required permissions are specified
-- [ ] Parameter validation is implemented
-- [ ] Error handling is comprehensive
-- [ ] Response format follows standards
-- [ ] Documentation is complete
-- [ ] Tests are implemented and passing
-
-## Command Registry Integration
-
-Commands must register themselves with the command registry:
-
-```javascript
-// In command implementation file
-module.exports = {
-  metadata: { /* ... */ },
-  execute: (args, env, options) => { /* ... */ }
-};
-
-// Command registry will auto-discover commands based on file structure
-```
-
-## Common Helper Functions
-
-Reuse these helper functions across commands:
-
-1. **Flag parsing**
-2. **Parameter validation**
-3. **Response formatting**
-4. **Error handling**
-
-Implementation examples are available in the utility library.
-
-## Best Practices
-
-1. **Single Responsibility**
-   - Each command should do one thing well
-   - Break complex tasks into multiple commands
-
-2. **Consistent Output**
-   - Use consistent formatting for all outputs
-   - Follow the response format standards
-
-3. **Helpful Error Messages**
-   - Provide clear, actionable error messages
-   - Include suggestions for resolving errors
-
-4. **Performance**
-   - Optimize for response time
-   - Handle large datasets efficiently
-
-5. **Security**
-   - Validate all inputs
-   - Request only necessary permissions
-
-6. **Interoperability**
-   - Design commands to work together
-   - Support command chaining through structured output
-
-By following these standards, we ensure that 00OS commands are consistent, reliable, and maintainable, providing a seamless experience for users. 
+*(Add more examples as commands are developed/standardized)* 
