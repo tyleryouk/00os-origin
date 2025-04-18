@@ -1,0 +1,11 @@
+1000xdev, read all files in the folder [front-end-folder-filepath]. Read-only, do not make changes to any files.
+
+1000xdev, append a section to [context-folder-filepath] describing the folder [front-end-folder-filepath].
+
+
+
+Exact syntax of prompts:
+1000xdev, read all files in the folder front-end\src\types. Read-only, do not make changes to any files.
+1000xdev, append a section to 1000xdev\steam-integration\front-end-context\context-front-end-api.md describing the folder front-end\src\types.
+
+

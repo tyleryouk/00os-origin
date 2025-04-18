@@ -1,0 +1,25 @@
+1000xdev, I need you to perform a comprehensive exploration of the Steam API integration project structure to help understand the current state of the project and available documentation. Please execute the following steps in sequence:
+
+## Step 1: Explore Root Directory
+First, make a `list_dir` tool call to the root directory (`1000xdev/steam-integration`) to identify all subfolders and core files present in the project.
+
+## Step 2: Explore Each Subfolder
+After identifying the subfolders, make a separate `list_dir` tool call for each of the five subfolders within `1000xdev/steam-integration` to understand what documentation and resources are available in each area:
+- cs2-skins-trading-research/
+- steam-web-api-research/ 
+- front-end-context/
+- back-end-context/
+- screenshots/
+
+## Step 3: Read Core Documentation Files
+Next, make `read_file` tool calls to read the complete content of the five core root folder files in the `1000xdev/steam-integration` directory:
+- README.md (project overview)
+- user-rules-steam-web-api.md (agent identity and operational parameters)
+- workflow.md (implementation process)
+- final-goal.md (integration objectives)
+- endpoint-integration-progress.md (progress tracking)
+
+There is no need to make any `read_file` calls to files within the subfolders at this time - we'll focus just on the main architectural files.
+
+## Step 4: Provide Analysis
+After collecting this information, please summarize your findings about the Steam API integration project's current state, structure, and available documentation. Identify any gaps or areas that need immediate attention.

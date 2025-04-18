@@ -1,0 +1,3 @@
+1000xdev, make list_dir tool calls to front-end/ and all of it's subfolders, and even the subfolder subfolders. Make list_dir tool calls only, do not make changes to any files.
+
+1000xdev, create a directory structure tree in 1000xdev\steam-integration\front-end-context\directory-structure-front-end-api.md based on your recent list_dir tool calls.
