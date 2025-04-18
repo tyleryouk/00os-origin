@@ -417,3 +417,260 @@
 
 ---
 
+# Trade Endpoints
+
+## POST /steam/api/trade/create
+
+**Description:** 📦 Create a Trade Offer on Steam
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/create?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Initiates a new trade offer for a specific user.
+*   Requires a valid `steamloginsecure`, retrievable from Steam cookies.
+*   Supports sending items (`myitemassetids`) and requesting items (`partneritemassetids`).
+*   Trade link and partner Steam ID ensure secure targeting.
+*   Includes a custom message option for the trade.
+
+**Important Notes:**
+
+*   Authentication through `steamloginsecure` is mandatory and must be valid.
+*   Either `tradelink` or `partnersteamid` must be provided to identify the trade partner.
+*   Careful management of asset IDs is required to prevent trade errors.
+*   Rate limits and trade offer limitations apply to prevent abuse.
+
+**Usage:**
+
+*   Provide required parameters in a JSON payload.
+*   Use optional parameters like `game` for game-specific trade offers.
+*   Set `production=1` for production environments.
+
+---
+
+## PUT /steam/api/trade/accept
+
+**Description:** 🔒 Accept a Trade Offer on Steam
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/accept?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Accepts a trade offer on Steam.
+*   Requires Steam credentials and trade details.
+*   Allows accepting trade offers programmatically.
+*   Requires `2FA` if items are involved in the trade.
+
+**Important Notes:**
+
+*   Authentication through `steamloginsecure` is mandatory and must be valid.
+*   The `tradeofferid` must refer to an existing trade offer.
+*   The `partnersteamid` must match the sender of the trade offer.
+*   Trade acceptance is subject to Steam's security policies and limitations.
+
+**Usage:**
+
+*   Provide required parameters (`steamloginsecure`, `tradeofferid`, and `partnersteamid`) in the request body.
+*   Authenticate using your API key for access.
+*   Set `production=1` for production environments.
+
+---
+
+## POST /steam/api/trade/history
+
+**Description:** 🔎 Retrieve Trade History
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/history?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Retrieves the trade history of a user.
+*   Provides a secure and efficient way to access all trades associated with the user.
+*   Perfect for verifying trade success and tracking the user's trade activity.
+*   Uses webhooks to deliver trade history data.
+
+**Important Notes:**
+
+*   **Rate Limiting:** Each `steamloginsecure` token is rate-limited. Delays may occur if too many requests are made in a short period.
+*   **Real-time Data:** The `steamloginsecure` token ensures real-time data retrieval from Steam.
+*   The authentication token must be valid and not expired.
+*   You can use the Extension for automatic token retrieval.
+
+**Usage:**
+
+*   Send the `steamloginsecure` cookie value from steamcommunity.com in the request body.
+*   Provide a webhook URL where trade history updates will be sent.
+*   Set `production=1` for production environments.
+
+---
+
+## POST /steam/api/trade/sent
+
+**Description:** 📜 List Sent Trade Offers
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/sent?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Lists all outgoing trade offers made by a user.
+*   Requires a valid `steamloginsecure` for authentication.
+*   Provides comprehensive data about each trade offer sent by the user.
+*   Helps track and manage outgoing trade offers efficiently.
+
+**Important Notes:**
+
+*   Authentication through `steamloginsecure` is mandatory and must be valid.
+*   The optional `forcesteamids` parameter can provide additional data but may result in slower response times.
+*   Rate limitations apply to prevent abuse of the Steam API.
+
+**Usage:**
+
+*   Provide the `steamloginsecure` cookie value from steamcommunity.com in the request body.
+*   Optionally, include `forcesteamids` to get Steam IDs for each trade offer (may increase response time).
+*   Set `production=1` for production environments.
+
+---
+
+## POST /steam/api/trade/received
+
+**Description:** 💼 Retrieve Pending Trade Offers
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/received?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Retrieves all incoming trade offers that are pending for acceptance.
+*   Fetches trade offers waiting for acceptance by the user.
+*   Provides real-time data directly from Steam using the authentication token.
+*   Allows for efficient management of incoming trade requests.
+
+**Important Notes:**
+
+*   **Real-time Data:** Fetch trade offers in real-time using the `steamloginsecure` token.
+*   **Rate Limiting:** Be mindful of the rate limits on the `steamloginsecure` token. If too many requests are made at once, delays may occur.
+*   The optional `forcesteamids` parameter can provide additional data but may result in slower response times.
+
+**Usage:**
+
+*   Provide the `steamloginsecure` token from steamcommunity.com in the request body.
+*   Optionally, include `forcesteamids` to get Steam IDs for all trade offers (may increase response time).
+*   You can use the Extension for automatic token retrieval if you're unsure how to obtain it.
+
+---
+
+## PUT /steam/api/trade/cancel
+
+**Description:** ❌ Cancel a Trade Offer on Steam
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/cancel?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Cancels a trade offer on Steam.
+*   Requires Steam credentials and the trade offer ID.
+*   Allows programmatically canceling trade offers.
+*   Provides secure authentication using `steamloginsecure`.
+
+**Important Notes:**
+
+*   Authentication through `steamloginsecure` is mandatory and must be valid.
+*   The `tradeofferid` must refer to an existing trade offer that you have permission to cancel.
+*   Only the sender of a trade offer can cancel it.
+*   Trade cancellations may be subject to Steam's limitations and policies.
+
+**Usage:**
+
+*   Provide required parameters (`steamloginsecure` and `tradeofferid`) in the request body.
+*   Authenticate using your API key to access the endpoint.
+*   Set `production=1` for production environments.
+
+---
+
+## PUT /steam/api/trade/decline
+
+**Description:** ❌ Decline a Trade Offer on Steam
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/trade/decline?key=YOUR_API_KEY`
+
+**Details:**
+
+*   Declines an existing trade offer on Steam.
+*   Requires Steam credentials and the trade offer ID.
+*   Programmatically declines trade offers.
+*   Requires a valid `steamloginsecure` for authentication.
+
+**Important Notes:**
+
+*   Authentication through `steamloginsecure` is mandatory and must be valid.
+*   The `tradeofferid` must refer to an existing trade offer that is available to be declined.
+*   Only the recipient of a trade offer can decline it.
+*   Declining trade offers may be subject to Steam's rate limiting and security policies.
+
+**Usage:**
+
+*   Provide the required parameters (`steamloginsecure` and `tradeofferid`) in the request body.
+*   Authenticate using your API key for access to the endpoint.
+*   Set `production=1` for production environments.
+
+---
+
+# Account Endpoints
+
+## GET /account/me
+
+**Description:** 📊 Retrieve Your Account and Usage Statistics
+
+**Base URL Example:** `https://www.steamwebapi.com/account/me`
+
+**Details:**
+
+*   Retrieve details about your account and usage statistics.
+*   This endpoint provides comprehensive details about your account, including usage statistics and activity records.
+*   **Usage Tracking:** The endpoint tracks your API usage and provides insights into your activity.
+*   **Rate Limiting:** The request generates a usage record each time it is called.
+*   **Real-time Data:** Get up-to-date information about your account's API usage in different time periods (minute, hour, day, week, month).
+
+**Important Notes:**
+
+*   **Usage Details**: Track your API usage over the last minute, hour, day, week, and month.
+*   **Subscription Info**: Get information about your subscription status and duration.
+
+**Usage:**
+
+*   Provide your **API key** in the request to retrieve the data.
+*   The API will respond with a breakdown of your usage, subscription status, and the latest status of the Steam Web API.
+
+---
+
+## POST /steam/api/steamloginsecure
+
+**Description:** 📦 Automate Steam Login Process
+
+**Base URL Example:** `https://www.steamwebapi.com/steam/api/steamloginsecure`
+
+**Details:**
+
+*   Automates your Steam login process, including for trading, market, and other Steam Community features.
+*   With the `steamLoginSecure` cookie, you can use the Trading API and build easy-to-use trading bots, market trackers, and more.
+*   The login process is handled securely. No password is stored server-side.
+*   Ideal for building trading bots, market analyzers, and automated session checkers.
+
+**Important Notes:**
+
+*   There are **two ways to authenticate**:
+    1. **Username + Password Login**: Send a POST request with your Steam `username` and `password` in the request body.
+    2. **Refresh Token Login**: Provide a `steamrefreshtoken` (JWT) instead of username/password.
+*   If your account is protected by Steam Guard, include the `code` parameter from your mobile authenticator.
+*   Do **not** provide both login credentials and `steamrefreshtoken` at the same time.
+*   The `steamrefreshtoken` is typically valid for **up to 6 months** and can be used repeatedly to retrieve new `steamLoginSecure` cookies.
+
+**Response:**
+
+*   On success, you will receive the following cookies:
+    *   `steamLoginSecure` – required for authenticated Steam Community actions
+    *   `sessionid` – required for most web interactions
+    *   `browserid` – identifies the browser/session
+    *   `steamrefreshtoken` – reusable token to fetch new `steamLoginSecure` cookies later
+
+---
+
