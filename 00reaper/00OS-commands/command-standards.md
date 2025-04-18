@@ -1,4 +1,124 @@
-# 00OS Command Development Standards
+# 00OS Command Standards
+
+## Header Format
+
+All 00OS process files must include a standardized YAML frontmatter header that follows this format:
+
+```yaml
+---
+name: command-name         # The exact command name (required)
+description: Short description of what the command does (required)
+version: 1.0.0             # Semantic versioning (required)
+author: 00reaper           # Command author (required)
+category: system           # Command category (required: system, tools, examples, apps)
+permissions: [basic]       # Required permissions (required, array)
+inputs:                    # Command inputs (required, array)
+  - name: parameter1       # Parameter name
+    type: string           # Parameter type (string, number, boolean, array, object)
+    required: true         # Whether parameter is required
+    default: null          # Default value if any
+    description: Parameter description
+  - name: parameter2
+    type: boolean
+    required: false
+    default: false
+    description: Flag description
+outputs:                   # Command outputs (required, array)
+  - name: result
+    type: object
+    description: Command result description
+usage: command [args]      # Command usage syntax (required)
+examples:                  # Example commands (required, array)
+  - command arg1
+  - command arg2 --flag
+aliases:                   # Command aliases (optional, array)
+  - cmd
+  - cm
+---
+```
+
+## Command Structure
+
+After the header, the command file should be structured as follows:
+
+```markdown
+# Process: command-name
+
+## Metadata
+- Description: Detailed description of the command's purpose
+- Category: command-category
+- Permissions: [permission1, permission2]
+- Author: author-name
+- Version: version-number
+
+## Input
+- parameter1: Description of parameter1
+- parameter2: Description of parameter2
+
+## Output
+- Description of the command output
+
+## Execution
+```javascript
+// Command execution code
+```
+
+## Usage Examples
+```
+> command-name parameter1 --parameter2
+Example output
+```
+```
+
+## Naming Conventions
+
+1. **Command Files**: Name the file after the command with hyphens for spaces
+   - Examples: `help.md`, `file-list.md`, `system-status.md`
+
+2. **Commands**: Use lowercase with hyphens for multi-word commands
+   - Examples: `help`, `file-list`, `system-status`
+
+3. **Categories**: Use one of the standard categories:
+   - `system`: Core system commands
+   - `tools`: Utility tools
+   - `examples`: Example applications
+   - `apps`: User applications
+
+4. **Parameters**: Use lowercase with hyphens for multi-word parameters
+   - Examples: `path`, `detailed`, `show-all`
+
+## Tool Call Standards
+
+1. **Mandatory Fetch Rules**: Every command must use `fetch_rules` to get process information
+2. **No Self-Execution**: Commands must never execute terminal commands that run themselves
+3. **Minimal Tool Calls**: Keep tool calls to a minimum, preferring larger reads
+4. **Error Handling**: Always include proper error handling with suggestions
+5. **Response Format**: Use standard indicators (✅, ❌, ⚠️) for responses
+
+## PowerShell Integration
+
+PowerShell commands cannot be defined directly within 00OS processes. Instead:
+
+1. Create a PowerShell script in the `1000xscripts` directory
+2. Use the `run_terminal_cmd` tool to call the script
+3. Example: `> reaper-sync` calls `.\1000xscripts\Sync-00OS-Complete.ps1`
+
+## Documentation Standards
+
+1. **Examples**: Include at least two examples for each command
+2. **Usage Syntax**: Document all parameters, including optional ones
+3. **Error Messages**: Document possible error scenarios
+4. **Related Commands**: Reference related commands where applicable
+
+## Implementation Guidelines
+
+1. **Parameter Validation**: Always validate inputs before execution
+2. **Error Messages**: Provide helpful error messages with suggestions
+3. **Output Formatting**: Format output for readability
+4. **Progress Indicators**: Show progress for long-running commands
+5. **State Management**: Use state tools for persistent data
+
+By following these standards, all 00OS commands will maintain a consistent interface, enabling dynamic discovery and improving the user experience.
 
 ## Overview
 

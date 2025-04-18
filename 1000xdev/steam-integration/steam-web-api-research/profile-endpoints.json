@@ -1,0 +1,494 @@
+{
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/steam/api/friendlist",
+      "description": "👥 Retrieve a Steam User's Friendlist",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/friendlist?id=76561198012345678&key=YOUR_API_KEY",
+      "details": [
+        "Fetches a Steam user's friends list.",
+        "By default, the data is parsed (`parsed=1`) for better readability.",
+        "For raw data directly from Steam, set `parsed=0`.",
+        "Retrieve detailed information about a user's friends, such as online status, game activity, and profile details.",
+        "Optimized for better response times by utilizing caching."
+      ],
+      "usage_notes": [
+        "Provide the user's Steam ID (64-bit) or Vanity URL using the `id` parameter.",
+        "Use the `no_cache` parameter to bypass caching if real-time data is required."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key, available in the Dashboard (top-right corner)."
+        },
+        {
+          "name": "id",
+          "location": "query",
+          "required": true,
+          "description": "Steam ID (64-bit) or Steam Vanity URL. Required for identifying the user.",
+          "example": "76561198012345678"
+        },
+        {
+          "name": "no_cache",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 to bypass caching. Default: Cached for 1 day for better performance. If you don't need real-time state data of the user, set no_cache=0 for faster response times.",
+          "example": "1"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning."
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the friend list data is returned.",
+          "schema": [
+            {
+              "id": "76561198012345678",
+              "url": "https://steamcommunity.com/profiles/76561198012345678",
+              "name": "John Doe",
+              "online": true,
+              "in_game": true,
+              "game": "Counter-Strike 2",
+              "avatar": "https://avatars.fastly.steamstatic.com/lorem_medium.jpg"
+            }
+          ]
+        },
+        {
+          "code": 400,
+          "description": "Invalid Steam ID or Steam Vanity URL provided."
+        },
+        {
+          "code": 404,
+          "description": "Steam ID or Steam Vanity URL is missing."
+        },
+        {
+          "code": 406,
+          "description": "No friends found"
+        },
+        {
+          "code": 407,
+          "description": "Unknown Network error"
+        },
+        {
+          "code": 408,
+          "description": "Profile is private"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/inventory",
+      "description": "⚡ Fetch Detailed Steam Inventory with Pricing Data - Best API in the World!",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/inventory?steam_id=760000022222&game=cs2&key=YOUR_API_KEY",
+      "details": [
+        "🚀 Fetch detailed Steam inventory data while bypassing rate limits.",
+        "Provides either Steam's raw response or a parsed version with item prices and metadata (controlled via `parse` parameter).",
+        "Inventory tracking for daily updates and insights.",
+        "Supports private inventories by fetching cached or fallback data when possible.",
+        "Supports Trade URL for CS2 inventories to access previously blocked items (7-10 days).",
+        "Can fetch inventory without the 10-day block using the `steam_login_secure` parameter."
+      ],
+      "usage_notes": [
+        "Provide either `steam_id` or `trade_url` to identify the inventory.",
+        "Use `state` parameter to specify inventory state (active, fallback, takedb).",
+        "Set `parse=1` for detailed item information (default).",
+        "Use `currency` parameter to specify the currency for item prices.",
+        "Set `with_no_tradable=1` to include non-tradable items."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key, available in the dashboard (top-right corner)."
+        },
+        {
+          "name": "steam_id",
+          "location": "query",
+          "required": true,
+          "description": "The Steam ID of the user. Accepts formats: steamid, steamid3, or steamid64. Using an account name may slow the request."
+        },
+        {
+          "name": "state",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the inventory state. Options: - active (default): Fetch the current inventory. - fallback: Fetch cached data if the inventory is private or inaccessible. - takedb: Always fetch data from the database. This is faster but may provide outdated data. Cached data includes a timestamp in the response headers.",
+          "default": "active"
+        },
+        {
+          "name": "steam_login_secure",
+          "location": "query",
+          "required": false,
+          "description": "If you want take your Inventory, without 10 Days block you can send your steamloginsecure. Our System takes automaticly the inventory of the Steamloginsecure. No steam_id param need then and will be ignored."
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": false,
+          "description": "Short name of the game.",
+          "default": "cs2"
+        },
+        {
+          "name": "parse",
+          "location": "query",
+          "required": false,
+          "description": "Enable data parsing for detailed item information.",
+          "default": "1"
+        },
+        {
+          "name": "language",
+          "location": "query",
+          "required": false,
+          "description": "Preferred language for the response.",
+          "default": "English"
+        },
+        {
+          "name": "no_cache",
+          "location": "query",
+          "required": false,
+          "description": "Bypass the default 1-day cache. This requires additional credits."
+        },
+        {
+          "name": "group",
+          "location": "query",
+          "required": false,
+          "description": "Group identical items. Default is 0 (duplicates are removed).",
+          "default": "0"
+        },
+        {
+          "name": "sort",
+          "location": "query",
+          "required": false,
+          "description": "Sort items by a specified criterion. Options: - price_max (default): Sort by highest price. - price_min: Sort by lowest price. - count: Sort by quantity. - name: Sort alphabetically.",
+          "default": "price_max"
+        },
+        {
+          "name": "currency",
+          "location": "query",
+          "required": false,
+          "description": "Specify the currency for item prices (e.g., EUR, TRY, BRL). Default is USD. Only applicable when parse is enabled.",
+          "default": "USD"
+        },
+        {
+          "name": "select",
+          "location": "query",
+          "required": false,
+          "description": "Select specific item properties to include in the response. Example: markethashname,price."
+        },
+        {
+          "name": "with_no_tradable",
+          "location": "query",
+          "required": false,
+          "description": "Include items that are not tradable. Default is 0 (not included).",
+          "default": "0"
+        },
+        {
+          "name": "trade_url",
+          "location": "query",
+          "required": false,
+          "description": "Provide a Trade URL instead of a Steam ID. For example for the Game CS2 if you send a Trade URL, it takes the 7-10 Days blocked items too."
+        },
+        {
+          "name": "offset",
+          "location": "query",
+          "required": false,
+          "description": "Offset for pagination.",
+          "default": "0"
+        },
+        {
+          "name": "limit",
+          "location": "query",
+          "required": false,
+          "description": "Limit for pagination.",
+          "default": "10000"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and data is returned."
+        },
+        {
+          "code": 400,
+          "description": "The required \"steam_id\" parameter is missing."
+        },
+        {
+          "code": 401,
+          "description": "Provided \"steam_id\" is invalid."
+        },
+        {
+          "code": 403,
+          "description": "The inventory is private and cannot be accessed."
+        },
+        {
+          "code": 404,
+          "description": "The requested inventory was not found."
+        },
+        {
+          "code": 410,
+          "description": "The inventory exists but does not contain items for this game."
+        },
+        {
+          "code": 411,
+          "description": "The inventory exists but contains no tradeable or non-tradeable items for this game."
+        },
+        {
+          "code": 451,
+          "description": "An error occurred while processing the request."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/inventory/batch",
+      "description": "⚡ Batch Fetch Steam Inventories with Pricing Data - Up to 20 IDs!",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/inventory/batch?steam_ids=76561199146708568,76561198047543612&game=cs2&key=YOUR_API_KEY",
+      "details": [
+        "🚀 Fetch inventories for multiple Steam IDs in one request, bypassing rate limits.",
+        "Provides detailed inventory data with item prices and metadata for up to 20 Steam IDs.",
+        "Supports multiple Steam IDs in a single request (comma-separated, max 20 IDs).",
+        "Allows selection of specific item properties with the `select` parameter.",
+        "Provides currency conversion and language localization for detailed item data.",
+        "Works with all Steam games, including CS2, Dota 2, and Rust.",
+        "Includes fallback options for private inventories or unavailable data.",
+        "⚡ Optimized for high performance with asynchronous data fetching."
+      ],
+      "usage_notes": [
+        "Provide a comma-separated list of Steam IDs (maximum 20) using the `steam_ids` parameter.",
+        "Specify the game using the `game` parameter (default: cs2).",
+        "Use `select` to choose specific item properties to include in the response.",
+        "Set `currency` to specify the currency for item prices.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key, available in the dashboard (top-right corner)."
+        },
+        {
+          "name": "steam_ids",
+          "location": "query",
+          "required": true,
+          "description": "The Steam IDs (comma-separated, max 20). Accepts formats: steamid, steamid3, or steamid64."
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": false,
+          "description": "Short name of the game.",
+          "default": "cs2"
+        },
+        {
+          "name": "select",
+          "location": "query",
+          "required": false,
+          "description": "Select specific item properties to include in the response. Example: markethashname,price."
+        },
+        {
+          "name": "currency",
+          "location": "query",
+          "required": false,
+          "description": "Specify the currency for item prices (e.g., EUR, TRY, BRL).",
+          "default": "USD"
+        },
+        {
+          "name": "language",
+          "location": "query",
+          "required": false,
+          "description": "Preferred language for the response.",
+          "default": "English"
+        },
+        {
+          "name": "no_cache",
+          "location": "query",
+          "required": false,
+          "description": "Bypass the default 1-day cache. This requires additional credits."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and data is returned."
+        },
+        {
+          "code": 400,
+          "description": "Missing or invalid \"steam_ids/select\" parameter."
+        },
+        {
+          "code": 404,
+          "description": "Specified game not found. Default game is \"cs2\"."
+        },
+        {
+          "code": 500,
+          "description": "Internal server error. Please try again later."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/inventory/history",
+      "description": "📜 Retrieve Historical Inventory Changes with Value and Item Count",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/inventory/history?steam_id=76561198042843401&game=cs2&key=YOUR_API_KEY",
+      "details": [
+        "📜 Fetches all inventory changes for a specified game and Steam ID.",
+        "Provides details about the inventory's worth (in USD), size (number of items), and the timestamp of the change.",
+        "Tracks all historical changes in the inventory.",
+        "Calculates the total worth of items in USD (Steam market value).",
+        "Compatible with all Steam games, including CS2, Dota 2, and Rust."
+      ],
+      "usage_notes": [
+        "Use the `steam_id` and `game` parameters to retrieve historical inventory changes.",
+        "Includes timestamped records to track changes over time."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "steam_id",
+          "location": "query",
+          "required": true,
+          "description": "The Steam ID of the user. Accepts formats: steamid, steamid3, or steamid64. Example: 76561198042843401."
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": true,
+          "description": "The short name of the game for which the inventory history is being retrieved. Example: \"cs2\".",
+          "default": "cs2"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "The inventory history was successfully retrieved.",
+          "schema": [
+            {
+              "item_name": "string",
+              "transaction_date": "2025-04-18T20:46:41.228Z",
+              "action": "string",
+              "game": "string"
+            }
+          ]
+        },
+        {
+          "code": 400,
+          "description": "The required \"steam_id\" parameter is missing. Ensure that the \"steam_id\" parameter is included in the request."
+        },
+        {
+          "code": 404,
+          "description": "No profile was found for the provided Steam ID. Verify that the Steam ID is correct."
+        },
+        {
+          "code": 405,
+          "description": "The specified game was not found. Ensure the game name is valid (e.g., \"cs2\")."
+        },
+        {
+          "code": 406,
+          "description": "No inventory history was found for the specified game and Steam ID. The user may not have interacted with items in the game."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/profile",
+      "description": "👤 Retrieve a Steam User's Profile with Flexible Options",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/profile?id=760000022222&key=YOUR_API_KEY",
+      "details": [
+        "Fetches a Steam user profile with flexible options.",
+        "Supports detailed or minimal data retrieval based on your needs.",
+        "Use the `id` parameter to identify the profile. Supports SteamID, username, or profile URL (SteamID recommended for faster and more accurate results).",
+        "Retrieve real-time data by setting `no_cache` to `1` (slower response).",
+        "Adjust the data depth using the `state` parameter (`minimal` or `detailed`).",
+        "Optimize responses with the `force_from_db_if_exists` parameter to fetch profiles from the database if available."
+      ],
+      "usage_notes": [
+        "Provide a valid `id` parameter (SteamID, profile URL, or username).",
+        "Use optional parameters to customize data retrieval (e.g., `state=detailed` for additional profile details)."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "id",
+          "location": "query",
+          "required": true,
+          "description": "Identifier for the profile. Accepts: - SteamID (recommended for speed and accuracy). - Profile URL. - Username."
+        },
+        {
+          "name": "no_cache",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 to bypass the cache and fetch data directly from Steam. - Default: Cached data (faster).",
+          "example": "1"
+        },
+        {
+          "name": "state",
+          "location": "query",
+          "required": false,
+          "description": "Defines the level of profile detail: - minimal (default): Basic profile data. - detailed: Includes additional details like level, trade ban info, and friend states (slower).",
+          "example": "detailed",
+          "default": "minimal"
+        },
+        {
+          "name": "force_from_db_if_exists",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 to retrieve the profile from the database if available. - If not found, fresh data will be fetched and cached automatically. - Useful for rapid responses without impacting rate limits.",
+          "example": "1"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Profile retrieved successfully."
+        },
+        {
+          "code": 400,
+          "description": "Missing required \"id\" parameter."
+        },
+        {
+          "code": 404,
+          "description": "Invalid \"id\" parameter. Must be a SteamID, profile URL, or username."
+        }
+      ]
+    }
+  ]
+}

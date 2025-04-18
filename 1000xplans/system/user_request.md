@@ -89,4 +89,4 @@ Transform 1000xrules/ (which currently syncs to .cursor/rules/) into a full oper
 # Analysis: Evaluate component(s) without making changes
 # --- TEMPLATE END ---
 
-## END USER REQUEST SECTION 
+## END USER REQUEST SECTION
