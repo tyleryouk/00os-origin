@@ -171,3 +171,188 @@ The API consistently follows these patterns:
 - Structured logging for operations and errors
 
 Our Steam API integration will follow these same patterns to maintain consistency and reliability across the application.
+
+# Front-End Components Architecture
+
+The `front-end/src/components` directory contains a comprehensive library of React components that provide the UI building blocks for the application. These components will be critical for implementing the visual elements of our Steam Web API integration.
+
+## Directory Structure and Organization
+
+The components directory is organized into functional categories:
+
+```
+front-end/src/components/
+├── market/                  # Empty directory (potential location for Steam marketplace components)
+├── product-cards/           # Various product card designs
+├── products-view/           # Grid and list views for products
+│   └── filters/             # Product filtering components
+├── categories/              # Category navigation and listing
+├── category-cards/          # Category display cards
+├── layouts/                 # Page layout templates
+│   └── market-layout/       # Specific layout for marketplace
+├── header/                  # Header components including navigation
+├── dashboard/               # User dashboard components
+├── profile/                 # User profile components
+├── common/                  # Reusable utility components
+├── ui/                      # Basic UI elements
+└── [various utility components]
+```
+
+## Core Component Categories
+
+### Product Display Components
+
+The application has a robust set of product display components that will be useful for showing Steam items:
+
+- **Product Cards**: Multiple variations (product-card-1 through product-card-16) for different display styles
+- **Product Grid/List Views**: Components for displaying products in different layouts
+- **Product Filters**: Components for filtering products by various attributes
+
+### Navigation and Categorization
+
+Components for organizing and navigating products:
+
+- **Category List/Menu**: Components for displaying and navigating categories
+- **Header Components**: Navigation, user account, and cart functionality
+- **Mobile Navigation**: Responsive navigation for mobile devices
+
+### Layout Components
+
+Page structure components:
+
+- **Market Layout**: Specific layout for marketplace pages (key for Steam integration)
+- **Shop Layouts**: Various layout options for product display
+- **Dashboard Layout**: Layout for user dashboard pages
+
+### User Interface Components
+
+Common UI elements:
+
+- **Loading/Error States**: Components for handling loading and error states
+- **Pagination**: For navigating through multi-page results
+- **Forms and Inputs**: Components for user input
+- **Typography**: Text formatting components
+
+### User Management Components
+
+Components for user-related functionality:
+
+- **Profile Components**: Display and edit user profile information
+- **Dashboard Components**: User dashboard interface
+- **Order Components**: Display and manage orders
+
+## Integration Points for Steam API
+
+Based on the component architecture, our Steam API integration should:
+
+1. **Create new marketplace components** in the currently empty `market/` directory
+2. **Extend existing product display components** to work with Steam item data
+3. **Use the market layout** for consistent page structure
+4. **Leverage filtering components** for Steam-specific filters (wear, item type, etc.)
+5. **Implement Steam authentication** components that integrate with the existing auth flow
+
+## Component Patterns and Best Practices
+
+The existing components follow these patterns:
+
+- **Component Modularity**: Small, focused components with single responsibilities
+- **Consistent Props Interface**: Clear prop definitions with TypeScript typing
+- **Styled Component Approach**: Uses Material UI and custom styling
+- **Responsive Design**: Mobile-first approach with responsive layouts
+- **Error Boundary Usage**: Components wrapped in error boundaries for resilience
+
+Our Steam API integration should follow these same patterns to maintain consistency with the existing codebase and ensure a cohesive user experience.
+
+# Front-End Models Overview
+
+The `front-end/src/models` directory contains TypeScript interface definitions that represent the core data structures used throughout the application. These models provide the foundation for type-safe data handling and will be extended to support the Steam API integration.
+
+## Directory Structure and Purpose
+
+The models directory consists of a flat structure of TypeScript files, each defining one or more related interfaces:
+
+```
+front-end/src/models/
+├── Address.model.ts         # User address interfaces
+├── api.model.ts             # API request/response interfaces
+├── auth.models.ts           # Authentication-related interfaces
+├── Blog.model.ts            # Blog content interfaces
+├── Brand.model.ts           # Product brand interfaces
+├── Carousel.model.ts        # Carousel UI component interfaces
+├── Category.model.ts        # Product category interfaces
+├── CategoryNavList.model.ts # Category navigation interfaces
+├── Common.ts                # Shared utility interfaces
+├── CS2Gun.model.ts          # CS2 weapon skin interfaces (key for Steam integration)
+├── Filters.ts               # Product filtering interfaces
+├── Layout.model.ts          # UI layout interfaces
+├── Navigation.model.ts      # Navigation menu interfaces
+├── Order.model.ts           # Order and transaction interfaces
+├── polygonuser.model.ts     # Blockchain user interfaces
+├── Product.model.ts         # Core product interfaces
+├── Shop.model.ts            # Seller shop interfaces
+├── Ticket.model.ts          # Support ticket interfaces
+├── User.model.ts            # User profile interfaces
+```
+
+## Key Model Definitions
+
+### CS2 Gun Model (CS2Gun.model.ts)
+
+The CS2Gun model is particularly important for our Steam integration:
+
+- Extends the base Product model with CS2-specific properties
+- Includes fields for gun skin details (wear, rarity, collection)
+- Contains 3D model reference (`glbFile` property)
+- Includes Steam-specific properties (`steamCommunityLink`, `steamInGameLink`)
+- Captures market data like `suggestedPriceUSD` and `communitySentiment`
+
+### Product Model (Product.model.ts)
+
+The base product model defines core properties for marketplace items:
+
+- Standard fields: id, title, price, description, image
+- Categorization through category and brand fields
+- Inventory management with stock and status fields
+- Shopping-related properties like discount and sale_price
+
+### Order Model (Order.model.ts)
+
+The order model defines transaction properties critical for marketplace operations:
+
+- Comprehensive order status tracking (PENDING, COMPLETED, CANCELLED, etc.)
+- Detailed order items with product information
+- Blockchain transaction details with wallet addresses
+- Shipping and billing information
+- Seller information tracking
+
+### Authentication Models (auth.models.ts and polygonuser.model.ts)
+
+These models define authentication structures:
+
+- Wallet-based authentication flow
+- Challenge/response pattern for wallet signatures
+- Token storage and management
+- Error handling specific to authentication
+
+## Integration Points for Steam API
+
+Based on the model architecture, our Steam API integration should:
+
+1. **Extend the CS2Gun model** with additional properties from Steam inventory
+2. **Create new Steam-specific interfaces** for API responses
+3. **Add inventory tracking models** for Steam items
+4. **Implement transaction models** for Steam trading
+
+The CS2Gun model already provides a solid foundation for representing Steam items, but we'll need to extend it with properties specific to the Steam Web API's response format and trading capabilities.
+
+## Model Usage Patterns
+
+The models follow consistent patterns:
+
+- Default exports with named type exports for backward compatibility
+- DEFAULT_X constants for providing empty model instances
+- Structured nested interfaces for complex properties
+- Clear separation between core properties and optional extensions
+- Type enumeration for status fields and other constrained values
+
+Our Steam API integration will follow these same patterns to maintain consistency and enable seamless integration with existing components that expect these model structures.

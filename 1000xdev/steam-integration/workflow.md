@@ -1,189 +1,140 @@
-# Steam Web API Integration Workflow
+# Steam API Integration Workflow
 
-This document outlines the step-by-step process for implementing the Steam Web API integration for GigaSwap's CS2 skin marketplace. The workflow is organized into distinct phases with specific tasks for both frontend and backend components.
+This document outlines the development workflow for implementing the Steam Web API integration in GigaSwap.
 
-## Phase 1: Environment Setup and Authentication
+## Development Process
 
-### Backend Tasks
-1. Create a Steam API client module in the backend
-   - Create a new Python module for Steam API interactions
-   - Implement configuration for API keys and endpoints
-   - Set up base request handler with error handling
+1. **Research & Planning**
+   - ✅ Document Steam Web API endpoints and services
+   - ✅ Analyze authentication requirements
+   - 🔄 Create implementation plan
+   - 🔄 Define data models for CS2 skins
 
-2. Implement authentication mechanisms
-   - Set up secure storage for Steam API keys
-   - Create authentication middleware
-   - Implement API request throttling and rate limiting
-   - Add logging for API interactions
+2. **Implementation Cycles**
+   - Each feature will follow this process:
+     1. **Backend Implementation**
+        - Create API client module
+        - Implement endpoint
+        - Add error handling
+        - Set up caching
+     2. **Frontend Implementation**
+        - Create data interfaces
+        - Implement API service
+        - Develop UI components
+        - Add state management
+     3. **Testing**
+        - Unit tests
+        - Integration tests
+        - Manual testing
+     4. **Documentation**
+        - Update implementation docs
+        - Track progress
 
-3. Set up environment configuration
-   - Configure environment variables for Steam API credentials
-   - Create development vs. production settings
-   - Implement fallback mechanisms for API failures
+3. **Prioritized Implementation Order**
+   1. Authentication System
+   2. Inventory Retrieval
+   3. Item Data Display
+   4. Trade Offer Management
+   5. Blockchain Integration
 
-### Frontend Tasks
-1. Set up API service layer
-   - Create Steam API service module in TypeScript
-   - Implement request/response interfaces
-   - Set up error handling and loading states
+## Code Organization
 
-2. Implement authentication UI components (if needed)
-   - Create Steam login component
-   - Design authentication flow
-   - Implement session management
+### Backend Structure
 
-## Phase 2: Basic Steam Items Integration
+```
+backend/
+  └── steam/
+      ├── client.py        # Steam API client
+      ├── models.py        # Data models for Steam items
+      ├── routes.py        # API routes
+      ├── services.py      # Business logic
+      └── utils.py         # Helper functions
+```
 
-### Backend Tasks
-1. Implement `/steam/api/items` endpoint integration
-   - Create API route to proxy requests to steamwebapi.com
-   - Implement caching layer for Steam items data
-   - Add request validation and sanitization
-   - Create response transformer to standardize data format
+### Frontend Structure
 
-2. Develop item data storage
-   - Design database schema for storing Steam items
-   - Implement data synchronization with Steam API
-   - Create indexing for efficient item retrieval
+```
+frontend/
+  └── app/
+      ├── api/
+      │   └── steam.ts     # Steam API client
+      ├── models/
+      │   └── steam.ts     # TypeScript interfaces
+      └── components/
+          └── steam/       # Steam-specific components
+```
 
-3. Create item search and filtering endpoints
-   - Implement search by name, type, and rarity
-   - Add filtering capabilities (price range, wear, etc.)
-   - Create sorting functionality
+## Branching Strategy
 
-### Frontend Tasks
-1. Develop Steam items display components
-   - Create item card component
-   - Implement item grid/list views
-   - Add item detail modal
+- `main` - Production branch
+- `dev` - Development branch
+- `feature/steam-[feature-name]` - Feature branches
+- `fix/steam-[bug-name]` - Bug fix branches
 
-2. Implement the `/market` page
-   - Create page structure and layout
-   - Implement item sorting based on item_group, item_type, and item_name
-   - Add filtering components
-   - Create loading and error states
+## Testing Strategy
 
-3. Add item detail functionality
-   - Implement detailed item view
-   - Add image loading and optimization
-   - Create price history display (if applicable)
+1. **Unit Testing**
+   - Test individual functions and components
+   - Mock API responses
 
-## Phase 3: Advanced Marketplace Features
+2. **Integration Testing**
+   - Test API client against mock responses
+   - Test frontend components with API services
 
-### Backend Tasks
-1. Implement trade offer endpoints
-   - Integrate with trade-offer endpoints from steamwebapi.com
-   - Create offer validation and security checks
-   - Implement transaction tracking
+3. **End-to-End Testing**
+   - Test complete user flows
+   - Validate data consistency
 
-2. Develop user inventory management
-   - Create endpoints for retrieving user inventories
-   - Implement inventory synchronization
-   - Add inventory change notifications
+## Documentation Strategy
 
-3. Implement market analytics
-   - Create endpoints for price history
-   - Add market trend analysis
-   - Implement popular items tracking
+1. **Code Documentation**
+   - Document all public APIs and interfaces
+   - Add detailed comments for complex logic
 
-### Frontend Tasks
-1. Create trading interface
-   - Develop trade offer component
-   - Implement trade confirmation flow
-   - Add trade history view
+2. **Implementation Documentation**
+   - Update context files with implementation details
+   - Document design decisions and trade-offs
 
-2. Implement user inventory display
-   - Create inventory management page
-   - Add drag-and-drop functionality for trading
-   - Implement inventory filtering and sorting
+3. **Progress Tracking**
+   - Update progress.md with completed tasks
+   - Document challenges and solutions
 
-3. Add marketplace analytics
-   - Create price history charts
-   - Implement market trend displays
-   - Add watchlist functionality
+## Development Standards
 
-## Phase 4: Testing and Optimization
+### Backend (Python)
 
-### Backend Tasks
-1. Implement comprehensive testing
-   - Create unit tests for API client
-   - Develop integration tests for Steam API interactions
-   - Implement mock responses for testing
+- Use type hints for all functions
+- Follow PEP 8 style guide
+- Use async where appropriate
+- Document all public functions
 
-2. Performance optimization
-   - Optimize database queries
-   - Enhance caching strategies
-   - Implement request batching where applicable
+### Frontend (TypeScript)
 
-3. Security review
-   - Audit authentication mechanisms
-   - Review error handling for information leakage
-   - Test for common vulnerabilities
+- Use TypeScript interfaces for all data models
+- Follow React best practices
+- Implement proper error handling
+- Use React Context for state management
 
-### Frontend Tasks
-1. User interface testing
-   - Implement UI component tests
-   - Develop end-to-end tests for key workflows
-   - Add visual regression testing
+## Release Process
 
-2. Performance optimization
-   - Optimize rendering performance
-   - Implement lazy loading
-   - Add image optimization
+1. **Feature Development**
+   - Implement feature in feature branch
+   - Test and document
+   - Create PR to dev branch
 
-3. User experience enhancements
-   - Add loading indicators
-   - Implement error handling messages
-   - Create helpful user onboarding
+2. **Integration**
+   - Merge PR to dev branch
+   - Run integration tests
+   - Fix any issues
 
-## Phase 5: Deployment and Monitoring
+3. **Release**
+   - Merge dev to main
+   - Deploy to production
+   - Monitor for issues
 
-### Backend Tasks
-1. Prepare for production deployment
-   - Finalize environment configuration
-   - Set up monitoring and alerting
-   - Create deployment documentation
+## Monitoring and Maintenance
 
-2. Implement logging and diagnostics
-   - Set up structured logging
-   - Create API usage metrics
-   - Implement error tracking
-
-### Frontend Tasks
-1. Final production build
-   - Optimize bundle size
-   - Set up analytics
-   - Create deployment pipeline
-
-2. User feedback mechanisms
-   - Implement feature feedback collection
-   - Add error reporting
-   - Create user satisfaction tracking
-
-## Progress Tracking
-
-For each task in this workflow:
-
-1. Update `endpoint-integration-progress.md` with:
-   - Task status (Not Started, In Progress, Completed)
-   - Implementation notes
-   - Challenges encountered
-   - Next steps
-
-2. Document context discoveries in:
-   - `back-end-context/` for backend implementations
-   - `front-end-context/` for frontend implementations
-
-3. Review and update this workflow document as needed to reflect:
-   - New requirements
-   - Discovered optimizations
-   - Implementation challenges
-
-## Implementation Guidelines
-
-- Follow an iterative approach, completing one endpoint integration fully before moving to the next
-- Maintain backward compatibility throughout the integration process
-- Document all API interactions thoroughly
-- Prioritize error handling and fallback mechanisms
-- Create unit tests for each new component
-- Focus on code reusability and maintainability
+- Add logging for all API calls
+- Monitor error rates
+- Track API usage
+- Set up alerts for API failures

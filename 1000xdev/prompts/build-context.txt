@@ -1,11 +1,14 @@
-1000xdev, read all files in the folder [front-end-folder-filepath]. Read-only, do not make changes to any files.
+1000xdev, read every file in the folder [front-end-folder-filepath]. Read-only, do not make changes to any files.
 
 1000xdev, append a section to [context-folder-filepath] describing the folder [front-end-folder-filepath].
+
+1000xdev, read all root folder files in the folder [front-end-folder-filepath]. Make list_dir tool calls to all of the subfolders to understand the subfolders from a high-level. Read-only, do not make changes to any files.
 
 
 
 Exact syntax of prompts:
-1000xdev, read all files in the folder front-end\src\types. Read-only, do not make changes to any files.
+1000xdev, read every file in the folder front-end\src\types. Read-only, do not make changes to any files.
 1000xdev, append a section to 1000xdev\steam-integration\front-end-context\context-front-end-api.md describing the folder front-end\src\types.
 
+1000xdev, read all root folder files in the folder [front-end-folder-filepath]. Make list_dir tool calls to all of the subfolders to understand the subfolders from a high-level. Read-only, do not make changes to any files.
 
