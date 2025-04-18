@@ -13,6 +13,57 @@ This file serves as the central tracking system for user-requested changes to 00
 | 006 | 2023-05-22 | Improve Error Handling for Tool Calls | Medium | Planning | Enhance user experience |
 
 ## Request Details
+### REQ-000: MUST PERFORM FIRST
+
+# Dynamic Command Discovery for 00OS
+
+## Issue Description
+
+Currently, both `> command-registry` and `> help` commands display an incomplete list of 00OS commands. This is problematic as it prevents users from discovering all available functionality within the 00OS system. Based on a directory scan of the `/00os/processes` folder structure, there are several commands that exist as processes but are not being displayed in the command registry output.
+
+The root cause appears to be that these commands are using hardcoded data rather than dynamically discovering all available processes in the system. This creates a maintenance burden and leads to an inconsistent user experience where commands exist but aren't discoverable through the standard interfaces.
+
+## Proposed Solution
+
+Each process in 00OS has a one-to-one relationship with an 00OS command. The command is inferred (not explicitly stated) by the creation of an 00OS process. To improve discoverability and ensure all commands are properly listed, we should implement the following approach:
+
+1. **Standardize Process Headers**: Establish a consistent header format for all 00OS process files that clearly defines:
+   - Command name
+   - Description
+   - Category
+   - Usage syntax (including subcommands, arguments, and flags)
+   - Examples
+   - Metadata (version, author, etc.)
+
+2. **Dynamic Command Discovery**: Modify the `command-registry` and `help` commands to:
+   - Dynamically scan all subdirectories within `/00os/processes`
+   - Parse the standardized headers from each process file
+   - Build a comprehensive list of all available commands
+   - Present this information to users in a consistent format
+
+3. **Implementation Method**:
+   - Use the `list_dir` tool to enumerate all process directories and files
+   - Read each process file header to extract command information
+   - Organize and present the commands based on their categories
+   - Cache the results for performance if necessary, with a refresh option
+
+4. **Documentation Updates**:
+   - Update documentation in `00reaper/00OS-commands` to reflect the new header requirements
+   - Provide templates for process headers to ensure consistency
+   - Create guidelines for command naming and categorization
+
+## Additional Considerations
+
+- **PowerShell Commands**: All PowerShell commands must be placed in `1000xscripts`, as PowerShell commands cannot be defined within 00OS directly. Only the `run_terminal_command` tool call should be used, which must call a PowerShell script in the `1000xscripts` directory (see `> reaper-sync` as an example).
+
+- **Backward Compatibility**: Ensure that the dynamic discovery method is backward compatible with existing process files, providing a migration path for those that don't yet follow the standardized header format.
+
+- **Performance**: Consider performance implications of scanning all process files on every `help` or `command-registry` command execution. Implement appropriate caching strategies if needed.
+
+## Implementation Priority
+
+This enhancement should be treated as a high priority, as it directly impacts the discoverability and usability of the 00OS system. Implementing this change will ensure that users have a complete and accurate view of all available commands, improving the overall user experience. 
+### END REQ-000
 
 ### REQ-001: Implement Tool Call Based Command Structure
 #### Requirements

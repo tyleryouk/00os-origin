@@ -1,0 +1,407 @@
+{
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/steam/api/info/items",
+      "description": "🎮 Get Item Information for a Specific Game",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/info/items",
+      "details": [
+        "Retrieves all possible item names for a specific game.",
+        "Supports filtering by item types, groups, and individual items.",
+        "Provides comprehensive information about items in a game.",
+        "Supports both cached and real-time data retrieval (configurable with `no_cache`).",
+        "Compatible with popular Steam games like CS2, Dota 2, and Rust."
+      ],
+      "usage_notes": [
+        "Use the `game` parameter to specify the game.",
+        "Optionally, filter by `type` to refine the results (e.g., groups, items, types).",
+        "Set `no_cache` to `1` to fetch real-time data, bypassing the cache."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": false,
+          "description": "Short name of the game.",
+          "default": "cs2"
+        },
+        {
+          "name": "type",
+          "location": "query",
+          "required": false,
+          "description": "Type of the requested list. Accepted values: - groups: Item groups. - items: Individual items. - types: Item types. - structed: Structured data (default)",
+          "default": "structed"
+        },
+        {
+          "name": "no_cache",
+          "location": "query",
+          "required": false,
+          "description": "Disable caching by setting to 1. Default is cached data.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and item information is returned."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded. Too many requests in a short time frame."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/info/steamid",
+      "description": "🔄 Convert a SteamID into Multiple Formats",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/info/steamid?key=YOUR_API_KEY&steam_id=STEAM_ID",
+      "details": [
+        "Converts a SteamID into different formats: SteamID2, SteamID3, SteamID64.",
+        "Returns the result as JSON.",
+        "Supports all major SteamID formats for conversion.",
+        "Simple and efficient conversion for fast integration."
+      ],
+      "usage_notes": [
+        "Provide a valid `steam_id` in any format (`SteamID2`, `SteamID3`, or `SteamID64`).",
+        "Use your API key to authenticate the request."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "steam_id",
+          "location": "query",
+          "required": true,
+          "description": "The SteamID to convert. Accepted formats: - SteamID2: e.g., STEAM_0:0:553498XXX. - SteamID3: e.g., [U:1:1106997XXX]. - SteamID64: e.g., 76561199067263XXX."
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the converted SteamID formats are returned."
+        },
+        {
+          "code": 400,
+          "description": "Missing or invalid steam_id parameter."
+        },
+        {
+          "code": 404,
+          "description": "The provided steam_id is invalid."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/cs/containers",
+      "description": "🎯 Retrieve All CS2/CS:GO Containers and Collections",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/cs/containers",
+      "details": [
+        "Retrieves all containers and their collections from CS2/CS:GO.",
+        "Provides a comprehensive list of cases, stickers, and other containers.",
+        "Supports filtering by container type (`all`, `sticker`, `case`).",
+        "Enables searching for specific cases using the `search` parameter.",
+        "Results can be sorted by name, price, or release date."
+      ],
+      "usage_notes": [
+        "Use the `type` parameter to specify the group of containers to fetch.",
+        "Optionally, apply the `search` and `sortBy` parameters to refine your results."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "type",
+          "location": "query",
+          "required": true,
+          "description": "Show only this group of containers. Accepted values: all, sticker, case."
+        },
+        {
+          "name": "search",
+          "location": "query",
+          "required": false,
+          "description": "Search for a specific case or container by name."
+        },
+        {
+          "name": "sortBy",
+          "location": "query",
+          "required": false,
+          "description": "Sort the result by a specific criterion. Options: - nameAz: Name ascending. - nameZa: Name descending. - priceSteamAz: Steam price ascending. - priceSteamZa: Steam price descending. - priceRealAz: Real market price ascending. - priceRealZa: Real market price descending. - releasedatAz: Release date ascending. - releasedatZa: Release date descending."
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and all containers are returned."
+        },
+        {
+          "code": 400,
+          "description": "Missing or invalid parameters."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/cs/collection/{slug}",
+      "description": "🎯 Retrieve a CS2/CS:GO Collection or Case",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/cs/collection/{slug}",
+      "details": [
+        "Retrieves a list of all collections and their items (skins) from CS2/CS:GO.",
+        "Provides detailed information about a specific collection or case.",
+        "Fetches all items (skins) belonging to a specific collection or case.",
+        "Supports both CS2 and CS:GO collections."
+      ],
+      "usage_notes": [
+        "Replace `{slug}` with the collection's unique identifier to fetch the desired data."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "slug",
+          "location": "path",
+          "required": true,
+          "description": "The unique identifier (slug) of the collection or case.",
+          "type": "string"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the collection data is returned."
+        },
+        {
+          "code": 404,
+          "description": "The specified collection or case was not found."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/info/markets",
+      "description": "📈 Get Supported Market Information",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/info/markets",
+      "details": [
+        "Retrieves a list of all supported markets.",
+        "Provides information including: Market logos, Market names, Relevant market data.",
+        "Comprehensive data on supported markets for integration and analysis.",
+        "Up-to-date market details with structured responses."
+      ],
+      "usage_notes": [
+        "Use your API key to authenticate the request and access the data."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and market information is returned."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded. Too many requests in a short time frame."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/complete/items",
+      "description": "🔍 Auto-Complete Game Items - e.g for using on Input fields (for free)",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/complete/items?search=SEARCH_TERM&game=cs2",
+      "details": [
+        "Provides real-time auto-completion for game items with search suggestions based on the input.",
+        "Retrieves a list of items matching the search term, ideal for input auto-completes.",
+        "Returns the name and image URL of each item.",
+        "Instantly retrieve search suggestions (minimum 3 characters).",
+        "Supports filtering by game.",
+        "Includes item image URL for visual preview."
+      ],
+      "usage_notes": [
+        "API key is optional for now but recommended for production/future compatibility.",
+        "Currently free, future cost: 1 request credit per 100 queries.",
+        "Future updates might require authentication."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": false,
+          "description": "Your API key for authentication (optional but recommended for production use)."
+        },
+        {
+          "name": "search",
+          "location": "query",
+          "required": true,
+          "description": "The search term for auto-completion. Must be at least 3 characters long."
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": false,
+          "description": "Short name of the game (e.g., \"cs2\", \"dota2\", \"rust\").",
+          "default": "cs2"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Successfully retrieved auto-complete suggestions.",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "markethashname": {
+                  "type": "string",
+                  "example": "AK-47 | Redline (Field-Tested)"
+                },
+                "image": {
+                  "type": "string",
+                  "example": "IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdB2ozio1RrlIWFK3UfvMYB8UsvjiMXojflsZalyxSh31CIyHz2GZ-KuFpPsrTzBG0pO-CI3z2eCfdYXbfSA5rTuZXPGrQ-TSs5-vGETicRL4tEA9VL_ZV9WUfPJvbOxZr0IUVu2u_0UdyEhk6f9BKZAarxm1OZuV8zHRBk0RxHo8"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/currency/api/list",
+      "description": "💱 List All Available Currencies for Conversion",
+      "base_url_example": "https://www.steamwebapi.com/currency/api/list?key=YOUR_API_KEY&base=USD",
+      "details": [
+        "Retrieves a list of all available currencies for conversion.",
+        "The default base currency is USD (United States Dollar).",
+        "The data source is Steam by default but can be customized.",
+        "Supports specifying a custom base currency using the `base` parameter.",
+        "Allows changing the data source via the `source` parameter."
+      ],
+      "usage_notes": [
+        "Use the `base` parameter to specify the currency code for conversion (e.g., `EUR`, `TRY`).",
+        "Optionally, set the `source` parameter to customize the data source."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "base",
+          "location": "query",
+          "required": false,
+          "description": "The base currency code for conversion. If not specified, USD is used as the default.",
+          "example": "EUR",
+          "default": "USD"
+        },
+        {
+          "name": "source",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the source of the currency data.",
+          "example": "Steam",
+          "default": "Steam"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the list of currencies is returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid or missing parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/currency/api/exchange",
+      "description": "💱 Retrieve Currency Exchange Rates",
+      "base_url_example": "https://www.steamwebapi.com/currency/api/exchange?key=YOUR_API_KEY&change=EUR&base=USD",
+      "details": [
+        "Provides the exchange rate for a specified currency.",
+        "Allows specifying the currency to convert to (`change` parameter) and the base currency (`base` parameter, default: USD).",
+        "Fetches accurate exchange rates.",
+        "Supports all major currency codes based on the ISO 4217 standard."
+      ],
+      "usage_notes": [
+        "Use the `change` parameter to specify the target currency (e.g., `EUR`, `TRY`, `RUB`).",
+        "Optionally, use the `base` parameter to specify the base currency (default is `USD`)."
+      ],
+      "example": "`change=EUR&base=USD`: Convert USD to EUR.",
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "change",
+          "location": "query",
+          "required": true,
+          "description": "The target currency code to exchange to. Supported values follow the ISO 4217 standard (e.g., EUR, TRY, RUB)."
+        },
+        {
+          "name": "base",
+          "location": "query",
+          "required": false,
+          "description": "The base currency for the exchange. Supported values follow the ISO 4217 standard.",
+          "default": "USD"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the exchange rate is returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid or missing parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    }
+  ]
+}
