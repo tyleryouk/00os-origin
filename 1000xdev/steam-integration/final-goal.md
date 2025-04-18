@@ -7,4 +7,9 @@
 
 3. Create next steps to finish this CS2 Skin Marketplace, which is run entirely through decentralized payments and seamless trading (no user information other than wallet addresses).
 
+4. Next steps include: 
+- Steam Authentication
+- User States
+- Seamless trading with trade-offer steamwebapi.com endpoints
+
 4. Create context for the Steam Web API integration so that we can continue to edit and refine for the future.
