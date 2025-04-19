@@ -2,94 +2,182 @@
 
 ## Implementation Overview
 
-| Component               | Status      | Progress |
-|-------------------------|-------------|----------|
-| Base Client             | In Progress | 50%      |
-| Item Services           | In Progress | 30%      |
-| Inventory Services      | In Progress | 20%      |
-| Trade Services          | In Progress | 10%      |
-| API Routes              | In Progress | 30%      |
-| Testing                 | Not Started | 0%       |
-| Frontend Integration    | Not Started | 0%       |
+| Component                  | Status      | Progress |
+|----------------------------|-------------|----------|
+| Base Client                | In Progress | 50%      |
+| Items Endpoints            | In Progress | 30%      |
+| Info Endpoints             | In Progress | 20%      |
+| Explore Endpoints          | Not Started | 0%       |
+| Profile Endpoints          | In Progress | 30%      |
+| Trade Endpoints            | In Progress | 10%      |
+| Account Endpoints          | Not Started | 0%       |
+| API Routes                 | In Progress | 30%      |
+| Testing                    | In Progress | 10%      |
+| Frontend Integration       | Not Started | 0%       |
 
 ## Implementation Details
 
-### Partially Implemented Endpoints
+### Current Implementation Status by API Category
 
-**Item Service**
-- `GET /api/steam/item/price` - Get current market price for an item ⚠️ (Needs testing)
-- `GET /api/steam/item/details` - Get detailed item information ⚠️ (Needs testing)
-- `GET /api/steam/item/search` - Search for items by name ⚠️ (Needs testing)
-- `GET /api/steam/item/price-history` - Get price history for an item ⚠️ (Needs testing)
-- `GET /api/steam/item/listings` - Get current market listings for an item ⚠️ (Needs testing)
-- `GET /api/steam/item/categories/{app_id}` - Get item categories for an app ⚠️ (Needs testing)
+#### Items Endpoints (Based on items-endpoints.json)
+- `GET /api/steam/items` - Get list of items ⚠️ (Being tested)
+- `GET /api/steam/item/{market_hash_name}` - Get item details ⚠️ (Being tested)
+- `GET /api/steam/item/history/{market_hash_name}` - Get price history ⚠️ (Being tested)
+- `GET /api/steam/item/float` - Get float information for an item ❌ (Not started)
+- `GET /api/steam/item/orders-activity/{item_nameid}` - Get realtime order activity ❌ (Not started)
 
-**Inventory Service**
-- `GET /api/steam/inventory/{user_id}` - Get user inventory ⚠️ (Needs testing)
-- `GET /api/steam/inventory/{user_id}/privacy` - Get inventory privacy settings ⚠️ (Needs testing)
-- `GET /api/steam/inventory/{user_id}/eligibility` - Get trade eligibility ⚠️ (Needs testing)
+#### Info Endpoints (Based on info-endpoints.json)
+- `GET /api/steam/info/items` - Get item information for a specific game ⚠️ (Being tested)
+- `GET /api/steam/info/steamid` - Convert SteamID formats ⚠️ (Being tested)
+- `GET /api/steam/info/markets` - Get supported market information ❌ (Not started)
+- `GET /api/steam/info/cs/containers` - Get CS2/CS:GO containers and collections ❌ (Not started)
+- `GET /api/steam/info/cs/collection/{slug}` - Get CS2/CS:GO collection details ❌ (Not started)
+- `GET /api/steam/complete/items` - Auto-complete for game items search ❌ (Not started)
+- `GET /api/steam/currency/list` - List available currencies for conversion ❌ (Not started)
+- `GET /api/steam/currency/exchange` - Retrieve currency exchange rates ❌ (Not started)
 
-**Trade API**
-- `GET /api/steam/trades/{user_id}` - List user's trades ⚠️ (Needs testing)
-- `GET /api/steam/trades/{trade_id}` - Get specific trade details ⚠️ (Needs testing)
-- `POST /api/steam/trades/create` - Create new trade offer ⚠️ (Needs testing)
-- `POST /api/steam/trades/{trade_id}/accept` - Accept trade offer ⚠️ (Needs testing)
-- `POST /api/steam/trades/{trade_id}/decline` - Decline trade offer ⚠️ (Needs testing)
+#### Explore Endpoints (Based on explore-endpoints.json)
+- `GET /api/steam/explore/random` - Get random Steam profiles ❌ (Not started)
+- `GET /api/steam/explore/toplist` - Get top profiles by inventory value ❌ (Not started)
+- `GET /api/steam/explore/last` - Get latest Steam profiles ❌ (Not started)
+- `GET /api/steam/explore/profile` - Search Steam profiles ❌ (Not started)
+
+#### Profile Endpoints (Based on profile-endpoints.json)
+- `GET /api/steam/profile/{steam_id}` - Get user profile ⚠️ (Being tested)
+- `GET /api/steam/friendlist/{steam_id}` - Get user's friendlist ⚠️ (Being tested)
+- `GET /api/steam/inventory/{steam_id}` - Get user inventory ⚠️ (Being tested)
+- `GET /api/steam/inventory/batch` - Batch fetch Steam inventories ❌ (Not started)
+- `GET /api/steam/inventory/history/{steam_id}` - Get inventory change history ❌ (Not started)
+- `GET /api/steam/inventory/privacy/{steam_id}` - Get inventory privacy settings ⚠️ (Being tested)
+- `GET /api/steam/inventory/eligibility/{steam_id}` - Get trade eligibility ⚠️ (Being tested)
+
+#### Trade Endpoints (Based on trade-offer-endpoints.json)
+- `POST /api/steam/trade/create` - Create a new trade offer ⚠️ (Being tested)
+- `PUT /api/steam/trade/accept` - Accept a trade offer ⚠️ (Being tested)
+- `POST /api/steam/trade/history` - Retrieve trade history ⚠️ (Being tested)
+- `POST /api/steam/trade/sent` - List sent trade offers ⚠️ (Being tested)
+- `POST /api/steam/trade/received` - Retrieve pending trade offers ⚠️ (Being tested)
+- `PUT /api/steam/trade/cancel` - Cancel a trade offer ❌ (Not started)
+- `PUT /api/steam/trade/decline` - Decline a trade offer ❌ (Not started)
+
+#### Account Endpoints (Based on account-endpoints.json)
+- `GET /api/steam/account/me` - Get account and usage statistics ❌ (Not started)
+- `POST /api/steam/steamloginsecure` - Automate Steam login process ❌ (Not started)
 
 ### Current Challenges
 
-1. **Implementation Status Verification**
-   - No testing has been performed yet
-   - Need to verify functionality of all implemented endpoints
-   - Initial testing expected to reveal multiple implementation issues
-   - Unknown number of bugs and errors to be discovered
+1. **Reorganization of Service Classes**
+   - Need to refactor current `InventoryClient` to move methods to appropriate category clients
+   - Must update all related test cases to reflect new organization
+   - Service classes need to align with steamwebapi.com endpoint categories as defined in the JSON schema files
+   - Ensure consistent interface across all client classes
 
-2. **Base Client Implementation**
+2. **Live Endpoint Testing**
+   - Testing now requires a running FastAPI server instance
+   - Need to create test files for each endpoint category (`test_live_items_routes.py`, etc.)
+   - Endpoints reachability and request/response formats being validated with real HTTP requests
+   - Need to diagnose issues found during live testing using application logs in `logs-main/steam/`
+
+3. **Base Client Implementation**
    - Authentication and API key handling needs verification
-   - Error handling implementation is untested
-   - Rate limiting strategy needs to be tested
+   - Error handling implementation needs to be standardized across all client instances
+   - Rate limiting strategy needs to be implemented and tested
+   - Cache handling needs to be consistent across client implementations
 
-3. **API Integration**
-   - Need to verify correct Steam API endpoint usage
+4. **API Integration**
+   - Need to verify correct Steam API endpoint usage based on JSON schema definitions
    - Data transformation between API responses and internal models needs validation
-   - Error handling for API responses needs testing
+   - Error handling for API responses needs to be standardized
 
 ### Next Implementation Priorities
 
-1.  **Resolve Backend Dependencies**:
-    *   Address the `pip install` error encountered previously to ensure the backend environment is correctly set up.
+1. **Reorganize Service Classes**:
+   - Complete refactoring of backend services according to the 6 SteamWebAPI.com endpoint categories
+   - Create dedicated client classes for each category: `ItemsClient`, `ProfileClient`, `TradeClient`, `InfoClient`, `ExploreClient`, `AccountClient`
+   - Move current `InventoryClient` methods to the `ProfileClient` since inventory endpoints are part of "Profile Endpoints"
+   - Ensure all client classes follow consistent patterns for error handling, caching, and rate limiting
 
-2.  **Live API Endpoint Testing (Backend)**:
-    *   Execute initial live tests against the `steamwebapi.com` endpoints (e.g., market data endpoints documented at @https://www.steamwebapi.com/api/doc/steam-market-api) using the existing tests in `back-end/tests/steam`.
-    *   Focus on verifying basic connectivity, authentication (`STEAM_WEB_API_KEY`), and response parsing for core service methods (Items, Inventory, Trade).
-    *   Identify and document any immediate issues found during live testing (e.g., endpoint mismatches, authentication errors, unexpected response formats).
+2. **Implement Live Endpoint Tests**:
+   - Create test files for each endpoint category as outlined in `tool-call-processes.md`
+   - Verify each endpoint's functionality through HTTP requests to a running FastAPI server
+   - Test response formats against expected structures defined in the JSON schema files
+   - Implement comprehensive error handling tests
 
-3.  **Populate and Refine Standardized Test Procedures**:
-    *   Based on the successful execution of live backend tests, populate `1000xdev/steam-integration/tool-call-processes.md` with the exact `run_terminal_cmd` tool calls used. This sequence **MUST** start with activating the virtual environment (e.g., `.\.gigaland\Scripts\activate`) followed by the pytest execution (e.g., `cd back-end && pytest -xvs tests/steam/...`).
-    *   Refine the commands in `tool-call-processes.md` to create a repeatable and reliable testing process for backend components.
+3. **Complete API Client Implementation**:
+   - Focus on implementing high-priority endpoints first (items, profile, trade)
+   - Implement remaining endpoints according to priority and category
+   - Ensure all clients handle rate limiting, caching, and error responses consistently
+   - Add comprehensive logging for all API interactions
 
-4.  **API Corrections & Enhancements (Post-Testing)**:
-    *   Address issues identified during the initial live testing phase.
-    *   Implement necessary error handling, validation, and caching based on real API interactions.
+4. **Frontend Integration**:
+   - Create TypeScript interfaces matching the API response structures
+   - Develop React components for displaying Steam data
+   - Implement state management for Steam-related data
+   - Create comprehensive UI for marketplace, inventory, and trading
 
 ## Recent Updates
 
-- **Current**: Successfully tested the external `steamwebapi.com` `/steam/api/items` endpoint via direct PowerShell request. Confirmed API key `LITUJ4KSYS7D1QC0` is valid and the endpoint returns expected item data. Beginning systematic testing of internal backend implementation (`back-end/tests/steam/`) to assess actual status.
-- **Planned**: Resolve internal `ModuleNotFoundError: No module named 'app.utils.config'` impacting backend tests.
-- **Planned**: Create comprehensive test fixtures and mock responses
+- **Current**: Reorganizing backend services to align with SteamWebAPI.com's endpoint categories. This includes moving inventory endpoints from `InventoryClient` to the `ProfileClient`.
+- **Planned**: Create comprehensive test framework that matches new organization structure.
+- **Planned**: Implement remaining endpoints according to priority and category.
 
-## Implementation Status
+## Implementation Status By Category
 
-### Backend Implementation
+### Items Endpoints Implementation
 
-| Component               | Status      | Details                                                       |
-|-------------------------|-------------|---------------------------------------------------------------|
-| Base Client             | In Progress | Basic structure implemented, but authentication, error handling, and retry logic need verification |
-| Item Services           | In Progress | Endpoints created but lack thorough validation and error handling |
-| Inventory Services      | In Progress | Basic endpoints exist but caching strategy and validation need improvement |
-| Trade Services          | In Progress | Initial endpoints defined but core functionality unverified |
-| API Routes              | In Progress | Routes defined but comprehensive documentation missing |
-| Testing                 | Not Started | No tests implemented or executed yet. Standardized tool calls to be defined in `tool-call-processes.md`. |
+| Endpoint                     | Status      | Details                                                       |
+|------------------------------|-------------|---------------------------------------------------------------|
+| /api/steam/items             | In Progress | Basic endpoint created, needs validation and error handling   |
+| /api/steam/item/{hash_name}  | In Progress | Endpoint exists but needs comprehensive testing               |
+| /api/steam/item/history      | In Progress | Price history endpoint implemented but needs validation        |
+| /api/steam/item/float        | Not Started | No implementation started                                     |
+
+### Info Endpoints Implementation
+
+| Endpoint                     | Status      | Details                                                       |
+|------------------------------|-------------|---------------------------------------------------------------|
+| /api/steam/info/items        | In Progress | Basic implementation completed, needs testing                 |
+| /api/steam/info/steamid      | In Progress | SteamID conversion implemented, needs validation              |
+| /api/steam/info/markets      | Not Started | No implementation started                                     |
+
+### Profile Endpoints Implementation
+
+| Endpoint                     | Status      | Details                                                       |
+|------------------------------|-------------|---------------------------------------------------------------|
+| /api/steam/profile           | In Progress | Basic profile endpoint implemented, needs testing             |
+| /api/steam/friendlist        | In Progress | Friends list retrieval needs validation                       |
+| /api/steam/inventory         | In Progress | Moving from InventoryClient to ProfileClient                  |
+| /api/steam/inventory/batch   | Not Started | No implementation started                                     |
+| /api/steam/inventory/history | Not Started | No implementation started                                     |
+| /api/steam/inventory/privacy | In Progress | Moving from InventoryClient to ProfileClient                  |
+| /api/steam/inventory/eligibility | In Progress | Moving from InventoryClient to ProfileClient             |
+
+### Trade Endpoints Implementation
+
+| Endpoint                     | Status      | Details                                                       |
+|------------------------------|-------------|---------------------------------------------------------------|
+| /api/steam/trades/list       | In Progress | Basic list endpoint implemented, needs testing                |
+| /api/steam/trades/details    | In Progress | Trade details endpoint needs validation                       |
+| /api/steam/trades/create     | In Progress | Create trade offer needs comprehensive testing                |
+| /api/steam/trades/accept     | In Progress | Trade acceptance needs validation                             |
+| /api/steam/trades/decline    | In Progress | Trade decline needs validation                                |
+| /api/steam/trades/cancel     | Not Started | No implementation started                                     |
+
+### Explore Endpoints Implementation
+
+| Endpoint                     | Status      | Details                                                       |
+|------------------------------|-------------|---------------------------------------------------------------|
+| /api/steam/explore/random    | Not Started | No implementation started                                     |
+| /api/steam/explore/toplist   | Not Started | No implementation started                                     |
+| /api/steam/explore/last      | Not Started | No implementation started                                     |
+| /api/steam/explore/profile   | Not Started | No implementation started                                     |
+
+### Account Endpoints Implementation
+
+| Endpoint                     | Status      | Details                                                       |
+|------------------------------|-------------|---------------------------------------------------------------|
+| /api/steam/account/me        | Not Started | No implementation started                                     |
+| /api/steam/steamloginsecure  | Not Started | No implementation started                                     |
 
 ### Frontend Integration
 
@@ -104,17 +192,22 @@
 
 ### Implementation Focus
 
-1. **Error Handling**
-   - Need to implement custom exceptions for different error types
-   - Need consistent error response format
-   - Proper logging for errors needs to be implemented
+1. **Reorganization**
+   - Complete service reorganization to match steamwebapi.com's endpoint categories
+   - Update all related routes and tests to match new organization
+   - Ensure consistent patterns across all client implementations
 
-2. **Caching Strategy**
-   - Need to implement Redis caching for API responses
-   - Need to define appropriate TTL for different data types
-   - Cache invalidation strategy needed
+2. **Error Handling**
+   - Implement custom exceptions for different error types
+   - Create consistent error response format
+   - Implement proper logging for errors
 
-3. **Data Validation**
-   - Need to improve validation with Pydantic models
-   - Need fixtures for testing data transformations
-   - Need proper handling for missing or inconsistent data
+3. **Caching Strategy**
+   - Implement Redis caching for API responses
+   - Define appropriate TTL for different data types
+   - Create cache invalidation strategy
+
+4. **Data Validation**
+   - Improve validation with Pydantic models
+   - Create fixtures for testing data transformations
+   - Implement proper handling for missing or inconsistent data
