@@ -61,9 +61,9 @@ The "core workflow files" refer to the primary documents guiding the development
 
 **Current Phase**: Core Client & Market Items (Phase 1)
 
-- **Backend**: Base API client and service implementations completed, currently focused on **comprehensive test coverage**
-- **Frontend**: Creating TypeScript interfaces and basic marketplace UI
-- **Next Milestone**: Fully tested backend implementation with robust error handling and caching
+- **Backend**: All core services (items, inventory, trade) and models have been implemented. Currently focused on **comprehensive test coverage** and optimization.
+- **Frontend**: Creating TypeScript interfaces and developing marketplace UI components.
+- **Next Milestone**: Production-ready backend implementation with thorough testing, error handling, and performance optimization.
 
 See [endpoint-integration-progress.md](./endpoint-integration-progress.md) for detailed status.
 
@@ -76,7 +76,14 @@ back-end/app/steam/         # <<< Root directory for Steam integration backend c
 ├── client.py              # Base Steam Web API client
 ├── exceptions.py          # Custom exception classes
 ├── models/                # Data models for Steam entities
-└── services/              # Service modules for API endpoints
+│   ├── item.py            # Item models
+│   ├── inventory.py       # Inventory models
+│   └── trade.py           # Trade models
+├── services/              # Service modules for API endpoints
+│   ├── items.py           # ItemsClient for market and item data
+│   ├── inventory.py       # InventoryClient for user inventories
+│   └── trade.py           # TradeClient for trade offers
+└── __init__.py            # Package exports
 ```
 
 ### Frontend (TypeScript)
@@ -117,12 +124,18 @@ back-end/tests/steam/
 ├── test_client.py          # Tests for SteamWebAPIClient
 ├── test_exceptions.py      # Tests for custom exceptions
 ├── models/                 # Tests for data models
+│   ├── test_item.py        # Tests for item models
+│   ├── test_inventory.py   # Tests for inventory models
+│   └── test_trade.py       # Tests for trade models
 └── services/               # Tests for service clients
+    ├── test_items.py       # Tests for ItemsClient
+    ├── test_inventory.py   # Tests for InventoryClient
+    └── test_trade.py       # Tests for TradeClient
 ```
 
 Current testing priorities:
 1. Complete unit test coverage for `SteamWebAPIClient`
-2. Implement service tests for `ItemsClient` and `InventoryClient`
+2. Implement service tests for `ItemsClient`, `InventoryClient`, and `TradeClient`
 3. Create comprehensive mock fixtures for API responses
 4. Test caching behavior and edge cases
 
@@ -168,7 +181,8 @@ Frontend testing will be implemented using:
 
 ## Current Focus
 
-- Implementing base Steam Web API client
-- Creating item endpoints for marketplace
-- Building basic marketplace UI components
-- Setting up proper error handling and caching
+- Implementing comprehensive test coverage for all backend components
+- Optimizing caching strategies and performance
+- Enhancing error handling and logging
+- Developing frontend UI components for marketplace and inventory
+- Creating TypeScript interfaces and service layer for API integration

@@ -44,19 +44,27 @@
 
 ## Current Development Focus
 
-We are currently in **Phase 1: Core Client & Market Items**, focusing on:
+We are currently in **Phase 1: Core Client & Market Items**, with the primary focus on:
 
 1. **Backend Priorities**:
-   - Implementing the base `SteamWebAPIClient` class
-   - Creating the `ItemsClient` module for market items
-   - Setting up error handling and logging
-   - Implementing caching with Redis
+   - ✅ Implementing the base `SteamWebAPIClient` class
+   - ✅ Creating the `ItemsClient` module for market items
+   - ✅ Implementing the `InventoryClient` module for inventory access
+   - ✅ Implementing the `TradeClient` module for trade offers
+   - 🔄 **Current Priority: Minimal Functional Testing**
+     - Basic verification of endpoint functionality
+     - Simple tests for successful API requests
+     - Basic error handling tests
+     - Verification of data model parsing
+   - 🔄 Finalizing API routes for frontend integration
+   - 🔄 Ensuring reliable endpoint functionality
 
 2. **Frontend Priorities**:
-   - Defining TypeScript interfaces for Steam items
-   - Implementing API service layer
-   - Creating basic marketplace UI components
-   - Setting up proper loading and error states
+   - 🔄 Defining TypeScript interfaces for Steam items, inventory, and trades
+   - 🔄 Implementing API service layer
+   - 🔄 Creating basic marketplace UI components
+   - 🔄 Setting up proper loading and error states
+   - 🔜 Connecting frontend components to backend API endpoints
 
 ## Development Approach
 
@@ -250,117 +258,59 @@ frontend/
 
 ## Testing Strategy
 
-### Comprehensive Testing Approach
+### Minimal Testing Approach
 
-The Steam API integration module requires thorough testing to ensure reliability, resilience, and correctness. Testing is a critical priority for the current development phase.
+For our MVP, we're implementing a simplified testing strategy focused on:
 
-#### Backend Testing Framework
+1. **Endpoint Functionality**: Verifying our API endpoints correctly communicate with the Steam Web API
+2. **Data Validation**: Ensuring response data is properly mapped to our models
 
-We use `pytest` for backend testing with the following components:
+#### Essential Tests
 
-1. **Unit Tests**:
-   - Test individual components in isolation
-   - Mock external dependencies and API calls
-   - Verify behavior across success and failure scenarios
-   - Test edge cases and error handling
-   - Ensure full coverage of all public methods
+**1. Base Client Tests:**
+- Test successful API requests with mocked responses
+- Test basic error handling for common error codes
+- Verify retry mechanism for server errors
 
-2. **Integration Tests**:
-   - Test interactions between components
-   - Verify data flow between layers
-   - Use mock HTTP servers to simulate Steam API responses
-   - Test caching behavior with real Redis instances
+**2. Service Tests:**
+- Test core data retrieval for each service (Items, Inventory, Trade)
+- Verify basic caching behavior
+- Test error response handling
 
-3. **Mock Strategy**:
-   - Create comprehensive mock responses based on documented API formats
-   - Store mock responses as fixtures in `tests/fixtures/`
-   - Simulate network errors, rate limiting, and server errors
-   - Test retry logic and backoff strategies
+**3. Data Model Tests:**
+- Verify API responses can be parsed into our Pydantic models
+- Test field mapping for renamed attributes
 
-#### Test Structure
+#### Implementation
 
-Tests follow this directory structure:
+We're using a streamlined testing approach with:
+- Simple mock responses based on documented API patterns
+- Basic tests for the critical path of each endpoint
+- Focus on functionality rather than exhaustive edge cases
+
+Test directory structure:
 ```
 back-end/tests/steam/
-├── conftest.py             # Common fixtures and helpers
+├── conftest.py             # Common fixtures for mocking
 ├── test_client.py          # Tests for SteamWebAPIClient
-├── test_exceptions.py      # Tests for custom exceptions
-├── models/
-│   ├── test_item.py        # Tests for item models
-│   └── test_inventory.py   # Tests for inventory models
-└── services/
-    ├── test_items.py       # Tests for ItemsClient service
-    └── test_inventory.py   # Tests for InventoryClient service
+├── models/                 # Basic model validation tests
+└── services/               # Service functionality tests
 ```
 
-Each test module should:
-- Test both success and failure scenarios
-- Cover edge cases and error handling
-- Test caching behavior
-- Verify proper model validation
-
-#### Code Coverage Goals
-
-- **Phase 1 Goal**: Achieve 90%+ code coverage for all implemented components
-- **Critical Focus Areas**:
-  - Error handling paths
-  - Retry logic
-  - Rate limiting behavior
-  - Cache consistency
-  - Model validation
-  - Edge cases in field mapping
-
-#### Frontend Testing
-
-1. **Component Tests**:
-   - Use React Testing Library for component testing
-   - Focus on user interaction and rendering
-   - Verify proper loading and error states
-   - Test accessibility
-
-2. **API Service Tests**:
-   - Use mock service workers (MSW) to intercept API calls
-   - Test error handling and retry logic
-   - Verify response transformation
-
-3. **End-to-End Tests**:
-   - Test critical user flows
-   - Verify data fetching and rendering
-   - Test market listing and item details views
-
-### Current Testing Priorities
-
-1. **Backend Testing (Critical)**:
-   - Comprehensive unit tests for `SteamWebAPIClient` (_highest priority_)
-   - Complete test coverage for `ItemsClient` and `InventoryClient`
-   - Test caching behavior with mock Redis
-   - Verify model validation for all data types
-
-2. **Mocking Infrastructure**:
-   - Create comprehensive mock responses for all API endpoints
-   - Implement mock HTTP server for integration tests
-   - Build test fixtures for common scenarios
-
-3. **Frontend Testing (When Components Completed)**:
-   - Set up testing infrastructure for Steam components
-   - Create mock service workers for API testing
-   - Implement component tests for marketplace UI
-
-See the dedicated [Backend Testing Strategy](./back-end-context/testing.md) document for detailed information on framework, component testing approaches, mocking strategies, and the testing workflow.
+See the dedicated [Backend Testing Strategy](./back-end-context/testing.md) for more details on this simplified approach.
 
 ## Error Handling Strategy
 
 ### Backend Errors
-- Use custom exception classes
-- Implement retries with exponential backoff
-- Log all errors with context
-- Return consistent error responses
+- Use custom exception classes for key error types
+- Implement basic retries for server errors
+- Log errors with contextual information
+- Return consistent fallback values on failure
 
 ### Frontend Errors
-- Implement error boundaries for components
+- Implement error states for components
 - Create user-friendly error messages
-- Add retry logic for transient failures
-- Implement fallback UI for failed data fetching
+- Add simple fallback UI for failed requests
 
 ## Development Workflow
 
@@ -372,8 +322,8 @@ See the dedicated [Backend Testing Strategy](./back-end-context/testing.md) docu
 2. **Backend Implementation**:
    - Create base client and error handling
    - Implement service modules for each API area
-   - Add caching and performance optimizations
-   - Write tests for all functionality
+   - Add caching for performance
+   - Write minimal tests to verify functionality
 
 3. **Frontend Implementation**:
    - Define TypeScript interfaces
@@ -383,20 +333,19 @@ See the dedicated [Backend Testing Strategy](./back-end-context/testing.md) docu
 
 4. **Integration and Testing**:
    - Connect frontend to backend endpoints
-   - Test full flow from API to UI
-   - Optimize performance and fix bugs
-   - Add proper error handling
+   - Test basic user flows
+   - Fix critical bugs
+   - Ensure reliable endpoint functionality
 
 5. **Documentation**:
    - Update progress tracking
-   - Document known issues and limitations
-   - Create usage examples for components
-   - Update workflow documentation
+   - Document endpoint interfaces
+   - Create usage examples for frontend team
 
 ## Development Principles
 
-1. **Consistency**: Follow established patterns and naming conventions
+1. **Functionality First**: Focus on getting core endpoints working reliably
 2. **Type Safety**: Use strong typing in both frontend and backend
-3. **Error Resilience**: Implement robust error handling and recovery
-4. **Performance**: Optimize for speed with proper caching and data fetching
-5. **User Experience**: Create intuitive UI with proper loading and error states
+3. **Basic Error Handling**: Implement reasonable error recovery for common issues
+4. **Performance**: Use caching to avoid rate limits and improve speed
+5. **User Experience**: Create intuitive UI with appropriate loading and error states
