@@ -8,12 +8,14 @@
 
 | Component                 | Status         | Details                                                                          | Priority |
 |---------------------------|----------------|----------------------------------------------------------------------------------|----------|
-| Base Steam Web API Client | 🔄 In Progress | Initial structure created (`client.py`) with request/retry/error handling logic.   | HIGH     |
+| Base Steam Web API Client | ✅ Completed   | Implemented with proper error handling, retries, rate limiting, and request handling. | HIGH     |
 | Custom Exceptions         | ✅ Completed   | Exception hierarchy defined and implemented (`exceptions.py`).                   | HIGH     |
-| Items Service             | 🔄 In Progress | Initial structure created (`services/items.py`) with placeholder methods.        | HIGH     |
-| Caching Layer             | 🔜 Planned     | Placeholder (`MockCache`) used; needs integration with `app.utils.redis_config`. | MEDIUM   |
-| Models - Steam Items      | ✅ Completed   | Initial Pydantic models defined (`models/item.py`).                              | HIGH     |
-| Test Infrastructure       | 🔄 In Progress | Testing strategy defined ([testing.md](./back-end-context/testing.md)); tests pending. | MEDIUM   |
+| Caching Layer             | ✅ Completed   | Implemented `RedisCache` with adaptive TTL, integrated with app.utils.redis_config. | MEDIUM   |
+| Models - Steam Items      | ✅ Completed   | Pydantic models defined (`models/item.py`).                                     | HIGH     |
+| Models - Steam Inventory  | ✅ Completed   | Pydantic models for inventory, trade eligibility, and privacy settings (`models/inventory.py`). | HIGH |
+| Items Service             | ✅ Completed   | Implemented ItemsClient with market listings and price history methods.         | HIGH     |
+| Inventory Service         | ✅ Completed   | Implemented InventoryClient with inventory, trade eligibility, and privacy methods. | HIGH |
+| Test Infrastructure       | 🔄 In Progress | Testing strategy defined ([testing.md](./back-end-context/testing.md)); implementation in progress. | HIGH   |
 
 #### Frontend Implementation
 
@@ -27,23 +29,31 @@
 
 ## Immediate Next Steps
 
-### Backend (Priority)
+### Backend
 
-1.  ⏩ **Refine `SteamWebAPIClient`:**
-    *   Integrate with `app.utils.logger`.
-    *   Implement rate limit header parsing & handling (`_update_rate_limit`).
-    *   Verify authentication header format.
-    *   Add request timeouts.
+1.  ⏩ **Implement Tests (TOP PRIORITY):**
+    *   **Unit Tests:**
+        *   Create comprehensive unit tests for `SteamWebAPIClient` with mocked HTTP responses
+        *   Implement tests for all exception classes and their behavior
+        *   Add model validation tests for all Pydantic models in `models/`
+        *   Develop service tests for all methods in `ItemsClient` and `InventoryClient`
+        
+    *   **Test Infrastructure:**
+        *   Implement test fixtures for common API responses in `tests/fixtures/`
+        *   Create mock HTTP server for integration testing
+        *   Set up Redis mock for testing caching behavior
+        *   Configure test environment with appropriate environment variables
+        
+    *   **Integration Tests:**
+        *   Implement tests for full service flow from API call to model validation
+        *   Test error handling and recovery scenarios
+        *   Verify caching behavior with Redis
 
-2.  ⏩ **Implement Caching:**
-    *   Replace `MockCache` in `ItemsClient` with Redis caching from `app.utils`.
-
-3.  ⏩ **Refine `ItemsClient` Methods:**
-    *   Verify correct API endpoint paths and parameters from research.
-    *   Refine Pydantic models based on actual API responses.
-
-4.  ⏩ **Implement Tests:**
-    *   Write unit tests for exceptions, models, client, and services based on [testing.md](./back-end-context/testing.md).
+2.  ⏩ **Create Trade Service:**
+    *   Implement `TradeClient` with trade offer creation, management, and state tracking.
+    *   Add models for trade offers and trade history.
+    *   Add caching strategy for trade-related endpoints.
+    *   Implement appropriate tests alongside development.
 
 ### Frontend
 
@@ -64,9 +74,9 @@
 
 ## Current Challenges/Blockers
 
-- **API Rate Limiting**: Need to implement proper rate limiting protection in the client
+- **API Response Mapping**: Ensuring all API responses can be properly mapped to our internal models
 - **Authentication Flow**: Researching best approach for Steam OpenID integration
-- **Data Mapping**: Ensuring consistent format between Steam API responses and GigaSwap models
+- **Error Handling Edge Cases**: Need to handle responses from the Steam API in various error states
 
 ## Completed Tasks
 
@@ -77,6 +87,12 @@
 - ✅ Updated core workflow files with correct paths (`back-end/app/steam/`)
 - ✅ Created initial backend structure: `client.py`, `exceptions.py`, `services/items.py`, `models/item.py`
 - ✅ Defined backend testing strategy in [testing.md](./back-end-context/testing.md)
+- ✅ Implemented proper rate limit handling in `SteamWebAPIClient`
+- ✅ Integrated with app's logger and Redis for caching
+- ✅ Added proper asynchronous request handling with timeouts
+- ✅ Implemented inventory models and service with caching
+- ✅ Added field name adaptation for API response inconsistencies
+- ✅ Created module structure with `__init__.py` files
 
 ## Next Phase Planning (Phase 2: Authentication & Inventory)
 
@@ -87,7 +103,8 @@
 ## Integration Notes
 
 - API responses need to be cached to avoid rate limiting issues
-- Error handling strategy needs to account for intermittent Steam API availability
+- Error handling strategy accounts for intermittent Steam API availability 
+- Field name mapping has been implemented to handle inconsistencies in API responses
 - Need to map Steam item attributes to blockchain token properties for later integration
 
 ## API Documentation Reference

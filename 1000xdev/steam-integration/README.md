@@ -61,9 +61,9 @@ The "core workflow files" refer to the primary documents guiding the development
 
 **Current Phase**: Core Client & Market Items (Phase 1)
 
-- **Backend**: Implementing basic Steam Web API client and item endpoints
+- **Backend**: Base API client and service implementations completed, currently focused on **comprehensive test coverage**
 - **Frontend**: Creating TypeScript interfaces and basic marketplace UI
-- **Next Milestone**: Basic marketplace with item browsing functionality
+- **Next Milestone**: Fully tested backend implementation with robust error handling and caching
 
 See [endpoint-integration-progress.md](./endpoint-integration-progress.md) for detailed status.
 
@@ -99,7 +99,41 @@ frontend/src/
 
 ## Testing
 
-The backend testing strategy, utilizing `pytest` and mocking, is detailed in the [Backend Testing Strategy](./back-end-context/testing.md) document. Tests for the Steam integration module reside in `back-end/tests/steam/`.
+Testing is the current primary focus of development, ensuring that the Steam API integration is robust, reliable, and resilient to various failure scenarios.
+
+### Backend Testing
+
+The backend Steam integration module is being tested using a comprehensive approach with `pytest`:
+
+- **Unit Tests**: Testing individual components in isolation with mocked dependencies
+- **Integration Tests**: Testing interactions between components with mock HTTP servers
+- **Mock Strategy**: Using fixtures based on documented API formats
+
+The test suite is organized as follows:
+
+```
+back-end/tests/steam/
+├── conftest.py             # Common fixtures and helpers
+├── test_client.py          # Tests for SteamWebAPIClient
+├── test_exceptions.py      # Tests for custom exceptions
+├── models/                 # Tests for data models
+└── services/               # Tests for service clients
+```
+
+Current testing priorities:
+1. Complete unit test coverage for `SteamWebAPIClient`
+2. Implement service tests for `ItemsClient` and `InventoryClient`
+3. Create comprehensive mock fixtures for API responses
+4. Test caching behavior and edge cases
+
+For a detailed description of the testing strategy, see [Backend Testing Strategy](./back-end-context/testing.md).
+
+### Frontend Testing
+
+Frontend testing will be implemented using:
+- **React Testing Library**: For component testing
+- **Mock Service Worker**: For API service testing
+- **Cypress**: For end-to-end testing of critical flows
 
 ## Getting Started
 

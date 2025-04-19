@@ -250,19 +250,103 @@ frontend/
 
 ## Testing Strategy
 
+### Comprehensive Testing Approach
+
+The Steam API integration module requires thorough testing to ensure reliability, resilience, and correctness. Testing is a critical priority for the current development phase.
+
+#### Backend Testing Framework
+
+We use `pytest` for backend testing with the following components:
+
+1. **Unit Tests**:
+   - Test individual components in isolation
+   - Mock external dependencies and API calls
+   - Verify behavior across success and failure scenarios
+   - Test edge cases and error handling
+   - Ensure full coverage of all public methods
+
+2. **Integration Tests**:
+   - Test interactions between components
+   - Verify data flow between layers
+   - Use mock HTTP servers to simulate Steam API responses
+   - Test caching behavior with real Redis instances
+
+3. **Mock Strategy**:
+   - Create comprehensive mock responses based on documented API formats
+   - Store mock responses as fixtures in `tests/fixtures/`
+   - Simulate network errors, rate limiting, and server errors
+   - Test retry logic and backoff strategies
+
+#### Test Structure
+
+Tests follow this directory structure:
+```
+back-end/tests/steam/
+├── conftest.py             # Common fixtures and helpers
+├── test_client.py          # Tests for SteamWebAPIClient
+├── test_exceptions.py      # Tests for custom exceptions
+├── models/
+│   ├── test_item.py        # Tests for item models
+│   └── test_inventory.py   # Tests for inventory models
+└── services/
+    ├── test_items.py       # Tests for ItemsClient service
+    └── test_inventory.py   # Tests for InventoryClient service
+```
+
+Each test module should:
+- Test both success and failure scenarios
+- Cover edge cases and error handling
+- Test caching behavior
+- Verify proper model validation
+
+#### Code Coverage Goals
+
+- **Phase 1 Goal**: Achieve 90%+ code coverage for all implemented components
+- **Critical Focus Areas**:
+  - Error handling paths
+  - Retry logic
+  - Rate limiting behavior
+  - Cache consistency
+  - Model validation
+  - Edge cases in field mapping
+
+#### Frontend Testing
+
+1. **Component Tests**:
+   - Use React Testing Library for component testing
+   - Focus on user interaction and rendering
+   - Verify proper loading and error states
+   - Test accessibility
+
+2. **API Service Tests**:
+   - Use mock service workers (MSW) to intercept API calls
+   - Test error handling and retry logic
+   - Verify response transformation
+
+3. **End-to-End Tests**:
+   - Test critical user flows
+   - Verify data fetching and rendering
+   - Test market listing and item details views
+
+### Current Testing Priorities
+
+1. **Backend Testing (Critical)**:
+   - Comprehensive unit tests for `SteamWebAPIClient` (_highest priority_)
+   - Complete test coverage for `ItemsClient` and `InventoryClient`
+   - Test caching behavior with mock Redis
+   - Verify model validation for all data types
+
+2. **Mocking Infrastructure**:
+   - Create comprehensive mock responses for all API endpoints
+   - Implement mock HTTP server for integration tests
+   - Build test fixtures for common scenarios
+
+3. **Frontend Testing (When Components Completed)**:
+   - Set up testing infrastructure for Steam components
+   - Create mock service workers for API testing
+   - Implement component tests for marketplace UI
+
 See the dedicated [Backend Testing Strategy](./back-end-context/testing.md) document for detailed information on framework, component testing approaches, mocking strategies, and the testing workflow.
-
-### Backend Testing
-- Unit tests for each client method
-- Integration tests for API communication
-- Mock responses based on documented formats
-- Test caching behavior and error handling
-
-### Frontend Testing
-- Component tests for UI elements
-- Integration tests for data fetching
-- E2E tests for critical flows
-- Mock API responses for consistent testing
 
 ## Error Handling Strategy
 
