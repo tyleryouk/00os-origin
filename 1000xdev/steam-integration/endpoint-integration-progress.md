@@ -6,14 +6,14 @@
 
 #### Backend Implementation
 
-| Component | Status | Details | Priority |
-|-----------|--------|---------|----------|
-| Base Steam Web API Client | 🔄 In Progress | Implementing core client with authentication, error handling, and response parsing | HIGH |
-| Custom Exceptions | 🔄 In Progress | Creating exception hierarchy for API errors | HIGH |
-| Items Service | 🔜 Planned | Service for market item operations | HIGH |
-| Caching Layer | 🔜 Planned | Redis-based caching for API responses | MEDIUM |
-| Models - Steam Items | 🔄 In Progress | Data models for CS2 items and listings | HIGH |
-| Test Infrastructure | 🔜 Planned | Unit and integration test setup | MEDIUM |
+| Component                 | Status         | Details                                                                          | Priority |
+|---------------------------|----------------|----------------------------------------------------------------------------------|----------|
+| Base Steam Web API Client | 🔄 In Progress | Initial structure created (`client.py`) with request/retry/error handling logic.   | HIGH     |
+| Custom Exceptions         | ✅ Completed   | Exception hierarchy defined and implemented (`exceptions.py`).                   | HIGH     |
+| Items Service             | 🔄 In Progress | Initial structure created (`services/items.py`) with placeholder methods.        | HIGH     |
+| Caching Layer             | 🔜 Planned     | Placeholder (`MockCache`) used; needs integration with `app.utils.redis_config`. | MEDIUM   |
+| Models - Steam Items      | ✅ Completed   | Initial Pydantic models defined (`models/item.py`).                              | HIGH     |
+| Test Infrastructure       | 🔄 In Progress | Testing strategy defined ([testing.md](./back-end-context/testing.md)); tests pending. | MEDIUM   |
 
 #### Frontend Implementation
 
@@ -29,21 +29,21 @@
 
 ### Backend (Priority)
 
-1. ⏩ Complete the base `SteamWebAPIClient` class with:
-   - Proper authentication handling
-   - Request/response logging
-   - Rate limiting protection
-   - Error handling and retry logic
+1.  ⏩ **Refine `SteamWebAPIClient`:**
+    *   Integrate with `app.utils.logger`.
+    *   Implement rate limit header parsing & handling (`_update_rate_limit`).
+    *   Verify authentication header format.
+    *   Add request timeouts.
 
-2. ⏩ Finish the custom exceptions module with:
-   - Base `SteamAPIException` class
-   - Specific exception types (authentication, rate limit, etc.)
-   - Error code mapping
+2.  ⏩ **Implement Caching:**
+    *   Replace `MockCache` in `ItemsClient` with Redis caching from `app.utils`.
 
-3. ⏩ Implement the `ItemsService` with:
-   - Market listings retrieval
-   - Item details lookup
-   - Price history endpoints
+3.  ⏩ **Refine `ItemsClient` Methods:**
+    *   Verify correct API endpoint paths and parameters from research.
+    *   Refine Pydantic models based on actual API responses.
+
+4.  ⏩ **Implement Tests:**
+    *   Write unit tests for exceptions, models, client, and services based on [testing.md](./back-end-context/testing.md).
 
 ### Frontend
 
@@ -74,6 +74,9 @@
 - ✅ Documented all relevant endpoints in `/steam-web-api-research/`
 - ✅ Identified core models needed for item marketplace
 - ✅ Defined implementation workflow in `workflow.md`
+- ✅ Updated core workflow files with correct paths (`back-end/app/steam/`)
+- ✅ Created initial backend structure: `client.py`, `exceptions.py`, `services/items.py`, `models/item.py`
+- ✅ Defined backend testing strategy in [testing.md](./back-end-context/testing.md)
 
 ## Next Phase Planning (Phase 2: Authentication & Inventory)
 

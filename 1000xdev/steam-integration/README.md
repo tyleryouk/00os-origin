@@ -72,7 +72,7 @@ See [endpoint-integration-progress.md](./endpoint-integration-progress.md) for d
 ### Backend (Python)
 
 ```
-backend/steam/
+back-end/app/steam/         # <<< Root directory for Steam integration backend code
 ├── client.py              # Base Steam Web API client
 ├── exceptions.py          # Custom exception classes
 ├── models/                # Data models for Steam entities
@@ -94,7 +94,12 @@ frontend/src/
 1. Follow the implementation phases outlined in [workflow.md](./workflow.md)
 2. Update progress in [endpoint-integration-progress.md](./endpoint-integration-progress.md)
 3. Reference API documentation in [steam-web-api-research/](./steam-web-api-research/)
-4. Work toward goals defined in [final-goal.md](./final-goal.md)
+4. Reference backend testing strategy and workflow in [back-end-context/testing.md](./back-end-context/testing.md)
+5. Work toward goals defined in [final-goal.md](./final-goal.md)
+
+## Testing
+
+The backend testing strategy, utilizing `pytest` and mocking, is detailed in the [Backend Testing Strategy](./back-end-context/testing.md) document. Tests for the Steam integration module reside in `back-end/tests/steam/`.
 
 ## Getting Started
 
@@ -115,7 +120,7 @@ frontend/src/
 
 2. Backend development:
    ```
-   cd backend
+   cd back-end
    pip install -r requirements.txt
    # Start development server
    ```
