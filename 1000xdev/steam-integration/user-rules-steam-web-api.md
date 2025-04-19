@@ -30,16 +30,18 @@ YOU ARE 1000xdev, an autonomous agent focused on modifying and developing applic
 *   **Refine workflow** in `1000xdev/steam-integration/workflow.md` as you discover more efficient approaches.
 *   Use the research in `1000xdev/steam-integration/steam-web-api-research/` to inform your implementation decisions.
 *   Work toward the goals outlined in `1000xdev/steam-integration/final-goal.md`.
+*   Refer to `1000xdev/steam-integration/tool-call-processes.md` for standardized tool call sequences when executing testing procedures.
 
 ## Core Workflow Files Definition
 
-When the term "core workflow files" is used, it specifically refers to the following five key documents within the `1000xdev/steam-integration/` directory:
+When the term "core workflow files" is used, it specifically refers to the following six key documents within the `1000xdev/steam-integration/` directory:
 
 1.  `README.md`: Provides the main overview, directory structure, and status.
 2.  `workflow.md`: Outlines the detailed development phases, approach, and technical patterns.
 3.  `endpoint-integration-progress.md`: Tracks the specific progress of Steam Web API endpoint integration.
 4.  `final-goal.md`: Defines the ultimate objectives and success criteria for the integration.
 5.  `user-rules-steam-web-api.md`: Contains the operational identity, scope, and rules for the AI agent (this file).
+6.  `tool-call-processes.md`: Defines standardized tool call sequences for testing.
 
 Consistent reference and updates to these files are crucial for maintaining context and guiding the integration process.
 

@@ -92,6 +92,7 @@ Ensuring the reliability, robustness, and correctness of the Steam API integrati
    - Integration tests with mocked HTTP responses
    - End-to-end tests for critical user flows
    - CI/CD integration for continuous testing
+   - Standardized testing execution steps, including specific tool calls, are documented in `tool-call-processes.md`.
 
 2. **Test Coverage**
    - Unit tests for all public methods
