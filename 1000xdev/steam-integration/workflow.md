@@ -64,26 +64,28 @@ We are currently in **Phase 1: Core Client & Market Items**, focusing on:
 
 #### API Client Architecture
 ```
-backend/
-  └── steam/
-      ├── client.py              # Base SteamWebAPIClient
-      ├── exceptions.py          # Custom exception classes
-      ├── models/                # Data models
-      │   ├── __init__.py
-      │   ├── item.py            # Item models
-      │   ├── inventory.py       # Inventory models
-      │   └── trade.py           # Trade models
-      └── services/              # Service modules
-          ├── __init__.py
-          ├── items.py           # ItemsClient
-          ├── inventory.py       # InventoryClient
-          └── trades.py          # TradesClient
+back-end/
+  └── app/
+      └── steam/                 # Root directory for Steam integration backend code
+          ├── client.py              # Base SteamWebAPIClient
+          ├── exceptions.py          # Custom exception classes
+          ├── models/                # Data models
+          │   ├── __init__.py
+          │   ├── item.py            # Item models
+          │   ├── inventory.py       # Inventory models
+          │   └── trade.py           # Trade models
+          └── services/              # Service modules
+              ├── __init__.py
+              ├── items.py           # ItemsClient
+              ├── inventory.py       # InventoryClient
+              └── trades.py          # TradesClient
 ```
 
 #### Implementation Pattern
 
 1. **Base Client**:
    ```python
+   # In back-end/app/steam/client.py
    class SteamWebAPIClient:
        def __init__(self, api_key, base_url="https://api.steamwebapi.com"):
            self.api_key = api_key
@@ -107,6 +109,7 @@ backend/
 
 2. **Service Modules**:
    ```python
+   # In back-end/app/steam/services/items.py (or similar)
    class ItemsClient:
        def __init__(self, client):
            self.client = client
@@ -130,6 +133,7 @@ backend/
 
 3. **Data Models**:
    ```python
+   # In back-end/app/steam/models/item.py (or similar)
    @dataclass
    class Item:
        id: str
@@ -245,6 +249,8 @@ frontend/
    ```
 
 ## Testing Strategy
+
+See the dedicated [Backend Testing Strategy](./back-end-context/testing.md) document for detailed information on framework, component testing approaches, mocking strategies, and the testing workflow.
 
 ### Backend Testing
 - Unit tests for each client method
