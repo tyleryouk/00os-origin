@@ -64,9 +64,9 @@ Ensuring the reliability, robustness, and correctness of the Steam API integrati
 ### Testing Goals
 
 1. **Backend Testing**
-   - Achieve 90%+ code coverage for all Steam integration components
-   - Verify correct behavior across all possible API response scenarios
-   - Ensure proper error handling for all edge cases and failure conditions
+   - Verify endpoint functionality through live HTTP requests to a running FastAPI instance
+   - Validate correct behavior of API endpoints and response formats
+   - Ensure proper error handling for edge cases and failure conditions
    - Validate caching behavior and performance optimizations
    - Test resiliency against network issues and API rate limiting
 
@@ -87,26 +87,27 @@ Ensuring the reliability, robustness, and correctness of the Steam API integrati
 ### Testing Requirements
 
 1. **Test Infrastructure**
-   - Complete unit test suite using pytest for backend components
+   - Live endpoint tests using `requests` library to test running FastAPI instance
+   - Running FastAPI server required as prerequisite for testing
+   - Focus on validating endpoint reachability, response formats, and data correctness
    - Component testing with React Testing Library for frontend
-   - Integration tests with mocked HTTP responses
    - End-to-end tests for critical user flows
    - CI/CD integration for continuous testing
    - Standardized testing execution steps, including specific tool calls, are documented in `tool-call-processes.md`.
 
 2. **Test Coverage**
-   - Unit tests for all public methods
+   - Tests for all public API endpoints
    - Tests for all error handling paths
-   - Validation of all model constraints
+   - Validation of response formats
    - Tests for edge cases in API responses
    - Performance testing for response time requirements
 
-3. **Mock Strategy**
-   - Comprehensive mock responses for all API endpoints
-   - Simulation of network failures and delays
-   - Modeling of rate limiting scenarios
-   - Simulation of various authentication states
-   - Representation of all possible inventory states
+3. **Testing Approach**
+   - Use a running instance of the FastAPI application for testing
+   - Make real HTTP requests using the `requests` library
+   - No mocking of FastAPI's TestClient
+   - Focus on testing as an external client would
+   - Check application logs for error diagnostics
 
 ## Implementation Phases
 
@@ -121,24 +122,24 @@ Ensuring the reliability, robustness, and correctness of the Steam API integrati
 - [ ] Complete comprehensive test suite for all implemented components
 
 ### Phase 2: Marketplace Foundations
-- [x] Implement `/steam/api/items` endpoint from SteamWebAPI.com
+- [ ] Implement `/steam/api/items` endpoint from SteamWebAPI.com
 - [ ] Develop `/market` page with hardcoded list of popular CS2 skins
 - [ ] Implement sorting by item_group, item_type, and item_name
 - [ ] Create basic item display components
 - [ ] Connect frontend components to backend API endpoints
 
 ### Phase 3: User Authentication & Inventory
-- [x] Implement Steam OpenID authentication
-- [x] Develop user session management
-- [x] Create inventory retrieval and display API endpoints
-- [x] Build caching system for inventory data
+- [ ] Implement Steam OpenID authentication
+- [ ] Develop user session management
+- [ ] Create inventory retrieval and display API endpoints
+- [ ] Build caching system for inventory data
 - [ ] Create inventory UI components
 - [ ] Implement inventory filtering and sorting
 - [ ] Add inventory management features
 
 ### Phase 4: Trading System
-- [x] Implement trade offer creation and management
-- [x] Develop trade state handling
+- [ ] Implement trade offer creation and management
+- [ ] Develop trade state handling
 - [ ] Create trade offer UI components
 - [ ] Build trade history tracking
 - [ ] Implement real-time trade notifications

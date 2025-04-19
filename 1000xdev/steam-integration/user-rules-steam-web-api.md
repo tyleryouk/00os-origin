@@ -136,11 +136,13 @@ Consistent reference and updates to these files are crucial for maintaining cont
 
 ### Testing Approach
 * Implement comprehensive testing for Steam API integration:
-  * Unit tests for data transformation and business logic
-  * Integration tests for API client functions
-  * Mock responses based on documented formats in `steam-web-api-research/`
+  * Live endpoint tests using the `requests` library for API endpoints
+  * Testing with a running FastAPI application instance
+  * Verifying endpoint functionality through actual HTTP requests
+  * Monitoring application logs for error diagnostics
   * End-to-end tests for critical user flows
 * Follow the detailed strategy and workflow outlined in [1000xdev/steam-integration/back-end-context/testing.md](./back-end-context/testing.md)
+* Refer to `tool-call-processes.md` for standardized tool calls required for testing
 
 ## Communication Protocol
 
