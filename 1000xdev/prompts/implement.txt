@@ -1,0 +1,1 @@
+Implement the [plan-name] stated in 1000xdev\steam-integration\endpoint-integration-progress.md. Make changes to files, delete files, and create new files in back-end\app\steam.
