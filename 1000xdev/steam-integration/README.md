@@ -43,6 +43,7 @@ This project implements Steam Web API integration for GigaSwap, creating a CS2 s
 ├── endpoint-integration-progress.md    # Current implementation status
 ├── final-goal.md                       # Project success criteria
 ├── README.md                           # This file
+├── tool-call-processes.md              # Standardized tool calls for testing
 ├── user-rules-steam-web-api.md         # Agent identity and rules
 └── workflow.md                         # Development workflow and patterns
 ```
@@ -56,6 +57,7 @@ The "core workflow files" refer to the primary documents guiding the development
 3.  `endpoint-integration-progress.md`: Tracks the status of endpoint implementation.
 4.  `final-goal.md`: Defines the overall objectives and success criteria.
 5.  `user-rules-steam-web-api.md`: Specifies the operational identity and rules for the AI agent working on this integration.
+6.  `tool-call-processes.md`: Defines standardized tool call sequences for testing.
 
 ## Implementation Status
 
@@ -106,38 +108,32 @@ frontend/src/
 
 ## Testing
 
-Testing is the current primary focus of development, ensuring that the Steam API integration is robust, reliable, and resilient to various failure scenarios.
+Testing is the current primary focus of development, ensuring that the Steam API integration is robust, reliable, and resilient to various failure scenarios. Standardized testing procedures, including specific tool calls required for execution, are defined in `tool-call-processes.md`.
 
 ### Backend Testing
 
-The backend Steam integration module is being tested using a comprehensive approach with `pytest`:
+The backend Steam integration module is being tested using a **live endpoint testing approach**:
 
-- **Unit Tests**: Testing individual components in isolation with mocked dependencies
-- **Integration Tests**: Testing interactions between components with mock HTTP servers
-- **Mock Strategy**: Using fixtures based on documented API formats
+- **Live Endpoint Testing**: Tests interact with a running local FastAPI server
+- **No Mocking**: Tests use actual HTTP requests via the `requests` library, not FastAPI's `TestClient`
+- **Prerequisites**: The backend FastAPI server must be running locally before executing the tests
 
 The test suite is organized as follows:
 
 ```
 back-end/tests/steam/
-├── conftest.py             # Common fixtures and helpers
-├── test_client.py          # Tests for SteamWebAPIClient
-├── test_exceptions.py      # Tests for custom exceptions
-├── models/                 # Tests for data models
-│   ├── test_item.py        # Tests for item models
-│   ├── test_inventory.py   # Tests for inventory models
-│   └── test_trade.py       # Tests for trade models
-└── services/               # Tests for service clients
-    ├── test_items.py       # Tests for ItemsClient
-    ├── test_inventory.py   # Tests for InventoryClient
-    └── test_trade.py       # Tests for TradeClient
+├── README.md                      # Testing documentation and approach
+├── conftest.py                    # Common fixtures and helpers
+├── test_live_items_routes.py      # Tests for items-related endpoints
+├── test_live_inventory_routes.py  # Tests for inventory-related endpoints (planned)
+└── test_live_trade_routes.py      # Tests for trade-related endpoints (planned)
 ```
 
 Current testing priorities:
-1. Complete unit test coverage for `SteamWebAPIClient`
-2. Implement service tests for `ItemsClient`, `InventoryClient`, and `TradeClient`
-3. Create comprehensive mock fixtures for API responses
-4. Test caching behavior and edge cases
+1. Verify endpoint reachability, request/response formats, and status codes
+2. Validate basic data correctness based on live interactions or cached data
+3. Incrementally add more live tests for various Steam API endpoints
+4. Identify and fix issues within the running application's logic
 
 For a detailed description of the testing strategy, see [Backend Testing Strategy](./back-end-context/testing.md).
 
@@ -162,7 +158,7 @@ Frontend testing will be implemented using:
 1. Set up environment variables:
    ```
    STEAM_WEB_API_KEY=your_api_key
-   STEAM_API_BASE_URL=https://api.steamwebapi.com
+   STEAM_API_BASE_URL=https://steamwebapi.com
    ```
 
 2. Backend development:
