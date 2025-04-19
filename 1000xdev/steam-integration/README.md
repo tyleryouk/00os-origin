@@ -1,151 +1,135 @@
-# Steam Web API Integration
+# Steam Web API Integration for GigaSwap
 
-This directory serves as the command center for implementing the Steam Web API integration for GigaSwap, creating a CS2 skin marketplace with decentralized payments and seamless trading.
+## Project Overview
 
-## Core SteamWebAPI Workflow Files
+This project implements Steam Web API integration for GigaSwap, creating a CS2 skin marketplace with decentralized payments and seamless trading. The integration allows users to:
 
-The following files define the core workflow and should be regularly referenced and updated throughout the integration process:
+1. Browse and search CS2 market items
+2. Connect their Steam accounts
+3. View and manage their CS2 inventory
+4. Create and receive trade offers
+5. Use decentralized payment methods for trades
 
-- **README.md** (this file): Provides an overview of the entire integration project structure and workflow
-- **user-rules-steam-web-api.md**: Defines the identity and operational parameters for 1000xdev as an autonomous agent focused on Steam API integration
-- **final-goal.md**: Outlines the end objectives and success criteria for the Steam Web API integration project
-- **endpoint-integration-progress.md**: Tracks the status of integration tasks, challenges, and upcoming priorities
-- **workflow.md**: Documents the step-by-step process for implementing the Steam Web API integration
+## Directory Structure
 
-**IMPORTANT: As 1000xdev, I am encouraged to dynamically update these core workflow files as I discover more efficient approaches and implementation patterns. The workflow is not static and should evolve based on practical experience during the integration process.**
+```
+1000xdev/steam-integration/
+├── back-end-context/                   # Backend implementation details
+│   ├── context-back-end-api-2.md
+│   ├── context-back-end-api-3.md
+│   ├── context-back-end-api.md
+│   └── directory-structure-back-end-api.md
+├── front-end-context/                  # Frontend implementation details
+│   ├── context-front-end-api.md
+│   ├── directory-structure-front-end-api.md
+│   └── node-dependencies.md
+├── screenshots/                        # Screenshots for documentation
+│   ├── Screenshot 2025-04-18 121936.png
+│   ├── Screenshot 2025-04-18 122002.png
+│   ├── Screenshot 2025-04-18 122016.png
+│   ├── Screenshot 2025-04-18 122028.png
+│   └── Screenshot 2025-04-18 122434.png
+├── steam-web-api-research/             # API documentation and research
+│   ├── account-endpoints.json
+│   ├── all-endpoints.md
+│   ├── cs2-skins.md
+│   ├── explore-endpoints.json
+│   ├── info-endpoints.json
+│   ├── items-endpoints.json
+│   ├── profile-endpoints.json
+│   ├── profile-endpoints.md
+│   ├── research-steam-web-api.md
+│   └── trade-offer-endpoints.json
+├── endpoint-integration-progress.md    # Current implementation status
+├── final-goal.md                       # Project success criteria
+├── README.md                           # This file
+├── user-rules-steam-web-api.md         # Agent identity and rules
+└── workflow.md                         # Development workflow and patterns
+```
 
-## Subfolders
+## Core Workflow Files
 
-### steam-web-api-research/
-Contains comprehensive documentation on the Steam Web API endpoints and functionality:
-- [research-steam-web-api.md](./steam-web-api-research/research-steam-web-api.md): Overview of Steam Web API capabilities and key endpoints
-- [all-endpoints.md](./steam-web-api-research/all-endpoints.md): Comprehensive list of all Steam Web API endpoints
-- Detailed endpoint JSON files:
-  - [items-endpoints.json](./steam-web-api-research/items-endpoints.json): CS2 item retrieval endpoints (priority focus)
-  - [trade-offer-endpoints.json](./steam-web-api-research/trade-offer-endpoints.json): Trading functionality endpoints
-  - [account-endpoints.json](./steam-web-api-research/account-endpoints.json): Account management endpoints
-  - [profile-endpoints.json](./steam-web-api-research/profile-endpoints.json): User profile endpoints
-  - [info-endpoints.json](./steam-web-api-research/info-endpoints.json): General Steam information endpoints
-  - [explore-endpoints.json](./steam-web-api-research/explore-endpoints.json): Discovery and exploration endpoints
+The "core workflow files" refer to the primary documents guiding the development and tracking progress within this directory:
 
-### front-end-context/
-Documentation related to the frontend implementation:
-- [context-front-end-api.md](./front-end-context/context-front-end-api.md): Comprehensive overview of frontend architecture including:
-  - Types system overview for API interactions
-  - API architecture with domain-specific modules
-  - Component architecture for UI elements
-  - Models overview with CS2Gun and Product models
-- [directory-structure-front-end-api.md](./front-end-context/directory-structure-front-end-api.md): Detailed frontend directory structure
-- [node-dependencies.md](./front-end-context/node-dependencies.md): Required npm packages and dependencies
+1.  `README.md`: Project overview and structure (this file).
+2.  `workflow.md`: Detailed development phases, approach, and patterns.
+3.  `endpoint-integration-progress.md`: Tracks the status of endpoint implementation.
+4.  `final-goal.md`: Defines the overall objectives and success criteria.
+5.  `user-rules-steam-web-api.md`: Specifies the operational identity and rules for the AI agent working on this integration.
 
-### back-end-context/
-Documentation related to the backend implementation:
-- [context-back-end-api.md](./back-end-context/context-back-end-api.md): Python backend architecture overview
-- [context-back-end-api-2.md](./back-end-context/context-back-end-api-2.md): Extended backend implementation details
-- [context-back-end-api-3.md](./back-end-context/context-back-end-api-3.md): Additional backend API architecture components
-- [directory-structure-back-end-api.md](./back-end-context/directory-structure-back-end-api.md): Detailed backend directory structure
+## Implementation Status
 
-### screenshots/
-Visual references and UI examples:
-- API response samples
-- UI mockups for marketplace components
-- Visual debugging information
+**Current Phase**: Core Client & Market Items (Phase 1)
 
-## Technical Stack
+- **Backend**: Implementing basic Steam Web API client and item endpoints
+- **Frontend**: Creating TypeScript interfaces and basic marketplace UI
+- **Next Milestone**: Basic marketplace with item browsing functionality
 
-Based on the context documentation, the Steam API integration involves the following technologies:
+See [endpoint-integration-progress.md](./endpoint-integration-progress.md) for detailed status.
 
-### Frontend
-- **Framework**: Next.js with TypeScript
-- **State Management**: React Context API and React Query for data fetching
-- **UI Components**: Custom component library with Material UI foundation
-- **API Integration**: Axios for API requests with React's cache mechanism
-- **Key Models**: CS2Gun (extends Product model), Order, User, and Auth models
+## Key Components
 
-### Backend
-- **Framework**: Python-based backend (FastAPI or Django)
-- **Database**: Supports CS2 item storage and marketplace functionality
-- **Authentication**: Integration with both Steam authentication and blockchain wallet authentication
-- **API Client**: Custom Python client for Steam Web API interactions
-- **Caching**: Implements robust caching for Steam API responses
+### Backend (Python)
 
-## Implementation Strategy
+```
+backend/steam/
+├── client.py              # Base Steam Web API client
+├── exceptions.py          # Custom exception classes
+├── models/                # Data models for Steam entities
+└── services/              # Service modules for API endpoints
+```
 
-The implementation follows a phased approach based on the detailed context:
+### Frontend (TypeScript)
 
-1. **Steam API Client Integration**
-   - Implement backend Steam API client module using [items-endpoints.json](./steam-web-api-research/items-endpoints.json) for endpoint details
-   - Create frontend API service layer following patterns in [context-front-end-api.md](./front-end-context/context-front-end-api.md)
-   - Set up proper error handling, logging, and caching based on backend architecture
+```
+frontend/src/
+├── api/steam.ts           # Steam API service
+├── components/market/     # Marketplace UI components
+├── models/steamItem.ts    # TypeScript interfaces
+└── context/               # State management
+```
 
-2. **Marketplace UI Development**
-   - Implement `/market` page focusing on CS2Gun items display
-   - Utilize the existing component architecture detailed in [context-front-end-api.md](./front-end-context/context-front-end-api.md)
-   - Extend the CS2Gun model to incorporate all Steam-specific properties
+## Development Workflow
 
-3. **Trading and Inventory Management**
-   - Implement trade offer endpoints using [trade-offer-endpoints.json](./steam-web-api-research/trade-offer-endpoints.json)
-   - Integrate with blockchain wallet authentication
-   - Develop user inventory management components
+1. Follow the implementation phases outlined in [workflow.md](./workflow.md)
+2. Update progress in [endpoint-integration-progress.md](./endpoint-integration-progress.md)
+3. Reference API documentation in [steam-web-api-research/](./steam-web-api-research/)
+4. Work toward goals defined in [final-goal.md](./final-goal.md)
 
-4. **Performance and Security Optimization**
-   - Implement caching strategies for Steam API responses
-   - Add comprehensive error handling
-   - Apply security best practices for API interactions
+## Getting Started
 
-Throughout this process, I should autonomously switch between frontend and backend implementation as needed, while maintaining comprehensive documentation of the integration progress and context.
+### Prerequisites
 
-## Architecture Alignment
+- SteamWebAPI.com API key (stored in environment variables)
+- Redis for caching (optional but recommended)
+- Python 3.9+ for backend
+- Node.js 16+ for frontend
 
-The Steam API integration should align with the existing architectural patterns:
+### Development Setup
 
-1. **Frontend Patterns**
-   - Follow the domain-driven API service architecture 
-   - Use consistent model patterns with TypeScript interfaces
-   - Implement React's cache mechanism for API requests
-   - Maintain clear separation between API services and UI components
+1. Set up environment variables:
+   ```
+   STEAM_WEB_API_KEY=your_api_key
+   STEAM_API_BASE_URL=https://api.steamwebapi.com
+   ```
 
-2. **Backend Patterns**
-   - Implement secure API client with proper rate limiting
-   - Apply caching strategies to optimize Steam API usage
-   - Follow consistent error handling patterns
-   - Maintain endpoint structure that aligns with frontend expectations
+2. Backend development:
+   ```
+   cd backend
+   pip install -r requirements.txt
+   # Start development server
+   ```
 
-## User Rules Management
+3. Frontend development:
+   ```
+   cd frontend
+   npm install
+   npm run dev
+   ```
 
-The [user-rules-steam-web-api.md](./user-rules-steam-web-api.md) file serves a critical role in this project by defining the 1000xdev identity for Steam API integration in Cursor's User Rules system. Key aspects of this system include:
+## Current Focus
 
-### User Rules Priority and Function
-- **Highest Precedence**: User Rules have the highest priority in Cursor's rule hierarchy, taking precedence over Project Rules and Default Rules
-- **Global Application**: These rules apply to all interactions within the Cursor environment
-- **Identity Definition**: User Rules establish the core identity traits and operational parameters for 1000xdev as a Steam API integration specialist
-- **Knowledge Embedding**: The rules defined in user-rules-steam-web-api.md are embedded in my knowledge base for every message and interaction
-
-### Dynamic Rule Updates
-- **Continuous Improvement**: As the Steam API integration progresses, the User Rules can and should be updated to reflect:
-  - New insights about implementation patterns
-  - Refined operational parameters
-  - Enhanced technical expertise
-  - Expanding implementation scope
-- **Knowledge Persistence**: Updated User Rules are automatically incorporated into future interactions, creating continuity in the development process
-- **Implementation Guidance**: Rule updates can provide specific guidance on newly discovered implementation patterns and best practices
-
-### Implementation Process
-1. When new patterns or approaches are discovered during development, the user-rules-steam-web-api.md file should be updated
-2. These updates shape the ongoing behavior and capabilities of the 1000xdev identity
-3. Each interaction builds upon this evolving knowledge base, ensuring consistent and improving implementation quality
-
-By leveraging User Rules as the foundation of the 1000xdev identity, we ensure consistent behavior across the entire Steam API integration process while allowing for adaptation and improvement as development progresses.
-
-## API Implementation Prioritization
-
-Based on [all-endpoints.md](./steam-web-api-research/all-endpoints.md) and project goals, the endpoint implementation priority is:
-
-1. Item information endpoints (`/steam/api/items`)
-2. User inventory endpoints
-3. Trade offer creation and management endpoints
-4. Profile and account-related endpoints
-
-## Continuous Improvement Mandate
-
-**As 1000xdev, I have both the authority and responsibility to enhance the workflow processes documented in the core workflow files. When I identify opportunities to improve efficiency, clarity, or effectiveness in the integration process, I should proactively update the relevant documentation files to reflect these improvements.**
+- Implementing base Steam Web API client
+- Creating item endpoints for marketplace
+- Building basic marketplace UI components
+- Setting up proper error handling and caching

@@ -1,367 +1,312 @@
-# Steam API Integration Workflow
+# Steam Web API Integration Workflow
 
-This document outlines the development workflow for implementing the Steam Web API integration in GigaSwap.
+## Implementation Phases
 
-## Development Process
+### Phase 1: Core Client & Market Items (Current Phase)
+- **Focus**: Implement basic Steam Web API client and market items display
+- **Key Components**:
+  - Backend Steam API client foundation
+  - Items API implementation
+  - Frontend item models and components
+  - Basic marketplace UI
 
-1. **Research & Planning**
-   - ✅ Document Steam Web API endpoints and services
-   - ✅ Analyze authentication requirements
-   - ✅ Create implementation plan
-   - 🔄 Define data models for CS2 skins
-   - ✅ Establish comprehensive final goals and success criteria
+### Phase 2: Authentication & Inventory
+- **Focus**: Implement Steam authentication and user inventory access
+- **Key Components**:
+  - Steam OpenID authentication flow
+  - User inventory retrieval and display
+  - Session management
+  - Inventory browser UI
 
-2. **Implementation Cycles**
-   - Each feature will follow this process:
-     1. **Backend Implementation**
-        - Create API client module
-        - Implement endpoint
-        - Add error handling and retry mechanism
-        - Set up Redis-based caching with adaptive TTL
-        - Implement comprehensive logging
-     2. **Frontend Implementation**
-        - Create TypeScript interfaces
-        - Implement API service with error handling
-        - Develop reusable UI components
-        - Add Context-based state management
-        - Implement progressive loading and rendering
-     3. **Testing**
-        - Unit tests with mocked API responses
-        - Integration tests for API client modules
-        - End-to-end tests for complete user workflows
-        - Performance testing for critical paths
-     4. **Documentation**
-        - Update implementation docs with technical details
-        - Document design decisions and edge cases
-        - Track progress in endpoint-integration-progress.md
-        - Create user documentation for new features
+### Phase 3: Trading System
+- **Focus**: Implement trading functionality for CS2 items
+- **Key Components**:
+  - Trade offer creation and management
+  - Trade state tracking
+  - Notifications system
+  - Trade history and audit
 
-3. **Prioritized Implementation Order**
-   1. Authentication System
-      - Steam OpenID authentication flow
-      - Secure API key management
-      - Session handling and state persistence
-   2. Inventory Retrieval
-      - API client for inventory endpoints
-      - Data models and type definitions
-      - Caching strategy implementation
-   3. Market Page & Item Display
-      - `/market` page foundation
-      - Integration with `/steam/api/items` endpoint
-      - Item card and detail components
-   4. Trade Offer Management
-      - Trade offer creation and tracking
-      - State management system
-      - Offer UI components
-   5. Blockchain Integration
-      - Bridge between Steam items and blockchain
-      - Smart contracts for escrow and payments
-      - Decentralized payment processing
+### Phase 4: Advanced Features & Optimization
+- **Focus**: Enhance marketplace functionality and optimize performance
+- **Key Components**:
+  - Advanced filtering and search
+  - Performance optimizations
+  - Responsive design improvements
+  - Analytics and monitoring
 
-## Code Organization
+### Phase 5: Blockchain Integration
+- **Focus**: Connect Steam items with decentralized payment system
+- **Key Components**:
+  - Escrow system for trades
+  - Asset bridging mechanism
+  - Smart contract for payments
+  - Transaction verification
 
-### Backend Structure
+## Current Development Focus
 
+We are currently in **Phase 1: Core Client & Market Items**, focusing on:
+
+1. **Backend Priorities**:
+   - Implementing the base `SteamWebAPIClient` class
+   - Creating the `ItemsClient` module for market items
+   - Setting up error handling and logging
+   - Implementing caching with Redis
+
+2. **Frontend Priorities**:
+   - Defining TypeScript interfaces for Steam items
+   - Implementing API service layer
+   - Creating basic marketplace UI components
+   - Setting up proper loading and error states
+
+## Development Approach
+
+### Backend Implementation (Python)
+
+#### API Client Architecture
 ```
 backend/
   └── steam/
-      ├── client.py        # Steam API client
-      │   ├── inventory.py  # Inventory API client
-      │   ├── items.py      # Items API client
-      │   ├── profile.py    # Profile API client
-      │   ├── trade.py      # Trade API client
-      │   └── auth.py       # Authentication client
-      ├── models/
-      │   ├── item.py       # CS2 item models
-      │   ├── inventory.py  # Inventory models
-      │   ├── profile.py    # User profile models
-      │   └── trade.py      # Trade offer models
-      ├── routes.py        # API routes
-      │   ├── auth_routes.py 
-      │   ├── inventory_routes.py
-      │   ├── item_routes.py
-      │   └── trade_routes.py
-      ├── services/
-      │   ├── inventory_service.py  # Inventory business logic
-      │   ├── item_service.py       # Item business logic
-      │   ├── trade_service.py      # Trade business logic
-      │   └── auth_service.py       # Auth business logic
-      └── utils/
-          ├── cache.py       # Caching utilities
-          ├── auth.py        # Auth utilities
-          ├── error.py       # Error handling
-          └── logging.py     # Logging utilities
+      ├── client.py              # Base SteamWebAPIClient
+      ├── exceptions.py          # Custom exception classes
+      ├── models/                # Data models
+      │   ├── __init__.py
+      │   ├── item.py            # Item models
+      │   ├── inventory.py       # Inventory models
+      │   └── trade.py           # Trade models
+      └── services/              # Service modules
+          ├── __init__.py
+          ├── items.py           # ItemsClient
+          ├── inventory.py       # InventoryClient
+          └── trades.py          # TradesClient
 ```
 
-### Frontend Structure
+#### Implementation Pattern
 
+1. **Base Client**:
+   ```python
+   class SteamWebAPIClient:
+       def __init__(self, api_key, base_url="https://api.steamwebapi.com"):
+           self.api_key = api_key
+           self.base_url = base_url
+           self.session = self._create_session()
+           self.logger = self._setup_logger()
+           
+       def _create_session(self):
+           session = requests.Session()
+           session.headers.update({
+               "Authorization": f"Bearer {self.api_key}",
+               "Content-Type": "application/json",
+               "Accept": "application/json"
+           })
+           return session
+           
+       async def _request(self, method, endpoint, params=None, data=None, **kwargs):
+           """Make a request to the Steam Web API with error handling and retries"""
+           # Implementation with proper error handling, logging, and retries
+   ```
+
+2. **Service Modules**:
+   ```python
+   class ItemsClient:
+       def __init__(self, client):
+           self.client = client
+           self.cache = RedisCache(prefix="steam:items:", ttl=3600)
+           
+       async def get_item_info(self, item_id):
+           """Get information about a specific item"""
+           cache_key = f"item:{item_id}"
+           cached = await self.cache.get(cache_key)
+           if cached:
+               return Item.from_dict(cached)
+               
+           response = await self.client._request(
+               "GET", 
+               f"/steam/api/items/{item_id}"
+           )
+           item = Item.from_dict(response)
+           await self.cache.set(cache_key, item.to_dict())
+           return item
+   ```
+
+3. **Data Models**:
+   ```python
+   @dataclass
+   class Item:
+       id: str
+       name: str
+       icon_url: str
+       price: float
+       market_hash_name: str
+       wear_value: Optional[float] = None
+       category: Optional[str] = None
+       rarity: Optional[str] = None
+       
+       @classmethod
+       def from_dict(cls, data):
+           """Create an Item from API response data"""
+           return cls(
+               id=data.get("id"),
+               name=data.get("name"),
+               icon_url=data.get("icon_url"),
+               price=float(data.get("price", 0)),
+               market_hash_name=data.get("market_hash_name"),
+               wear_value=float(data.get("wear_value", 0)) if data.get("wear_value") else None,
+               category=data.get("category"),
+               rarity=data.get("rarity")
+           )
+   ```
+
+### Frontend Implementation (TypeScript)
+
+#### Component Architecture
 ```
 frontend/
-  └── app/
+  └── src/
       ├── api/
-      │   ├── steam.ts              # Base API client
-      │   ├── steamInventory.ts     # Inventory API
-      │   ├── steamItems.ts         # Items API
-      │   ├── steamProfile.ts       # Profile API
-      │   └── steamTrade.ts         # Trade API
-      ├── models/
-      │   ├── steam.ts              # Common interfaces
-      │   ├── steamInventory.ts     # Inventory interfaces
-      │   ├── steamItem.ts          # Item interfaces
-      │   ├── steamProfile.ts       # Profile interfaces
-      │   └── steamTrade.ts         # Trade interfaces
+      │   └── steam.ts           # Steam API service
       ├── components/
-      │   └── steam/
-      │       ├── inventory/        # Inventory components
-      │       │   ├── InventoryGrid.tsx
-      │       │   ├── InventoryItem.tsx
-      │       │   └── InventoryFilter.tsx
-      │       ├── market/           # Market components
-      │       │   ├── MarketPage.tsx
-      │       │   ├── ItemCard.tsx
-      │       │   └── MarketFilters.tsx
-      │       ├── trade/            # Trade components
-      │       │   ├── TradeOffer.tsx
-      │       │   ├── TradeHistory.tsx
-      │       │   └── TradeStatus.tsx
-      │       └── auth/             # Auth components
-      │           ├── SteamLogin.tsx
-      │           └── AuthStatus.tsx
-      └── contexts/
-          ├── SteamAuthContext.tsx  # Auth context
-          ├── InventoryContext.tsx  # Inventory context
-          └── TradeContext.tsx      # Trade context
+      │   └── market/
+      │       ├── ItemCard.tsx   # Individual item card
+      │       ├── ItemGrid.tsx   # Grid of items
+      │       ├── ItemDetail.tsx # Detailed item view
+      │       └── Filters.tsx    # Marketplace filters
+      ├── context/
+      │   └── MarketContext.tsx  # Market state management
+      ├── models/
+      │   └── steamItem.ts       # TypeScript interfaces
+      └── pages/
+          └── Market.tsx         # Marketplace page
 ```
 
-## Branching Strategy
+#### Implementation Pattern
 
-- `main` - Production branch
-- `dev` - Development branch
-- `feature/steam-[feature-name]` - Feature branches
-- `fix/steam-[bug-name]` - Bug fix branches
+1. **TypeScript Models**:
+   ```typescript
+   // models/steamItem.ts
+   export interface SteamItem {
+     id: string;
+     name: string;
+     iconUrl: string;
+     price: number;
+     marketHashName: string;
+     wearValue?: number;
+     category?: string;
+     rarity?: string;
+   }
+   
+   export interface CS2Weapon extends SteamItem {
+     weaponType: string;
+     condition: string;
+     statTrak?: boolean;
+     souvenir?: boolean;
+   }
+   ```
 
-## Implementation Details
+2. **API Service**:
+   ```typescript
+   // api/steam.ts
+   import { SteamItem } from '../models/steamItem';
+   
+   const API_BASE = '/api/steam';
+   
+   export async function fetchMarketItems(
+     page = 1, 
+     limit = 20, 
+     filters?: Record<string, any>
+   ): Promise<{ items: SteamItem[], total: number }> {
+     // Implementation with proper error handling and query params
+   }
+   
+   export async function fetchItemDetails(itemId: string): Promise<SteamItem> {
+     // Implementation with proper error handling
+   }
+   ```
 
-### Authentication Implementation
-1. **Steam OpenID Flow**
-   - Implement `/api/auth/steam` endpoint for initiating login
-   - Create callback handler at `/api/auth/steam/callback`
-   - Set up session creation with proper token storage
-   - Implement proper scope management
-
-2. **API Key Management**
-   - Store keys in environment variables
-   - Create middleware for API authentication
-   - Implement key rotation mechanism
-   - Set up access logging and monitoring
-
-3. **Session Management**
-   - Create secure cookie-based session storage
-   - Implement token refresh mechanism
-   - Set up proper session validation
-   - Develop session expiration handling
-
-### Inventory Implementation
-1. **API Client**
-   - Create client for SteamWebAPI.com inventory endpoints
-   - Implement retry mechanism with exponential backoff
-   - Add comprehensive error handling
-   - Set up response validation
-
-2. **Data Models**
-   - Define TypeScript interfaces for inventory items
-   - Create Python models for backend processing
-   - Implement serialization/deserialization
-   - Ensure consistent type definitions across stack
-
-3. **Caching Strategy**
-   - Implement Redis-based caching
-   - Set different TTL based on data volatility
-   - Create cache invalidation triggers
-   - Implement background refresh mechanism
-
-### Market Implementation
-1. **Market Page**
-   - Create basic layout with responsive design
-   - Implement filtering and sorting components
-   - Set up pagination/infinite scrolling
-   - Add search functionality
-
-2. **Item Integration**
-   - Connect to `/steam/api/items` endpoint
-   - Implement proper data transformation
-   - Set up error handling and loading states
-   - Create fallback UI for API failures
-
-3. **Item Display**
-   - Develop card components for marketplace items
-   - Implement optimized image loading
-   - Create detailed item view
-   - Add hover states and interactive elements
-
-### Trade System Implementation
-1. **Trade Offer Creation**
-   - Develop API client for trade endpoints
-   - Create offer creation workflow
-   - Implement validation and security checks
-   - Set up proper error handling
-
-2. **Trade State Management**
-   - Define trade offer state machine
-   - Implement state transitions and validation
-   - Create proper error recovery mechanisms
-   - Set up audit logging for all changes
-
-3. **UI Components**
-   - Build trade offer creation interface
-   - Develop trade status display
-   - Create trade history view
-   - Implement notification system
-
-### Blockchain Integration
-1. **Item Bridging**
-   - Define representation of Steam items on blockchain
-   - Create verification and validation system
-   - Implement secure transfer mechanism
-   - Develop audit trail for all operations
-
-2. **Smart Contracts**
-   - Create escrow contract for secure trading
-   - Implement payment processing contract
-   - Develop dispute resolution mechanism
-   - Set up event handling for contract state changes
-
-3. **Payment Processing**
-   - Implement wallet integration
-   - Create transaction workflow
-   - Set up security and fraud prevention
-   - Develop receipt and confirmation system
+3. **React Components**:
+   ```tsx
+   // components/market/ItemCard.tsx
+   import { SteamItem } from '../../models/steamItem';
+   
+   interface ItemCardProps {
+     item: SteamItem;
+     onClick?: (item: SteamItem) => void;
+   }
+   
+   export function ItemCard({ item, onClick }: ItemCardProps) {
+     return (
+       <div className="item-card" onClick={() => onClick?.(item)}>
+         <img src={item.iconUrl} alt={item.name} />
+         <h3>{item.name}</h3>
+         <p className="price">${item.price.toFixed(2)}</p>
+         {item.rarity && <span className={`rarity ${item.rarity.toLowerCase()}`}>{item.rarity}</span>}
+       </div>
+     );
+   }
+   ```
 
 ## Testing Strategy
 
-1. **Unit Testing**
-   - Test individual functions and components
-   - Mock API responses with realistic data
-   - Test edge cases and error handling
-   - Validate type safety and data integrity
+### Backend Testing
+- Unit tests for each client method
+- Integration tests for API communication
+- Mock responses based on documented formats
+- Test caching behavior and error handling
 
-2. **Integration Testing**
-   - Test API client against mock server
-   - Validate end-to-end workflows
-   - Test caching and error recovery
-   - Verify state management across components
+### Frontend Testing
+- Component tests for UI elements
+- Integration tests for data fetching
+- E2E tests for critical flows
+- Mock API responses for consistent testing
 
-3. **End-to-End Testing**
-   - Test complete user flows
-   - Validate UI interactions
-   - Verify data consistency across system
-   - Test performance and loading behavior
+## Error Handling Strategy
 
-4. **Performance Testing**
-   - Measure response times for critical paths
-   - Test under various load conditions
-   - Validate caching effectiveness
-   - Verify resource usage under load
+### Backend Errors
+- Use custom exception classes
+- Implement retries with exponential backoff
+- Log all errors with context
+- Return consistent error responses
 
-## Documentation Strategy
+### Frontend Errors
+- Implement error boundaries for components
+- Create user-friendly error messages
+- Add retry logic for transient failures
+- Implement fallback UI for failed data fetching
 
-1. **Code Documentation**
-   - Document all public APIs and interfaces
-   - Add detailed comments for complex logic
-   - Include examples for non-obvious usage
-   - Document error handling and edge cases
+## Development Workflow
 
-2. **Implementation Documentation**
-   - Update context files with implementation details
-   - Document design decisions and trade-offs
-   - Create diagrams for complex workflows
-   - Maintain architectural documentation
+1. **Research and Plan**:
+   - Analyze API endpoints and response formats
+   - Define data models and interfaces
+   - Plan component structure and interactions
 
-3. **Progress Tracking**
-   - Update endpoint-integration-progress.md weekly
-   - Document completed tasks and milestones
-   - Track challenges and solutions
-   - Maintain priority list for upcoming tasks
+2. **Backend Implementation**:
+   - Create base client and error handling
+   - Implement service modules for each API area
+   - Add caching and performance optimizations
+   - Write tests for all functionality
 
-4. **User Documentation**
-   - Create guides for marketplace usage
-   - Document trading process and best practices
-   - Provide troubleshooting information
-   - Develop FAQ for common questions
+3. **Frontend Implementation**:
+   - Define TypeScript interfaces
+   - Create API service functions
+   - Build UI components
+   - Implement state management
 
-## Development Standards
+4. **Integration and Testing**:
+   - Connect frontend to backend endpoints
+   - Test full flow from API to UI
+   - Optimize performance and fix bugs
+   - Add proper error handling
 
-### Backend (Python)
+5. **Documentation**:
+   - Update progress tracking
+   - Document known issues and limitations
+   - Create usage examples for components
+   - Update workflow documentation
 
-- Use type hints for all functions and parameters
-- Follow PEP 8 style guide with consistent formatting
-- Implement proper error handling with specific exceptions
-- Use async/await for all I/O operations
-- Document all public functions and classes
-- Implement comprehensive logging
-- Use dependency injection for testability
-- Create modular, reusable components
+## Development Principles
 
-### Frontend (TypeScript)
-
-- Use strict TypeScript with comprehensive interfaces
-- Follow React best practices and hooks
-- Implement proper loading states and error handling
-- Use React Context for state management
-- Create reusable, composable components
-- Optimize rendering performance
-- Implement responsive design for all components
-- Follow accessibility best practices
-
-## Error Handling Standards
-
-1. **API Errors**
-   - Implement retry with exponential backoff
-   - Use circuit breaker pattern for failing endpoints
-   - Provide fallback mechanisms for critical operations
-   - Log all errors with context information
-   - Create user-friendly error messages
-
-2. **Validation Errors**
-   - Validate all input data
-   - Provide clear validation messages
-   - Implement client-side validation when possible
-   - Add server-side validation for security
-
-3. **Runtime Errors**
-   - Use try/catch blocks for error-prone operations
-   - Implement global error handlers
-   - Add error boundary components in React
-   - Create crash recovery mechanisms
-
-## Release Process
-
-1. **Feature Development**
-   - Implement feature in feature branch
-   - Write tests and documentation
-   - Create PR with detailed description
-   - Address review feedback
-
-2. **Integration**
-   - Merge PR to dev branch after approval
-   - Run integration tests
-   - Fix any issues
-   - Verify feature functionality
-
-3. **Release**
-   - Merge dev to main after validation
-   - Create release tag
-   - Deploy to production
-   - Monitor for issues
-   - Collect user feedback
-
-## Monitoring and Maintenance
-
-- Add detailed logging for all API calls and errors
-- Monitor error rates and performance metrics
-- Track API usage and response times
-- Set up alerts for critical failures
-- Implement usage analytics
-- Collect user feedback
-- Maintain dependency updates
-- Perform regular security audits
+1. **Consistency**: Follow established patterns and naming conventions
+2. **Type Safety**: Use strong typing in both frontend and backend
+3. **Error Resilience**: Implement robust error handling and recovery
+4. **Performance**: Optimize for speed with proper caching and data fetching
+5. **User Experience**: Create intuitive UI with proper loading and error states
