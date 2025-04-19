@@ -5,13 +5,12 @@ First, make a `list_dir` tool call to the root directory (`1000xdev/steam-integr
 
 ## Step 2: Explore Each Subfolder
 After identifying the subfolders, make a separate `list_dir` tool call for each of the five subfolders within `1000xdev/steam-integration` to understand what documentation and resources are available in each area:
-- cs2-skins-trading-research/
 - steam-web-api-research/ 
 - front-end-context/
 - back-end-context/
 - screenshots/
 
-## Step 3: Read Core Documentation Files
+## Step 3: Read Core Workflow Files
 Next, make `read_file` tool calls to read the complete content of the five core root folder files in the `1000xdev/steam-integration` directory:
 - README.md (project overview)
 - user-rules-steam-web-api.md (agent identity and operational parameters)
