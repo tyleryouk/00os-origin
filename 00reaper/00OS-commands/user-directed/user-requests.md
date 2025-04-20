@@ -5,12 +5,12 @@
 - Optimize 00reaper/00OS-commands folder for better workflow and communication between you (00reaper) and I (Tyler). The workflow should follow a strict cyclical approach as defined below.
 1. Read user_request REQ
 2. Read relevant files in context, documentation, templates, and/or testing
-3. Make changes to the three core workflow files: current-implementation.md, current-task.md, and major-changes.md.
+3. Make changes to the two core workflow files: current-implementation.md and current-task.md.
 4. Make changes to 00OS
 5. Make changes to context, documentation, templates, and/or testing (will likely happen most times, because most changes to 00OS will result in necessary changes to context, documentation, testing, and/or testing to ensure alignment)
 6. Update/clear core workflow files to start a new cycle. The core workflow files should be focused on one cycle at a time.
 
-The goal is for me to write requests like these, and for you to intelligently make changes to the base workflow files in 00reaper\00OS-commands along with changes to 00OS. If you find ways to enhance this cycle, please let me know before we start making changes. Let's try to define the cycle as best as possible within the three core workflow files before making major structural changes. Note that for this request, ALL changes should be made to 00reaper\00OS-commands. When in this workflow, you will only need to read/change files in 00reaper\00OS-commands and 00OS.
+The goal is for me to write requests like these, and for you to intelligently make changes to the base workflow files in 00reaper\00OS-commands along with changes to 00OS. If you find ways to enhance this cycle, please let me know before we start making changes. Let's try to define the cycle as best as possible within the two core workflow files before making major structural changes. Note that for this request, ALL changes should be made to 00reaper\00OS-commands. When in this workflow, you will only need to read/change files in 00reaper\00OS-commands and 00OS.
 
 ### REQ-002: [NEW]
 #### Requirements:
@@ -164,7 +164,7 @@ All 00OS commands must follow this implementation pattern:
 ## Session Workflow
 
 ### Starting a New Session
-1. Review major-changes.md for overall approach
+1. Review documentation for overall approach
 2. Check current implementation status
 3. Review specific request details
 

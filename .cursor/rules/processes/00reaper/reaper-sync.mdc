@@ -1,9 +1,9 @@
 ---
-description: System component - reaper-sync
+description: USE WHEN you want to execute reaper-sync
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
+
 ## Metadata
 - Name: reaper-sync
 - Description: Synchronize 00os contents to .cursor/rules

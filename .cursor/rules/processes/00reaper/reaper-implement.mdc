@@ -1,9 +1,9 @@
 ---
-description: System component - reaper-implement
+description: USE WHEN you want to execute reaper-implement
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
+
 # Process: reaper-implement
 
 ## Description
@@ -271,4 +271,4 @@ Suggestions:
 Suggestions:
 - Use one of the valid modes: plan, scaffold, full
 - Example: > reaper-implement 002 --mode=scaffold
-```
+``` 

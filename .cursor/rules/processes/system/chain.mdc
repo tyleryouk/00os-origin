@@ -1,7 +1,7 @@
 ---
-description: System component - chain
+description: USE WHEN you want to execute chain
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
 
