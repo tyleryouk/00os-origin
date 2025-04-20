@@ -1,228 +1,442 @@
-# GigaSwap CS2 Skins Marketplace: Final Goals
+# Steam Web API Items Endpoints Integration Workflow
 
-## Vision
-Create a decentralized CS2 skins marketplace on GigaSwap that seamlessly integrates Steam's trading system with blockchain-based payments, offering users a secure, efficient, and trustless platform for trading CS2 skins.
+This document outlines the detailed workflow for implementing the integration of six Steam Web API items endpoints into the GigaSwap platform, creating a full-stack solution that enables users to browse, search, and view CS2 item details with pricing information.
 
-## Core Integration Goals
+## 1. Overall Approach
 
-1. **SteamWebAPI.com Integration**
-   - Integrate all relevant endpoints from https://www.steamwebapi.com/ into GigaSwap's frontend and backend
-   - Implement proper error handling, rate limit management, and caching for all API calls
-   - Ensure secure API key management and authentication
+The integration will follow a systematic, phased approach that ensures comprehensive implementation while maintaining high code quality and testability:
 
-2. **Marketplace Implementation**
-   - Develop comprehensive `/market` frontend page featuring real Steam products
-   - Implement advanced filtering, sorting, and search functionality by item_group, item_type, and item_name
-   - Create responsive, user-friendly item displays with detailed CS2 skin information
-   - Build pagination and infinite scrolling for marketplace browsing
+### Phase 1: Research & Architecture Design (Completed)
+- Analysis of Steam Web API endpoints and response formats
+- Design of backend architecture for Steam API integration
+- Definition of data models and interfaces
+- Caching strategy planning
 
-3. **Inventory Management**
-   - Implement inventory retrieval and display using Steam's inventory API
-   - Create user inventory browser with filtering and sorting capabilities
-   - Develop inventory change tracking and notification system
-   - Implement inventory caching with adaptive TTL based on data volatility
+### Phase 2: Backend Implementation (In Progress)
+- Implementation of backend models, services, and routes
+- Caching implementation with Redis
+- Authentication and rate limiting
+- Error handling and logging
+- Initial testing of endpoints
 
-4. **Trading System**
-   - Build complete trade offer creation, management, and tracking system
-   - Implement proper state management for all trade offer states
-   - Create escrow system for cross-platform trades between Steam and blockchain
-   - Develop comprehensive trade history and analytics
+### Phase 3: Frontend Design & Implementation (Not Started)
+- Implementation of TypeScript interfaces for Steam data
+- Creation of frontend services for API communication
+- Implementation of UI components for displaying Steam items
+- Integration with existing marketplace pages
 
-5. **Blockchain Integration**
-   - Create secure bridge between Steam items and blockchain assets
-   - Implement decentralized payment processing for CS2 skin transactions
-   - Develop smart contracts to handle escrow, payments, and dispute resolution
-   - Ensure seamless wallet integration without requiring personal user information
+### Phase 4: Testing & Optimization (Not Started)
+- Comprehensive testing of all endpoints
+- Performance optimization
+- Security review
+- Documentation updates
 
-## Technical Architecture
+### Phase 5: Production Deployment (Not Started)
+- Final integration with production environment
+- Monitoring setup
+- Performance benchmarking
+- User acceptance testing
+
+## 2. Technical Architecture
 
 ### Backend Architecture
-- **Category-Based API Clients** aligned with SteamWebAPI.com endpoint categories:
-  - `ItemsClient`: For market items and pricing data
-  - `ProfileClient`: For user profiles and inventory data
-  - `TradeClient`: For trade offer creation and management
-  - `InfoClient`: For utility endpoints (SteamID conversion, etc.)
-  - `ExploreClient`: For profile discovery features
-  - `AccountClient`: For account-related functionality 
-- Redis-based caching system for inventory and market data
-- Type-safe models and interfaces for all Steam data
-- Comprehensive logging and monitoring system
-- Secure API key and authentication token management
+
+```
+back-end/
+└── app/
+    └── steam/
+        ├── models/
+        │   ├── base_models.py      # Base models for Steam API
+        │   ├── items.py            # Models for items endpoints
+        │   └── errors.py           # Error models
+        ├── services/
+        │   ├── base_service.py     # Base service with common functionality
+        │   └── items_service.py    # Service for items endpoints
+        ├── routers/
+        │   └── items.py            # FastAPI router for items endpoints
+        ├── utils/
+        │   ├── cache.py            # Redis caching utilities
+        │   ├── auth.py             # API authentication utilities
+        │   └── error_handling.py   # Error handling utilities
+        └── config.py               # Steam API configuration
+```
 
 ### Frontend Architecture
-- TypeScript interfaces for all Steam data models
-- React component library for CS2 skins display and interaction
-- Context-based state management for user session and inventory
-- Progressive loading and rendering optimizations for marketplace
-- Responsive design for all CS2 marketplace components
 
-### Security Architecture
-- Secure API key storage using environment variables
-- Request validation and sanitization for all user inputs
-- Rate limiting to prevent API abuse
-- Proper error handling with user-friendly messages
-- Authentication flow with appropriate scope management
+```
+frontend/
+├── src/
+│   ├── types/
+│   │   └── steam.ts            # TypeScript interfaces for Steam data
+│   ├── services/
+│   │   └── steamService.ts     # Service for communicating with backend
+│   ├── components/
+│   │   └── steam/
+│   │       ├── ItemCard.tsx    # Individual item card component
+│   │       ├── ItemGrid.tsx    # Grid for displaying multiple items
+│   │       ├── ItemDetails.tsx # Component for displaying item details
+│   │       ├── PriceHistory.tsx # Component for displaying price history
+│   │       └── ItemSearch.tsx  # Search component for Steam items
+│   └── pages/
+│       └── marketplace.tsx     # Marketplace page with Steam integration
+└── tests/
+    └── steam/
+        ├── ItemCard.test.tsx
+        └── steamService.test.ts
+```
 
-## Quality Assurance & Testing
+## 3. Implementation Steps
 
-Ensuring the reliability, robustness, and correctness of the Steam API integration is a critical aspect of this project. The following testing goals and requirements have been established:
+### 3.1 Backend Implementation
 
-### Testing Goals
+#### 3.1.1 Models Implementation
 
-1. **Backend Testing**
-   - Verify endpoint functionality through live HTTP requests to a running FastAPI instance
-   - Validate correct behavior of API endpoints and response formats
-   - Ensure proper error handling for edge cases and failure conditions
-   - Validate caching behavior and performance optimizations
-   - Test resiliency against network issues and API rate limiting
+1. Create base model classes for all Steam API responses
+2. Implement item-specific models for each endpoint:
+   - `ItemListing` for `/items` endpoint
+   - `ItemDetails` for `/item` endpoint
+   - `PriceHistory` for `/history` endpoint
+   - `FloatInfo` for `/float` endpoint
+   - `OrdersActivity` for `/itemordersactivity` endpoint
+   - `ScreenshotInfo` for `/screenshot` endpoint
+3. Implement error models for consistent error responses
 
-2. **Frontend Testing**
-   - Validate all UI components rendering Steam data
-   - Verify proper loading and error states
-   - Test user interactions with marketplace and inventory
-   - Ensure responsive design across all device sizes
-   - Validate accessibility of all Steam-related components
+#### 3.1.2 Services Implementation
 
-3. **Integration Testing**
-   - Test full data flow from API to UI representation
-   - Verify Steam authentication process
-   - Test trading system state management
-   - Validate inventory synchronization
-   - Test real-time updates and notifications
+1. Create base service class with common functionality:
+   - HTTP client setup
+   - Authentication
+   - Rate limiting
+   - Error handling
+   - Caching integration
+2. Implement item-specific services for each endpoint:
+   - `get_items()` for listing/searching items
+   - `get_item_details()` for retrieving detailed item information
+   - `get_price_history()` for retrieving price history
+   - `get_float_info()` for retrieving float information
+   - `get_orders_activity()` for retrieving order activity
+   - `get_item_screenshot()` for retrieving screenshot information
 
-### Testing Requirements
+#### 3.1.3 Routes Implementation
 
-1. **Test Infrastructure**
-   - Live endpoint tests using the `requests` library to test a running FastAPI instance
-   - Running FastAPI server required as prerequisite for testing
-   - Tests organized by endpoint category (items, profile, trade, info, explore, account)
-   - Separate test files for each endpoint category (e.g., `test_live_items_routes.py`, `test_live_profile_routes.py`)
-   - Focus on validating endpoint reachability, response formats, and data correctness
-   - Component testing with React Testing Library for frontend
-   - End-to-end tests for critical user flows
-   - Standardized testing execution steps documented in `tool-call-processes.md`
+1. Create a FastAPI router for items endpoints
+2. Implement route handlers for each endpoint with:
+   - Proper parameter validation
+   - Response models
+   - Error handling
+   - Documentation
+   - Caching directives
+3. Register the router in the main application
 
-2. **Test Coverage**
-   - Tests for all categories of API endpoints defined in the JSON schema files
-   - Tests for all error handling paths
-   - Validation of response formats against expected API schemas
-   - Tests for edge cases in API responses
-   - Performance testing for response time requirements
+#### 3.1.4 Testing
 
-3. **Testing Approach**
-   - Use a running instance of the FastAPI application for testing
-   - Make real HTTP requests using the `requests` library
-   - No mocking of FastAPI's TestClient
-   - Focus on testing as an external client would
-   - Check application logs in `logs-main/steam/` for error diagnostics
-   - Testing approach follows the 6 main endpoint categories derived from the SteamWebAPI.com schema
+1. Create unit tests for models and services
+2. Create integration tests for routes
+3. Create live tests that verify actual Steam API communication
 
-### Test Environment Setup
+### 3.2 Frontend Implementation
 
-1. **Prerequisites**
-   - Backend virtual environment activated
-   - Environment variables properly configured
-   - FastAPI server running at http://127.0.0.1:8000
-   - Redis server running for caching tests
+#### 3.2.1 TypeScript Interfaces
 
-2. **Test Execution Flow**
-   - Start FastAPI server in background
-   - Run pytest for each endpoint category
-   - Check logs for any errors or warnings
-   - Verify expected response formats and status codes
-   - Stop server after test completion
+1. Create interfaces for all Steam API data structures
+2. Add comprehensive JSDoc comments with property descriptions
+3. Create utility types for request parameters
 
-## Implementation Phases
+#### 3.2.2 Services Implementation
 
-### Phase 1: Core API Integration and Reorganization
-- [x] Complete research on Steam Web API for CS2 skins trading
-- [x] Document API endpoints and authentication requirements
-- [x] Implement basic API client for SteamWebAPI.com endpoints
-- [x] Create data models for CS2 skins
-- [ ] **Reorganize backend services to match SteamWebAPI.com endpoint categories**:
-  - [ ] Implement `ItemsClient` for items, item details, history and float endpoints
-    - [x] Implement basic item fetching endpoints
-    - [x] Implement price history endpoint 
-    - [x] Implement order activity endpoint
-    - [ ] Implement float information endpoint
-  - [ ] Implement `ProfileClient` for user profiles, inventory, friendlist and privacy endpoints
-  - [ ] Implement `TradeClient` for trade offer creation, acceptance, history, and management
-  - [ ] Implement `InfoClient` for utility endpoints (SteamID conversion, items info, markets)
-  - [ ] Implement `ExploreClient` for profile discovery endpoints (random, toplist, last, profile search)
-  - [ ] Implement `AccountClient` for account-related functionality (account stats, login)
-- [ ] **Implement minimal test suite for all API categories**:
-  - [ ] Create `test_live_items_routes.py` for testing item-related endpoints
-  - [ ] Create `test_live_profile_routes.py` for testing profile and inventory endpoints
-  - [ ] Create `test_live_trade_routes.py` for testing trade endpoints
-  - [ ] Create `test_live_info_routes.py` for testing info endpoints
-  - [ ] Create `test_live_explore_routes.py` for testing explore endpoints
-  - [ ] Create `test_live_account_routes.py` for testing account endpoints
+1. Create a service for communicating with backend Steam endpoints
+2. Implement functions for each endpoint:
+   - `getItems()` for listing/searching items
+   - `getItemDetails()` for retrieving detailed item information
+   - `getPriceHistory()` for retrieving price history
+   - `getFloatInfo()` for retrieving float information
+   - `getOrdersActivity()` for retrieving order activity
+   - `getItemScreenshot()` for retrieving screenshot information
+3. Implement error handling and response transformation
 
-### Phase 2: Marketplace Foundations
-- [x] Implement `/steam/api/items` endpoint from SteamWebAPI.com
-- [ ] Develop `/market` page with hardcoded list of popular CS2 skins
-- [ ] Implement sorting by item_group, item_type, and item_name
-- [ ] Create basic item display components
-- [ ] Connect frontend components to backend API endpoints
+#### 3.2.3 Components Implementation
 
-### Phase 3: User Authentication & Inventory
-- [x] Implement Steam OpenID authentication
-- [x] Develop user session management
-- [x] Create inventory retrieval and display API endpoints
-- [x] Build caching system for inventory data
-- [ ] Create inventory UI components
-- [ ] Implement inventory filtering and sorting
-- [ ] Add inventory management features
+1. Create core UI components:
+   - `ItemCard` for displaying an individual item in a grid
+   - `ItemGrid` for displaying multiple items with filtering and sorting
+   - `ItemDetails` for displaying detailed item information
+   - `PriceHistory` for displaying price history charts
+   - `ItemSearch` for searching Steam items
+2. Implement responsive design for all components
+3. Add loading states and error handling
+4. Implement proper accessibility features
 
-### Phase 4: Trading System
-- [x] Implement trade offer creation and management
-- [x] Develop trade state handling
-- [ ] Create trade offer UI components
-- [ ] Build trade history tracking
-- [ ] Implement real-time trade notifications
-- [ ] Add escrow system for trades
+#### 3.2.4 Page Integration
 
-### Phase 5: Blockchain Integration
-- [ ] Develop bridge between Steam items and blockchain assets
-- [ ] Implement decentralized payment processing
-- [ ] Create smart contracts for escrow and payments
-- [ ] Build wallet integration
+1. Integrate components into the marketplace page
+2. Implement state management for:
+   - Search queries
+   - Filtering options
+   - Selected item
+   - Loading states
+3. Add proper routing for item details
 
-## Success Criteria
+#### 3.2.5 Testing
 
-### Functional Criteria
-- Users can browse, filter, and search CS2 skins in the marketplace
-- Users can authenticate via Steam and view their inventory
-- Users can create, manage, and track trade offers
-- Users can complete transactions using decentralized payments
-- The system handles all trade states correctly, including escrow periods
+1. Create unit tests for services
+2. Create component tests for UI components
+3. Create integration tests for pages
 
-### Technical Criteria
-- API integration maintains 99.9% uptime
-- Marketplace page loads within 2 seconds
-- Inventory retrieval completes within 3 seconds
-- System handles at least 100 concurrent users
-- All API calls properly implement caching, error handling, and rate limiting
+### 3.3 Testing Strategy
 
-### User Experience Criteria
-- UI provides clear feedback for all user actions
-- Trading process requires minimal steps
-- Error messages are user-friendly and actionable
-- Inventory and marketplace views are responsive across devices
-- Users can complete transactions without providing personal information
+#### 3.3.1 Backend Testing
 
-## Future Expansion
+1. **Unit Tests**:
+   - Test model validation
+   - Test service methods with mocked responses
+   - Test utility functions
 
-- Price history tracking and analytics
-- Market trend analysis
-- Advanced trading features (counter-offers, bundled trades)
-- Integration with additional Steam games beyond CS2
-- Mobile application for marketplace access
+2. **Integration Tests**:
+   - Test routes with mocked services
+   - Test caching behavior
+   - Test error handling
 
-## Ongoing Maintenance
+3. **Live Tests**:
+   - Test actual communication with Steam API
+   - Test rate limiting behavior
+   - Test error scenarios
 
-- Regular updates to item database
-- Monitoring of API usage and performance
-- Security audits and improvements
-- User feedback collection and feature refinement
-- Performance optimization based on usage patterns
+#### 3.3.2 Frontend Testing
+
+1. **Unit Tests**:
+   - Test service functions with mocked responses
+   - Test utility functions
+   - Test component rendering
+
+2. **Integration Tests**:
+   - Test component interaction
+   - Test state management
+   - Test form submission
+
+3. **End-to-End Tests**:
+   - Test complete user flows
+   - Test error scenarios
+   - Test responsive design
+
+### 3.4 Caching Strategy
+
+1. **Backend Caching**:
+   - Implement Redis caching for all Steam API responses
+   - Use different TTLs based on data volatility:
+     - Short TTL (5-15 minutes) for price data
+     - Medium TTL (1-2 hours) for item listings
+     - Long TTL (24 hours) for static data like screenshots
+   - Implement cache invalidation triggers
+   - Add cache warming for popular items
+
+2. **Frontend Caching**:
+   - Implement local storage caching for static data
+   - Use React Query for data fetching and caching
+   - Implement stale-while-revalidate pattern
+
+### 3.5 Error Handling Strategy
+
+1. **Backend Error Handling**:
+   - Implement comprehensive error handling for Steam API communication
+   - Map Steam API errors to meaningful client responses
+   - Log detailed error information for debugging
+   - Implement retry logic for temporary failures
+
+2. **Frontend Error Handling**:
+   - Implement error boundaries for component failures
+   - Display user-friendly error messages
+   - Provide retry options for failed requests
+   - Log client-side errors
+
+## 4. Implementation Priorities
+
+### Immediate Priorities (Current Sprint)
+
+1. Implement the basic backend infrastructure:
+   - Base service class with authentication and caching
+   - Core models for items data
+   - Initial implementation of the `/items` endpoint
+
+2. Create a basic test harness for verifying endpoint functionality
+
+### Short-Term Priorities (Next 1-2 Sprints)
+
+1. Complete backend implementation of all six endpoints
+2. Implement comprehensive testing for backend endpoints
+3. Begin frontend implementation with TypeScript interfaces and services
+4. Create initial UI components for displaying Steam items
+
+### Medium-Term Priorities (Next 2-3 Sprints)
+
+1. Complete frontend implementation of all features
+2. Implement comprehensive frontend testing
+3. Optimize performance and implement caching
+4. Conduct security review
+
+### Long-Term Priorities (Future Sprints)
+
+1. Implement advanced features such as:
+   - Real-time price updates
+   - Price alerts
+   - Market trend analysis
+   - Personalized recommendations
+2. Integrate with blockchain functionalities
+3. Expand to additional Steam games
+
+## 5. Quality Assurance
+
+### 5.1 Code Quality Standards
+
+1. **Backend**:
+   - Type annotations for all functions and variables
+   - Comprehensive docstrings
+   - Consistent error handling
+   - Unit tests for all functions
+   - Integration tests for all endpoints
+   - Linting with `flake8` and `black`
+
+2. **Frontend**:
+   - Strict TypeScript typing
+   - JSDoc comments for all components and functions
+   - Component stories for UI components
+   - Unit tests for all components
+   - Linting with ESLint and Prettier
+
+### 5.2 Performance Standards
+
+1. **Backend**:
+   - Maximum response time of 300ms for cached responses
+   - Maximum response time of 1s for uncached responses
+   - Efficient caching to minimize Steam API calls
+   - Proper connection pooling and resource management
+
+2. **Frontend**:
+   - Core Web Vitals optimization:
+     - LCP < 2.5s
+     - FID < 100ms
+     - CLS < 0.1
+   - Efficient rendering with React optimization techniques
+   - Proper code splitting and lazy loading
+
+### 5.3 Documentation Standards
+
+1. **API Documentation**:
+   - OpenAPI/Swagger documentation for all endpoints
+   - Comprehensive description of parameters and responses
+   - Example requests and responses
+   - Error scenarios and handling
+
+2. **Code Documentation**:
+   - Comprehensive docstrings/JSDoc comments
+   - Architecture diagrams
+   - Sequence diagrams for complex flows
+   - Detailed README files
+
+## 6. Monitoring and Observability
+
+1. **Backend Monitoring**:
+   - Request/response timing for all endpoints
+   - Cache hit/miss rates
+   - Error rates and types
+   - Steam API call volume and timing
+   - Redis performance metrics
+
+2. **Frontend Monitoring**:
+   - Page load times
+   - Component render times
+   - User interaction metrics
+   - Error rates and types
+   - API call success/failure rates
+
+## 7. Deployment Strategy
+
+1. **Staging Deployment**:
+   - Deploy to staging environment after completion of each feature
+   - Run automated tests
+   - Conduct manual testing
+   - Verify monitoring and logging
+
+2. **Production Deployment**:
+   - Use blue-green deployment to minimize downtime
+   - Monitor performance metrics during deployment
+   - Have rollback plan ready
+   - Conduct post-deployment validation
+
+## 8. Risk Management
+
+### 8.1 Identified Risks
+
+1. **Steam API Limitations**:
+   - Rate limiting
+   - Response format changes
+   - Downtime or unavailability
+
+2. **Performance Risks**:
+   - Slow response times for uncached data
+   - High volume of API calls during peak hours
+   - Cache invalidation issues
+
+3. **Security Risks**:
+   - API key management
+   - CSRF/XSS vulnerabilities
+   - Data integrity
+
+### 8.2 Mitigation Strategies
+
+1. **For API Limitations**:
+   - Implement robust error handling
+   - Add retry logic with exponential backoff
+   - Monitor API changes and update integration accordingly
+   - Implement circuit breakers for API failures
+
+2. **For Performance Risks**:
+   - Optimize caching strategy
+   - Implement proper pagination and lazy loading
+   - Monitor and optimize database queries
+   - Scale infrastructure during peak hours
+
+3. **For Security Risks**:
+   - Implement proper authentication and authorization
+   - Validate all input data
+   - Use secure headers and CSRF protection
+   - Conduct regular security audits
+
+## 9. Success Criteria
+
+The integration will be considered successful when:
+
+1. All six endpoints are fully implemented and tested
+2. Frontend components for displaying Steam items are integrated into the marketplace
+3. Users can search, filter, and view detailed information about CS2 items
+4. Performance meets or exceeds established standards
+5. Monitoring shows healthy operation with minimal errors
+6. Security review confirms no vulnerabilities
+
+## 10. Future Enhancements
+
+Once the core integration is complete, the following enhancements will be considered:
+
+1. **Advanced Search Features**:
+   - Filtering by additional attributes
+   - Saved searches
+   - Trending searches
+
+2. **Market Analysis Features**:
+   - Price trend visualization
+   - Market volume analytics
+   - Predictive pricing
+
+3. **Social Features**:
+   - Wishlist sharing
+   - Trade recommendations
+   - Community valuation
+
+4. **Mobile Optimization**:
+   - Progressive Web App features
+   - Mobile-specific UI optimizations
+   - Push notifications for price alerts
+
+5. **Blockchain Integration Enhancements**:
+   - Smart contract integration for trades
+   - NFT representation of items
+   - Decentralized escrow services
