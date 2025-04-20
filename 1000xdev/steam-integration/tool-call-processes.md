@@ -1,6 +1,154 @@
 # Standardized Tool Call Processes
 
-This file documents standardized sequences of tool calls for common development and testing tasks related to the Steam API integration.
+This document outlines the standard sequences of tool calls for common operations in the Steam API integration project, focusing on testing and debugging procedures.
+
+## Backend Testing Procedures
+
+### Setting Up the Testing Environment
+
+```bash
+# Navigate to the backend directory
+cd back-end
+
+# Activate the virtual environment
+.\.gigaland\Scripts\activate  # Windows
+# OR
+source .gigaland/bin/activate  # Linux/Mac
+
+# Install any missing dependencies if needed
+pip install -r requirements.txt
+```
+
+### Starting the FastAPI Server for Testing
+
+```bash
+# Navigate to the backend directory if not already there
+cd back-end
+
+# Activate the virtual environment if not already activated
+.\.gigaland\Scripts\activate  # Windows
+# OR
+source .gigaland/bin/activate  # Linux/Mac
+
+# Start the FastAPI server with reload enabled
+uvicorn app.main:app --reload
+```
+
+The server will start on http://127.0.0.1:8000 by default. Keep this terminal open and running.
+
+### Running API Tests
+
+In a separate terminal window:
+
+```bash
+# Navigate to the backend directory
+cd back-end
+
+# Activate the virtual environment
+.\.gigaland\Scripts\activate  # Windows
+# OR
+source .gigaland/bin/activate  # Linux/Mac
+
+# Run all Steam API tests
+python -m pytest tests/steam/ -v
+
+# Run specific test file
+python -m pytest tests/steam/test_live_items_routes.py -v
+
+# Run a specific test function
+python -m pytest tests/steam/test_live_items_routes.py::test_get_item_float -v
+```
+
+### Debugging Failed Tests
+
+When a test fails, follow these steps:
+
+1. Check the server logs in the first terminal for error messages
+2. Examine the test output for failed assertions
+3. Verify the expected vs. actual response data
+4. Check for any model validation errors in the server logs
+5. Debug the relevant endpoint implementation in the `back-end/app/steam` directory
+
+### Testing with SwaggerUI
+
+You can also test endpoints manually using SwaggerUI:
+
+1. Start the FastAPI server as described above
+2. Open your browser and go to http://127.0.0.1:8000/docs
+3. Find the relevant Steam API endpoint in the documentation
+4. Click "Try it out" and provide the necessary parameters
+5. Click "Execute" to send the request
+6. Check the response and status code
+
+## Common Issues and Fixes
+
+### Pydantic Model Errors
+
+If you encounter Pydantic validation errors:
+
+1. Check if the model is using the correct Pydantic v2 syntax
+2. Ensure all required fields are properly defined
+3. Verify that field types match the expected API response
+4. For models with `Config` classes, ensure they use Pydantic v2 naming conventions:
+   - Replace `allow_population_by_field_name = True` with `populate_by_name = True`
+   - Replace `schema_extra` with `json_schema_extra`
+5. For custom types like `OrderType`, ensure they implement `__get_pydantic_core_schema__` or use built-in Enum types
+
+### Import and File Naming Issues
+
+If you encounter import errors or module not found errors:
+
+1. Check for file naming discrepancies:
+   - The current codebase has an issue where imports use `app.steam.models.item` but the file is named `items.py`
+   - Fix by either:
+     - Renaming the file to match imports: `items.py` → `item.py`
+     - OR updating all import statements to use the correct module name
+2. Ensure all `__init__.py` files correctly expose the needed modules
+3. Check import statement paths for typos
+4. Verify the virtual environment has all required packages installed
+
+### API Connection Issues
+
+If tests fail due to API connection issues:
+
+1. Verify the API key is correctly set in the `.env` file
+2. Check for rate limiting issues in the API response
+3. Ensure the network connection is stable
+4. Add retries with backoff to handle temporary connectivity issues
+
+## Continuous Integration Workflow
+
+For implementing new endpoints:
+
+1. Define the endpoint in the appropriate router file
+2. Implement the service method in the relevant client class
+3. Create a test file or add test functions to an existing file
+4. Start the server and run the tests to verify functionality
+5. Update the `endpoint-integration-progress.md` file with the current status
+
+## Standardized Testing Output Format
+
+When reporting test results, use the following format:
+
+```
+Test: [TEST_NAME]
+Status: [PASS/FAIL]
+Endpoint: [ENDPOINT_PATH]
+Expected: [EXPECTED_BEHAVIOR]
+Actual: [ACTUAL_BEHAVIOR]
+Fix (if failed): [PROPOSED_FIX]
+```
+
+Example:
+
+```
+Test: test_get_item_float
+Status: FAIL
+Endpoint: GET /api/steam/item/float
+Expected: Return float value for valid item
+Actual: Server error 500 - Pydantic model validation error
+Fix: Update OrderType class to use Enum implementation compatible with Pydantic v2
+```
 
 ## Backend Environment Setup
 
@@ -119,4 +267,93 @@ This command helps create the initial test structure for all endpoint categories
 
 ```tool_code
 print(default_api.run_terminal_cmd(explanation="Create test files for all API categories.", command="cd back-end/tests/steam && echo import pytest > test_live_items_routes.py && echo import pytest > test_live_profile_routes.py && echo import pytest > test_live_trade_routes.py && echo import pytest > test_live_info_routes.py && echo import pytest > test_live_explore_routes.py && echo import pytest > test_live_account_routes.py", is_background=false))
+```
+
+## Fixing Current Model Issues
+
+This sequence provides step-by-step commands to fix the current Pydantic v2 compatibility issues.
+
+### Step 1: Update OrderType Class Implementation
+
+```bash
+# Navigate to backend directory
+cd back-end
+
+# Activate the virtual environment
+.\.gigaland\Scripts\activate
+
+# Open the item.py file for editing
+code app/steam/models/item.py
+```
+
+Required changes in `item.py`:
+
+1. Update `OrderType` implementation:
+```python
+# Replace the existing OrderType string class:
+class OrderType(str):
+    """Enum string for order types."""
+    BUY = "buy"
+    SELL = "sell"
+    CANCEL = "cancel"
+
+# With a proper Enum implementation:
+from enum import Enum
+
+class OrderType(str, Enum):
+    """Enum for order types."""
+    BUY = "buy"
+    SELL = "sell"
+    CANCEL = "cancel"
+```
+
+2. Update all `Config` classes:
+```python
+# Replace all instances of:
+class Config:
+    allow_population_by_field_name = True
+
+# With:
+model_config = {
+    "populate_by_name": True,
+}
+```
+
+### Step 2: Start the Server and Run Tests
+
+```bash
+# Navigate to backend directory
+cd back-end
+
+# Activate the virtual environment
+.\.gigaland\Scripts\activate
+
+# Start the FastAPI server in one terminal
+uvicorn app.main:app --reload
+
+# In a second terminal, run tests
+cd back-end
+.\.gigaland\Scripts\activate
+python -m pytest tests/steam/test_live_items_routes.py -v
+```
+
+### Troubleshooting Model Issues
+
+If you encounter additional model issues:
+
+1. Check the server logs for specific error messages
+2. Common errors include:
+   - `schema_extra` usage in Config classes (replace with `json_schema_extra`)
+   - `orm_mode` in Config classes (replace with `from_attributes`)
+   - Missing `__root__` field (replace with appropriate root model)
+3. Refer to Pydantic v2 migration guide at: https://docs.pydantic.dev/latest/migration/
+
+When reporting model errors, use this format:
+
+```
+Model Error: [MODEL_NAME]
+File: [FILE_PATH]
+Line: [LINE_NUMBER]
+Error: [ERROR_MESSAGE]
+Fix: [PROPOSED_FIX]
 ```

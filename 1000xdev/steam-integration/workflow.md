@@ -141,6 +141,10 @@ Ensuring the reliability, robustness, and correctness of the Steam API integrati
 - [x] Create data models for CS2 skins
 - [ ] **Reorganize backend services to match SteamWebAPI.com endpoint categories**:
   - [ ] Implement `ItemsClient` for items, item details, history and float endpoints
+    - [x] Implement basic item fetching endpoints
+    - [x] Implement price history endpoint 
+    - [x] Implement order activity endpoint
+    - [ ] Implement float information endpoint
   - [ ] Implement `ProfileClient` for user profiles, inventory, friendlist and privacy endpoints
   - [ ] Implement `TradeClient` for trade offer creation, acceptance, history, and management
   - [ ] Implement `InfoClient` for utility endpoints (SteamID conversion, items info, markets)
