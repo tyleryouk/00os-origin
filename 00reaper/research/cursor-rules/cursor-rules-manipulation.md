@@ -20,7 +20,7 @@ domain:
 
 ## [Tyler] Project Rules Manipulation
 Project rules can be read in .cursor/rules/
-Project rules are synced using 1000xscripts\Sync-00OS-Complete.ps1, which syncs 00OS to .cursor/rules/.
+Project rules are synced using 00reaper/00scripts\Sync-00OS-Complete.ps1, which syncs 00OS to .cursor/rules/.
 
 Cursor Project Rules are manipulated so that the Cursor chat box recognizes terminal-like commands. These terminal-like commands are defined as 00OS commands.
 

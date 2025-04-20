@@ -99,8 +99,8 @@ The separation between `00os/` and `.cursor/rules/` exists for several important
 The synchronization process:
 
 1. Source files in `00os/` (*.md) contain the implementations
-2. `1000xscripts/Sync-All.bat` triggers the synchronization
-3. `1000xscripts/Sync-CursorRules.ps1` handles conversion and copying
+2. `00reaper/00scripts/Sync-All.bat` triggers the synchronization
+3. `00reaper/00scripts/Sync-CursorRules.ps1` handles conversion and copying
 4. Target files in `.cursor/rules/` (*.mdc) are generated with proper frontmatter
 5. Cursor reads these .mdc files to provide functionality to the AI
 
