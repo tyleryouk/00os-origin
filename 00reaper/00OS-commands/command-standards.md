@@ -99,9 +99,9 @@ Example output
 
 PowerShell commands cannot be defined directly within 00OS processes. Instead:
 
-1. Create a PowerShell script in the `1000xscripts` directory
+1. Create a PowerShell script in the `00reaper/00scripts` directory
 2. Use the `run_terminal_cmd` tool to call the script
-3. Example: `> reaper-sync` calls `.\1000xscripts\Sync-00OS-Complete.ps1`
+3. Example: `> reaper-sync` calls `.\00reaper/00scripts\Sync-00OS-Complete.ps1`
 
 ## Documentation Standards
 
