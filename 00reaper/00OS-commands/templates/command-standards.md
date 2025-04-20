@@ -89,8 +89,8 @@ Example output
 
 ## Tool Call Standards
 
-1. **Mandatory Fetch Rules**: Every command must use `fetch_rules` to get process information
-2. **No Self-Execution**: Commands must never execute terminal commands that run themselves
+1. **MANDATORY fetch_rules**: Every command MUST use `fetch_rules` to get process information (NON-NEGOTIABLE)
+2. **NEVER Self-Execute**: Commands must NEVER execute terminal commands that run 00OS commands (creates infinite loops)
 3. **Minimal Tool Calls**: Keep tool calls to a minimum, preferring larger reads
 4. **Error Handling**: Always include proper error handling with suggestions
 5. **Response Format**: Use standard indicators (✅, ❌, ⚠️) for responses
@@ -137,13 +137,15 @@ The fundamental goal of 00OS commands is to create processes **based on tool cal
 
 ## Command Processing Flow
 
-00OS commands follow a standardized processing pipeline:
+The 00OS command processing flow follows this exact sequence:
 
-1.  **Command Detection**: User input prefixed with `>` is identified as a command. This prefix is fixed and hardcoded in the command handler.
-2.  **Process Selection**: The command handler uses `fetch_rules` to retrieve the appropriate process definition based on the command name. **This step is MANDATORY and must not be skipped.**
-3.  **Parameter Parsing**: Arguments, options, and flags are extracted and validated against the process definition.
-4.  **Tool Call Execution**: The process executes its defined sequence of Cursor tool calls, potentially using results from previous calls.
-5.  **Response Formatting**: The final result is formatted using standard indicators (✅, ❌, ⚠️) and returned to the user.
+1. **Command Detection**: User input with `>` prefix is detected as a command
+2. **Process Selection**: The appropriate process rule is fetched using `fetch_rules` (MANDATORY)
+3. **Parameter Parsing**: Command arguments and flags are extracted
+4. **Tool Call Execution**: The sequence of tool calls defined in the process is executed
+5. **Response Formatting**: Results are formatted with standard indicators
+
+This flow is non-negotiable and critical to the functioning of 00OS commands. Every command MUST follow this pattern to ensure consistency and reliability.
 
 ## Fixed System Properties
 

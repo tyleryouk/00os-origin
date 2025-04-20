@@ -7,8 +7,21 @@ The 00OS system has successfully implemented a tool call-based architecture that
 ## Command Processing Pipeline
 
 ```
-User Input → Command Detection → Process Selection → Parameter Parsing → Tool Call Execution → Response Formatting
+User Input → Command Detection → Process Selection via fetch_rules → Parameter Parsing → Tool Call Execution → Response Formatting
 ```
+
+### Critical Pipeline Requirements
+
+1. **Command Detection**: The `>` prefix is hardcoded in the command handler and cannot be configured.
+2. **Process Selection**: The `fetch_rules` tool MUST be called to retrieve the corresponding process definition. This step is MANDATORY and cannot be skipped.
+3. **No Self-Execution**: Commands must NEVER attempt to execute themselves via `run_terminal_cmd`. This creates infinite loops and breaks the command processing flow.
+4. **Standardized Responses**: All command responses must use consistent formatting with standard indicators (✅, ❌, ⚠️).
+
+The command handler enforces these requirements by:
+- Hardcoding the `>` prefix detection in `isCommand()`
+- Always executing `fetch_rules` before any command processing
+- Returning structured results that allow the fetched process to control execution
+- Providing helpful error messages when commands or process rules are not found
 
 ## Implemented Components
 
@@ -241,9 +254,23 @@ The system is organized in a structured directory hierarchy:
 │   ├── state-manager.md
 │   └── 00os-integration.md
 ├── processes/            # Command implementations
-│   ├── system/           # System management commands
-│   ├── tools/            # Utility commands
-│   └── examples/         # Example applications
+│   ├── system/           # Global system commands for any AI Agent
+│   │   ├── help.md       # General system commands
+│   │   ├── echo.md
+│   │   ├── system-status.md
+│   │   └── version.md
+│   ├── tools/            # Global utility commands for any AI Agent
+│   │   ├── file-list.md  # File operation commands
+│   │   ├── file-read.md
+│   │   └── file-search.md
+│   ├── 00reaper/         # Commands specific to 00reaper AI Agent
+│   │   ├── reaper-init.md
+│   │   ├── reaper-update.md
+│   │   ├── reaper-sync.md
+│   │   ├── reaper-read-files.md
+│   │   └── reaper-implement.md
+│   └── 1000xdev/         # Commands specific to 1000xdev AI Agent
+│       └── (future commands)
 ├── config/               # System configuration
 │   ├── settings.md
 │   └── terminal.md

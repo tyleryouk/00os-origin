@@ -1,189 +1,101 @@
-# 00OS Command Development
+# 00OS Command Development Hub
 
-This directory serves as the central hub for creating, managing, and optimizing 00OS commands. Read this file first at the beginning of each development session.
+This directory serves as the central hub for 00OS command development, management, and optimization. It contains the tools, documentation, and workflow guides needed to develop and maintain the 00OS command system.
 
-## Key Concepts
-
-### Tool Call Based Command Execution
-
-The goal of 00OS commands is to create processes **based on tool call patterns** to automate the development process:
-
-1. User sends a command starting with `>` (this prefix is fixed and hardcoded)
-2. We make a `fetch_rules` tool call to get the appropriate process - **this step is MANDATORY**
-3. We execute a sequence of tool calls as defined in the process
-4. We return formatted results with standardized indicators (✅, ❌, ⚠️)
-
-### Core Command Workflow
+## Directory Structure
 
 ```
-Command Detection → Process Rule Fetching (using fetch_rules) → Parameter Parsing → Tool Call Execution → Response Formatting
+00reaper/00OS-commands/
+│
+├── README.md                    # This file - main entry point
+├── current-task.md              # Current development focus
+├── current-implementation.md    # Current system state documentation
+├── major-changes.md             # Record of significant changes
+│
+├── context/                     # Context files for current state of 00OS operating system
+├── templates/                   # Command templates and patterns
+├── documentation/               # System documentation
+├── testing/                     # Testing resources and guides
+└── user-directed/               # User-focused resources
 ```
 
-## Development Workflow (NEW)
+## Core Development Workflow
 
-To ensure reliable and intelligent changes to 00OS, follow this two-command workflow:
+To work with the 00OS command system, follow this two-command workflow:
 
-1.  **Define Task:** Update `current-task.md` with the specific goal for the current development session.
-2.  **Load Context & Implement:**
-    *   Run `> reaper-read-files 00reaper/00OS-commands` to load the full context of this directory, including your task directive.
-    *   Run `> reaper-implement`. This command will:
-        *   Read `current-task.md`.
-        *   Analyze the task against the loaded context (standards, status, etc.).
-        *   Plan and execute the necessary changes to `00OS/processes/` and tracking files using `edit_file`.
-        *   Report the actions taken.
+1. **Define Task:** Update `current-task.md` with your specific development goal.
 
-## File Structure
+2. **Load Context & Implement:**
+   * Run `> reaper-read-files 00reaper/00OS-commands` to load context
+   * Run `> reaper-implement` to analyze and implement your task
 
-- `README.md` - This file. Entry point and workflow overview.
-- `current-task.md` - **User Input**: Define the immediate goal for `reaper-implement` here.
-- `command-standards.md` - **Primary Source**: Comprehensive standards for implementation.
-- `command-registry.md` - Tracks command implementation status.
-- `testing-framework.md` - Defines testing structure.
-- `testing-guide.md` - Provides detailed testing procedures.
-- `current-implementation.md` - Documents current system architecture.
-- `user_requests.md` - Tracks longer-term backlog and hallucination logs.
-- `user-guide.md` - End-user documentation (work in progress).
-- `major-changes.md` - Foundational document explaining the tool-call architecture rationale.
+## Command Organization
 
-## Command Implementation Standards
+As per REQ-000, all 00OS commands are now organized into three main categories:
 
-### Command Structure
-```
-> [command] [subcommand] [arguments] [--flags]
-```
+1. **Global System Commands** (`00os/processes/system/` directory)
+   * Commands available to any AI Agent (e.g., help, echo, system-status)
+   * Core system functionality that works regardless of identity
 
-### Process File Template
-```markdown
----
-name: command-name
-description: Brief description of command
-version: 1.0
-author: 00reaper
-permissions: [basic]
-inputs:
-  - name: arg1
-    type: string
-    required: true
-    description: Description of first argument
-  - name: verbose
-    type: boolean
-    required: false
-    default: false
-    description: Show detailed output
-outputs:
-  - name: result
-    type: string
-    description: Command output
----
+2. **Global Tool Commands** (`00os/processes/tools/` directory)
+   * Utility commands available to any AI Agent (e.g., file-list, file-read)
+   * Generic tools that work regardless of identity
 
-# Process: command-name
+3. **AI Agent-Specific Commands**
+   * **00reaper Commands** (`00os/processes/00reaper/` directory)
+     * Commands specific to the 00reaper AI Agent (e.g., reaper-init, reaper-sync)
+     * Work with workflow files located in the 00reaper directory
+   * **1000xdev Commands** (`00os/processes/1000xdev/` directory)
+     * Commands specific to the 1000xdev AI Agent (planned)
+     * Will work with workflow files located in the 1000xdev directory
 
-## Description
-Detailed description of what the command does.
+When implementing new commands, place them in the appropriate category based on their purpose and the AI Agent they're designed for.
 
-## Execution
+## Key Resources
 
-```javascript
-// Input validation
-function validateInput(args, flags) {
-  // Validation logic
-  return { valid: true/false, error: "Error message if invalid" };
-}
+### Core Workflow Files (Root Directory)
+* **current-task.md** - Define your immediate development goals here
+* **current-implementation.md** - Overview of the current system state
+* **major-changes.md** - Records significant architectural changes
+* **hallucination-log.md** - Tracks known hallucination issues
 
-// Execution logic - defines tool call sequence
-async function execute(args, flags) {
-  // Validate input
-  const validation = validateInput(args, flags);
-  if (!validation.valid) {
-    return {
-      success: false,
-      message: `❌ Error: ${validation.error}`,
-      suggestions: [...] // Recovery suggestions
-    };
-  }
-  
-  try {
-    // Execute tool calls in sequence
-    const result1 = await tools.call('tool_name', {...});
-    const result2 = await tools.call('tool_name', {...});
-    
-    // Process results
-    const processedResult = processResults(result1, result2);
-    
-    // Return formatted response
-    return {
-      success: true,
-      message: `✅ Command executed successfully`,
-      data: processedResult
-    };
-  } catch (error) {
-    // Handle errors
-    return {
-      success: false,
-      message: `❌ Error: ${error.message}`,
-      code: determineErrorCode(error),
-      suggestions: generateSuggestions(error)
-    };
-  }
-}
-```
+### Templates (`templates/`)
+* **command-template.md** - Primary template for new commands
+* **implemented-patterns.md** - Standard tool call patterns
+* **command-standards.md** - Command implementation standards
 
-### Response Format Standards
-```
-✅ Success: [Command output]
-❌ Error [CODE]: [Error message]
-⚠️ Warning: [Warning message]
-```
+### Documentation (`documentation/`)
+* **00OS-command-development.md** - Comprehensive development guide
+* **00OS-command-user-guide.md** - End-user documentation
+* **command-registry.md** - Command registry documentation
 
-## Critical Implementation Requirements
+### Testing (`testing/`)
+* **testing-guide.md** - Guidelines for testing commands
+* **testing-framework.md** - Framework for systematic testing
 
-1. **Command Prefix**: The '>' prefix for commands is hardcoded in the command handler and is not configurable.
-2. **Mandatory fetch_rules**: Every command MUST trigger a fetch_rules call to retrieve its process definition.
-3. **No Self-Execution**: Commands should NEVER attempt to execute themselves via run_terminal_cmd.
-4. **Process-Driven Execution**: Allow the fetched process to control the execution flow.
+### User Resources (`user-directed/`)
+* **user_requests.md** - Tracking of user enhancement requests
 
-## Cursor Tool Types
+## Command Implementation Process
 
-1. **Search Tools**
-   - `read_file`: Reads file contents
-   - `list_dir`: Lists directory contents
-   - `codebase_search`: Searches codebase semantically
-   - `grep_search`: Searches for patterns in files
-   - `file_search`: Finds files by name
-   - `web_search`: Searches the web
+1. Review `current-task.md` to understand the goal
+2. Check `documentation/00OS-command-development.md` for standards
+3. Use appropriate template from `templates/`
+4. Implement and test following the testing guide
+5. Update tracking documentation
 
-2. **Edit Tools**
-   - `edit_file`: Edits file content
-   - `reapply`: Re-applies an edit
-   - `delete_file`: Deletes a file
+## Critical Principles
 
-3. **Terminal Tools**
-   - `run_terminal_cmd`: Executes terminal commands
+1. **Tool Call Architecture** - 00OS commands execute via a sequence of tool calls
+2. **Mandatory Rule Fetching** - All commands MUST use `fetch_rules` to get their process
+3. **Standard Response Format** - Use consistent prefixes (✅, ❌, ⚠️)
+4. **No Self-Execution** - Commands should NEVER execute themselves via terminal commands
+5. **Proper Categorization** - Place commands in the correct category directories based on their target AI Agent
 
-4. **Other Tools**
-   - `fetch_rules`: Retrieves Cursor rules (MANDATORY for command processing)
+## Getting Started
 
-## Tool Call Best Practices
+1. Run `> help` to see available commands
+2. Check `documentation/00OS-command-user-guide.md` for usage information
+3. Review `current-implementation.md` to understand the system architecture
 
-1. **Minimize Tool Calls**
-   - Read larger sections of files at once
-   - Stop tool calls once you have the information you need
-   - Use targeted searches before broad file reads
-
-2. **Optimize Sequences**
-   - Chain tool calls in logical sequences
-   - Use results from one tool call to inform the next
-   - Handle errors gracefully with fallback approaches
-
-3. **Format Responses Consistently**
-   - Use standard prefixes (✅, ❌, ⚠️)
-   - Include helpful context in error messages
-   - Provide actionable suggestions when errors occur
-
-## Development Process
-
-(This section is superseded by the new Development Workflow above - focusing on the `reaper-read-files` -> `reaper-implement` cycle)
-
-## Note
-
-When implementing 00OS commands, remember that the core goal is to leverage Cursor's tool calls to automate workflows. Commands should NEVER try to run terminal commands that execute themselves - this creates an infinite loop and will not work.
+For detailed development information, see `documentation/00OS-command-development.md`.

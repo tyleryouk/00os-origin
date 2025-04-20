@@ -253,12 +253,8 @@ async function processCommand(input) {
           return formatResponse(`Error: You don't have permission to execute this command.`, false);
         }
         
-        // Execute the process using the fetched rule content
-        // The process rule itself should contain the logic for executing the appropriate tool calls
-        // We don't need to call executeProcess manually - the fetched rule should provide the execution logic
-        
-        // Instead of trying to execute the process ourselves, we return a status message
-        // The fetched rule should now be in context and will guide the execution
+        // At this point, the fetched rule contains the necessary execution logic
+        // Return a structured object indicating the command has been processed and the rule fetched
         return {
           status: "command_fetched",
           command: parsedCommand.command,
@@ -271,15 +267,27 @@ async function processCommand(input) {
         // If fetch_rules fails, this is a critical error and we should not proceed with execution
         tools.error(`Failed to fetch rule for process '${processRuleName}': ${fetchError.message}`);
         
-        // Return a properly formatted error response
-        return formatResponse(`Error: Command '${parsedCommand.command}' not found or could not be processed. Please check the command name and try again.`, false);
+        // Return a properly formatted error response with suggestions
+        return formatResponse(`Command '${parsedCommand.command}${parsedCommand.subcommand ? ' ' + parsedCommand.subcommand : ''}' not found or could not be processed.
+        
+Suggestions:
+- Check the command name and try again
+- Use '> help' to see available commands
+- Try '> help ${parsedCommand.command}' for specific command help`, false);
     }
   } catch (error) {
     // Handle general command processing errors
     tools.error(`Error processing command: ${error.message}`);
-    return formatResponse(`Error: ${error.message}`, false);
+    return formatResponse(`Error: ${error.message}
+    
+Suggestions:
+- Check the command syntax
+- Try using '> help' for command usage information`, false);
   }
 }
+
+// DO NOT add functions that attempt to execute commands directly via terminal commands.
+// All command execution must happen through the process defined in the fetched rule.
 ```
 
 ## Integration with Cursor Rules
