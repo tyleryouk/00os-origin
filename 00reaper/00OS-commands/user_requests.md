@@ -68,7 +68,7 @@ This enhancement should be treated as a high priority, as it directly impacts th
 ### REQ-001: Implement Tool Call Based Command Structure
 #### Requirements
 - Reconfigure command pipeline to focus on tool call execution
-- Remove any terminal command executions that run 00OS commands
+- Remove any direct terminal command executions that run 00OS commands, all terminal commands should be instructed with the run_terminal_cmd() tool call.
 - Create proper command detection and parameter parsing
 - Implement process selection using fetch_rules
 - Document the updated command structure

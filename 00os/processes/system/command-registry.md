@@ -110,7 +110,9 @@ async function listCommands(categoryFilter) {
       output += `${category.toUpperCase()}:\n`;
       
       commandsByCategory[category].forEach(cmd => {
-        output += `  ${cmd.name.padEnd(15)} ${cmd.description}\n`;
+        // Use displayName if available, otherwise use name
+        const displayName = cmd.displayName || cmd.name;
+        output += `  ${displayName.padEnd(15)} ${cmd.description}\n`;
       });
       
       output += '\n';
@@ -235,8 +237,11 @@ async function getCommandInfo(commandName) {
     // Get all commands from registry
     const commands = await getRegisteredCommands();
     
-    // Find the requested command
-    const command = commands.find(cmd => cmd.name.toLowerCase() === commandName.toLowerCase());
+    // Find the requested command by name or displayName
+    const command = commands.find(cmd => 
+      cmd.name.toLowerCase() === commandName.toLowerCase() || 
+      (cmd.displayName && cmd.displayName.toLowerCase() === commandName.toLowerCase())
+    );
     
     if (!command) {
       return formatError(`Command not found: ${commandName}`, [
@@ -246,17 +251,38 @@ async function getCommandInfo(commandName) {
     }
     
     // Format the output
-    let output = `✅ Command Information: ${command.name}\n\n`;
+    let output = `✅ Command Information: ${command.displayName || command.name}\n\n`;
     
     // Basic command information
-    output += `Name: ${command.name}\n`;
+    output += `Name: ${command.displayName || command.name}\n`;
     output += `Description: ${command.description}\n`;
     output += `Category: ${command.category}\n`;
     output += `Version: ${command.version}\n`;
     output += `Author: ${command.author}\n\n`;
     
     // Command usage
-    output += `Usage: > ${command.name} ${command.usage || ''}\n\n`;
+    const usageParts = [];
+    usageParts.push(command.displayName || command.name);
+    
+    // Add required inputs to usage
+    if (command.inputs && command.inputs.length > 0) {
+      const requiredInputs = command.inputs.filter(input => input.required);
+      const optionalInputs = command.inputs.filter(input => !input.required);
+      
+      requiredInputs.forEach(input => {
+        usageParts.push(`<${input.name}>`);
+      });
+      
+      optionalInputs.forEach(input => {
+        if (input.type === 'boolean') {
+          usageParts.push(`[--${input.name}]`);
+        } else {
+          usageParts.push(`[--${input.name}=value]`);
+        }
+      });
+    }
+    
+    output += `Usage: > ${usageParts.join(' ')}\n\n`;
     
     // Input parameters
     if (command.inputs && command.inputs.length > 0) {
@@ -264,7 +290,7 @@ async function getCommandInfo(commandName) {
       command.inputs.forEach(input => {
         const required = input.required ? '(required)' : '(optional)';
         const defaultValue = input.default ? `default: ${input.default}` : '';
-        output += `  ${input.name}: ${input.type} ${required} - ${input.description} ${defaultValue}\n`;
+        output += `  ${input.name}: ${input.type || 'string'} ${required} - ${input.description || 'No description'} ${defaultValue}\n`;
       });
       output += '\n';
     }
@@ -306,38 +332,36 @@ async function discoverAllCommands() {
       explanation: 'Listing process directories for command discovery'
     });
     
+    if (!processDir || !processDir.entries) {
+      tools.log('Error: Could not list process directories');
+      return getFallbackCommands();
+    }
+    
     // Process each category directory
-    if (processDir) {
-      for (const dirEntry of processDir) {
-        if (dirEntry.startsWith('[dir]')) {
-          // Extract directory name
-          const categoryMatch = dirEntry.match(/\[dir\]\s+(\w+)/);
-          if (categoryMatch && categoryMatch[1]) {
-            const category = categoryMatch[1].toLowerCase();
+    for (const dirEntry of processDir.entries) {
+      if (dirEntry.is_directory) {
+        const category = dirEntry.path.split('/').pop();
+        
+        // List files in the category directory
+        const categoryDir = await tools.call('list_dir', {
+          relative_workspace_path: `00os/processes/${category}`,
+          explanation: `Listing process files in ${category} category for command discovery`
+        });
+        
+        if (!categoryDir || !categoryDir.entries) {
+          tools.log(`Error: Could not list files in ${category} directory`);
+          continue;
+        }
+        
+        // Process each file in this category
+        for (const fileEntry of categoryDir.entries) {
+          if (!fileEntry.is_directory && fileEntry.path.endsWith('.md')) {
+            const filename = fileEntry.path.split('/').pop().replace('.md', '');
             
-            // List files in the category directory
-            const files = await tools.call('list_dir', {
-              relative_workspace_path: `00os/processes/${category}`,
-              explanation: `Listing process files in ${category} for command discovery`
-            });
-            
-            // Process each file
-            if (files) {
-              for (const fileEntry of files) {
-                if (fileEntry.includes('.md')) {
-                  // Extract filename
-                  const fileMatch = fileEntry.match(/\[file\]\s+(\S+)\.md/);
-                  if (fileMatch && fileMatch[1]) {
-                    const filename = fileMatch[1];
-                    
-                    // Read process file to extract command information
-                    const commandInfo = await extractCommandInfo(filename, category);
-                    if (commandInfo) {
-                      allCommands.push(commandInfo);
-                    }
-                  }
-                }
-              }
+            // Read process file to extract command information
+            const commandInfo = await extractCommandInfo(filename, category);
+            if (commandInfo) {
+              allCommands.push(commandInfo);
             }
           }
         }
@@ -346,6 +370,7 @@ async function discoverAllCommands() {
     
     // If no commands were discovered, fall back to a minimal set
     if (allCommands.length === 0) {
+      tools.log('Warning: No commands discovered, using fallback list');
       return getFallbackCommands();
     }
     
@@ -360,139 +385,139 @@ async function discoverAllCommands() {
 // Helper function to extract command information from a process file
 async function extractCommandInfo(filename, category) {
   try {
-    // Read the file header to extract metadata
+    // Read the file to extract metadata
     const filePath = `00os/processes/${category}/${filename}.md`;
     
     const fileContent = await tools.call('read_file', {
       target_file: filePath,
-      offset: 1,
-      limit: 50, // Read just enough to get the header
-      explanation: `Reading process file header from ${filePath} for command discovery`
+      should_read_entire_file: true,
+      explanation: `Reading process file ${filePath} for command discovery`
     });
     
-    if (!fileContent) {
+    if (!fileContent || !fileContent.content) {
+      tools.log(`Warning: Could not read file ${filePath}`);
       return null;
     }
     
+    const content = fileContent.content;
+    
     // Extract YAML frontmatter between --- tags
-    const content = fileContent;
-    const frontmatterMatch = content.match(/---\n([\s\S]*?)\n---/);
+    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
     
     if (frontmatterMatch) {
       const frontmatter = frontmatterMatch[1];
-      
-      // Parse frontmatter lines to extract command info
       const lines = frontmatter.split('\n');
+      
+      // Initialize command info with defaults
       const commandInfo = {
-        category: category // Default category from directory
+        name: filename,
+        description: `${filename} command`,
+        category: category,
+        version: '1.0.0',
+        author: '00reaper',
+        inputs: [],
+        examples: []
       };
       
+      let currentSection = null;
+      let currentItem = null;
+      
+      // Parse frontmatter lines
       for (const line of lines) {
-        // Extract key-value pairs from YAML lines
-        const match = line.match(/^\s*(\w+):\s*(.*)/);
-        if (match) {
-          const [_, key, value] = match;
+        const trimmedLine = line.trim();
+        
+        // Skip empty lines
+        if (!trimmedLine) continue;
+        
+        // Check for section markers
+        if (trimmedLine === 'inputs:') {
+          currentSection = 'inputs';
+          continue;
+        } else if (trimmedLine === 'outputs:') {
+          currentSection = 'outputs';
+          continue;
+        } else if (trimmedLine === 'examples:') {
+          currentSection = 'examples';
+          continue;
+        }
+        
+        // Handle top-level key-value pairs
+        const kvMatch = trimmedLine.match(/^(\w+):\s*(.*)/);
+        if (kvMatch && !trimmedLine.startsWith('-')) {
+          const [_, key, value] = kvMatch;
           
-          // Extract specific metadata fields
-          if (key === 'name') {
-            commandInfo.name = value.trim();
-          } else if (key === 'description') {
-            commandInfo.description = value.trim();
-          } else if (key === 'version') {
-            commandInfo.version = value.trim();
-          } else if (key === 'author') {
-            commandInfo.author = value.trim();
-          } else if (key === 'usage') {
-            commandInfo.usage = value.trim();
+          if (key === 'name' || key === 'description' || key === 'version' || 
+              key === 'author' || key === 'usage' || key === 'category') {
+            commandInfo[key] = value.trim();
           }
-        }
-        
-        // Look for inputs section
-        if (line.match(/^\s*inputs:/)) {
-          commandInfo.inputs = [];
+          
+          currentSection = null;
           continue;
         }
         
-        // Extract input parameters (simplified, might need enhancements)
-        if (commandInfo.inputs && line.match(/^\s*-\s*name:/)) {
-          const inputMatch = line.match(/^\s*-\s*name:\s*(.*)/);
-          if (inputMatch) {
-            const inputName = inputMatch[1].trim();
-            const input = { name: inputName };
-            
-            // Try to extract next lines for input details
-            const inputIndex = lines.indexOf(line);
-            if (inputIndex >= 0 && inputIndex < lines.length - 1) {
-              // Extract type
-              const typeMatch = lines[inputIndex + 1].match(/^\s*type:\s*(.*)/);
-              if (typeMatch) {
-                input.type = typeMatch[1].trim();
+        // Handle list items
+        if (trimmedLine.startsWith('-') && currentSection) {
+          const itemMatch = trimmedLine.match(/^-\s*(.*)/);
+          if (itemMatch) {
+            if (currentSection === 'examples') {
+              // Examples are simple strings
+              commandInfo.examples.push(itemMatch[1].trim());
+            } else if (currentSection === 'inputs') {
+              // New input parameter
+              currentItem = { name: '' };
+              
+              // Try to extract name from this line
+              const nameMatch = trimmedLine.match(/name:\s*(.*)/);
+              if (nameMatch) {
+                currentItem.name = nameMatch[1].trim();
               }
               
-              // Extract required
-              const requiredMatch = lines[inputIndex + 2].match(/^\s*required:\s*(.*)/);
-              if (requiredMatch) {
-                input.required = requiredMatch[1].trim() === 'true';
-              }
-              
-              // Extract default value
-              const defaultMatch = lines[inputIndex + 3].match(/^\s*default:\s*(.*)/);
-              if (defaultMatch) {
-                input.default = defaultMatch[1].trim();
-              }
-              
-              // Extract description
-              const descMatch = lines[inputIndex + 4].match(/^\s*description:\s*(.*)/);
-              if (descMatch) {
-                input.description = descMatch[1].trim();
-              }
+              commandInfo.inputs.push(currentItem);
             }
-            
-            commandInfo.inputs.push(input);
           }
-        }
-        
-        // Look for examples section
-        if (line.match(/^\s*examples:/)) {
-          commandInfo.examples = [];
           continue;
         }
         
-        // Extract examples
-        if (commandInfo.examples && line.match(/^\s*-\s*/)) {
-          const exampleMatch = line.match(/^\s*-\s*(.*)/);
-          if (exampleMatch) {
-            commandInfo.examples.push(exampleMatch[1].trim());
+        // Handle properties of list items
+        if (currentSection === 'inputs' && currentItem) {
+          // Extract input properties
+          const propMatch = trimmedLine.match(/(\w+):\s*(.*)/);
+          if (propMatch) {
+            const [_, prop, value] = propMatch;
+            
+            if (prop === 'type' || prop === 'description') {
+              currentItem[prop] = value.trim();
+            } else if (prop === 'required') {
+              currentItem.required = value.trim() === 'true';
+            } else if (prop === 'default') {
+              currentItem.default = value.trim();
+            }
           }
         }
       }
       
-      // If name is missing, use filename
-      if (!commandInfo.name) {
-        commandInfo.name = filename.replace(/-/g, ' ');
-      }
-      
-      // If description is missing, provide a default
-      if (!commandInfo.description) {
-        commandInfo.description = `${filename} command`;
-      }
-      
-      // If version is missing, use default
-      if (!commandInfo.version) {
-        commandInfo.version = '1.0.0';
-      }
-      
-      // If author is missing, use default
-      if (!commandInfo.author) {
-        commandInfo.author = '00reaper';
+      // Normalize command name if it contains dashes
+      if (commandInfo.name.includes('-')) {
+        // Special cases like file-list -> file list
+        if (commandInfo.name.startsWith('file-')) {
+          commandInfo.displayName = `file ${commandInfo.name.substring(5)}`;
+        } else if (commandInfo.name === 'system-status') {
+          commandInfo.displayName = 'system status';
+        } else {
+          commandInfo.displayName = commandInfo.name;
+        }
+      } else {
+        commandInfo.displayName = commandInfo.name;
       }
       
       return commandInfo;
     }
     
     // If frontmatter parsing fails, create basic info from filename
+    tools.log(`Warning: No frontmatter found in ${filePath}`);
     return {
-      name: filename.replace(/-/g, ' '),
+      name: filename,
+      displayName: filename,
       description: `${filename} command`,
       category: category,
       version: '1.0.0',

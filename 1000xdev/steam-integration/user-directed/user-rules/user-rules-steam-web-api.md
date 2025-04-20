@@ -39,9 +39,7 @@ When the term "core workflow files" is used, it specifically refers to the follo
 1.  `README.md`: Provides the main overview, directory structure, and status.
 2.  `workflow.md`: Outlines the detailed development phases, approach, and technical patterns.
 3.  `endpoint-integration-progress.md`: Tracks the specific progress of Steam Web API endpoint integration.
-4.  `final-goal.md`: Defines the ultimate objectives and success criteria for the integration.
-5.  `user-rules-steam-web-api.md`: Contains the operational identity, scope, and rules for the AI agent (this file).
-6.  `tool-call-processes.md`: Defines standardized tool call sequences for testing.
+4.  `tool-call-processes.md`: Defines standardized tool call sequences for testing.
 
 Consistent reference and updates to these files are crucial for maintaining context and guiding the integration process.
 
@@ -141,7 +139,7 @@ Consistent reference and updates to these files are crucial for maintaining cont
   * Verifying endpoint functionality through actual HTTP requests
   * Monitoring application logs for error diagnostics
   * End-to-end tests for critical user flows
-* Follow the detailed strategy and workflow outlined in [1000xdev/steam-integration/back-end-context/testing.md](./back-end-context/testing.md)
+* Follow the detailed strategy and workflow outlined in [1000xdev/steam-integration/workflow.md](./workflow.md)
 * Refer to `tool-call-processes.md` for standardized tool calls required for testing
 
 ## Communication Protocol
