@@ -1,0 +1,128 @@
+---
+description: System component - file-write
+globs: 
+alwaysApply: true
+type: agent
+---
+# file-write
+
+Creates a new file or modifies an existing file with the specified content.
+
+## Description
+
+The `file-write` command allows you to create new files or modify existing ones by specifying the file path and the content to write. By default, it will not overwrite existing files unless explicitly instructed to do so with the `--overwrite` flag.
+
+## Usage
+
+```
+> file-write <file_path> <content> [--overwrite=true|false]
+```
+
+## Arguments
+
+- `file_path` (required): The path of the file to create or modify
+- `content` (required): The content to write to the file
+
+## Flags
+
+- `--overwrite` (optional): Whether to overwrite an existing file if it exists (default: false)
+
+## Examples
+
+Create a new text file:
+```
+> file-write myfile.txt "Hello, World!"
+```
+
+Create or overwrite a JSON configuration file:
+```
+> file-write config.json '{"key": "value"}' --overwrite=true
+```
+
+## Notes
+
+- The command will automatically create any directories in the path if they don't exist
+- The content is written exactly as provided, with no automatic formatting
+- Use quotes around the content if it contains spaces or special characters
+
+```javascript
+async function execute(args, flags) {
+  try {
+    // Parse arguments
+    const filePath = args[0];
+    const content = args[1];
+    
+    // Validate required arguments
+    if (!filePath) {
+      return {
+        status: "error",
+        message: "❌ Error: Missing required argument: file_path"
+      };
+    }
+    
+    if (content === undefined) {
+      return {
+        status: "error",
+        message: "❌ Error: Missing required argument: content"
+      };
+    }
+    
+    // Parse overwrite flag
+    const overwrite = flags.overwrite === "true";
+    
+    // Check if file exists
+    const fileExists = await checkFileExists(filePath);
+    
+    if (fileExists && !overwrite) {
+      return {
+        status: "error",
+        message: `❌ Error: File '${filePath}' already exists. Use --overwrite=true to overwrite it.`
+      };
+    }
+    
+    // Create directories if needed
+    const dirPath = filePath.substring(0, filePath.lastIndexOf("/"));
+    if (dirPath) {
+      await createDirectory(dirPath);
+    }
+    
+    // Write the file
+    await writeFileContent(filePath, content);
+    
+    return {
+      status: "success",
+      message: `✅ Successfully wrote to file: ${filePath}`
+    };
+  } catch (error) {
+    return {
+      status: "error",
+      message: `❌ Error writing file: ${error.message}`
+    };
+  }
+}
+
+async function checkFileExists(filePath) {
+  const result = await editFile({
+    target_file: filePath,
+    instructions: "Check if file exists without modifying it",
+    code_edit: ""
+  }).catch(() => null);
+  
+  return !!result;
+}
+
+async function createDirectory(dirPath) {
+  await runTerminalCmd({
+    command: `mkdir -p ${dirPath}`,
+    is_background: false
+  });
+}
+
+async function writeFileContent(filePath, content) {
+  await editFile({
+    target_file: filePath,
+    instructions: "Write content to file",
+    code_edit: content
+  });
+}
+```
