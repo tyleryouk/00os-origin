@@ -43,7 +43,6 @@ To ensure reliable and intelligent changes to 00OS, follow this two-command work
 - `current-implementation.md` - Documents current system architecture.
 - `user_requests.md` - Tracks longer-term backlog and hallucination logs.
 - `user-guide.md` - End-user documentation (work in progress).
-- `major-changes.md` - Foundational document explaining the tool-call architecture rationale.
 
 ## Command Implementation Standards
 

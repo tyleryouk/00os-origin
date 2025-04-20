@@ -25,17 +25,17 @@ The 00OS-commands development follows a structured cyclical approach that ensure
 
 1. **Read User Request REQ**: Begin by reading the current request from user_requests.md to understand requirements.
 2. **Read Relevant Context**: Review files in context/, documentation/, templates/, and/or testing/ directories to gather necessary information.
-3. **Update Core Workflow Files**: Make changes to current-implementation.md, current-task.md, and major-changes.md to plan the implementation.
+3. **Update Core Workflow Files**: Make changes to active-request.md, implementation-plan.md, and cycle-status.md to plan and track the implementation.
 4. **Make Changes to 00OS**: Implement the requested changes in the 00OS system.
 5. **Update Supporting Materials**: Update context/, documentation/, templates/, and/or testing/ files to align with the new implementation.
-6. **Reset Core Workflow Files**: Clear/update the core workflow files to prepare for the next cycle.
+6. **Reset Core Workflow Files & Sync Changes**: Clear/update the core workflow files to prepare for the next cycle and run `> reaper-sync` to sync the 00OS changes to .cursor/rules.
 
 ### Current Cycle Status
 
 The current cycle is tracked in the three core workflow files:
-- **current-task.md**: Defines the active REQ being implemented and specific goals
-- **current-implementation.md**: Documents changes being made during this cycle
-- **major-changes.md**: Records significant architectural decisions for this cycle
+- **active-request.md**: Contains the complete REQ being implemented, including requirements, clarifications, and acceptance criteria
+- **implementation-plan.md**: Documents the concrete plan for implementing the current REQ, including architectural decisions and required changes
+- **cycle-status.md**: Tracks the progress through the current cycle, showing completed steps, current focus, and next actions
 
 ## Directory Structure Supporting the Cycle
 
@@ -45,9 +45,9 @@ The organization of this directory follows a strategic pattern that supports the
 
 These files maintain the state of the current cycle and are reset between cycles:
 
-- **current-task.md** - Defines the immediate development goal (Cycle Step 3)
-- **current-implementation.md** - Documents implementation details for the current cycle (Cycle Steps 3-4)
-- **major-changes.md** - Tracks significant architectural decisions for the current cycle (Cycle Steps 3-5)
+- **active-request.md** - Contains the complete REQ being implemented in the current cycle (Cycle Step 1-2)
+- **implementation-plan.md** - Documents the concrete implementation plan including architectural decisions, required changes, and testing approach (Cycle Steps 2-3)
+- **cycle-status.md** - Tracks progress through the cycle with checklists, current focus, and next actions (Cycle Steps 3-6)
 
 ### Specialized Subfolder Structure - Persists Across Cycles
 
@@ -88,10 +88,34 @@ To begin a new development cycle:
 
 1. **Initialize**: Run `> reaper-read-files 00reaper/00OS-commands` to load the full context.
 2. **Identify Focus**: Determine which REQ to address from user_requests.md.
-3. **Plan Implementation**: Update the three core workflow files with implementation plans.
-4. **Execute Changes**: Make the necessary changes to 00OS.
+3. **Create/Update Core Files**:
+   - Create/update **active-request.md** with the complete REQ details
+   - Create/update **implementation-plan.md** with the concrete implementation plan
+   - Create/update **cycle-status.md** to begin tracking progress
+4. **Execute Changes**: Make the necessary changes to 00OS according to the implementation plan.
 5. **Update Documentation**: Ensure all supporting materials reflect the changes.
-6. **Reset for Next Cycle**: Clear the core workflow files of cycle-specific content.
+6. **Reset for Next Cycle**: Clear the core workflow files of cycle-specific content or archive them for reference.
+
+## Core Workflow Files Lifecycle
+
+The three core workflow files follow a specific lifecycle throughout the development cycle:
+
+1. **active-request.md**:
+   - Populated at the beginning of the cycle with REQ details
+   - Updated with clarifications as they emerge during the cycle
+   - Reset or archived at the end of the cycle
+
+2. **implementation-plan.md**:
+   - Created after analyzing the REQ and relevant context
+   - Contains the full plan for implementation
+   - Serves as a reference throughout the cycle
+   - Reset or archived at the end of the cycle
+
+3. **cycle-status.md**:
+   - Updated continuously throughout the cycle
+   - Provides real-time status of cycle progress
+   - Documents decisions made and blockers encountered
+   - Reset or archived at the end of the cycle
 
 ## Process Categorization Architecture
 

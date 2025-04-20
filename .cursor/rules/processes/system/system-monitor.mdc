@@ -1,9 +1,9 @@
 ---
-description: System component - system-monitor
+description: USE WHEN you want to execute system-monitor
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
+
 # Process: system-monitor
 
 ## Metadata
@@ -576,4 +576,4 @@ Additional enhancements could include:
 - Custom monitoring dashboards
 - Alert generation for system issues
 - Performance tracking and recommendations
-- Integration with external monitoring systems
+- Integration with external monitoring systems 

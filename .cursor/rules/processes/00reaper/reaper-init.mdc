@@ -1,9 +1,9 @@
 ---
-description: System component - reaper-init
+description: USE WHEN you want to execute reaper-init
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
+
 # Process: reaper-init
 
 ## Description
@@ -249,4 +249,4 @@ function formatError(message, code, suggestions = []) {
 }
 
 // Execute the process
-executeInit();
+executeInit(); 

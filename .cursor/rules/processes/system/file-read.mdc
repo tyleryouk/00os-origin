@@ -1,9 +1,10 @@
 ---
-description: System component - file-read
+description: USE WHEN you want to execute file-read
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
+
 # Process: File Read
 
 ## Metadata
@@ -205,4 +206,4 @@ Future enhancements could include:
 - Searching within files
 - Displaying file binary content in hex format
 - Handling of very large files with pagination
-- File comparison functionality
+- File comparison functionality 

@@ -1,9 +1,10 @@
 ---
-description: System component - calculator
+description: USE WHEN you want to execute calculator
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
+
 # Process: Calculator
 
 ## USE WHEN
@@ -53,4 +54,4 @@ If the expression is invalid or contains unsupported operations, the process wil
 ```
 ❌ Invalid expression: [expression]
 Please provide a valid mathematical expression.
-```
+``` 

@@ -1,9 +1,10 @@
 ---
-description: System component - file-search
+description: USE WHEN you want to execute file-search
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
+
 # Process: file-search
 
 ## Description
@@ -240,4 +241,4 @@ This command integrates with the file system tools to search for files matching 
 4. Grouping results by directory
 5. Providing helpful error messages with suggestions
 
-The search is case-insensitive to make it more user-friendly.
+The search is case-insensitive to make it more user-friendly. 

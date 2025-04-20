@@ -1,9 +1,9 @@
 ---
-description: System component - reaper-analyze-tasks
+description: USE WHEN you want to execute reaper-analyze-tasks
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
+
 # Process: reaper-analyze-tasks
 
 ## Description
@@ -546,4 +546,4 @@ Suggestions:
 Suggestions:
 - Use one of the valid focus areas: reliability, file-ops, formatting, sync, handler
 - Omit the focus parameter to analyze all tasks
-```
+``` 
