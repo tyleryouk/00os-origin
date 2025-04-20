@@ -1,0 +1,243 @@
+---
+description: System component - file-search
+globs: 
+alwaysApply: true
+type: agent
+---
+# Process: file-search
+
+## Description
+Searches for files in a directory that match a specified pattern. Supports both exact filename matches and pattern-based searches. Can search recursively through subdirectories.
+
+## Execution
+
+```javascript
+// Main execution function
+async function execute() {
+  try {
+    // Get parameters
+    const searchPattern = inputs.pattern;
+    const searchPath = inputs.path;
+    const isRecursive = inputs.recursive || false;
+    const maxResults = inputs["max-results"] || 50;
+    
+    // Validate inputs
+    const validationErrors = validateInputs(searchPattern, searchPath);
+    if (validationErrors.length > 0) {
+      return formatError(validationErrors.join("\n"), "VALIDATION_ERROR");
+    }
+    
+    // Search for files
+    const searchResults = await searchFiles(searchPattern, searchPath, isRecursive, maxResults);
+    
+    // Format and return the results
+    return formatResults(searchResults, searchPattern, searchPath, isRecursive);
+  } catch (error) {
+    return formatError(`Error during search: ${error.message}`, "EXECUTION_ERROR");
+  }
+}
+
+// Input validation
+function validateInputs(pattern, path) {
+  const errors = [];
+  
+  if (!pattern) {
+    errors.push("Missing required parameter: pattern");
+  }
+  
+  if (!path) {
+    errors.push("Missing required parameter: path");
+  }
+  
+  return errors;
+}
+
+// Search for files in directory
+async function searchFiles(pattern, path, recursive, maxResults) {
+  const results = [];
+  let searchCount = 0;
+  
+  // Process a directory
+  async function processDirectory(dirPath) {
+    try {
+      // List directory contents
+      const dirContents = await tools.call('list_dir', {
+        relative_workspace_path: dirPath,
+        explanation: `Listing contents of ${dirPath} for file search`
+      });
+      
+      if (!dirContents || !dirContents.entries) {
+        throw new Error(`Failed to list directory: ${dirPath}`);
+      }
+      
+      // Filter files by pattern
+      const files = dirContents.entries.filter(entry => !entry.is_directory);
+      const matchingFiles = files.filter(file => {
+        const fileName = file.path.split('/').pop();
+        return fileName.toLowerCase().includes(pattern.toLowerCase());
+      });
+      
+      // Add matching files to results
+      for (const file of matchingFiles) {
+        if (results.length >= maxResults) {
+          break;
+        }
+        results.push({
+          path: file.path,
+          name: file.path.split('/').pop(),
+          size: file.size_bytes,
+          type: 'file'
+        });
+      }
+      
+      // Process subdirectories if recursive
+      if (recursive) {
+        const dirs = dirContents.entries.filter(entry => entry.is_directory);
+        for (const dir of dirs) {
+          if (results.length >= maxResults) {
+            break;
+          }
+          await processDirectory(dir.path);
+        }
+      }
+    } catch (error) {
+      tools.log(`Error processing directory ${dirPath}: ${error.message}`);
+    }
+  }
+  
+  // Start processing from the root path
+  await processDirectory(path);
+  
+  return results;
+}
+
+// Format search results
+function formatResults(results, pattern, path, recursive) {
+  if (results.length === 0) {
+    return formatError(`No files found matching pattern "${pattern}" in ${path}${recursive ? " (including subdirectories)" : ""}`, "NOT_FOUND_ERROR");
+  }
+  
+  let output = `✅ Found ${results.length} file(s) matching "${pattern}" in ${path}${recursive ? " (including subdirectories)" : ""}\n\n`;
+  
+  // Group results by directory
+  const resultsByDir = {};
+  for (const result of results) {
+    const dirPath = result.path.substring(0, result.path.lastIndexOf('/'));
+    if (!resultsByDir[dirPath]) {
+      resultsByDir[dirPath] = [];
+    }
+    resultsByDir[dirPath].push(result);
+  }
+  
+  // Output results by directory
+  for (const [dirPath, dirResults] of Object.entries(resultsByDir)) {
+    output += `Directory: ${dirPath}\n`;
+    
+    for (const file of dirResults) {
+      const sizeStr = formatFileSize(file.size);
+      output += `- ${file.name} (${sizeStr})\n`;
+    }
+    
+    output += "\n";
+  }
+  
+  return output;
+}
+
+// Format file size
+function formatFileSize(bytes) {
+  if (bytes < 1024) {
+    return `${bytes} B`;
+  } else if (bytes < 1024 * 1024) {
+    return `${(bytes / 1024).toFixed(1)} KB`;
+  } else {
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+}
+
+// Format success message
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+// Format error message
+function formatError(message, code, suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n\n`;
+  
+  // Add suggestions based on error type
+  if (code === "VALIDATION_ERROR") {
+    suggestions = [
+      "Check that you've provided all required parameters",
+      "Example: > file search myfile.txt /00os/processes"
+    ];
+  } else if (code === "NOT_FOUND_ERROR") {
+    suggestions = [
+      "Try using a more general search pattern",
+      "Check that the directory path is correct",
+      "Try searching recursively with --recursive"
+    ];
+  }
+  
+  if (suggestions.length > 0) {
+    output += "Suggestions:\n";
+    for (const suggestion of suggestions) {
+      output += `- ${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+
+// Execute the command
+execute();
+```
+
+## Example Usage
+
+### Basic Search
+```
+> file search help.md /00os/processes
+```
+
+### Recursive Search
+```
+> file search .md /00os --recursive
+```
+
+### Limited Results
+```
+> file search .md /00os --recursive --max-results=10
+```
+
+## Error Handling
+
+### No Files Found
+```
+❌ Error [NOT_FOUND_ERROR]: No files found matching pattern "nonexistent.txt" in /00os/processes
+
+Suggestions:
+- Try using a more general search pattern
+- Check that the directory path is correct
+- Try searching recursively with --recursive
+```
+
+### Invalid Input
+```
+❌ Error [VALIDATION_ERROR]: Missing required parameter: path
+
+Suggestions:
+- Check that you've provided all required parameters
+- Example: > file search myfile.txt /00os/processes
+```
+
+## Implementation Notes
+
+This command integrates with the file system tools to search for files matching a pattern. It supports:
+
+1. Searching by filename or pattern
+2. Recursive searching through subdirectories
+3. Limiting the number of results returned
+4. Grouping results by directory
+5. Providing helpful error messages with suggestions
+
+The search is case-insensitive to make it more user-friendly.

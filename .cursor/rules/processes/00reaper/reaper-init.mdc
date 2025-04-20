@@ -1,0 +1,252 @@
+---
+description: System component - reaper-init
+globs: 
+alwaysApply: true
+type: agent
+---
+# Process: reaper-init
+
+## Description
+Initializes the 00reaper context by loading essential system files and establishing understanding of the 00OS architecture, purpose, and workflow.
+
+## Execution
+
+```javascript
+// Main execution function - performs actual file reads
+async function executeInit() {
+  try {
+    // Track loaded content
+    const loadedContent = {
+      architectureFiles: 0,
+      coreComponents: 0,
+      processFiles: 0,
+      configFiles: 0
+    };
+    
+    // Get verbose flag
+    const isVerbose = inputs.verbose || false;
+    
+    // Perform actual file system operations
+    const coreComponents = await loadCoreComponents();
+    loadedContent.coreComponents = coreComponents.length;
+    
+    const architectureFiles = await loadArchitectureFiles();
+    loadedContent.architectureFiles = architectureFiles.length;
+    
+    const processFiles = await loadProcessFiles();
+    loadedContent.processFiles = processFiles.length;
+    
+    const configFiles = await loadConfigFiles();
+    loadedContent.configFiles = configFiles.length;
+    
+    // Generate initialization report
+    return formatInitializationReport(loadedContent, isVerbose);
+  } catch (error) {
+    return formatError(`Error during initialization: ${error.message}`, 'INIT_ERROR');
+  }
+}
+
+// Load core component files
+async function loadCoreComponents() {
+  const loadedFiles = [];
+  const corePath = '00OS/core/';
+  
+  try {
+    const coreDir = await tools.call('list_dir', {
+      relative_workspace_path: corePath,
+      explanation: 'Loading core components for initialization'
+    });
+    
+    if (coreDir && coreDir.entries) {
+      for (const entry of coreDir.entries) {
+        if (!entry.is_directory && entry.path.endsWith('.md')) {
+          const fileContent = await tools.call('read_file', {
+            target_file: entry.path,
+            should_read_entire_file: true,
+            explanation: `Reading core component ${entry.path}`
+          });
+          
+          if (fileContent && fileContent.content) {
+            loadedFiles.push({
+              path: entry.path,
+              name: entry.path.split('/').pop().replace('.md', '')
+            });
+          }
+        }
+      }
+    }
+  } catch (error) {
+    tools.log(`Error loading core components: ${error.message}`);
+  }
+  
+  return loadedFiles;
+}
+
+// Load architecture files from 00reaper/00OS-creation
+async function loadArchitectureFiles() {
+  const loadedFiles = [];
+  const architecturePath = '00reaper/00OS-creation/';
+  
+  // Key architecture files to prioritize
+  const priorityFiles = [
+    'understanding-00os.md',
+    'system-architecture.md',
+    'terminal-interface-design.md',
+    'final-goal.md',
+    'process-format.md'
+  ];
+  
+  try {
+    const archDir = await tools.call('list_dir', {
+      relative_workspace_path: architecturePath,
+      explanation: 'Loading architecture documents'
+    });
+    
+    if (archDir && archDir.entries) {
+      for (const fileName of priorityFiles) {
+        const entry = archDir.entries.find(e => e.path.endsWith(fileName));
+        if (entry) {
+          const fileContent = await tools.call('read_file', {
+            target_file: entry.path,
+            should_read_entire_file: true,
+            explanation: `Reading architecture document ${entry.path}`
+          });
+          
+          if (fileContent && fileContent.content) {
+            loadedFiles.push({
+              path: entry.path,
+              name: entry.path.split('/').pop().replace('.md', '')
+            });
+          }
+        }
+      }
+    }
+  } catch (error) {
+    tools.log(`Error loading architecture files: ${error.message}`);
+  }
+  
+  return loadedFiles;
+}
+
+// Load process files
+async function loadProcessFiles() {
+  const loadedFiles = [];
+  const processDirectories = [
+    '00OS/processes/system/',
+    '00OS/processes/tools/',
+    '00OS/processes/examples/'
+  ];
+  
+  try {
+    for (const processDir of processDirectories) {
+      try {
+        const dirContents = await tools.call('list_dir', {
+          relative_workspace_path: processDir,
+          explanation: `Loading process files from ${processDir}`
+        });
+        
+        if (dirContents && dirContents.entries) {
+          for (const entry of dirContents.entries) {
+            if (!entry.is_directory && entry.path.endsWith('.md')) {
+              loadedFiles.push({
+                path: entry.path,
+                name: entry.path.split('/').pop().replace('.md', '')
+              });
+            }
+          }
+        }
+      } catch (error) {
+        continue; // Skip errors in individual directories
+      }
+    }
+  } catch (error) {
+    tools.log(`Error loading process files: ${error.message}`);
+  }
+  
+  return loadedFiles;
+}
+
+// Load config files
+async function loadConfigFiles() {
+  const loadedFiles = [];
+  const configPath = '00OS/config/';
+  
+  try {
+    const configDir = await tools.call('list_dir', {
+      relative_workspace_path: configPath,
+      explanation: 'Loading configuration files'
+    });
+    
+    if (configDir && configDir.entries) {
+      for (const entry of configDir.entries) {
+        if (!entry.is_directory && entry.path.endsWith('.md')) {
+          const fileContent = await tools.call('read_file', {
+            target_file: entry.path,
+            should_read_entire_file: true,
+            explanation: `Reading configuration file ${entry.path}`
+          });
+          
+          if (fileContent && fileContent.content) {
+            loadedFiles.push({
+              path: entry.path,
+              name: entry.path.split('/').pop().replace('.md', '')
+            });
+          }
+        }
+      }
+    }
+  } catch (error) {
+    tools.log(`Error loading config files: ${error.message}`);
+  }
+  
+  return loadedFiles;
+}
+
+// Format initialization report
+function formatInitializationReport(loadedContent, isVerbose) {
+  let output = `✅ 00reaper Initialization Complete\n\n`;
+  
+  // System knowledge section
+  output += `System Knowledge Loaded:\n`;
+  output += `-------------------------\n`;
+  output += `- Core Architecture Documents\n`;
+  output += `- System Components\n`;
+  output += `- Process Definitions\n`;
+  output += `- Configuration Settings\n\n`;
+  
+  // Initialization summary section
+  output += `Initialization Summary:\n`;
+  output += `-------------------------\n`;
+  output += `Architecture Files: ${loadedContent.architectureFiles} loaded\n`;
+  output += `Core Components:    ${loadedContent.coreComponents} loaded\n`;
+  output += `Process Files:      ${loadedContent.processFiles} loaded\n`;
+  output += `Config Files:       ${loadedContent.configFiles} loaded\n\n`;
+  
+  // Status section
+  output += `00reaper identity is active and operational.\n`;
+  output += `System context has been fully initialized.\n`;
+  output += `Terminal command interface is ready.\n\n`;
+  
+  // Usage hints
+  output += `Use '> help' to see available commands.\n`;
+  output += `Use '> system status' to view system status.\n`;
+  
+  return output;
+}
+
+// Format error message
+function formatError(message, code, suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n\n`;
+  
+  if (suggestions.length > 0) {
+    output += "Suggestions:\n";
+    for (const suggestion of suggestions) {
+      output += `- ${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+
+// Execute the process
+executeInit();

@@ -66,7 +66,7 @@ async function listCommands(categoryFilter) {
     if (filteredCommands.length === 0) {
       if (categoryFilter) {
         return formatError(`No commands found in category: ${categoryFilter}`, [
-          'Available categories: system, tools, examples, apps',
+          'Available categories: system, 00reaper, 1000xdev',
           'Try without a category filter to see all commands'
         ]);
       } else {

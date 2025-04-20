@@ -1,37 +1,38 @@
 # 00OS User Requests and Implementation Tracking
 
 ## Request Details
-### REQ-000: [NEW]
-- Organize the processes so that each process is organized in one of the following categories:
-system (global 00OS commands for any AI Agent, like file-read, file-list, file-search)
-00reaper (00OS commands for AI Agent 00reaper whose workflow files are in 00reaper)
-1000xdev (00OS commands for AI Agent 1000xdev whose workflow files are in 1000xdev)
-
 ### REQ-001: [NEW]
-- Optimize 00reaper/00OS-commands folder for better workflow and communication between you (00reaper) and I (Tyler).
-- Create a system to ensure alignment with documentation and templates when making changes to 00OS. Documentation and templates folders should also be optimized for better readability and understanding. Assume that you will have your context reset for each change to 00OS and you will need to read the documentation and templates folder for understanding before changes to 00OS.
+- Optimize 00reaper/00OS-commands folder for better workflow and communication between you (00reaper) and I (Tyler). The workflow should follow a strict cyclical approach as defined below.
+1. Read user_request REQ
+2. Read relevant files in context, documentation, templates, and/or testing
+3. Make changes to the three core workflow files: current-implementation.md, current-task.md, and major-changes.md.
+4. Make changes to 00OS
+5. Make changes to context, documentation, templates, and/or testing (will likely happen most times, because most changes to 00OS will result in necessary changes to context, documentation, testing, and/or testing to ensure alignment)
+6. Update/clear core workflow files to start a new cycle. The core workflow files should be focused on one cycle at a time.
+
+The goal is for me to write requests like these, and for you to intelligently make changes to the base workflow files in 00reaper\00OS-commands along with changes to 00OS. If you find ways to enhance this cycle, please let me know before we start making changes. Let's try to define the cycle as best as possible within the three core workflow files before making major structural changes. Note that for this request, ALL changes should be made to 00reaper\00OS-commands. When in this workflow, you will only need to read/change files in 00reaper\00OS-commands and 00OS.
 
 ### REQ-002: [NEW]
 #### Requirements:
-- Enhance 00reaper/00OS-commands/documentation folder to better align with goals
-- Enhance workflow within 00reaper/00OS-commands/ for better workflow 
-#### Implementation Plan [00reaper]
-00reaper, make tool calls to read every file in every subfolder. Make plans to consolidate the files for better accuracy (less cognitive load and smaller context window equals higher accuracy in AI Agent output). Focus on the workflow documentation within 00reaper\00OS-commands so that upon initialization (reading all core workflow files, which are the root workflow files in 00reaper\00OS-commands), you fully understand next tasks and understand how to best utilize the subfolders for accurate changes to 00OS.
+- Ensure 1 to 1 alignment between 00OS commands (commands sent from the Cursor prompt) with 00OS processes. 
+- There needs to be some type of system to ensure alignment between the 00OS commands listed in > help and > command-registry and all 00OS processes in 00OS/processes/. We should also probably delete system commands that are not all that accurate. Let's try to define this 00OS command to 00OS processes alignment plan as best as possible before moving forward. 
+
+Questions:
+Should we define 00OS processes as 00OS command processes or 00OS processes? 
+Is it currently clear that the 00OS commands execute as follows:
+1. AI Agent received 00OS command starting with > 
+2. AI Agent makes fetch_rules call to 00OS process associated with 00OS command (00OS process filename should have exact same name as 00OS command)
+3. AI Agent perform ALL tool calls defined within the 00OS process.
+
 
 ### REQ-003: Update Core 00OS Commands to Use Tool Calls
 #### Requirements
-- Identify essential commands for initial update
-- Rewrite command implementations to use tool calls
+- Identify essential 00OS commands for initial update
+- Rewrite processes to emphasize the utilization of tool calls
 - Ensure proper parameter validation and error handling
-- Test commands with various inputs
-- Document command behaviors
+- Test commands with various inputs by running live communication tests with Tyler
+- Read documented command behaviors, which are documented by Tyler Youk. Utilize the /testing folder for this cycle.
 
-#### Implementation Plan
-- Start with help, echo, file-list, and file-read commands
-- Implement standardized tool call patterns
-- Add comprehensive error handling
-- Test commands with various inputs
-- Update documentation with examples
 
 #### Progress Updates
 - 2023-05-22: Identified priority commands for implementation
