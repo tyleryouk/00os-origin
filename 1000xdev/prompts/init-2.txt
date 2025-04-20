@@ -4,20 +4,20 @@
 First, make a `list_dir` tool call to the root directory (`1000xdev/steam-integration`) to identify all subfolders and core files present in the project.
 
 ## Step 2: Explore Each Subfolder
-After identifying the subfolders, make a separate `list_dir` tool call for each of the five subfolders within `1000xdev/steam-integration` to understand what documentation and resources are available in each area:
+After identifying the subfolders, make a separate `list_dir` tool call for each of the four subfolders within `1000xdev/steam-integration` to understand what documentation and resources are available in each area:
 - steam-web-api-research/ 
 - front-end-context/
 - back-end-context/
 - screenshots/
 
 ## Step 3: Read 1000xdev\steam-integration\steam-web-api-research\all-endpoints.md
-Next, make three `read_file` tool call to read the context of all endpoints from steamwebapi.com:
+Next, make three `read_file` tool call to read the context of all available endpoints from steamwebapi.com:
 - all-endpoints.md
 - cs2-skins.md
 - research-steam-web-api.md
 
 ## Step 4: Read .json files in 1000xdev\steam-integration\steam-web-api-research
-Next, make five `read_file` tool call to read the raw .json documentation of the steamwebapi.com endpoints context. Read the files in chunking if the files are more than 250 lines to ensure full comprehension of the .json documentation.
+Next, make five `read_file` tool call to read the raw .json documentation of the steamwebapi.com endpoints. Read the files in chunking if the files are more than 250 lines to ensure full comprehension of the .json documentation.
 - account-endpoints.json
 - explore-endpoints.json
 - items-endpoints.json
@@ -37,4 +37,4 @@ Next, make `read_file` tool calls to read the complete content of the six core r
 Only make `read_file` calls to the eight files listed above. You do not need to respond with any analysis. You are simply loading your context for this thread.
 
 ## Step 6: Response
-Respond with "Tyler Youk, the Context is Loaded." after you have made all of the tool calls as instructed. By this point, you should know what changes need to be made to the back-end application.
+Respond with "Tyler Youk, the Context is Loaded. Ready to start making changes." after you have made all of the tool calls as instructed. By this point, you should know what changes need to be made to the back-end application.
