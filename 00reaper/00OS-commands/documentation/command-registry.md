@@ -2,21 +2,20 @@
 
 This file tracks the implementation status and location of essential 00OS commands using the Cursor tool call approach.
 
-## Global System Commands
+## System Commands (Global)
 | Command | Status | Process File | Description |
 |---------|--------|--------------|-------------|
 | `help` | ✅ | system/help.md | Display command help information |
 | `system status` | ✅ | system/system-status.md | Show system status and health |
 | `echo` | ✅ | system/echo.md | Echo a message back to user |
 | `version` | ✅ | system/version.md | Display system version information |
-
-## Global Tool Commands
-| Command | Status | Process File | Description |
-|---------|--------|--------------|-------------|
-| `file list` | ✅ | tools/file-list.md | List files in directory |
-| `file read` | ✅ | tools/file-read.md | View file contents |
-| `file search` | 📅 | tools/file-search.md | Find files by pattern |
-| `calculator` | ✅ | tools/calculator.md | Perform calculations |
+| `file list` | ✅ | system/file-list.md | List files in directory |
+| `file read` | ✅ | system/file-read.md | View file contents |
+| `file search` | ✅ | system/file-search.md | Find files by pattern |
+| `calculator` | ✅ | system/calculator.md | Perform calculations |
+| `system-monitor` | ✅ | system/system-monitor.md | Monitor system resources and status |
+| `state` | ✅ | system/state.md | Manage system state |
+| `chain` | ✅ | system/chain.md | Execute multiple commands in sequence |
 
 ## 00reaper-specific Commands
 | Command | Status | Process File | Description |
@@ -40,7 +39,7 @@ This file tracks the implementation status and location of essential 00OS comman
 
 ## Implementation Priority
 
-1. Convert basic commands to tool call approach:
+1. Complete system command implementations:
    - `help` - Essential for discovering other commands
    - `echo` - Simple test command for validation
    - `file list` - Basic file system navigation
@@ -50,15 +49,14 @@ This file tracks the implementation status and location of essential 00OS comman
    - `file search` - Enhanced file system searching
    - More complex commands using tool call sequences
 
-3. Reorganize commands according to AI Agent specificity:
-   - Move reaper-specific commands to 00reaper directory
-   - Implement 1000xdev-specific commands in the 1000xdev directory
-   - Keep global commands in system and tools directories
+3. Develop agent-specific commands:
+   - Complete development of 00reaper-specific commands
+   - Begin implementing 1000xdev-specific commands
 
 ## Development Workflow
 
 1. Implement command process file using tool call pattern
-2. Place the file in the appropriate category directory (system, tools, 00reaper, or 1000xdev)
+2. Place the file in the appropriate category directory (system, 00reaper, or 1000xdev)
 3. Sync process file to the Cursor rules directory
 4. Test command execution with `>` prefix
 5. Document implementation and any issues

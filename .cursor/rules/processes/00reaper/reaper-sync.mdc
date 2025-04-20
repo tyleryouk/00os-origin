@@ -1,5 +1,9 @@
-# Process: reaper-sync
-
+---
+description: System component - reaper-sync
+globs: 
+alwaysApply: true
+type: agent
+---
 ## Metadata
 - Name: reaper-sync
 - Description: Synchronize 00os contents to .cursor/rules
@@ -197,4 +201,9 @@ ${differences.orphanedFiles.map(f => `  - ${f}`).join('\n') || '  None'}
 
 SYNC HISTORY
 ------------
-${lastSync.history.map(h => `${h.timestamp}: ${h.message}`
+${lastSync.history.map(h => `${h.timestamp}: ${h.message}`).join('\n') || '  None'}
+`;
+  }
+
+  return output;
+}
