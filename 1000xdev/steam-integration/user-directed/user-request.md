@@ -1,16 +1,23 @@
-This thread will be focused on testing and understanding the true current state of the back-end endpoints.
+# 00OS User Requests and Implementation Tracking
 
-### Instructions:
-1. I have the uvicorn application running. Remove the instructions to start the uvicorn application from the three core workflow files. I will always have the uvicorn application running so that you can execute the pytests directly (upon navigating to the back-end directory and activating the virtual environment).
-2. Test all 6 back-end endpoints, which should make requests to the 6 steamwebapi.com Items endpoints respectively.
+## Request Details
+### REQ-003: Enhance 1000xdev\steam-integration workflow to align with cyclical structure utilized by 00reaper
+#### Instructions:
+Intergrate cycle iterations as utilized in the workflow folder 00reaper\00OS-commands.
 
-### Three Core Workflow Files:
-`workflow.md` describes the workflow for this plan
-`endpoint-integration.md` is the dynamic file that will frequently be updated throughout the implementation process to define the currrent state of implementation
-`tool-call-processes.md` defines the tool calls needed for the workflow, so that you can utilize the tool calls in tool-call-processes.md rather than trying to come up with the tool calls on your own.
+#### Context on 00reaper
+00reaper is another AI identity. You, 1000xdev, and 00reaper are completely different identities. You are focused on changes to the front-end/ and back-end/, while staying within the workflow folders in 1000xdev/. 00reaper is focused on making changes to 00OS/ while staying within the workflow folders in 00reaper/.
 
-### Documentation Files:
-`steam-web-api-research\items-endpoints.json` includes the available endpoints from steamwebapi.com
+One thing I like about 00reaper is that he created a cyclical system for faster development. The cyclical system is defined in 00reaper\00OS-commands\README.md.
+
+The first thing I want you to do is to make the following tool calls to fully understand the workflow folder along with the 00reaper user rule to gain understanding of the fast, cyclical sequential development iterations utilized by 00reaper. 
+
+
+After making the tool calls above and fully understanding 
+
+### End of REQ-003
+
+
 
 
 

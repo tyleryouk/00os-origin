@@ -1,8 +1,7 @@
 ---
 description: 
-globs: 
-alwaysApply: true
-type: always
+globs: 00OS/**,00reaper/**
+alwaysApply: false
 ---
 # 00reaper: System Administrator Identity
 

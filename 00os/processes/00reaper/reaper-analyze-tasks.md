@@ -1,8 +1,9 @@
 ---
 name: reaper-analyze-tasks
 description: Analyze current tasks and generate action plan
-version: 1.0
+version: 2.0.0
 author: 00reaper
+category: 00reaper
 permissions: [basic, file-read]
 inputs:
   - name: focus
@@ -33,497 +34,648 @@ Analyzes the current state of all requests in user_requests.md, identifies highe
 ## Execution
 
 ```javascript
-// Main execution function
+/**
+ * Main execution function for reaper-analyze-tasks
+ */
 async function execute() {
   try {
-    // Get input parameters
+    // Parse and validate input parameters
+    const params = parseAndValidateParameters();
+    if (!params.valid) {
+      return formatError(params.message, params.code);
+    }
+    
+    const { focusArea, detailLevel, outputFormat } = params;
+    
+    // Read user_requests.md to get current tasks
+    const tasksDataResult = await readUserRequestsFile();
+    if (!tasksDataResult.success) {
+      return formatError(tasksDataResult.message, tasksDataResult.code);
+    }
+    
+    // Parse tasks from the file content
+    try {
+      const tasks = parseTasks(tasksDataResult.content);
+      
+      // Analyze tasks for priority and dependencies
+      const analysis = analyzeTasksAndGeneratePlan(tasks, focusArea, detailLevel);
+      
+      // Format the output based on requested format
+      return formatAnalysisOutput(analysis, outputFormat);
+    } catch (error) {
+      return formatError(`Error processing tasks: ${error.message}`, "TASK_PROCESSING_ERROR");
+    }
+  } catch (error) {
+    return formatError(`Unexpected error during task analysis: ${error.message}`, "EXECUTION_ERROR");
+  }
+}
+
+/**
+ * Parse and validate input parameters
+ * @returns {Object} Validated parameters or error information
+ */
+function parseAndValidateParameters() {
+  try {
+    // Get input parameters with defaults
     const focusArea = inputs.focus || null;
     const detailLevel = inputs["detail-level"] || "normal";
     const outputFormat = inputs.format || "standard";
     
-    // Read user_requests.md to get current tasks
-    const tasksData = await readUserRequestsFile();
+    // Validate focus area if provided
+    if (focusArea) {
+      const validFocusAreas = ['reliability', 'file-ops', 'formatting', 'sync', 'handler'];
+      if (!validFocusAreas.includes(focusArea)) {
+        return {
+          valid: false,
+          code: "INVALID_PARAMETER",
+          message: `Invalid focus area: ${focusArea}. Valid options are: ${validFocusAreas.join(', ')}`
+        };
+      }
+    }
     
-    // Parse tasks from the file content
-    const tasks = parseTasks(tasksData);
+    // Validate detail level
+    const validDetailLevels = ['minimal', 'normal', 'detailed'];
+    if (!validDetailLevels.includes(detailLevel)) {
+      return {
+        valid: false,
+        code: "INVALID_PARAMETER",
+        message: `Invalid detail level: ${detailLevel}. Valid options are: ${validDetailLevels.join(', ')}`
+      };
+    }
     
-    // Analyze tasks for priority and dependencies
-    const analysis = analyzeTasksAndGeneratePlan(tasks, focusArea, detailLevel);
+    // Validate output format
+    const validFormats = ['standard', 'compact', 'verbose'];
+    if (!validFormats.includes(outputFormat)) {
+      return {
+        valid: false,
+        code: "INVALID_PARAMETER",
+        message: `Invalid output format: ${outputFormat}. Valid options are: ${validFormats.join(', ')}`
+      };
+    }
     
-    // Format the output based on requested format
-    return formatAnalysisOutput(analysis, outputFormat);
+    return {
+      valid: true,
+      focusArea,
+      detailLevel,
+      outputFormat
+    };
   } catch (error) {
-    return formatError(`Error analyzing tasks: ${error.message}`, "EXECUTION_ERROR");
+    return {
+      valid: false,
+      code: "PARAMETER_PARSING_ERROR",
+      message: `Error parsing parameters: ${error.message}`
+    };
   }
 }
 
-// Read the user_requests.md file
+/**
+ * Read the user_requests.md file
+ * @returns {Object} File content or error information
+ */
 async function readUserRequestsFile() {
   try {
-    const userRequestsPath = "00reaper/00OS-commands/user_requests.md";
+    const userRequestsPath = "00reaper/00OS-commands/user-directed/user-requests.md";
     
     // Read the file
     const fileResult = await tools.call('read_file', {
       target_file: userRequestsPath,
       should_read_entire_file: true,
-      explanation: "Reading user_requests.md to analyze current tasks"
+      explanation: "Reading user-requests.md to analyze current tasks"
     });
     
     if (!fileResult || !fileResult.content) {
-      throw new Error("Failed to read user_requests.md");
+      return {
+        success: false,
+        code: "FILE_READ_ERROR",
+        message: "Failed to read user-requests.md"
+      };
     }
     
-    return fileResult.content;
+    return {
+      success: true,
+      content: fileResult.content
+    };
   } catch (error) {
-    throw new Error(`Error reading user_requests.md: ${error.message}`);
+    return {
+      success: false,
+      code: "FILE_ACCESS_ERROR",
+      message: `Error accessing user-requests.md: ${error.message}`
+    };
   }
 }
 
-// Parse tasks from the file content
+/**
+ * Parse tasks from the file content
+ * @param {string} fileContent - Content of the user-requests.md file
+ * @returns {Array} Array of parsed tasks
+ */
 function parseTasks(fileContent) {
   const tasks = [];
   
-  // Define regex patterns for different sections
-  const activeRequestsPattern = /## Active Requests\s+\|.*?\|[\s\S]*?(?=##|$)/;
-  const requestDetailsPattern = /### REQ-(\d+):(.*?)(?=### REQ-|## Session Workflow|$)/gs;
-  
-  // Extract active requests table
-  const activeRequestsMatch = fileContent.match(activeRequestsPattern);
-  if (!activeRequestsMatch) {
-    throw new Error("Active Requests section not found in user_requests.md");
-  }
-  
-  // Parse the active requests table
-  const tableRows = activeRequestsMatch[0].split('\n').filter(line => line.startsWith('|'));
-  const headerRow = tableRows[0];
-  const separatorRow = tableRows[1];
-  const dataRows = tableRows.slice(2);
-  
-  // Map column indices
-  const headers = headerRow.split('|').map(h => h.trim()).filter(h => h);
-  const idIndex = headers.indexOf('ID');
-  const dateIndex = headers.indexOf('Date');
-  const requestIndex = headers.indexOf('Request');
-  const priorityIndex = headers.indexOf('Priority');
-  const statusIndex = headers.indexOf('Status');
-  const notesIndex = headers.indexOf('Notes');
-  
-  // Process each data row
-  for (const row of dataRows) {
-    if (!row.trim() || !row.includes('|')) continue;
+  try {
+    // Extract REQ sections
+    const reqSections = fileContent.match(/### REQ-\d+:.*?(?=### REQ-|$)/gs) || [];
     
-    const columns = row.split('|').map(c => c.trim()).filter(c => c);
-    
-    if (columns.length >= headers.length) {
-      const task = {
-        id: columns[idIndex],
-        date: columns[dateIndex],
-        title: columns[requestIndex],
-        priority: columns[priorityIndex],
-        status: columns[statusIndex],
-        notes: columns[notesIndex],
-        details: {},
-        dependencies: [],
-        blockers: []
-      };
+    for (const section of reqSections) {
+      // Extract REQ ID
+      const idMatch = section.match(/### REQ-(\d+):/);
+      if (!idMatch) continue;
       
-      tasks.push(task);
-    }
-  }
-  
-  // Extract detailed information for each task
-  let match;
-  while ((match = requestDetailsPattern.exec(fileContent)) !== null) {
-    const reqId = match[1].padStart(3, '0');
-    const detailsContent = match[0];
-    const task = tasks.find(t => t.id === reqId);
-    
-    if (task) {
+      const id = idMatch[1];
+      
+      // Extract title
+      const titleMatch = section.match(/### REQ-\d+:(.*?)(?=\n|$)/);
+      const title = titleMatch ? titleMatch[1].trim() : 'Unnamed Task';
+      
+      // Extract status (NEW, IN_PROGRESS, COMPLETED, etc.)
+      const statusMatch = section.match(/\[([A-Z_]+)\]/);
+      const status = statusMatch ? statusMatch[1] : 'UNKNOWN';
+      
       // Extract requirements
-      const requirementsMatch = detailsContent.match(/#### Requirements\s+([\s\S]*?)(?=####|$)/);
-      if (requirementsMatch) {
-        task.details.requirements = parseListItems(requirementsMatch[1]);
-      }
-      
-      // Extract implementation plan
-      const planMatch = detailsContent.match(/#### Implementation Plan\s+([\s\S]*?)(?=####|$)/);
-      if (planMatch) {
-        task.details.implementationPlan = parseListItems(planMatch[1]);
-      }
+      const requirementsMatch = section.match(/#### Requirements\s+([\s\S]*?)(?=####|$)/);
+      const requirements = requirementsMatch ? parseListItems(requirementsMatch[1]) : [];
       
       // Extract progress updates
-      const progressMatch = detailsContent.match(/#### Progress Updates\s+([\s\S]*?)(?=####|$)/);
-      if (progressMatch) {
-        task.details.progressUpdates = parseListItems(progressMatch[1]);
-      }
+      const progressMatch = section.match(/#### Progress Updates\s+([\s\S]*?)(?=####|$)/);
+      const progressUpdates = progressMatch ? parseListItems(progressMatch[1]) : [];
       
-      // Identify dependencies and blockers
-      task.dependencies = identifyDependencies(task, tasks);
-      task.blockers = identifyBlockers(task);
+      // Add to tasks array
+      tasks.push({
+        id,
+        title,
+        status,
+        requirements,
+        progressUpdates,
+        priority: determinePriority(status, progressUpdates)
+      });
     }
+    
+    return tasks;
+  } catch (error) {
+    throw new Error(`Error parsing tasks: ${error.message}`);
   }
-  
-  return tasks;
 }
 
-// Parse list items from markdown
+/**
+ * Parse list items from a markdown string
+ * @param {string} content - Markdown content with list items
+ * @returns {Array} Array of list items
+ */
 function parseListItems(content) {
   if (!content) return [];
   
-  return content.split('\n')
-    .filter(line => line.trim().startsWith('-'))
-    .map(line => line.trim().substring(1).trim());
+  // Split by lines and filter out empty lines
+  const lines = content.split('\n').filter(line => line.trim());
+  
+  // Extract list items (lines starting with - or #. or number.)
+  return lines
+    .filter(line => /^[-*#\d]/.test(line.trim()))
+    .map(line => line.replace(/^[-*#\d.]\s*/, '').trim());
 }
 
-// Identify dependencies between tasks
+/**
+ * Determine task priority based on status and progress
+ * @param {string} status - Task status
+ * @param {Array} progressUpdates - Array of progress updates
+ * @returns {string} Priority level (HIGH, MEDIUM, LOW)
+ */
+function determinePriority(status, progressUpdates) {
+  if (status === 'NEW') return 'HIGH';
+  if (status === 'IN_PROGRESS') return 'MEDIUM';
+  if (status === 'COMPLETED') return 'LOW';
+  
+  // If there are recent progress updates, consider it medium priority
+  if (progressUpdates.length > 0) return 'MEDIUM';
+  
+  // Default to medium priority
+  return 'MEDIUM';
+}
+
+/**
+ * Identify dependencies between tasks
+ * @param {Object} task - Current task
+ * @param {Array} allTasks - All available tasks
+ * @returns {Array} Dependencies for the current task
+ */
 function identifyDependencies(task, allTasks) {
   const dependencies = [];
   
-  // Simple approach - look for task IDs in the task details
-  const detailsText = JSON.stringify(task.details).toLowerCase();
-  
-  for (const otherTask of allTasks) {
-    if (otherTask.id === task.id) continue;
-    
-    const idPattern = new RegExp(`req-${otherTask.id}|req ${otherTask.id}`, 'i');
-    if (detailsText.match(idPattern)) {
-      dependencies.push(otherTask.id);
+  // Look for mentions of other REQs in requirements
+  if (task.details && task.details.requirements) {
+    for (const req of task.details.requirements) {
+      const reqMatches = req.match(/REQ-(\d+)/g) || [];
+      
+      for (const match of reqMatches) {
+        const reqId = match.replace('REQ-', '').padStart(3, '0');
+        
+        // Skip self-references
+        if (reqId === task.id) continue;
+        
+        // Find the referenced task
+        const depTask = allTasks.find(t => t.id === reqId);
+        if (depTask) {
+          dependencies.push({
+            id: reqId,
+            title: depTask.title,
+            status: depTask.status
+          });
+        }
+      }
     }
-  }
-  
-  // Content-based detection
-  if (task.title.toLowerCase().includes("file search") && 
-      task.id !== "002") {
-    dependencies.push("002");
-  }
-  
-  if (task.title.toLowerCase().includes("command handler") && 
-      task.id !== "001") {
-    dependencies.push("001");
   }
   
   return dependencies;
 }
 
-// Identify potential blockers for a task
+/**
+ * Identify potential blockers for a task
+ * @param {Object} task - Task to analyze
+ * @returns {Array} Potential blockers
+ */
 function identifyBlockers(task) {
   const blockers = [];
   
-  // Check if task is dependent on reliability improvements
-  if (task.id !== "001" && task.dependencies.includes("001") && 
-      task.priority === "High") {
-    blockers.push({
-      type: "dependency",
-      message: "Depends on Command Execution Reliability (REQ-001)"
-    });
+  // Check if task has dependencies that are not completed
+  if (task.dependencies) {
+    for (const dep of task.dependencies) {
+      if (dep.status !== 'COMPLETED') {
+        blockers.push({
+          type: 'DEPENDENCY',
+          id: dep.id,
+          title: dep.title,
+          message: `Dependent task REQ-${dep.id} is not completed`
+        });
+      }
+    }
   }
   
-  // Check if task requires parser refactoring
-  const detailsText = JSON.stringify(task.details).toLowerCase();
-  if (task.id !== "005" && 
-      (detailsText.includes("parser") || 
-       detailsText.includes("command handler") ||
-       detailsText.includes("argument")) && 
-      task.priority === "High") {
-    blockers.push({
-      type: "dependency",
-      message: "May be blocked by Command Handler refactoring (REQ-005)"
-    });
+  // Check for blockers mentioned in progress updates
+  if (task.details && task.details.progressUpdates) {
+    for (const update of task.details.progressUpdates) {
+      if (update.toLowerCase().includes('block') || update.toLowerCase().includes('issue')) {
+        blockers.push({
+          type: 'PROGRESS_BLOCKER',
+          message: update
+        });
+      }
+    }
   }
   
   return blockers;
 }
 
-// Analyze tasks and generate action plan
+/**
+ * Analyze tasks and generate action plan
+ * @param {Array} tasks - Array of parsed tasks
+ * @param {string} focusArea - Optional focus area filter
+ * @param {string} detailLevel - Detail level (minimal, normal, detailed)
+ * @returns {Object} Analysis results and action plan
+ */
 function analyzeTasksAndGeneratePlan(tasks, focusArea, detailLevel) {
-  // Filter tasks by focus area if specified
+  // Filter by focus area if provided
   let filteredTasks = tasks;
   if (focusArea) {
-    const focusMap = {
-      'reliability': task => task.title.toLowerCase().includes('reliab'),
-      'file-ops': task => task.title.toLowerCase().includes('file'),
-      'formatting': task => task.title.toLowerCase().includes('format'),
-      'sync': task => task.title.toLowerCase().includes('sync'),
-      'handler': task => task.title.toLowerCase().includes('handler'),
-    };
-    
-    if (focusMap[focusArea]) {
-      filteredTasks = tasks.filter(focusMap[focusArea]);
+    filteredTasks = tasks.filter(task => 
+      task.title.toLowerCase().includes(focusArea.toLowerCase()) ||
+      (task.requirements && task.requirements.some(req => req.toLowerCase().includes(focusArea.toLowerCase())))
+    );
+  }
+  
+  // Sort by priority
+  const sortedTasks = [...filteredTasks].sort((a, b) => {
+    const priorityMap = { HIGH: 3, MEDIUM: 2, LOW: 1 };
+    return priorityMap[b.priority] - priorityMap[a.priority];
+  });
+  
+  // Identify highest priority task
+  const highestPriorityTask = sortedTasks.length > 0 ? sortedTasks[0] : null;
+  
+  // Count tasks by status
+  const tasksByStatus = {
+    NEW: filteredTasks.filter(t => t.status === 'NEW').length,
+    IN_PROGRESS: filteredTasks.filter(t => t.status === 'IN_PROGRESS').length,
+    COMPLETED: filteredTasks.filter(t => t.status === 'COMPLETED').length,
+    OTHER: filteredTasks.filter(t => !['NEW', 'IN_PROGRESS', 'COMPLETED'].includes(t.status)).length
+  };
+  
+  // Identify most recent activity
+  const recentActivity = identifyRecentActivity(filteredTasks);
+  
+  // Generate action plan
+  const actionPlan = generateActionPlan(highestPriorityTask, filteredTasks);
+  
+  return {
+    summary: {
+      totalTasks: filteredTasks.length,
+      tasksByStatus,
+      highestPriorityTask: highestPriorityTask ? {
+        id: highestPriorityTask.id,
+        title: highestPriorityTask.title,
+        status: highestPriorityTask.status,
+        priority: highestPriorityTask.priority
+      } : null,
+      recentActivity
+    },
+    tasks: detailLevel === 'minimal' ? 
+      sortedTasks.slice(0, 3).map(simplifyTask) :
+      (detailLevel === 'normal' ? 
+        sortedTasks.map(simplifyTask) : 
+        sortedTasks),
+    actionPlan,
+    focusArea,
+    detailLevel
+  };
+}
+
+/**
+ * Identify recent activity from tasks
+ * @param {Array} tasks - Array of tasks
+ * @returns {Object} Recent activity information
+ */
+function identifyRecentActivity(tasks) {
+  // Process all progress updates to find the most recent one
+  const updates = [];
+  
+  for (const task of tasks) {
+    if (task.progressUpdates && task.progressUpdates.length > 0) {
+      for (const update of task.progressUpdates) {
+        // Try to extract date information
+        const dateMatch = update.match(/(\d{4}-\d{2}-\d{2})/);
+        const date = dateMatch ? new Date(dateMatch[1]) : null;
+        
+        updates.push({
+          taskId: task.id,
+          taskTitle: task.title,
+          update,
+          date
+        });
+      }
     }
   }
   
-  // Sort tasks by priority and status
-  const priorityWeight = {
-    'High': 3,
-    'Medium': 2,
-    'Low': 1
-  };
-  
-  const statusWeight = {
-    'Planning': 3,
-    'In Progress': 2,
-    'Complete': 1
-  };
-  
-  const sortedTasks = [...filteredTasks].sort((a, b) => {
-    // First sort by status (planning > in progress > complete)
-    const statusDiff = (statusWeight[b.status] || 0) - (statusWeight[a.status] || 0);
-    if (statusDiff !== 0) return statusDiff;
-    
-    // Then sort by priority (high > medium > low)
-    const priorityDiff = (priorityWeight[b.priority] || 0) - (priorityWeight[a.priority] || 0);
-    if (priorityDiff !== 0) return priorityDiff;
-    
-    // Then sort by ID (lower IDs first)
-    return parseInt(a.id) - parseInt(b.id);
+  // Sort updates by date (if available) or assume the first update is the most recent
+  updates.sort((a, b) => {
+    if (a.date && b.date) return b.date - a.date;
+    if (a.date) return -1;
+    if (b.date) return 1;
+    return 0;
   });
   
-  // Identify critical path tasks (high priority with no blockers)
-  const criticalPathTasks = sortedTasks.filter(task => 
-    task.priority === 'High' && 
-    task.status !== 'Complete' && 
-    task.blockers.length === 0
-  );
+  return updates.length > 0 ? updates[0] : null;
+}
+
+/**
+ * Generate an action plan based on tasks
+ * @param {Object} highestPriorityTask - Highest priority task
+ * @param {Array} tasks - All tasks
+ * @returns {Object} Action plan
+ */
+function generateActionPlan(highestPriorityTask, tasks) {
+  const newTasks = tasks.filter(t => t.status === 'NEW');
+  const inProgressTasks = tasks.filter(t => t.status === 'IN_PROGRESS');
   
-  // Identify blocked tasks
-  const blockedTasks = sortedTasks.filter(task => 
-    task.status !== 'Complete' && 
-    task.blockers.length > 0
-  );
+  let recommendedAction = null;
+  let reason = null;
   
-  // Generate action plan based on critical path and dependencies
-  const actionPlan = generateActionPlan(criticalPathTasks, blockedTasks, sortedTasks);
-  
-  // Adjust detail level for output
-  let taskDetails = {};
-  if (detailLevel === 'minimal') {
-    taskDetails = {
-      showProgress: false,
-      showImplementationPlan: false,
-      showDependencies: true,
-      showBlockers: true
-    };
-  } else if (detailLevel === 'normal') {
-    taskDetails = {
-      showProgress: true,
-      showImplementationPlan: false,
-      showDependencies: true,
-      showBlockers: true
-    };
-  } else if (detailLevel === 'detailed') {
-    taskDetails = {
-      showProgress: true,
-      showImplementationPlan: true,
-      showDependencies: true,
-      showBlockers: true
-    };
+  if (highestPriorityTask) {
+    if (highestPriorityTask.status === 'NEW') {
+      recommendedAction = `Start work on REQ-${highestPriorityTask.id}: ${highestPriorityTask.title}`;
+      reason = 'This is the highest priority new task.';
+    } else if (highestPriorityTask.status === 'IN_PROGRESS') {
+      recommendedAction = `Continue work on REQ-${highestPriorityTask.id}: ${highestPriorityTask.title}`;
+      reason = 'This is the highest priority in-progress task.';
+    }
+  } else if (newTasks.length > 0) {
+    const nextTask = newTasks[0];
+    recommendedAction = `Start work on REQ-${nextTask.id}: ${nextTask.title}`;
+    reason = 'This is the next new task to work on.';
+  } else if (inProgressTasks.length > 0) {
+    const nextTask = inProgressTasks[0];
+    recommendedAction = `Continue work on REQ-${nextTask.id}: ${nextTask.title}`;
+    reason = 'This is an in-progress task that needs attention.';
+  } else {
+    recommendedAction = 'No specific action required at this time.';
+    reason = 'There are no new or in-progress tasks.';
   }
   
   return {
-    allTasks: tasks,
-    filteredTasks: sortedTasks,
-    criticalPathTasks,
-    blockedTasks,
-    actionPlan,
-    taskDetails,
-    focusArea,
-    detailLevel
+    recommendedAction,
+    reason,
+    nextSteps: generateNextSteps(highestPriorityTask, tasks)
   };
 }
 
-// Generate a specific action plan based on task analysis
-function generateActionPlan(criticalPathTasks, blockedTasks, allTasks) {
-  const plan = [];
+/**
+ * Generate specific next steps for the action plan
+ * @param {Object} highestPriorityTask - Highest priority task
+ * @param {Array} tasks - All tasks
+ * @returns {Array} Next steps
+ */
+function generateNextSteps(highestPriorityTask, tasks) {
+  const steps = [];
   
-  // If there are critical path tasks, recommend them first
-  if (criticalPathTasks.length > 0) {
-    const firstTask = criticalPathTasks[0];
-    
-    plan.push({
-      type: 'next-task',
-      taskId: firstTask.id,
-      title: firstTask.title,
-      reason: 'High priority with no blockers',
-      action: `Implement REQ-${firstTask.id}: ${firstTask.title}`
-    });
-    
-    // Add implementation steps for the next task
-    if (firstTask.details.implementationPlan) {
-      const nextSteps = firstTask.details.implementationPlan.slice(0, 3);
-      plan.push({
-        type: 'implementation-steps',
-        taskId: firstTask.id,
-        steps: nextSteps
-      });
+  if (highestPriorityTask) {
+    // Add steps based on task status
+    if (highestPriorityTask.status === 'NEW') {
+      steps.push(`Read and understand the requirements for REQ-${highestPriorityTask.id}`);
+      steps.push('Update active-request.md with the task details');
+      steps.push('Create an implementation plan');
+    } else if (highestPriorityTask.status === 'IN_PROGRESS') {
+      steps.push('Review current progress on the task');
+      steps.push('Update cycle-status.md with your current status');
+      steps.push('Implement the next part of the plan');
     }
-  }
-  
-  // Suggest resolving blockers for blocked high-priority tasks
-  const blockedHighPriorityTasks = blockedTasks.filter(task => task.priority === 'High');
-  if (blockedHighPriorityTasks.length > 0) {
-    const blockedTask = blockedHighPriorityTasks[0];
-    const blocker = blockedTask.blockers[0];
     
-    plan.push({
-      type: 'resolve-blocker',
-      taskId: blockedTask.id,
-      title: blockedTask.title,
-      blocker: blocker.message,
-      action: `Resolve blocker for REQ-${blockedTask.id}: ${blocker.message}`
-    });
-  }
-  
-  // Find tasks that would unblock multiple others
-  const taskBlockerCount = {};
-  for (const task of allTasks) {
-    if (task.dependencies.length > 0) {
-      for (const depId of task.dependencies) {
-        taskBlockerCount[depId] = (taskBlockerCount[depId] || 0) + 1;
+    // Add dependency-related steps
+    if (highestPriorityTask.dependencies) {
+      for (const dep of highestPriorityTask.dependencies) {
+        if (dep.status !== 'COMPLETED') {
+          steps.push(`Resolve dependency: REQ-${dep.id} - ${dep.title}`);
+        }
       }
     }
-  }
-  
-  // Find the task that would unblock the most other tasks
-  let maxBlockerId = null;
-  let maxBlockerCount = 0;
-  for (const [id, count] of Object.entries(taskBlockerCount)) {
-    if (count > maxBlockerCount) {
-      const task = allTasks.find(t => t.id === id);
-      if (task && task.status !== 'Complete') {
-        maxBlockerId = id;
-        maxBlockerCount = count;
-      }
-    }
-  }
-  
-  if (maxBlockerId && maxBlockerCount > 1) {
-    const unblockerTask = allTasks.find(t => t.id === maxBlockerId);
-    plan.push({
-      type: 'unblock-multiple',
-      taskId: maxBlockerId,
-      title: unblockerTask.title,
-      unblockCount: maxBlockerCount,
-      action: `Implement REQ-${maxBlockerId} to unblock ${maxBlockerCount} other tasks`
-    });
-  }
-  
-  return plan;
-}
-
-// Format the output based on requested format
-function formatAnalysisOutput(analysis, outputFormat) {
-  const {
-    allTasks,
-    filteredTasks,
-    criticalPathTasks,
-    blockedTasks,
-    actionPlan,
-    taskDetails,
-    focusArea,
-    detailLevel
-  } = analysis;
-  
-  let output = "✅ Task Analysis Complete\n\n";
-  
-  // Summary section
-  output += "## Summary\n";
-  output += `Total Tasks: ${allTasks.length}\n`;
-  output += `Active Tasks: ${allTasks.filter(t => t.status !== 'Complete').length}\n`;
-  output += `High Priority: ${allTasks.filter(t => t.priority === 'High').length}\n`;
-  output += `Critical Path: ${criticalPathTasks.length}\n`;
-  output += `Blocked: ${blockedTasks.length}\n\n`;
-  
-  // Action plan section
-  output += "## Recommended Action Plan\n\n";
-  
-  if (actionPlan.length === 0) {
-    output += "No specific actions identified at this time.\n\n";
   } else {
-    for (let i = 0; i < actionPlan.length; i++) {
-      const action = actionPlan[i];
-      output += `${i + 1}. **${action.action}**\n`;
-      
-      if (action.reason) {
-        output += `   Reason: ${action.reason}\n`;
-      }
-      
-      if (action.type === 'implementation-steps' && action.steps) {
-        output += "   Implementation Steps:\n";
-        for (const step of action.steps) {
-          output += `   - ${step}\n`;
-        }
-      }
-      
-      output += "\n";
-    }
+    steps.push('Review all current tasks to identify priorities');
+    steps.push('Check for any unidentified dependencies between tasks');
+    steps.push('Consider creating new tasks if needed');
   }
   
-  // Task details section
-  if (outputFormat !== 'compact') {
-    output += "## Task Details\n\n";
+  return steps;
+}
+
+/**
+ * Simplify task object for output
+ * @param {Object} task - Full task object
+ * @returns {Object} Simplified task
+ */
+function simplifyTask(task) {
+  return {
+    id: task.id,
+    title: task.title,
+    status: task.status,
+    priority: task.priority
+  };
+}
+
+/**
+ * Format analysis output based on requested format
+ * @param {Object} analysis - Analysis results
+ * @param {string} format - Output format (standard, compact, verbose)
+ * @returns {string} Formatted output
+ */
+function formatAnalysisOutput(analysis, format) {
+  let output = '';
+  
+  if (format === 'compact') {
+    // Generate compact output
+    output = `# Task Analysis Summary\n\n`;
+    output += `Total Tasks: ${analysis.summary.totalTasks} | `;
+    output += `New: ${analysis.summary.tasksByStatus.NEW} | `;
+    output += `In Progress: ${analysis.summary.tasksByStatus.IN_PROGRESS} | `;
+    output += `Completed: ${analysis.summary.tasksByStatus.COMPLETED}\n\n`;
     
-    for (const task of filteredTasks) {
-      if (task.status === 'Complete' && outputFormat !== 'verbose') continue;
-      
-      output += `### REQ-${task.id}: ${task.title}\n`;
-      output += `Priority: ${task.priority} | Status: ${task.status}\n`;
-      
-      if (taskDetails.showDependencies && task.dependencies.length > 0) {
-        output += `Dependencies: ${task.dependencies.map(id => `REQ-${id}`).join(', ')}\n`;
-      }
-      
-      if (taskDetails.showBlockers && task.blockers.length > 0) {
-        output += "Blockers:\n";
-        for (const blocker of task.blockers) {
-          output += `- ${blocker.message}\n`;
-        }
-      }
-      
-      if (taskDetails.showProgress && task.details.progressUpdates && task.details.progressUpdates.length > 0) {
-        output += "Progress:\n";
-        for (const update of task.details.progressUpdates) {
-          output += `- ${update}\n`;
-        }
-      }
-      
-      if (taskDetails.showImplementationPlan && task.details.implementationPlan && task.details.implementationPlan.length > 0) {
-        output += "Implementation Plan:\n";
-        for (const step of task.details.implementationPlan) {
-          output += `- ${step}\n`;
-        }
-      }
-      
-      output += "\n";
+    if (analysis.summary.highestPriorityTask) {
+      output += `Highest Priority Task: REQ-${analysis.summary.highestPriorityTask.id} - ${analysis.summary.highestPriorityTask.title}\n\n`;
     }
+    
+    output += `Recommended Action: ${analysis.actionPlan.recommendedAction}\n`;
+    
+    // Return successful response with the compact output
+    return formatSuccess(output);
+  } 
+  else if (format === 'verbose') {
+    // Generate verbose output with complete task details
+    output = `# Detailed Task Analysis\n\n`;
+    
+    output += `## Summary\n`;
+    output += `Total Tasks: ${analysis.summary.totalTasks}\n`;
+    output += `New Tasks: ${analysis.summary.tasksByStatus.NEW}\n`;
+    output += `In Progress: ${analysis.summary.tasksByStatus.IN_PROGRESS}\n`;
+    output += `Completed: ${analysis.summary.tasksByStatus.COMPLETED}\n`;
+    
+    if (analysis.summary.highestPriorityTask) {
+      output += `\n## Highest Priority Task\n`;
+      output += `* REQ-${analysis.summary.highestPriorityTask.id}: ${analysis.summary.highestPriorityTask.title}\n`;
+      output += `* Status: ${analysis.summary.highestPriorityTask.status}\n`;
+      output += `* Priority: ${analysis.summary.highestPriorityTask.priority}\n`;
+    }
+    
+    output += `\n## All Tasks\n`;
+    for (const task of analysis.tasks) {
+      output += `\n### REQ-${task.id}: ${task.title}\n`;
+      output += `* Status: ${task.status}\n`;
+      output += `* Priority: ${task.priority}\n`;
+      
+      if (task.requirements && task.requirements.length > 0) {
+        output += `* Requirements:\n`;
+        for (const req of task.requirements) {
+          output += `  - ${req}\n`;
+        }
+      }
+      
+      if (task.progressUpdates && task.progressUpdates.length > 0) {
+        output += `* Progress Updates:\n`;
+        for (const update of task.progressUpdates) {
+          output += `  - ${update}\n`;
+        }
+      }
+    }
+    
+    output += `\n## Action Plan\n`;
+    output += `* Recommended Action: ${analysis.actionPlan.recommendedAction}\n`;
+    output += `* Reason: ${analysis.actionPlan.reason}\n`;
+    
+    output += `\n### Next Steps\n`;
+    for (const step of analysis.actionPlan.nextSteps) {
+      output += `* ${step}\n`;
+    }
+    
+    // Return successful response with the verbose output
+    return formatSuccess(output);
   }
-  
-  if (focusArea) {
-    output += `Note: Analysis focused on '${focusArea}' area.\n`;
+  else {
+    // Standard format
+    output = `# Task Analysis\n\n`;
+    
+    output += `## Summary\n`;
+    output += `- Total Tasks: ${analysis.summary.totalTasks}\n`;
+    output += `- New: ${analysis.summary.tasksByStatus.NEW} | In Progress: ${analysis.summary.tasksByStatus.IN_PROGRESS} | Completed: ${analysis.summary.tasksByStatus.COMPLETED}\n`;
+    
+    if (analysis.summary.recentActivity) {
+      output += `- Recent Activity: ${analysis.summary.recentActivity.update}\n`;
+    }
+    
+    if (analysis.summary.highestPriorityTask) {
+      output += `\n## Priority Focus\n`;
+      output += `REQ-${analysis.summary.highestPriorityTask.id}: ${analysis.summary.highestPriorityTask.title} (${analysis.summary.highestPriorityTask.status})\n`;
+    }
+    
+    output += `\n## Action Plan\n`;
+    output += `${analysis.actionPlan.recommendedAction}\n`;
+    output += `Reason: ${analysis.actionPlan.reason}\n`;
+    
+    output += `\n### Next Steps\n`;
+    for (const step of analysis.actionPlan.nextSteps) {
+      output += `1. ${step}\n`;
+    }
+    
+    if (analysis.tasks.length > 0) {
+      output += `\n## Task Overview\n`;
+      for (const task of analysis.tasks.slice(0, 5)) {
+        output += `- REQ-${task.id}: ${task.title} (${task.status})\n`;
+      }
+      
+      if (analysis.tasks.length > 5) {
+        output += `- ...and ${analysis.tasks.length - 5} more tasks\n`;
+      }
+    }
+    
+    // Return successful response with the standard output
+    return formatSuccess(output);
   }
-  
-  return output;
 }
 
-// Format success message
-function formatSuccess(message) {
-  return `✅ ${message}`;
+/**
+ * Format a success response
+ * @param {string} message - Success message
+ * @param {Object} data - Optional data to include
+ * @returns {string} Formatted success message
+ */
+function formatSuccess(message, data = null) {
+  return `✅ ${message}${data ? '\n\n' + JSON.stringify(data, null, 2) : ''}`;
 }
 
-// Format error message
-function formatError(message, code, suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}\n\n`;
+/**
+ * Format an error response
+ * @param {string} message - Error message
+ * @param {string} code - Error code
+ * @param {Array} suggestions - Optional suggestions
+ * @returns {string} Formatted error message
+ */
+function formatError(message, code = "ERROR", suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}`;
   
-  if (suggestions.length > 0) {
-    output += "Suggestions:\n";
+  if (suggestions && suggestions.length > 0) {
+    output += "\n\nSuggestions:";
     for (const suggestion of suggestions) {
-      output += `- ${suggestion}\n`;
+      output += `\n- ${suggestion}`;
     }
   }
   
   return output;
 }
 
-// Execute the command
+/**
+ * Format a warning response
+ * @param {string} message - Warning message
+ * @param {Object} details - Optional details
+ * @returns {string} Formatted warning message
+ */
+function formatWarning(message, details = null) {
+  return `⚠️ Warning: ${message}${details ? '\n\n' + JSON.stringify(details, null, 2) : ''}`;
+}
+
+// Execute the process
 execute();
 ```
 
@@ -553,7 +705,7 @@ execute();
 
 ### Missing user_requests.md
 ```
-❌ Error [EXECUTION_ERROR]: Error reading user_requests.md: File not found
+❌ Error [FILE_ACCESS_ERROR]: Error accessing user_requests.md: File not found
 
 Suggestions:
 - Verify the user_requests.md file exists in 00reaper/00OS-commands/
@@ -562,9 +714,9 @@ Suggestions:
 
 ### Invalid Focus Area
 ```
-❌ Error [EXECUTION_ERROR]: Error analyzing tasks: Invalid focus area
+❌ Error [INVALID_PARAMETER]: Invalid focus area: testing. Valid options are: reliability, file-ops, formatting, sync, handler
 
 Suggestions:
-- Use one of the valid focus areas: reliability, file-ops, formatting, sync, handler
-- Omit the focus parameter to analyze all tasks
+- Check the command syntax and parameter values
+- Run '> help reaper-analyze-tasks' for usage information
 ``` 

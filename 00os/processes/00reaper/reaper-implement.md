@@ -1,7 +1,8 @@
 ---
 name: reaper-implement
 description: Reads the current task defined in 00reaper/00OS-commands/current-task.md and executes the necessary changes to 00OS process files and tracking documents.
-version: 2.0.0
+version: 3.0.0
+category: 00reaper
 author: 00reaper
 permissions: [file-read, file-write, edit_file] # Needs ability to read context and edit files
 inputs:
@@ -74,6 +75,12 @@ function formatWarning(message) {
 }
 
 // --- Implementation-Specific Helpers ---
+/**
+ * Read and validate the task definition file
+ * @param {string} taskFilePath - Path to the task file
+ * @returns {Promise<string>} - The content of the task file
+ * @throws {Error} - If the file cannot be read
+ */
 async function readTaskFile(taskFilePath) {
   try {
     tools.log(`Reading task definition from ${taskFilePath}...`);
@@ -87,35 +94,76 @@ async function readTaskFile(taskFilePath) {
       throw new Error(`Could not read task file or received invalid response`);
     }
     
+    // Validate the content structure - basic check for non-empty content
+    if (!readResult.content || !readResult.content.trim()) {
+      throw new Error(`Task file is empty or contains only whitespace`);
+    }
+    
     tools.log(`Task file read successfully (${taskFilePath}).`);
     return readResult.content;
   } catch (error) {
-    tools.error(`Failed to read task file ${taskFilePath}: ${error.message}`);
-    throw new Error(`Failed to read ${taskFilePath}: ${error.message}`);
+    // Enhanced error handling with specific suggestions based on error type
+    let errorCode = "FILE_READ_ERROR";
+    let errorMsg = `Failed to read ${taskFilePath}: ${error.message}`;
+    let suggestions = [
+      `Ensure the file exists at ${taskFilePath}`,
+      "Run > reaper-os-commands-workflow to initialize or update the workflow files"
+    ];
+    
+    // If the error contains "not found", add more specific suggestions
+    if (error.message.includes("not found") || error.message.includes("No such file")) {
+      suggestions.push("Check if you need to create the file manually or initialize the workflow first");
+    }
+    
+    tools.error(errorMsg);
+    throw {
+      message: errorMsg,
+      code: errorCode,
+      suggestions: suggestions
+    };
   }
 }
 
+/**
+ * Analyzes task content and generates an implementation plan
+ * @param {string} taskContent - The content of the task file
+ * @returns {Promise<Array>} - Array of planned actions
+ */
 async function analyzeTaskAndGeneratePlan(taskContent) {
   tools.log(`Analyzing task content and generating implementation plan...`);
   
-  // [AI logic to analyze task and generate a plan based on the task content]
-  // This will vary based on the specific task content, but the general steps include:
-  // 1. Parse the task requirements, goals, and constraints
-  // 2. Identify which files need to be created or modified
-  // 3. Generate specific edit plans for each file
-  
-  // For demonstration purposes, we'll return a sample plan
-  // In a real implementation, this would be dynamically generated based on taskContent
-  return [
-    {
-      tool: 'edit_file',
-      params: {
-        target_file: '00os/processes/tools/file-search.md',
-        instructions: 'Create the file-search.md process file with standard metadata and structure.',
-        code_edit: `---
+  try {
+    // Extract task details from content
+    const taskLines = taskContent.split('\n');
+    const taskTitle = taskLines.find(line => line.startsWith('# '))?.substring(2) || 'Untitled Task';
+    
+    // Look for specific sections in the task content
+    const requirementsStartIndex = taskContent.indexOf('## Requirements');
+    const implementationStartIndex = taskContent.indexOf('## Implementation');
+    
+    if (requirementsStartIndex === -1) {
+      throw new Error('Could not find Requirements section in task file');
+    }
+    
+    // [AI logic to analyze task and generate a plan based on the task content]
+    // This will vary based on the specific task content, but the general steps include:
+    // 1. Parse the task requirements, goals, and constraints
+    // 2. Identify which files need to be created or modified
+    // 3. Generate specific edit plans for each file
+    
+    // For demonstration purposes, we'll return a sample plan
+    // In a real implementation, this would be dynamically generated based on taskContent
+    return [
+      {
+        tool: 'edit_file',
+        params: {
+          target_file: '00os/processes/tools/file-search.md',
+          instructions: 'Create the file-search.md process file with standard metadata and structure.',
+          code_edit: `---
 name: file-search
 description: Searches for files matching a pattern within a specified path.
 version: 1.0.0
+category: system
 author: 00reaper
 permissions: [file-read, file_search]
 inputs:
@@ -205,19 +253,37 @@ async function execute(args, flags) {
 execute(inputs.args, inputs.flags);
 \`\`\`
 `
+        }
+      },
+      {
+        tool: 'edit_file',
+        params: {
+          target_file: '00reaper/00OS-commands/command-registry.md',
+          instructions: 'Update file-search status to ✅',
+          code_edit: `// ... existing code ...\n| \`file list\` | ✅ | tools/file-list.md | List files in directory |\n| \`file read\` | ✅ | tools/file-read.md | View file contents |\n| \`file search\` | ✅ | tools/file-search.md | Find files by pattern |\n\n## Context Management\n// ... existing code ...`
+        }
       }
-    },
-    {
-      tool: 'edit_file',
-      params: {
-        target_file: '00reaper/00OS-commands/command-registry.md',
-        instructions: 'Update file-search status to ✅',
-        code_edit: `// ... existing code ...\n| \`file list\` | ✅ | tools/file-list.md | List files in directory |\n| \`file read\` | ✅ | tools/file-read.md | View file contents |\n| \`file search\` | ✅ | tools/file-search.md | Find files by pattern |\n\n## Context Management\n// ... existing code ...`
-      }
-    }
-  ];
+    ];
+  } catch (error) {
+    tools.error(`Failed to analyze task and generate plan: ${error.message}`);
+    throw {
+      message: `Failed to analyze task content: ${error.message}`,
+      code: "ANALYSIS_ERROR", 
+      suggestions: [
+        "Ensure task file follows the correct format with Requirements section",
+        "Verify that the task description is clear and actionable",
+        "Try updating the task definition with more specific details"
+      ]
+    };
+  }
 }
 
+/**
+ * Execute the implementation plan based on the selected mode
+ * @param {Array} plan - The array of planned actions
+ * @param {string} mode - The implementation mode (plan, scaffold, full)
+ * @returns {Object} - Results of plan execution
+ */
 async function executeImplementationPlan(plan, mode) {
   tools.log(`Executing implementation plan in ${mode} mode with ${plan.length} action(s)...`);
   const actionsTaken = [];
@@ -242,23 +308,50 @@ async function executeImplementationPlan(plan, mode) {
       tools.log(`Executing ${action.tool} for target: ${action.params.target_file}`);
       const result = await tools.call(action.tool, action.params);
 
-      // Check for errors in the result
-      if (result && (result.success === false || result.error)) {
+      // Enhanced error detection with more specific checks
+      if (!result) {
+        throw new Error(`No result returned from ${action.tool} tool call.`);
+      }
+      
+      if (result.success === false || result.error) {
         throw new Error(result.error || result.message || `Tool call ${action.tool} failed.`);
       }
 
+      // Add specific details about the executed action
       actionsTaken.push(`Executed ${action.tool} on ${action.params.target_file}. Instruction: "${action.params.instructions}"`);
       tools.log(`Action completed successfully.`);
 
     } catch(error) {
-      const errorMsg = `Failed action: ${action.tool} on ${action.params.target_file}. Reason: ${error.message}`;
+      // Improve error message with more context
+      const targetFile = action.params.target_file;
+      const errorMsg = `Failed action: ${action.tool} on ${targetFile}. Reason: ${error.message}`;
       tools.error(errorMsg);
-      errorsEncountered.push(errorMsg);
       
-      // Consider whether to continue or abort on error
-      // In scaffold mode, we might want to continue despite errors
-      if (mode !== "scaffold" && errorsEncountered.length > 2) {
+      // Add file-specific suggestions based on the error
+      let suggestions = [];
+      if (error.message.includes("not found") || error.message.includes("No such file")) {
+        suggestions.push(`Verify that the target file path "${targetFile}" is correct`);
+        suggestions.push(`Check if the directory for "${targetFile}" exists and create it if needed`);
+      }
+      
+      errorsEncountered.push({
+        message: errorMsg,
+        file: targetFile,
+        tool: action.tool,
+        suggestions: suggestions
+      });
+      
+      // Improved logic for continuing or stopping execution
+      if (mode === "full" && errorsEncountered.length > 2) {
         tools.log(`Too many errors (${errorsEncountered.length}), stopping execution`);
+        break;
+      }
+      
+      if (mode === "full" && action.tool === "edit_file" && 
+          targetFile.includes("00os/processes") && 
+          !error.message.includes("not found")) {
+        // Critical error in editing a core process file, stop execution
+        tools.log(`Critical error encountered while editing core process file. Stopping execution.`);
         break;
       }
     }
@@ -270,12 +363,28 @@ async function executeImplementationPlan(plan, mode) {
   };
 }
 
+/**
+ * Validate the implementation mode input
+ * @param {string} mode - The specified implementation mode
+ * @returns {string} - The validated mode
+ * @throws {Error} - If the mode is invalid
+ */
 function validateImplementationMode(mode) {
   const validModes = ["plan", "scaffold", "full"];
-  const normalizedMode = (mode || "plan").toLowerCase();
+  const normalizedMode = (mode || "plan").toLowerCase().trim();
   
   if (!validModes.includes(normalizedMode)) {
-    throw new Error(`Invalid implementation mode: ${mode}. Valid options are: ${validModes.join(", ")}`);
+    throw {
+      message: `Invalid implementation mode: ${mode}. Valid options are: ${validModes.join(", ")}`,
+      code: "VALIDATION_ERROR",
+      suggestions: [
+        `Use one of the valid modes: ${validModes.join(", ")}`,
+        "Example: > reaper-implement --mode=scaffold",
+        "Use plan mode to preview changes without making them",
+        "Use scaffold mode to create file structures with partial implementation",
+        "Use full mode to implement complete functionality"
+      ]
+    };
   }
   
   return normalizedMode;
@@ -294,7 +403,7 @@ async function execute(args, flags) {
       mode = validateImplementationMode(flags.mode);
       tools.log(`Using implementation mode: ${mode}`);
     } catch (error) {
-      return formatError(error.message, "VALIDATION_ERROR", [
+      return formatError(error.message, error.code || "VALIDATION_ERROR", error.suggestions || [
         "Use one of the valid modes: plan, scaffold, full",
         "Example: > reaper-implement --mode=scaffold"
       ]);
@@ -306,22 +415,54 @@ async function execute(args, flags) {
       taskContent = await readTaskFile(taskFilePath);
       actionsTaken.push(`Read task from ${taskFilePath}.`);
     } catch (error) {
-      return formatError(`Critical error: ${error.message}`, "FILE_READ_ERROR", [
-        "Ensure the current-task.md file exists in 00reaper/00OS-commands/",
-        "Run > reaper-os-commands-workflow to initialize or update the workflow files"
-      ]);
+      return formatError(
+        `Critical error: ${error.message}`, 
+        error.code || "FILE_READ_ERROR", 
+        error.suggestions || [
+          "Ensure the current-task.md file exists in 00reaper/00OS-commands/",
+          "Run > reaper-os-commands-workflow to initialize or update the workflow files"
+        ]
+      );
     }
 
     // 3. Analyze task and generate implementation plan
-    const plan = await analyzeTaskAndGeneratePlan(taskContent);
-    actionsTaken.push(`Generated implementation plan with ${plan.length} action(s).`);
+    let plan;
+    try {
+      plan = await analyzeTaskAndGeneratePlan(taskContent);
+      actionsTaken.push(`Generated implementation plan with ${plan.length} action(s).`);
+    } catch (error) {
+      return formatError(
+        `Failed to generate implementation plan: ${error.message}`,
+        error.code || "ANALYSIS_ERROR",
+        error.suggestions || [
+          "Verify the task description is clear and actionable",
+          "Ensure the task file contains required sections",
+          "Run > reaper-read-files to ensure all context is loaded"
+        ]
+      );
+    }
     
     // 4. Execute the implementation plan (or just report it in "plan" mode)
     const executionResult = await executeImplementationPlan(plan, mode);
     
     // Add results to our tracking arrays
     actionsTaken.push(...executionResult.actionsTaken);
-    errorsEncountered.push(...executionResult.errorsEncountered);
+    
+    // Process errors with improved formatting
+    if (executionResult.errorsEncountered?.length > 0) {
+      executionResult.errorsEncountered.forEach(error => {
+        if (typeof error === 'string') {
+          errorsEncountered.push(error);
+        } else {
+          // Format structured error objects
+          let errorMsg = error.message || 'Unknown error';
+          if (error.suggestions?.length > 0) {
+            errorMsg += ` (Suggestions: ${error.suggestions.join('; ')})`;
+          }
+          errorsEncountered.push(errorMsg);
+        }
+      });
+    }
     
     // 5. Generate and return the execution summary
     let summary = `Implementation ${mode === "plan" ? "plan" : "execution"} completed.\n\nActions Taken (${actionsTaken.length}):\n`;
@@ -341,7 +482,8 @@ async function execute(args, flags) {
         "Review errors and logs.",
         "Verify any file changes that were made.",
         "Update current-task.md and retry if necessary.",
-        `Consider using --mode=scaffold to make partial progress.`
+        `Consider using --mode=scaffold to make partial progress.`,
+        `Run with --mode=plan first to identify potential issues before execution.`
       ]);
     } else {
       return formatSuccess(summary, {
@@ -352,13 +494,24 @@ async function execute(args, flags) {
     }
     
   } catch (error) {
-    // Catch-all for unexpected errors
-    tools.error(`Unexpected error in reaper-implement: ${error.message}`);
-    return formatError(`Unexpected error during implementation: ${error.message}`, "EXECUTION_ERROR", [
-      "Check system logs for details.",
-      "Ensure the context files are properly loaded (run reaper-read-files first).",
-      "Try again with --mode=plan to diagnose issues without making changes."
-    ]);
+    // Catch-all for unexpected errors with improved diagnostics
+    const errorMessage = error.message || 'Unknown error occurred';
+    tools.error(`Unexpected error in reaper-implement: ${errorMessage}`);
+    
+    // Add more helpful debugging information
+    const errorDetails = error.stack ? `\n${error.stack}` : '';
+    
+    return formatError(
+      `Unexpected error during implementation: ${errorMessage}${errorDetails}`, 
+      "EXECUTION_ERROR", 
+      [
+        "Check system logs for detailed error information.",
+        "Ensure the context files are properly loaded (run reaper-read-files first).",
+        "Try again with --mode=plan to diagnose issues without making changes.",
+        "Verify that all required directories exist.",
+        "Check file permissions if file operations are failing."
+      ]
+    );
   }
 }
 
@@ -392,6 +545,9 @@ execute(inputs.args || [], inputs.flags || {});
 Suggestions:
 - Use one of the valid modes: plan, scaffold, full
 - Example: > reaper-implement --mode=scaffold
+- Use plan mode to preview changes without making them
+- Use scaffold mode to create file structures with partial implementation
+- Use full mode to implement complete functionality
 ```
 
 ### Missing Task File
@@ -399,8 +555,9 @@ Suggestions:
 ❌ Error [FILE_READ_ERROR]: Critical error: Failed to read 00reaper/00OS-commands/current-task.md: File not found
 
 Suggestions:
-- Ensure the current-task.md file exists in 00reaper/00OS-commands/
+- Ensure the file exists at 00reaper/00OS-commands/current-task.md
 - Run > reaper-os-commands-workflow to initialize or update the workflow files
+- Check if you need to create the file manually or initialize the workflow first
 ```
 
 ### Partial Failure
@@ -412,11 +569,12 @@ Actions Taken (5):
 - Generated implementation plan with 2 action(s).
 - Generated implementation plan with 2 action(s).
 - Executed edit_file on 00os/processes/tools/file-search.md. Instruction: "Create the file-search.md process file with standard metadata and structure."
-- Failed action: edit_file on 00reaper/00OS-commands/command-registry.md. Reason: Could not find file for editing
+- Failed action: edit_file on 00reaper/00OS-commands/command-registry.md. Reason: Could not find file for editing (Suggestions: Verify that the target file path is correct; Check if the directory exists and create it if needed)
 
 Suggestions:
 - Review errors and logs.
 - Verify any file changes that were made.
 - Update current-task.md and retry if necessary.
 - Consider using --mode=scaffold to make partial progress.
+- Run with --mode=plan first to identify potential issues before execution.
 ``` 
