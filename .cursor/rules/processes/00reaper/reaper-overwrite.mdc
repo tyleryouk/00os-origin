@@ -1,8 +1,7 @@
 ---
-description: System component - reaper-overwrite
+description: USE WHEN you want to execute reaper-overwrite
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
 
 # Process: reaper-overwrite
@@ -192,10 +191,10 @@ async function execute() {
       
       // Look for key tools used
       const toolsUsed = [];
-      const toolMatches = info.content.match(/tools\.call\(['"]([^'"]+)['"]/g);
+      const toolMatches = info.content.match(/tools\.call\(['"](mdc:[^'"]+)['"]/g);
       if (toolMatches) {
         for (const match of toolMatches) {
-          const toolName = match.match(/tools\.call\(['"]([^'"]+)['"]/)[1];
+          const toolName = match.match(/tools\.call\(['"](mdc:[^'"]+)['"]/)[1];
           if (!toolsUsed.includes(toolName)) {
             toolsUsed.push(toolName);
           }
