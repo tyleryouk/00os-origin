@@ -254,45 +254,26 @@ async function executeFileOperation(param1, param2, useFlag) {
 
 /**
  * Example search operation using tool calls
- * @param {string} param1 - Search pattern
- * @param {number} param2 - Numeric parameter
- * @param {boolean} useFlag - Whether to use the flag option
+ * @param {string} param1 - Search query
+ * @param {number} param2 - Numeric parameter (e.g., max results)
+ * @param {boolean} useFlag - Whether to use the flag option (e.g., case sensitive)
  * @returns {Object} Operation result
  */
 async function executeSearchOperation(param1, param2, useFlag) {
   try {
-    // Example 1: Semantic search
-    const semanticResults = await tools.call('codebase_search', {
-      query: param1,
-      explanation: `Performing semantic search for ${param1}`
-    });
-    
-    // Example 2: Grep search for more precise pattern matching
-    const grepResults = await tools.call('grep_search', {
+    // Example: Using grep_search
+    const searchResults = await tools.call('grep_search', {
       query: param1,
       case_sensitive: useFlag,
-      explanation: `Performing grep search for ${param1} pattern`
+      explanation: `Searching for pattern ${param1}`
     });
     
-    // Example 3: File search for filenames
-    const fileResults = await tools.call('file_search', {
-      query: param1,
-      explanation: `Searching for files matching ${param1}`
-    });
-    
-    // Combine results
-    const combinedResults = {
-      semantic: semanticResults || {},
-      grep: grepResults || {},
-      files: fileResults || {}
-    };
-    
-    // Process results based on param2 (e.g., limit number of results)
-    const limitedResults = limitResults(combinedResults, param2);
+    // Process search results
+    const processedResults = searchResults.results || []; // Assuming results format
     
     return {
-      message: `Search completed for pattern ${param1}`,
-      data: limitedResults
+      message: `Search completed. Found ${processedResults.length} matches.`,
+      data: processedResults
     };
   } catch (error) {
     throw new Error(`Search operation failed: ${error.message}`);
@@ -301,30 +282,23 @@ async function executeSearchOperation(param1, param2, useFlag) {
 
 /**
  * Example system operation using tool calls
- * @param {string} param1 - System component
+ * @param {string} param1 - System command or target
  * @param {number} param2 - Numeric parameter
  * @param {boolean} useFlag - Whether to use the flag option
  * @returns {Object} Operation result
  */
 async function executeSystemOperation(param1, param2, useFlag) {
   try {
-    // Example: Run a system command safely
-    const cmdResult = await tools.call('run_terminal_cmd', {
-      command: `echo System operation for ${param1} | cat`,
-      is_background: false,
-      explanation: `Running safe system command for ${param1}`
-    });
+    // Example: Getting system status (assuming a system status tool exists)
+    // This is hypothetical, replace with actual system tool calls
+    // const status = await tools.call('get_system_status', { detailed: useFlag });
     
-    // Note: NEVER use run_terminal_cmd to execute 00OS commands (with > prefix)
-    // This creates infinite loops and breaks the command processing flow
+    // Placeholder result
+    const status = { uptime: 12345, cpuUsage: 0.5, memory: { used: 1024, total: 2048 } }; 
     
     return {
       message: `System operation completed for ${param1}`,
-      data: {
-        component: param1,
-        output: cmdResult?.output || '',
-        exitCode: cmdResult?.exitCode
-      }
+      data: status
     };
   } catch (error) {
     throw new Error(`System operation failed: ${error.message}`);
@@ -332,218 +306,145 @@ async function executeSystemOperation(param1, param2, useFlag) {
 }
 
 /**
- * Example default operation when other types don't match
+ * Example default operation
  * @param {string} param1 - First parameter
- * @param {number} param2 - Numeric parameter
- * @param {boolean} useFlag - Whether to use the flag option
+ * @param {number} param2 - Second parameter
+ * @param {boolean} useFlag - Flag option
  * @returns {Object} Operation result
  */
 async function executeDefaultOperation(param1, param2, useFlag) {
-  // Simple default operation that doesn't require tool calls
+  // Simple echo-like behavior for default
   return {
-    message: `Default operation completed for ${param1}`,
-    data: {
-      input: param1,
-      multiplier: param2,
-      result: param1.repeat(param2),
-      flagApplied: useFlag
-    }
+    message: `Default operation executed with: ${param1}, ${param2}, flag: ${useFlag}`,
+    data: { inputParam1: param1, inputParam2: param2, inputFlag1: useFlag }
   };
 }
 
 // =========================================
-// HELPER FUNCTIONS 
+// UTILITY FUNCTIONS (Formatting, Error Handling)
 // =========================================
 
 /**
- * Limit results based on parameter
- * @param {Object} results - Results to limit
- * @param {number} limit - Maximum number of results to include
- * @returns {Object} Limited results
- */
-function limitResults(results, limit) {
-  const limited = {};
-  
-  // Apply limit to each result type
-  for (const [key, value] of Object.entries(results)) {
-    if (Array.isArray(value)) {
-      limited[key] = value.slice(0, limit);
-    } else if (value && typeof value === 'object' && value.results && Array.isArray(value.results)) {
-      limited[key] = {
-        ...value,
-        results: value.results.slice(0, limit)
-      };
-    } else {
-      limited[key] = value;
-    }
-  }
-  
-  return limited;
-}
-
-/**
- * Determine error code based on error type
- * @param {Error} error - The error that occurred
- * @returns {string} Error code
- */
-function determineErrorCode(error) {
-  const errorMessage = error.message.toLowerCase();
-  
-  if (errorMessage.includes('validation') || errorMessage.includes('invalid')) {
-    return 'VALIDATION_ERROR';
-  } else if (errorMessage.includes('not found') || errorMessage.includes('missing')) {
-    return 'NOT_FOUND_ERROR';
-  } else if (errorMessage.includes('permission') || errorMessage.includes('access')) {
-    return 'PERMISSION_ERROR';
-  } else if (errorMessage.includes('tool call') || errorMessage.includes('function call')) {
-    return 'TOOL_CALL_ERROR';
-  }
-  
-  return 'EXECUTION_ERROR';
-}
-
-/**
- * Generate helpful suggestions based on error
- * @param {Error} error - The error that occurred
- * @param {string} errorCode - Error classification code
- * @returns {string[]} Suggestions for resolving the error
- */
-function generateSuggestions(error, errorCode) {
-  const suggestions = [];
-  const errorMessage = error.message.toLowerCase();
-  
-  // Add common suggestions based on error code
-  switch (errorCode) {
-    case 'VALIDATION_ERROR':
-      suggestions.push('Check the command syntax and parameters');
-      suggestions.push('Run "> help command-name" to see usage information');
-      break;
-    case 'NOT_FOUND_ERROR':
-      suggestions.push('Verify the file or resource path exists');
-      suggestions.push('Check permissions to access the resource');
-      suggestions.push('Use absolute paths for files outside the workspace');
-      break;
-    case 'PERMISSION_ERROR':
-      suggestions.push('Check if you have the necessary permissions');
-      suggestions.push('Use a different approach that requires fewer permissions');
-      break;
-    case 'TOOL_CALL_ERROR':
-      suggestions.push('Check the tool call parameters');
-      suggestions.push('Verify the resources being accessed exist');
-      suggestions.push('Try an alternative approach if the tool is failing');
-      break;
-    default:
-      suggestions.push('Check the command parameters');
-      suggestions.push('Try simplifying the operation');
-      suggestions.push('Check system resources and try again');
-  }
-  
-  // Add specific suggestions based on error message content
-  if (errorMessage.includes('file')) {
-    suggestions.push('Verify the file path is correct');
-    suggestions.push('Check if the file exists and is accessible');
-  } else if (errorMessage.includes('timeout')) {
-    suggestions.push('The operation may be taking too long, try with simpler parameters');
-    suggestions.push('Break the operation into smaller steps');
-  }
-  
-  return suggestions;
-}
-
-// =========================================
-// RESPONSE FORMATTING FUNCTIONS
-// =========================================
-
-/**
- * Format successful response
+ * Format a success response
  * @param {string} message - Success message
- * @param {any} data - Optional data to include
- * @returns {Object} Formatted response
+ * @param {any} data - Optional data payload
+ * @returns {Object} Formatted success response
  */
 function formatSuccess(message, data = null) {
   const response = {
     success: true,
     message: `✅ ${message}`
   };
-  
   if (data !== null) {
     response.data = data;
   }
-  
   return response;
 }
 
 /**
- * Format warning response (success with caveats)
+ * Format a warning response
  * @param {string} message - Warning message
- * @param {any} data - Optional data to include
- * @returns {Object} Formatted response
+ * @param {any} data - Optional data payload
+ * @returns {Object} Formatted warning response
  */
 function formatWarning(message, data = null) {
   const response = {
-    success: true,
+    success: true, // Still considered successful overall
     warning: true,
     message: `⚠️ ${message}`
   };
-  
   if (data !== null) {
     response.data = data;
   }
-  
   return response;
 }
 
 /**
- * Format error response
+ * Format an error response
  * @param {string} message - Error message
  * @param {string} code - Error code
- * @param {string[]} suggestions - Helpful suggestions
- * @returns {Object} Formatted response
+ * @param {Array<string>} suggestions - Optional suggestions for recovery
+ * @returns {Object} Formatted error response
  */
 function formatError(message, code = 'EXECUTION_ERROR', suggestions = []) {
-  const response = {
-    success: false,
-    message: `❌ Error [${code}]: ${message}`
-  };
+  let output = `❌ Error [${code}]: ${message}\n`;
   
-  if (suggestions && suggestions.length > 0) {
-    response.suggestions = suggestions;
+  if (suggestions.length > 0) {
+    output += "\nSuggestions:\n";
+    suggestions.forEach(s => output += `- ${s}\n`);
   }
   
-  return response;
+  return {
+    success: false,
+    message: output.trim(),
+    errorDetails: { code, originalMessage: message }
+  };
 }
 
-// Execute the command
+/**
+ * Determine an appropriate error code based on the error object
+ * @param {Error} error - The error object
+ * @returns {string} Error code string
+ */
+function determineErrorCode(error) {
+  // Example: Check for specific error types or messages
+  if (error.message.includes('not found')) return 'NOT_FOUND';
+  if (error.message.includes('permission')) return 'PERMISSION_DENIED';
+  if (error.message.includes('timeout')) return 'TIMEOUT';
+  // Default error code
+  return 'EXECUTION_ERROR';
+}
+
+/**
+ * Generate suggestions based on the error and code
+ * @param {Error} error - The error object
+ * @param {string} errorCode - The determined error code
+ * @returns {Array<string>} List of suggestions
+ */
+function generateSuggestions(error, errorCode) {
+  const suggestions = ['Check the command documentation using > help command-name'];
+  
+  switch (errorCode) {
+    case 'NOT_FOUND':
+      suggestions.push('Verify the file path or resource name is correct.');
+      suggestions.push('Ensure the resource exists and is accessible.');
+      break;
+    case 'PERMISSION_DENIED':
+      suggestions.push('Check if you have the necessary permissions for this operation.');
+      break;
+    case 'VALIDATION_ERROR':
+      // Suggestions should ideally come from the validation function itself
+      suggestions.push('Review the command syntax and required parameters.');
+      break;
+    default:
+      suggestions.push('Try the command again.');
+      suggestions.push('If the problem persists, check system logs or report the issue.');
+      break;
+  }
+  
+  return suggestions;
+}
+
+// Call the main execution function when the process is run
 execute();
+
 ```
 
 ## Usage Examples
-
-### Basic Command Usage
 ```
 > command-name required-value
-✅ Default operation completed for required-value
+✅ Default operation executed with: required-value, 10, flag: false
 ```
-
-### With Optional Parameters
 ```
-> command-name required-value 5 --flag1
-✅ Default operation completed for required-value
+> command-name required-value 20 --flag1
+✅ Default operation executed with: required-value, 20, flag: true
 ```
-
-### File Operation Example
 ```
-> command-name /path/to/file.txt
+> command-name /path/to/file.txt --flag1
 ✅ File operation completed for /path/to/file.txt
 ```
 
-### Search Operation Example
-```
-> command-name pattern*
-✅ Search completed for pattern pattern*
-```
-
-### Error Example
+## Error Handling Examples
 ```
 > command-name
 ❌ Error [VALIDATION_ERROR]: Missing required parameter: parameter1
@@ -551,24 +452,13 @@ execute();
 Suggestions:
 - Provide a value for parameter1
 - Example: > command-name value
-- Check the command syntax and parameters
-- Run "> help command-name" to see usage information
 ```
+```
+> command-name /nonexistent/file.txt
+❌ Error [NOT_FOUND]: File operation failed: Failed to read file /nonexistent/file.txt
 
-## Implementation Notes
-
-This template follows the standards defined in the command-standards.md document and demonstrates:
-
-1. Complete YAML frontmatter with all required metadata
-2. Proper parameter validation with helpful error messages
-3. Different operation patterns for common tool call types
-4. Standardized error handling with codes and suggestions
-5. Consistent response formatting
-6. Usage examples for different scenarios
-
-To create a new command:
-1. Copy this template
-2. Update the metadata section
-3. Modify the execution logic for your specific command
-4. Implement the appropriate tool call patterns
-5. Maintain all error handling and response formatting standards 
+Suggestions:
+- Check the command documentation using > help command-name
+- Verify the file path or resource name is correct.
+- Ensure the resource exists and is accessible.
+``` 

@@ -1,0 +1,102 @@
+---
+name: reaper-update
+description: Updates the 00reaper context state (placeholder).
+version: 1.0.0
+author: 00reaper
+category: 00reaper
+permissions: [basic] # May need state permissions
+inputs:
+  # Define inputs needed for context update (e.g., session ID, specific data)
+  - name: state-key
+    type: string
+    required: false
+    description: Specific state key to update.
+  - name: state-value
+    type: string # Or object/any
+    required: false
+    description: Value to set for the state key.
+outputs:
+  - name: result
+    type: object
+    description: Status of the context update.
+usage: reaper-update [--state-key=<key>] [--state-value=<value>]
+examples:
+  - reaper-update --state-key=last-command --state-value='> help'
+---
+
+# Process: reaper-update
+
+## Metadata
+- Description: Updates the 00reaper context state. Used to maintain session continuity.
+- Category: 00reaper
+- Permissions: [basic] # Potentially state-read/state-write
+- Author: 00reaper
+- Version: 1.0.0
+
+## Input
+- state-key (optional string): Specific state key to target.
+- state-value (optional string): Value to assign to the key.
+
+## Output
+- Structured result object indicating success or failure of the update.
+
+## Execution
+```javascript
+// Main execution function
+async function execute() {
+  try {
+    // 1. PARAMETER VALIDATION (Add specific validation if needed)
+    const key = inputs['state-key'];
+    const value = inputs['state-value'];
+    tools.log(`Executing reaper-update: key=${key}, value=${value}`);
+
+    // 2. TOOL CALL EXECUTION (Placeholder - Implement state update logic)
+    // Example: Using state manager tool (if available)
+    if (key && value !== undefined) {
+      // await tools.state.set(key, value, 'user'); // Example scope
+      tools.log(`Placeholder: Would update state key '${key}'`);
+    } else {
+      tools.log('Placeholder: reaper-update called without specific key/value.');
+      // Potentially update a general timestamp or perform other default actions.
+    }
+    
+    const resultData = { updatedKey: key };
+
+    // 3. RESULT FORMATTING
+    return formatSuccess("00reaper context state update placeholder executed.", resultData);
+
+  } catch (error) {
+    // 4. ERROR HANDLING
+    tools.error(`Error executing reaper-update: ${error.message}`);
+    const errorCode = determineErrorCode(error);
+    const suggestions = generateSuggestions(error, errorCode);
+    return formatError(error.message, errorCode, suggestions);
+  }
+}
+
+// Placeholder Utility Functions (Copy from template or implement)
+function formatSuccess(message, data = null) {
+  const response = { success: true, message: `✅ ${message}` };
+  if (data !== null) response.data = data;
+  return response;
+}
+function formatError(message, code = 'EXECUTION_ERROR', suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n`;
+  if (suggestions.length > 0) {
+    output += "\nSuggestions:\n";
+    suggestions.forEach(s => output += `- ${s}\n`);
+  }
+  return { success: false, message: output.trim(), errorDetails: { code, originalMessage: message } };
+}
+function determineErrorCode(error) { return 'UPDATE_ERROR'; }
+function generateSuggestions(error, errorCode) { return ['Check state manager logs.']; }
+
+// Call the main execution function
+execute();
+```
+
+## Usage Examples
+```
+> reaper-update --state-key=last-command --state-value='> help'
+✅ 00reaper context state update placeholder executed.
+``` 

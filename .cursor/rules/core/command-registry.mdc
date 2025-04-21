@@ -1,8 +1,7 @@
 ---
-description: System component - command-registry
+description: 
 globs: 
 alwaysApply: true
-type: always
 ---
 # Command Registry
 
