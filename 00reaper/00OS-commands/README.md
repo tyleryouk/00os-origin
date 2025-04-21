@@ -24,7 +24,7 @@ The 00OS-commands development follows a structured cyclical approach that ensure
 ### Cycle Steps
 
 1. **Read User Request REQ**: Begin by reading the current request from user_requests.md to understand requirements.
-2. **Read Relevant Context**: Review files in context/, documentation/, templates/, and/or testing/ directories to gather necessary information.
+2. **Read Relevant Context**: Review files in context-00OS-current-state/ and documentation/to gather necessary information.
 3. **Update Core Workflow Files**: Make changes to active-request.md, implementation-plan.md, and cycle-status.md to plan and track the implementation.
 4. **Make Changes to 00OS**: Implement the requested changes in the 00OS system.
 5. **Update Supporting Materials**: Update context/, documentation/, templates/, and/or testing/ files to align with the new implementation.
