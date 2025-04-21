@@ -1,6 +1,3 @@
-# Active Request - Current Development Cycle
-
-## REQ-001: Fix reaper-overwrite
 Simplify the process reaper-overwrite. There was a lot of thinking and thought processing. Right now, as you read each file, you are trying to keep track of the consolidation and context in your head, rather than reading all files all the way through then overwriting the context file. read all files and consolidate and keep track of context in your head as you are reading each file sequentially.  The tool calling process should be very simple:
 
 Read all files in folder filepath, overwrite the current context in the context file.
@@ -132,8 +129,3 @@ Suggestions:
 - Manually copy the consolidated content (if it was logged or can be regenerated) to the target file.
 - Modify the `reaper-overwrite` process to handle large content, perhaps by writing in chunks or using a different method if available.
 - Check tool documentation for `edit_file` size limits.
-### END of REQ-001
-
-## REQ-XXX: No Active Request
-
-// File reset at end of REQ-001 cycle. Awaiting next user request. // 

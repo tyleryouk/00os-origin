@@ -25,7 +25,8 @@ type: agent
 ```javascript
 // Main execution function
 async function execute() {
-  let consolidatedContent = '';
+  // Use summaryContent instead of consolidatedContent
+  let summaryContent = `# Context Summary from Directory: ${inputs.source_directory}\\n\\n`;
   let filesProcessed = 0;
   let errorsEncountered = [];
 
@@ -49,7 +50,7 @@ async function execute() {
       ]);
     }
 
-    const sourceDirFull = `00os/${sourceDirRelative}`.replace(/\\/g, '/'); // Construct full path and normalize slashes
+    const sourceDirFull = `00os/${sourceDirRelative}`.replace(/\\\\/g, '/'); // Construct full path and normalize slashes
     tools.log(`Executing reaper-overwrite: Source='${sourceDirFull}', Target='${targetFile}'`);
 
     // =========================================
@@ -71,75 +72,73 @@ async function execute() {
       ]);
     }
 
-    const filesToRead = fileListResult.entries.filter(entry => !entry.is_directory);
+    const filesToRead = fileListResult.entries.filter(entry => !entry.is_directory && entry.path.endsWith('.md')); // Only process markdown files
     if (filesToRead.length === 0) {
-       return formatWarning(`No files found in source directory '${sourceDirFull}'. Target file '${targetFile}' will be empty.`);
+       return formatWarning(`No markdown files found in source directory '${sourceDirFull}'. Target file '${targetFile}' will be empty or contain only the header.`);
     }
 
     // =========================================
-    // 3. READ & CONSOLIDATE FILES
+    // 3. READ & GENERATE SUMMARY
     // =========================================
-    tools.log(`Found ${filesToRead.length} files to read.`);
+    tools.log(`Found ${filesToRead.length} markdown files to summarize.`);
     for (const fileEntry of filesToRead) {
       const filePath = fileEntry.path; // list_dir provides the full path already
-      tools.log(`Reading file: ${filePath}`);
+      tools.log(`Summarizing file: ${filePath}`);
       try {
-        // Attempt to read the entire file
+        // Read the entire file to parse metadata easily
         const readResult = await tools.call('read_file', {
           target_file: filePath,
-          should_read_entire_file: true, // Try reading all at once
-          explanation: `Reading content of ${filePath}`
+          should_read_entire_file: true,
+          explanation: `Reading content of ${filePath} to extract metadata for summary.`
         });
 
         if (readResult && readResult.content !== undefined) {
-          // Successfully read entire file
-          consolidatedContent += `--- File: ${filePath} ---\n\n`;
-          consolidatedContent += readResult.content;
-          consolidatedContent += '\n\n';
+          // Extract metadata and append to summary
+          const summaryLines = extractMetadataSummary(filePath, readResult.content);
+          summaryContent += summaryLines + '\\n'; // Add newline between file summaries
           filesProcessed++;
         } else {
-          // Handle potential partial read or error, log and continue if possible
-          const errorMsg = `Could not read full content for ${filePath}. Tool Response: ${JSON.stringify(readResult)}`;
+          // Handle potential read error
+          const errorMsg = `Could not read content for ${filePath}. Tool Response: ${JSON.stringify(readResult)}`;
            tools.error(errorMsg);
            errorsEncountered.push(errorMsg);
-           consolidatedContent += `--- File: ${filePath} --- \n\n *** ERROR: Could not read full content *** \n\n`;
+           summaryContent += `## Error Processing: ${filePath}\\n- Could not read file content.\\n\\n`;
         }
       } catch (readError) {
          const errorMsg = `Error reading file ${filePath}: ${readError.message}`;
          tools.error(errorMsg);
          errorsEncountered.push(errorMsg);
-         consolidatedContent += `--- File: ${filePath} --- \n\n *** ERROR: ${readError.message} *** \n\n`;
+         summaryContent += `## Error Processing: ${filePath}\\n- ${readError.message}\\n\\n`;
       }
     }
 
     // =========================================
-    // 4. OVERWRITE TARGET FILE
+    // 4. OVERWRITE TARGET FILE WITH SUMMARY
     // =========================================
-    tools.log(`Consolidated content length: ${consolidatedContent.length}. Overwriting target file: ${targetFile}`);
+    tools.log(`Generated summary length: ${summaryContent.length}. Overwriting target file: ${targetFile}`);
     try {
+       // Use summaryContent instead of consolidatedContent
        const editResult = await tools.call('edit_file', {
          target_file: targetFile,
-         code_edit: consolidatedContent, // Provide the entire new content
-         instructions: `Overwrite the entire file with the consolidated content from ${sourceDirFull}.`
+         code_edit: summaryContent, // Provide the generated summary
+         instructions: `Overwrite the entire file with the generated context summary from ${sourceDirFull}.`
        });
-       // Note: edit_file might not return detailed success/failure in a structured way currently.
-       // We assume success if no exception is thrown.
        tools.log(`Successfully called edit_file for ${targetFile}.`);
 
     } catch(editError) {
         // This is a critical error, fail the whole operation
-         return formatError(`Failed to overwrite target file '${targetFile}': ${editError.message}`, 'EDIT_FILE_ERROR', [
+         return formatError(`Failed to overwrite target file '${targetFile}' with summary: ${editError.message}`, 'EDIT_FILE_ERROR', [
              'Check write permissions for the target file.',
              'Ensure the target path is correct.'
          ]);
     }
 
     // =========================================
-    // 5. FINAL RESULT FORMATTING 
+    // 5. FINAL RESULT FORMATTING
     // =========================================
-    let finalMessage = `Successfully overwrote '${targetFile}' with consolidated content from ${filesProcessed} files in '${sourceDirFull}'.`;
+    let finalMessage = `Successfully overwrote '${targetFile}' with a generated summary from ${filesProcessed} files in '${sourceDirFull}'.`;
     if (errorsEncountered.length > 0) {
-        finalMessage += ` \n\n⚠️ Encountered ${errorsEncountered.length} errors during file reading (check logs). File content might be incomplete or include error markers.`;
+        finalMessage += ` \\n\\n⚠️ Encountered ${errorsEncountered.length} errors during file reading/summarization (check logs). Summary might be incomplete.`;
         return formatWarning(finalMessage, { targetFile, filesProcessed, errors: errorsEncountered.length });
     }
 
@@ -147,11 +146,58 @@ async function execute() {
 
   } catch (error) {
     // =========================================
-    // 6. GLOBAL ERROR HANDLING 
+    // 6. GLOBAL ERROR HANDLING
     // =========================================
-    tools.error(`Unhandled error in reaper-overwrite: ${error.message}\n${error.stack}`);
+    tools.error(`Unhandled error in reaper-overwrite: ${error.message}\\n${error.stack}`);
     return formatError(`An unexpected error occurred: ${error.message}`, 'EXECUTION_ERROR');
   }
+}
+
+// Helper function to extract metadata summary from file content
+function extractMetadataSummary(filePath, content) {
+    // Simple parser: Look for specific markdown patterns or frontmatter
+    const fileName = filePath.split('/').pop().replace('.md', '');
+    let summary = `## ${fileName}\\n`;
+    summary += `- **Location**: \`${filePath}\`\\n`;
+
+    // Attempt to parse frontmatter (simple regex approach)
+    const frontmatterRegex = /^---\\n([\s\S]*?)\\n---/;
+    const fmMatch = content.match(frontmatterRegex);
+    let description = 'No description found.';
+    let status = 'Status unknown.'; // Default status
+
+    if (fmMatch && fmMatch[1]) {
+        const fmContent = fmMatch[1];
+        const descMatch = fmContent.match(/^description:\s*(.*)/m);
+        if (descMatch && descMatch[1]) {
+            description = descMatch[1].trim();
+        }
+        // Add more frontmatter extractions if needed (e.g., status)
+    } else {
+        // Fallback: Look for specific markdown headings if no frontmatter
+        const purposeMatch = content.match(/## Purpose\n(.+)/); // Example: look for ## Purpose
+        if (purposeMatch && purposeMatch[1]) {
+             description = purposeMatch[1].trim();
+        } else {
+             const descMatch = content.match(/## Description\n(.+)/); // Example: look for ## Description
+             if (descMatch && descMatch[1]){
+                description = descMatch[1].trim();
+             }
+        }
+
+         // Example fallback for status
+        const statusMatch = content.match(/## Status\n(.+)/);
+        if (statusMatch && statusMatch[1]){
+            status = statusMatch[1].trim();
+        }
+    }
+
+    summary += `- **Purpose**: ${description}\\n`;
+    summary += `- **Status**: ${status}\\n`; // Add status if found/relevant
+
+    // Add more extracted info as needed following the user's example format
+
+    return summary;
 }
 
 // =========================================
