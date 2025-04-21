@@ -1,38 +1,11 @@
 # 00OS User Requests and Implementation Tracking
 
 ## Request Details
-### REQ-001: [NEW]
-- Optimize 00reaper/00OS-commands folder for better workflow and communication between you (00reaper) and I (Tyler). The workflow should follow a strict cyclical approach as defined below.
-1. Read user_request REQ
-2. Read relevant files in context, documentation, templates, and/or testing
-3. Make changes to the two core workflow files: current-implementation.md and current-task.md.
-4. Make changes to 00OS
-5. Make changes to context, documentation, templates, and/or testing (will likely happen most times, because most changes to 00OS will result in necessary changes to context, documentation, testing, and/or testing to ensure alignment)
-6. Update/clear core workflow files to start a new cycle. The core workflow files should be focused on one cycle at a time.
-
-The goal is for me to write requests like these, and for you to intelligently make changes to the base workflow files in 00reaper\00OS-commands along with changes to 00OS. If you find ways to enhance this cycle, please let me know before we start making changes. Let's try to define the cycle as best as possible within the two core workflow files before making major structural changes. Note that for this request, ALL changes should be made to 00reaper\00OS-commands. When in this workflow, you will only need to read/change files in 00reaper\00OS-commands and 00OS.
-
-### REQ-002: [NEW]
-#### Requirements:
-- Ensure 1 to 1 alignment between 00OS commands (commands sent from the Cursor prompt) with 00OS processes. 
-- There needs to be some type of system to ensure alignment between the 00OS commands listed in > help and > command-registry and all 00OS processes in 00OS/processes/. We should also probably delete system commands that are not all that accurate. Let's try to define this 00OS command to 00OS processes alignment plan as best as possible before moving forward. 
-
-Questions:
-Should we define 00OS processes as 00OS command processes or 00OS processes? 
-Is it currently clear that the 00OS commands execute as follows:
-1. AI Agent received 00OS command starting with > 
-2. AI Agent makes fetch_rules call to 00OS process associated with 00OS command (00OS process filename should have exact same name as 00OS command)
-3. AI Agent perform ALL tool calls defined within the 00OS process.
-
-
-### REQ-003: Update Core 00OS Commands to Use Tool Calls
+### REQ-003: Enhance Core 00OS Processes to focus on sequential Tool Call tion [NEW]
 #### Requirements
-- Identify essential 00OS commands for initial update
-- Rewrite processes to emphasize the utilization of tool calls
-- Ensure proper parameter validation and error handling
-- Test commands with various inputs by running live communication tests with Tyler
-- Read documented command behaviors, which are documented by Tyler Youk. Utilize the /testing folder for this cycle.
+Revise all process files to focus on sequential tool call execution. 00OS is not a real operating system. It is an system based on operating system principles to manipulate Cursor Rules for faster development for Tyler Youk (allows Tyler Youk to send 00OS commands prefixed with > for faster AI-augmented development). Some of the process files are ambiguous and sometimes you do not run tool calls. Each process should trigger a strict set of a tool calls. 
 
+Perform @Web research on Cursor Tool Calls and create a new file within documentation called cursor-tool-calls which will serve as a good reference point for tool calls that we are utilizing within our codebase (best practices, etc). This document file is in documentation because we will continously enhance this file to ensure optimize tool calling within processes. Tool calls should also be engrained in your knowledge, since this AI chat interface is backed by Cursor which embeddes tool call knowledge into your memory so that you utilize tool calls.
 
 #### Progress Updates
 - 2023-05-22: Identified priority commands for implementation
