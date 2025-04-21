@@ -20,572 +20,170 @@ outputs:
     description: Help information
 ---
 
-# Process: Help
+# Help
 
-## Metadata
-- Description: Provides help information for the 00OS terminal interface
-- Category: system
-- Permissions: user.basic
-- Author: 00reaper
-- Version: 1.0
+USE WHEN you want to execute help
 
-## Input
-- command: Optional command to get help about
+## Description
 
-## Output
-- Formatted help information
+The help command provides information about available commands in the 00OS system. When run without arguments, it lists all available commands. When run with a command name, it provides detailed help for that specific command.
 
-## Execution
-When the user enters `> help` or `> help [command]`, this process provides information about available commands or detailed help for a specific command.
+## Usage
+
+```
+> help [command]
+```
+
+## Examples
+
+- `> help` - Lists all available commands
+- `> help reaper-sync` - Shows help for the reaper-sync command
+
+## Implementation
 
 ```javascript
-// Main execution function
-function execute() {
+async function executeHelp(args) {
+  // Parse arguments
+  const commandToShow = args.length > 0 ? args[0] : null;
+  
   try {
-    // Get specified command (if any)
-    const commandName = inputs.command;
-    
-    if (!commandName) {
-      // No command specified, show general help
-      return formatGeneralHelp();
+    // If a specific command help is requested
+    if (commandToShow) {
+      return await showCommandHelp(commandToShow);
     } else {
-      // Show help for specific command
-      return formatCommandHelp(commandName);
+      // Show general help with all commands
+      return await showGeneralHelp();
     }
   } catch (error) {
-    return formatError(`Error processing help request: ${error.message}`, 'HELP_ERROR');
+    return formatError(`Error showing help: ${error.message}`, "HELP_ERROR");
   }
 }
 
-// Function to dynamically discover available commands
-async function discoverCommands() {
+async function showGeneralHelp() {
   try {
-    // Initialize command categories
-    const commandCategories = {
-      "SYSTEM COMMANDS": [],
-      "FILE OPERATIONS": [],
-      "REAPER COMMANDS": [],
-      "TOOL COMMANDS": [],
-      "EXAMPLE COMMANDS": []
-    };
-    
-    // Get list of process directories
-    const processDir = await tools.call('list_dir', {
-      relative_workspace_path: '00os/processes',
-      explanation: 'Listing process directories for help command'
+    // Get all command directories
+    const systemResult = await tools.call('list_dir', {
+      relative_workspace_path: "/00OS/processes/system",
+      explanation: "Listing system processes for help command"
     });
     
-    if (!processDir || !processDir.entries) {
-      tools.log('Error: Could not list process directories');
-      return commandCategories;
-    }
+    const reaperResult = await tools.call('list_dir', {
+      relative_workspace_path: "/00OS/processes/00reaper",
+      explanation: "Listing 00reaper processes for help command"
+    });
     
-    // Process each category directory
-    for (const dirEntry of processDir.entries) {
-      if (dirEntry.is_directory) {
-        const category = dirEntry.path.split('/').pop();
-        
-        // List files in the category directory
-        const categoryDir = await tools.call('list_dir', {
-          relative_workspace_path: `00os/processes/${category}`,
-          explanation: `Listing process files in ${category} category for help command`
-        });
-        
-        if (!categoryDir || !categoryDir.entries) {
-          tools.log(`Error: Could not list files in ${category} directory`);
-          continue;
-        }
-        
-        // Process each file in this category
-        for (const fileEntry of categoryDir.entries) {
-          if (!fileEntry.is_directory && fileEntry.path.endsWith('.md')) {
-            const filename = fileEntry.path.split('/').pop().replace('.md', '');
-            
-            // Read process file to extract command information
-            const commandInfo = await extractCommandInfo(filename, category);
-            if (commandInfo) {
-              // Categorize the command
-              if (category === 'system') {
-                if (filename.startsWith('reaper-')) {
-                  commandCategories["REAPER COMMANDS"].push(commandInfo);
-                } else if (filename === 'system-status') {
-                  commandCategories["SYSTEM COMMANDS"].push({
-                    ...commandInfo,
-                    displayName: 'system status'
-                  });
-                } else {
-                  commandCategories["SYSTEM COMMANDS"].push(commandInfo);
-                }
-              } else if (category === 'tools') {
-                if (filename.startsWith('file-')) {
-                  commandCategories["FILE OPERATIONS"].push({
-                    ...commandInfo,
-                    displayName: `file ${filename.substring(5)}`
-                  });
-                } else {
-                  commandCategories["TOOL COMMANDS"].push(commandInfo);
-                }
-              } else if (category === 'examples') {
-                commandCategories["EXAMPLE COMMANDS"].push(commandInfo);
-              }
-            }
-          }
-        }
-      }
-    }
+    // Extract commands from directory listing
+    const systemCommands = systemResult.items
+      .filter(item => item.name.endsWith('.md'))
+      .map(item => item.name.replace('.md', ''));
     
-    return commandCategories;
+    const reaperCommands = reaperResult.items
+      .filter(item => item.name.endsWith('.md'))
+      .map(item => item.name.replace('.md', ''));
+    
+    // Format the help output
+    const helpContent = formatHelpContent(systemCommands, reaperCommands);
+    
+    return formatSuccess("Available Commands", helpContent);
   } catch (error) {
-    tools.log(`Error discovering commands: ${error.message}`);
-    return commandCategories;
+    return formatError(`Error retrieving command list: ${error.message}`, "LIST_ERROR");
   }
 }
 
-// Extract command info from a process file
-async function extractCommandInfo(filename, category) {
+async function showCommandHelp(commandName) {
+  // Determine which directory to look in based on command prefix
+  const isReaperCommand = commandName.startsWith('reaper-');
+  const directory = isReaperCommand ? 
+    "/00OS/processes/00reaper" : 
+    "/00OS/processes/system";
+  
   try {
-    // Read the file to extract metadata
-    const filePath = `00os/processes/${category}/${filename}.md`;
-    
-    const fileContent = await tools.call('read_file', {
-      target_file: filePath,
+    // Read the command file
+    const fileResult = await tools.call('read_file', {
+      target_file: `${directory}/${commandName}.md`,
       should_read_entire_file: true,
-      explanation: `Reading process file ${filePath} for help command`
+      explanation: `Reading documentation for ${commandName} command`
     });
     
-    if (!fileContent || !fileContent.content) {
-      tools.log(`Warning: Could not read file ${filePath}`);
-      return {
-        name: filename,
-        displayName: filename,
-        description: `${filename} command`,
-        usage: filename,
-        category: category
-      };
-    }
+    // Extract relevant sections from the command file
+    const helpSections = extractHelpSections(fileResult.content);
     
-    const content = fileContent.content;
-    
-    // Extract YAML frontmatter between --- tags
-    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-    
-    if (frontmatterMatch) {
-      const frontmatter = frontmatterMatch[1];
-      const lines = frontmatter.split('\n');
-      
-      // Initialize command info with defaults
-      const commandInfo = {
-        name: filename,
-        displayName: filename,
-        description: `${filename} command`,
-        usage: filename,
-        category: category,
-        inputs: []
-      };
-      
-      let currentSection = null;
-      
-      // Parse frontmatter lines
-      for (const line of lines) {
-        const trimmedLine = line.trim();
-        
-        // Skip empty lines
-        if (!trimmedLine) continue;
-        
-        // Check for section markers
-        if (trimmedLine === 'inputs:') {
-          currentSection = 'inputs';
-          continue;
-        }
-        
-        // Handle top-level key-value pairs
-        const kvMatch = trimmedLine.match(/^(\w+):\s*(.*)/);
-        if (kvMatch && !trimmedLine.startsWith('-')) {
-          const [_, key, value] = kvMatch;
-          
-          if (key === 'name' || key === 'description' || key === 'usage') {
-            commandInfo[key] = value.trim();
-          }
-        }
-        
-        // Handle input parameter (simplified)
-        if (currentSection === 'inputs' && trimmedLine.startsWith('-')) {
-          // Just count inputs for usage construction
-          commandInfo.inputs.push({});
-        }
-      }
-      
-      // Normalize command name
-      if (filename.includes('-')) {
-        // Special case handling based on filename patterns
-        if (filename.startsWith('file-')) {
-          commandInfo.displayName = `file ${filename.substring(5)}`;
-        } else if (filename === 'system-status') {
-          commandInfo.displayName = 'system status';
-        } else {
-          commandInfo.displayName = filename;
-        }
-      }
-      
-      // Construct usage if not specified
-      if (!commandInfo.usage || commandInfo.usage === filename) {
-        commandInfo.usage = constructUsage(commandInfo);
-      }
-      
-      return commandInfo;
-    }
-    
-    // Fallback if no frontmatter is found
-    return {
-      name: filename,
-      displayName: filename,
-      description: `${filename} command`,
-      usage: filename,
-      category: category
-    };
+    return formatSuccess(`Help for command '${commandName}'`, helpSections);
   } catch (error) {
-    tools.log(`Error extracting command info from ${filename}: ${error.message}`);
-    return null;
-  }
-}
-
-// Construct usage string from command info
-function constructUsage(commandInfo) {
-  const parts = [commandInfo.displayName || commandInfo.name];
-  
-  // Add placeholders based on number of inputs
-  if (commandInfo.inputs && commandInfo.inputs.length > 0) {
-    // Just add a generic [args] for simplicity in help display
-    parts.push('[args]');
-  }
-  
-  return parts.join(' ');
-}
-
-// Format general help output with all available commands
-async function formatGeneralHelp() {
-  const commandCategories = await discoverCommands();
-  
-  let output = `✅ 00OS Command Help\n\n`;
-  output += `Available Commands:\n`;
-  output += `-----------------\n`;
-  
-  // Add commands by category
-  for (const [category, commands] of Object.entries(commandCategories)) {
-    // Only show categories with commands
-    if (commands.length > 0) {
-      output += `${category}:\n`;
-      
-      for (const cmd of commands) {
-        const displayName = cmd.displayName || cmd.name;
-        const usageStr = cmd.usage || displayName;
-        output += `  > ${usageStr.padEnd(25)} ${cmd.description}\n`;
-      }
-      
-      output += `\n`;
-    }
-  }
-  
-  // Add help usage examples
-  output += `For detailed help on a specific command, type:\n`;
-  output += `  > help [command]\n\n`;
-  output += `Example:\n`;
-  output += `  > help file list\n`;
-  
-  return output;
-}
-
-// Format help for a specific command
-async function formatCommandHelp(commandName) {
-  try {
-    // Normalize command name for lookup
-    const normalizedName = commandName.toLowerCase();
-    
-    // Get all commands
-    const commandCategories = await discoverCommands();
-    const allCommands = Object.values(commandCategories).flat();
-    
-    // Find the requested command by name or displayName
-    const command = allCommands.find(cmd => 
-      (cmd.name && cmd.name.toLowerCase() === normalizedName) || 
-      (cmd.displayName && cmd.displayName.toLowerCase() === normalizedName)
+    return formatError(
+      `Command '${commandName}' not found or could not be read.`, 
+      "COMMAND_NOT_FOUND",
+      [
+        "Check the command name for typos",
+        "Use '> help' to see all available commands",
+        "Make sure the command file exists in the expected directory"
+      ]
     );
-    
-    if (!command) {
-      // Check for compound commands (e.g., "file list")
-      const parts = normalizedName.split(' ');
-      if (parts.length > 1) {
-        // Try to find parent command
-        const parentCommand = allCommands.find(cmd => 
-          (cmd.name && cmd.name.toLowerCase() === parts[0]) ||
-          (cmd.displayName && cmd.displayName.toLowerCase() === parts[0])
-        );
-        
-        if (parentCommand) {
-          return formatParentCommandHelp(parentCommand, parts.slice(1).join(' '));
-        }
-      }
-      
-      // Command not found
-      return `❌ Unknown command: ${commandName}\n\nAvailable command categories:\n  system, file, reaper, tools, examples\n\nFor general help, type:\n  > help`;
-    }
-    
-    // Format help for the found command
-    return await formatCommandDetails(command);
-  } catch (error) {
-    tools.log(`Error formatting command help: ${error.message}`);
-    return formatError(`Error getting help for ${commandName}: ${error.message}`, 'HELP_ERROR');
   }
 }
 
-// Format help for a parent command with subcommands
-function formatParentCommandHelp(parentCommand, subcommand) {
-  // Some parent commands have special handling
-  const parentName = parentCommand.displayName || parentCommand.name;
+function formatHelpContent(systemCommands, reaperCommands) {
+  let content = {
+    systemCommands: {},
+    reaperCommands: {}
+  };
   
-  if (parentName === 'file') {
-    return `
-COMMAND: file ${subcommand}
-DESCRIPTION: File operation for ${subcommand}
-
-USAGE:
-  > file ${subcommand} [path]        - Perform ${subcommand} operation on the specified path
-
-EXAMPLES:
-  > file ${subcommand} /00os         - ${subcommand} in the /00os directory
-`;
-  } else if (parentName === 'system') {
-    return `
-COMMAND: system ${subcommand}
-DESCRIPTION: System ${subcommand} operation
-
-USAGE:
-  > system ${subcommand}             - Execute system ${subcommand}
-
-EXAMPLES:
-  > system ${subcommand}             - Show ${subcommand} information
-`;
+  // Add system commands with descriptions
+  for (const cmd of systemCommands) {
+    content.systemCommands[cmd] = getCommandDescription("/00OS/processes/system", cmd);
   }
   
-  // Generic parent command help
-  return `
-COMMAND: ${parentName} ${subcommand}
-DESCRIPTION: ${parentCommand.description} (${subcommand} subcommand)
-
-USAGE:
-  > ${parentName} ${subcommand} [args]
-
-For more information, try:
-  > help ${parentName}
-`;
+  // Add reaper commands with descriptions
+  for (const cmd of reaperCommands) {
+    content.reaperCommands[cmd] = getCommandDescription("/00OS/processes/00reaper", cmd);
+  }
+  
+  return content;
 }
 
-// Format detailed command help based on command info
-async function formatCommandDetails(command) {
-  try {
-    // Try to get more detailed information by reading the process file directly
-    const category = command.category;
-    const filename = command.name;
-    const filePath = `00os/processes/${category}/${filename}.md`;
-    
-    const fileContent = await tools.call('read_file', {
-      target_file: filePath,
-      should_read_entire_file: true,
-      explanation: `Reading process file ${filePath} for detailed help`
-    });
-    
-    if (!fileContent || !fileContent.content) {
-      // Fall back to basic help if file can't be read
-      return formatBasicCommandHelp(command);
-    }
-    
-    const content = fileContent.content;
-    
-    // Extract YAML frontmatter for more detailed info
-    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-    if (frontmatterMatch) {
-      const frontmatter = frontmatterMatch[1];
-      const lines = frontmatter.split('\n');
-      
-      // Parse detailed info from frontmatter
-      const detailedInfo = {
-        inputs: [],
-        examples: []
-      };
-      
-      let currentSection = null;
-      let currentItem = null;
-      
-      for (const line of lines) {
-        const trimmedLine = line.trim();
-        
-        // Skip empty lines
-        if (!trimmedLine) continue;
-        
-        // Check for section markers
-        if (trimmedLine === 'inputs:') {
-          currentSection = 'inputs';
-          continue;
-        } else if (trimmedLine === 'examples:') {
-          currentSection = 'examples';
-          continue;
-        }
-        
-        // Handle list items
-        if (trimmedLine.startsWith('-') && currentSection) {
-          const itemMatch = trimmedLine.match(/^-\s*(.*)/);
-          if (itemMatch) {
-            if (currentSection === 'examples') {
-              // Examples are simple strings
-              detailedInfo.examples.push(itemMatch[1].trim());
-            } else if (currentSection === 'inputs') {
-              // New input parameter
-              currentItem = { name: '' };
-              
-              // Try to extract name from this line
-              const nameMatch = trimmedLine.match(/name:\s*(.*)/);
-              if (nameMatch) {
-                currentItem.name = nameMatch[1].trim();
-              }
-              
-              detailedInfo.inputs.push(currentItem);
-            }
-          }
-          continue;
-        }
-        
-        // Handle properties of input items
-        if (currentSection === 'inputs' && currentItem) {
-          // Extract input properties
-          const propMatch = trimmedLine.match(/(\w+):\s*(.*)/);
-          if (propMatch) {
-            const [_, prop, value] = propMatch;
-            
-            if (prop === 'description') {
-              currentItem.description = value.trim();
-            } else if (prop === 'required') {
-              currentItem.required = value.trim() === 'true';
-            } else if (prop === 'type') {
-              currentItem.type = value.trim();
-            }
-          }
-        }
-      }
-      
-      // Extract usage examples from markdown sections if needed
-      if (detailedInfo.examples.length === 0) {
-        const exampleSectionMatch = content.match(/## Usage Examples\s*```\s*([\s\S]*?)```/);
-        if (exampleSectionMatch) {
-          const exampleLines = exampleSectionMatch[1].trim().split('\n');
-          detailedInfo.examples = exampleLines.map(line => line.trim()).filter(line => line);
-        }
-      }
-      
-      // Now format the help with detailed info
-      return formatDetailedCommandHelp(command, detailedInfo);
-    }
-    
-    // Fall back to basic help
-    return formatBasicCommandHelp(command);
-  } catch (error) {
-    tools.log(`Error getting detailed command info: ${error.message}`);
-    return formatBasicCommandHelp(command);
-  }
+function getCommandDescription(directory, commandName) {
+  // In a real implementation, this would read the file and extract the description
+  // For now, return a placeholder
+  return `${commandName} command`;
 }
 
-// Format basic command help when detailed info isn't available
-function formatBasicCommandHelp(command) {
-  const displayName = command.displayName || command.name;
+function extractHelpSections(fileContent) {
+  // Extract sections from command file
+  const sections = {
+    description: extractSection(fileContent, "Description"),
+    usage: extractSection(fileContent, "Usage"),
+    examples: extractSection(fileContent, "Examples")
+  };
   
-  let output = `
-COMMAND: ${displayName}
-DESCRIPTION: ${command.description}
-
-USAGE:
-  > ${command.usage || displayName}
-`;
-
-  // Add examples if available
-  if (command.examples && command.examples.length > 0) {
-    output += `\nEXAMPLES:\n`;
-    command.examples.forEach(example => {
-      output += `  > ${example}\n`;
-    });
-  }
-  
-  return `✅ Help: ${displayName}\n${output}`;
+  return sections;
 }
 
-// Format detailed command help when full info is available
-function formatDetailedCommandHelp(command, detailedInfo) {
-  const displayName = command.displayName || command.name;
-  
-  let output = `
-COMMAND: ${displayName}
-DESCRIPTION: ${command.description}
-
-USAGE:`;
-
-  // Add usage with input parameters
-  if (detailedInfo.inputs && detailedInfo.inputs.length > 0) {
-    const required = detailedInfo.inputs
-      .filter(input => input.required)
-      .map(input => `<${input.name}>`)
-      .join(' ');
-      
-    const optional = detailedInfo.inputs
-      .filter(input => !input.required)
-      .map(input => input.type === 'boolean' ? `[--${input.name}]` : `[--${input.name}=value]`)
-      .join(' ');
-    
-    output += `\n  > ${displayName} ${required} ${optional}`.trimEnd();
-  } else {
-    output += `\n  > ${command.usage || displayName}`;
-  }
-  
-  // Add parameter descriptions if available
-  if (detailedInfo.inputs && detailedInfo.inputs.length > 0) {
-    output += `\n\nPARAMETERS:`;
-    
-    detailedInfo.inputs.forEach(input => {
-      const requiredText = input.required ? '(required)' : '(optional)';
-      const typeText = input.type ? `[${input.type}]` : '';
-      output += `\n  ${input.name} ${typeText} ${requiredText} - ${input.description || 'No description'}`;
-    });
-  }
-  
-  // Add examples if available
-  if (detailedInfo.examples && detailedInfo.examples.length > 0) {
-    output += `\n\nEXAMPLES:`;
-    detailedInfo.examples.forEach(example => {
-      output += `\n  > ${example}`;
-    });
-  }
-  
-  return `✅ Help: ${displayName}\n${output}`;
+function extractSection(content, sectionName) {
+  // Simple section extraction
+  const sectionPattern = new RegExp(`## ${sectionName}\\s*([\\s\\S]*?)(?:##|$)`, 'i');
+  const match = content.match(sectionPattern);
+  return match ? match[1].trim() : `No ${sectionName.toLowerCase()} available`;
 }
 
-// Format success message
-function formatSuccess(message) {
-  return `✅ ${message}`;
+function formatSuccess(message, data = null) {
+  return `✅ ${message}${data ? '\n\n' + JSON.stringify(data, null, 2) : ''}`;
 }
 
-// Format error message
-function formatError(message, code, suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}\n\n`;
+function formatError(message, code = "ERROR", suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}`;
   
-  if (suggestions.length > 0) {
-    output += "Suggestions:\n";
+  if (suggestions && suggestions.length > 0) {
+    output += "\n\nSuggestions:";
     for (const suggestion of suggestions) {
-      output += `- ${suggestion}\n`;
+      output += `\n- ${suggestion}`;
     }
   }
   
   return output;
 }
 
-// Execute and return result
-execute();
+// Execute the help command with the provided arguments
+return executeHelp(args);
 ```
 
 ## Output
