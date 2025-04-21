@@ -1,7 +1,7 @@
 ---
 name: reaper-overwrite
-description: Reads all files in a source /00os/ subdirectory and overwrites a target context file with consolidated content.
-version: 1.0.0
+description: Reads all files in a source /00os/ subdirectory and generates a concise context file with basic information.
+version: 1.1.0
 author: 00reaper
 category: 00reaper # Specific to reaper workflow tasks
 permissions: [basic, file-read, file-write] # Permissions needed for list_dir, read_file, edit_file
@@ -28,11 +28,11 @@ examples:
 # Process: reaper-overwrite
 
 ## Metadata
-- Description: Reads all files in a source `/00os/` subdirectory and overwrites a target context file with consolidated content.
+- Description: Reads all files in a source `/00os/` subdirectory and generates a concise context file with basic information.
 - Category: 00reaper
 - Permissions: [basic, file-read, file-write]
 - Author: 00reaper
-- Version: 1.0.0
+- Version: 1.1.0
 
 ## Input
 - source_directory: Source directory path relative to `/00os/` (required string)
@@ -45,11 +45,6 @@ examples:
 ```javascript
 // Main execution function
 async function execute() {
-  // Use summaryContent instead of consolidatedContent
-  let summaryContent = `# Context Summary from Directory: ${inputs.source_directory}\\n\\n`;
-  let filesProcessed = 0;
-  let errorsEncountered = [];
-
   try {
     // =========================================
     // 1. PARAMETER VALIDATION
@@ -98,130 +93,179 @@ async function execute() {
     }
 
     // =========================================
-    // 3. READ & GENERATE SUMMARY
+    // 3. READ ALL FILES
     // =========================================
-    tools.log(`Found ${filesToRead.length} markdown files to summarize.`);
+    tools.log(`Found ${filesToRead.length} markdown files to process.`);
+    
+    // Create data structure to store file information
+    const fileInfo = [];
+    
+    // Read all files first
     for (const fileEntry of filesToRead) {
-      const filePath = fileEntry.path; // list_dir provides the full path already
-      tools.log(`Summarizing file: ${filePath}`);
+      const filePath = fileEntry.path;
+      const fileName = filePath.split('/').pop().replace('.md', '');
+      
+      tools.log(`Reading file: ${filePath}`);
       try {
-        // Read the entire file to parse metadata easily
+        // Read the file
         const readResult = await tools.call('read_file', {
           target_file: filePath,
           should_read_entire_file: true,
-          explanation: `Reading content of ${filePath} to extract metadata for summary.`
+          explanation: `Reading content of ${filePath}`
         });
 
         if (readResult && readResult.content !== undefined) {
-          // Extract metadata and append to summary
-          const summaryLines = extractMetadataSummary(filePath, readResult.content);
-          summaryContent += summaryLines + '\\n'; // Add newline between file summaries
-          filesProcessed++;
+          // Basic info about the file
+          const info = {
+            name: fileName,
+            path: filePath,
+            content: readResult.content
+          };
+          
+          fileInfo.push(info);
         } else {
-          // Handle potential read error
-          const errorMsg = `Could not read content for ${filePath}. Tool Response: ${JSON.stringify(readResult)}`;
-           tools.error(errorMsg);
-           errorsEncountered.push(errorMsg);
-           summaryContent += `## Error Processing: ${filePath}\\n- Could not read file content.\\n\\n`;
+          tools.error(`Could not read content for ${filePath}.`);
         }
       } catch (readError) {
-         const errorMsg = `Error reading file ${filePath}: ${readError.message}`;
-         tools.error(errorMsg);
-         errorsEncountered.push(errorMsg);
-         summaryContent += `## Error Processing: ${filePath}\\n- ${readError.message}\\n\\n`;
+        tools.error(`Error reading file ${filePath}: ${readError.message}`);
       }
     }
 
     // =========================================
-    // 4. OVERWRITE TARGET FILE WITH SUMMARY
+    // 4. GENERATE CONTEXT CONTENT
     // =========================================
-    tools.log(`Generated summary length: ${summaryContent.length}. Overwriting target file: ${targetFile}`);
+    // Determine folder name for the header
+    const folderName = sourceDirRelative.split('/').pop() || sourceDirRelative;
+    const formattedFolderName = folderName.charAt(0).toUpperCase() + folderName.slice(1);
+    
+    // Create the context content
+    let contextContent = `# Context: ${formattedFolderName} Current State\n\n`;
+    contextContent += `This file provides context on the contents of the \`${sourceDirRelative}\` directory.\n\n`;
+    
+    // Process each file's information
+    for (const info of fileInfo) {
+      // Extract the process name
+      const processName = info.name;
+      contextContent += `## ${processName}\n`;
+      
+      // Extract purpose/description
+      let purpose = 'No description available.';
+      
+      // Try to extract from frontmatter
+      const frontmatterMatch = info.content.match(/---\s*\n([\s\S]*?)\n\s*---/);
+      if (frontmatterMatch) {
+        const frontmatter = frontmatterMatch[1];
+        const descMatch = frontmatter.match(/description:\s*(.*?)(\n|$)/);
+        if (descMatch && descMatch[1]) {
+          purpose = descMatch[1].trim();
+        }
+      }
+      
+      // If no description found in frontmatter, look in markdown content
+      if (purpose === 'No description available.') {
+        // Look for "Description:" or "Purpose:" sections
+        const descriptionMatch = info.content.match(/##\s*Description\s*\n(.*?)(\n##|\n$)/s);
+        if (descriptionMatch && descriptionMatch[1]) {
+          purpose = descriptionMatch[1].trim().split('\n')[0]; // Get first line only
+        } else {
+          const purposeMatch = info.content.match(/##\s*Purpose\s*\n(.*?)(\n##|\n$)/s);
+          if (purposeMatch && purposeMatch[1]) {
+            purpose = purposeMatch[1].trim().split('\n')[0]; // Get first line only
+          }
+        }
+      }
+      
+      // Extract status, if available
+      let status = 'Status unknown.';
+      
+      // Try to extract from frontmatter
+      if (frontmatterMatch) {
+        const frontmatter = frontmatterMatch[1];
+        const statusMatch = frontmatter.match(/status:\s*(.*?)(\n|$)/);
+        if (statusMatch && statusMatch[1]) {
+          status = statusMatch[1].trim();
+        }
+      }
+      
+      // If no status found in frontmatter, look in markdown content
+      if (status === 'Status unknown.') {
+        const statusMatch = info.content.match(/##\s*Status\s*\n(.*?)(\n##|\n$)/s);
+        if (statusMatch && statusMatch[1]) {
+          status = statusMatch[1].trim().split('\n')[0]; // Get first line only
+        }
+      }
+      
+      // If we could determine implementation status from content
+      if (status === 'Status unknown.') {
+        if (info.content.includes('function execute()') || 
+            info.content.includes('async function execute()')) {
+          status = 'Implemented';
+        } else if (info.content.includes('To be implemented')) {
+          status = 'Defined (Implementation TBD)';
+        }
+      }
+      
+      // Add the information to the context content
+      contextContent += `- **Purpose**: ${purpose}\n`;
+      contextContent += `- **Location**: \`${info.path}\`\n`;
+      contextContent += `- **Status**: ${status}\n`;
+      
+      // Look for key tools used
+      const toolsUsed = [];
+      const toolMatches = info.content.match(/tools\.call\(['"]([^'"]+)['"]/g);
+      if (toolMatches) {
+        for (const match of toolMatches) {
+          const toolName = match.match(/tools\.call\(['"]([^'"]+)['"]/)[1];
+          if (!toolsUsed.includes(toolName)) {
+            toolsUsed.push(toolName);
+          }
+        }
+      }
+      
+      // Add key tools if any were found
+      if (toolsUsed.length > 0) {
+        contextContent += `- **Key Tools**: ${toolsUsed.join(', ')}\n`;
+      }
+      
+      // Add a blank line after each file's information
+      contextContent += '\n';
+    }
+
+    // =========================================
+    // 5. OVERWRITE TARGET FILE
+    // =========================================
+    tools.log(`Generated context content (${contextContent.length} chars). Overwriting target file: ${targetFile}`);
     try {
-       // Use summaryContent instead of consolidatedContent
-       const editResult = await tools.call('edit_file', {
-         target_file: targetFile,
-         code_edit: summaryContent, // Provide the generated summary
-         instructions: `Overwrite the entire file with the generated context summary from ${sourceDirFull}.`
-       });
-       tools.log(`Successfully called edit_file for ${targetFile}.`);
-
+      const editResult = await tools.call('edit_file', {
+        target_file: targetFile,
+        code_edit: contextContent,
+        instructions: `Overwrite the entire file with generated context for ${sourceDirFull}.`
+      });
+      tools.log(`Successfully updated ${targetFile}.`);
     } catch(editError) {
-        // This is a critical error, fail the whole operation
-         return formatError(`Failed to overwrite target file '${targetFile}' with summary: ${editError.message}`, 'EDIT_FILE_ERROR', [
-             'Check write permissions for the target file.',
-             'Ensure the target path is correct.'
-         ]);
+      return formatError(`Failed to overwrite target file '${targetFile}': ${editError.message}`, 'EDIT_FILE_ERROR', [
+        'Check write permissions for the target file.',
+        'Ensure the target path is correct.'
+      ]);
     }
 
     // =========================================
-    // 5. FINAL RESULT FORMATTING
+    // 6. RETURN SUCCESS
     // =========================================
-    let finalMessage = `Successfully overwrote '${targetFile}' with a generated summary from ${filesProcessed} files in '${sourceDirFull}'.`;
-    if (errorsEncountered.length > 0) {
-        finalMessage += ` \\n\\n⚠️ Encountered ${errorsEncountered.length} errors during file reading/summarization (check logs). Summary might be incomplete.`;
-        return formatWarning(finalMessage, { targetFile, filesProcessed, errors: errorsEncountered.length });
-    }
-
-    return formatSuccess(finalMessage, { targetFile, filesProcessed });
+    return formatSuccess(`Successfully updated '${targetFile}' with context information from ${fileInfo.length} files in '${sourceDirFull}'.`, 
+                        { targetFile, filesProcessed: fileInfo.length });
 
   } catch (error) {
     // =========================================
-    // 6. GLOBAL ERROR HANDLING
+    // 7. GLOBAL ERROR HANDLING
     // =========================================
-    tools.error(`Unhandled error in reaper-overwrite: ${error.message}\\n${error.stack}`);
+    tools.error(`Unhandled error in reaper-overwrite: ${error.message}\n${error.stack}`);
     return formatError(`An unexpected error occurred: ${error.message}`, 'EXECUTION_ERROR');
   }
 }
 
-// Helper function to extract metadata summary from file content
-function extractMetadataSummary(filePath, content) {
-    // Simple parser: Look for specific markdown patterns or frontmatter
-    const fileName = filePath.split('/').pop().replace('.md', '');
-    let summary = `## ${fileName}\\n`;
-    summary += `- **Location**: \`${filePath}\`\\n`;
-
-    // Attempt to parse frontmatter (simple regex approach)
-    const frontmatterRegex = /^---\\n([\s\S]*?)\\n---/;
-    const fmMatch = content.match(frontmatterRegex);
-    let description = 'No description found.';
-    let status = 'Status unknown.'; // Default status
-
-    if (fmMatch && fmMatch[1]) {
-        const fmContent = fmMatch[1];
-        const descMatch = fmContent.match(/^description:\s*(.*)/m);
-        if (descMatch && descMatch[1]) {
-            description = descMatch[1].trim();
-        }
-        // Add more frontmatter extractions if needed (e.g., status)
-    } else {
-        // Fallback: Look for specific markdown headings if no frontmatter
-        const purposeMatch = content.match(/## Purpose\n(.+)/); // Example: look for ## Purpose
-        if (purposeMatch && purposeMatch[1]) {
-             description = purposeMatch[1].trim();
-        } else {
-             const descMatch = content.match(/## Description\n(.+)/); // Example: look for ## Description
-             if (descMatch && descMatch[1]){
-                description = descMatch[1].trim();
-             }
-        }
-
-         // Example fallback for status
-        const statusMatch = content.match(/## Status\n(.+)/);
-        if (statusMatch && statusMatch[1]){
-            status = statusMatch[1].trim();
-        }
-    }
-
-    summary += `- **Purpose**: ${description}\\n`;
-    summary += `- **Status**: ${status}\\n`; // Add status if found/relevant
-
-    // Add more extracted info as needed following the user's example format
-
-    return summary;
-}
-
 // =========================================
-// UTILITY FUNCTIONS (Copied from template)
+// UTILITY FUNCTIONS
 // =========================================
 function formatSuccess(message, data = null) {
   const response = { success: true, message: `✅ ${message}` };
@@ -241,7 +285,6 @@ function formatError(message, code = 'EXECUTION_ERROR', suggestions = []) {
     output += "\nSuggestions:\n";
     suggestions.forEach(s => output += `- ${s}\n`);
   }
-  // Return a structured object for programmatic use, the handler formats the final message
   return { success: false, message: output.trim(), errorDetails: { code, originalMessage: message } }; 
 }
 
