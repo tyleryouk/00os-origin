@@ -45,42 +45,50 @@ The organization of this directory follows a strategic pattern that supports the
 
 These files maintain the state of the current cycle and are reset between cycles:
 
-- **active-request.md** - Contains the complete REQ being implemented in the current cycle (Cycle Step 1-2)
-- **implementation-plan.md** - Documents the concrete implementation plan including architectural decisions, required changes, and testing approach (Cycle Steps 2-3)
-- **cycle-status.md** - Tracks progress through the cycle with checklists, current focus, and next actions (Cycle Steps 3-6)
+- **active-request.md**: Contains the complete REQ being implemented in the current cycle (Cycle Step 1-2).
+- **implementation-plan.md**: Documents the concrete implementation plan including architectural decisions, required changes, and testing approach (Cycle Steps 2-3).
+- **cycle-status.md**: Tracks progress through the cycle with checklists, current focus, and next actions (Cycle Steps 3-6).
+- **README.md**: This file - provides an overview of the workflow and directory structure.
 
 ### Specialized Subfolder Structure - Persists Across Cycles
 
-These folders contain persistent documentation that accumulates across cycles:
+These folders contain persistent documentation and context that accumulates across cycles:
 
-#### user-directed/
-Tracks user requests and implementation priorities (Cycle Step 1):
-- **user_requests.md** - Catalog of feature requests and implementation tracking
+#### `context-00OS-current-state/`
+Contains snapshots of the current state of different 00OS components (Used in Cycle Step 2):
+- `core-current-state.md`: Analysis of the core subsystem components.
+- `config-current-state.md`: Documentation of system configuration settings.
+- `system-processes-current-state.md`: Overview of system command implementations.
+- `00reaper-processes-current-state.md`: Overview of 00reaper-specific command implementations.
+- `1000xdev-processes-current-state.md`: Overview of 1000xdev-specific command implementations.
 
-#### context/
-Contains snapshots of the current state of different 00OS subsystems (Cycle Step 2):
-- **core-current-state.md** - Analysis of the core subsystem components
-- **config-current-state.md** - Documentation of system configuration settings
-- **system-processes-current-state.md** - Overview of system command implementations
-- **00reaper-processes-current-state.md** - Overview of 00reaper-specific command implementations
-- **1000xdev-processes-current-state.md** - Overview of 1000xdev-specific command implementations
+#### `documentation/`
+Houses formal documentation, templates, and standards updated during Cycle Step 5:
+- `00OS-command-development.md`: Primary guidelines for command development.
+- `00OS-command-user-guide.md`: End-user documentation for 00OS commands.
+- `cursor-rules-manipulation.md`: Details the 00OS & Cursor Rules development workflow (Dev -> Sync -> Prod).
+- `reaper-read-files-docs.md`: Specific documentation for the `reaper-read-files` command.
+- `command-template.md`: Base template for creating new commands.
+- `implemented-patterns.md`: Collection of proven tool call patterns.
+- `command-standards.md`: Comprehensive standards for command implementation.
+- `testing/`:
+    - `testing-guide.md`: Detailed testing procedures and best practices.
+    - `testing-framework.md`: Structure for test implementation and automation.
 
-#### documentation/
-Houses formal documentation updated during Cycle Step 5:
-- **command-registry.md** - Tracks implementation status of all 00OS commands
-- **00OS-command-development.md** - Primary guidelines for command development
-- **00OS-command-user-guide.md** - End-user documentation for 00OS commands
+#### `research-cursor-rules/`
+Contains research notes and findings specifically related to Cursor rules implementation and behavior:
+- `research-cursor-project-rules.md`
+- `research-cursor-rules-manipulation.md`
+- `research-cursor-user-rules.md`
 
-#### templates/
-Provides standardized templates updated during Cycle Step 5:
-- **command-template.md** - Base template for creating new commands
-- **implemented-patterns.md** - Collection of proven tool call patterns
-- **command-standards.md** - Comprehensive standards for command implementation
+#### `testing/` (Root Level)
+Contains files specifically for testing individual 00OS processes (Used in Cycle Step 5):
+- `test-reaper-read-files.md`: Example test file for a specific command.
 
-#### testing/
-Contains testing resources updated during Cycle Step 5:
-- **testing-guide.md** - Detailed testing procedures and best practices
-- **testing-framework.md** - Structure for test implementation and automation
+#### `user-directed/`
+Tracks user requests and contains specific instructions for the AI agent operating within this workflow (Used in Cycle Step 1):
+- `user-requests.md`: Catalog of feature requests and implementation tracking.
+- `user-rules-00OS-commands.md`: Specific rules for the 00reaper agent when working in this directory.
 
 ## Implementing the Cyclical Workflow
 
