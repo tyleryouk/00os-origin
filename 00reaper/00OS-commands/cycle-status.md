@@ -1,31 +1,31 @@
 # Development Cycle Status
 
 ## Current Request
-**REQ-002: Command-Process Alignment**
+**REQ-004: Update 00OS-commands Workflow Documentation for Current Structure**
 
 ## Cycle Steps Status
 
 1. **Read User Request REQ ✅**
-   - Complete: REQ-002 reviewed and understood.
+   - Complete: REQ-004 defined based on cycle status notes.
    
-2. **Read Relevant Context ✅**
-   - Complete: Context analysis performed, including command registration, process files, command handler, and Cursor Rules manipulation.
+2. **Read Relevant Context ⏱️**
+   - Not Started.
    
-3. **Update Core Workflow Files ✅**
-   - Complete: Core workflow files (`implementation-plan.md`, `active-request.md`, `cycle-status.md`) updated to reflect corrected understanding of REQ-002 and integration with Cursor Rules development workflow.
-     - `implementation-plan.md`: Revised architectural decisions, required changes, documentation updates, testing approach, and timeline to align with the dev (`00os`) -> sync (`> reaper-sync`) -> prod (`.cursor/rules`) workflow.
-     - `active-request.md`: Refined technical notes and clarifications to emphasize Cursor Rules details and removed redundant correction section.
-     - `cycle-status.md` (this file): Status updated to reflect completion of Step 3.
+3. **Update Core Workflow Files ⏱️**
+   - Not Started.
    
-4. **Make Changes to 00OS ⏳**
-   - In Progress: Ready to begin implementing changes in the `00os/` development directory based on the updated `implementation-plan.md`.
-     - Next: Phase 3 - Command Handler Updates.
+4. **Make Changes ⏱️**
+   - Not Started.
    
 5. **Update Supporting Materials ⏱️**
-   - Not Started
+   - Not Started.
    
 6. **Reset Core Workflow Files & Sync Changes ⏱️**
-   - Not Started
+   - Not Started.
+
+## Previous Request Completed
+**REQ-003: Document Cursor Rules/Sync Process ✅**
+   - Cycle completed successfully. Documentation `cursor-rules-manipulation.md` was overhauled.
 
 ## Recent Findings
 
@@ -34,7 +34,7 @@ From reviewing the context-cursor-rules-manipulation folder:
 1. The correct implementation approach was misunderstood in initial planning
 2. Cursor rules system has specific development vs. production workflows
 3. Development in `00OS` (`.md` files) must be synced to `.cursor/rules` (`.mdc` files)
-4. Rule types (Always Applied, Description-Based, File Pattern) have specific requirements
+4. Rule types (Always, Agent Select, Auto, Manual) have specific frontmatter requirements
 5. The command verification framework needs to account for cursor rules structure
 6. Command handler must be evolved within the cursor rules context
 
@@ -49,8 +49,7 @@ From reviewing the context-cursor-rules-manipulation folder:
 
 ## Next Actions
 
-1. **Proceed to Cycle Step 4**: Begin making changes to 00OS, starting with Phase 3: Command Handler Updates in `00os/core/command-handler.md` as outlined in `implementation-plan.md`.
-2. Follow the phased approach detailed in `implementation-plan.md`.
+1. **Await new user request** or task identification for the next development cycle.
 
 ### Blockers & Decisions
 
@@ -70,20 +69,26 @@ From reviewing the context-cursor-rules-manipulation folder:
 - Add new decisions:
   - Development occurs in `00OS` directory with `.md` files
   - Production rules are in `.cursor/rules` with `.mdc` extension
-  - Synchronization happens via dedicated process
-  - Rule types have specific implementation requirements
+  - Synchronization happens via dedicated process (`> reaper-sync`)
+  - Rule types have specific implementation requirements controlled by frontmatter
 
 ### Notes for Next Cycle
 
-- Development workflow must respect cursor rules system
-- All changes must follow the development → synchronization → production path
-- Core components need `alwaysApply: true` in production rules
-- Process files need descriptive triggers in production rules
-- Command handler must be evolved within cursor rules context
-- Verification should include checking proper rule structure
-- Always use the sync process rather than direct file editing
-- Better understand token efficiency requirements for rules
-- Need to document the cursor rules manipulation process thoroughly
-- Consider creating a dedicated process for rules validation
-- Add cursor rules structure verification to the command-verify process
-- Establish clear guidelines for rule development and production deployment 
+- **Priority**: Address folder structure changes in `00reaper/00OS-commands`. Requires discovery (list/read) and updating `README.md` and `user-rules-00OS-commands.md`.
+- Development workflow must respect cursor rules system.
+- All changes must follow the development (`.md`) → synchronization (`> reaper-sync`) → production (`.mdc`) path.
+- Production rules need correct frontmatter for activation:
+    - Core/Config (`alwaysApply: true`) => Always Rules.
+    - Processes (populated `description`, `alwaysApply: false`) => Agent Select Rules.
+    - Need to document/clarify Auto & Manual rule types even if not used currently.
+- Command handler must be evolved within cursor rules context.
+- Verification should include checking proper rule structure in `.mdc` files.
+- Always use the sync process rather than direct file editing in `.cursor/rules`.
+- Better understand token efficiency requirements for rules.
+- Consider creating a dedicated process for rules validation.
+- Add cursor rules structure verification to the command-verify process.
+- Establish clear guidelines for rule development and production deployment.
+- Ensure context file paths referenced in plans are accurate.
+- Verify `cycle-status.md` corresponds to the active request before updating.
+- Consider creating a dedicated `reaper-verify` command.
+- Further refine command handler robustness. 

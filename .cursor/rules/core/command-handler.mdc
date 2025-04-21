@@ -28,9 +28,10 @@ Examples:
 1. **Detection**: Identify if the input starts with the command prefix (`>`)
 2. **Tokenization**: Split the command into its constituent parts
 3. **Command Lookup**: Find the appropriate process for the command
-4. **Permission Check**: Verify the user has permission to execute the command
-5. **Process Execution**: Execute the command through the appropriate process file
-6. **Response Formatting**: Format and return the result to the user
+4. **Process Rule Fetching**: Use fetch_rules to get the process definition (MANDATORY)
+5. **Permission Check**: Verify the user has permission to execute the command
+6. **Process Execution**: Execute the command through the appropriate process file
+7. **Response Formatting**: Format and return the result to the user
 
 ## Implementation
 
@@ -121,40 +122,42 @@ function parseCommand(input) {
 ### Process Lookup
 
 ```javascript
-// Find the process file for the command
-function findProcess(command, subcommand) {
-  // Standard paths for processes based on command categories
-  const systemCommands = ['system', 'config', 'help', 'version'];
-  const fileCommands = ['file', 'cd', 'pwd', 'ls'];
-  const processCommands = ['process', 'service'];
-  const identityCommands = ['identity', 'permissions'];
-  const toolCommands = ['tools', 'shell'];
+// Find the process file path relative to 00os/processes/
+function findProcessPathRelative(command, subcommand) {
+  // Order of checking categories
+  const categories = ['system', '00reaper', '1000xdev'];
   
-  let processPath = '';
-  
-  // Determine category based on command
-  if (systemCommands.includes(command)) {
-    processPath = `/00os/processes/system/${command}`;
-    if (subcommand) processPath += `-${subcommand}`;
-  } else if (fileCommands.includes(command)) {
-    processPath = `/00os/processes/tools/${command}`;
-    if (subcommand) processPath += `-${subcommand}`;
-  } else if (processCommands.includes(command)) {
-    processPath = `/00os/processes/services/${command}`;
-    if (subcommand) processPath += `-${subcommand}`;
-  } else if (identityCommands.includes(command)) {
-    processPath = `/00os/processes/system/${command}`;
-    if (subcommand) processPath += `-${subcommand}`;
-  } else if (toolCommands.includes(command)) {
-    processPath = `/00os/processes/tools/${command}`;
-    if (subcommand) processPath += `-${subcommand}`;
-  } else {
-    // Try to find a custom process
-    processPath = `/00os/processes/apps/${command}`;
-    if (subcommand) processPath += `-${subcommand}`;
+  // Explicit mappings (prioritize these)
+  const explicitMappings = {
+    'system': ['system', 'config', 'help', 'version', 'echo', 'state', 'chain', 'command-registry', 'file', 'cd', 'pwd', 'ls', 'calculator', 'file-list', 'file-read', 'file-search', 'system-monitor'],
+    '00reaper': ['reaper-init', 'reaper-update', 'reaper-sync', 'reaper-read-files', 'reaper-analyze-tasks', 'reaper-implement'],
+    '1000xdev': [] // Placeholder for future 1000xdev commands
+  };
+
+  // Check explicit mappings first
+  for (const category of categories) {
+    if (explicitMappings[category] && explicitMappings[category].includes(command)) {
+      let path = `${category}/${command}`;
+      if (subcommand) path += `-${subcommand}`;
+      return path + '.md';
+    }
+  }
+
+  // Fallback logic: Try to guess category based on prefix, then default to system
+  let guessedCategory = 'system'; // Default category
+  if (command.startsWith('reaper-')) {
+      guessedCategory = '00reaper';
+  } else if (command.startsWith('dev-')) { // Example future prefix
+      guessedCategory = '1000xdev';
   }
   
-  return processPath + '.md';
+  let fallbackPath = `${guessedCategory}/${command}`;
+  if (subcommand) fallbackPath += `-${subcommand}`;
+  
+  // The fetch_rules call will ultimately determine if the file exists at the constructed path.
+  // This function just provides the best guess for the path structure.
+  tools.log(`Process path for '${command}${subcommand ? '-' + subcommand : ''}' determined as: '${fallbackPath}.md' (using fallback logic)`);
+  return fallbackPath + '.md';
 }
 ```
 
@@ -169,9 +172,38 @@ function checkPermissions(command, subcommand) {
 }
 ```
 
-### Legacy Command Support
+### Detect Self-Execution Patterns
 
-To ensure backward compatibility during the transition, the system also recognizes the legacy command format:
+```javascript
+// Check if a command is attempting to execute another 00OS command through terminal commands
+// This pattern creates infinite loops and should be avoided.
+function isSelfExecutionAttempt(flags, args) {
+  // Basic check: Look for '> ' pattern within arguments or known command flags
+  const commandPattern = /\\s*>\\s+/; // Matches '> ' potentially with surrounding whitespace
+
+  // Check flags that might contain commands
+  if (flags.command && typeof flags.command === 'string' && commandPattern.test(flags.command)) {
+    tools.warn(`Potential self-execution pattern detected in flags: ${JSON.stringify(flags)}`);
+    return true;
+  }
+   if (flags.commands && typeof flags.commands === 'string' && commandPattern.test(flags.commands)) {
+    tools.warn(`Potential self-execution pattern detected in flags: ${JSON.stringify(flags)}`);
+    return true;
+  }
+
+  // Check arguments
+  for (const arg of args) {
+    if (typeof arg === 'string' && commandPattern.test(arg)) {
+      tools.warn(`Potential self-execution pattern detected in arguments: ${arg}`);
+      return true;
+    }
+  }
+
+  return false;
+}
+```
+
+### Legacy Command Support
 
 ```javascript
 // Check if the input is a legacy command
@@ -228,68 +260,105 @@ async function processCommand(input) {
       // Convert and process as new command
       return processCommand(convertLegacyCommand(input));
     }
-    
+
     // Not a command, return null to let the system handle it normally
     return null;
   }
-  
+
   try {
     // Parse the command
     const parsedCommand = parseCommand(input);
-    
-    // Determine the expected process path (remove leading '/')
-    const processRuleName = findProcess(parsedCommand.command, parsedCommand.subcommand)
-                                .replace(/^\/00os\//, ''); // Rules are relative to 00os
+    const commandFullName = `${parsedCommand.command}${parsedCommand.subcommand ? ' ' + parsedCommand.subcommand : ''}`;
+    tools.log(`Processing command: ${commandFullName}`);
 
-    // CRITICAL STEP: Fetch the rule for the determined process
-    // Remove the extension from the process rule name (fetch_rules expects no extension)
-    const ruleNameWithoutExt = processRuleName.replace(/\.md$/, '');
+    // Verify this is not a self-execution attempt
+    if (isSelfExecutionAttempt(parsedCommand.flags, parsedCommand.args)) {
+      tools.error(`Detected attempt to execute 00OS command within '${commandFullName}'`);
+      return formatResponse(`Error: Self-execution of 00OS commands is not allowed.\n      \nSuggestions:\n- Do not try to execute 00OS commands (prefixed with >) within other commands or arguments.\n- Each command must be executed separately.\n- Use '> chain [command1] | [command2]' for sequences.`, false);
+    }
+
+    // Determine the expected process path relative to 00os/processes/
+    const relativeProcessPath = findProcessPathRelative(parsedCommand.command, parsedCommand.subcommand);
     
+    // Construct rule name for fetch_rules (relative path without leading slash or extension)
+    // Example: system/help.md -> processes/system/help
+    const ruleNameForFetch = `processes/${relativeProcessPath.replace(/\\.md$/, '')}`;
+    tools.log(`Attempting to fetch rule: ${ruleNameForFetch}`);
+
     try {
         // Fetch the rule - this is MANDATORY for all command processing
         const fetchResult = await tools.call('fetch_rules', {
-            rule_names: [ruleNameWithoutExt],
-            explanation: `Fetching process rule '${ruleNameWithoutExt}' to handle the command '${parsedCommand.command}${parsedCommand.subcommand ? ' ' + parsedCommand.subcommand : ''}'.`
+            rule_names: [ruleNameForFetch],
+            explanation: `Fetching process rule '${ruleNameForFetch}' to handle the command '${commandFullName}'.`
         });
+
+        // Check if fetch_rules actually returned the process rule content
+        // Note: A successful call might still return an empty result if the rule wasn't found or accessible.
+        if (!fetchResult || !fetchResult.results || fetchResult.results.length === 0 || !fetchResult.results[0]) {
+             tools.error(`fetch_rules call succeeded but did not return content for rule '${ruleNameForFetch}'.`);
+             throw new Error(`Process rule '${ruleNameForFetch}' not found or is empty.`);
+        }
         
-        tools.log(`Successfully fetched rule: ${ruleNameWithoutExt}`);
-        
-        // Check permissions before execution
+        tools.log(`Successfully fetched rule: ${ruleNameForFetch}`);
+
+        // Check permissions before execution (future integration point)
         if (!checkPermissions(parsedCommand.command, parsedCommand.subcommand)) {
           return formatResponse(`Error: You don't have permission to execute this command.`, false);
         }
-        
+
         // At this point, the fetched rule contains the necessary execution logic
-        // Return a structured object indicating the command has been processed and the rule fetched
+        // The AI assistant will now execute the logic defined within the fetched rule.
+        // This handler's job is done after successfully fetching the rule.
         return {
           status: "command_fetched",
           command: parsedCommand.command,
           subcommand: parsedCommand.subcommand,
           args: parsedCommand.args,
           flags: parsedCommand.flags,
-          processRule: ruleNameWithoutExt
+          processRule: ruleNameForFetch // Return the fetched rule name for context
         };
     } catch (fetchError) {
-        // If fetch_rules fails, this is a critical error and we should not proceed with execution
-        tools.error(`Failed to fetch rule for process '${processRuleName}': ${fetchError.message}`);
-        
-        // Return a properly formatted error response with suggestions
-        return formatResponse(`Command '${parsedCommand.command}${parsedCommand.subcommand ? ' ' + parsedCommand.subcommand : ''}' not found or could not be processed.
-        
-Suggestions:
-- Check the command name and try again
-- Use '> help' to see available commands
-- Try '> help ${parsedCommand.command}' for specific command help`, false);
+        // If fetch_rules fails or returns no content, this is a critical error.
+        tools.error(`Failed to fetch rule for process path '${relativeProcessPath}': ${fetchError.message}`);
+
+        // Provide more specific feedback if the error indicates "not found"
+        if (fetchError.message.includes('not found') || fetchError.message.includes('failed to load')) {
+            const categoryHelp = getProcessCategoryHelp(parsedCommand.command);
+            return formatResponse(`Command '${commandFullName}' not found.\nCould not find or load the corresponding process rule at '00os/processes/${relativeProcessPath}'.\n            \nSuggestions:\n- Verify the command spelling and arguments.\n- Ensure the process file '.md' exists at the expected path within the '00os/processes/' directory.\n- Check that the file name matches the command name (lowercase, hyphens for spaces).\n- Use '> help' to list available commands.${categoryHelp ? '\\n' + categoryHelp : ''}\n- Run '> reaper-sync' if you recently added/modified the process file.`, false);
+        }
+
+        // Generic error for other fetch failures
+        return formatResponse(`Command '${commandFullName}' could not be processed due to an internal error while fetching its definition.\nError details: ${fetchError.message}\n        \nSuggestions:\n- Try the command again later.\n- Use '> help' to see if the command is listed.\n- Report this issue if it persists.`, false);
     }
   } catch (error) {
-    // Handle general command processing errors
-    tools.error(`Error processing command: ${error.message}`);
-    return formatResponse(`Error: ${error.message}
-    
-Suggestions:
-- Check the command syntax
-- Try using '> help' for command usage information`, false);
+    // Handle general command parsing or unexpected errors before fetch_rules
+    tools.error(`Error processing command '${input}': ${error.message}`);
+    return formatResponse(`Error parsing or processing command: ${error.message}\n    \nSuggestions:\n- Check the command syntax (e.g., quotes, flags).\n- Try using '> help' for command usage information.`, false);
   }
+}
+
+// Helper function to provide category-specific help messages
+function getProcessCategoryHelp(command) {
+    // Use the same mappings as findProcessPathRelative for consistency
+    const explicitMappings = {
+      'system': ['system', 'config', 'help', 'version', 'echo', 'state', 'chain', 'command-registry', 'file', 'cd', 'pwd', 'ls', 'calculator', 'file-list', 'file-read', 'file-search', 'system-monitor'],
+      '00reaper': ['reaper-init', 'reaper-update', 'reaper-sync', 'reaper-read-files', 'reaper-analyze-tasks', 'reaper-implement'],
+      '1000xdev': []
+    };
+
+    for (const category in explicitMappings) {
+        if (explicitMappings[category].includes(command)) {
+            return `- This command should correspond to a process file in '/00os/processes/${category}/'`;
+        }
+    }
+    if (command.startsWith('reaper-')) {
+        return "- Commands starting with 'reaper-' should be in '/00os/processes/00reaper/'";
+    }
+     if (command.startsWith('dev-')) { // Example future prefix
+        return "- Commands starting with 'dev-' should be in '/00os/processes/1000xdev/'";
+    }
+    // Default if no match
+    return "- Ensure the process file is in the correct category subfolder (system, 00reaper, or 1000xdev).";
 }
 
 // DO NOT add functions that attempt to execute commands directly via terminal commands.
@@ -325,7 +394,7 @@ Suggestions:
 2. **Command with Subcommand**: `> file list /00os/processes`
    - Detected as a command
    - Parsed: command="file", subcommand="list", args=["/00os/processes"]
-   - Process: `/00os/processes/tools/file-list.md`
+   - Process: `/00os/processes/system/file-list.md`
    - Result: List of files in the processes directory
 
 3. **Legacy Command**: `run command:system/status`
