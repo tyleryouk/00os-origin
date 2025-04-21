@@ -1,8 +1,9 @@
 ---
 name: reaper-init
 description: Initialize 00reaper context and load comprehensive system understanding
-version: 2.6
+version: 3.0.0
 author: 00reaper
+category: 00reaper
 permissions: [basic]
 inputs:
   - name: verbose
@@ -22,18 +23,22 @@ outputs:
 
 # Process: reaper-init
 
-USE WHEN you want to execute reaper-init
-
 ## Description
 Initializes the 00reaper context by loading essential system files and establishing understanding of the 00OS architecture, purpose, and workflow.
 
 ## Execution
 
 ```javascript
-async function execute(args) {
+/**
+ * Main execution function for reaper-init
+ */
+async function execute() {
   try {
-    // Parse arguments
-    const params = parseArgs(args);
+    // Parse and validate input parameters
+    const params = parseAndValidateParameters();
+    if (!params.valid) {
+      return formatError(params.message, params.code);
+    }
     
     // Track loaded content
     const loadedContent = {
@@ -64,31 +69,44 @@ async function execute(args) {
 }
 
 /**
- * Parse command arguments into parameter object
+ * Parse and validate input parameters
+ * @returns {Object} Validated parameters or error information
  */
-function parseArgs(args) {
-  const params = {
-    verbose: false,
-    focus: null
-  };
-  
-  // Process each argument
-  for (const arg of args) {
-    if (arg === '--verbose') {
-      params.verbose = true;
-    } else if (arg.startsWith('--focus=')) {
-      params.focus = arg.substring('--focus='.length);
-    } else if (!arg.startsWith('--') && !params.focus) {
-      // Treat as focus if it's not a flag and focus isn't set
-      params.focus = arg;
+function parseAndValidateParameters() {
+  try {
+    // Get input parameters with defaults
+    const verbose = inputs.verbose === true;
+    const focus = inputs.focus || null;
+    
+    // Validate focus if provided
+    if (focus) {
+      const validFocusAreas = ['architecture', 'sync', 'processes'];
+      if (!validFocusAreas.includes(focus)) {
+        return {
+          valid: false,
+          code: "INVALID_PARAMETER",
+          message: `Invalid focus area: ${focus}. Valid options are: ${validFocusAreas.join(', ')}`
+        };
+      }
     }
+    
+    return {
+      valid: true,
+      verbose,
+      focus
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      code: "PARAMETER_PARSING_ERROR",
+      message: `Error parsing parameters: ${error.message}`
+    };
   }
-  
-  return params;
 }
 
 /**
  * Load core component files
+ * @returns {Array} List of loaded core component files
  */
 async function loadCoreComponents() {
   const loadedFiles = [];
@@ -132,6 +150,8 @@ async function loadCoreComponents() {
 
 /**
  * Load architecture files from 00reaper/00OS-creation
+ * @param {string} focus - Optional focus area to prioritize
+ * @returns {Array} List of loaded architecture files
  */
 async function loadArchitectureFiles(focus) {
   const loadedFiles = [];
@@ -204,6 +224,8 @@ async function loadArchitectureFiles(focus) {
 
 /**
  * Load process files
+ * @param {string} focus - Optional focus area to prioritize
+ * @returns {Array} List of loaded process files
  */
 async function loadProcessFiles(focus) {
   const loadedFiles = [];
@@ -257,6 +279,7 @@ async function loadProcessFiles(focus) {
 
 /**
  * Load config files
+ * @returns {Array} List of loaded config files
  */
 async function loadConfigFiles() {
   const loadedFiles = [];
@@ -300,9 +323,13 @@ async function loadConfigFiles() {
 
 /**
  * Format initialization report
+ * @param {Object} loadedContent - Counts of loaded content by category
+ * @param {boolean} isVerbose - Whether to include verbose details
+ * @param {string} focus - Optional focus area used
+ * @returns {string} Formatted report
  */
 function formatInitializationReport(loadedContent, isVerbose, focus) {
-  let output = `✅ 00reaper Initialization Complete\n\n`;
+  let output = formatSuccess("00reaper Initialization Complete\n\n");
   
   // System knowledge section
   output += `System Knowledge Loaded:\n`;
@@ -347,20 +374,94 @@ function formatInitializationReport(loadedContent, isVerbose, focus) {
 }
 
 /**
- * Format an error response
+ * Format success message
+ * @param {string} message - Success message
+ * @returns {string} Formatted success message
+ */
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+/**
+ * Format warning message
+ * @param {string} message - Warning message
+ * @returns {string} Formatted warning message
+ */
+function formatWarning(message) {
+  return `⚠️ ${message}`;
+}
+
+/**
+ * Format error message
+ * @param {string} message - Error message
+ * @param {string} code - Error code
+ * @param {string[]} suggestions - Optional suggestions for resolution
+ * @returns {string} Formatted error message
  */
 function formatError(message, code = "ERROR", suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}`;
+  let output = `❌ Error [${code}]: ${message}\n\n`;
   
   if (suggestions && suggestions.length > 0) {
-    output += "\n\nSuggestions:";
+    output += "Suggestions:\n";
     for (const suggestion of suggestions) {
-      output += `\n- ${suggestion}`;
+      output += `- ${suggestion}\n`;
+    }
+  } else {
+    // Add default suggestions based on error code
+    output += "Suggestions:\n";
+    
+    if (code === "FILE_ACCESS_ERROR") {
+      output += "- Check if the required directories exist (00OS/core/, 00OS/processes/, etc.)\n";
+      output += "- Ensure file permissions allow reading these directories\n";
+    } else if (code === "INVALID_PARAMETER") {
+      output += "- Check the command syntax and parameter values\n";
+      output += "- Run '> help reaper-init' for usage information\n";
+    } else {
+      output += "- Try running the command again\n";
+      output += "- Run without flags first, then add specific options if needed\n";
     }
   }
   
   return output;
 }
 
-// Execute the command with the provided arguments
-return execute(args); 
+// Execute the command
+execute();
+```
+
+## Example Usage
+
+### Basic Initialization
+```
+> reaper-init
+```
+
+### Verbose Initialization
+```
+> reaper-init --verbose
+```
+
+### Focused Initialization
+```
+> reaper-init --focus=architecture
+```
+
+## Error Handling
+
+### Invalid Focus Area
+```
+❌ Error [INVALID_PARAMETER]: Invalid focus area: development. Valid options are: architecture, sync, processes
+
+Suggestions:
+- Check the command syntax and parameter values
+- Run '> help reaper-init' for usage information
+```
+
+### File Access Error
+```
+❌ Error [FILE_ACCESS_ERROR]: Error accessing architecture files: Directory not found
+
+Suggestions:
+- Check if the required directories exist (00OS/core/, 00OS/processes/, etc.)
+- Ensure file permissions allow reading these directories
+``` 
