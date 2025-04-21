@@ -27,3 +27,9 @@ This file provides context on the currently implemented processes specific to th
 - **Location**: `00os/processes/00reaper/reaper-read-files.md`
 - **Status**: Implemented (as part of REQ-001).
 - **Key Tool**: `read_file`
+
+## reaper-overwrite
+- **Purpose**: Reads all files in a source `/00os/` subdirectory and generates a concise context file with basic information.
+- **Location**: `00os/processes/00reaper/reaper-overwrite.md`
+- **Status**: Implemented (as part of REQ-001).
+- **Key Tools**: `list_dir`, `read_file`, `edit_file`
