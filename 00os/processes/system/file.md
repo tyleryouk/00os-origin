@@ -1,0 +1,139 @@
+---
+name: file
+description: Performs file operations (e.g., read, write, list - requires subcommand).
+version: 1.0.0
+author: 00reaper
+category: system
+permissions: [basic] # Subcommands will require file-read/file-write
+inputs:
+  - name: subcommand
+    type: string
+    required: true
+    description: The specific file operation (e.g., read, list, write, delete).
+  - name: path
+    type: string
+    required: true
+    description: The target file or directory path.
+  # Add other potential inputs for subcommands like content, line numbers etc.
+outputs:
+  - name: result
+    type: object
+    description: Result of the file operation.
+usage: file <subcommand> <path> [options]
+examples:
+  - file read /path/to/file.txt
+  - file list /path/to/directory
+---
+
+# Process: file
+
+## Metadata
+- Description: Base command for file operations. Requires a subcommand.
+- Category: system
+- Permissions: [basic] (Subcommands will have specific needs)
+- Author: 00reaper
+- Version: 1.0.0
+
+## Input
+- subcommand (required string): Operation to perform (e.g., read, list, write).
+- path (required string): Target file or directory.
+- Additional arguments/flags depend on the subcommand.
+
+## Output
+- Structured result object indicating success/failure and data from the operation.
+
+## Execution
+```javascript
+// Main execution function for the base 'file' command
+async function execute() {
+  try {
+    // 1. PARAMETER VALIDATION
+    const sub = inputs.subcommand;
+    const targetPath = inputs.path;
+
+    if (!sub) {
+      return formatError('Missing required subcommand for file command.', 'VALIDATION_ERROR', [
+          'Specify a subcommand like read, list, write, etc.',
+          'Example: > file read /path/to/your/file.txt',
+          'Use '> help file' for more details (once subcommands are implemented).']
+      );
+    }
+     if (!targetPath) {
+      return formatError('Missing required path parameter for file command.', 'VALIDATION_ERROR', [
+          'Specify the target file or directory path.',
+          'Example: > file read /path/to/your/file.txt']
+      );
+    }
+    
+    tools.log(`Executing file command: subcommand=${sub}, path=${targetPath}`);
+
+    // 2. TOOL CALL EXECUTION (Placeholder - Subcommand handling needed)
+    // This base command should ideally delegate to subcommand-specific logic.
+    // Or, if subcommands have their own files (like file-read), this might just be an error.
+    
+    // For now, return an error indicating subcommand logic is missing here.
+     return formatError(`Subcommand '${sub}' handling is not implemented in the base 'file' process.`, 'NOT_IMPLEMENTED', [
+         'Ensure separate process files exist for subcommands like '> file-read' or '> file-list'.',
+         'Or implement subcommand routing within this process.'
+        ]);
+
+    // Example structure if routing internally:
+    /*
+    let result;
+    switch (sub.toLowerCase()) {
+        case 'read':
+            // Call read logic, potentially requiring file-read permission
+            result = { message: "Placeholder: Would read " + targetPath };
+            break;
+        case 'list':
+            // Call list logic, potentially requiring file-read permission
+            result = { message: "Placeholder: Would list " + targetPath };
+            break;
+        // Add cases for write, delete, etc. with permission checks
+        default:
+            return formatError(`Unknown file subcommand: ${sub}`, 'UNKNOWN_SUBCOMMAND', ['> help file']);
+    }
+    */
+
+    // 3. RESULT FORMATTING (if internal routing was implemented)
+    // return formatSuccess(result.message, result.data);
+
+  } catch (error) {
+    // 4. ERROR HANDLING
+    tools.error(`Error executing file command: ${error.message}`);
+    const errorCode = determineErrorCode(error);
+    const suggestions = generateSuggestions(error, errorCode);
+    return formatError(error.message, errorCode, suggestions);
+  }
+}
+
+// Placeholder Utility Functions
+function formatSuccess(message, data = null) {
+  const response = { success: true, message: `✅ ${message}` };
+  if (data !== null) response.data = data;
+  return response;
+}
+function formatError(message, code = 'EXECUTION_ERROR', suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n`;
+  if (suggestions.length > 0) {
+    output += "\nSuggestions:\n";
+    suggestions.forEach(s => output += `- ${s}\n`);
+  }
+  return { success: false, message: output.trim(), errorDetails: { code, originalMessage: message } };
+}
+function determineErrorCode(error) { return 'FILE_CMD_ERROR'; }
+function generateSuggestions(error, errorCode) { return ['Use '> help file' for usage.']; }
+
+// Call the main execution function
+execute();
+```
+
+## Usage Examples
+```
+> file read /path/to/some/file.txt
+(Example output depends on subcommand implementation)
+```
+```
+> file list /some/directory
+(Example output depends on subcommand implementation)
+``` 

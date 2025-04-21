@@ -1,8 +1,7 @@
 ---
-description: System component - 00os-integration
+description: 
 globs: 
 alwaysApply: true
-type: always
 ---
 # 00OS Knowledge Integration
 

@@ -1,0 +1,107 @@
+## Metadata
+- Name: reaper-os-commands-workflow
+- Description: Orchestrate the cyclical workflow for 00OS commands development as defined in @00reaper/00OS-commands/README.md, supporting subcommands for each workflow step.
+- Category: 00reaper
+- Permissions: file-read, file-write
+- Author: 00reaper
+- Version: 1.0
+
+## Input
+- subcommand: Required. One of: read-request, read-context, update-core-workflow, make-changes, update-supporting-materials, reset-core-workflow.
+- verbose: Flag. Show detailed output.
+
+## Output
+- Success or error message, and optionally data for the executed step.
+
+## Execution
+
+```javascript
+// Helpers
+function formatSuccess(message, data = null) {
+  const response = { success: true, message: `✅ ${message}` };
+  if (data) response.data = data;
+  return response;
+}
+
+function formatError(message, code = "EXECUTION_ERROR", suggestions = []) {
+  const response = { success: false, message: `❌ Error [${code}]: ${message}` };
+  if (suggestions.length) response.suggestions = suggestions;
+  return response;
+}
+
+async function execute() {
+  const step = inputs.subcommand;
+  const verbose = inputs.verbose || false;
+
+  switch (step) {
+    case "read-request": {
+      // Read user request file
+      const filePath = "00reaper/00OS-commands/user-directed/user_requests.md";
+      const result = await tools.call("read_file", {
+        target_file: filePath,
+        should_read_entire_file: true,
+        explanation: `Reading user requests from ${filePath}`
+      });
+      return formatSuccess("User requests loaded.", { file: filePath, content: result.content });
+    }
+    case "read-context": {
+      // Read all context files
+      const dirPath = "00reaper/00OS-commands/context-00OS-current-state";
+      const list = await tools.call("list_dir", { relative_workspace_path: dirPath, explanation: `Listing context files in ${dirPath}` });
+      const files = [];
+      for (const entry of list.entries) {
+        if (!entry.is_directory) {
+          const file = await tools.call("read_file", {
+            target_file: entry.path,
+            should_read_entire_file: true,
+            explanation: `Reading context file ${entry.path}`
+          });
+          files.push({ path: entry.path, content: file.content });
+        }
+      }
+      return formatSuccess(`Loaded ${files.length} context file(s).`, { files });
+    }
+    case "update-core-workflow": {
+      // Read core workflow files: active-request.md, implementation-plan.md, cycle-status.md
+      const coreFiles = [
+        "00reaper/00OS-commands/active-request.md",
+        "00reaper/00OS-commands/implementation-plan.md",
+        "00reaper/00OS-commands/cycle-status.md"
+      ];
+      const data = [];
+      for (const path of coreFiles) {
+        const file = await tools.call("read_file", {
+          target_file: path,
+          should_read_entire_file: true,
+          explanation: `Reading core workflow file ${path}`
+        });
+        data.push({ path, content: file.content });
+      }
+      return formatSuccess("Core workflow files loaded.", { files: data });
+    }
+    case "make-changes": {
+      // Placeholder: trigger implementation of current task
+      return formatSuccess("Ready to implement changes. Use > reaper-implement to apply the current task.");
+    }
+    case "update-supporting-materials": {
+      // List and read documentation, templates, testing
+      const sections = ["documentation", "templates", "testing"];
+      const resultData = {};
+      for (const section of sections) {
+        const dir = `00reaper/00OS-commands/${section}`;
+        const list = await tools.call("list_dir", { relative_workspace_path: dir, explanation: `Listing files in ${section}` });
+        resultData[section] = list.entries;
+      }
+      return formatSuccess("Supporting materials listed.", { sections: resultData });
+    }
+    case "reset-core-workflow": {
+      // Notify user to reset core workflow files and sync
+      return formatSuccess("Reset complete. Please clear the contents of active-request.md, implementation-plan.md, cycle-status.md and run > reaper-sync.");
+    }
+    default:
+      return formatError(`Unknown subcommand '${step}'.`, "INVALID_SUBCOMMAND", ["Valid subcommands: read-request, read-context, update-core-workflow, make-changes, update-supporting-materials, reset-core-workflow"]);
+  }
+}
+
+execute();
+```

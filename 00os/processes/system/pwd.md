@@ -1,0 +1,119 @@
+---
+name: pwd
+description: Prints the current working directory path (placeholder).
+version: 1.0.0
+author: 00reaper
+category: system
+permissions: [basic] # May need state-read or shell access
+inputs: []
+outputs:
+  - name: path
+    type: string
+    description: The current working directory path.
+usage: pwd
+examples:
+  - pwd
+---
+
+# Process: pwd
+
+## Metadata
+- Description: Prints the name of the current working directory.
+- Category: system
+- Permissions: [basic] # Needs clarification on how CWD is managed.
+- Author: 00reaper
+- Version: 1.0.0
+
+## Input
+- None
+
+## Output
+- The absolute path of the current working directory.
+
+## Execution
+```javascript
+// Main execution function
+async function execute() {
+  try {
+    // 1. PARAMETER VALIDATION (None needed)
+    tools.log('Executing pwd command');
+
+    // 2. TOOL CALL EXECUTION (Placeholder - CWD Management Logic)
+    // How 00OS manages CWD needs definition.
+    // Option 1: Use run_terminal_cmd('pwd') or similar - Risky/environment dependent.
+    // Option 2: Read CWD from state manager.
+    // Option 3: Use host environment CWD (if persistent).
+
+    let currentPath = '/unknown/placeholder/directory'; // Default placeholder
+
+    // Example: Read from state manager (if available)
+    // const statePath = await tools.state.get('current_working_directory', 'session');
+    // if (statePath) {
+    //    currentPath = statePath;
+    // }
+    // tools.log(`Placeholder: Would retrieve CWD from state: ${currentPath}`);
+
+    // Example: Use terminal command (USE WITH CAUTION)
+    /*
+    try {
+        // Determine appropriate command based on OS (e.g., pwd for Linux/macOS, echo %CD% for Windows)
+        // This is complex to make cross-platform and relies on persistent shell state.
+        const pwdResult = await tools.call('run_terminal_cmd', {
+            command: `pwd | cat`, // Use 'pwd' for Linux/macOS - needs OS detection
+            explanation: `Getting current working directory`
+        });
+        if (pwdResult.exitCode !== 0) {
+            throw new Error(`Terminal command 'pwd' failed: ${pwdResult.error || pwdResult.output}`);
+        }
+        currentPath = pwdResult.output.trim();
+        tools.log(`Terminal command 'pwd' executed. Result: ${currentPath}`);
+        
+    } catch (termError) {
+        return formatError(`Failed to get current directory: ${termError.message}`, 'PWD_ERROR', [
+            'Could not determine current directory via terminal.'
+        ]);
+    }
+    */
+
+    const resultMessage = currentPath;
+    const resultData = { path: currentPath };
+
+    // 3. RESULT FORMATTING
+    // PWD typically just prints the path directly, without the ✅
+    // However, for consistency within 00OS, we might use formatSuccess.
+    // Let's return the path directly for now, mimicking standard pwd.
+    // return formatSuccess(resultMessage, resultData); 
+    return currentPath; // Direct output similar to standard pwd
+
+  } catch (error) {
+    // 4. ERROR HANDLING
+    tools.error(`Error executing pwd command: ${error.message}`);
+    const errorCode = determineErrorCode(error);
+    const suggestions = generateSuggestions(error, errorCode);
+    // Format error consistently even though success output is direct
+    return formatError(error.message, errorCode, suggestions).message; 
+  }
+}
+
+// Placeholder Utility Functions
+function formatError(message, code = 'EXECUTION_ERROR', suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n`;
+  if (suggestions.length > 0) {
+    output += "\nSuggestions:\n";
+    suggestions.forEach(s => output += `- ${s}\n`);
+  }
+  // Return only the message part for direct output in case of error
+  return { success: false, message: output.trim(), errorDetails: { code, originalMessage: message } };
+}
+function determineErrorCode(error) { return 'PWD_ERROR'; }
+function generateSuggestions(error, errorCode) { return ['Could not determine CWD.']; }
+
+// Call the main execution function
+execute();
+```
+
+## Usage Examples
+```
+> pwd
+/unknown/placeholder/directory
+``` 
