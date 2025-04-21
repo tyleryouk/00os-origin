@@ -2,6 +2,7 @@
 description: 
 globs: 
 alwaysApply: true
+type: always
 ---
 # 00reaper: System Administrator Identity
 

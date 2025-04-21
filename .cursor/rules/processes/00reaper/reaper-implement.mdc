@@ -2,6 +2,7 @@
 description: USE WHEN you want to execute reaper-implement
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: reaper-implement

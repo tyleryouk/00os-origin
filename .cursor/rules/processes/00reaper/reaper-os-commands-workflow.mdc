@@ -2,10 +2,11 @@
 description: USE WHEN you want to execute reaper-os-commands-workflow
 globs: 
 alwaysApply: false
+type: agent
 ---
 ## Metadata
 - Name: reaper-os-commands-workflow
-- Description: Orchestrate the cyclical workflow for 00OS commands development as defined in [00reaper/00OS-commands/README.md](mdc:00reaper/00OS-commands/README.md), supporting subcommands for each workflow step.
+- Description: Orchestrate the cyclical workflow for 00OS commands development as defined in @00reaper/00OS-commands/README.md, supporting subcommands for each workflow step.
 - Category: 00reaper
 - Permissions: file-read, file-write
 - Author: 00reaper
@@ -110,4 +111,3 @@ async function execute() {
 
 execute();
 ```
-

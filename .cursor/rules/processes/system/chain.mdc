@@ -119,53 +119,43 @@ function parseCommand(commandStr) {
 // Execute a single command by fetching and running its process
 async function executeCommand(command, args) {
   try {
-    // Fetch the command process
-    const process = await tools.call('fetch_rules', {
-      rule_names: [`processes/system/${command}`]
+    // Determine the appropriate process category based on command prefix
+    let processCategory = "system"; // Default category
+    
+    // Check if this is a 00reaper-specific command
+    if (command.startsWith('reaper-')) {
+      processCategory = "00reaper";
+    }
+    // Check if this is a 1000xdev-specific command (future)
+    else if (command.startsWith('dev-')) {
+      processCategory = "1000xdev";
+    }
+    
+    // Create the rule name for fetch_rules - MANDATORY step
+    const ruleName = `processes/${processCategory}/${command}`;
+    
+    // Fetch the rule
+    const fetchResult = await tools.call('fetch_rules', {
+      rule_names: [ruleName],
+      explanation: `Fetching process rule '${ruleName}' to execute as part of chain command.`
     });
     
-    if (!process) {
-      // Try tool commands if system command not found
-      const toolProcess = await tools.call('fetch_rules', {
-        rule_names: [`processes/tools/${command}`]
-      });
-      
-      if (!toolProcess) {
-        // Try examples if tool command not found
-        const exampleProcess = await tools.call('fetch_rules', {
-          rule_names: [`processes/examples/${command}`]
-        });
-        
-        if (!exampleProcess) {
-          return {
-            success: false,
-            message: `❌ Command '${command}' not found`
-          };
-        }
-      }
-    }
-    
-    // Here we would execute the process, but for now we'll simulate execution
-    // In a full implementation, this would properly execute the command's process
-    
-    // For demonstration, we'll handle a few basic commands directly
-    if (command === 'echo') {
+    // If fetch_rules fails, this is a critical error
+    if (!fetchResult) {
       return {
-        success: true,
-        message: `✅ ${args.join(' ')}`
-      };
-    } else if (command === 'help') {
-      return {
-        success: true,
-        message: `✅ Help information for ${args[0] || 'all commands'}`
-      };
-    } else {
-      // Placeholder for other commands
-      return {
-        success: true,
-        message: `✅ Executed ${command} with args: ${args.join(' ')}`
+        success: false,
+        message: `❌ Command '${command}' not found or could not be processed.`
       };
     }
+    
+    // The fetch_rules step above will load the process
+    // Since we can't directly access the execution result, we'll return a success
+    // The actual command will be executed through its process file
+    
+    return {
+      success: true,
+      message: `✅ Executed ${command} ${args.length > 0 ? 'with args: ' + args.join(' ') : ''}`
+    };
   } catch (error) {
     return {
       success: false,

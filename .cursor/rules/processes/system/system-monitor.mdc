@@ -2,6 +2,7 @@
 description: USE WHEN you want to execute system-monitor
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: system-monitor
