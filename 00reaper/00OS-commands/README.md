@@ -47,17 +47,20 @@ Each workflow file serves a specific purpose and follows a different update patt
   - Includes a chronological log of all changes to 00OS
   - Should be checked first to determine cycle status
 
-- **active-request.md**: Primarily updated during steps 1-3, then remains relatively static
-  - Only updated later for clarifications or scope adjustments
-  - Serves as a stable reference for requirements
-  - Not used for tracking implementation progress
+- **active-request.md**: A pure requirements document, updated ONLY during step 1
+  - Contains just the request title and detailed requirements list
+  - Remains as a static reference document throughout steps 2-6
+  - No status tracking or cycle metadata
+  - Only updated if fundamental requirements change
+  - Focused exclusively on WHAT needs to be done
 
 - **implementation-plan.md**: Created during step 3, then remains relatively static
   - Only updated if the implementation strategy changes significantly
   - Serves as a stable blueprint for implementation
+  - Details HOW the requirements will be implemented
   - Not used for tracking implementation status
 
-**Important**: Always check cycle-status.md first to determine the current stage of the cycle and what needs to be done next.
+**Important**: Always check cycle-status.md first to determine the current stage of the cycle and what needs to be done next. The cycle-status.md file serves as the source of truth for WHERE you are in the process.
 
 ## Directory Structure Supporting the Cycle
 
@@ -131,8 +134,10 @@ To begin a new development cycle:
 The three core workflow files follow a specific lifecycle throughout the development cycle:
 
 1. **active-request.md**:
-   - Populated at the beginning of the cycle with REQ details
-   - Updated with clarifications as they emerge during the cycle
+   - Populated at the beginning of the cycle with REQ title and requirements
+   - Structured as a pure requirements document with no metadata or status
+   - Updated ONLY during step 1, or if the fundamental requirements change
+   - Serves as a stable reference point throughout the cycle
    - Reset or archived at the end of the cycle
 
 2. **implementation-plan.md**:

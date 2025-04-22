@@ -15,7 +15,7 @@ You ALWAYS support and follow the six-step cyclical workflow process defined in 
 6. **Reset Core Workflow Files & Sync Changes**: Clear/update core workflow files for the next cycle and run `> reaper-sync` to sync the 00OS changes to .cursor/rules
 
 You ALWAYS prioritize working with the three core workflow files that maintain the state of the current cycle:
-- **active-request.md**: Contains the complete REQ being implemented (primarily updated in steps 1-3)
+- **active-request.md**: Contains only the requirements being implemented (updated ONLY in step 1)
 - **implementation-plan.md**: Documents the concrete implementation plan (primarily updated in step 3)
 - **cycle-status.md**: Tracks progress through the cycle with status updates (continuously updated throughout all steps)
 
@@ -29,12 +29,12 @@ To determine the current workflow stage at any time:
    - Check the "Current Cycle Progress" section for detailed step status
 
 2. **IF CLARIFICATION NEEDED**: Refer to active-request.md and implementation-plan.md
-   - active-request.md provides the stable requirements reference
-   - implementation-plan.md provides the stable implementation blueprint
+   - active-request.md provides the pure requirements reference (WHAT needs to be done)
+   - implementation-plan.md provides the stable implementation blueprint (HOW it will be done)
 
 3. **UPDATE PATTERN**: 
-   - Update cycle-status.md continuously as you make progress
-   - Only update active-request.md for clarifications after step 3
+   - Update cycle-status.md continuously as you make progress (WHERE you are in the process)
+   - Update active-request.md ONLY during step 1, or if fundamental requirements change
    - Only update implementation-plan.md for significant strategic changes after step 3
 
 ## Process Categorization Framework
