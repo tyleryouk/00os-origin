@@ -94,6 +94,9 @@ Example output
 3. **Minimal Tool Calls**: Keep tool calls to a minimum, preferring larger reads
 4. **Error Handling**: Always include proper error handling with suggestions
 5. **Response Format**: Use standard indicators (✅, ❌, ⚠️) for responses
+6. **Dynamic Execution**: Implement tool calls based on current state and input parameters rather than static sequences
+7. **Explanation Parameters**: Always include clear explanation parameters with all tool calls
+8. **Tool Call Validation**: Verify the success of each tool call before proceeding
 
 ## PowerShell Integration
 
@@ -392,4 +395,98 @@ async function execute(args, flags) {
 }
 ```
 
-*(Add more examples as commands are developed/standardized)* 
+*(Add more examples as commands are developed/standardized)*
+
+## Dynamic Tool Call Execution (REQ-003 Standards)
+
+Following the implementation of REQ-003, all 00OS processes must adhere to these enhanced standards:
+
+1. **Replaced Terminal Commands**: All direct terminal command executions must be replaced with proper tool call sequences.
+2. **Standardized Response Formatting**: All responses must use ✅, ❌, and ⚠️ indicators consistently.
+3. **Robust Error Handling**: Each tool call must be wrapped in try/catch blocks with specific error codes.
+4. **Actionable Suggestions**: Error messages must include actionable suggestions for resolution.
+5. **Modular Design**: Processes must use helper functions for better code organization.
+6. **Argument Parsing**: All processes must implement robust parameter handling with standardized parsing.
+7. **Process Categorization**: Process file locations must strictly adhere to category segregation (system, 00reaper, 1000xdev).
+
+### Example of REQ-003 Compliant Tool Call Pattern:
+
+```javascript
+async function execute(args) {
+  try {
+    // 1. Parse arguments using standardized approach
+    const params = parseArgs(args);
+    
+    // 2. Validate required parameters
+    if (!params.targetParameter) {
+      return formatError("Missing required parameter", "VALIDATION_ERROR", [
+        "Specify the required parameter",
+        "Use the --help flag for usage information"
+      ]);
+    }
+    
+    // 3. Dynamically determine tool call sequence based on parameters
+    try {
+      // Example conditional logic for different tool calls based on parameters
+      if (params.shouldList) {
+        const dirResult = await tools.call('list_dir', {
+          relative_workspace_path: params.targetParameter,
+          explanation: `Listing directory ${params.targetParameter} as requested`
+        });
+        
+        // Process directory results
+        return formatSuccess(`Listed ${dirResult.entries.length} items in ${params.targetParameter}`);
+      } else {
+        const fileResult = await tools.call('read_file', {
+          target_file: params.targetParameter,
+          should_read_entire_file: true,
+          explanation: `Reading file ${params.targetParameter} as requested`
+        });
+        
+        // Process file results
+        return formatSuccess(`Read file ${params.targetParameter} successfully`, fileResult.content);
+      }
+    } catch (toolError) {
+      // 4. Handle specific tool call errors
+      return formatError(`Error during operation: ${toolError.message}`, "TOOL_ERROR", [
+        `Check if ${params.targetParameter} exists and is accessible`,
+        "Verify you have the necessary permissions"
+      ]);
+    }
+  } catch (error) {
+    // 5. Handle general execution errors
+    return formatError(`Unexpected error: ${error.message}`, "EXECUTION_ERROR");
+  }
+}
+
+// Standardized response formatting
+function formatSuccess(message, data = null) {
+  if (data) {
+    if (typeof data === 'string') {
+      return `✅ ${message}\n\n${data}`;
+    } else {
+      return `✅ ${message}\n\n${JSON.stringify(data, null, 2)}`;
+    }
+  }
+  return `✅ ${message}`;
+}
+
+function formatError(message, code = "ERROR", suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}`;
+  
+  if (suggestions && suggestions.length > 0) {
+    output += "\n\nSuggestions:";
+    for (const suggestion of suggestions) {
+      output += `\n- ${suggestion}`;
+    }
+  }
+  
+  return output;
+}
+
+// Standardized argument parsing
+function parseArgs(args) {
+  // Implementation of argument parsing logic
+  // ...
+}
+``` 
