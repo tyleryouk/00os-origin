@@ -62,11 +62,11 @@ These templates should be regularly reviewed and updated as the workflow process
 ## Template Features
 
 ### Active Request Template
-- Clear status snapshot with cycle stage and cross-references
-- Structured requirements and success criteria
-- Context references for relevant directories and files
-- Clarifications section for ongoing updates
-- Workflow checkpoints aligned with the 6-step process
+- Simple requirements-focused structure with no metadata or status indicators
+- Focused exclusively on what needs to be done (requirements and completion criteria)
+- Minimal context references for relevant directories and files
+- Designed to be updated only during step 1, then remain static
+- Omits cycle tracking information which is maintained in cycle-status.md
 
 ### Implementation Plan Template
 - Clear mapping between workflow steps and implementation phases
@@ -90,7 +90,7 @@ At the end of step 6 (Reset Core Workflow Files & Sync Changes), the three core 
 
 ### Reset State for active-request.md
 ```markdown
-## REQ-XXX: No Active Request
+# No Active Request
 
 // File reset at end of REQ-[PREVIOUS-ID] cycle. Awaiting next user request. //
 ```
