@@ -147,6 +147,34 @@ All 00OS processes are now organized into three distinct categories:
    * **Examples:** (Future implementations)
    * **Characteristics:** Development-focused operations, application-specific utilities
 
+## Workflow File Standardization
+
+To ensure consistency and alignment across development cycles, the three core workflow files follow standardized templates:
+
+### Core Workflow Files and Templates
+
+| Workflow File | Purpose | Template Location |
+|---------------|---------|-------------------|
+| active-request.md | Defines requirements and tracks the current request | documentation/00reaper-templates/active-request-template.md |
+| implementation-plan.md | Details the implementation approach and phases | documentation/00reaper-templates/implementation-plan-template.md |
+| cycle-status.md | Tracks the current progress through the workflow | documentation/00reaper-templates/cycle-status-template.md |
+
+### Standardization Benefits
+
+1. **Consistent Structure**: All files use the same section headings and status indicators
+2. **Clear Cross-References**: Each file contains links to the other workflow files
+3. **Aligned Tracking**: Implementation phases are explicitly mapped to workflow steps
+4. **Temporal Alignment**: All files include timestamps for last update
+
+### Key Template Features
+
+- **Status Snapshot**: Each file contains a standardized status section
+- **Workflow-Phase Mapping**: Implementation phases are mapped to workflow steps
+- **Standardized Status Indicators**: ✅ (Complete), ⏳ (In Progress), ⬜ (Not Started)
+- **Template Versioning**: Templates include version numbers for tracking changes
+
+For complete details, see the [00reaper Workflow Templates README](documentation/00reaper-templates/README.md).
+
 ## Critical Implementation Requirements
 
 1. **Command Prefix**: The '>' prefix for commands is hardcoded in the command handler and is not configurable.
