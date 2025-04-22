@@ -1,12 +1,14 @@
 # Active Request: [REQ-ID]
 
 ## Status Snapshot
+- **Cycle ID**: [UNIQUE-ID]
 - **Cycle Stage**: [1-6] - [Current Stage Name]
-- **Last Updated**: [YYYY-MM-DD]
-- **Template Version**: 1.0
+- **Last Substantive Update**: [YYYY-MM-DD] (Changes to core requirements)
+- **Template Version**: 1.1
+- **Primary Status**: The current cycle status is tracked in `cycle-status.md`
 - **Cross-Reference**:
   - Implementation Plan: See `implementation-plan.md`
-  - Cycle Status: See `cycle-status.md`
+  - Cycle Status: See `cycle-status.md` (Source of truth for current progress)
 
 ## Request Details
 
@@ -23,7 +25,7 @@
    - [Sub-requirement if needed]
    - [Sub-requirement if needed]
 
-### Success Criteria
+### Completion Criteria
 - [ ] [Measurable outcome 1]
 - [ ] [Measurable outcome 2]
 - [ ] [Measurable outcome 3]
@@ -44,7 +46,7 @@
   - [Links to related documentation]
 
 ## Clarifications
-[This section can be updated during the cycle as clarifications arise]
+[This section can be updated during the cycle as clarifications arise, without changing the core requirements]
 
 ### Questions
 - Q: [Question that arose during implementation]
@@ -75,6 +77,7 @@
 
 ### Next Steps
 - [What needs to happen next to move the request forward]
+- **Note**: Further status updates will be tracked in `cycle-status.md`
 
 ## Previous Request
 **[REQ-ID]:** [Title of previous request]

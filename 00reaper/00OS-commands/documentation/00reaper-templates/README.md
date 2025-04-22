@@ -83,3 +83,36 @@ These templates should be regularly reviewed and updated as the workflow process
 - Blockers and decisions documentation
 - Previous cycle summary
 - Notes for next cycle 
+
+## Reset State Templates
+
+At the end of step 6 (Reset Core Workflow Files & Sync Changes), the three core workflow files should be reset to a minimal state to prepare for the next cycle. Instead of using separate template files, follow these reset state guidelines:
+
+### Reset State for active-request.md
+```markdown
+## REQ-XXX: No Active Request
+
+// File reset at end of REQ-[PREVIOUS-ID] cycle. Awaiting next user request. //
+```
+
+### Reset State for implementation-plan.md
+```markdown
+# Implementation Plan
+
+No active cycle
+```
+
+### Reset State for cycle-status.md
+```markdown
+# Cycle Status
+
+No active cycle
+```
+
+This minimal reset state:
+- Clearly indicates there is no active cycle
+- Preserves the file structure for the next cycle
+- Shows which REQ was just completed
+- Keeps the workflow ready for the next request
+
+When beginning a new cycle (step 1), use the full templates above to structure the files, replacing the reset state content. 

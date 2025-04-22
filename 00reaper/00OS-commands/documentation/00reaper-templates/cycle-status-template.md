@@ -1,12 +1,19 @@
 # Cycle Status
 
 ## Status Snapshot
-- **Current Cycle**: [REQ-ID] - [Title of Request]
-- **Last Updated**: [YYYY-MM-DD]
-- **Template Version**: 1.0
+- **CURRENT CYCLE STAGE**: [1-6] - [Current Stage Name]
+- **Cycle ID**: [UNIQUE-ID]
+- **Last Updated**: [YYYY-MM-DD HH:MM]
+- **Template Version**: 1.1
 - **Cross-Reference**:
-  - Active Request: See `active-request.md`
-  - Implementation Plan: See `implementation-plan.md`
+  - Active Request: See `active-request.md` (Requirements reference)
+  - Implementation Plan: See `implementation-plan.md` (Blueprint reference)
+
+## Quick Status Summary
+- **Current Focus**: [Specific task/phase currently being worked on]
+- **Next Action**: [Exact next action I should take]
+- **Blockers**: [Any issues preventing progress, or "None"]
+- **Last Completed**: [Last significant milestone/task completed]
 
 ## Current Cycle Progress
 
@@ -51,6 +58,22 @@
    - [✅/⏳/⬜] Verified sync completion
    - [✅/⏳/⬜] Documented lessons learned
 
+## Changes Log
+[Record of all substantive changes made to 00OS files during this cycle]
+
+- [YYYY-MM-DD HH:MM] Created/Modified `[file_path]`: [Brief description of change]
+- [YYYY-MM-DD HH:MM] Created/Modified `[file_path]`: [Brief description of change]
+
+## Blockers & Decisions
+
+**Current Blockers**:
+- [Description of blocker 1]
+- [Description of blocker 2]
+
+**Recent Decisions**:
+- [Decision 1]: [Rationale]
+- [Decision 2]: [Rationale]
+
 ## Current Findings
 [Key insights, observations, or discoveries from the current implementation cycle]
 
@@ -62,16 +85,12 @@
    - [Specific observation]
    - [Specific observation]
 
-## Current Focus
-[The specific aspect or task that is currently being worked on]
-- [Current focus details]
-- [Current focus details]
+## Implementation Highlights
+[Key improvements or changes introduced in this cycle]
 
-## Next Actions
-[Specific actions to be taken next to advance the cycle]
-- [Next action 1]
-- [Next action 2]
-- [Next action 3]
+1. **[Highlight 1]**: [Description of the improvement]
+2. **[Highlight 2]**: [Description of the improvement]
+3. **[Highlight 3]**: [Description of the improvement]
 
 ## Progress Update
 [General summary of progress made so far]
@@ -87,23 +106,6 @@ In progress:
 Pending:
 - [⬜] [Pending task 1]
 - [⬜] [Pending task 2]
-
-## Implementation Highlights
-[Key improvements or changes introduced in this cycle]
-
-1. **[Highlight 1]**: [Description of the improvement]
-2. **[Highlight 2]**: [Description of the improvement]
-3. **[Highlight 3]**: [Description of the improvement]
-
-## Blockers & Decisions
-
-**Blockers**:
-- [Description of blocker 1]
-- [Description of blocker 2]
-
-**Decisions Made**:
-- [Decision 1]: [Rationale]
-- [Decision 2]: [Rationale]
 
 ## Previous Cycle
 **[REQ-ID]: [Title of Previous Request]**
