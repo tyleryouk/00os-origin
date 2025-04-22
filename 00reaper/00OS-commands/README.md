@@ -37,6 +37,28 @@ The current cycle is tracked in the three core workflow files:
 - **implementation-plan.md**: Documents the concrete plan for implementing the current REQ, including architectural decisions and required changes
 - **cycle-status.md**: Tracks the progress through the current cycle, showing completed steps, current focus, and next actions
 
+### Workflow File Update Pattern
+
+Each workflow file serves a specific purpose and follows a different update pattern:
+
+- **cycle-status.md**: The primary tracking document that's continuously updated throughout the entire cycle
+  - Contains the authoritative record of current cycle stage
+  - Updated after each substantive change is made
+  - Includes a chronological log of all changes to 00OS
+  - Should be checked first to determine cycle status
+
+- **active-request.md**: Primarily updated during steps 1-3, then remains relatively static
+  - Only updated later for clarifications or scope adjustments
+  - Serves as a stable reference for requirements
+  - Not used for tracking implementation progress
+
+- **implementation-plan.md**: Created during step 3, then remains relatively static
+  - Only updated if the implementation strategy changes significantly
+  - Serves as a stable blueprint for implementation
+  - Not used for tracking implementation status
+
+**Important**: Always check cycle-status.md first to determine the current stage of the cycle and what needs to be done next.
+
 ## Directory Structure Supporting the Cycle
 
 The organization of this directory follows a strategic pattern that supports the cyclical workflow:

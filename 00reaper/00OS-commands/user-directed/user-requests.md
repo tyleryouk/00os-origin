@@ -64,4 +64,80 @@ Each process in 00OS has a one-to-one relationship with an 00OS command. The com
 
 This enhancement should be treated as a high priority, as it directly impacts the discoverability and usability of the 00OS system. Implementing this change will ensure that users have a complete and accurate view of all available commands, improving the overall user experience. 
 
+### REQ-008: Workflow Simplification - Streamlined active-request.md
+#### Requirements
+1. **Simplified Content Structure**:
+   - Convert active-request.md to a pure requirements document with no metadata
+   - Remove cycle ID, stage references, and status indicators
+   - Include only a title and detailed requirements sections
+
+2. **Update Pattern**:
+   - Update ONLY during step 1 of the workflow
+   - Treat as a read-only reference document throughout steps 2-6
+   - No updates unless requirements fundamentally change
+
+3. **Proposed Template**:
+```markdown
+# [Request Title]
+
+## Requirements
+1. [Requirement 1]
+2. [Requirement 2]
+3. [Requirement 3]
+...
+```
+
+4. **Benefits**:
+   - Clearer focus on actual requirements
+   - Reduced file maintenance overhead
+   - Eliminated redundancy with cycle-status.md
+   - Simplified mental model for workflow
+
+### REQ-009: Workflow Simplification - File Update Pattern Standardization
+#### Requirements
+1. **Clear File Update Boundaries**:
+   - Step 1: Update ONLY active-request.md
+   - Step 2: No file updates (research/knowledge gathering only)
+   - Step 3: Update ONLY implementation-plan.md
+   - Steps 4-6: Update ONLY cycle-status.md
+
+2. **Workflow Document Specialization**:
+   - active-request.md: Requirements document (WHAT needs to be done)
+   - implementation-plan.md: Blueprint document (HOW it will be done)
+   - cycle-status.md: Progress tracking document (WHERE we are in the process)
+
+3. **Benefits**:
+   - Eliminated confusion about which file to update when
+   - Reduced cognitive load during development
+   - Clearer purpose for each workflow document
+   - Simplified training for new contributors
+
+### REQ-010: Workflow Simplification - Automated Workflow Transitions
+#### Requirements
+1. **Command Shortcuts for Stage Advancement**:
+   - Create simple commands to mark completion of current stage
+   - Automatically update cycle-status.md with timestamp
+   - Pre-populate templates for next stage details
+
+2. **Quick-Copy Templates**:
+   - Add standardized templates for each stage update in cycle-status.md
+   - Include placeholders for common stage-specific information
+   - Enforce consistent formatting across stages
+
+3. **Automated Status Dating**:
+   - Automatically add timestamps to status updates
+   - Track time spent in each stage
+   - Provide metrics on workflow efficiency
+
+4. **Implementation Approach**:
+   - Add new 00reaper processes for stage advancement
+   - Create standardized templates for each stage
+   - Implement simple command syntax like `> reaper-advance-stage`
+
+5. **Benefits**:
+   - Reduced manual overhead in workflow transitions
+   - Consistent documentation across cycles
+   - Better metrics on development process
+   - Simplified training for contributors
+
 
