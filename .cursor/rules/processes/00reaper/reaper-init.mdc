@@ -13,9 +13,17 @@ Initializes the 00reaper context by loading essential system files and establish
 ## Execution
 
 ```javascript
-// Main execution function - performs actual file reads
-async function executeInit() {
+/**
+ * Main execution function for reaper-init
+ */
+async function execute() {
   try {
+    // Parse and validate input parameters
+    const params = parseAndValidateParameters();
+    if (!params.valid) {
+      return formatError(params.message, params.code);
+    }
+    
     // Track loaded content
     const loadedContent = {
       architectureFiles: 0,
@@ -24,30 +32,66 @@ async function executeInit() {
       configFiles: 0
     };
     
-    // Get verbose flag
-    const isVerbose = inputs.verbose || false;
-    
-    // Perform actual file system operations
+    // Perform file system operations
     const coreComponents = await loadCoreComponents();
     loadedContent.coreComponents = coreComponents.length;
     
-    const architectureFiles = await loadArchitectureFiles();
+    const architectureFiles = await loadArchitectureFiles(params.focus);
     loadedContent.architectureFiles = architectureFiles.length;
     
-    const processFiles = await loadProcessFiles();
+    const processFiles = await loadProcessFiles(params.focus);
     loadedContent.processFiles = processFiles.length;
     
     const configFiles = await loadConfigFiles();
     loadedContent.configFiles = configFiles.length;
     
     // Generate initialization report
-    return formatInitializationReport(loadedContent, isVerbose);
+    return formatInitializationReport(loadedContent, params.verbose, params.focus);
   } catch (error) {
     return formatError(`Error during initialization: ${error.message}`, 'INIT_ERROR');
   }
 }
 
-// Load core component files
+/**
+ * Parse and validate input parameters
+ * @returns {Object} Validated parameters or error information
+ */
+function parseAndValidateParameters() {
+  try {
+    // Get input parameters with defaults
+    const verbose = inputs.verbose === true;
+    const focus = inputs.focus || null;
+    
+    // Validate focus if provided
+    if (focus) {
+      const validFocusAreas = ['architecture', 'sync', 'processes'];
+      if (!validFocusAreas.includes(focus)) {
+        return {
+          valid: false,
+          code: "INVALID_PARAMETER",
+          message: `Invalid focus area: ${focus}. Valid options are: ${validFocusAreas.join(', ')}`
+        };
+      }
+    }
+    
+    return {
+      valid: true,
+      verbose,
+      focus
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      code: "PARAMETER_PARSING_ERROR",
+      message: `Error parsing parameters: ${error.message}`
+    };
+  }
+}
+
+/**
+ * Load core component files
+ * @returns {Array} List of loaded core component files
+ */
 async function loadCoreComponents() {
   const loadedFiles = [];
   const corePath = '00OS/core/';
@@ -61,41 +105,69 @@ async function loadCoreComponents() {
     if (coreDir && coreDir.entries) {
       for (const entry of coreDir.entries) {
         if (!entry.is_directory && entry.path.endsWith('.md')) {
-          const fileContent = await tools.call('read_file', {
-            target_file: entry.path,
-            should_read_entire_file: true,
-            explanation: `Reading core component ${entry.path}`
-          });
-          
-          if (fileContent && fileContent.content) {
-            loadedFiles.push({
-              path: entry.path,
-              name: entry.path.split('/').pop().replace('.md', '')
+          try {
+            const fileContent = await tools.call('read_file', {
+              target_file: entry.path,
+              should_read_entire_file: true,
+              explanation: `Reading core component ${entry.path}`
             });
+            
+            if (fileContent && fileContent.content) {
+              loadedFiles.push({
+                path: entry.path,
+                name: entry.path.split('/').pop().replace('.md', '')
+              });
+            }
+          } catch (error) {
+            // Log error but continue with other files
+            console.error(`Error reading ${entry.path}: ${error.message}`);
           }
         }
       }
     }
   } catch (error) {
-    tools.log(`Error loading core components: ${error.message}`);
+    console.error(`Error loading core components: ${error.message}`);
   }
   
   return loadedFiles;
 }
 
-// Load architecture files from 00reaper/00OS-creation
-async function loadArchitectureFiles() {
+/**
+ * Load architecture files from 00reaper/00OS-creation
+ * @param {string} focus - Optional focus area to prioritize
+ * @returns {Array} List of loaded architecture files
+ */
+async function loadArchitectureFiles(focus) {
   const loadedFiles = [];
   const architecturePath = '00reaper/00OS-creation/';
   
   // Key architecture files to prioritize
-  const priorityFiles = [
+  let priorityFiles = [
     'understanding-00os.md',
     'system-architecture.md',
     'terminal-interface-design.md',
     'final-goal.md',
     'process-format.md'
   ];
+  
+  // If focus is architecture or sync, prioritize accordingly
+  if (focus === 'architecture') {
+    priorityFiles = [
+      'system-architecture.md',
+      'terminal-interface-design.md',
+      'process-format.md',
+      'understanding-00os.md',
+      'final-goal.md'
+    ];
+  } else if (focus === 'sync') {
+    priorityFiles = [
+      'sync-process.md',
+      'cursor-rules-integration.md',
+      'system-architecture.md',
+      'process-format.md',
+      'understanding-00os.md'
+    ];
+  }
   
   try {
     const archDir = await tools.call('list_dir', {
@@ -107,36 +179,57 @@ async function loadArchitectureFiles() {
       for (const fileName of priorityFiles) {
         const entry = archDir.entries.find(e => e.path.endsWith(fileName));
         if (entry) {
-          const fileContent = await tools.call('read_file', {
-            target_file: entry.path,
-            should_read_entire_file: true,
-            explanation: `Reading architecture document ${entry.path}`
-          });
-          
-          if (fileContent && fileContent.content) {
-            loadedFiles.push({
-              path: entry.path,
-              name: entry.path.split('/').pop().replace('.md', '')
+          try {
+            const fileContent = await tools.call('read_file', {
+              target_file: entry.path,
+              should_read_entire_file: true,
+              explanation: `Reading architecture document ${entry.path}`
             });
+            
+            if (fileContent && fileContent.content) {
+              loadedFiles.push({
+                path: entry.path,
+                name: entry.path.split('/').pop().replace('.md', '')
+              });
+            }
+          } catch (error) {
+            // Log error but continue with other files
+            console.error(`Error reading ${entry.path}: ${error.message}`);
           }
         }
       }
     }
   } catch (error) {
-    tools.log(`Error loading architecture files: ${error.message}`);
+    console.error(`Error loading architecture files: ${error.message}`);
   }
   
   return loadedFiles;
 }
 
-// Load process files
-async function loadProcessFiles() {
+/**
+ * Load process files
+ * @param {string} focus - Optional focus area to prioritize
+ * @returns {Array} List of loaded process files
+ */
+async function loadProcessFiles(focus) {
   const loadedFiles = [];
-  const processDirectories = [
+  
+  // Define directories to search based on focus
+  let processDirectories = [
     '00OS/processes/system/',
-    '00OS/processes/tools/',
-    '00OS/processes/examples/'
+    '00OS/processes/00reaper/',
+    '00OS/processes/1000xdev/'
   ];
+  
+  // If focus is processes, prioritize process files
+  if (focus === 'processes') {
+    // Start with 00reaper processes
+    processDirectories = [
+      '00OS/processes/00reaper/',
+      '00OS/processes/system/',
+      '00OS/processes/1000xdev/'
+    ];
+  }
   
   try {
     for (const processDir of processDirectories) {
@@ -157,17 +250,21 @@ async function loadProcessFiles() {
           }
         }
       } catch (error) {
-        continue; // Skip errors in individual directories
+        // Directory might not exist, continue to next one
+        continue;
       }
     }
   } catch (error) {
-    tools.log(`Error loading process files: ${error.message}`);
+    console.error(`Error loading process files: ${error.message}`);
   }
   
   return loadedFiles;
 }
 
-// Load config files
+/**
+ * Load config files
+ * @returns {Array} List of loaded config files
+ */
 async function loadConfigFiles() {
   const loadedFiles = [];
   const configPath = '00OS/config/';
@@ -181,31 +278,42 @@ async function loadConfigFiles() {
     if (configDir && configDir.entries) {
       for (const entry of configDir.entries) {
         if (!entry.is_directory && entry.path.endsWith('.md')) {
-          const fileContent = await tools.call('read_file', {
-            target_file: entry.path,
-            should_read_entire_file: true,
-            explanation: `Reading configuration file ${entry.path}`
-          });
-          
-          if (fileContent && fileContent.content) {
-            loadedFiles.push({
-              path: entry.path,
-              name: entry.path.split('/').pop().replace('.md', '')
+          try {
+            const fileContent = await tools.call('read_file', {
+              target_file: entry.path,
+              should_read_entire_file: true,
+              explanation: `Reading configuration file ${entry.path}`
             });
+            
+            if (fileContent && fileContent.content) {
+              loadedFiles.push({
+                path: entry.path,
+                name: entry.path.split('/').pop().replace('.md', '')
+              });
+            }
+          } catch (error) {
+            // Log error but continue with other files
+            console.error(`Error reading ${entry.path}: ${error.message}`);
           }
         }
       }
     }
   } catch (error) {
-    tools.log(`Error loading config files: ${error.message}`);
+    console.error(`Error loading config files: ${error.message}`);
   }
   
   return loadedFiles;
 }
 
-// Format initialization report
-function formatInitializationReport(loadedContent, isVerbose) {
-  let output = `✅ 00reaper Initialization Complete\n\n`;
+/**
+ * Format initialization report
+ * @param {Object} loadedContent - Counts of loaded content by category
+ * @param {boolean} isVerbose - Whether to include verbose details
+ * @param {string} focus - Optional focus area used
+ * @returns {string} Formatted report
+ */
+function formatInitializationReport(loadedContent, isVerbose, focus) {
+  let output = formatSuccess("00reaper Initialization Complete\n\n");
   
   // System knowledge section
   output += `System Knowledge Loaded:\n`;
@@ -223,10 +331,24 @@ function formatInitializationReport(loadedContent, isVerbose) {
   output += `Process Files:      ${loadedContent.processFiles} loaded\n`;
   output += `Config Files:       ${loadedContent.configFiles} loaded\n\n`;
   
+  // Focus area information if applicable
+  if (focus) {
+    output += `Focus Area: ${focus}\n`;
+    output += `Prioritized loading of ${focus}-related documents.\n\n`;
+  }
+  
   // Status section
   output += `00reaper identity is active and operational.\n`;
   output += `System context has been fully initialized.\n`;
   output += `Terminal command interface is ready.\n\n`;
+  
+  // Detailed loading information if verbose
+  if (isVerbose) {
+    output += `Detailed Loading Information:\n`;
+    output += `Total files loaded: ${loadedContent.architectureFiles + loadedContent.coreComponents + loadedContent.processFiles + loadedContent.configFiles}\n`;
+    output += `Documentation priority: ${focus || 'Balanced (no specific focus)'}\n`;
+    output += `Critical files successfully loaded for all core components.\n\n`;
+  }
   
   // Usage hints
   output += `Use '> help' to see available commands.\n`;
@@ -235,19 +357,95 @@ function formatInitializationReport(loadedContent, isVerbose) {
   return output;
 }
 
-// Format error message
-function formatError(message, code, suggestions = []) {
+/**
+ * Format success message
+ * @param {string} message - Success message
+ * @returns {string} Formatted success message
+ */
+function formatSuccess(message) {
+  return `✅ ${message}`;
+}
+
+/**
+ * Format warning message
+ * @param {string} message - Warning message
+ * @returns {string} Formatted warning message
+ */
+function formatWarning(message) {
+  return `⚠️ ${message}`;
+}
+
+/**
+ * Format error message
+ * @param {string} message - Error message
+ * @param {string} code - Error code
+ * @param {string[]} suggestions - Optional suggestions for resolution
+ * @returns {string} Formatted error message
+ */
+function formatError(message, code = "ERROR", suggestions = []) {
   let output = `❌ Error [${code}]: ${message}\n\n`;
   
-  if (suggestions.length > 0) {
+  if (suggestions && suggestions.length > 0) {
     output += "Suggestions:\n";
     for (const suggestion of suggestions) {
       output += `- ${suggestion}\n`;
+    }
+  } else {
+    // Add default suggestions based on error code
+    output += "Suggestions:\n";
+    
+    if (code === "FILE_ACCESS_ERROR") {
+      output += "- Check if the required directories exist (00OS/core/, 00OS/processes/, etc.)\n";
+      output += "- Ensure file permissions allow reading these directories\n";
+    } else if (code === "INVALID_PARAMETER") {
+      output += "- Check the command syntax and parameter values\n";
+      output += "- Run '> help reaper-init' for usage information\n";
+    } else {
+      output += "- Try running the command again\n";
+      output += "- Run without flags first, then add specific options if needed\n";
     }
   }
   
   return output;
 }
 
-// Execute the process
-executeInit(); 
+// Execute the command
+execute();
+```
+
+## Example Usage
+
+### Basic Initialization
+```
+> reaper-init
+```
+
+### Verbose Initialization
+```
+> reaper-init --verbose
+```
+
+### Focused Initialization
+```
+> reaper-init --focus=architecture
+```
+
+## Error Handling
+
+### Invalid Focus Area
+```
+❌ Error [INVALID_PARAMETER]: Invalid focus area: development. Valid options are: architecture, sync, processes
+
+Suggestions:
+- Check the command syntax and parameter values
+- Run '> help reaper-init' for usage information
+```
+
+### File Access Error
+```
+❌ Error [FILE_ACCESS_ERROR]: Error accessing architecture files: Directory not found
+
+Suggestions:
+- Check if the required directories exist (00OS/core/, 00OS/processes/, etc.)
+- Ensure file permissions allow reading these directories
+``` 

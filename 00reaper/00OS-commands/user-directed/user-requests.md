@@ -64,34 +64,21 @@ Each process in 00OS has a one-to-one relationship with an 00OS command. The com
 
 This enhancement should be treated as a high priority, as it directly impacts the discoverability and usability of the 00OS system. Implementing this change will ensure that users have a complete and accurate view of all available commands, improving the overall user experience. 
 
-### REQ-008: Workflow Simplification - Streamlined active-request.md
-#### Requirements
-1. **Simplified Content Structure**:
-   - Convert active-request.md to a pure requirements document with no metadata
-   - Remove cycle ID, stage references, and status indicators
-   - Include only a title and detailed requirements sections
+### REQ-000: 250 lines or less for all 4 root folder files
+The four root folder files, including README.md, must be less than 250 lines. To do this, rather than setting a strict rule, try to simplify the templates and cycle process so that no matter how complex the implementation is, the 4 root folder files will likely always stay under 250 lines. The README.md file you can directly edit to consoldiate to less than 250 lines (abstract some knowledge to either documentation or 00reaper\00OS-commands\user-directed\user-rules-00OS-commands.md if needed).
 
-2. **Update Pattern**:
-   - Update ONLY during step 1 of the workflow
-   - Treat as a read-only reference document throughout steps 2-6
-   - No updates unless requirements fundamentally change
+### REQ-001: Update Step 5 so that you only make changes to the documentation in 00reaper\00OS-commands\documentation, the context will be handled seperately.
+You tend to create context better with direct invokation of the reaper-overwrite process. Additionally, not all context files need to be updated for every cycle. The overwriting and updating of 00reaper\00OS-commands\context-00OS-current-state will be handled outside of the cycle. Update README.md and user-rules-00OS-commands (if needed) to specify that step 5 of the cyclical process should only make updates/enhancements to 00reaper\00OS-commands\documentation if needed. 
 
-3. **Proposed Template**:
-```markdown
-# [Request Title]
+**further context on steps**
+Step 2 should read context and documentation, step 5 should only update documentation.
 
-## Requirements
-1. [Requirement 1]
-2. [Requirement 2]
-3. [Requirement 3]
-...
-```
+### REQ-002: Update Step 6 to fully clear out the three core workflow files
+Right now, cycle-status.md does not get cleared out. Additionally, I do not want to keep any logs of past cycles. Focus on either current or future cycles. 
 
-4. **Benefits**:
-   - Clearer focus on actual requirements
-   - Reduced file maintenance overhead
-   - Eliminated redundancy with cycle-status.md
-   - Simplified mental model for workflow
+
+
+
 
 ### REQ-009: Workflow Simplification - File Update Pattern Standardization
 #### Requirements

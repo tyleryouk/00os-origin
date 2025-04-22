@@ -4,110 +4,508 @@ globs:
 alwaysApply: false
 type: agent
 ---
-## Metadata
-- Name: reaper-os-commands-workflow
-- Description: Orchestrate the cyclical workflow for 00OS commands development as defined in @00reaper/00OS-commands/README.md, supporting subcommands for each workflow step.
-- Category: 00reaper
-- Permissions: file-read, file-write
-- Author: 00reaper
-- Version: 1.0
 
-## Input
-- subcommand: Required. One of: read-request, read-context, update-core-workflow, make-changes, update-supporting-materials, reset-core-workflow.
-- verbose: Flag. Show detailed output.
+# Process: reaper-os-commands-workflow
 
-## Output
-- Success or error message, and optionally data for the executed step.
+## Description
+Orchestrates the cyclical workflow for 00OS commands development as defined in 00reaper/00OS-commands/README.md, supporting subcommands for each of the six workflow steps:
+1. Read User Request REQ
+2. Read Relevant Context
+3. Update Core Workflow Files
+4. Make Changes to 00OS
+5. Update Supporting Materials
+6. Reset Core Workflow Files & Sync Changes
 
 ## Execution
 
 ```javascript
-// Helpers
-function formatSuccess(message, data = null) {
-  const response = { success: true, message: `✅ ${message}` };
-  if (data) response.data = data;
-  return response;
-}
-
-function formatError(message, code = "EXECUTION_ERROR", suggestions = []) {
-  const response = { success: false, message: `❌ Error [${code}]: ${message}` };
-  if (suggestions.length) response.suggestions = suggestions;
-  return response;
-}
-
+/**
+ * Main execution function
+ */
 async function execute() {
-  const step = inputs.subcommand;
-  const verbose = inputs.verbose || false;
-
-  switch (step) {
-    case "read-request": {
-      // Read user request file
-      const filePath = "00reaper/00OS-commands/user-directed/user_requests.md";
-      const result = await tools.call("read_file", {
-        target_file: filePath,
-        should_read_entire_file: true,
-        explanation: `Reading user requests from ${filePath}`
-      });
-      return formatSuccess("User requests loaded.", { file: filePath, content: result.content });
+  try {
+    // Parse and validate input parameters
+    const params = parseAndValidateParameters();
+    if (!params.valid) {
+      return formatError(params.message, params.code, params.suggestions);
     }
-    case "read-context": {
-      // Read all context files
-      const dirPath = "00reaper/00OS-commands/context-00OS-current-state";
-      const list = await tools.call("list_dir", { relative_workspace_path: dirPath, explanation: `Listing context files in ${dirPath}` });
-      const files = [];
-      for (const entry of list.entries) {
-        if (!entry.is_directory) {
-          const file = await tools.call("read_file", {
-            target_file: entry.path,
-            should_read_entire_file: true,
-            explanation: `Reading context file ${entry.path}`
-          });
-          files.push({ path: entry.path, content: file.content });
-        }
-      }
-      return formatSuccess(`Loaded ${files.length} context file(s).`, { files });
-    }
-    case "update-core-workflow": {
-      // Read core workflow files: active-request.md, implementation-plan.md, cycle-status.md
-      const coreFiles = [
-        "00reaper/00OS-commands/active-request.md",
-        "00reaper/00OS-commands/implementation-plan.md",
-        "00reaper/00OS-commands/cycle-status.md"
-      ];
-      const data = [];
-      for (const path of coreFiles) {
-        const file = await tools.call("read_file", {
-          target_file: path,
-          should_read_entire_file: true,
-          explanation: `Reading core workflow file ${path}`
-        });
-        data.push({ path, content: file.content });
-      }
-      return formatSuccess("Core workflow files loaded.", { files: data });
-    }
-    case "make-changes": {
-      // Placeholder: trigger implementation of current task
-      return formatSuccess("Ready to implement changes. Use > reaper-implement to apply the current task.");
-    }
-    case "update-supporting-materials": {
-      // List and read documentation, templates, testing
-      const sections = ["documentation", "templates", "testing"];
-      const resultData = {};
-      for (const section of sections) {
-        const dir = `00reaper/00OS-commands/${section}`;
-        const list = await tools.call("list_dir", { relative_workspace_path: dir, explanation: `Listing files in ${section}` });
-        resultData[section] = list.entries;
-      }
-      return formatSuccess("Supporting materials listed.", { sections: resultData });
-    }
-    case "reset-core-workflow": {
-      // Notify user to reset core workflow files and sync
-      return formatSuccess("Reset complete. Please clear the contents of active-request.md, implementation-plan.md, cycle-status.md and run > reaper-sync.");
-    }
-    default:
-      return formatError(`Unknown subcommand '${step}'.`, "INVALID_SUBCOMMAND", ["Valid subcommands: read-request, read-context, update-core-workflow, make-changes, update-supporting-materials, reset-core-workflow"]);
+    
+    const { subcommand, verbose } = params;
+    
+    // Execute the requested workflow step
+    return await executeWorkflowStep(subcommand, verbose);
+  } catch (error) {
+    return formatError(`Unexpected error during workflow execution: ${error.message}`, "EXECUTION_ERROR");
   }
 }
 
+/**
+ * Parse and validate input parameters
+ * @returns {Object} Validated parameters or error information
+ */
+function parseAndValidateParameters() {
+  try {
+    const subcommand = inputs.subcommand;
+    const verbose = inputs.verbose === true;
+    
+    // Validate subcommand
+    if (!subcommand) {
+      return {
+        valid: false,
+        code: "MISSING_PARAMETER",
+        message: "Missing required parameter: subcommand",
+        suggestions: [
+          "Specify a workflow step to execute",
+          "Example: > reaper-os-commands-workflow read-request"
+        ]
+      };
+    }
+    
+    // Validate subcommand value
+    const validSubcommands = [
+      "read-request", 
+      "read-context", 
+      "update-core-workflow", 
+      "make-changes", 
+      "update-supporting-materials", 
+      "reset-core-workflow"
+    ];
+    
+    if (!validSubcommands.includes(subcommand)) {
+      return {
+        valid: false,
+        code: "INVALID_PARAMETER",
+        message: `Invalid subcommand: ${subcommand}`,
+        suggestions: [
+          `Valid subcommands are: ${validSubcommands.join(', ')}`,
+          "Run without a subcommand to see available workflow steps"
+        ]
+      };
+    }
+    
+    return {
+      valid: true,
+      subcommand,
+      verbose
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      code: "PARAMETER_PARSING_ERROR",
+      message: `Error parsing parameters: ${error.message}`
+    };
+  }
+}
+
+/**
+ * Execute the specified workflow step
+ * @param {string} step - Workflow step to execute
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function executeWorkflowStep(step, verbose) {
+  switch (step) {
+    case "read-request":
+      return await readUserRequest(verbose);
+    case "read-context":
+      return await readRelevantContext(verbose);
+    case "update-core-workflow":
+      return await updateCoreWorkflowFiles(verbose);
+    case "make-changes":
+      return await makeChangesToOOOS(verbose);
+    case "update-supporting-materials":
+      return await updateSupportingMaterials(verbose);
+    case "reset-core-workflow":
+      return await resetCoreWorkflowFiles(verbose);
+    default:
+      return formatError(`Unknown workflow step: ${step}`, "INVALID_STEP");
+  }
+}
+
+/**
+ * Step 1: Read User Request
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function readUserRequest(verbose) {
+  try {
+    const filePath = "00reaper/00OS-commands/user-directed/user-requests.md";
+    
+    // Read the user requests file
+    const result = await tools.call("read_file", {
+      target_file: filePath,
+      should_read_entire_file: true,
+      explanation: `Reading user requests from ${filePath} for workflow step 1`
+    });
+    
+    if (!result || !result.content) {
+      return formatError(`Failed to read ${filePath}`, "FILE_READ_ERROR");
+    }
+    
+    // Parse user requests to extract active ones
+    const activeRequests = parseActiveRequests(result.content);
+    
+    // Return success with extracted information
+    return formatSuccess(
+      `Successfully executed workflow step 1: Read User Request REQ (found ${activeRequests.length} active requests)`,
+      verbose ? { file: filePath, activeRequests } : null
+    );
+  } catch (error) {
+    return formatError(`Error reading user request: ${error.message}`, "READ_REQUEST_ERROR");
+  }
+}
+
+/**
+ * Parse user requests to extract active ones
+ * @param {string} content - Content of the user-requests.md file
+ * @returns {Array} Active requests
+ */
+function parseActiveRequests(content) {
+  const activeRequests = [];
+  
+  // Extract sections marked as NEW or IN_PROGRESS
+  const reqSections = content.match(/### REQ-\d+:.*?\[(?:NEW|IN_PROGRESS)\].*?(?=### REQ-|$)/gs) || [];
+  
+  for (const section of reqSections) {
+    // Extract REQ ID
+    const idMatch = section.match(/### REQ-(\d+):/);
+    if (!idMatch) continue;
+    
+    const id = idMatch[1];
+    
+    // Extract title
+    const titleMatch = section.match(/### REQ-\d+:(.*?)(?=\[|\n|$)/);
+    const title = titleMatch ? titleMatch[1].trim() : 'Unnamed Request';
+    
+    // Extract status (NEW or IN_PROGRESS)
+    const statusMatch = section.match(/\[(NEW|IN_PROGRESS)\]/);
+    const status = statusMatch ? statusMatch[1] : 'UNKNOWN';
+    
+    // Add to active requests array
+    activeRequests.push({
+      id,
+      title,
+      status
+    });
+  }
+  
+  return activeRequests;
+}
+
+/**
+ * Step 2: Read Relevant Context
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function readRelevantContext(verbose) {
+  try {
+    // Context directories to read
+    const contextDirs = [
+      "00reaper/00OS-commands/context-00OS-current-state",
+      "00reaper/00OS-commands/documentation",
+      "00reaper/00OS-commands/documentation/templates",
+      "00reaper/00OS-commands/documentation/testing"
+    ];
+    
+    const contextData = {};
+    
+    // Read the contents of each context directory
+    for (const dirPath of contextDirs) {
+      try {
+        const dirResult = await tools.call("list_dir", {
+          relative_workspace_path: dirPath,
+          explanation: `Listing context files in ${dirPath} for workflow step 2`
+        });
+        
+        if (!dirResult || !dirResult.entries) {
+          contextData[dirPath] = { error: "Failed to list directory" };
+          continue;
+        }
+        
+        const files = dirResult.entries.filter(entry => !entry.is_directory);
+        
+        contextData[dirPath] = {
+          fileCount: files.length,
+          files: files.map(f => f.path)
+        };
+      } catch (listError) {
+        contextData[dirPath] = { error: listError.message };
+      }
+    }
+    
+    // Count successful directory reads
+    const successfulReads = Object.values(contextData).filter(d => !d.error).length;
+    
+    // Return success with context information
+    return formatSuccess(
+      `Successfully executed workflow step 2: Read Relevant Context (${successfulReads}/${contextDirs.length} directories)`,
+      verbose ? { contextData } : null
+    );
+  } catch (error) {
+    return formatError(`Error reading relevant context: ${error.message}`, "READ_CONTEXT_ERROR");
+  }
+}
+
+/**
+ * Step 3: Update Core Workflow Files
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function updateCoreWorkflowFiles(verbose) {
+  try {
+    // Core workflow files
+    const workflowFiles = [
+      "00reaper/00OS-commands/active-request.md",
+      "00reaper/00OS-commands/implementation-plan.md",
+      "00reaper/00OS-commands/cycle-status.md"
+    ];
+    
+    const filesData = [];
+    
+    // Read each workflow file
+    for (const filePath of workflowFiles) {
+      try {
+        const fileResult = await tools.call("read_file", {
+          target_file: filePath,
+          should_read_entire_file: true,
+          explanation: `Reading core workflow file ${filePath} for workflow step 3`
+        });
+        
+        if (!fileResult || !fileResult.content) {
+          filesData.push({
+            path: filePath,
+            status: "read_error",
+            error: "No content returned"
+          });
+        } else {
+          filesData.push({
+            path: filePath,
+            status: "read_success",
+            size: fileResult.content.length
+          });
+        }
+      } catch (readError) {
+        filesData.push({
+          path: filePath,
+          status: "read_error",
+          error: readError.message
+        });
+      }
+    }
+    
+    // Count successful file reads
+    const successfulReads = filesData.filter(f => f.status === "read_success").length;
+    
+    // Return success with file information
+    return formatSuccess(
+      `Successfully executed workflow step 3: Update Core Workflow Files (${successfulReads}/${workflowFiles.length} files)`,
+      verbose ? { filesData } : null
+    );
+  } catch (error) {
+    return formatError(`Error updating core workflow files: ${error.message}`, "UPDATE_WORKFLOW_ERROR");
+  }
+}
+
+/**
+ * Step 4: Make Changes to 00OS
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function makeChangesToOOOS(verbose) {
+  try {
+    // Read the active request to determine what changes need to be made
+    const activeRequestPath = "00reaper/00OS-commands/active-request.md";
+    
+    const requestResult = await tools.call("read_file", {
+      target_file: activeRequestPath,
+      should_read_entire_file: true,
+      explanation: `Reading active request for workflow step 4`
+    });
+    
+    if (!requestResult || !requestResult.content) {
+      return formatError(`Failed to read active request at ${activeRequestPath}`, "FILE_READ_ERROR");
+    }
+    
+    // Read the implementation plan to determine what changes need to be made
+    const implementationPlanPath = "00reaper/00OS-commands/implementation-plan.md";
+    
+    const planResult = await tools.call("read_file", {
+      target_file: implementationPlanPath,
+      should_read_entire_file: true,
+      explanation: `Reading implementation plan for workflow step 4`
+    });
+    
+    if (!planResult || !planResult.content) {
+      return formatError(`Failed to read implementation plan at ${implementationPlanPath}`, "FILE_READ_ERROR");
+    }
+    
+    // Return success with guidance on using reaper-implement
+    return formatSuccess(
+      `Successfully prepared for workflow step 4: Make Changes to 00OS`,
+      {
+        message: "Ready to implement changes based on the active request and implementation plan",
+        guidance: "Use '> reaper-implement' to apply the current task according to the implementation plan"
+      }
+    );
+  } catch (error) {
+    return formatError(`Error preparing to make changes to 00OS: ${error.message}`, "PREPARE_CHANGES_ERROR");
+  }
+}
+
+/**
+ * Step 5: Update Supporting Materials
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function updateSupportingMaterials(verbose) {
+  try {
+    // Supporting materials directories
+    const directories = [
+      "00reaper/00OS-commands/context-00OS-current-state",
+      "00reaper/00OS-commands/documentation",
+      "00reaper/00OS-commands/documentation/templates",
+      "00reaper/00OS-commands/documentation/testing"
+    ];
+    
+    const dirData = {};
+    
+    // List the contents of each directory
+    for (const dirPath of directories) {
+      try {
+        const dirResult = await tools.call("list_dir", {
+          relative_workspace_path: dirPath,
+          explanation: `Listing supporting materials in ${dirPath} for workflow step 5`
+        });
+        
+        if (!dirResult || !dirResult.entries) {
+          dirData[dirPath] = { error: "Failed to list directory" };
+        } else {
+          const files = dirResult.entries.filter(entry => !entry.is_directory);
+          
+          dirData[dirPath] = {
+            fileCount: files.length,
+            files: verbose ? files.map(f => f.path) : undefined
+          };
+        }
+      } catch (listError) {
+        dirData[dirPath] = { error: listError.message };
+      }
+    }
+    
+    // Count successful directory reads
+    const successfulReads = Object.values(dirData).filter(d => !d.error).length;
+    
+    // Return success with supporting materials information
+    return formatSuccess(
+      `Successfully executed workflow step 5: Update Supporting Materials (${successfulReads}/${directories.length} directories)`,
+      verbose ? { dirData } : {
+        message: "Review and update supporting materials based on the changes made to 00OS",
+        guidance: "Consider updating context files, documentation, templates, or tests as needed"
+      }
+    );
+  } catch (error) {
+    return formatError(`Error updating supporting materials: ${error.message}`, "UPDATE_MATERIALS_ERROR");
+  }
+}
+
+/**
+ * Step 6: Reset Core Workflow Files & Sync Changes
+ * @param {boolean} verbose - Whether to include detailed output
+ * @returns {string} Execution result
+ */
+async function resetCoreWorkflowFiles(verbose) {
+  try {
+    // Core workflow files to reset
+    const workflowFiles = [
+      "00reaper/00OS-commands/active-request.md",
+      "00reaper/00OS-commands/implementation-plan.md",
+      "00reaper/00OS-commands/cycle-status.md"
+    ];
+    
+    // Template files to use for resetting
+    const templateFiles = [
+      "00reaper/00OS-commands/documentation/templates/template-new-active-request.md",
+      "00reaper/00OS-commands/documentation/templates/template-new-implmementation-plan.md",
+      "00reaper/00OS-commands/documentation/templates/template-new-cycle-status.md"
+    ];
+    
+    // Read template files content
+    const templates = {};
+    
+    for (let i = 0; i < templateFiles.length; i++) {
+      try {
+        const templateResult = await tools.call("read_file", {
+          target_file: templateFiles[i],
+          should_read_entire_file: true,
+          explanation: `Reading template for resetting ${workflowFiles[i]}`
+        });
+        
+        if (templateResult && templateResult.content) {
+          templates[workflowFiles[i]] = templateResult.content;
+        }
+      } catch (readError) {
+        // Continue even if template reading fails
+      }
+    }
+    
+    // Return success with guidance on resetting workflow files
+    return formatSuccess(
+      `Successfully prepared for workflow step 6: Reset Core Workflow Files & Sync Changes`,
+      {
+        message: "Ready to reset core workflow files and sync changes",
+        actions: [
+          "1. Reset the core workflow files with template content or clear them",
+          "2. Run '> reaper-sync' to synchronize 00OS changes to .cursor/rules",
+          "3. This completes the current development cycle"
+        ],
+        templates: verbose ? Object.keys(templates) : undefined
+      }
+    );
+  } catch (error) {
+    return formatError(`Error preparing to reset core workflow files: ${error.message}`, "RESET_FILES_ERROR");
+  }
+}
+
+/**
+ * Format a success response
+ * @param {string} message - Success message
+ * @param {Object} data - Optional data to include
+ * @returns {string} Formatted success message
+ */
+function formatSuccess(message, data = null) {
+  return `✅ ${message}${data ? '\n\n' + JSON.stringify(data, null, 2) : ''}`;
+}
+
+/**
+ * Format an error response
+ * @param {string} message - Error message
+ * @param {string} code - Error code
+ * @param {Array} suggestions - Optional suggestions
+ * @returns {string} Formatted error message
+ */
+function formatError(message, code = "ERROR", suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}`;
+  
+  if (suggestions && suggestions.length > 0) {
+    output += "\n\nSuggestions:";
+    for (const suggestion of suggestions) {
+      output += `\n- ${suggestion}`;
+    }
+  }
+  
+  return output;
+}
+
+/**
+ * Format a warning response
+ * @param {string} message - Warning message
+ * @param {Object} details - Optional details
+ * @returns {string} Formatted warning message
+ */
+function formatWarning(message, details = null) {
+  return `⚠️ Warning: ${message}${details ? '\n\n' + JSON.stringify(details, null, 2) : ''}`;
+}
+
+// Execute the process
 execute();
 ```

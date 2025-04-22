@@ -1,10 +1,55 @@
-# 00OS Commands Development Workflow
+# 00OS-commands Workflow
 
 This directory serves as the central hub for creating, managing, and optimizing 00OS commands. It contains the essential documentation, templates, testing resources, and contextual information needed to support the development of the 00OS command system.
 
+## Overview
+This README documents the 00OS-commands workflow, a cyclical development process for building and maintaining terminal-like command capabilities (prefixed with `>`) within an AI system. The workflow enables structured, traceable, and high-quality command implementation within the 00OS architecture.
+
+## Master Workflow Files
+
+This workflow is governed by two master workflow files:
+
+1. **README.md** (This file)
+   * Serves as the base master workflow file
+   * Should be read upon every initialization
+   * Documents the cyclical workflow process, file structure, and implementation standards
+   * Provides the foundational knowledge for working within the 00OS-commands development environment
+
+2. **user-directed/user-rules-00OS-commands.md**
+   * Represents the highest hierarchy cursor rule
+   * Should be engrained in memory for each thread and every message
+   * Contains specific operational directives for the 00reaper AI agent
+   * Defines 00reaper's dual-mode interface, process categorization rules, and command processing guarantees
+
+These master workflow files work together to establish the operational context for the 00reaper agent, while the core workflow files (described below) track the state of individual development cycles.
+
+## Core Workflow Files
+
+The workflow relies on three core files that maintain the state of the current development cycle:
+
+1. **active-request.md**:
+   * Contains the complete REQ details being implemented
+   * Written in clear requirements language
+   * Updated primarily in steps 1-3 of the cycle
+   * Serves as the stable requirements reference
+
+2. **implementation-plan.md**:
+   * Documents the concrete implementation plan
+   * Maps requirements to implementation phases
+   * Updated primarily in step 3 of the cycle
+   * Serves as the blueprint for implementation
+
+3. **cycle-status.md**:
+   * Tracks the current cycle stage and progress
+   * Updated continuously throughout all steps
+   * Shows next actions and blockers
+   * Serves as the primary status indicator for the workflow
+
+These files are created, updated, and reset according to the cyclical workflow process. To determine the current workflow stage at any time, first check cycle-status.md, then consult active-request.md and implementation-plan.md if needed.
+
 ## Cyclical Workflow Process
 
-The 00OS-commands development follows a structured cyclical approach that ensures consistency, focus, and comprehensive implementation:
+The 00OS-commands development follows a six-step structured cyclical approach that ensures consistency, focus, and comprehensive implementation:
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -21,46 +66,36 @@ The 00OS-commands development follows a structured cyclical approach that ensure
 └─────────────────┘     └─────────────────┘     └─────────────────┘
 ```
 
-### Cycle Steps
+1. **Read User Request (REQ)**
+   * Read current request from user-directed/user_requests.md
+   * Understand requirements and scope
+   * Map request to 00OS architecture
 
-1. **Read User Request REQ**: Begin by reading the current request from user_requests.md to understand requirements.
-2. **Read Relevant Context**: Review files in context-00OS-current-state/ and documentation/to gather necessary information.
-3. **Update Core Workflow Files**: Make changes to active-request.md, implementation-plan.md, and cycle-status.md to plan and track the implementation.
-4. **Make Changes to 00OS**: Implement the requested changes in the 00OS system.
-5. **Update Supporting Materials**: Update context/, documentation/, templates/, and/or testing/ files to align with the new implementation.
-6. **Reset Core Workflow Files & Sync Changes**: Clear/update the core workflow files to prepare for the next cycle and run `> reaper-sync` to sync the 00OS changes to .cursor/rules.
+2. **Read Relevant Context**
+   * Review files in context-00OS-current-state/
+   * Check documentation/ for applicable templates and guides
+   * Examine documentation/testing/ for relevant process tests
 
-### Current Cycle Status
+3. **Update Core Workflow Files**
+   * Update active-request.md with REQ details
+   * Create implementation-plan.md with concrete plan
+   * Initialize cycle-status.md to track progress
 
-The current cycle is tracked in the three core workflow files:
-- **active-request.md**: Contains the complete REQ being implemented, including requirements, clarifications, and acceptance criteria
-- **implementation-plan.md**: Documents the concrete plan for implementing the current REQ, including architectural decisions and required changes
-- **cycle-status.md**: Tracks the progress through the current cycle, showing completed steps, current focus, and next actions
+4. **Make Changes to 00OS**
+   * Implement changes per implementation plan
+   * Create or modify processes in appropriate categories
+   * Ensure command integrity and proper fetch_rules usage
 
-### Workflow File Update Pattern
+5. **Update Supporting Materials**
+   * Update context files with new state
+   * Update/create documentation as needed
+   * Create or update test files for new functionality
 
-Each workflow file serves a specific purpose and follows a different update pattern:
+6. **Reset Core Workflow Files & Sync Changes**
+   * Reset or archive core workflow files for next cycle
+   * Run `> reaper-sync` to sync 00OS changes to .cursor/rules
 
-- **cycle-status.md**: The primary tracking document that's continuously updated throughout the entire cycle
-  - Contains the authoritative record of current cycle stage
-  - Updated after each substantive change is made
-  - Includes a chronological log of all changes to 00OS
-  - Should be checked first to determine cycle status
-
-- **active-request.md**: A pure requirements document, updated ONLY during step 1
-  - Contains just the request title and detailed requirements list
-  - Remains as a static reference document throughout steps 2-6
-  - No status tracking or cycle metadata
-  - Only updated if fundamental requirements change
-  - Focused exclusively on WHAT needs to be done
-
-- **implementation-plan.md**: Created during step 3, then remains relatively static
-  - Only updated if the implementation strategy changes significantly
-  - Serves as a stable blueprint for implementation
-  - Details HOW the requirements will be implemented
-  - Not used for tracking implementation status
-
-**Important**: Always check cycle-status.md first to determine the current stage of the cycle and what needs to be done next. The cycle-status.md file serves as the source of truth for WHERE you are in the process.
+At the completion of step 6, the cycle begins again with a new request.
 
 ## Directory Structure Supporting the Cycle
 
@@ -81,34 +116,38 @@ These folders contain persistent documentation and context that accumulates acro
 
 #### `context-00OS-current-state/`
 Contains snapshots of the current state of different 00OS components (Used in Cycle Step 2):
-- `core-current-state.md`: Analysis of the core subsystem components.
-- `config-current-state.md`: Documentation of system configuration settings.
-- `system-processes-current-state.md`: Overview of system command implementations.
-- `00reaper-processes-current-state.md`: Overview of 00reaper-specific command implementations.
-- `1000xdev-processes-current-state.md`: Overview of 1000xdev-specific command implementations.
+- `core.md`: Analysis of the core subsystem components.
+- `config.md`: Documentation of system configuration settings.
+- `system-processes.md`: Overview of system command implementations.
+- `00reaper-processes.md`: Overview of 00reaper-specific command implementations.
+- `1000xdev-processes.md`: Overview of 1000xdev-specific command implementations.
 
 #### `documentation/`
 Houses formal documentation, templates, and standards updated during Cycle Step 5:
 - `00OS-command-development.md`: Primary guidelines for command development.
 - `00OS-command-user-guide.md`: End-user documentation for 00OS commands.
 - `cursor-rules-manipulation.md`: Details the 00OS & Cursor Rules development workflow (Dev -> Sync -> Prod).
-- `reaper-read-files-docs.md`: Specific documentation for the `reaper-read-files` command.
 - `command-template.md`: Base template for creating new commands.
 - `implemented-patterns.md`: Collection of proven tool call patterns.
 - `command-standards.md`: Comprehensive standards for command implementation.
+- `tool-call-patterns.md`: Documentation of tool call patterns for command implementation.
+- `00reaper-templates/`:
+    - `active-request-template.md`: Template for active-request.md.
+    - `implementation-plan-template.md`: Template for implementation-plan.md.
+    - `cycle-status-template.md`: Template for cycle-status.md.
+- `00reaper-identity/`:
+    - `identity.md`: Documentation of the 00reaper identity.
+    - `00os-integration.md`: Documentation of 00reaper's integration with 00OS.
 - `testing/`:
     - `testing-guide.md`: Detailed testing procedures and best practices.
     - `testing-framework.md`: Structure for test implementation and automation.
 
-#### `research-cursor-rules/`
+#### `research-cursor/`
 Contains research notes and findings specifically related to Cursor rules implementation and behavior:
-- `research-cursor-project-rules.md`
-- `research-cursor-rules-manipulation.md`
-- `research-cursor-user-rules.md`
-
-#### `testing/` (Root Level)
-Contains files specifically for testing individual 00OS processes (Used in Cycle Step 5):
-- `test-reaper-read-files.md`: Example test file for a specific command.
+- `research-cursor-project-rules.md`: Research on Cursor project rules.
+- `research-cursor-rules-manipulation.md`: Research on manipulating Cursor rules.
+- `research-cursor-tool-call.md`: Research on Cursor tool calls.
+- `research-cursor-user-rules.md`: Research on Cursor user rules.
 
 #### `user-directed/`
 Tracks user requests and contains specific instructions for the AI agent operating within this workflow (Used in Cycle Step 1):
@@ -120,7 +159,7 @@ Tracks user requests and contains specific instructions for the AI agent operati
 To begin a new development cycle:
 
 1. **Initialize**: Run `> reaper-read-files 00reaper/00OS-commands` to load the full context.
-2. **Identify Focus**: Determine which REQ to address from user_requests.md.
+2. **Identify Focus**: Determine which REQ to address from user-directed/user-requests.md.
 3. **Create/Update Core Files**:
    - Create/update **active-request.md** with the complete REQ details
    - Create/update **implementation-plan.md** with the concrete implementation plan
@@ -152,9 +191,121 @@ The three core workflow files follow a specific lifecycle throughout the develop
    - Documents decisions made and blockers encountered
    - Reset or archived at the end of the cycle
 
-## Process Categorization Architecture
+## Workflow File Standardization
 
-All 00OS processes are now organized into three distinct categories:
+To ensure consistency and alignment across development cycles, the three core workflow files follow standardized templates:
+
+### Core Workflow Files and Templates
+
+| Workflow File | Purpose | Template Location |
+|---------------|---------|-------------------|
+| active-request.md | Defines requirements for the current request | documentation/00reaper-templates/active-request-template.md |
+| implementation-plan.md | Details the implementation approach and phases | documentation/00reaper-templates/implementation-plan-template.md |
+| cycle-status.md | Tracks the current progress through the workflow | documentation/00reaper-templates/cycle-status-template.md |
+
+### Template Usage
+
+When beginning a new development cycle (Step 1), use tool calls to access the appropriate templates:
+
+```
+> reaper-read-files 00reaper/00OS-commands/documentation/00reaper-templates/active-request-template.md
+```
+
+Then copy the template content to create the core workflow files in the root directory:
+1. Use the active-request-template.md to create/update active-request.md
+2. Use the implementation-plan-template.md to create/update implementation-plan.md
+3. Use the cycle-status-template.md to create/update cycle-status.md
+
+When filling out templates:
+- Replace all placeholder text in [brackets]
+- Use standardized status indicators: ✅ (Complete), ⏳ (In Progress), ⬜ (Not Started)
+- Follow the established update patterns for each file
+
+### Template Features
+
+#### Active Request Template
+- Simple requirements-focused structure with no metadata or status indicators
+- Focused exclusively on what needs to be done (requirements and completion criteria)
+- Minimal context references for relevant directories and files
+- Designed to be updated only during step 1, then remain static
+- Omits cycle tracking information which is maintained in cycle-status.md
+
+#### Implementation Plan Template
+- Clear mapping between workflow steps and implementation phases
+- Structured phase definitions with task checklists
+- Implementation details section for component/process specifications
+- Testing and verification strategy section
+- Dependencies, blockers, and rollback plan
+
+#### Cycle Status Template
+- Comprehensive progress tracking for all 6 workflow steps
+- Current findings and focus sections
+- Next actions prioritization
+- Implementation highlights tracking
+- Blockers and decisions documentation
+- Previous cycle summary
+- Notes for next cycle
+
+### Reset State Guidelines
+
+At the end of step 6 (Reset Core Workflow Files & Sync Changes), reset the core workflow files to a minimal state for the next cycle:
+
+#### Reset State for active-request.md
+```markdown
+# No Active Request
+
+// File reset at end of REQ-[PREVIOUS-ID] cycle. Awaiting next user request. //
+```
+
+#### Reset State for implementation-plan.md
+```markdown
+# Implementation Plan
+
+No active cycle
+```
+
+#### Reset State for cycle-status.md
+```markdown
+# Cycle Status
+
+No active cycle
+```
+
+This minimal reset state:
+- Clearly indicates there is no active cycle
+- Preserves the file structure for the next cycle
+- Shows which REQ was just completed
+- Keeps the workflow ready for the next request
+
+### Standardization Benefits
+
+1. **Consistent Structure**: All files use the same section headings and status indicators
+2. **Clear Cross-References**: Each file contains links to the other workflow files
+3. **Aligned Tracking**: Implementation phases are explicitly mapped to workflow steps
+4. **Temporal Alignment**: All files include timestamps for last update
+
+
+## Critical Implementation Requirements for Changes to 00OS
+
+### Highest Priority Requirements for changes to 00OS
+1. **Command Prefix**: The '>' prefix for commands is hardcoded in the command handler and is not configurable.
+2. **Mandatory fetch_rules**: Every command MUST trigger a fetch_rules call to retrieve its process definition.
+3. **No Self-Execution**: Commands should NEVER attempt to execute themselves via run_terminal_cmd.
+4. **Process-Driven Execution**: Allow the fetched process to control the execution flow.
+
+### Tool Call Framework
+
+The 00OS command system is built on a tool call-based architecture that leverages Cursor's native capabilities:
+
+```
+Command Detection → Process Rule Fetching → Parameter Parsing → Tool Call Execution → Response Formatting
+```
+
+This directory contains all the resources needed to maintain and extend this architecture with reliability and consistency.
+
+## 00OS Process Categorization Architecture
+
+All 00OS processes are organized into three distinct categories:
 
 1. **System Processes (Global)**
    * **Location:** `/00os/processes/system/`
@@ -174,47 +325,7 @@ All 00OS processes are now organized into three distinct categories:
    * **Examples:** (Future implementations)
    * **Characteristics:** Development-focused operations, application-specific utilities
 
-## Workflow File Standardization
+### 00OS Command alignment with 00OS Processes
+When you read an 00OS command prefixed with >, you will immediately make a fetch_rules tool call to the process with the same 00OS command name. This is to simplify the cognitive load for 00OS commands, so that all logic is abstracted to the process file. There is no registry for 00OS commands. 00OS commands are simply utilized to invoke 00OS processes. Each 00OS process has a one-to-one relationship with its 00OS command. An 00OS process can only be invoked upon the utilization of an 00OS command with the exact same filename as the 00OS process.
 
-To ensure consistency and alignment across development cycles, the three core workflow files follow standardized templates:
 
-### Core Workflow Files and Templates
-
-| Workflow File | Purpose | Template Location |
-|---------------|---------|-------------------|
-| active-request.md | Defines requirements and tracks the current request | documentation/00reaper-templates/active-request-template.md |
-| implementation-plan.md | Details the implementation approach and phases | documentation/00reaper-templates/implementation-plan-template.md |
-| cycle-status.md | Tracks the current progress through the workflow | documentation/00reaper-templates/cycle-status-template.md |
-
-### Standardization Benefits
-
-1. **Consistent Structure**: All files use the same section headings and status indicators
-2. **Clear Cross-References**: Each file contains links to the other workflow files
-3. **Aligned Tracking**: Implementation phases are explicitly mapped to workflow steps
-4. **Temporal Alignment**: All files include timestamps for last update
-
-### Key Template Features
-
-- **Status Snapshot**: Each file contains a standardized status section
-- **Workflow-Phase Mapping**: Implementation phases are mapped to workflow steps
-- **Standardized Status Indicators**: ✅ (Complete), ⏳ (In Progress), ⬜ (Not Started)
-- **Template Versioning**: Templates include version numbers for tracking changes
-
-For complete details, see the [00reaper Workflow Templates README](documentation/00reaper-templates/README.md).
-
-## Critical Implementation Requirements
-
-1. **Command Prefix**: The '>' prefix for commands is hardcoded in the command handler and is not configurable.
-2. **Mandatory fetch_rules**: Every command MUST trigger a fetch_rules call to retrieve its process definition.
-3. **No Self-Execution**: Commands should NEVER attempt to execute themselves via run_terminal_cmd.
-4. **Process-Driven Execution**: Allow the fetched process to control the execution flow.
-
-## Tool Call Framework
-
-The 00OS command system is built on a tool call-based architecture that leverages Cursor's native capabilities:
-
-```
-Command Detection → Process Rule Fetching → Parameter Parsing → Tool Call Execution → Response Formatting
-```
-
-This directory contains all the resources needed to maintain and extend this architecture with reliability and consistency.
