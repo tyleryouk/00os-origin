@@ -6,8 +6,8 @@
 - **Last Updated**: 2023-04-29 17:30
 - **Template Version**: 1.1
 - **Cross-Reference**:
-  - Active Request: See `active-request.md` (Requirements reference)
-  - Implementation Plan: See `implementation-plan.md` (Blueprint reference)
+  - Active Request: `active-request.md`
+  - Implementation Plan: `implementation-plan.md`
 
 ## Quick Status Summary
 - **Current Focus**: Cycle REQ-003 completed, awaiting next request

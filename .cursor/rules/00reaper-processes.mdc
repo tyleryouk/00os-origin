@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 00reaper Processes Guide
+
+This guide describes the 00reaper processes that manage the 00OS development workflow.
+
+## Core Workflow Processes
+
+### Initialization and Context
+- [reaper-init.md](mdc:00OS/processes/00reaper/reaper-init.md): Initialize 00reaper context and system understanding
+- [reaper-read-files.md](mdc:00OS/processes/00reaper/reaper-read-files.md): Read files from specified directories
+- [reaper-overwrite.md](mdc:00OS/processes/00reaper/reaper-overwrite.md): Generate context files from directory contents
+
+### Development Workflow
+- [reaper-os-commands-workflow.md](mdc:00OS/processes/00reaper/reaper-os-commands-workflow.md): Orchestrate the development workflow
+- [reaper-analyze-tasks.md](mdc:00OS/processes/00reaper/reaper-analyze-tasks.md): Analyze and prioritize development tasks
+- [reaper-implement.md](mdc:00OS/processes/00reaper/reaper-implement.md): Execute changes to 00OS processes
+
+### Synchronization
+- [reaper-sync.md](mdc:00OS/processes/00reaper/reaper-sync.md): Sync 00OS contents to Cursor rules
+- [reaper-update.md](mdc:00OS/processes/00reaper/reaper-update.md): Update context with latest workflow info
+
+## Development Guidelines
+
+When working with 00reaper processes:
+
+1. Start with `reaper-init` to establish context
+2. Use `reaper-os-commands-workflow` to manage development cycles
+3. Keep context up-to-date using `reaper-overwrite` and `reaper-update`
+4. Sync changes to Cursor rules using `reaper-sync`
+
+## Process Dependencies
+
+The processes work together in a specific order:
+1. Initialize → `reaper-init`
+2. Read/Analyze → `reaper-read-files`, `reaper-analyze-tasks`
+3. Implement → `reaper-implement`
+4. Update → `reaper-update`, `reaper-overwrite`
+5. Sync → `reaper-sync`
+
