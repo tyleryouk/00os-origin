@@ -1,18 +1,11 @@
 # 00OS User Requests and Implementation Tracking
 
 ## Request Details
-### REQ-003: Enhance 00reaper and system 00OS Processes to focus on dynamic Tool Calls sequences [NEW]
-#### Requirements
-1. Execute @Web tool calls to perform extensive research on Cursor Tool Calls. Fill in the currently empty research file with your findings:
-00reaper\00OS-commands\research-cursor\research-cursor-tool-call.md
+### REQ-000: [New] Revise > reaper-init
+For the command and process for `reaper-init`, you should assume that you have no context to begin with. This 00OS command will be utilized to initialize you, 00reaper, with all the context needed to properly make changes to 00OS. We are currently working in the workflow folder 00reaper\00OS-commands, and I want > reaper-init to read files within this folder to fully understand context.
 
-(Tool calls are also embedded in your knowledge, since this message is within the Cursor Chat interface. Cursor has done a great job embedding tool call knowledge for you to utilize tool calls for enhanced AI development)
+Before updating reaper-init, I want to make enhancements to 00reaper/00OS-commands. I want to enhance this workflow folder so to be more concise and clear as far as the goals for the requests and workflow cycles.  There is really good context in 00reaper\00OS-commands\documentation and 00reaper\00OS-commands\research-cursor. I would like you to make some list_dir and read_file tool calls to the workflow folder 00reaper\00OS-commands to better understand this request. This request will need some formalization as well to ensure a solid cycle to enhance the workflow files (consolidate/optimize workflow files), along with revising reaper-init.
 
-2. Read all research to gain understanding of our goals of 00OS and cursor rule manipulation.
-
-3. Read all context on the current state of 00OS. After reading, you will be able to see that there are a total of 10 processes, including 8 00reaper processes and 2 system processes (0 1000xdev processes for now). The two system processes help and version should be the only two system processes for now.
-
-4. Revise all process files to focus on dynamic tool call execution. 00OS is not a real operating system. It is an system based on operating system principles to manipulate Cursor Rules for faster development for Tyler Youk (allows Tyler Youk to send 00OS commands prefixed with > for faster AI-augmented development). Some of the process files are ambiguous and sometimes you do not run tool calls. Each process should trigger a strict set of a tool calls. This is either an issue within /core 00OS files or the /processes files itself.
 
 
 ### REQ-007: [Tyler]
