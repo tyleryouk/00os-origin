@@ -1,8 +1,8 @@
-# 00OS Command Testing Framework
+# 00OS Command Testing Implementation Guide
 
 ## Overview
 
-This document outlines the testing framework for 00OS commands, designed to ensure reliability, consistency, and maintainability across all command implementations. By implementing a standardized testing approach, we can verify command behavior, catch regressions, and document expected functionality.
+This document provides the technical implementation details for the 00OS command testing framework. It complements the testing standards defined in testing-standards.md by providing concrete examples, code templates, and utilities for implementing tests.
 
 ## Testing Principles
 

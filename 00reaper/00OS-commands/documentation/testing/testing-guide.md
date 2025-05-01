@@ -1,8 +1,8 @@
-# 00OS Command Testing Guide
+# 00OS Command Testing Standards
 
 ## Overview
 
-This document outlines the testing standards for 00OS commands. A robust testing approach ensures commands work as expected across various scenarios, including edge cases and error conditions.
+This document outlines the testing standards and best practices for 00OS commands. These standards ensure commands work as expected across various scenarios, including edge cases and error conditions. For technical implementation details, see testing-framework.md.
 
 ## Testing Principles
 

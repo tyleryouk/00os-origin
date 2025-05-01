@@ -1,0 +1,73 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 00OS Commands Workflow Context
+
+## Current Development State
+The 00OS-commands workflow is being enhanced through REQ-000, focusing on:
+1. Workflow folder optimization
+2. reaper-init command revision
+
+### Active Files
+Core workflow files are located in `00reaper/00OS-commands/`:
+- [README.md](mdc:00reaper/00OS-commands/README.md): Workflow overview
+- [active-request.md](mdc:00reaper/00OS-commands/active-request.md): Current request (REQ-000)
+- [implementation-plan.md](mdc:00reaper/00OS-commands/implementation-plan.md): Implementation steps
+- [cycle-status.md](mdc:00reaper/00OS-commands/cycle-status.md): Progress tracking
+
+### Documentation Structure
+Documentation is organized in `00reaper/00OS-commands/documentation/`:
+- Core Standards: [command-standards-core.md](mdc:00reaper/00OS-commands/documentation/command-standards-core.md)
+- Command Template: [command-template-core.md](mdc:00reaper/00OS-commands/documentation/command-template-core.md)
+- Templates Directory: `00OS-templates/` and `00reaper-templates/`
+
+### Recent Optimizations
+1. **Documentation Consolidation**
+   - Created focused core standards document
+   - Streamlined command template
+   - Improved template organization
+
+2. **Command Standards**
+   - Mandatory `fetch_rules` usage
+   - Standardized response formatting (✅/❌/⚠️)
+   - Structured error handling
+   - Clear tool call patterns
+
+## Process Categories
+00OS commands are organized into three categories:
+1. **System Processes** (`/00os/processes/system/`)
+   - help.md: Command documentation
+   - version.md: System version info
+
+2. **00reaper Processes** (`/00os/processes/00reaper/`)
+   - reaper-init.md: Initialize context
+   - reaper-read-files.md: Read directory contents
+   - reaper-analyze-tasks.md: Task analysis
+   - reaper-implement.md: Execute changes
+   - reaper-overwrite.md: Generate context
+   - reaper-sync.md: Sync to rules
+   - reaper-update.md: Update context
+   - reaper-os-commands-workflow.md: Manage workflow
+
+3. **1000xdev Processes** (`/00os/processes/1000xdev/`)
+   - Future development commands
+
+## Development Workflow
+The development cycle follows six steps:
+1. Read User Request (REQ)
+2. Read Relevant Context
+3. Update Core Workflow Files
+4. Make Changes to 00OS
+5. Update Supporting Materials
+6. Reset Core Workflow Files & Sync Changes
+
+## Current Focus
+- Optimizing workflow folder structure
+- Enhancing documentation organization
+- Revising reaper-init command
+- Maintaining file size limits (250 lines)
+
+See [cycle-status.md](mdc:00reaper/00OS-commands/cycle-status.md) for current progress.
+

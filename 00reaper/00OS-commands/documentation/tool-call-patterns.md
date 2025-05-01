@@ -27,248 +27,103 @@ All 00OS processes have been updated to follow these enhanced implementation sta
 
 ## Common Tool Call Patterns
 
-### 1. Information Gathering Pattern
+### 1. Process Rule Fetching (MANDATORY)
+```javascript
+// ALWAYS start with fetch_rules
+const ruleResult = await tools.call('fetch_rules', {
+  rule_names: [`processes/${category}/${command}`],
+  explanation: `Fetching process rule for ${command}`
+});
 
-Used for processes that primarily collect and display information.
+if (!ruleResult || !ruleResult.results?.[0]) {
+  return {
+    success: false,
+    error: `Process rule not found for ${command}`,
+    suggestions: [
+      'Verify the command name is correct',
+      'Check that the process file exists in the correct category'
+    ]
+  };
+}
+```
 
+### 2. Information Gathering Pattern
 ```
 list_dir -> codebase_search -> read_file -> [process data] -> [format response]
 ```
 
-**Example Implementation:**
-
 ```javascript
-// 1. List directory contents
-const directoryContents = await tools.call('list_dir', {
+// Example implementation
+const dirResult = await tools.call('list_dir', {
   relative_workspace_path: targetPath,
-  explanation: "Listing directory contents to gather information"
+  explanation: "Listing directory contents"
 });
 
-// 2. Perform targeted search if needed
-const searchResults = await tools.call('codebase_search', {
+const searchResult = await tools.call('codebase_search', {
   query: searchQuery,
   target_directories: [targetPath],
-  explanation: "Searching for specific information in the codebase"
+  explanation: "Searching for relevant code"
 });
 
-// 3. Read specific files of interest
 const fileContent = await tools.call('read_file', {
   target_file: targetFile,
   should_read_entire_file: true,
-  explanation: "Reading file to extract detailed information"
+  explanation: "Reading file content"
 });
-
-// 4. Process gathered information
-const processedData = processInformation(directoryContents, searchResults, fileContent);
-
-// 5. Return formatted response
-return formatSuccess("Information gathered successfully", processedData);
 ```
 
-### 2. File Modification Pattern
-
-Used for processes that modify file contents.
-
+### 3. File Modification Pattern
 ```
 read_file -> [generate modifications] -> edit_file -> [optional: reapply] -> [format response]
 ```
 
-**Example Implementation:**
-
 ```javascript
-// 1. Read existing file
+// Example implementation
 const fileContent = await tools.call('read_file', {
   target_file: targetFile,
   should_read_entire_file: true,
   explanation: "Reading file before modification"
 });
 
-// 2. Generate modifications
-const modification = generateModification(fileContent.content);
-
-// 3. Apply changes
 await tools.call('edit_file', {
   target_file: targetFile,
   instructions: "Updating file content",
-  code_edit: modification
+  code_edit: `// ... existing code ...
+${newContent}
+// ... existing code ...`
 });
 
-// 4. Verify changes (optional)
+// Verify changes if needed
 if (verificationNeeded) {
   await tools.call('reapply', {
     target_file: targetFile
   });
 }
-
-// 5. Return success
-return formatSuccess(`File ${targetFile} updated successfully`);
 ```
 
-### 3. Dynamic File Manipulation Pattern
-
-Used for more complex file operations that require conditional logic.
-
-```
-list_dir -> [conditional logic] -> read_file -> [conditional logic] -> edit_file -> [format response]
-```
-
-**Example Implementation:**
-
-```javascript
-// 1. List directory to find relevant files
-const listResult = await tools.call('list_dir', {
-  relative_workspace_path: targetDirectory,
-  explanation: `Listing directory contents to identify files for processing`
-});
-
-// 2. Apply conditional logic to determine which files to process
-const filesToProcess = identifyRelevantFiles(listResult.entries);
-
-// 3. Process each file as needed
-for (const file of filesToProcess) {
-  try {
-    // Read the file
-    const fileContent = await tools.call('read_file', {
-      target_file: file.path,
-      should_read_entire_file: true,
-      explanation: `Reading ${file.path} for processing`
-    });
-    
-    // Apply conditional logic to determine if and how to modify
-    if (shouldModifyFile(fileContent.content)) {
-      const modifications = generateModifications(fileContent.content);
-      
-      // Apply changes if needed
-      await tools.call('edit_file', {
-        target_file: file.path,
-        instructions: `Updating ${file.path} with necessary changes`,
-        code_edit: modifications
-      });
-    }
-  } catch (error) {
-    // Handle individual file errors without failing the entire process
-    console.error(`Error processing ${file.path}: ${error.message}`);
-  }
-}
-
-// 4. Return success with summary
-return formatSuccess(`Processed ${filesToProcess.length} files successfully`);
-```
-
-### 4. Command Execution Pattern
-
-Used for processes that execute terminal commands.
-
+### 4. Terminal Command Execution Pattern
 ```
 [prepare command] -> run_terminal_cmd -> [verify execution] -> [format response]
 ```
 
-**Example Implementation:**
-
 ```javascript
-// 1. Prepare command
-const command = buildCommand(inputs);
-
-// 2. Execute command
+// Example implementation
 const result = await tools.call('run_terminal_cmd', {
-  command: command,
-  explanation: "Executing command for process",
-  is_background: false
+  command: "git status", // NEVER execute 00OS commands via terminal
+  is_background: false,
+  explanation: "Checking git repository status"
 });
-
-// 3. Verify execution
-if (result.exitCode !== 0) {
-  return formatError(`Command execution failed: ${result.error}`, "COMMAND_ERROR");
-}
-
-// 4. Return success
-return formatSuccess(`Command executed successfully: ${result.output}`);
-```
-
-### 5. Rule-Based Execution Pattern
-
-Used for processes that rely on fetching rules before execution.
-
-```
-fetch_rules -> [process rule content] -> [execute appropriate tools] -> [format response]
-```
-
-**Example Implementation:**
-
-```javascript
-// 1. Fetch required rule
-const ruleResult = await tools.call('fetch_rules', {
-  rule_names: ["processes/system/help"],
-  explanation: "Fetching help process rule to execute help command"
-});
-
-// 2. Process rule content
-const processTools = extractToolsFromRule(ruleResult);
-
-// 3. Execute appropriate tools based on rule content
-for (const toolCall of processTools) {
-  await executeToolCall(toolCall);
-}
-
-// 4. Return formatted response
-return formatSuccess("Rule-based execution completed successfully");
-```
-
-## Argument Parsing Pattern
-
-All processes should implement a standardized argument parsing pattern:
-
-```javascript
-/**
- * Parse command arguments into parameter object
- */
-function parseArgs(args) {
-  const params = {
-    // Default values
-    targetPath: null,
-    recursive: false,
-    // Other defaults
-  };
-  
-  // Process positional arguments
-  if (args.length > 0) {
-    params.targetPath = args[0];
-    // Handle additional positional args as needed
-  }
-  
-  // Process flags and options
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i];
-    
-    if (arg === '--recursive' || arg === '-r') {
-      params.recursive = true;
-    } else if (arg.startsWith('--option=')) {
-      const value = arg.substring('--option='.length);
-      params.option = value;
-    } else if ((arg === '--option' || arg === '-o') && i + 1 < args.length) {
-      params.option = args[++i];
-    }
-    // Handle additional flags
-  }
-  
-  return params;
-}
 ```
 
 ## Standard Error Handling Pattern
 
-Each tool call should implement this error handling pattern:
-
 ```javascript
 try {
+  // Tool call with appropriate parameters
   const result = await tools.call('tool_name', {
     // tool parameters
+    explanation: "Purpose of this tool call"
   });
-  
-  // Verify tool call success
-  if (!result || result.error) {
-    throw new Error(`Tool call failed: ${result ? result.error : 'No result'}`);
-  }
   
   // Process successful result
 } catch (error) {
@@ -282,44 +137,41 @@ try {
 
 ## Standard Response Formatting
 
-All processes should use these standard response formatting functions:
-
+### Success Response
 ```javascript
-function formatSuccess(message, data = null) {
-  if (data) {
-    if (typeof data === 'string') {
-      return `✅ ${message}\n\n${data}`;
-    } else {
-      return `✅ ${message}\n\n${JSON.stringify(data, null, 2)}`;
-    }
-  }
-  return `✅ ${message}`;
-}
+return {
+  success: true,
+  result: data,
+  message: "✅ Operation completed successfully"
+};
+```
 
-function formatError(message, code = "ERROR", suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}`;
-  
-  if (suggestions && suggestions.length > 0) {
-    output += "\n\nSuggestions:";
-    for (const suggestion of suggestions) {
-      output += `\n- ${suggestion}`;
-    }
-  }
-  
-  return output;
-}
+### Error Response
+```javascript
+return {
+  success: false,
+  error: "❌ Operation failed",
+  code: "ERROR_CODE",
+  suggestions: [
+    "Suggestion 1",
+    "Suggestion 2"
+  ]
+};
+```
 
-function formatWarning(message, details = null) {
-  return `⚠️ Warning: ${message}${details ? '\n\n' + details : ''}`;
-}
+### Warning Response
+```javascript
+return {
+  success: true,
+  result: data,
+  message: "⚠️ Operation completed with warnings",
+  warnings: ["Warning detail"]
+};
 ```
 
 ## Tool Call Parameter Guidelines
 
 ### 1. Always Include Explanations
-
-All tool calls should include an explanation parameter that clearly describes the purpose of the call:
-
 ```javascript
 await tools.call('read_file', {
   target_file: path,
@@ -328,9 +180,6 @@ await tools.call('read_file', {
 ```
 
 ### 2. Be Specific with Search Queries
-
-When using search tools, be as specific as possible with queries:
-
 ```javascript
 // Good
 await tools.call('codebase_search', {
@@ -347,9 +196,6 @@ await tools.call('codebase_search', {
 ```
 
 ### 3. Minimize File Reading Scope
-
-When reading files, specify the relevant portions rather than reading entire files when possible:
-
 ```javascript
 // Preferred when only a portion is needed
 await tools.call('read_file', {
@@ -358,28 +204,9 @@ await tools.call('read_file', {
   limit: 200,
   explanation: "Reading the configuration section of the file"
 });
-
-// Use only when necessary
-await tools.call('read_file', {
-  target_file: path,
-  should_read_entire_file: true,
-  explanation: "Reading entire file is necessary for full content analysis"
-});
 ```
 
-## Lessons Learned from REQ-003 Implementation
-
-1. **Avoid Self-Execution Loops**: Never execute 00OS commands through terminal commands, as this creates infinite loops
-2. **Use fetch_rules Consistently**: All 00OS commands must begin by fetching their process definition
-3. **Standardize Error Handling**: Consistent error handling improves debugging and user experience
-4. **Provide Helpful Suggestions**: Error messages should include actionable suggestions for resolution
-5. **Respect Process Categories**: Maintain the separation between system, 00reaper, and 1000xdev processes
-6. **Document Tool Calls**: Clear explanation parameters improve code transparency and maintainability
-7. **Use Modular Design**: Breaking functionality into smaller functions improves code maintainability
-
 ## Implementation Checklist
-
-Use this checklist when implementing or reviewing processes:
 
 - [ ] Process uses explicit tool calls (no terminal execution of 00OS commands)
 - [ ] All tool calls include explanation parameters
@@ -390,6 +217,28 @@ Use this checklist when implementing or reviewing processes:
 - [ ] Process respects its category permissions
 - [ ] Code is modular and maintainable with clear function names
 - [ ] Documentation is up-to-date and reflects actual implementation
+
+## Best Practices
+
+1. **Tool Call Optimization**
+   - Minimize number of calls
+   - Prefer larger reads over multiple small ones
+   - Include clear explanations
+
+2. **Error Handling**
+   - Always use try/catch blocks
+   - Provide specific error codes
+   - Include helpful suggestions
+
+3. **Response Formatting**
+   - Use standard indicators (✅, ❌, ⚠️)
+   - Include relevant data
+   - Provide clear messages
+
+4. **Documentation**
+   - Clear explanation parameters
+   - Consistent formatting
+   - Proper error handling
 
 ## Process-Specific Patterns
 
@@ -414,3 +263,192 @@ list_dir -> [for each file] -> [determine destination] -> run_terminal_cmd -> [f
 ## Conclusion
 
 By adhering to these standardized tool call patterns, 00OS processes maintain consistency, reliability, and maintainability. Each process should implement the appropriate pattern based on its primary function, while ensuring proper error handling and response formatting throughout. 
+
+## Standard Tool Call Patterns
+
+### 1. Process Rule Fetching (MANDATORY)
+```javascript
+// ALWAYS start with fetch_rules
+const ruleResult = await tools.call('fetch_rules', {
+  rule_names: [`processes/${category}/${command}`],
+  explanation: `Fetching process rule for ${command}`
+});
+
+if (!ruleResult || !ruleResult.results?.[0]) {
+  return {
+    success: false,
+    error: `Process rule not found for ${command}`,
+    suggestions: [
+      'Verify the command name is correct',
+      'Check that the process file exists in the correct category'
+    ]
+  };
+}
+```
+
+### 2. Information Gathering
+```javascript
+// Directory listing
+const dirResult = await tools.call('list_dir', {
+  relative_workspace_path: targetPath,
+  explanation: "Listing directory contents"
+});
+
+// Semantic search
+const searchResult = await tools.call('codebase_search', {
+  query: searchQuery,
+  target_directories: [targetPath],
+  explanation: "Searching for relevant code"
+});
+
+// File reading
+const fileContent = await tools.call('read_file', {
+  target_file: targetFile,
+  should_read_entire_file: false,
+  start_line_one_indexed: 1,
+  end_line_one_indexed_inclusive: 200,
+  explanation: "Reading file content"
+});
+```
+
+### 3. File Modification
+```javascript
+// Read existing content
+const currentContent = await tools.call('read_file', {
+  target_file: targetFile,
+  should_read_entire_file: true,
+  start_line_one_indexed: 1,
+  end_line_one_indexed_inclusive: 1000,
+  explanation: "Reading current file content"
+});
+
+// Apply changes
+await tools.call('edit_file', {
+  target_file: targetFile,
+  instructions: "Updating file content with new changes",
+  code_edit: `// ... existing code ...
+${newContent}
+// ... existing code ...`
+});
+
+// Verify changes if needed
+await tools.call('reapply', {
+  target_file: targetFile
+});
+```
+
+### 4. File Search and Navigation
+```javascript
+// Fuzzy file search
+const files = await tools.call('file_search', {
+  query: "pattern",
+  explanation: "Finding files matching pattern"
+});
+
+// Exact text search
+const matches = await tools.call('grep_search', {
+  query: "exactPattern",
+  case_sensitive: true,
+  explanation: "Finding exact text matches"
+});
+```
+
+### 5. Terminal Command Execution
+```javascript
+// NEVER execute 00OS commands via terminal
+const result = await tools.call('run_terminal_cmd', {
+  command: "git status",
+  is_background: false,
+  explanation: "Checking git repository status"
+});
+```
+
+## Error Handling Pattern
+
+```javascript
+try {
+  // 1. Fetch process rule (MANDATORY)
+  const ruleResult = await tools.call('fetch_rules', {
+    rule_names: [`processes/${category}/${command}`],
+    explanation: `Fetching process rule for ${command}`
+  });
+
+  // 2. Execute main tool calls
+  const result = await executeMainLogic();
+
+  // 3. Return success
+  return {
+    success: true,
+    result: result,
+    message: "Operation completed successfully"
+  };
+
+} catch (error) {
+  return {
+    success: false,
+    error: error.message,
+    code: error.code || "EXECUTION_ERROR",
+    suggestions: [
+      "Check input parameters",
+      "Verify file paths exist",
+      "Ensure proper permissions"
+    ]
+  };
+}
+```
+
+## Response Formatting
+
+### Success Response
+```javascript
+return {
+  success: true,
+  result: data,
+  message: "✅ Operation completed successfully"
+};
+```
+
+### Error Response
+```javascript
+return {
+  success: false,
+  error: "❌ Operation failed",
+  code: "ERROR_CODE",
+  suggestions: [
+    "Suggestion 1",
+    "Suggestion 2"
+  ]
+};
+```
+
+### Warning Response
+```javascript
+return {
+  success: true,
+  result: data,
+  message: "⚠️ Operation completed with warnings",
+  warnings: ["Warning detail"]
+};
+```
+
+## Best Practices
+
+1. **Tool Call Optimization**
+   - Minimize number of calls
+   - Prefer larger reads over multiple small ones
+   - Include clear explanations
+
+2. **Error Handling**
+   - Always use try/catch blocks
+   - Provide specific error codes
+   - Include helpful suggestions
+
+3. **Response Formatting**
+   - Use standard indicators (✅, ❌, ⚠️)
+   - Include relevant data
+   - Provide clear messages
+
+4. **Documentation**
+   - Clear explanation parameters
+   - Consistent formatting
+   - Proper error handling 
