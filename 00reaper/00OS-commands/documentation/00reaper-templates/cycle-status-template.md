@@ -1,62 +1,42 @@
-# Cycle Status
+# Cycle Status Template
 
 ## Status Snapshot
-- **CURRENT CYCLE STAGE**: [1-6] - [Current Stage Name]
-- **Cycle ID**: [UNIQUE-ID]
-- **Last Updated**: [YYYY-MM-DD HH:MM]
+- **CURRENT CYCLE STAGE**: [Current Step Number and Name]
+- **Cycle ID**: [Request ID]-[Status]
+- **Last Updated**: [YYYY-MM-DD]
 - **Template Version**: 1.1
-- **Cross-Reference**:
-  - Active Request: See `active-request.md` (Requirements reference)
-  - Implementation Plan: See `implementation-plan.md` (Blueprint reference)
 
 ## Quick Status Summary
-- **Current Focus**: [Specific task/phase currently being worked on]
-- **Next Action**: [Exact next action I should take]
-- **Blockers**: [Any issues preventing progress, or "None"]
-- **Last Completed**: [Last significant milestone/task completed]
+- **Current Focus**: [Specific task or phase being worked on]
+- **Next Action**: [Next immediate task]
+- **Blockers**: [Any blocking issues or None]
+- **Last Completed**: [Last completed major task]
 
 ## Current Cycle Progress
+- [ ] Step 1: Read User Request
+- [ ] Step 2: Read Relevant Context
+- [ ] Step 3: Update Core Workflow Files
+- [ ] Step 4: Make Changes to 00OS
+  - Current Phase: [Phase Name]
+    - [ ] [Current Task]
+    - [ ] [Next Task]
+    - [ ] [Future Task]
+- [ ] Step 5: Update Supporting Materials
+- [ ] Step 6: Reset Core Workflow Files & Sync Changes
 
-1. Read User Request REQ [✅/⏳/⬜]
-   - [✅/⏳/⬜] [REQ-ID] read and active-request.md updated
-   - [✅/⏳/⬜] Requirements analyzed and clarified if needed
-   - [✅/⏳/⬜] Success criteria confirmed
+## Implementation Notes
+### Current Phase: [Phase Name]
+- [Key point about current work]
+- [Important consideration]
+- [Critical detail]
 
-2. Read Relevant Context [✅/⏳/⬜]
-   - [✅/⏳/⬜] Examined files in `context-00OS-current-state/`
-   - [✅/⏳/⬜] Reviewed documentation in `documentation/`
-   - [✅/⏳/⬜] Analyzed related files [specify which ones]
+### Next Steps
+1. [Next immediate action]
+2. [Following action]
+3. [Future action]
 
-3. Update Core Workflow Files [✅/⏳/⬜]
-   - [✅/⏳/⬜] Updated active-request.md with complete REQ details
-   - [✅/⏳/⬜] Created implementation-plan.md with detailed implementation strategy
-   - [✅/⏳/⬜] Initialized cycle-status.md (this file)
-
-4. Make Changes to 00OS [✅/⏳/⬜]
-   - [✅/⏳/⬜] Phase 1: [Phase Name]
-     - [✅/⏳/⬜] [Task 1.1]
-     - [✅/⏳/⬜] [Task 1.2]
-   - [✅/⏳/⬜] Phase 2: [Phase Name]
-     - [✅/⏳/⬜] [Task 2.1]
-     - [✅/⏳/⬜] [Task 2.2]
-   - [✅/⏳/⬜] Phase 3: [Phase Name]
-     - [✅/⏳/⬜] [Task 3.1]
-     - [✅/⏳/⬜] [Task 3.2]
-
-5. Update Supporting Materials [✅/⏳/⬜]
-   - [✅/⏳/⬜] Updated context files:
-     - [✅/⏳/⬜] `[file1.md]`
-     - [✅/⏳/⬜] `[file2.md]`
-   - [✅/⏳/⬜] Updated documentation:
-     - [✅/⏳/⬜] `[file1.md]`
-     - [✅/⏳/⬜] `[file2.md]`
-   - [✅/⏳/⬜] Updated templates if necessary
-
-6. Reset Core Workflow Files & Sync Changes [✅/⏳/⬜]
-   - [✅/⏳/⬜] Reset core workflow files for next cycle
-   - [✅/⏳/⬜] Ran `> reaper-sync` to sync 00OS changes to .cursor/rules
-   - [✅/⏳/⬜] Verified sync completion
-   - [✅/⏳/⬜] Documented lessons learned
+### Blockers/Dependencies
+[List any blockers or "None currently identified"]
 
 ## Changes Log
 [Record of all substantive changes made to 00OS files during this cycle]
