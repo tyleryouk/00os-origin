@@ -1,0 +1,90 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 00OS Command Standards
+
+This guide defines the core standards for developing commands in the 00OS environment.
+
+## Essential Command Flow
+1. **Command Detection**: All commands start with `>` prefix
+2. **Process Rule Fetching**: MANDATORY first step using `fetch_rules`
+3. **Parameter Parsing**: Extract and validate inputs
+4. **Tool Call Execution**: Execute required operations
+5. **Response Formatting**: Return standardized response
+
+## Command Structure
+Commands must be defined in `/00os/processes/{category}/{command}.md` with this structure:
+
+```yaml
+---
+name: command-name       # Required: Command identifier
+description: Brief desc  # Required: Short explanation
+version: 1.0.0          # Required: Semantic version
+author: 00reaper        # Required: Author ID
+category: system        # Required: system/tools/apps
+permissions: [basic]    # Required: Permission list
+inputs:                 # Required: Arguments/flags
+  - name: param
+    type: string       # string/number/boolean/array/object
+    required: true     # Required flag
+    default: null      # Default value
+    description: desc  # Parameter description
+outputs:               # Required: Output definition
+  - name: result
+    type: string
+    description: desc
+---
+```
+
+## Command Categories
+- `system/`: Core system commands (help, version)
+- `00reaper/`: System administration commands
+- `1000xdev/`: Development commands
+
+## Response Format
+Commands must use standardized response indicators:
+- ✅ Success: Operation completed successfully
+- ❌ Error: Operation failed with error
+- ⚠️ Warning: Operation completed with warnings
+
+## Error Handling
+All commands must implement proper error handling:
+
+```javascript
+try {
+  // Tool calls here
+} catch (error) {
+  return {
+    success: false,
+    error: error.message,
+    suggestions: [
+      'Helpful suggestion 1',
+      'Helpful suggestion 2'
+    ]
+  };
+}
+```
+
+## Tool Call Requirements
+1. ALWAYS use `fetch_rules` as first step
+2. NEVER execute 00OS commands via terminal
+3. Include clear explanations with each tool call
+4. Handle errors with helpful suggestions
+5. Prefer fewer, larger tool calls over many small ones
+
+## Documentation
+- Include clear usage examples
+- Document error scenarios and recovery
+- Reference related commands
+- Keep documentation concise and focused
+
+## Testing
+- Validate input parameters
+- Test error handling paths
+- Verify response formatting
+- Check tool call sequences
+
+See [command-standards-core.md](mdc:00reaper/00OS-commands/documentation/command-standards-core.md) for detailed standards.
+
