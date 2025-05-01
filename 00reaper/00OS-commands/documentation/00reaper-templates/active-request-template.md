@@ -1,16 +1,25 @@
 # [REQ-ID]: [Request Title]
 
 ## Requirements
-1. [Requirement 1]
-2. [Requirement 2]
-3. [Requirement 3]
-   - [Sub-requirement if needed]
-   - [Sub-requirement if needed]
+1. **[Requirement Category 1]**
+   - [Specific requirement]
+   - [Specific requirement]
+   - [Specific requirement]
+
+2. **[Requirement Category 2]**
+   - [Specific requirement]
+   - [Specific requirement]
+   - [Specific requirement]
 
 ## Completion Criteria
 - [ ] [Measurable outcome 1]
 - [ ] [Measurable outcome 2]
 - [ ] [Measurable outcome 3]
+
+## Success Metrics
+1. [Quantifiable metric 1]
+2. [Quantifiable metric 2]
+3. [Quantifiable metric 3]
 
 ## Context References
 - **Relevant Directories**:

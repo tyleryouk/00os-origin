@@ -1,4 +1,62 @@
-# Implementation Plan for [REQ-ID]
+# Implementation Plan: [REQ-ID]
+
+## Overview
+- **Request**: [Brief description of the request]
+- **Goal**: [Clear statement of implementation goal]
+- **Approach**: [High-level approach summary]
+
+## Implementation Phases
+### Phase 1: [Phase Name]
+1. **[Task Group 1]**
+   - [Specific action]
+   - [Specific action]
+   - [Specific action]
+
+2. **[Task Group 2]**
+   - [Specific action]
+   - [Specific action]
+   - [Specific action]
+
+### Phase 2: [Phase Name]
+1. **[Task Group 1]**
+   - [Specific action]
+   - [Specific action]
+   - [Specific action]
+
+## Tool Call Sequences
+### Phase 1 Tools
+```javascript
+// [Task Group 1]
+[tool_call_1]
+[tool_call_2]
+
+// [Task Group 2]
+[tool_call_3]
+[tool_call_4]
+```
+
+### Phase 2 Tools
+```javascript
+// [Task Group 1]
+[tool_call_5]
+[tool_call_6]
+```
+
+## Validation Steps
+1. **[Validation Area 1]**
+   - [ ] [Check 1]
+   - [ ] [Check 2]
+   - [ ] [Check 3]
+
+2. **[Validation Area 2]**
+   - [ ] [Check 1]
+   - [ ] [Check 2]
+   - [ ] [Check 3]
+
+## Success Criteria
+- [ ] [Measurable outcome 1]
+- [ ] [Measurable outcome 2]
+- [ ] [Measurable outcome 3]
 
 ## Status Snapshot
 - **Cycle ID**: [UNIQUE-ID]
@@ -34,44 +92,6 @@ This implementation plan follows the 6-step cyclical workflow process, with impl
 | 6. Reset Core Workflow Files & Sync Changes | Phase 5 |
 
 **NOTE**: Implementation status is tracked in `cycle-status.md`, not in this file.
-
-### Implementation Phases
-
-#### Phase 1: [Phase Name] (Workflow Step 4)
-1. [Task 1.1]
-2. [Task 1.2]
-3. [Task 1.3]
-   - [Subtask details]
-   - [Subtask details]
-
-#### Phase 2: [Phase Name] (Workflow Step 4)
-1. [Task 2.1]
-2. [Task 2.2]
-3. [Task 2.3]
-   - [Subtask details]
-   - [Subtask details]
-
-#### Phase 3: [Phase Name] (Workflow Step 4)
-1. [Task 3.1]
-2. [Task 3.2]
-3. [Task 3.3]
-   - [Subtask details]
-   - [Subtask details]
-
-#### Phase 4: Documentation and Context Updates (Workflow Step 5)
-1. Update context files:
-   - `00reaper/00OS-commands/context-00OS-current-state/[file1].md`
-   - `00reaper/00OS-commands/context-00OS-current-state/[file2].md`
-2. Update documentation:
-   - `00reaper/00OS-commands/documentation/[file1].md`
-   - `00reaper/00OS-commands/documentation/[file2].md`
-3. Update any relevant templates
-
-#### Phase 5: Finalization and Sync (Workflow Step 6)
-1. Reset core workflow files for next cycle
-2. Run `> reaper-sync` to sync 00OS changes to .cursor/rules
-3. Verify sync completion
-4. Document lessons learned
 
 ### Implementation Details
 
