@@ -1,10 +1,5 @@
 # Implementation Plan: [REQ-ID]
 
-## Overview
-- **Request**: [Brief description of the request]
-- **Goal**: [Clear statement of implementation goal]
-- **Approach**: [High-level approach summary]
-
 ## Implementation Phases
 ### Phase 1: [Phase Name]
 1. **[Task Group 1]**
@@ -57,7 +52,7 @@
 
 ## Status
 - **Current Status**: Implementation progress tracked in `cycle-status.md`
-- **Cross-References**: See `active-request.md` for requirements and `cycle-status.md` for current progress
+- **Cross-References**: See `active-request.md` for requirements
 - **Last Updated**: [YYYY-MM-DD]
 
 ## Tool Call Sequences
