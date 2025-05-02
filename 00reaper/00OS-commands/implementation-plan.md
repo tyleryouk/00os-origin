@@ -1,6 +1,6 @@
 # Implementation Plan: REQ-000
 
-## Phase 1: Workflow Folder Enhancement
+## Phase 1: Workflow Folder Enhancement ✅
 ### 1. Documentation Review and Consolidation ✅
 1. **Audit Documentation Directory** ✅
    - Review all files in `documentation/`
@@ -18,175 +18,201 @@
    - Ensure documentation hierarchy is clear
    - Consolidate and optimize tool-call-patterns.md
 
-### 2. Core File Optimization ✅
-1. **README.md Consolidation** ✅
-   - Focus on quick start and essential workflow
-   - Move detailed guides to documentation
-   - Keep under 250 lines while maintaining clarity
+### 2. Core Workflow File Refinement ✅
+1. **README.md Optimization** ✅
+   - Simplify and condense to under 250 lines
+   - Focus on essential workflow process information
+   - Ensure clear explanations of the cyclical process
 
-2. **Workflow File Templates** ✅
-   - Create optimized templates for:
-     - active-request.md (requirements focus)
-     - implementation-plan.md (action steps focus)
-     - cycle-status.md (progress tracking focus)
-   - Ensure templates promote brevity
+2. **Core Workflow File Update Pattern** ✅
+   - Implement clear file update boundaries
+   - Standardize file update patterns per REQ-009
+   - Ensure files focus on specific purposes (WHAT, HOW, WHERE)
 
-### 3. Process Documentation Updates ✅
-1. **Update Step Definitions** ✅
-   - Document clear file update boundaries
-   - Specify tool usage per step
-   - Add validation checkpoints
+## Phase 2: Command Revision ▶️
+### 1. reaper-init Command Enhancement ✅
+1. **Core Functionality Assessment** ✅
+   - Analyze current implementation
+   - Identify missing critical features
+   - Map required tool call sequence
 
-2. **Create Quick Reference Guides** ✅
-   - Step-by-step workflow guide
-   - File update permissions matrix
-   - Common patterns and examples
+2. **Command Structure Redesign** ✅
+   - Create enhanced structure with modular functions
+   - Implement zero-context initialization approach
+   - Enable focused loading with directory parameters
 
-## Phase 2: reaper-init Command Revision
-### 1. Process Definition Update
-1. **Create New Process Structure**
-   - Define enhanced tool call sequence following standards
-   - Implement comprehensive error handling with try/catch blocks
-   - Add detailed progress indicators for better feedback
+3. **Core Workflow Files Integration** ✅
+   - Add functionality to read and analyze core workflow files
+   - Implement analysis functions for active-request.md
+   - Implement analysis functions for cycle-status.md
+   - Include workflow context in initialization reports
 
-2. **Context Loading Implementation**
-   - Start with zero context assumption
-   - Add workflow folder structure analysis
-   - Implement comprehensive documentation processing
-   - Add improved state management for tracking loaded content
+4. **Testing and Validation** ▶️
+   - Test with various parameter combinations
+   - Verify error handling behavior
+   - Confirm content loading across different scenarios
 
-### 2. Tool Call Sequence Design
-1. **Initial Directory Structure Analysis**
-   ```javascript
-   // Start with workflow folder exploration
-   await tools.call('list_dir', {
-     relative_workspace_path: '00reaper/00OS-commands',
-     explanation: 'Analyzing workflow folder structure'
-   });
-   
-   // Explore documentation directory
-   await tools.call('list_dir', {
-     relative_workspace_path: '00reaper/00OS-commands/documentation',
-     explanation: 'Analyzing documentation structure'
-   });
-   
-   // Check context directories
-   await tools.call('list_dir', {
-     relative_workspace_path: '00reaper/00OS-commands/context-00OS-current-state',
-     explanation: 'Analyzing context state information'
-   });
-   ```
+### 2. reaper-sync Command Enhancement
+1. **Current Implementation Analysis**
+   - Identify shortcomings in current implementation
+   - Assess direct terminal command usage
+   - Map tool call requirements
 
-2. **Critical Documentation Loading**
-   ```javascript
-   // Load core standards
-   await tools.call('read_file', {
-     target_file: 'documentation/command-standards-core.md',
-     should_read_entire_file: true,
-     explanation: 'Loading command standards'
-   });
-   
-   // Load tool call patterns
-   await tools.call('read_file', {
-     target_file: 'documentation/tool-call-patterns.md',
-     should_read_entire_file: true,
-     explanation: 'Loading tool call patterns'
-   });
-   
-   // Load development workflow
-   await tools.call('read_file', {
-     target_file: 'documentation/00OS-command-development.md',
-     should_read_entire_file: true,
-     explanation: 'Loading command development documentation'
-   });
-   ```
+2. **Enhanced Implementation**
+   - Replace terminal command execution with tool calls
+   - Add proper error handling
+   - Create standardized response formatting
 
-3. **Context State Analysis**
-   ```javascript
-   // Current state processing
-   await tools.call('read_file', {
-     target_file: 'context-00OS-current-state/core-components.md',
-     should_read_entire_file: true,
-     explanation: 'Loading core component state'
-   });
-   
-   await tools.call('read_file', {
-     target_file: 'context-00OS-current-state/00reaper-processes.md',
-     should_read_entire_file: true,
-     explanation: 'Loading 00reaper process information'
-   });
-   ```
+### 3. reaper-read-files Command Enhancement
+1. **Current Implementation Review**
+   - Assess effectiveness of current implementation
+   - Identify opportunities for improvement
+   - Map integration points with other commands
 
-### 3. Implementation Enhancements
-1. **Improved Parameter Handling**
-   - Add support for directory focus flags
-   - Implement file pattern matching
-   - Support maximum file count limitations
+2. **Enhanced Implementation**
+   - Improve parameter handling
+   - Add pattern matching capabilities
+   - Create flexible file selection options
 
-2. **Dynamic Content Processing**
-   - Implement content relevance scoring
-   - Prioritize files based on relevance to current task
-   - Add content summarization capabilities
+## Phase 3: Context Processing
+### 1. Context State Tracking
+1. **Context Generation Strategy**
+   - Define context state tracking approach
+   - Create context generation functionality
+   - Implement state comparison
 
-3. **Progress Reporting**
-   - Add detailed loading progress indicators
-   - Implement statistics on loaded content
-   - Provide file category summaries
+2. **Context Loading Optimization**
+   - Improve context loading efficiency
+   - Add selective loading capabilities
+   - Implement context caching
 
-### 4. Error Handling Improvements
-1. **Enhanced Error Recovery**
-   - Implement graceful failure for missing directories
-   - Add fallback loading patterns for critical files
-   - Provide specific error messages and recovery suggestions
+### 2. Current State Awareness
+1. **State Change Detection**
+   - Implement detection of command changes
+   - Create state tracking for workflow files
+   - Add historical state comparison
 
-2. **Validation Checkpoints**
-   - Verify minimum content loaded thresholds
-   - Ensure critical files are accessible
-   - Validate content format and structure
+2. **State Integration**
+   - Integrate state awareness across commands
+   - Create consistent state reporting
+   - Implement state-based decision making
 
-## Implementation Sequence
-1. **Completed Steps**
-   - ✅ Documentation consolidation
-   - ✅ Template optimization
-   - ✅ Core file updates
-   - ✅ Process documentation updates
+### 3. Process Execution Logging
+1. **Log Structure Design**
+   - Define logging format
+   - Create log storage approach
+   - Implement log rotation
 
-2. **Next Steps**
-   - Process definition update for reaper-init
-   - Tool call sequence implementation
-   - Error handling enhancements
-   - Progress reporting improvements
-   - Testing and validation
+2. **Log Analysis**
+   - Add log querying capabilities
+   - Create log summarization
+   - Implement error pattern detection
 
-## Validation Steps
-1. **Documentation Checks**
-   - ✅ All core files under 250 lines
-   - ✅ Clear file boundaries maintained
-   - ✅ Documentation properly organized
+## Phase 4: Final Workflow Folder Consolidation
+### 1. Workflow Process Simplification
+1. **Step-Specific File Update Boundaries**
+   - Ensure step 1 updates ONLY active-request.md
+   - Step 2 has no file updates (research only)
+   - Step 3 updates ONLY implementation-plan.md
+   - Steps 4-6 update ONLY cycle-status.md
 
-2. **Process Validation**
-   - Workflow steps clearly defined
-   - File update boundaries enforced
-   - Tool call sequences optimized
+2. **Documentation Update Process**
+   - Clarify that step 5 updates ONLY documentation
+   - Remove context file updating from step 5
+   - Update README.md with clarified process
 
-3. **reaper-init Testing**
-   - Zero context initialization
-   - Proper tool call execution
-   - Error handling verification
+### 2. Core Workflow File Reset
+1. **Complete File Clearing**
+   - Implement process for clearing ALL three core files
+   - Create standardized reset approach
+   - Document reset process in README.md
 
-## Success Verification
-1. **File Size Compliance**
-   - [x] README.md < 250 lines
-   - [x] active-request.md < 250 lines
-   - [x] implementation-plan.md < 250 lines
-   - [x] cycle-status.md < 250 lines
+2. **Reset Verification**
+   - Add verification steps for file reset
+   - Create reset confirmation checks
+   - Implement reset reporting
 
-2. **Process Clarity**
-   - [x] Step definitions clear and complete
-   - [x] File boundaries documented
-   - [x] Tool usage specified
+### 3. Template Refinement
+1. **Template Size Reduction**
+   - Optimize templates to ensure files stay under 250 lines
+   - Simplify template structure
+   - Remove redundant sections
 
-3. **Command Functionality**
-   - [ ] reaper-init executes properly
-   - [ ] Context loaded correctly
-   - [ ] Error handling works 
+2. **Template Standardization**
+   - Ensure consistent format across templates
+   - Create clear section markers
+   - Add standardized update instructions
+
+## Implementation Details
+
+### Core File Update Pattern
+
+#### active-request.md
+- **Purpose**: WHAT needs to be done (requirements only)
+- **Update Pattern**: Step 1 ONLY
+- **Content Focus**: Pure requirements with no status tracking
+- **Size Target**: Under 250 lines
+
+#### implementation-plan.md
+- **Purpose**: HOW it will be done (implementation blueprint)
+- **Update Pattern**: Step 3 ONLY
+- **Content Focus**: Concrete implementation steps and phases
+- **Size Target**: Under 250 lines
+
+#### cycle-status.md
+- **Purpose**: WHERE we are in the process (progress tracking)
+- **Update Pattern**: Steps 4-6 ONLY
+- **Content Focus**: Progress, blockers, decisions, next actions
+- **Size Target**: Under 250 lines
+
+### reaper-init Command Enhancements
+
+The reaper-init command has been enhanced to:
+1. Start with zero context assumptions
+2. Load and analyze core workflow files
+3. Extract workflow context from active-request.md and cycle-status.md
+4. Present workflow context in initialization reports
+5. Support focused loading with directory parameters
+6. Include comprehensive error handling
+7. Generate detailed initialization reports
+
+### Critical Workflow Process Enhancements
+
+1. **Step 5 Clarification**: Update supporting materials focuses ONLY on documentation, not context
+2. **Step 6 Enhancement**: Reset ALL core workflow files completely
+3. **File Size Control**: Ensure all four root folder files stay under 250 lines
+4. **Clear Update Boundaries**: Each step updates specific files only
+
+## Testing and Verification Strategy
+
+### reaper-init Testing
+1. Run with no parameters to verify full context loading
+2. Test with --directory parameter to verify focused loading
+3. Test with --verbose to verify detailed reporting
+4. Verify workflow context extraction from active-request.md
+5. Verify workflow context extraction from cycle-status.md
+6. Validate content reporting accuracy
+7. Test error handling with invalid parameters
+
+### Workflow Process Testing
+1. Verify README.md is under 250 lines
+2. Ensure clear file update boundaries are documented
+3. Validate step 5 focuses only on documentation updates
+4. Verify step 6 includes clearing all three core files
+
+## Dependencies and Blockers
+
+### Dependencies
+1. Existing workflow file templates
+2. Current directory structure
+3. Established tool call patterns
+
+### Blockers
+None identified at present
+
+## Rollback Plan
+
+If issues arise:
+1. Restore original README.md from version control
+2. Revert to previous workflow process
+3. Maintain original file update patterns 

@@ -10,10 +10,10 @@
   - Implementation Plan: `implementation-plan.md`
 
 ## Quick Status Summary
-- **Current Focus**: Enhanced reaper-init implementation with core workflow file reading capabilities
-- **Next Action**: Complete testing and documentation of reaper-init changes
+- **Current Focus**: Final workflow folder consolidation and optimization
+- **Next Action**: Optimize templates to ensure core workflow files stay under 250 lines
 - **Blockers**: None
-- **Last Completed**: Added core workflow file analysis to reaper-init command
+- **Last Completed**: Updated README.md to be concise (<250 lines) and enhanced implementation-plan.md with workflow update patterns
 
 ## Current Cycle Progress
 - [x] Step 1: Read User Request
@@ -24,34 +24,52 @@
     - [x] Audit Documentation Directory
     - [x] Template Optimization
     - [x] Documentation Reorganization
+    - [x] Core Workflow File Refinement
+      - [x] README.md optimization (reduced to <250 lines)
+      - [x] Established clear file update patterns
   - [▶] Phase 2: Command Revision
     - [x] Reaper-init enhancement (added core workflow files reading)
-    - [ ] Complete testing of reaper-init enhancements
+    - [▶] Complete testing of reaper-init enhancements
     - [ ] Implement reaper-sync improvements
     - [ ] Implement reaper-read-files improvements
   - [ ] Phase 3: Context Processing
     - [ ] Context State Tracking
     - [ ] Current State Awareness
     - [ ] Process Execution Logging
+  - [▶] Phase 4: Final Workflow Folder Consolidation
+    - [▶] Workflow Process Simplification
+      - [x] Updated README.md with step-specific file update boundaries
+      - [x] Clarified step 5 to focus only on documentation updates
+      - [ ] Template refinement to ensure files stay under 250 lines
+    - [ ] Core Workflow File Reset
+      - [ ] Implement process for clearing ALL three core files
+      - [ ] Document reset process in README.md
 - [ ] Step 5: Update Supporting Materials
 - [ ] Step 6: Reset Core Workflow Files & Sync Changes
 
 ## Notes on Current Focus
 
-The current focus is on enhancing the reaper-init command to properly read and analyze the core workflow files. We've now successfully implemented:
+The current focus is on final workflow folder consolidation and optimization, after having successfully enhanced the reaper-init command. Our recent achievements include:
 
-1. Reading all core workflow files: README.md, active-request.md, implementation-plan.md, and cycle-status.md
-2. Analyzing the content of active-request.md to extract request ID, parts, and requirements
-3. Analyzing cycle-status.md to extract current stage, focus, and next actions
-4. Including this information in the initialization report
+1. **README.md Optimization**: Simplified and condensed README.md to under 250 lines while preserving essential information about the workflow process
+2. **Clear File Update Boundaries**: Established and documented the file update pattern where:
+   - Step 1 updates ONLY active-request.md (WHAT needs to be done)
+   - Step 2 has no file updates (research only)
+   - Step 3 updates ONLY implementation-plan.md (HOW it will be done)
+   - Steps 4-6 update ONLY cycle-status.md (WHERE we are in the process)
+3. **Step 5 Clarification**: Updated documentation to specify that step 5 updates ONLY documentation files, not context files
 
-Next up is testing these changes and ensuring they work correctly in all scenarios, followed by implementing similar improvements to reaper-sync and reaper-read-files commands.
+Next focus areas:
+1. Complete template optimization to ensure all core workflow files stay under 250 lines
+2. Implement a standardized process for clearing all three core workflow files during Step 6
+3. Complete testing and validation of the reaper-init command enhancements
 
 ## Recent Activities
-- Added core workflow file reading capabilities to reaper-init command
-- Enhanced reporting to include workflow context in initialization reports
-- Consolidated documentation files for better organization
-- Optimized tool-call-patterns.md file for clarity and conciseness
+- Optimized README.md to be under 250 lines
+- Updated implementation-plan.md with new Phase 4 for final workflow folder consolidation
+- Enhanced reaper-init command to read and analyze core workflow files
+- Updated file update patterns to create clear boundaries between workflow files
+- Clarified Step 5 to focus exclusively on documentation updates
 
 ## Known Issues
 - None at present
@@ -60,22 +78,33 @@ Next up is testing these changes and ensuring they work correctly in all scenari
 - N/A
 
 ## Implementation Notes
-### Current Phase: reaper-init Command Revision
-- Implemented completely rewritten reaper-init command with:
-  - Zero context assumption starting point
-  - Comprehensive directory and file exploration
-  - Structured content tracking and categorization
-  - Enhanced error handling with specific suggestions
-  - Improved parameter handling with directory focus, pattern matching, and file limits
-  - Detailed progress reporting with statistics
+### Current Phase: Final Workflow Folder Consolidation
+We're working on consolidating and optimizing the workflow folder structure and processes with several key improvements:
+
+1. **Core File Purpose Separation**:
+   - active-request.md: WHAT needs to be done (requirements only)
+   - implementation-plan.md: HOW it will be done (implementation blueprint)
+   - cycle-status.md: WHERE we are in the process (progress tracking)
+
+2. **File Update Boundaries**:
+   - Clear rules about which files get updated in which steps
+   - Reduced cognitive load during development
+   - Simplified training for new contributors
+
+3. **File Size Control**:
+   - All core files targeting under 250 lines
+   - README.md successfully reduced to under 250 lines
+   - Template optimization in progress
+
+4. **Complete Reset Process**:
+   - Step 6 should clear ALL three core workflow files
+   - No preservation of past cycle information
 
 ### Next Steps
-1. Complete testing and validation of reaper-init command
-   - Test with various parameter combinations
-   - Verify error handling behavior
-   - Confirm content loading across different scenarios
-2. Update supporting materials with command usage examples
-3. Prepare for workflow reset and sync
+1. Refine templates to ensure files stay under 250 lines
+2. Implement process for clearing all core workflow files
+3. Complete testing of reaper-init enhancements
+4. Prepare for next command enhancements (reaper-sync and reaper-read-files)
 
 ### Blockers/Dependencies
 None currently identified
@@ -136,6 +165,11 @@ Awaiting new request assignment.
 - [2023-04-29 16:30] Updated documentation files with REQ-003 improvements
 - [2023-04-29 16:00] Updated context files for 00reaper and system processes
 - [2023-04-29 15:45] Completed Step 4: Make Changes to 00OS - All 10 processes updated successfully
+- [2024-07-02 18:30] Updated README.md to be concise (<250 lines)
+- [2024-07-02 18:15] Updated implementation-plan.md with Phase 4 for workflow folder consolidation
+- [2024-07-02 18:00] Updated cycle-status.md to reflect new focus on workflow folder consolidation
+- [2024-07-02 17:45] Enhanced reaper-init command with core workflow file reading
+- [2024-07-02 17:30] Finalized documentation consolidation
 
 ## Blockers & Decisions
 
