@@ -2,6 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
+type: always
 ---
 # 00OS Command Standards
 
@@ -19,22 +20,10 @@ Commands must be defined in `/00os/processes/{category}/{command}.md` with this 
 
 ```yaml
 ---
-name: command-name       # Required: Command identifier
-description: Brief desc  # Required: Short explanation
-version: 1.0.0          # Required: Semantic version
-author: 00reaper        # Required: Author ID
-category: system        # Required: system/tools/apps
-permissions: [basic]    # Required: Permission list
-inputs:                 # Required: Arguments/flags
-  - name: param
-    type: string       # string/number/boolean/array/object
-    required: true     # Required flag
-    default: null      # Default value
-    description: desc  # Parameter description
-outputs:               # Required: Output definition
-  - name: result
-    type: string
-    description: desc
+description: 
+globs: 
+alwaysApply: false
+type: always
 ---
 ```
 

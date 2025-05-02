@@ -2,6 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
+type: always
 ---
 # 00OS Command Template
 
@@ -10,30 +11,10 @@ This template defines the standard structure for implementing 00OS commands.
 ## Basic Command Template
 ```yaml
 ---
-name: command-name
-description: Brief command description
-version: 1.0.0
-author: 00reaper
-category: system
-permissions: [basic]
-inputs:
-  - name: param1
-    type: string
-    required: true
-    description: First parameter
-  - name: flag1
-    type: boolean
-    required: false
-    default: false
-    description: Optional flag
-outputs:
-  - name: result
-    type: object
-    description: Command result
-usage: command-name <param1> [--flag1]
-examples:
-  - command-name value
-  - command-name value --flag1
+description: 
+globs: 
+alwaysApply: false
+type: always
 ---
 ```
 
