@@ -30,13 +30,16 @@ async function execute() {
     // STEP 1: Load workflow folder structure
     await loadWorkflowFolderStructure(params, contentTracker);
     
-    // STEP 2: Load documentation
+    // STEP 2: Load core workflow files
+    await loadCoreWorkflowFiles(params, contentTracker);
+    
+    // STEP 3: Load documentation
     await loadDocumentation(params, contentTracker);
     
-    // STEP 3: Load context state
+    // STEP 4: Load context state
     await loadContextState(params, contentTracker);
     
-    // STEP 4: Load command processes
+    // STEP 5: Load command processes
     await loadCommandProcesses(params, contentTracker);
     
     // Generate and return initialization report
@@ -93,6 +96,12 @@ function initializeContentTracker() {
     workflow: {
       directories: [],
       files: []
+    },
+    coreWorkflow: {
+      readme: null,
+      activeRequest: null,
+      implementationPlan: null, 
+      cycleStatus: null
     },
     documentation: {
       standards: [],
@@ -188,6 +197,155 @@ async function loadWorkflowFolderStructure(params, tracker) {
   } catch (error) {
     console.error(`Error loading workflow structure: ${error.message}`);
     // Continue with other parts of initialization
+  }
+}
+
+/**
+ * Load core workflow files
+ * @param {Object} params - Input parameters
+ * @param {Object} tracker - Content tracker
+ */
+async function loadCoreWorkflowFiles(params, tracker) {
+  try {
+    // Define core workflow files
+    const coreFiles = [
+      {
+        path: '00reaper/00OS-commands/README.md',
+        property: 'readme',
+        explanation: 'Loading core workflow README'
+      },
+      {
+        path: '00reaper/00OS-commands/active-request.md',
+        property: 'activeRequest',
+        explanation: 'Loading active request definition'
+      },
+      {
+        path: '00reaper/00OS-commands/implementation-plan.md',
+        property: 'implementationPlan',
+        explanation: 'Loading implementation plan'
+      },
+      {
+        path: '00reaper/00OS-commands/cycle-status.md',
+        property: 'cycleStatus',
+        explanation: 'Loading cycle status information'
+      }
+    ];
+    
+    // Load each core workflow file
+    for (const file of coreFiles) {
+      try {
+        tracker.stats.loadAttempts++;
+        
+        const fileContent = await tools.call('read_file', {
+          target_file: file.path,
+          should_read_entire_file: true,
+          explanation: file.explanation
+        });
+        
+        if (fileContent && fileContent.content) {
+          // Store file content and metadata
+          tracker.coreWorkflow[file.property] = {
+            path: file.path,
+            name: file.path.split('/').pop(),
+            content: fileContent.content,
+            size: fileContent.content.length
+          };
+          
+          // Analyze specific files
+          if (file.property === 'activeRequest') {
+            analyzeActiveRequest(tracker, fileContent.content);
+          } else if (file.property === 'cycleStatus') {
+            analyzeCycleStatus(tracker, fileContent.content);
+          }
+          
+          tracker.stats.loadSuccess++;
+          tracker.stats.totalFiles++;
+        }
+      } catch (error) {
+        console.error(`Error loading core workflow file ${file.path}: ${error.message}`);
+        tracker.stats.loadFailures++;
+      }
+    }
+  } catch (error) {
+    console.error(`Error in core workflow file loading: ${error.message}`);
+    // Continue with other parts of initialization
+  }
+}
+
+/**
+ * Analyze active request content
+ * @param {Object} tracker - Content tracker
+ * @param {string} content - File content
+ */
+function analyzeActiveRequest(tracker, content) {
+  try {
+    // Extract request ID
+    const requestIdMatch = content.match(/^# (REQ-\d+):/m);
+    if (requestIdMatch) {
+      const requestId = requestIdMatch[1];
+      
+      // Store in tracker
+      if (!tracker.analysisResults) tracker.analysisResults = {};
+      tracker.analysisResults.activeRequestId = requestId;
+      
+      // Extract parts and requirements
+      const parts = [];
+      let currentPart = null;
+      
+      const lines = content.split('\n');
+      
+      for (const line of lines) {
+        if (line.match(/^## Part \d+:/)) {
+          currentPart = {
+            title: line.replace(/^## /, ''),
+            requirements: []
+          };
+          parts.push(currentPart);
+        } else if (currentPart && line.match(/^\d+\.\s+\*\*.*?\*\*/)) {
+          const requirement = line.replace(/^\d+\.\s+\*\*/, '').replace(/\*\*/, '');
+          currentPart.requirements.push(requirement);
+        }
+      }
+      
+      if (parts.length > 0) {
+        tracker.analysisResults.requestParts = parts;
+      }
+    }
+  } catch (error) {
+    console.error(`Error analyzing active request: ${error.message}`);
+  }
+}
+
+/**
+ * Analyze cycle status content
+ * @param {Object} tracker - Content tracker
+ * @param {string} content - File content
+ */
+function analyzeCycleStatus(tracker, content) {
+  try {
+    // Extract current stage
+    const stageMatch = content.match(/\*\*CURRENT CYCLE STAGE\*\*:\s*(.*)/);
+    if (stageMatch) {
+      const currentStage = stageMatch[1];
+      
+      // Store in tracker
+      if (!tracker.analysisResults) tracker.analysisResults = {};
+      tracker.analysisResults.currentStage = currentStage;
+      
+      // Extract current focus
+      const focusMatch = content.match(/\*\*Current Focus\*\*:\s*(.*)/);
+      if (focusMatch) {
+        tracker.analysisResults.currentFocus = focusMatch[1];
+      }
+      
+      // Extract next action
+      const nextActionMatch = content.match(/\*\*Next Action\*\*:\s*(.*)/);
+      if (nextActionMatch) {
+        tracker.analysisResults.nextAction = nextActionMatch[1];
+      }
+    }
+  } catch (error) {
+    console.error(`Error analyzing cycle status: ${error.message}`);
   }
 }
 
@@ -478,12 +636,40 @@ function generateInitializationReport(params, tracker) {
                           tracker.commands.reaper.length + 
                           tracker.commands.dev.length;
     
+    // Count loaded core workflow files
+    const loadedCoreFiles = Object.values(tracker.coreWorkflow).filter(item => item !== null).length;
+    
     // Generate basic report
     let report = `✅ 00reaper Initialization Complete\n\n`;
+    
+    // Add current workflow context if available
+    if (tracker.analysisResults) {
+      report += `Current Workflow Context\n`;
+      report += `======================\n`;
+      
+      if (tracker.analysisResults.activeRequestId) {
+        report += `Active Request: ${tracker.analysisResults.activeRequestId}\n`;
+      }
+      
+      if (tracker.analysisResults.currentStage) {
+        report += `Current Stage: ${tracker.analysisResults.currentStage}\n`;
+      }
+      
+      if (tracker.analysisResults.currentFocus) {
+        report += `Current Focus: ${tracker.analysisResults.currentFocus}\n`;
+      }
+      
+      if (tracker.analysisResults.nextAction) {
+        report += `Next Action: ${tracker.analysisResults.nextAction}\n`;
+      }
+      
+      report += `\n`;
+    }
     
     // System knowledge section
     report += `System Knowledge Loaded\n`;
     report += `====================\n`;
+    report += `Core Workflow Files: ${loadedCoreFiles}\n`;
     report += `Documentation Files: ${totalDocumentation}\n`;
     report += `Context State Files: ${totalContext}\n`;
     report += `Command Processes: ${totalCommands}\n`;
@@ -501,6 +687,16 @@ function generateInitializationReport(params, tracker) {
     if (params.verbose) {
       report += `Detailed Content Breakdown\n`;
       report += `========================\n\n`;
+      
+      // Core workflow files breakdown
+      report += `Core Workflow Files (${loadedCoreFiles})\n`;
+      report += `-------------------\n`;
+      Object.entries(tracker.coreWorkflow).forEach(([key, value]) => {
+        if (value) {
+          report += `- ${value.name}\n`;
+        }
+      });
+      report += `\n`;
       
       // Documentation breakdown
       report += `Documentation Files (${totalDocumentation})\n`;
@@ -543,6 +739,22 @@ function generateInitializationReport(params, tracker) {
         });
         
         report += `\n`;
+      }
+      
+      // If request parts were analyzed, show details
+      if (tracker.analysisResults && tracker.analysisResults.requestParts) {
+        report += `Active Request Details\n`;
+        report += `---------------------\n`;
+        
+        tracker.analysisResults.requestParts.forEach((part, index) => {
+          report += `${part.title}\n`;
+          
+          part.requirements.forEach((req, reqIndex) => {
+            report += `  ${reqIndex + 1}. ${req}\n`;
+          });
+          
+          report += `\n`;
+        });
       }
     }
     
