@@ -1,30 +1,47 @@
 ---
 name: reaper-init
-description: Initialize 00reaper context and load comprehensive system understanding
-version: 3.0.0
+description: Initialize 00reaper context and system understanding
+version: 2.0.0
 author: 00reaper
 category: 00reaper
-permissions: [basic]
+permissions: [basic, file-read]
 inputs:
+  - name: directory
+    type: string
+    required: false
+    default: null
+    description: Target directory to focus initialization (defaults to all key directories)
   - name: verbose
     type: boolean
     required: false
     default: false
-    description: Show detailed loading information
-  - name: focus
+    description: Display detailed information about loaded content
+  - name: max_files
+    type: number
+    required: false
+    default: 100
+    description: Maximum number of files to load (per category)
+  - name: pattern
     type: string
     required: false
-    description: Area to emphasize (architecture|sync|processes)
+    default: null
+    description: File pattern to match (e.g., "*.md")
 outputs:
-  - name: status
+  - name: success
+    type: boolean
+    description: Whether initialization was successful
+  - name: loaded_content
+    type: object
+    description: Summary of loaded content
+  - name: message
     type: string
-    description: Initialization status and summary
+    description: Initialization status message
 ---
 
 # Process: reaper-init
 
 ## Description
-Initializes the 00reaper context by loading essential system files and establishing understanding of the 00OS architecture, purpose, and workflow.
+Initializes the 00reaper context by loading essential system files and establishing understanding of the 00OS architecture, purpose, and workflow. Starts with zero context assumption and provides a comprehensive loading of documentation, context, and command information.
 
 ## Execution
 
@@ -35,342 +52,552 @@ Initializes the 00reaper context by loading essential system files and establish
 async function execute() {
   try {
     // Parse and validate input parameters
-    const params = parseAndValidateParameters();
-    if (!params.valid) {
-      return formatError(params.message, params.code);
-    }
+    const params = parseInputParameters();
     
-    // Track loaded content
-    const loadedContent = {
-      architectureFiles: 0,
-      coreComponents: 0,
-      processFiles: 0,
-      configFiles: 0
-    };
+    // Initialize content tracking
+    const contentTracker = initializeContentTracker();
     
-    // Perform file system operations
-    const coreComponents = await loadCoreComponents();
-    loadedContent.coreComponents = coreComponents.length;
+    // Display initialization start message
+    console.log(`Starting initialization process...`);
     
-    const architectureFiles = await loadArchitectureFiles(params.focus);
-    loadedContent.architectureFiles = architectureFiles.length;
+    // STEP 1: Load workflow folder structure
+    await loadWorkflowFolderStructure(params, contentTracker);
     
-    const processFiles = await loadProcessFiles(params.focus);
-    loadedContent.processFiles = processFiles.length;
+    // STEP 2: Load documentation
+    await loadDocumentation(params, contentTracker);
     
-    const configFiles = await loadConfigFiles();
-    loadedContent.configFiles = configFiles.length;
+    // STEP 3: Load context state
+    await loadContextState(params, contentTracker);
     
-    // Generate initialization report
-    return formatInitializationReport(loadedContent, params.verbose, params.focus);
+    // STEP 4: Load command processes
+    await loadCommandProcesses(params, contentTracker);
+    
+    // Generate and return initialization report
+    return generateInitializationReport(params, contentTracker);
   } catch (error) {
-    return formatError(`Error during initialization: ${error.message}`, 'INIT_ERROR');
+    // Handle any unexpected errors
+    return formatError(
+      `Error during initialization: ${error.message}`, 
+      'INIT_ERROR',
+      [
+        'Try running the command again without any parameters',
+        'Check if the required directories exist',
+        'Ensure you have proper file access permissions'
+      ]
+    );
   }
 }
 
 /**
  * Parse and validate input parameters
- * @returns {Object} Validated parameters or error information
+ * @returns {Object} Parsed parameters
  */
-function parseAndValidateParameters() {
-  try {
-    // Get input parameters with defaults
-    const verbose = inputs.verbose === true;
-    const focus = inputs.focus || null;
-    
-    // Validate focus if provided
-    if (focus) {
-      const validFocusAreas = ['architecture', 'sync', 'processes'];
-      if (!validFocusAreas.includes(focus)) {
-        return {
-          valid: false,
-          code: "INVALID_PARAMETER",
-          message: `Invalid focus area: ${focus}. Valid options are: ${validFocusAreas.join(', ')}`
-        };
-      }
+function parseInputParameters() {
+  const params = {
+    directory: inputs.directory || null,
+    verbose: inputs.verbose === true,
+    maxFiles: inputs.max_files || 100,
+    pattern: inputs.pattern || null
+  };
+  
+  // Validate directory if provided
+  if (params.directory) {
+    // Make sure directory path is properly formatted
+    params.directory = params.directory.replace(/\\/g, '/');
+    if (!params.directory.endsWith('/')) {
+      params.directory += '/';
     }
-    
-    return {
-      valid: true,
-      verbose,
-      focus
-    };
-  } catch (error) {
-    return {
-      valid: false,
-      code: "PARAMETER_PARSING_ERROR",
-      message: `Error parsing parameters: ${error.message}`
-    };
   }
+  
+  // Validate maxFiles
+  if (typeof params.maxFiles !== 'number' || params.maxFiles < 1) {
+    params.maxFiles = 100; // Reset to default if invalid
+  }
+  
+  return params;
 }
 
 /**
- * Load core component files
- * @returns {Array} List of loaded core component files
+ * Initialize content tracker
+ * @returns {Object} Content tracker object
  */
-async function loadCoreComponents() {
-  const loadedFiles = [];
-  const corePath = '00OS/core/';
-  
+function initializeContentTracker() {
+  return {
+    workflow: {
+      directories: [],
+      files: []
+    },
+    documentation: {
+      standards: [],
+      templates: [],
+      guides: []
+    },
+    context: {
+      system: [],
+      processes: []
+    },
+    commands: {
+      system: [],
+      reaper: [],
+      dev: []
+    },
+    stats: {
+      totalDirectories: 0,
+      totalFiles: 0,
+      loadAttempts: 0,
+      loadSuccess: 0,
+      loadFailures: 0
+    }
+  };
+}
+
+/**
+ * Load workflow folder structure
+ * @param {Object} params - Input parameters
+ * @param {Object} tracker - Content tracker
+ */
+async function loadWorkflowFolderStructure(params, tracker) {
   try {
-    const coreDir = await tools.call('list_dir', {
-      relative_workspace_path: corePath,
-      explanation: 'Loading core components for initialization'
+    // Start with main workflow directory
+    const workflowDir = '00reaper/00OS-commands/';
+    
+    const mainDirResult = await tools.call('list_dir', {
+      relative_workspace_path: workflowDir,
+      explanation: 'Loading main workflow directory structure'
     });
     
-    if (coreDir && coreDir.entries) {
-      for (const entry of coreDir.entries) {
-        if (!entry.is_directory && entry.path.endsWith('.md')) {
-          try {
-            const fileContent = await tools.call('read_file', {
-              target_file: entry.path,
-              should_read_entire_file: true,
-              explanation: `Reading core component ${entry.path}`
-            });
-            
-            if (fileContent && fileContent.content) {
-              loadedFiles.push({
-                path: entry.path,
-                name: entry.path.split('/').pop().replace('.md', '')
-              });
-            }
-          } catch (error) {
-            // Log error but continue with other files
-            console.error(`Error reading ${entry.path}: ${error.message}`);
-          }
-        }
+    if (mainDirResult && mainDirResult.entries) {
+      // Track directories
+      tracker.workflow.directories.push({
+        path: workflowDir,
+        entries: mainDirResult.entries.length
+      });
+      
+      tracker.stats.totalDirectories++;
+      
+      // Track workflow files (core workflow files)
+      const coreWorkflowFiles = mainDirResult.entries.filter(entry => 
+        !entry.is_directory && entry.name.endsWith('.md')
+      );
+      
+      for (const file of coreWorkflowFiles) {
+        tracker.workflow.files.push({
+          path: file.path,
+          name: file.name
+        });
+        tracker.stats.totalFiles++;
+      }
+      
+      // Load documentation directory structure
+      const docsDir = `${workflowDir}documentation/`;
+      const docsDirResult = await tools.call('list_dir', {
+        relative_workspace_path: docsDir,
+        explanation: 'Loading documentation directory structure'
+      });
+      
+      if (docsDirResult && docsDirResult.entries) {
+        tracker.workflow.directories.push({
+          path: docsDir,
+          entries: docsDirResult.entries.length
+        });
+        tracker.stats.totalDirectories++;
+      }
+      
+      // Load context directory structure
+      const contextDir = `${workflowDir}context-00OS-current-state/`;
+      const contextDirResult = await tools.call('list_dir', {
+        relative_workspace_path: contextDir,
+        explanation: 'Loading context directory structure'
+      });
+      
+      if (contextDirResult && contextDirResult.entries) {
+        tracker.workflow.directories.push({
+          path: contextDir,
+          entries: contextDirResult.entries.length
+        });
+        tracker.stats.totalDirectories++;
       }
     }
   } catch (error) {
-    console.error(`Error loading core components: ${error.message}`);
+    console.error(`Error loading workflow structure: ${error.message}`);
+    // Continue with other parts of initialization
   }
-  
-  return loadedFiles;
 }
 
 /**
- * Load architecture files from 00reaper/00OS-creation
- * @param {string} focus - Optional focus area to prioritize
- * @returns {Array} List of loaded architecture files
+ * Load documentation files
+ * @param {Object} params - Input parameters
+ * @param {Object} tracker - Content tracker
  */
-async function loadArchitectureFiles(focus) {
-  const loadedFiles = [];
-  const architecturePath = '00reaper/00OS-creation/';
-  
-  // Key architecture files to prioritize
-  let priorityFiles = [
-    'understanding-00os.md',
-    'system-architecture.md',
-    'terminal-interface-design.md',
-    'final-goal.md',
-    'process-format.md'
-  ];
-  
-  // If focus is architecture or sync, prioritize accordingly
-  if (focus === 'architecture') {
-    priorityFiles = [
-      'system-architecture.md',
-      'terminal-interface-design.md',
-      'process-format.md',
-      'understanding-00os.md',
-      'final-goal.md'
-    ];
-  } else if (focus === 'sync') {
-    priorityFiles = [
-      'sync-process.md',
-      'cursor-rules-integration.md',
-      'system-architecture.md',
-      'process-format.md',
-      'understanding-00os.md'
-    ];
-  }
-  
+async function loadDocumentation(params, tracker) {
   try {
-    const archDir = await tools.call('list_dir', {
-      relative_workspace_path: architecturePath,
-      explanation: 'Loading architecture documents'
-    });
+    // Define critical documentation files to load
+    const criticalDocs = [
+      {
+        path: '00reaper/00OS-commands/documentation/command-standards-core.md',
+        category: 'standards',
+        explanation: 'Loading command standards documentation'
+      },
+      {
+        path: '00reaper/00OS-commands/documentation/command-template-core.md',
+        category: 'templates',
+        explanation: 'Loading command template documentation'
+      },
+      {
+        path: '00reaper/00OS-commands/documentation/tool-call-patterns.md',
+        category: 'standards',
+        explanation: 'Loading tool call patterns documentation'
+      },
+      {
+        path: '00reaper/00OS-commands/documentation/00OS-command-development.md',
+        category: 'guides',
+        explanation: 'Loading command development guide'
+      },
+      {
+        path: '00reaper/00OS-commands/documentation/00OS-command-user-guide.md',
+        category: 'guides',
+        explanation: 'Loading command user guide'
+      }
+    ];
     
-    if (archDir && archDir.entries) {
-      for (const fileName of priorityFiles) {
-        const entry = archDir.entries.find(e => e.path.endsWith(fileName));
-        if (entry) {
-          try {
-            const fileContent = await tools.call('read_file', {
-              target_file: entry.path,
-              should_read_entire_file: true,
-              explanation: `Reading architecture document ${entry.path}`
-            });
-            
-            if (fileContent && fileContent.content) {
-              loadedFiles.push({
-                path: entry.path,
-                name: entry.path.split('/').pop().replace('.md', '')
-              });
-            }
-          } catch (error) {
-            // Log error but continue with other files
-            console.error(`Error reading ${entry.path}: ${error.message}`);
-          }
-        }
-      }
-    }
-  } catch (error) {
-    console.error(`Error loading architecture files: ${error.message}`);
-  }
-  
-  return loadedFiles;
-}
-
-/**
- * Load process files
- * @param {string} focus - Optional focus area to prioritize
- * @returns {Array} List of loaded process files
- */
-async function loadProcessFiles(focus) {
-  const loadedFiles = [];
-  
-  // Define directories to search based on focus
-  let processDirectories = [
-    '00OS/processes/system/',
-    '00OS/processes/00reaper/',
-    '00OS/processes/1000xdev/'
-  ];
-  
-  // If focus is processes, prioritize process files
-  if (focus === 'processes') {
-    // Start with 00reaper processes
-    processDirectories = [
-      '00OS/processes/00reaper/',
-      '00OS/processes/system/',
-      '00OS/processes/1000xdev/'
-    ];
-  }
-  
-  try {
-    for (const processDir of processDirectories) {
+    // Load each critical documentation file
+    for (const doc of criticalDocs) {
       try {
-        const dirContents = await tools.call('list_dir', {
-          relative_workspace_path: processDir,
-          explanation: `Loading process files from ${processDir}`
+        tracker.stats.loadAttempts++;
+        
+        const fileContent = await tools.call('read_file', {
+          target_file: doc.path,
+          should_read_entire_file: true,
+          explanation: doc.explanation
         });
         
-        if (dirContents && dirContents.entries) {
-          for (const entry of dirContents.entries) {
-            if (!entry.is_directory && entry.path.endsWith('.md')) {
-              loadedFiles.push({
-                path: entry.path,
-                name: entry.path.split('/').pop().replace('.md', '')
+        if (fileContent && fileContent.content) {
+          tracker.documentation[doc.category].push({
+            path: doc.path,
+            name: doc.path.split('/').pop(),
+            size: fileContent.content.length
+          });
+          
+          tracker.stats.loadSuccess++;
+          tracker.stats.totalFiles++;
+        }
+      } catch (error) {
+        console.error(`Error loading documentation file ${doc.path}: ${error.message}`);
+        tracker.stats.loadFailures++;
+      }
+    }
+    
+    // Conditional: Load testing documentation if verbose mode is enabled
+    if (params.verbose) {
+      const testingDocs = [
+        {
+          path: '00reaper/00OS-commands/documentation/testing/testing-guide.md',
+          category: 'guides',
+          explanation: 'Loading testing standards guide'
+        },
+        {
+          path: '00reaper/00OS-commands/documentation/testing/testing-framework.md',
+          category: 'guides',
+          explanation: 'Loading testing framework documentation'
+        }
+      ];
+      
+      for (const doc of testingDocs) {
+        try {
+          tracker.stats.loadAttempts++;
+          
+          const fileContent = await tools.call('read_file', {
+            target_file: doc.path,
+            should_read_entire_file: true,
+            explanation: doc.explanation
+          });
+          
+          if (fileContent && fileContent.content) {
+            tracker.documentation[doc.category].push({
+              path: doc.path,
+              name: doc.path.split('/').pop(),
+              size: fileContent.content.length
+            });
+            
+            tracker.stats.loadSuccess++;
+            tracker.stats.totalFiles++;
+          }
+        } catch (error) {
+          console.error(`Error loading testing documentation file ${doc.path}: ${error.message}`);
+          tracker.stats.loadFailures++;
+        }
+      }
+    }
+  } catch (error) {
+    console.error(`Error in documentation loading process: ${error.message}`);
+    // Continue with other parts of initialization
+  }
+}
+
+/**
+ * Load context state information
+ * @param {Object} params - Input parameters
+ * @param {Object} tracker - Content tracker
+ */
+async function loadContextState(params, tracker) {
+  try {
+    const contextDir = '00reaper/00OS-commands/context-00OS-current-state/';
+    
+    // Try to list the context directory
+    const contextDirResult = await tools.call('list_dir', {
+      relative_workspace_path: contextDir,
+      explanation: 'Listing context state directory'
+    });
+    
+    if (contextDirResult && contextDirResult.entries) {
+      const contextFiles = contextDirResult.entries.filter(entry => 
+        !entry.is_directory && entry.name.endsWith('.md')
+      );
+      
+      // Load context files (up to maxFiles limit)
+      const filesToLoad = contextFiles.slice(0, params.maxFiles);
+      
+      for (const file of filesToLoad) {
+        try {
+          tracker.stats.loadAttempts++;
+          
+          const fileContent = await tools.call('read_file', {
+            target_file: file.path,
+            should_read_entire_file: true,
+            explanation: `Loading context state from ${file.name}`
+          });
+          
+          if (fileContent && fileContent.content) {
+            // Categorize context files
+            const category = file.name.includes('process') ? 'processes' : 'system';
+            
+            tracker.context[category].push({
+              path: file.path,
+              name: file.name,
+              size: fileContent.content.length
+            });
+            
+            tracker.stats.loadSuccess++;
+            tracker.stats.totalFiles++;
+          }
+        } catch (error) {
+          console.error(`Error loading context file ${file.path}: ${error.message}`);
+          tracker.stats.loadFailures++;
+        }
+      }
+    }
+  } catch (error) {
+    console.error(`Error in context loading process: ${error.message}`);
+    // Continue with other parts of initialization
+  }
+}
+
+/**
+ * Load command process definitions
+ * @param {Object} params - Input parameters
+ * @param {Object} tracker - Content tracker
+ */
+async function loadCommandProcesses(params, tracker) {
+  try {
+    // Define command process directories to load
+    const processDirectories = [
+      {
+        path: '00OS/processes/system/',
+        category: 'system',
+        explanation: 'Loading system command processes'
+      },
+      {
+        path: '00OS/processes/00reaper/',
+        category: 'reaper',
+        explanation: 'Loading 00reaper command processes'
+      },
+      {
+        path: '00OS/processes/1000xdev/',
+        category: 'dev',
+        explanation: 'Loading 1000xdev command processes'
+      }
+    ];
+    
+    // Load processes from each directory
+    for (const processDir of processDirectories) {
+      try {
+        const dirResult = await tools.call('list_dir', {
+          relative_workspace_path: processDir.path,
+          explanation: processDir.explanation
+        });
+        
+        if (dirResult && dirResult.entries) {
+          // Filter for .md files only
+          const processFiles = dirResult.entries.filter(entry => 
+            !entry.is_directory && entry.name.endsWith('.md')
+          );
+          
+          // Apply file pattern filter if specified
+          let filteredFiles = processFiles;
+          if (params.pattern) {
+            const patternRegex = new RegExp(params.pattern.replace(/\*/g, '.*'));
+            filteredFiles = processFiles.filter(file => patternRegex.test(file.name));
+          }
+          
+          // Respect max files limit
+          const filesToLoad = filteredFiles.slice(0, params.maxFiles);
+          
+          // If verbose mode, load file content; otherwise just track file names
+          if (params.verbose) {
+            for (const file of filesToLoad) {
+              try {
+                tracker.stats.loadAttempts++;
+                
+                const fileContent = await tools.call('read_file', {
+                  target_file: file.path,
+                  should_read_entire_file: true,
+                  explanation: `Loading ${processDir.category} process: ${file.name}`
+                });
+                
+                if (fileContent && fileContent.content) {
+                  tracker.commands[processDir.category].push({
+                    path: file.path,
+                    name: file.name,
+                    size: fileContent.content.length
+                  });
+                  
+                  tracker.stats.loadSuccess++;
+                  tracker.stats.totalFiles++;
+                }
+              } catch (error) {
+                console.error(`Error loading process file ${file.path}: ${error.message}`);
+                tracker.stats.loadFailures++;
+              }
+            }
+          } else {
+            // Just track file information without loading content
+            for (const file of filesToLoad) {
+              tracker.commands[processDir.category].push({
+                path: file.path,
+                name: file.name
               });
+              
+              tracker.stats.totalFiles++;
             }
           }
         }
       } catch (error) {
-        // Directory might not exist, continue to next one
-        continue;
+        console.error(`Error processing directory ${processDir.path}: ${error.message}`);
+        // Continue with other directories
       }
     }
   } catch (error) {
-    console.error(`Error loading process files: ${error.message}`);
+    console.error(`Error in command process loading: ${error.message}`);
+    // Continue to report generation
   }
-  
-  return loadedFiles;
 }
 
 /**
- * Load config files
- * @returns {Array} List of loaded config files
+ * Generate initialization report
+ * @param {Object} params - Input parameters
+ * @param {Object} tracker - Content tracker
+ * @returns {Object} Formatted report
  */
-async function loadConfigFiles() {
-  const loadedFiles = [];
-  const configPath = '00OS/config/';
-  
+function generateInitializationReport(params, tracker) {
   try {
-    const configDir = await tools.call('list_dir', {
-      relative_workspace_path: configPath,
-      explanation: 'Loading configuration files'
-    });
+    // Calculate summary statistics
+    const totalDocumentation = tracker.documentation.standards.length + 
+                               tracker.documentation.templates.length + 
+                               tracker.documentation.guides.length;
     
-    if (configDir && configDir.entries) {
-      for (const entry of configDir.entries) {
-        if (!entry.is_directory && entry.path.endsWith('.md')) {
-          try {
-            const fileContent = await tools.call('read_file', {
-              target_file: entry.path,
-              should_read_entire_file: true,
-              explanation: `Reading configuration file ${entry.path}`
-            });
-            
-            if (fileContent && fileContent.content) {
-              loadedFiles.push({
-                path: entry.path,
-                name: entry.path.split('/').pop().replace('.md', '')
-              });
-            }
-          } catch (error) {
-            // Log error but continue with other files
-            console.error(`Error reading ${entry.path}: ${error.message}`);
-          }
-        }
+    const totalContext = tracker.context.system.length + tracker.context.processes.length;
+    
+    const totalCommands = tracker.commands.system.length + 
+                          tracker.commands.reaper.length + 
+                          tracker.commands.dev.length;
+    
+    // Generate basic report
+    let report = `✅ 00reaper Initialization Complete\n\n`;
+    
+    // System knowledge section
+    report += `System Knowledge Loaded\n`;
+    report += `====================\n`;
+    report += `Documentation Files: ${totalDocumentation}\n`;
+    report += `Context State Files: ${totalContext}\n`;
+    report += `Command Processes: ${totalCommands}\n`;
+    report += `Total Directories: ${tracker.stats.totalDirectories}\n`;
+    report += `Total Files: ${tracker.stats.totalFiles}\n\n`;
+    
+    // Load statistics section
+    report += `Load Statistics\n`;
+    report += `==============\n`;
+    report += `Load Attempts: ${tracker.stats.loadAttempts}\n`;
+    report += `Successful Loads: ${tracker.stats.loadSuccess}\n`;
+    report += `Failed Loads: ${tracker.stats.loadFailures}\n\n`;
+    
+    // Detailed breakdown if verbose mode is enabled
+    if (params.verbose) {
+      report += `Detailed Content Breakdown\n`;
+      report += `========================\n\n`;
+      
+      // Documentation breakdown
+      report += `Documentation Files (${totalDocumentation})\n`;
+      report += `-----------------------\n`;
+      report += `Standards: ${tracker.documentation.standards.length}\n`;
+      report += `Templates: ${tracker.documentation.templates.length}\n`;
+      report += `Guides: ${tracker.documentation.guides.length}\n\n`;
+      
+      // Context breakdown
+      report += `Context State Files (${totalContext})\n`;
+      report += `---------------------\n`;
+      report += `System Context: ${tracker.context.system.length}\n`;
+      report += `Process Context: ${tracker.context.processes.length}\n\n`;
+      
+      // Commands breakdown
+      report += `Command Processes (${totalCommands})\n`;
+      report += `------------------\n`;
+      report += `System Commands: ${tracker.commands.system.length}\n`;
+      report += `00reaper Commands: ${tracker.commands.reaper.length}\n`;
+      report += `1000xdev Commands: ${tracker.commands.dev.length}\n\n`;
+      
+      // List all documentation files loaded
+      if (totalDocumentation > 0) {
+        report += `Documentation Files Loaded\n`;
+        report += `------------------------\n`;
+        
+        // Standards
+        tracker.documentation.standards.forEach(file => {
+          report += `- ${file.name}\n`;
+        });
+        
+        // Templates
+        tracker.documentation.templates.forEach(file => {
+          report += `- ${file.name}\n`;
+        });
+        
+        // Guides
+        tracker.documentation.guides.forEach(file => {
+          report += `- ${file.name}\n`;
+        });
+        
+        report += `\n`;
       }
     }
+    
+    // Status section
+    report += `System Status\n`;
+    report += `============\n`;
+    report += `00reaper identity is active and operational.\n`;
+    report += `System context has been fully initialized.\n`;
+    report += `Terminal command interface is ready.\n\n`;
+    
+    // Usage hints
+    report += `Next Steps\n`;
+    report += `==========\n`;
+    report += `- Use '> help' to see available commands\n`;
+    report += `- Use '> system status' to view system status\n`;
+    report += `- Use '> reaper-read-files [path]' to load specific directories\n`;
+    
+    return report;
   } catch (error) {
-    console.error(`Error loading config files: ${error.message}`);
+    // Fallback report if there's an error generating the detailed one
+    return formatSuccess("00reaper initialization completed successfully.\n\nUse '> help' to see available commands.");
   }
-  
-  return loadedFiles;
-}
-
-/**
- * Format initialization report
- * @param {Object} loadedContent - Counts of loaded content by category
- * @param {boolean} isVerbose - Whether to include verbose details
- * @param {string} focus - Optional focus area used
- * @returns {string} Formatted report
- */
-function formatInitializationReport(loadedContent, isVerbose, focus) {
-  let output = formatSuccess("00reaper Initialization Complete\n\n");
-  
-  // System knowledge section
-  output += `System Knowledge Loaded:\n`;
-  output += `-------------------------\n`;
-  output += `- Core Architecture Documents\n`;
-  output += `- System Components\n`;
-  output += `- Process Definitions\n`;
-  output += `- Configuration Settings\n\n`;
-  
-  // Initialization summary section
-  output += `Initialization Summary:\n`;
-  output += `-------------------------\n`;
-  output += `Architecture Files: ${loadedContent.architectureFiles} loaded\n`;
-  output += `Core Components:    ${loadedContent.coreComponents} loaded\n`;
-  output += `Process Files:      ${loadedContent.processFiles} loaded\n`;
-  output += `Config Files:       ${loadedContent.configFiles} loaded\n\n`;
-  
-  // Focus area information if applicable
-  if (focus) {
-    output += `Focus Area: ${focus}\n`;
-    output += `Prioritized loading of ${focus}-related documents.\n\n`;
-  }
-  
-  // Status section
-  output += `00reaper identity is active and operational.\n`;
-  output += `System context has been fully initialized.\n`;
-  output += `Terminal command interface is ready.\n\n`;
-  
-  // Detailed loading information if verbose
-  if (isVerbose) {
-    output += `Detailed Loading Information:\n`;
-    output += `Total files loaded: ${loadedContent.architectureFiles + loadedContent.coreComponents + loadedContent.processFiles + loadedContent.configFiles}\n`;
-    output += `Documentation priority: ${focus || 'Balanced (no specific focus)'}\n`;
-    output += `Critical files successfully loaded for all core components.\n\n`;
-  }
-  
-  // Usage hints
-  output += `Use '> help' to see available commands.\n`;
-  output += `Use '> system status' to view system status.\n`;
-  
-  return output;
 }
 
 /**
@@ -441,27 +668,32 @@ execute();
 > reaper-init --verbose
 ```
 
-### Focused Initialization
+### Focused Directory Initialization
 ```
-> reaper-init --focus=architecture
+> reaper-init --directory=00reaper/00OS-commands/documentation
+```
+
+### Pattern-Based Initialization
+```
+> reaper-init --pattern=*.md --max_files=50
 ```
 
 ## Error Handling
 
-### Invalid Focus Area
-```
-❌ Error [INVALID_PARAMETER]: Invalid focus area: development. Valid options are: architecture, sync, processes
-
-Suggestions:
-- Check the command syntax and parameter values
-- Run '> help reaper-init' for usage information
-```
-
 ### File Access Error
 ```
-❌ Error [FILE_ACCESS_ERROR]: Error accessing architecture files: Directory not found
+❌ Error [FILE_ACCESS_ERROR]: Error accessing files: Directory not found
 
 Suggestions:
 - Check if the required directories exist (00OS/core/, 00OS/processes/, etc.)
 - Ensure file permissions allow reading these directories
+```
+
+### Invalid Parameter Error
+```
+❌ Error [INVALID_PARAMETER]: Invalid value for max_files: must be a positive number
+
+Suggestions:
+- Check the command syntax and parameter values
+- Run '> help reaper-init' for usage information
 ``` 
