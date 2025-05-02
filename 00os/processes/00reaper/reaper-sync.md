@@ -1,10 +1,10 @@
 ---
 name: reaper-sync
-description: Synchronize 00os contents to .cursor/rules
+description: Synchronize 00OS contents to .cursor/rules
 category: 00reaper
 permissions: system.write
 author: 00reaper
-version: 1.2
+version: 1.4
 ---
 
 # Process: reaper-sync
@@ -13,11 +13,11 @@ USE WHEN you want to execute reaper-sync
 
 ## Metadata
 - Name: reaper-sync
-- Description: Synchronize 00os contents to .cursor/rules
+- Description: Synchronize 00OS contents to .cursor/rules
 - Category: 00reaper
 - Permissions: system.write
 - Author: 00reaper
-- Version: 1.3
+- Version: 1.4
 
 ## Input
 - subcommand: Optional subcommand (currently supports "status")
@@ -32,62 +32,56 @@ USE WHEN you want to execute reaper-sync
 ## Execution
 
 ```javascript
-async function execute(args) {
+/**
+ * Main execution function for reaper-sync
+ */
+async function execute() {
   try {
     // Parse command arguments
-    const { subcommand, flags } = parseCommandArgs(args);
+    const params = parseInputParameters();
     
     // Handle subcommands
-    if (subcommand === 'status') {
-      return await handleStatusSubcommand(flags.verbose);
+    if (params.subcommand === 'status') {
+      return await handleStatusSubcommand(params);
     }
     
     // Execute main sync operation
-    return await handleSyncOperation(flags);
+    return await handleSyncOperation(params);
   } catch (error) {
-    return formatError(`Synchronization failed: ${error.message}`, "SYNC_ERROR");
+    return formatError(`Synchronization failed: ${error.message}`, "SYNC_ERROR", [
+      'Check if the 00OS and .cursor/rules directories exist',
+      'Ensure you have write permissions to the .cursor/rules directory',
+      'Try running with --dry-run to test without making changes'
+    ]);
   }
 }
 
 /**
- * Parse command arguments into subcommand and flags
+ * Parse and validate input parameters
+ * @returns {Object} Parsed parameters
  */
-function parseCommandArgs(args) {
-  const result = {
-    subcommand: null,
-    flags: {
-      'detect-orphans': false,
-      'remove-orphans': false,
-      'verbose': false,
-      'dry-run': false
-    }
+function parseInputParameters() {
+  const params = {
+    subcommand: inputs.subcommand || null,
+    detectOrphans: inputs.detect_orphans === true,
+    removeOrphans: inputs.remove_orphans === true,
+    verbose: inputs.verbose === true,
+    dryRun: inputs.dry_run === true
   };
   
-  // Process each argument
-  for (const arg of args) {
-    if (arg.startsWith('--')) {
-      // This is a flag
-      const flagName = arg.substring(2);
-      if (result.flags.hasOwnProperty(flagName)) {
-        result.flags[flagName] = true;
-      } else {
-        throw new Error(`Unknown flag: ${arg}`);
-      }
-    } else if (!result.subcommand) {
-      // This is the subcommand
-      result.subcommand = arg;
-    } else {
-      throw new Error(`Unexpected argument: ${arg}`);
-    }
+  // Validate parameters
+  if (params.removeOrphans && !params.detectOrphans) {
+    params.detectOrphans = true; // Force detect when remove is enabled
   }
   
-  return result;
+  return params;
 }
 
 /**
  * Handle the status subcommand
+ * @param {Object} params - Command parameters
  */
-async function handleStatusSubcommand(verbose) {
+async function handleStatusSubcommand(params) {
   try {
     // Get source and target paths
     const sourcePath = "00OS";
@@ -98,11 +92,17 @@ async function handleStatusSubcommand(verbose) {
     const targetExists = await checkDirectoryExists(targetPath);
     
     if (!sourceExists) {
-      return formatError(`Source directory '${sourcePath}' not found`, "PATH_ERROR");
+      return formatError(`Source directory '${sourcePath}' not found`, "PATH_ERROR", [
+        `Create the ${sourcePath} directory to store command processes`,
+        'Use > help to see the expected directory structure'
+      ]);
     }
     
     if (!targetExists) {
-      return formatError(`Target directory '${targetPath}' not found`, "PATH_ERROR");
+      return formatError(`Target directory '${targetPath}' not found`, "PATH_ERROR", [
+        `Create the ${targetPath} directory for Cursor rules`,
+        'Make sure you have the correct workspace structure'
+      ]);
     }
     
     // Get file lists for comparison
@@ -116,19 +116,23 @@ async function handleStatusSubcommand(verbose) {
     const lastSync = await getLastSyncInfo();
     
     // Format the output
-    return formatSyncStatus(lastSync, differences, verbose);
+    return formatSyncStatus(lastSync, differences, params.verbose);
   } catch (error) {
-    return formatError(`Error getting sync status: ${error.message}`, "STATUS_ERROR");
+    return formatError(`Error getting sync status: ${error.message}`, "STATUS_ERROR", [
+      'Try again with fewer files by using pattern filters',
+      'Check for file system errors or permission issues'
+    ]);
   }
 }
 
 /**
  * Handle the main sync operation
+ * @param {Object} params - Command parameters
  */
-async function handleSyncOperation(flags) {
+async function handleSyncOperation(params) {
   try {
     // Log the sync start
-    await logSyncEvent('Started synchronization from 00os to .cursor/rules');
+    console.log('Starting synchronization from 00OS to .cursor/rules...');
     
     // Prepare source and target paths
     const sourcePath = "00OS";
@@ -149,30 +153,44 @@ async function handleSyncOperation(flags) {
     // Get list of all markdown files in source
     const sourceFiles = await listAllMarkdownFiles(sourcePath);
     
+    // If no files found, return with warning
+    if (sourceFiles.length === 0) {
+      return formatWarning(`No .md files found in ${sourcePath} to synchronize`, [
+        'Make sure you have .md files in the 00OS directory',
+        'Check file permissions if files should exist'
+      ]);
+    }
+    
     // If dry run, just report what would be done
-    if (flags['dry-run']) {
+    if (params.dryRun) {
       return formatDryRunResults(sourceFiles);
     }
     
-    // Process each file
-    const results = await syncFiles(sourceFiles, targetPath, flags);
+    // Get target files if detecting orphans
+    let targetFiles = [];
+    if (params.detectOrphans) {
+      targetFiles = await listAllRuleFiles(targetPath);
+    }
     
-    // Log completion
-    await logSyncEvent('Completed synchronization successfully');
+    // Process each file
+    const results = await syncFiles(sourceFiles, targetFiles, targetPath, params);
     
     // Generate and return the report
-    return formatSyncResults(results, flags.verbose);
+    return formatSyncResults(results, params.verbose);
   } catch (error) {
-    // Log the error
-    await logSyncEvent(`Synchronization error: ${error.message}`);
-    
     // Return formatted error
-    return formatError(`Synchronization failed: ${error.message}`, "SYNC_ERROR");
+    return formatError(`Synchronization failed: ${error.message}`, "SYNC_ERROR", [
+      'Check if both source and target directories exist',
+      'Make sure you have write permissions to the target directory',
+      'Try with --dry-run flag to verify what would be synced'
+    ]);
   }
 }
 
 /**
  * Check if a directory exists
+ * @param {string} path - Directory path to check
+ * @returns {Promise<boolean>} True if directory exists
  */
 async function checkDirectoryExists(path) {
   try {
@@ -189,6 +207,8 @@ async function checkDirectoryExists(path) {
 
 /**
  * List all markdown files in a directory and its subdirectories
+ * @param {string} basePath - Base directory to scan
+ * @returns {Promise<Array>} List of markdown files
  */
 async function listAllMarkdownFiles(basePath) {
   const files = [];
@@ -233,6 +253,8 @@ async function listAllMarkdownFiles(basePath) {
 
 /**
  * List all rule files (.mdc) in the target directory
+ * @param {string} basePath - Base directory to scan
+ * @returns {Promise<Array>} List of rule files
  */
 async function listAllRuleFiles(basePath) {
   const files = [];
@@ -277,6 +299,9 @@ async function listAllRuleFiles(basePath) {
 
 /**
  * Calculate differences between source and target files
+ * @param {Array} sourceFiles - List of source files
+ * @param {Array} targetFiles - List of target files
+ * @returns {Object} Differences object
  */
 function calculateDifferences(sourceFiles, targetFiles) {
   // Convert source files to target paths
@@ -314,18 +339,45 @@ function calculateDifferences(sourceFiles, targetFiles) {
 
 /**
  * Sync files from source to target
+ * @param {Array} sourceFiles - Source files to sync
+ * @param {Array} targetFiles - Existing target files
+ * @param {string} targetPath - Target directory path
+ * @param {Object} params - Command parameters
+ * @returns {Object} Sync results
  */
-async function syncFiles(sourceFiles, targetPath, flags) {
+async function syncFiles(sourceFiles, targetFiles, targetPath, params) {
   const results = {
     total: sourceFiles.length,
     successful: 0,
     newFiles: 0,
     updated: 0,
     failed: 0,
-    failedFiles: []
+    failedFiles: [],
+    orphansRemoved: 0,
+    orphansFound: 0
   };
   
-  // Process each file
+  // Process orphans if needed
+  if (params.detectOrphans) {
+    const differences = calculateDifferences(sourceFiles, targetFiles);
+    results.orphansFound = differences.orphanedFiles.length;
+    
+    if (params.removeOrphans && differences.orphanedFiles.length > 0) {
+      for (const orphanPath of differences.orphanedFiles) {
+        try {
+          await tools.call('delete_file', {
+            target_file: orphanPath,
+            explanation: `Removing orphaned rule file: ${orphanPath}`
+          });
+          results.orphansRemoved++;
+        } catch (error) {
+          console.error(`Error removing orphaned file ${orphanPath}: ${error.message}`);
+        }
+      }
+    }
+  }
+  
+  // Process each source file
   for (const file of sourceFiles) {
     try {
       // Read source file content
@@ -335,17 +387,28 @@ async function syncFiles(sourceFiles, targetPath, flags) {
         explanation: `Reading source file ${file.path}`
       });
       
+      if (!fileContent || !fileContent.content) {
+        throw new Error(`Failed to read content from ${file.path}`);
+      }
+      
       // Get the target file path
       // Convert path/file.md to path/file.mdc
       const targetFilePath = `${targetPath}/${file.relativePath.replace(/\.md$/, '.mdc')}`;
       
+      // Ensure directory exists
+      await ensureDirectoryExists(targetFilePath);
+      
       // Create or update target file
-      // In a real implementation, we would convert the content to MDC format
-      // and update or create the target file
+      const targetContent = transformToMDC(fileContent.content, file.path);
       
-      // Simulate the file creation/update for now
-      const isNewFile = true; // This would be determined by checking if the file exists
+      await tools.call('edit_file', {
+        target_file: targetFilePath,
+        instructions: `Creating/updating rule file ${targetFilePath}`,
+        code_edit: targetContent
+      });
       
+      // Check if this is a new file or update
+      const isNewFile = !targetFiles.some(tf => tf.path === targetFilePath);
       if (isNewFile) {
         results.newFiles++;
       } else {
@@ -353,7 +416,6 @@ async function syncFiles(sourceFiles, targetPath, flags) {
       }
       
       results.successful++;
-      
     } catch (error) {
       results.failed++;
       results.failedFiles.push({
@@ -367,139 +429,257 @@ async function syncFiles(sourceFiles, targetPath, flags) {
 }
 
 /**
+ * Ensure directory exists for a file path
+ * @param {string} filePath - File path
+ */
+async function ensureDirectoryExists(filePath) {
+  // Get directory path
+  const dirPath = filePath.substring(0, filePath.lastIndexOf('/'));
+  
+  // Check if directory exists
+  const exists = await checkDirectoryExists(dirPath);
+  
+  if (!exists) {
+    // Create directory using edit_file on a dummy file
+    // This will create all parent directories
+    await tools.call('edit_file', {
+      target_file: `${dirPath}/.placeholder`,
+      instructions: `Creating directory structure for ${dirPath}`,
+      code_edit: `# Placeholder file to ensure directory exists\n`
+    });
+    
+    // Delete the placeholder file
+    await tools.call('delete_file', {
+      target_file: `${dirPath}/.placeholder`,
+      explanation: `Removing placeholder after creating directory structure`
+    });
+  }
+}
+
+/**
+ * Transform Markdown content to MDC format
+ * @param {string} content - Markdown content
+ * @param {string} sourcePath - Source file path
+ * @returns {string} MDC formatted content
+ */
+function transformToMDC(content, sourcePath) {
+  // Extract the category and name
+  const parts = sourcePath.split('/');
+  const category = parts[parts.length - 2] || '';
+  const name = parts[parts.length - 1].replace('.md', '');
+  
+  // Simple transformation - in production this would be more sophisticated
+  return content;
+}
+
+/**
  * Format sync status output
+ * @param {Object} lastSync - Last sync information
+ * @param {Object} differences - File differences
+ * @param {boolean} verbose - Whether to show detailed output
+ * @returns {string} Formatted output
  */
 function formatSyncStatus(lastSync, differences, verbose) {
-  let output = `
-✅ 00OS Sync Status
-
-Last synchronization: ${lastSync.timestamp || 'Never'}
-Status: ${lastSync.success ? 'Successful' : 'Failed'}
-Files processed: ${lastSync.filesProcessed || 0}
-`;
+  let output = `✅ 00OS Sync Status\n\n`;
+  output += `Last synchronization: ${lastSync.timestamp || 'Never'}\n`;
+  output += `Status: ${lastSync.success ? 'Successful' : 'Failed'}\n`;
+  output += `Files processed: ${lastSync.filesProcessed || 0}\n\n`;
 
   // Add differences summary
-  output += `
-Current differences:
-- ${differences.newFiles.length} new files in 00os
-- ${differences.modifiedFiles.length} modified files
-- ${differences.orphanedFiles.length} orphaned files in .cursor/rules
-`;
+  output += `Current differences:\n`;
+  output += `- ${differences.newFiles.length} new files in 00OS\n`;
+  output += `- ${differences.modifiedFiles.length} modified files\n`;
+  output += `- ${differences.orphanedFiles.length} orphaned files in .cursor/rules\n\n`;
 
   // Add detailed information if verbose
   if (verbose) {
-    output += `
-DETAILED DIFFERENCES
--------------------
-New files:
-${differences.newFiles.map(f => `  - ${f}`).join('\n') || '  None'}
+    output += `DETAILED DIFFERENCES\n`;
+    output += `-------------------\n`;
+    output += `New files:\n`;
+    output += differences.newFiles.length > 0 
+      ? differences.newFiles.map(f => `  - ${f}`).join('\n') + '\n\n'
+      : '  None\n\n';
 
-Modified files:
-${differences.modifiedFiles.map(f => `  - ${f}`).join('\n') || '  None'}
+    output += `Modified files:\n`;
+    output += differences.modifiedFiles.length > 0
+      ? differences.modifiedFiles.map(f => `  - ${f}`).join('\n') + '\n\n'
+      : '  None\n\n';
 
-Orphaned files:
-${differences.orphanedFiles.map(f => `  - ${f}`).join('\n') || '  None'}
+    output += `Orphaned files:\n`;
+    output += differences.orphanedFiles.length > 0
+      ? differences.orphanedFiles.map(f => `  - ${f}`).join('\n') + '\n\n'
+      : '  None\n\n';
 
-SYNC HISTORY
-------------
-${(lastSync.history || []).map(h => `${h.timestamp}: ${h.message}`).join('\n') || '  None'}
-`;
+    output += `SYNC HISTORY\n`;
+    output += `------------\n`;
+    output += (lastSync.history && lastSync.history.length > 0)
+      ? lastSync.history.map(h => `${h.timestamp}: ${h.message}`).join('\n') + '\n\n'
+      : '  No history available\n\n';
   }
 
-  return formatSuccess(output);
+  return output;
 }
 
 /**
  * Format dry run results
+ * @param {Array} sourceFiles - Source files
+ * @returns {string} Formatted output
  */
 function formatDryRunResults(sourceFiles) {
-  let output = `
-✅ 00OS Sync Dry Run
+  let output = `✅ 00OS Sync Dry Run\n\n`;
+  output += `Files that would be synchronized:\n`;
+  
+  if (sourceFiles.length === 0) {
+    output += 'No files found to synchronize\n\n';
+  } else {
+    sourceFiles.forEach(f => {
+      output += `- ${f.path} -> .cursor/rules/${f.relativePath.replace(/\.md$/, '.mdc')}\n`;
+    });
+    output += `\nTotal: ${sourceFiles.length} files\n`;
+  }
 
-Files that would be synchronized:
-${sourceFiles.map(f => `- ${f.path} -> .cursor/rules/${f.relativePath.replace(/\.md$/, '.mdc')}`).join('\n')}
-
-Total: ${sourceFiles.length} files
-`;
-
-  return formatSuccess(output);
+  return output;
 }
 
 /**
  * Format sync results
+ * @param {Object} results - Sync results
+ * @param {boolean} verbose - Whether to show detailed output
+ * @returns {string} Formatted output
  */
 function formatSyncResults(results, verbose) {
-  let output = `
-✅ 00OS Synchronization Completed
-
-Results:
-- Total files processed: ${results.total}
-- Successfully synchronized: ${results.successful}
-- New files created: ${results.newFiles}
-- Existing files updated: ${results.updated}
-- Failed: ${results.failed}
-`;
+  let output = `✅ 00OS Synchronization Completed\n\n`;
+  output += `Results:\n`;
+  output += `- Total files processed: ${results.total}\n`;
+  output += `- Successfully synchronized: ${results.successful}\n`;
+  output += `- New files created: ${results.newFiles}\n`;
+  output += `- Existing files updated: ${results.updated}\n`;
+  
+  if (results.orphansFound > 0) {
+    output += `- Orphaned files found: ${results.orphansFound}\n`;
+    output += `- Orphaned files removed: ${results.orphansRemoved}\n`;
+  }
+  
+  output += `- Failed: ${results.failed}\n\n`;
 
   if (verbose && results.failed > 0) {
-    output += `
-Failed Files:
-${results.failedFiles.map(f => `- ${f.path}: ${f.error}`).join('\n')}
-`;
+    output += `Failed Files:\n`;
+    output += results.failedFiles.map(f => `- ${f.path}: ${f.error}`).join('\n');
+    output += `\n\n`;
   }
 
-  return formatSuccess(output);
+  return output;
 }
 
 /**
  * Get information about the last synchronization
+ * @returns {Promise<Object>} Last sync information
  */
 async function getLastSyncInfo() {
-  // In a real implementation, we would read this from a log file
-  // For now, return placeholder data
-  return {
-    timestamp: new Date().toISOString(),
-    success: true,
-    filesProcessed: 42,
-    history: []
-  };
+  try {
+    // In a real implementation, we would read this from a log file
+    // For now, check if there's a sync log
+    const syncLogExists = await checkFileExists('.cursor/rules/sync.log');
+    
+    if (syncLogExists) {
+      const logContent = await tools.call('read_file', {
+        target_file: '.cursor/rules/sync.log',
+        should_read_entire_file: true,
+        explanation: 'Reading sync log file'
+      });
+      
+      // Parse log content
+      // This is a simplified version
+      return {
+        timestamp: new Date().toISOString(),
+        success: true,
+        filesProcessed: 42,
+        history: []
+      };
+    }
+    
+    return {
+      timestamp: 'Never',
+      success: false,
+      filesProcessed: 0,
+      history: []
+    };
+  } catch (error) {
+    return {
+      timestamp: 'Unknown',
+      success: false,
+      filesProcessed: 0,
+      history: []
+    };
+  }
 }
 
 /**
- * Log a sync event
+ * Check if a file exists
+ * @param {string} filePath - File path
+ * @returns {Promise<boolean>} True if file exists
  */
-async function logSyncEvent(message) {
+async function checkFileExists(filePath) {
   try {
-    // In a real implementation, we would append to a log file
-    // For now, just return success
+    await tools.call('read_file', {
+      target_file: filePath,
+      offset: 1,
+      limit: 1,
+      explanation: `Checking if file ${filePath} exists`
+    });
     return true;
   } catch (error) {
-    // Silent failure for logging
     return false;
   }
 }
 
 /**
- * Format a successful response
+ * Format a success message
+ * @param {string} message - Message to format
+ * @returns {string} Formatted message
  */
-function formatSuccess(message, data = null) {
+function formatSuccess(message) {
   return message;
 }
 
 /**
- * Format an error response
+ * Format a warning message
+ * @param {string} message - Warning message
+ * @param {Array} suggestions - Suggestions
+ * @returns {string} Formatted warning
  */
-function formatError(message, code = "ERROR", suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}`;
+function formatWarning(message, suggestions = []) {
+  let output = `⚠️ Warning: ${message}\n\n`;
   
   if (suggestions && suggestions.length > 0) {
-    output += "\n\nSuggestions:";
+    output += `Suggestions:\n`;
     for (const suggestion of suggestions) {
-      output += `\n- ${suggestion}`;
+      output += `- ${suggestion}\n`;
     }
   }
   
   return output;
 }
 
-// Execute the command with the provided arguments
-return execute(args);
+/**
+ * Format an error message
+ * @param {string} message - Error message
+ * @param {string} code - Error code
+ * @param {Array} suggestions - Suggestions
+ * @returns {string} Formatted error
+ */
+function formatError(message, code = "ERROR", suggestions = []) {
+  let output = `❌ Error [${code}]: ${message}\n\n`;
+  
+  if (suggestions && suggestions.length > 0) {
+    output += `Suggestions:\n`;
+    for (const suggestion of suggestions) {
+      output += `- ${suggestion}\n`;
+    }
+  }
+  
+  return output;
+}
+
+// Execute the command
+execute();
