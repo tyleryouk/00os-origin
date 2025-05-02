@@ -1,71 +1,46 @@
-# REQ-000: Enhance Workflow Folder and Revise reaper-init Command
+# REQ-SIMP-001: Implement Cycle 1 - Foundation and Core Commands
 
-## Part 1: Workflow Folder Enhancement
-### Requirements
-1. **Documentation Organization**
-   - Review and consolidate documentation in `00reaper/00OS-commands/documentation/`
-   - Ensure all process templates and standards are up-to-date
-   - Move any implementation-specific details to appropriate documentation files
+## Requirements
+1. **Documentation Updates**
+   - Update README.md to add the 3-step pattern explanation at the top
+   - Keep the cyclical workflow process description intact
+   - Clarify the relationship between architecture and implementation
 
-2. **Core Workflow File Optimization**
-   - Ensure all four root files stay under 250 lines:
-     - README.md: Core workflow overview and quick start
-     - active-request.md: Current request requirements
-     - implementation-plan.md: Concrete implementation steps
-     - cycle-status.md: Progress tracking
-   - Abstract detailed documentation to appropriate subdirectories
+2. **Command Template Simplification**
+   - Replace command-template-core.md with simplified template
+   - Focus on direct tool call sequences instead of complex validation
+   - Add clear examples for different command types
+   - Remove unnecessary sections and complexity
 
-3. **Workflow Process Clarification**
-   - Update step definitions for better clarity:
-     - Step 1: ONLY update active-request.md
-     - Step 2: Read context/documentation (no file updates)
-     - Step 3: ONLY update implementation-plan.md
-     - Step 4: Make changes to 00OS
-     - Step 5: ONLY update documentation if needed
-     - Step 6: Clear ALL core workflow files completely
+3. **Command Implementation Simplification**
+   - Convert reaper-sync.md to simplified direct execution format
+   - Focus on single terminal command execution
+   - Add clear examples and minimal documentation
+   - Remove unnecessary validation and complexity
 
-4. **File Purpose Specialization**
-   - active-request.md: WHAT needs to be done (requirements)
-   - implementation-plan.md: HOW it will be done (blueprint)
-   - cycle-status.md: WHERE we are in the process (tracking)
-
-## Part 2: reaper-init Command Revision
-### Requirements
-1. **Context Loading**
-   - Start with zero context assumption
-   - Read and process all files in workflow folder:
-     - Documentation and standards
-     - Research materials
-     - Current context state
-     - Templates and guides
-
-2. **Process Enhancement**
-   - Implement strict tool call sequence:
-     - list_dir for directory structure understanding
-     - read_file for content processing
-     - No terminal commands or self-execution
-   - Follow standardized error handling and response formatting
-
-3. **Initialization Flow**
-   - Clear understanding of workflow folder structure
-   - Load all necessary documentation and standards
-   - Process current context state
-   - Prepare for immediate task execution
+4. **Context Loading Enhancement**
+   - Simplify reaper-init.md while preserving context loading
+   - Ensure it reads the final-goal.md and roadmap document
+   - Maintain proper categorization
+   - Follow the simplified 3-step pattern
 
 ## Completion Criteria
-- [ ] Workflow folder structure optimized and documented
-- [ ] Core workflow files consolidated to under 250 lines each
-- [ ] Step definitions updated and clarified
-- [ ] File update boundaries established and documented
-- [ ] reaper-init command revised with proper tool call sequence
-- [ ] All changes follow 00OS command standards and patterns
+- [ ] Updated README.md clearly explains the 3-step pattern
+- [ ] New command-template-core.md follows the simplified approach
+- [ ] reaper-sync.md is converted to the simplified pattern
+- [ ] reaper-init.md is converted to the simplified pattern
+- [ ] All updated files follow the 3-step pattern
+- [ ] All commands execute successfully when tested
 
-## Success Metrics
-1. All core workflow files under 250 lines
-2. Clear separation of concerns in workflow files
-3. Simplified but comprehensive workflow process
-4. reaper-init successfully initializes with zero context
-5. Documentation properly organized and accessible
+## Context References
+- **Key Files**: 
+  - 00reaper/00OS-commands/user-directed/final-goal.md
+  - 00reaper/00OS-commands/user-directed/00OS-simplification-roadmap.md
+  - 00reaper/00OS-commands/user-directed/user-rules-00OS-commands.md
+  - 00reaper/00OS-commands/documentation/command-template-core.md
+  - 00OS/processes/00reaper/reaper-sync.md
+  - 00OS/processes/00reaper/reaper-init.md
+- **Related Requests**: This is the first cycle of the 00OS Command Simplification Initiative
 
 
 
