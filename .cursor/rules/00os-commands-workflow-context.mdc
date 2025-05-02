@@ -13,15 +13,15 @@ The 00OS-commands workflow is being enhanced through REQ-000, focusing on:
 
 ### Active Files
 Core workflow files are located in `00reaper/00OS-commands/`:
-- [README.md](mdc:00reaper/00OS-commands/README.md): Workflow overview
-- [active-request.md](mdc:00reaper/00OS-commands/active-request.md): Current request (REQ-000)
-- [implementation-plan.md](mdc:00reaper/00OS-commands/implementation-plan.md): Implementation steps
-- [cycle-status.md](mdc:00reaper/00OS-commands/cycle-status.md): Progress tracking
+- @README.md: Workflow overview
+- @active-request.md: Current request (REQ-000)
+- @implementation-plan.md: Implementation steps
+- @cycle-status.md: Progress tracking
 
 ### Documentation Structure
 Documentation is organized in `00reaper/00OS-commands/documentation/`:
-- Core Standards: [command-standards-core.md](mdc:00reaper/00OS-commands/documentation/command-standards-core.md)
-- Command Template: [command-template-core.md](mdc:00reaper/00OS-commands/documentation/command-template-core.md)
+- Core Standards: @command-standards-core.md
+- Command Template: @command-template-core.md
 - Templates Directory: `00OS-templates/` and `00reaper-templates/`
 
 ### Recent Optimizations
@@ -70,5 +70,5 @@ The development cycle follows six steps:
 - Revising reaper-init command
 - Maintaining file size limits (250 lines)
 
-See [cycle-status.md](mdc:00reaper/00OS-commands/cycle-status.md) for current progress.
+See @cycle-status.md for current progress.
 
