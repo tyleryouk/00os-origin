@@ -1,218 +1,234 @@
-# Implementation Plan: REQ-000
+# Implementation Plan: REQ-SIMP-001
 
-## Phase 1: Workflow Folder Enhancement ✅
-### 1. Documentation Review and Consolidation ✅
-1. **Audit Documentation Directory** ✅
-   - Review all files in `documentation/`
-   - Identify redundant or outdated content
-   - Map documentation to specific concerns
+## Implementation Phases
+### Phase 1: Documentation Updates
+1. **README.md Enhancement**
+   - Add 3-step pattern explanation at the top
+   - Maintain cyclical workflow process description
+   - Add clarification on architecture vs. implementation
+   - Ensure consistency with the simplified approach
 
-2. **Template Optimization** ✅
-   - Update `00OS-templates/` and `00reaper-templates/`
-   - Ensure templates enforce file size limits
-   - Add clear section markers for maintainability
+2. **Command Template Simplification**
+   - Review current command-template-core.md
+   - Create simplified template focusing on direct tool calls
+   - Add examples for different command types
+   - Remove complex validation sections
 
-3. **Documentation Reorganization** ✅
-   - Move implementation details to appropriate files
-   - Update cross-references between documents
-   - Ensure documentation hierarchy is clear
-   - Consolidate and optimize tool-call-patterns.md
+### Phase 2: Command Simplification
+1. **reaper-sync Conversion**
+   - Analyze current implementation structure
+   - Convert to direct execution format
+   - Focus on single terminal command execution
+   - Add clear examples
+   - Test functionality after conversion
 
-### 2. Core Workflow File Refinement ✅
-1. **README.md Optimization** ✅
-   - Simplify and condense to under 250 lines
-   - Focus on essential workflow process information
-   - Ensure clear explanations of the cyclical process
-
-2. **Core Workflow File Update Pattern** ✅
-   - Implement clear file update boundaries
-   - Standardize file update patterns per REQ-009
-   - Ensure files focus on specific purposes (WHAT, HOW, WHERE)
-
-## Phase 2: Command Revision ▶️
-### 1. reaper-init Command Enhancement ✅
-1. **Core Functionality Assessment** ✅
-   - Analyze current implementation
-   - Identify missing critical features
-   - Map required tool call sequence
-
-2. **Command Structure Redesign** ✅
-   - Create enhanced structure with modular functions
-   - Implement zero-context initialization approach
-   - Enable focused loading with directory parameters
-
-3. **Core Workflow Files Integration** ✅
-   - Add functionality to read and analyze core workflow files
-   - Implement analysis functions for active-request.md
-   - Implement analysis functions for cycle-status.md
-   - Include workflow context in initialization reports
-
-4. **Testing and Validation** ▶️
-   - Test with various parameter combinations
-   - Verify error handling behavior
-   - Confirm content loading across different scenarios
-
-### 2. reaper-sync Command Enhancement
-1. **Current Implementation Analysis**
-   - Identify shortcomings in current implementation
-   - Assess direct terminal command usage
-   - Map tool call requirements
-
-2. **Enhanced Implementation**
-   - Replace terminal command execution with tool calls
-   - Add proper error handling
-   - Create standardized response formatting
-
-### 3. reaper-read-files Command Enhancement
-1. **Current Implementation Review**
-   - Assess effectiveness of current implementation
-   - Identify opportunities for improvement
-   - Map integration points with other commands
-
-2. **Enhanced Implementation**
-   - Improve parameter handling
-   - Add pattern matching capabilities
-   - Create flexible file selection options
-
-## Phase 3: Context Processing
-### 1. Context State Tracking
-1. **Context Generation Strategy**
-   - Define context state tracking approach
-   - Create context generation functionality
-   - Implement state comparison
-
-2. **Context Loading Optimization**
-   - Improve context loading efficiency
-   - Add selective loading capabilities
-   - Implement context caching
-
-### 2. Current State Awareness
-1. **State Change Detection**
-   - Implement detection of command changes
-   - Create state tracking for workflow files
-   - Add historical state comparison
-
-2. **State Integration**
-   - Integrate state awareness across commands
-   - Create consistent state reporting
-   - Implement state-based decision making
-
-### 3. Process Execution Logging
-1. **Log Structure Design**
-   - Define logging format
-   - Create log storage approach
-   - Implement log rotation
-
-2. **Log Analysis**
-   - Add log querying capabilities
-   - Create log summarization
-   - Implement error pattern detection
-
-## Phase 4: Final Workflow Folder Consolidation
-### 1. Workflow Process Simplification
-1. **Step-Specific File Update Boundaries**
-   - Ensure step 1 updates ONLY active-request.md
-   - Step 2 has no file updates (research only)
-   - Step 3 updates ONLY implementation-plan.md
-   - Steps 4-6 update ONLY cycle-status.md
-
-2. **Documentation Update Process**
-   - Clarify that step 5 updates ONLY documentation
-   - Remove context file updating from step 5
-   - Update README.md with clarified process
-
-### 2. Core Workflow File Reset
-1. **Complete File Clearing**
-   - Implement process for clearing ALL three core files
-   - Create standardized reset approach
-   - Document reset process in README.md
-
-2. **Reset Verification**
-   - Add verification steps for file reset
-   - Create reset confirmation checks
-   - Implement reset reporting
-
-### 3. Template Refinement
-1. **Template Size Reduction**
-   - Optimize templates to ensure files stay under 250 lines
-   - Simplify template structure
-   - Remove redundant sections
-
-2. **Template Standardization**
-   - Ensure consistent format across templates
-   - Create clear section markers
-   - Add standardized update instructions
+2. **reaper-init Enhancement**
+   - Simplify while preserving context loading functionality
+   - Update to read final-goal.md and roadmap documents
+   - Ensure proper categorization
+   - Test comprehensive functionality
 
 ## Implementation Details
 
-### Core File Update Pattern
+### README.md Update
+- **Purpose**: Establish 3-step pattern at the beginning of documentation
+- **Changes**: Add new section at the top explaining the pattern
+- **Key Points**:
+  - Maintain existing workflow process explanation
+  - Add clear distinction between architecture (sound) and implementation (simplified)
+  - Ensure consistency with final-goal.md vision
 
-#### active-request.md
-- **Purpose**: WHAT needs to be done (requirements only)
-- **Update Pattern**: Step 1 ONLY
-- **Content Focus**: Pure requirements with no status tracking
-- **Size Target**: Under 250 lines
+### Command Template Revision
+- **Purpose**: Provide simplified template for all command processes
+- **Changes**: Complete replacement with new minimalist template
+- **Key Points**:
+  - Focus on direct tool call sequences
+  - Remove unnecessary validation and error handling
+  - Provide clear examples for different command types
+  - Follow the structure outlined in final-goal.md
 
-#### implementation-plan.md
-- **Purpose**: HOW it will be done (implementation blueprint)
-- **Update Pattern**: Step 3 ONLY
-- **Content Focus**: Concrete implementation steps and phases
-- **Size Target**: Under 250 lines
+### reaper-sync Implementation
+- **Purpose**: Create first simplified command example
+- **Changes**: Convert to direct execution of script
+- **Key Points**:
+  - Replace complex structure with single tool call
+  - Focus on running the sync script directly
+  - Maintain proper documentation and examples
+  - Test thoroughly to ensure functionality
 
-#### cycle-status.md
-- **Purpose**: WHERE we are in the process (progress tracking)
-- **Update Pattern**: Steps 4-6 ONLY
-- **Content Focus**: Progress, blockers, decisions, next actions
-- **Size Target**: Under 250 lines
+### reaper-init Enhancement
+- **Purpose**: Ensure proper context loading with simplified approach
+- **Changes**: Streamline while preserving essential functionality
+- **Key Points**:
+  - Keep context loading for all critical files
+  - Add loading of new vision and roadmap documents
+  - Follow the 3-step pattern for implementation
+  - Ensure comprehensive testing
 
-### reaper-init Command Enhancements
-
-The reaper-init command has been enhanced to:
-1. Start with zero context assumptions
-2. Load and analyze core workflow files
-3. Extract workflow context from active-request.md and cycle-status.md
-4. Present workflow context in initialization reports
-5. Support focused loading with directory parameters
-6. Include comprehensive error handling
-7. Generate detailed initialization reports
-
-### Critical Workflow Process Enhancements
-
-1. **Step 5 Clarification**: Update supporting materials focuses ONLY on documentation, not context
-2. **Step 6 Enhancement**: Reset ALL core workflow files completely
-3. **File Size Control**: Ensure all four root folder files stay under 250 lines
-4. **Clear Update Boundaries**: Each step updates specific files only
-
-## Testing and Verification Strategy
-
-### reaper-init Testing
-1. Run with no parameters to verify full context loading
-2. Test with --directory parameter to verify focused loading
-3. Test with --verbose to verify detailed reporting
-4. Verify workflow context extraction from active-request.md
-5. Verify workflow context extraction from cycle-status.md
-6. Validate content reporting accuracy
-7. Test error handling with invalid parameters
-
-### Workflow Process Testing
-1. Verify README.md is under 250 lines
-2. Ensure clear file update boundaries are documented
-3. Validate step 5 focuses only on documentation updates
-4. Verify step 6 includes clearing all three core files
+## Testing Strategy
+- **Basic Testing**: Execute each command and verify correct operation
+- **Integration**: Ensure modified commands work within the workflow
+- **Success Criteria**:
+  - Commands follow the 3-step pattern
+  - Documentation clearly explains the simplified approach
+  - All commands function correctly when executed
 
 ## Dependencies and Blockers
+- **Dependencies**: Current 00OS architecture and command structure
+- **Blockers**: None identified
+- **Mitigation**: Thorough testing before final implementation
 
-### Dependencies
-1. Existing workflow file templates
-2. Current directory structure
-3. Established tool call patterns
+## Workflow Mapping
+| Workflow Step | Implementation Phases |
+|---------------|------------------------|
+| 4. Make Changes to 00OS | Phases 1-2 |
+| 5. Update Materials | Documentation Updates |
+| 6. Reset & Sync | Final Verification |
 
-### Blockers
-None identified at present
+## Status
+- **Current Status**: Implementation progress tracked in `cycle-status.md`
+- **Cross-References**: See `active-request.md` for requirements
+- **Last Updated**: 2024-07-08
 
-## Rollback Plan
+## Tool Call Sequences
+### Phase 1 Tools
+```javascript
+// README.md Update
+read_file("00reaper/00OS-commands/README.md")
+edit_file("00reaper/00OS-commands/README.md")
 
-If issues arise:
-1. Restore original README.md from version control
-2. Revert to previous workflow process
-3. Maintain original file update patterns 
+// Command Template Update
+read_file("00reaper/00OS-commands/documentation/command-template-core.md")
+edit_file("00reaper/00OS-commands/documentation/command-template-core.md")
+```
+
+### Phase 2 Tools
+```javascript
+// reaper-sync Conversion
+read_file("00OS/processes/00reaper/reaper-sync.md")
+edit_file("00OS/processes/00reaper/reaper-sync.md")
+
+// reaper-init Enhancement
+read_file("00OS/processes/00reaper/reaper-init.md")
+edit_file("00OS/processes/00reaper/reaper-init.md")
+```
+
+## Validation Steps
+1. **Documentation Updates**
+   - [ ] README.md includes 3-step pattern at the top
+   - [ ] command-template-core.md follows simplified approach
+   - [ ] All documentation is internally consistent
+
+2. **Command Implementation**
+   - [ ] reaper-sync follows the simplified template
+   - [ ] reaper-init follows the simplified template
+   - [ ] Both commands execute successfully
+
+## Success Criteria
+- [ ] All documentation updates completed according to requirements
+- [ ] reaper-sync converted to simplified format and functional
+- [ ] reaper-init converted to simplified format and functional
+- [ ] All implementations follow the 3-step pattern
+
+## Status Snapshot
+- **Cycle ID**: REQ-SIMP-001
+- **Cycle Stage**: Step 3 - Update Core Workflow Files
+- **Plan Version**: 1.0
+- **Last Substantive Update**: 2024-07-08
+- **Implementation Status**: Current implementation progress is tracked in `cycle-status.md`
+- **Cross-Reference**:
+  - Active Request: See `active-request.md`
+  - Cycle Status: See `cycle-status.md` (Source of truth for current progress)
+
+## 00OS Command Simplification Initiative - Cycle 1
+
+### Overview
+This implementation plan addresses the first cycle of the 00OS Command Simplification Initiative, focusing on establishing the foundation for simplified commands. It includes updating core documentation to explain the 3-step pattern and converting two high-impact commands (reaper-sync and reaper-init) to the simplified format.
+
+### Current State Assessment
+The current 00OS command system has evolved a robust architecture but with unnecessarily complex implementations:
+
+- Process implementations have excessive validation and error handling
+- Documentation is verbose and sometimes contradictory
+- Command processes often don't follow consistent patterns
+- Some commands attempt to execute other commands through terminal calls
+
+### Implementation Details
+
+#### README.md Update
+```markdown
+# 00OS Commands Workflow
+
+## Core Command Pattern
+
+Every 00OS command follows this simple pattern:
+
+1. **User sends a command**: `> command-name [arguments] [--flags]`
+2. **AI fetches the process rule**: Makes a single `fetch_rules` call to get the process definition
+3. **AI executes the defined tool calls**: Follows exactly what's in the process rule, no more, no less
+
+This simplified pattern maintains the architectural integrity of 00OS while reducing implementation complexity.
+
+## Cyclical Workflow Process
+
+[Existing cyclical workflow process documentation]
+```
+
+#### command-template-core.md Update
+```markdown
+# 00OS Command Process Template
+
+Use this template when creating new command processes or updating existing ones.
+
+```markdown
+---
+name: command-name
+description: Simple description of what the command does
+category: [system|00reaper|1000xdev]
+author: 00reaper
+version: 1.0
+---
+
+# Process: command-name
+
+USE WHEN you want to execute command-name
+
+## Execution
+
+This process executes the following tool calls:
+
+1. FIRST TOOL CALL (e.g., read_file, list_dir, etc.)
+2. SECOND TOOL CALL (if needed)
+3. TERMINAL COMMAND (if appropriate)
+
+## Examples
+
+> command-name arg1 --flag1
+> command-name arg2 --flag2
+```
+
+## Example Implementations
+
+### Information Retrieval Command
+[Example of information retrieval command]
+
+### File Modification Command
+[Example of file modification command]
+
+### Command Execution
+[Example of command execution]
+```
+
+### Testing and Verification Strategy
+- **Command Functionality**: Execute each modified command and verify it performs correctly
+- **Context Preservation**: Ensure reaper-init still loads all necessary context
+- **Documentation Clarity**: Review documentation changes for clarity and consistency
+
+### Rollback Plan
+If implementation causes issues:
+1. Revert modified files to previous versions
+2. Execute reaper-sync to update .cursor/rules
+3. Document issues encountered for future resolution
+
+### Plan Changes Log
+- **Version 1.0** [2024-07-08]: Initial implementation plan
