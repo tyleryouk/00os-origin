@@ -65,6 +65,33 @@
   - Follow the 3-step pattern for implementation
   - Ensure comprehensive testing
 
+### File-Specific Simplification Actions (Cycle 1)
+
+#### 1. README.md
+- Add a new section at the top explaining the 3-step command processing pattern (user sends command, fetch_rules, execute tool calls)
+- Ensure the cyclical workflow process description remains clear and intact
+- Clarify the distinction between architecture and implementation
+- Remove any redundant or outdated explanations
+
+#### 2. command-template-core.md
+- Replace the current template with a simplified version focused on direct tool call sequences
+- Remove complex validation, error handling, and unnecessary sections
+- Add clear, minimal examples for information retrieval, file modification, and command execution
+- Ensure the template matches the vision in final-goal.md
+
+#### 3. reaper-sync.md
+- Convert to a direct execution format: a single tool call to run the sync script
+- Remove all complex validation and error handling
+- Add minimal documentation and usage examples
+- Ensure the process is easy to follow and test
+
+#### 4. reaper-init.md
+- Streamline the process while preserving essential context loading functionality
+- Ensure it loads all critical files, including final-goal.md and roadmap documents
+- Remove unnecessary complexity and validation
+- Follow the 3-step pattern for implementation
+- Add minimal, clear documentation and usage examples
+
 ## Testing Strategy
 - **Basic Testing**: Execute each command and verify correct operation
 - **Integration**: Ensure modified commands work within the workflow

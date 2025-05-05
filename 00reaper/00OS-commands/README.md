@@ -1,5 +1,15 @@
 # 00OS-commands Workflow
 
+## Core Command Pattern
+
+Every 00OS command follows this simple pattern:
+
+1. **User sends a command**: `> command-name [arguments] [--flags]`
+2. **AI fetches the process rule**: Makes a single `fetch_rules` call to get the process definition
+3. **AI executes the defined tool calls**: Follows exactly what's in the process rule, no more, no less
+
+This simplified pattern maintains the architectural integrity of 00OS while reducing implementation complexity. The architecture remains robust, but implementation is now focused on direct, minimal tool call sequences for clarity and maintainability.
+
 This directory serves as the central hub for creating, managing, and optimizing 00OS commands within the terminal-like interface (commands prefixed with `>`).
 
 ## Master Workflow Files
