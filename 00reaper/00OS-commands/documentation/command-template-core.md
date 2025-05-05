@@ -1,93 +1,41 @@
+# 00OS Command Process Template
+
+Use this template when creating new command processes or updating existing ones.
+
+```markdown
 ---
 name: command-name
-description: Brief command description
-version: 1.0.0
+description: Simple description of what the command does
+category: [system|00reaper|1000xdev]
 author: 00reaper
-category: system
-permissions: [basic]
-inputs:
-  - name: param1
-    type: string
-    required: true
-    description: First parameter
-  - name: flag1
-    type: boolean
-    required: false
-    default: false
-    description: Optional flag
-outputs:
-  - name: result
-    type: object
-    description: Command result
-usage: command-name <param1> [--flag1]
-examples:
-  - command-name value
-  - command-name value --flag1
+version: 1.0
 ---
 
 # Process: command-name
 
-## Description
-Brief explanation of command purpose and functionality.
+USE WHEN you want to execute command-name
 
-## Implementation
-```javascript
-async function execute() {
-  try {
-    // 1. Validate Inputs
-    if (!inputs.param1) {
-      return {
-        success: false,
-        error: 'Missing required parameter: param1',
-        suggestions: ['Provide a value for param1']
-      };
-    }
+## Execution
 
-    // 2. Execute Tool Calls
-    const result = await executeOperation(inputs.param1, inputs.flag1);
-    
-    // 3. Return Result
-    return {
-      success: true,
-      result: result,
-      message: 'Operation completed successfully'
-    };
+This process executes the following tool calls:
 
-  } catch (error) {
-    return {
-      success: false,
-      error: error.message,
-      suggestions: generateSuggestions(error)
-    };
-  }
-}
+1. FIRST TOOL CALL (e.g., read_file, list_dir, etc.)
+2. SECOND TOOL CALL (if needed)
+3. TERMINAL COMMAND (if appropriate)
 
-async function executeOperation(param1, useFlag) {
-  // Implement operation logic here
-  // Use appropriate tool calls with clear explanations
-  return { /* operation result */ };
-}
+## Examples
 
-function generateSuggestions(error) {
-  // Generate helpful suggestions based on error
-  return [
-    'Check parameter values',
-    'Verify permissions',
-    'See documentation for usage examples'
-  ];
-}
+> command-name arg1 --flag1
+> command-name arg2 --flag2
 ```
 
-## Usage Examples
-```
-> command-name value
-✅ Operation completed successfully
+## Example Implementations
 
-> command-name value --flag1
-✅ Operation completed with flag enabled
+### Information Retrieval Command
+[Example of information retrieval command]
 
-> command-name
-❌ Error: Missing required parameter: param1
-Suggestions:
-- Provide a value for param1
-``` 
+### File Modification Command
+[Example of file modification command]
+
+### Command Execution
+[Example of command execution] 
