@@ -11,17 +11,23 @@ USE WHEN you want to execute reaper-sync
 
 ## Execution
 
-This process executes a single tool call to synchronize the 00OS contents to the .cursor/rules directory using the PowerShell script:
+This process executes a single tool call to synchronize the 00OS contents to the .cursor/rules directory using the PowerShell script. The following flags are supported:
 
-1. Run the sync script directly:
+- `--dry-run` or `-DryRun`: Simulate sync, no changes made
+- `--detect-orphans` or `-DetectOrphans`: Detect orphaned .mdc files in .cursor/rules
+- `--remove-orphans` or `-RemoveOrphans`: Remove orphaned .mdc files in .cursor/rules
+- `--verbose` or `-Verbose`: Show detailed sync information
+
+**Tool Call Example:**
 
 ```javascript
 await tools.call('run_terminal_cmd', {
-  command: 'powershell -ExecutionPolicy Bypass -File 00reaper/00scripts/Sync-00OS-Complete.ps1',
+  command: 'powershell -ExecutionPolicy Bypass -File 00reaper/00scripts/Sync-00OS-Complete.ps1 [flags]',
   is_background: false,
-  explanation: 'Synchronize 00OS contents to .cursor/rules using PowerShell script'
+  explanation: 'Synchronize 00OS contents to .cursor/rules using PowerShell script with optional flags'
 });
 ```
+Replace `[flags]` with any combination of `-DryRun`, `-DetectOrphans`, `-RemoveOrphans`, and `-Verbose` as needed.
 
 ## Examples
 
@@ -30,3 +36,9 @@ await tools.call('run_terminal_cmd', {
 
 > reaper-sync --dry-run
 ✅ Dry run: No changes made, sync actions listed
+
+> reaper-sync --detect-orphans --remove-orphans --verbose
+✅ Orphaned rules detected and removed, detailed output shown
+
+> reaper-sync --dry-run --detect-orphans --verbose
+✅ Dry run: Orphaned rules detected, detailed output shown, no changes made
