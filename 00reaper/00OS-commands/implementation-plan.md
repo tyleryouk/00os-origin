@@ -1,43 +1,38 @@
-# Implementation Plan: REQ-SIMP-002
+# Implementation Plan: REQ-SIMP-003
 
 ## Phases
-### Phase 1: Standards and Patterns Update
-- **command-standards-core.md**
-  - Further emphasize the 3-step pattern and simplicity
-  - Streamline error handling and remove over-engineered sections
-  - Add explicit statements discouraging unnecessary complexity
-  - Ensure all examples are minimal and actionable
-- **tool-call-patterns.md**
-  - Remove or condense complex error handling patterns
-  - Add more concrete, minimal examples for each pattern
-  - Reiterate the 3-step pattern and discourage over-engineering
+### Phase 1: Command Handler Update
+- Simplify command-handler to focus on the critical path
+- Ensure robust `fetch_rules` usage
+- Remove unnecessary validation and complexity
+- Improve error handling for command failures
 
-### Phase 2: User and Developer Documentation
-- **00OS-command-user-guide.md**
-  - Expand with more practical, simplified usage examples
-  - Make the 3-step pattern explicit for end users
-  - Ensure all examples and explanations reflect the new, simplified workflow
-- **00OS-command-development.md**
-  - Add explicit examples contrasting good (simple) vs. complex (discouraged) implementations
-  - Include a migration guide for converting complex commands to the new pattern
-  - Reiterate the importance of the 3-step pattern and process-driven execution
+### Phase 2: Parser Update
+- Optimize parser for the simplified command structure
+- Ensure efficient passing of arguments to processes
+- Remove unnecessary validation complexity
+
+### Phase 3: Registry Update
+- Update registry to support simplified process definitions
+- Ensure efficient process lookup and categorization
 
 ## Deliverables
-- Revised standards and patterns documentation
-- Updated user and developer guides
-- All documentation reflects the simplified 3-step pattern
+- Simplified and robust command handler, parser, and registry
+- All core components enforce the 3-step pattern
+- Error messages are clear and actionable
+- Command processing is efficient and maintainable
 
 ## Validation Steps
-- Review all documentation for consistency and clarity
-- Confirm that all examples and guidance are minimal, actionable, and reflect the 3-step pattern
-- Apply standards to a test command implementation
-- Verify new developers can follow guidance easily
+- Review all core files for consistency and clarity
+- Test command processing with various commands and edge cases
+- Verify error handling and response formatting
+- Confirm that all changes reflect the simplified 3-step pattern
 
 ## Success Criteria
-- [ ] All documentation is internally consistent
-- [ ] Standards enable simple command development
-- [ ] Documentation is practical and actionable
-- [ ] All changes reflect the simplified 3-step pattern
+- [ ] Command handler, parser, and registry are simplified and robust
+- [ ] All core components enforce the 3-step pattern
+- [ ] Error messages are clear and actionable
+- [ ] Command processing is efficient and maintainable
 
 ## Status
-Previous cycle (REQ-SIMP-002) complete. Ready for new implementation plan.
+Current cycle: Cycle 3 - Core System Updates
