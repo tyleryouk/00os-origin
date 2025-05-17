@@ -1,26 +1,38 @@
 # 00OS Command Standards Core
 
+## Core Standard: The 3-Step Pattern
+
+Every 00OS command process MUST follow this pattern:
+
+1. **User sends a command**: `> command-name [arguments] [--flags]`
+2. **AI fetches the process rule**: Use a single `fetch_rules` call to get the process definition
+3. **AI executes the defined tool calls**: Follow exactly what's in the process rule, no more, no less
+
+> **Simplicity is required:**
+> - Avoid complex validation, error handling, or multi-step logic in process files
+> - Do not add extra layers of abstraction or unnecessary sections
+> - All examples and templates should be minimal and actionable
+
 ## Essential Standards
 
 1. **Command Processing Flow**
-   - Detect command prefix (`>`)
-   - Fetch process rule (MANDATORY)
-   - Parse parameters
-   - Execute tool calls
-   - Format response
+   - Detect command prefix (`>`, hardcoded)
+   - Fetch process rule (MANDATORY, always use `fetch_rules` first)
+   - Parse parameters (minimal, only as needed)
+   - Execute tool calls (direct, as defined in the rule)
+   - Format response (use standard indicators)
 
 2. **Tool Call Requirements**
-   - ALWAYS use `fetch_rules` first
-   - NEVER execute 00OS commands via terminal
-   - Include clear explanations
-   - Handle errors with suggestions
+   - NEVER execute 00OS commands via terminal (no self-execution)
+   - Always include clear explanations in tool calls
+   - Error handling should be minimal: let the system handle errors unless a specific suggestion is needed
 
 3. **Response Format**
    - ✅ Success
    - ❌ Error
    - ⚠️ Warning
 
-## Command Structure
+## Command Structure (Minimal Example)
 
 ```yaml
 ---
@@ -28,15 +40,14 @@ name: command-name       # Required: Command identifier
 description: Brief desc  # Required: Short explanation
 version: 1.0.0          # Required: Semantic version
 author: 00reaper        # Required: Author ID
-category: system        # Required: system/tools/apps
+category: system        # Required: system/00reaper/1000xdev
 permissions: [basic]    # Required: Permission list
-inputs:                 # Required: Arguments/flags
+inputs:                 # Arguments/flags (minimal)
   - name: param
-    type: string       # string/number/boolean/array/object
-    required: true     # Required flag
-    default: null      # Default value
-    description: desc  # Parameter description
-outputs:               # Required: Output definition
+    type: string
+    required: true
+    description: desc
+outputs:
   - name: result
     type: string
     description: desc
@@ -51,56 +62,67 @@ outputs:               # Required: Output definition
    - `system/`: Core commands
    - `00reaper/`: Admin commands
    - `1000xdev/`: Dev commands
+4. **Error Handling**: Only add suggestions for common, user-facing issues. Do not over-engineer error logic.
+5. **Response Format**: Use standard indicators and keep messages clear and concise.
 
-4. **Error Handling**:
-   ```javascript
-   try {
-     // Tool calls
-   } catch (error) {
-     return {
-       success: false,
-       error: error.message,
-       suggestions: ['Helpful suggestion 1', 'Helpful suggestion 2']
-     };
-   }
-   ```
+## Minimal Error Handling Example
 
-5. **Response Format**:
-   ```javascript
-   // Success
-   return {
-     success: true,
-     result: data,
-     message: 'Operation completed'
-   };
-
-   // Error
-   return {
-     success: false,
-     error: 'Error message',
-     code: 'ERROR_CODE',
-     suggestions: ['Suggestion 1', 'Suggestion 2']
-   };
-   ```
+```javascript
+try {
+  // Tool calls
+} catch (error) {
+  return {
+    success: false,
+    error: error.message,
+    suggestions: ['Check your input and try again.']
+  };
+}
+```
 
 ## Best Practices
 
-1. **Tool Call Optimization**
-   - Minimize number of calls
-   - Prefer larger reads over multiple small ones
-   - Include clear explanations
+- **Favor Simplicity:**
+  - Do not add extra validation, abstraction, or documentation sections unless absolutely necessary
+  - All process files should be easy to read and maintain
+- **Minimal Examples:**
+  - All examples should show only the essential tool calls and logic
+- **Discourage Over-Engineering:**
+  - If a section or pattern feels complex, simplify it or remove it
+- **Documentation:**
+  - Include only what is needed for clarity and correct usage
 
-2. **Parameter Validation**
-   - Check required parameters
-   - Validate parameter types
-   - Provide helpful error messages
+## Example: Minimal Command Process
 
-3. **Documentation**
-   - Include usage examples
-   - Document error scenarios
-   - Reference related commands
+```markdown
+---
+name: echo
+category: system
+description: Print a message
+version: 1.0
+author: 00reaper
+permissions: [basic]
+inputs:
+  - name: message
+    type: string
+    required: true
+    description: Message to print
+outputs:
+  - name: result
+    type: string
+    description: Echoed message
+---
 
-4. **Testing**
-   - Test with various inputs
-   - Verify error handling
-   - Check response format 
+# Process: echo
+
+USE WHEN you want to execute echo
+
+## Execution
+
+This process executes the following tool call:
+
+1. Return the message as the result
+
+## Examples
+
+> echo "Hello, world!"
+``` 

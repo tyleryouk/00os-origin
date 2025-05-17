@@ -1,18 +1,124 @@
 # 00OS Tool Call Patterns
 
-## Overview
+## Core Principle: The 3-Step Pattern
 
-This document defines the standardized tool call patterns for all 00OS processes. These patterns ensure consistency, reliability, and maintainability across the system by establishing clear sequences of tool calls for common operations.
+Every 00OS command process must follow this pattern:
+1. **User sends a command**: `> command-name [arguments] [--flags]`
+2. **AI fetches the process rule**: Use a single `fetch_rules` call
+3. **AI executes the defined tool calls**: Follow the rule exactly, no more, no less
 
-## Core Principles
+> **Keep it simple:**
+> - Use direct, minimal tool call sequences
+> - Avoid complex error handling or multi-step logic
+> - All examples should be short and actionable
 
-1. **Explicit Tool Call Declaration**: All tool calls must be explicitly declared in process files
-2. **Sequential Execution**: Tool calls should be executed in a logical, sequential order
-3. **Proper Error Handling**: Each tool call must include appropriate error handling
-4. **No Self-Execution**: Processes must never attempt to execute 00OS commands through terminal commands
-5. **Consistent Response Formatting**: All responses should use standard indicators (✅, ❌, ⚠️)
-6. **Dynamic Execution**: Tool calls must be executed based on the current state and input parameters
-7. **Fetch First**: All 00OS commands must use fetch_rules to retrieve process definitions
+## Minimal Tool Call Patterns
+
+### 1. Fetch Process Rule (MANDATORY)
+```javascript
+await tools.call('fetch_rules', {
+  rule_names: [`processes/${category}/${command}`],
+  explanation: `Fetching process rule for ${command}`
+});
+```
+
+### 2. Information Gathering
+```javascript
+// List directory
+await tools.call('list_dir', {
+  relative_workspace_path: targetPath,
+  explanation: 'Listing directory contents'
+});
+
+// Read file
+await tools.call('read_file', {
+  target_file: targetFile,
+  should_read_entire_file: true,
+  explanation: 'Reading file content'
+});
+```
+
+### 3. File Modification
+```javascript
+// Read file
+const fileContent = await tools.call('read_file', {
+  target_file: targetFile,
+  should_read_entire_file: true,
+  explanation: 'Reading file before modification'
+});
+
+// Edit file
+await tools.call('edit_file', {
+  target_file: targetFile,
+  instructions: 'Update file content',
+  code_edit: `// ... existing code ...\n${newContent}\n// ... existing code ...`
+});
+```
+
+### 4. Terminal Command Execution
+```javascript
+await tools.call('run_terminal_cmd', {
+  command: 'git status',
+  is_background: false,
+  explanation: 'Checking git repository status'
+});
+```
+
+## Minimal Error Handling
+
+Let the system handle errors unless a specific suggestion is needed. Example:
+```javascript
+try {
+  // Tool calls
+} catch (error) {
+  return {
+    success: false,
+    error: error.message,
+    suggestions: ['Check your input and try again.']
+  };
+}
+```
+
+## Best Practices
+- **Always start with fetch_rules**
+- **Favor direct, minimal tool call sequences**
+- **Avoid over-engineering and complex error handling**
+- **All examples should be short and practical**
+- **Use clear explanations in tool calls**
+
+## Example: Minimal Command Process
+
+```markdown
+---
+name: file-list
+category: system
+description: List files in a directory
+version: 1.0
+author: 00reaper
+permissions: [basic]
+inputs:
+  - name: path
+    type: string
+    required: true
+    description: Directory path
+outputs:
+  - name: result
+    type: array
+    description: List of files
+---
+
+# Process: file-list
+
+USE WHEN you want to execute file-list
+
+## Execution
+
+1. list_dir: List files in the specified directory
+
+## Examples
+
+> file-list /00os/processes
+```
 
 ## Recent Improvements (REQ-003)
 

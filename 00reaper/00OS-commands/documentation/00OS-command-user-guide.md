@@ -2,29 +2,73 @@
 
 ## Introduction
 
-Welcome to 00OS, a terminal-like interface integrated within your AI assistant. This guide explains how to use the available commands to interact with the system, manage files, and automate tasks.
+Welcome to 00OS, a terminal-like interface for AI-powered command execution. This guide explains how to use the available commands, understand the workflow, and get help.
 
-## Getting Started
+## The 3-Step Pattern (How 00OS Commands Work)
 
-### Command Syntax
+Every 00OS command follows this simple pattern:
 
-All 00OS commands start with the `>` prefix followed by the command name, optional subcommands, arguments, and flags:
+1. **User sends a command**: `> command-name [arguments] [--flags]`
+2. **AI fetches the process rule**: The system loads the command definition
+3. **AI executes the defined tool calls**: The command runs exactly as defined, with no extra steps
+
+> **Tip:** All commands are designed to be simple, direct, and predictable. If you know the command name, you can use it immediately.
+
+## Command Syntax
 
 ```
 > [command] [subcommand] [arguments] [--flags]
 ```
 
-*   **command**: The primary action (e.g., `file`, `system`).
-*   **subcommand**: A specific action within the command (e.g., `list` for `file`).
-*   **arguments**: Required or optional values the command needs (e.g., file paths, search terms).
-*   **flags**: Modifiers that change command behavior (e.g., `--verbose`, `--recursive`). Boolean flags don't need a value; others use `--flag=value`.
+- **command**: The main action (e.g., `file`, `system`, `reaper-sync`)
+- **subcommand**: (Optional) A specific action (e.g., `list` for `file`)
+- **arguments**: Required or optional values (e.g., file paths)
+- **flags**: Modifiers (e.g., `--verbose`). Boolean flags need no value; others use `--flag=value`.
 
-### Getting Help
+## Getting Help
 
-The primary command for assistance is `help`:
+- `> help`: Lists all available commands
+- `> help [command-name]`: Shows usage and details for a specific command
 
-*   `> help`: Lists all available commands.
-*   `> help [command-name]`: Shows detailed usage, arguments, and flags for a specific command.
+## Practical Examples
+
+- List files in a directory:
+  - `> file list /00os/processes`
+- Read a file:
+  - `> file read 00os/processes/system/help.md`
+- Show the current 00OS version:
+  - `> version`
+- Synchronize 00OS rules:
+  - `> reaper-sync`
+- Get help for a command:
+  - `> help reaper-sync`
+
+## Available Commands (Common)
+
+- **`> help`**: Show help for commands
+- **`> version`**: Show the current 00OS version
+- **`> file list [path]`**: List files in a directory
+- **`> file read [file-path]`**: Read a file's content
+- **`> reaper-sync`**: Synchronize 00OS rules
+- **`> reaper-init`**: Load all core context for 00OS
+
+> Use `> help [command]` for details and more examples for each command.
+
+## Troubleshooting
+
+- **Command Not Found**: Check the command name. Use `> help` to see available commands.
+- **Missing Argument**: Use `> help [command]` to see required arguments.
+- **Permission Error**: Some commands require special permissions.
+- **Tool Call Error**: If you see an internal error, try again or contact support.
+
+## Best Practices
+- Use the simplest command for your task
+- Use flags only when needed (e.g., `--verbose`)
+- If unsure, start with `> help`
+
+---
+
+**00OS is designed for clarity and ease of use. All commands follow the same 3-step pattern, so once you learn one, you can use them all!**
 
 ## Available Commands
 
