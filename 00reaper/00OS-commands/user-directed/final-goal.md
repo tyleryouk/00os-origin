@@ -81,7 +81,7 @@ This process executes the following tool calls:
 
 2. **00OS/processes/system/** and **00OS/processes/00reaper/**
    - Convert processes to follow the simplified template
-   - Start with high-usage commands (reaper-sync, help, version)
+   - Start with high-usage commands (reaper-sync, help, version, reaper-init, reaper-read-files, reaper-analyze-tasks)
    - Maintain proper categorization while simplifying implementations
 
 ### Workflow Files
@@ -217,7 +217,8 @@ Start with these high-impact commands:
 2. **reaper-init**: Key for context initialization
 3. **help**: Commonly used system command
 4. **version**: Simple reference implementation
-5. **file-list/file-read**: Essential utility commands
+5. **reaper-read-files**: Utility command for reading files
+6. **reaper-analyze-tasks**: Utility command for analyzing tasks
 
 ## Expected Benefits
 

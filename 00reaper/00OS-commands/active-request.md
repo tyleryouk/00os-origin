@@ -1,36 +1,30 @@
 <!-- No active request. Ready for new REQ. -->
 
-# REQ-SIMP-003: Cycle 3 - Core System Updates
+# REQ-SIMP-004: Cycle 4 - Expand Command Simplification
 
 ## Requirements
-1. **Update command-handler**
-   - Simplify to focus on the critical path
-   - Ensure robust `fetch_rules` usage
-   - Remove unnecessary validation and complexity
-   - Improve error handling for command failures
-2. **Update parser**
-   - Optimize for the simplified command structure
-   - Ensure efficient passing of arguments to processes
-   - Remove unnecessary validation complexity
-3. **Update registry**
-   - Support simplified process definitions
-   - Ensure efficient process lookup and categorization
+1. Convert the following system commands to the simplified, direct tool-call format:
+   - help
+   - version
+2. Convert the following 00reaper commands:
+   - reaper-sync
+   - reaper-init
+   - reaper-read-files
+   - reaper-analyze-tasks
 
 ## Completion Criteria
-- [ ] Command handler, parser, and registry are simplified and robust
-- [ ] All core components enforce the 3-step pattern
-- [ ] Error messages are clear and actionable
-- [ ] Command processing is efficient and maintainable
+- [ ] All listed commands follow the 3-step pattern and use direct tool call sequences
+- [ ] Implementations are minimal, with no unnecessary validation or error handling
+- [ ] Documentation and examples are updated as needed
+- [ ] All commands execute successfully and pass basic tests
 
 ## Context References
-- 00OS/core/command-handler
-- 00OS/core/parser
-- 00OS/core/registry
-- 00reaper/00OS-commands/user-directed/00OS-simplification-roadmap.md
-- 00reaper/00OS-commands/user-directed/final-goal.md
+- 00OS-commands/user-directed/00OS-simplification-roadmap.md
+- 00OS-commands/documentation/command-template-core.md
+- 00OS-commands/documentation/command-standards-core.md
 
 ## Related Requests
-This is Cycle 3 of the 00OS Command Simplification Initiative.
+This is Cycle 4 of the 00OS Command Simplification Initiative.
 
 
 
