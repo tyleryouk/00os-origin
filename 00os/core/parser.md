@@ -157,51 +157,9 @@ function tokenizeInput(input) {
   return tokens;
 }
 
-/**
- * Validate a parsed command structure against the command registry
- * @param {Object} cmd - Parsed command structure
- * @returns {Object} Validation result with potential errors
- */
-function validateCommand(cmd) {
-  // Check if command exists in registry
-  if (!commandRegistry[cmd.command]) {
-    return {
-      valid: false,
-      error: 'COMMAND_NOT_FOUND',
-      message: `Command not found: ${cmd.command}`
-    };
-  }
-  
-  const commandDef = commandRegistry[cmd.command];
-  
-  // Validate subcommand if required
-  if (commandDef.requiresSubcommand && !cmd.subcommand) {
-    return {
-      valid: false,
-      error: 'SUBCOMMAND_REQUIRED',
-      message: `Subcommand required for ${cmd.command}`
-    };
-  }
-  
-  // Validate required arguments
-  if (commandDef.requiredArgs && cmd.arguments.length < commandDef.requiredArgs) {
-    return {
-      valid: false,
-      error: 'MISSING_ARGUMENTS',
-      message: `Command ${cmd.command} requires at least ${commandDef.requiredArgs} argument(s)`
-    };
-  }
-  
-  return {
-    valid: true,
-    command: commandDef
-  };
-}
-
 // Export functions for system use
 module.exports = {
-  parseCommand,
-  validateCommand
+  parseCommand
 };
 ```
 
@@ -248,15 +206,6 @@ const parsedCommand = parseCommand(input);
 // }
 
 // Validate command
-const validationResult = validateCommand(parsedCommand);
-
-// If valid, proceed to execution
-if (validationResult.valid) {
-  executeCommand(parsedCommand, validationResult.command);
-} else {
-  // Handle error
-  console.error(validationResult.message);
-}
 ```
 
 ## Future Enhancements

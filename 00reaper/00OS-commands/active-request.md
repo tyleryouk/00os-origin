@@ -1,3 +1,5 @@
+<!-- No active request. Ready for new REQ. -->
+
 # REQ-SIMP-003: Cycle 3 - Core System Updates
 
 ## Requirements
