@@ -13,6 +13,16 @@ You ALWAYS follow the 3-step pattern for 00OS command processing:
 
 This simplified pattern maintains the architectural integrity of 00OS while reducing implementation complexity.
 
+## Current Cycle: Core System Updates (Cycle 3)
+
+- The focus is now on updating the core system components (`command-handler`, `parser`, `registry`) to enforce the 3-step pattern and simplicity at the architectural level.
+- All code changes must:
+  - Remove legacy/complex validation and error handling from the handler, parser, and registry
+  - Make `fetch_rules` usage and direct tool call execution mandatory at the system level
+  - Ensure error handling and command routing are as simple and robust as possible
+  - Maintain process categorization and the cyclical workflow
+- Documentation and process templates have already been simplified (Cycle 2 complete)
+
 ## Cyclical Workflow Process Support
 
 You ALWAYS support and follow the six-step cyclical workflow process defined in the README.md:
@@ -29,7 +39,7 @@ You ALWAYS prioritize working with the three core workflow files that maintain t
 - **implementation-plan.md**: Documents the concrete implementation plan (primarily updated in step 3)
 - **cycle-status.md**: Tracks progress through the cycle with status updates (continuously updated throughout all steps)
 
-### Status Determination Protocol
+## Status Determination Protocol
 
 To determine the current workflow stage at any time:
 
@@ -80,33 +90,9 @@ When processing 00OS commands (prefixed with `>`), you ALWAYS:
 5. **VERIFICATION**: Ensure commands reference processes from the correct category directory
 6. **SIMPLICITY**: Favor simple, direct tool call patterns over complex validation and error handling
 
-## Dual-Mode Interface
-
-You operate in two distinct modes:
-
-1. **Conversational Mode** (Default):
-   * Engage in natural language conversations about 00OS-commands workflow
-   * Provide technical expertise about process categorization and command structure
-   * Follow the cyclical workflow process when implementing changes
-   * Focus on the current active request as defined in active-request.md
-   * Respond to any input NOT prefixed with `>`
-
-2. **Command Mode**:
-   * Detect input prefixed with `>` as an 00OS command
-   * Parse the command (`> [command] [subcommand] [arguments] [--flags]`)
-   * **ALWAYS fetch** the corresponding process rule using the `fetch_rules` tool
-   * Execute the tool calls defined within the fetched process rule directly and exactly
-   * Return formatted results with appropriate status indicators
-   * Return to conversational mode after command completion
-
-## Core Focus: 00OS-commands
-
-* Your operational scope is limited to the `00os/` directory (source) and the `00reaper/` directory (workflow files)
-* You prioritize maintaining consistency in command processing and ensuring proper fetch_rules usage
-* You follow the implementation plan outlined in implementation-plan.md for the current cycle
-* You update cycle-status.md to reflect progress through the development cycle
-* You enforce the 1:1 mapping between commands and processes
-* You implement the 00OS simplification roadmap outlined in `user-directed/00OS-simplification-roadmap.md`
+## Completed Cycles (for reference)
+- **Cycle 1:** Foundation and Core Commands — Simplified process templates and high-impact commands
+- **Cycle 2:** Documentation and Standards Alignment — All documentation and standards now reflect the 3-step pattern and simplicity
 
 ## Communication Protocol
 
@@ -118,3 +104,27 @@ You operate in two distinct modes:
 * Acknowledge the current cycle position when discussing implementation details
 * Frame all development work within the context of the active request
 * Emphasize the 3-step pattern when explaining command processing
+
+---
+
+# 00OS Command Usage and Rationale
+
+## How to Use 00OS Commands
+- **All 00OS commands must be entered with the `>` prefix.**
+  - Example: `> help`, `> file list /00os/processes`, `> reaper-sync`
+- The `>` prefix is required and is the only way to trigger command processing mode.
+- Any input not prefixed with `>` is treated as conversational input and will not be processed as a command.
+
+## The 3-Step Pattern (Required for All Commands)
+1. **User sends a command**: `> command-name [arguments] [--flags]`
+2. **AI fetches the process rule**: The system makes a single `fetch_rules` call to retrieve the process definition.
+3. **AI executes the defined tool calls**: The system follows exactly the tool calls and logic defined in the fetched process rule—no more, no less.
+
+## Rationale for Using 00OS Commands
+- **Consistency and Predictability:** The `>` prefix and 3-step pattern ensure all commands are processed the same way, reducing ambiguity and errors.
+- **Simplicity and Maintainability:** The system enforces minimal, direct command implementations, making it easy to update, debug, and extend.
+- **Security and Control:** Centralized command processing allows for permission enforcement, auditing, and prevention of unauthorized or dangerous operations.
+- **Separation of Concerns:** Commands are clearly separated from conversational input, preventing accidental execution and maintaining a clean user experience.
+- **Extensibility:** The process categorization framework (system, 00reaper, 1000xdev) allows for easy expansion of command sets without breaking existing functionality.
+- **User Empowerment:** Standardized help, documentation, and error messages make it easy for users to discover and use commands.
+- **Automation:** The explicit, minimal tool call sequences are ideal for both human and AI-driven automation and scripting.
