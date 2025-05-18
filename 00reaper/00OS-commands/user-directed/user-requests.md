@@ -1,8 +1,8 @@
 # 00OS Command Simplification Initiative
 
-## Current Active Request: Cycle 3 - Core System Updates
+## Current Active Request: Cycle 4 - Expand Command Simplification
 
-### REQ-SIMP-003: Update Core System Components for Simplified Command Processing
+### REQ-SIMP-004: Convert Implemented Commands to Simplified Format
 
 **Priority**: High  
 **Status**: Active  
@@ -11,28 +11,29 @@
 - `user-directed/final-goal.md` - Vision document for simplified 00OS commands
 
 #### Description
-Implement Cycle 3 of the 00OS Command Simplification Initiative. This cycle focuses on updating the core system components (command handler, parser, registry) to fully support the 3-step pattern and simplified command processing model.
+Implement Cycle 4 of the 00OS Command Simplification Initiative. This cycle focuses on converting all currently implemented system and 00reaper commands to the simplified, direct tool-call format.
 
 #### Requirements
-1. Update `00OS/core/command-handler` to focus on the critical path:
-   - Ensure robust `fetch_rules` usage
-   - Remove unnecessary validation and complexity
-   - Improve error handling for command failures
-2. Update `00OS/core/parser`:
-   - Optimize for the simplified command structure
-   - Ensure efficient passing of arguments to processes
-   - Remove unnecessary validation complexity
-3. Update `00OS/core/registry`:
-   - Support simplified process definitions
-   - Ensure efficient process lookup and categorization
+1. Convert the following system commands:
+   - help
+   - version
+2. Convert the following 00reaper commands:
+   - reaper-sync
+   - reaper-init
+   - reaper-read-files
+   - reaper-analyze-tasks
 
 #### Success Criteria
-- Command handler, parser, and registry are simplified and robust
-- All core components enforce the 3-step pattern
-- Error messages are clear and actionable
-- Command processing is efficient and maintainable
+- All listed commands follow the 3-step pattern and use direct tool call sequences
+- Implementations are minimal, with no unnecessary validation or error handling
+- Documentation and examples are updated as needed
+- All commands execute successfully and pass basic tests
 
 ## Previous Cycles
+
+### Cycle 3 - Core System Updates (Complete)
+- Updated command handler, parser, and registry for the 3-step pattern
+- Improved error handling and simplified validation
 
 ### Cycle 2 - Documentation and Standards Alignment (Complete)
 - Updated all documentation and standards to reflect the 3-step pattern
@@ -48,9 +49,8 @@ Implement Cycle 3 of the 00OS Command Simplification Initiative. This cycle focu
 
 ## Future Cycles
 
-After completion of Cycle 3, subsequent cycles will be added here:
+After completion of Cycle 4, subsequent cycles will be added here:
 
-- **Cycle 4**: Expand Command Simplification
 - **Cycle 5**: Testing and Refinement
 
 

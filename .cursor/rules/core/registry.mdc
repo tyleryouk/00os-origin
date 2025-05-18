@@ -343,40 +343,6 @@ async function loadProcessDirectory(directoryPath) {
 }
 ```
 
-## Process Validation
-
-The registry provides validation functions to ensure processes meet requirements:
-
-```javascript
-/**
- * Validate a process definition
- * @param {Object} process - Process definition
- * @returns {Object} Validation result
- */
-function validateProcess(process) {
-  const errors = [];
-  
-  // Check required metadata
-  if (!process.metadata) {
-    errors.push('Process missing metadata');
-  } else {
-    // Check required metadata fields
-    if (!process.metadata.name) errors.push('Process missing name');
-    if (!process.metadata.description) errors.push('Process missing description');
-  }
-  
-  // Check execution blocks
-  if (!process.blocks || !process.blocks.execution) {
-    errors.push('Process missing execution block');
-  }
-  
-  return {
-    valid: errors.length === 0,
-    errors
-  };
-}
-```
-
 ## Integration with Command Parser
 
 The registry works closely with the command parser to validate and execute commands:
