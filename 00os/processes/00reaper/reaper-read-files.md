@@ -1,8 +1,9 @@
 ---
 name: reaper-read-files
 description: Read all files in a specified directory
-version: 1.2
+category: 00reaper
 author: 00reaper
+version: 2.0
 permissions: [basic, file-read]
 inputs:
   - name: path
@@ -14,320 +15,28 @@ inputs:
     required: false
     default: false
     description: Whether to read files in subdirectories
-  - name: max-depth
-    type: number
-    required: false
-    default: 3
-    description: Maximum recursion depth (only used if recursive is true)
-  - name: file-pattern
-    type: string
-    required: false
-    default: ""
-    description: Optional pattern to filter files (e.g., ".md" for markdown files)
 outputs:
   - name: result
     type: string
-    description: Formatted file contents
+    description: List of file names and their contents
 ---
 
 # Process: reaper-read-files
 
 USE WHEN you want to execute reaper-read-files
 
-## Description
-Reads all files in a specified directory and returns their contents in a structured format.
-Commonly used to read configuration or command files for analysis without modifying them.
-
 ## Execution
 
-```javascript
-async function execute(args) {
-  try {
-    // Parse arguments
-    const params = parseArgs(args);
-    
-    // Validate required parameters
-    if (!params.path) {
-      return formatError("Missing required parameter: path", "VALIDATION_ERROR", [
-        "Specify a directory path to read files from",
-        "Example: > reaper-read-files /00os/processes"
-      ]);
-    }
-    
-    // Initialize tracking variables
-    const processedFiles = [];
-    const errors = [];
-    
-    // Special handling for common use case
-    const isCommandsDir = params.path.includes('00reaper/00OS-commands');
-    
-    // Read the directory recursively
-    await readDirectoryRecursive(
-      params.path, 
-      processedFiles, 
-      errors, 
-      0, 
-      params.maxDepth, 
-      params.recursive, 
-      createFileFilter(params.filePattern)
-    );
-    
-    // Generate appropriate output based on results
-    if (processedFiles.length === 0 && errors.length === 0) {
-      let message = `No files found in the directory '${params.path}'`;
-      if (params.filePattern) {
-        message += ` matching pattern '${params.filePattern}'`;
-      }
-      if (params.recursive) {
-        message += " (including subdirectories)";
-      }
-      return formatSuccess(message);
-    }
-    
-    // Format the output
-    if (isCommandsDir) {
-      return formatCommandsDirectoryOutput(processedFiles, errors, params.path);
-    } else {
-      return formatStandardOutput(processedFiles, errors, params.path, params.recursive, params.filePattern);
-    }
-    
-  } catch (error) {
-    return formatError(`Error executing reaper-read-files: ${error.message}`, "EXECUTION_ERROR");
-  }
-}
+This process executes the following tool calls:
 
-/**
- * Parse command arguments into parameter object
- */
-function parseArgs(args) {
-  const params = {
-    path: null,
-    recursive: false,
-    maxDepth: 3,
-    filePattern: ""
-  };
-  
-  // Process positional argument (path)
-  if (args.length > 0) {
-    params.path = args[0];
-  }
-  
-  // Process flags and options
-  for (let i = 1; i < args.length; i++) {
-    const arg = args[i];
-    
-    if (arg === '--recursive') {
-      params.recursive = true;
-    } else if (arg.startsWith('--max-depth=')) {
-      const depthValue = arg.substring('--max-depth='.length);
-      params.maxDepth = parseInt(depthValue, 10) || 3;
-    } else if (arg.startsWith('--file-pattern=')) {
-      params.filePattern = arg.substring('--file-pattern='.length);
-    } else if (arg === '--file-pattern' && i + 1 < args.length) {
-      params.filePattern = args[++i];
-    } else if (arg === '--max-depth' && i + 1 < args.length) {
-      params.maxDepth = parseInt(args[++i], 10) || 3;
-    }
-  }
-  
-  return params;
-}
+1. Use list_dir to list all files in the specified directory (and subdirectories if recursive is true).
+2. For each file, use read_file to read its contents.
+3. Return a list of file names and their contents.
 
-/**
- * Create a file filter function based on the pattern
- */
-function createFileFilter(pattern) {
-  return (fileName) => {
-    if (!pattern) return true;
-    return fileName.toLowerCase().includes(pattern.toLowerCase());
-  };
-}
+## Examples
 
-/**
- * Recursively read a directory and its contents
- */
-async function readDirectoryRecursive(directoryPath, processedFiles, errors, currentDepth, maxDepth, isRecursive, fileFilter) {
-  try {
-    // Read directory contents
-    const listResult = await tools.call('list_dir', { 
-      relative_workspace_path: directoryPath,
-      explanation: `Listing files in '${directoryPath}' for the reaper-read-files command` 
-    });
-    
-    // Validate directory listing result
-    if (!listResult || !Array.isArray(listResult.entries)) {
-      throw new Error(`Failed to list directory '${directoryPath}'`);
-    }
-    
-    // Filter entries to just files (skip directories unless recursive)
-    const entries = listResult.entries;
-    const filesToProcess = entries
-      .filter(entry => !entry.is_directory)
-      .filter(entry => fileFilter(entry.path.split('/').pop()));
-    
-    // Process subdirectories if recursive and not at max depth
-    const dirsToProcess = isRecursive && currentDepth < maxDepth ? 
-      entries.filter(entry => entry.is_directory) : [];
-    
-    // Process each file
-    for (const fileEntry of filesToProcess) {
-      const filePath = fileEntry.path;
-      const fileName = filePath.split('/').pop();
-      
-      try {
-        const readResult = await tools.call('read_file', {
-          target_file: filePath,
-          should_read_entire_file: true,
-          explanation: `Reading file ${filePath} as part of directory scan`
-        });
-        
-        if (readResult && readResult.content !== undefined) {
-          processedFiles.push({
-            path: filePath,
-            name: fileName,
-            content: readResult.content,
-            size: fileEntry.size_bytes || 0,
-            lineCount: readResult.content.split('\n').length
-          });
-        } else {
-          const errorMsg = readResult ? readResult.error || 'Unknown read error' : 'No response from read_file tool';
-          errors.push({ path: filePath, error: errorMsg });
-        }
-      } catch (readError) {
-        errors.push({ path: filePath, error: readError.message });
-      }
-    }
-    
-    // Process subdirectories
-    for (const dirEntry of dirsToProcess) {
-      const dirPath = dirEntry.path;
-      
-      await readDirectoryRecursive(
-        dirPath, 
-        processedFiles, 
-        errors, 
-        currentDepth + 1, 
-        maxDepth, 
-        isRecursive,
-        fileFilter
-      );
-    }
-    
-  } catch (error) {
-    errors.push({ path: directoryPath, error: error.message });
-  }
-}
+> reaper-read-files /00os/processes/system
+✅ Returns the names and contents of all files in /00os/processes/system
 
-/**
- * Format output for 00OS-commands directory
- */
-function formatCommandsDirectoryOutput(files, errors, path) {
-  let output = `I'll read all files in the ${path} directory.\n\n`;
-  
-  // Process each file in alphabetical order
-  const sortedFiles = [...files].sort((a, b) => a.name.localeCompare(b.name));
-  
-  // Start with README.md if it exists
-  const readmeIndex = sortedFiles.findIndex(f => f.name.toLowerCase() === 'readme.md');
-  if (readmeIndex >= 0) {
-    const readme = sortedFiles.splice(readmeIndex, 1)[0];
-    output += `Now I'll read each file to understand the content. Let's start with the ${readme.name} to get an overview.\n\n`;
-    output += `Read file: ${readme.path}\n`;
-    output += `${readme.content}\n\n`;
-  } else {
-    output += `Now I'll read each file to understand the content.\n\n`;
-  }
-  
-  // Process remaining files
-  for (const file of sortedFiles) {
-    output += `Read file: ${file.path}\n`;
-    output += `${file.content}\n\n`;
-  }
-  
-  // Add error information if any
-  if (errors.length > 0) {
-    output += `\nWarning: ${errors.length} file(s) could not be read:\n`;
-    for (const error of errors) {
-      output += `- ${error.path}: ${error.error}\n`;
-    }
-  }
-  
-  return formatSuccess(`Read ${files.length} files from ${path}`, output);
-}
-
-/**
- * Format standard directory output
- */
-function formatStandardOutput(files, errors, path, isRecursive, filePattern) {
-  // Create the summary
-  let summary = `Read ${files.length} files from ${path}`;
-  
-  if (filePattern) {
-    summary += ` matching pattern '${filePattern}'`;
-  }
-  
-  if (isRecursive) {
-    summary += " (including subdirectories)";
-  }
-  
-  if (errors.length > 0) {
-    summary += ` (${errors.length} error(s))`;
-  }
-  
-  // Create detailed output
-  let output = `Files read from ${path}:\n\n`;
-  
-  // Sort files by path
-  const sortedFiles = [...files].sort((a, b) => a.path.localeCompare(b.path));
-  
-  // List all files
-  for (const file of sortedFiles) {
-    output += `${file.path} (${file.lineCount} lines)\n`;
-    output += `${file.content}\n\n`;
-  }
-  
-  // Add error information if any
-  if (errors.length > 0) {
-    output += `\nErrors:\n`;
-    for (const error of errors) {
-      output += `- ${error.path}: ${error.error}\n`;
-    }
-  }
-  
-  return formatSuccess(summary, output);
-}
-
-/**
- * Format a successful response
- */
-function formatSuccess(message, details = null) {
-  if (details) {
-    return `✅ ${message}\n\n${details}`;
-  }
-  return `✅ ${message}`;
-}
-
-/**
- * Format an error response
- */
-function formatError(message, code = "ERROR", suggestions = []) {
-  let output = `❌ Error [${code}]: ${message}`;
-  
-  if (suggestions && suggestions.length > 0) {
-    output += "\n\nSuggestions:";
-    for (const suggestion of suggestions) {
-      output += `\n- ${suggestion}`;
-    }
-  }
-  
-  return output;
-}
-
-// Execute the command with the provided arguments
-return execute(args);
-```
-
-## Example Usage
-
-### Basic Directory Reading
-```
+> reaper-read-files /00os/processes/00reaper --recursive
+✅ Returns the names and contents of all files in /00os/processes/00reaper and its subdirectories
