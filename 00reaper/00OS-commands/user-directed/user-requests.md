@@ -1,3 +1,5 @@
+<!-- No active user requests. Ready for new REQ. -->
+
 # 00OS Command Simplification Initiative
 
 ## Current Active Request: Cycle 4 - Expand Command Simplification
