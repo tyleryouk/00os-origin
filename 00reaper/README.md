@@ -32,7 +32,7 @@ This directory (`00reaper/`) serves as the central hub for creating, managing, a
    * Documents the cyclical workflow process and file structure
    * Starting point for understanding the workflow
 
-2. **user-directed/user-rules-00OS-commands.md**
+2. **user-directed/user-rules-00reaper.md**
    * Contains specific operational directives for the 00reaper AI agent
    * Defines 00reaper's dual-mode interface and process categorization rules
 
@@ -96,10 +96,14 @@ The 00OS-commands development follows a six-step structured cyclical approach:
    * Update ONLY documentation files as needed
    * Update ONLY `cycle-status.md` to track progress
 
-6. **Reset Core Workflow Files & Sync Changes**
+6. **Reset Core Workflow Files, Archive, & Sync Changes**
    * Clear ALL core workflow files for next cycle
+   * Move completed, deprecated, or obsolete files to the appropriate `archive/` subfolder
    * Run `> reaper-sync` to sync 00OS changes to `.cursor/rules`
    * Update ONLY `cycle-status.md` for final status
+
+## Archiving & Historical Records
+Archiving is a formal part of the cyclical workflow. After completing a development cycle, deprecating a process, or when files are no longer active, move them to the appropriate subfolder under `archive/` in `00reaper/`. This preserves historical context and keeps the active workflow clean. Always update references in documentation and process files to point to the new archive location. 00reaper is responsible for maintaining a well-organized archive and ensuring no active files are lost or orphaned.
 
 ## Directory Structure (Flat)
 
@@ -132,7 +136,7 @@ Research on Cursor rules implementation and behavior
 #### `user-directed/`
 User requests and agent instructions (used in Step 1)
 * `user-requests.md`: Feature requests and tracking
-* `user-rules-00OS-commands.md`: 00reaper agent rules
+* `user-rules-00reaper.md`: 00reaper agent rules
 
 ## Implementing the Workflow
 

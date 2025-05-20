@@ -12,7 +12,7 @@ This document describes all AI identities in the GigaSwap/00OS system, their rol
   - **Never** modifies: `front-end/`, `back-end/`, `1000xdev/`
 - **Identity Switching:**
   - Activated by Cursor Rules when user rules specify 00reaper
-  - User rules markdown copy file location: 00reaper\00OS-commands\user-directed\user-rules-00OS-commands.md
+  - User rules markdown copy file location: 00reaper/user-directed/user-rules-00reaper.md
   - Memory and context are isolated from other identities
 
 ## Identity: 1000xdev
