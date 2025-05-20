@@ -9,7 +9,7 @@ This file provides context on the contents of the `processes/00reaper` directory
 - **Key Tools**: read_file
 
 ## reaper-implement
-- **Purpose**: Reads the current task defined in 00reaper/00OS-commands/current-task.md and executes the necessary changes to 00OS process files and tracking documents.
+- **Purpose**: Reads the current task defined in 00reaper/current-task.md and executes the necessary changes to 00OS process files and tracking documents.
 - **Location**: `00OS/processes/00reaper/reaper-implement.md`
 - **Status**: Implemented
 - **Key Tools**: read_file, edit_file

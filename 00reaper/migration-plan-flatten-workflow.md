@@ -11,14 +11,14 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
 - [x] Commit the current state of `00reaper/` to git before starting the migration (for easy rollback)
 
 ### 2. Inventory & Categorization
-- [ ] List all files and folders in `00reaper/00OS-commands/` (user-directed, documentation, context-00OS-current-state, research-cursor, archive, README.md)
+- [x] List all files and folders in `00reaper/00OS-commands/` (user-directed, documentation, context-00OS-current-state, research-cursor, archive, README.md)
     - user-directed/
     - documentation/
     - context-00OS-current-state/
     - research-cursor/
     - archive/
     - README.md
-- [ ] List all files and folders in `00reaper/00OS-creation/` (for archival)
+- [x] List all files and folders in `00reaper/00OS-creation/` (for archival)
     - user-rules-global.md
     - understanding-00os.md
     - 00OS-creation-summary.md
@@ -36,7 +36,7 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
     - terminal-interface-goals.md
     - 00OS-implementation-summary.md
     - 1000xrules-and-00OS.md
-- [ ] List all files in the base of `00reaper/` and `00scripts/` to check for reference dependencies
+- [x] List all files in the base of `00reaper/` and `00scripts/` to check for reference dependencies
     - 00reaper/:
         - 00OS-commands/
         - 00OS-creation/
@@ -50,28 +50,30 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
         - rules-scripts/
 
 ### 3. Move Workflow Files
-- [ ] Move all subfolders and files from `00OS-commands/` to the base of `00reaper/`:
-    - [ ] `user-directed/`
-    - [ ] `documentation/`
-    - [ ] `context-00OS-current-state/`
-    - [ ] `research-cursor/`
-    - [ ] `archive/`
-    - [ ] `README.md` (rename to `WORKFLOW-README.md` if needed to avoid conflict)
-- [ ] Ensure no files are overwritten or lost during the move
+- [x] Move all subfolders and files from `00OS-commands/` to the base of `00reaper/`:
+    - [x] `user-directed/`
+    - [x] `documentation/`
+    - [x] `context-00OS-current-state/`
+    - [x] `research-cursor/`
+    - [x] `archive/`
+    - [x] `README.md` (renamed to `README.md` at the base)
+- [x] Ensure no files are overwritten or lost during the move
 
 ### 4. Archive 00OS-creation
-- [ ] Move the entire `00OS-creation/` folder into `archive/` (unless any files are still active—review before archiving)
-- [ ] Update the archive index if one exists
+- [x] Move the entire `00OS-creation/` folder into `archive/` (unless any files are still active—review before archiving)
+- [x] Update the archive index if one exists
 
 ### 5. Update References
-- [ ] Read every file in `00reaper/` and all subfolders (including scripts in `00scripts/`)
-- [ ] Update all references to the old `00OS-commands/` path in:
-    - [ ] Documentation files
-    - [ ] User rules and user-directed files
-    - [ ] Research and context files
-    - [ ] PowerShell scripts and automation tools
-    - [ ] Any process or system files referencing the old structure
+- [x] Read every file in `00reaper/` and all subfolders (including scripts in `00scripts/`)
+- [x] Update all references to the old `00OS-commands/` path in:
+    - [x] Documentation files
+    - [x] User rules and user-directed files
+    - [x] Research and context files
+    - [x] PowerShell scripts and automation tools
+    - [x] Any process or system files referencing the old structure
 - [ ] Update README.md to reflect the new flat structure and migration rationale
+
+_Note: Reference update is now in progress._
 
 ### 6. Validation & Testing
 - [ ] Check for broken links or outdated references in all files

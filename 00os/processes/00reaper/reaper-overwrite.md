@@ -13,16 +13,16 @@ inputs:
   - name: target_context_file
     type: string
     required: true
-    description: Full path to the target context file to overwrite (e.g., '00reaper/00OS-commands/context-00OS-current-state/config.md')
+    description: Full path to the target context file to overwrite (e.g., '00reaper/context-00OS-current-state/config.md')
 outputs:
   - name: result
     type: object
     description: The command execution result (success/failure, message)
 usage: reaper-overwrite <source_directory> <target_context_file>
 examples:
-  - reaper-overwrite config 00reaper/00OS-commands/context-00OS-current-state/config.md
-  - reaper-overwrite core 00reaper/00OS-commands/context-00OS-current-state/core.md
-  - reaper-overwrite processes/system 00reaper/00OS-commands/context-00OS-current-state/system-processes.md
+  - reaper-overwrite config 00reaper/context-00OS-current-state/config.md
+  - reaper-overwrite core 00reaper/context-00OS-current-state/core.md
+  - reaper-overwrite processes/system 00reaper/context-00OS-current-state/system-processes.md
 ---
 
 # Process: reaper-overwrite

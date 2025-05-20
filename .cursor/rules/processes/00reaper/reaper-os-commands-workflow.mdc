@@ -8,7 +8,7 @@ type: agent
 # Process: reaper-os-commands-workflow
 
 ## Description
-Orchestrates the cyclical workflow for 00OS commands development as defined in 00reaper/00OS-commands/README.md, supporting subcommands for each of the six workflow steps:
+Orchestrates the cyclical workflow for 00OS commands development as defined in 00reaper/README.md, supporting subcommands for each of the six workflow steps:
 1. Read User Request REQ
 2. Read Relevant Context
 3. Update Core Workflow Files
@@ -129,7 +129,7 @@ async function executeWorkflowStep(step, verbose) {
  */
 async function readUserRequest(verbose) {
   try {
-    const filePath = "00reaper/00OS-commands/user-directed/user-requests.md";
+    const filePath = "00reaper/user-directed/user-requests.md";
     
     // Read the user requests file
     const result = await tools.call("read_file", {
@@ -201,10 +201,10 @@ async function readRelevantContext(verbose) {
   try {
     // Context directories to read
     const contextDirs = [
-      "00reaper/00OS-commands/context-00OS-current-state",
-      "00reaper/00OS-commands/documentation",
-      "00reaper/00OS-commands/documentation/templates",
-      "00reaper/00OS-commands/documentation/testing"
+      "00reaper/context-00OS-current-state",
+      "00reaper/documentation",
+      "00reaper/documentation/templates",
+      "00reaper/documentation/testing"
     ];
     
     const contextData = {};
@@ -255,9 +255,9 @@ async function updateCoreWorkflowFiles(verbose) {
   try {
     // Core workflow files
     const workflowFiles = [
-      "00reaper/00OS-commands/active-request.md",
-      "00reaper/00OS-commands/implementation-plan.md",
-      "00reaper/00OS-commands/cycle-status.md"
+      "00reaper/active-request.md",
+      "00reaper/implementation-plan.md",
+      "00reaper/cycle-status.md"
     ];
     
     const filesData = [];
@@ -314,7 +314,7 @@ async function updateCoreWorkflowFiles(verbose) {
 async function makeChangesToOOOS(verbose) {
   try {
     // Read the active request to determine what changes need to be made
-    const activeRequestPath = "00reaper/00OS-commands/active-request.md";
+    const activeRequestPath = "00reaper/active-request.md";
     
     const requestResult = await tools.call("read_file", {
       target_file: activeRequestPath,
@@ -327,7 +327,7 @@ async function makeChangesToOOOS(verbose) {
     }
     
     // Read the implementation plan to determine what changes need to be made
-    const implementationPlanPath = "00reaper/00OS-commands/implementation-plan.md";
+    const implementationPlanPath = "00reaper/implementation-plan.md";
     
     const planResult = await tools.call("read_file", {
       target_file: implementationPlanPath,
@@ -361,10 +361,10 @@ async function updateSupportingMaterials(verbose) {
   try {
     // Supporting materials directories
     const directories = [
-      "00reaper/00OS-commands/context-00OS-current-state",
-      "00reaper/00OS-commands/documentation",
-      "00reaper/00OS-commands/documentation/templates",
-      "00reaper/00OS-commands/documentation/testing"
+      "00reaper/context-00OS-current-state",
+      "00reaper/documentation",
+      "00reaper/documentation/templates",
+      "00reaper/documentation/testing"
     ];
     
     const dirData = {};
@@ -417,16 +417,16 @@ async function resetCoreWorkflowFiles(verbose) {
   try {
     // Core workflow files to reset
     const workflowFiles = [
-      "00reaper/00OS-commands/active-request.md",
-      "00reaper/00OS-commands/implementation-plan.md",
-      "00reaper/00OS-commands/cycle-status.md"
+      "00reaper/active-request.md",
+      "00reaper/implementation-plan.md",
+      "00reaper/cycle-status.md"
     ];
     
     // Template files to use for resetting
     const templateFiles = [
-      "00reaper/00OS-commands/documentation/templates/template-new-active-request.md",
-      "00reaper/00OS-commands/documentation/templates/template-new-implmementation-plan.md",
-      "00reaper/00OS-commands/documentation/templates/template-new-cycle-status.md"
+      "00reaper/documentation/templates/template-new-active-request.md",
+      "00reaper/documentation/templates/template-new-implmementation-plan.md",
+      "00reaper/documentation/templates/template-new-cycle-status.md"
     ];
     
     // Read template files content

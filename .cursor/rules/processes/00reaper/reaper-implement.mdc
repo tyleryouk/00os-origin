@@ -11,8 +11,8 @@ type: agent
 
 This process acts as the primary implementation engine for 00OS development. It performs the following steps:
 
-1. Assumes the context of the `00reaper/00OS-commands/` directory has been loaded (e.g., by a preceding `> reaper-read-files` command, potentially storing results in process state).
-2. Reads the specific objective from `00reaper/00OS-commands/current-task.md`.
+1. Assumes the context of the `00reaper/` directory has been loaded (e.g., by a preceding `> reaper-read-files` command, potentially storing results in process state).
+2. Reads the specific objective from `00reaper/current-task.md`.
 3. Analyzes the task requirements against the loaded context (command standards, registry status, etc.).
 4. Plans the necessary file modifications (creations or edits) to achieve the task.
 5. Executes the planned changes using the `edit_file` tool if mode is "scaffold" or "full".
@@ -244,9 +244,9 @@ execute(inputs.args, inputs.flags);
       {
         tool: 'edit_file',
         params: {
-          target_file: '00reaper/00OS-commands/command-registry.md',
+          target_file: '00reaper/command-registry.md',
           instructions: 'Update file-search status to ✅',
-          code_edit: `// ... existing code ...\n| \`file list\` | ✅ | tools/file-list.md | List files in directory |\n| \`file read\` | ✅ | tools/file-read.md | View file contents |\n| \`file search\` | ✅ | tools/file-search.md | Find files by pattern |\n\n## Context Management\n// ... existing code ...`
+          code_edit: `| \`file list\` | ✅ | tools/file-list.md | List files in directory |\n| \`file read\` | ✅ | tools/file-read.md | View file contents |\n| \`file search\` | ✅ | tools/file-search.md | Find files by pattern |\n\n## Context Management`
         }
       }
     ];
@@ -381,7 +381,7 @@ async function execute(args, flags) {
   let mode;
   const actionsTaken = [];
   const errorsEncountered = [];
-  const taskFilePath = "00reaper/00OS-commands/current-task.md";
+  const taskFilePath = "00reaper/current-task.md";
   
   try {
     // 1. Validate and parse input parameters
@@ -405,7 +405,7 @@ async function execute(args, flags) {
         `Critical error: ${error.message}`, 
         error.code || "FILE_READ_ERROR", 
         error.suggestions || [
-          "Ensure the current-task.md file exists in 00reaper/00OS-commands/",
+          "Ensure the current-task.md file exists in 00reaper/",
           "Run > reaper-os-commands-workflow to initialize or update the workflow files"
         ]
       );
@@ -538,10 +538,10 @@ Suggestions:
 
 ### Missing Task File
 ```
-❌ Error [FILE_READ_ERROR]: Critical error: Failed to read 00reaper/00OS-commands/current-task.md: File not found
+❌ Error [FILE_READ_ERROR]: Critical error: Failed to read 00reaper/current-task.md: File not found
 
 Suggestions:
-- Ensure the file exists at 00reaper/00OS-commands/current-task.md
+- Ensure the file exists at 00reaper/current-task.md
 - Run > reaper-os-commands-workflow to initialize or update the workflow files
 - Check if you need to create the file manually or initialize the workflow first
 ```
@@ -551,11 +551,11 @@ Suggestions:
 ❌ Error [PARTIAL_FAILURE]: Implementation execution completed.
 
 Actions Taken (5):
-- Read task from 00reaper/00OS-commands/current-task.md.
+- Read task from 00reaper/current-task.md.
 - Generated implementation plan with 2 action(s).
 - Generated implementation plan with 2 action(s).
 - Executed edit_file on 00os/processes/tools/file-search.md. Instruction: "Create the file-search.md process file with standard metadata and structure."
-- Failed action: edit_file on 00reaper/00OS-commands/command-registry.md. Reason: Could not find file for editing (Suggestions: Verify that the target file path is correct; Check if the directory exists and create it if needed)
+- Failed action: edit_file on 00reaper/command-registry.md. Reason: Could not find file for editing (Suggestions: Verify that the target file path is correct; Check if the directory exists and create it if needed)
 
 Suggestions:
 - Review errors and logs.
