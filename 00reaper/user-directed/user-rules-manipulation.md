@@ -30,7 +30,7 @@ This document explains how to create and update user rules for each major AI ide
 - Always verify command category and maintain process boundaries
 
 **Updating 00reaper User Rules:**
-- Edit `00reaper/00OS-commands/user-directed/user-rules-00OS-commands.md`
+- Edit `00reaper/user-directed/user-rules-00OS-commands.md`
 - Update workflow folder, responsibilities, or command processing logic as the system evolves
 - Document any major changes in the changelog or archive
 

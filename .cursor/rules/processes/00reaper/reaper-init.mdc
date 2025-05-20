@@ -16,22 +16,22 @@ This process loads all critical context and documentation files for 00reaper and
 1. Load core workflow files:
 ```javascript
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/README.md',
+  target_file: '00reaper/README.md',
   should_read_entire_file: true,
   explanation: 'Load workflow README'
 });
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/active-request.md',
+  target_file: '00reaper/active-request.md',
   should_read_entire_file: true,
   explanation: 'Load active request'
 });
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/implementation-plan.md',
+  target_file: '00reaper/implementation-plan.md',
   should_read_entire_file: true,
   explanation: 'Load implementation plan'
 });
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/cycle-status.md',
+  target_file: '00reaper/cycle-status.md',
   should_read_entire_file: true,
   explanation: 'Load cycle status'
 });
@@ -39,12 +39,12 @@ await tools.call('read_file', {
 2. Load vision and roadmap documents:
 ```javascript
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/user-directed/final-goal.md',
+  target_file: '00reaper/user-directed/final-goal.md',
   should_read_entire_file: true,
   explanation: 'Load final goal document'
 });
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/user-directed/00OS-simplification-roadmap.md',
+  target_file: '00reaper/user-directed/00OS-simplification-roadmap.md',
   should_read_entire_file: true,
   explanation: 'Load simplification roadmap'
 });
@@ -52,12 +52,12 @@ await tools.call('read_file', {
 3. Load command template and standards:
 ```javascript
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/documentation/command-template-core.md',
+  target_file: '00reaper/documentation/command-template-core.md',
   should_read_entire_file: true,
   explanation: 'Load command template'
 });
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/documentation/command-standards-core.md',
+  target_file: '00reaper/documentation/command-standards-core.md',
   should_read_entire_file: true,
   explanation: 'Load command standards'
 });
@@ -65,7 +65,7 @@ await tools.call('read_file', {
 4. Load context state snapshot:
 ```javascript
 await tools.call('read_file', {
-  target_file: '00reaper/00OS-commands/context-00OS-current-state/core.md',
+  target_file: '00reaper/context-00OS-current-state/core.md',
   should_read_entire_file: true,
   explanation: 'Load core context snapshot'
 });

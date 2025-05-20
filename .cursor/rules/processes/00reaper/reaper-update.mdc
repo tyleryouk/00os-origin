@@ -124,9 +124,9 @@ async function updateContextByFocus(focus, verbose) {
 async function updateWorkflowContext(verbose) {
   try {
     const workflowFiles = [
-      "00reaper/00OS-commands/active-request.md",
-      "00reaper/00OS-commands/implementation-plan.md",
-      "00reaper/00OS-commands/cycle-status.md"
+      "00reaper/active-request.md",
+      "00reaper/implementation-plan.md",
+      "00reaper/cycle-status.md"
     ];
     
     const filesRead = [];

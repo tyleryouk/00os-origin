@@ -86,17 +86,17 @@ This process executes the following tool calls:
 
 ### Workflow Files
 
-1. **00reaper/00OS-commands/README.md**
+1. **00reaper/README.md**
    - Add the 3-step pattern explanation at the top
    - Keep the cyclical workflow process description
    - Add clear guidance on the separation between architecture (which is sound) and implementation (which needs simplification)
 
-2. **00reaper/00OS-commands/documentation/command-template-core.md**
+2. **00reaper/documentation/command-template-core.md**
    - Replace with simplified template focused on direct tool call sequences
    - Remove unnecessary validation and error handling sections
    - Provide clear examples for different command types
 
-3. **00reaper/00OS-commands/documentation/command-standards-core.md**
+3. **00reaper/documentation/command-standards-core.md**
    - Update to emphasize simplicity while maintaining categorization
    - Focus on standardized patterns without unnecessary complexity
    - Remove standards that encourage over-engineering

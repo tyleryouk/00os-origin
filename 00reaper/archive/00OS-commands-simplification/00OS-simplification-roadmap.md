@@ -40,11 +40,11 @@ The overall goal is to maintain the strong architectural foundation of 00OS whil
 **Goal**: Establish the simplified approach with key foundational components and high-impact commands.
 
 **Files to Modify**:
-1. `00reaper/00OS-commands/README.md`
+1. `00reaper/README.md`
    - Add the 3-step pattern explanation at the top
    - Clarify the relationship between architecture and implementation
 
-2. `00reaper/00OS-commands/documentation/command-template-core.md`
+2. `00reaper/documentation/command-template-core.md`
    - Replace with simplified template focused on direct tool call sequences
    - Remove unnecessary validation and error handling sections
    - Add examples for different command types
@@ -79,22 +79,22 @@ The overall goal is to maintain the strong architectural foundation of 00OS whil
 **Goal**: Ensure all documentation and standards are aligned with the simplified approach.
 
 **Files to Modify**:
-1. `00reaper/00OS-commands/documentation/command-standards-core.md`
+1. `00reaper/documentation/command-standards-core.md`
    - Update to emphasize simplicity while maintaining categorization
    - Focus on standardized patterns without unnecessary complexity
    - Remove standards that encourage over-engineering
 
-2. `00reaper/00OS-commands/documentation/tool-call-patterns.md`
+2. `00reaper/documentation/tool-call-patterns.md`
    - Update with simplified tool call patterns
    - Add concrete examples for each pattern
    - Remove complex error handling patterns
 
-3. `00reaper/00OS-commands/documentation/00OS-command-user-guide.md`
+3. `00reaper/documentation/00OS-command-user-guide.md`
    - Update with simplified usage examples
    - Focus on the direct 3-step pattern
    - Make command usage more approachable
 
-4. `00reaper/00OS-commands/documentation/00OS-command-development.md`
+4. `00reaper/documentation/00OS-command-development.md`
    - Update development guidelines to encourage simplicity
    - Add examples of good vs. complex implementations
    - Include migration guide for converting complex commands

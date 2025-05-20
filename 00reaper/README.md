@@ -1,4 +1,18 @@
-# 00OS-commands Workflow
+# 00reaper Workflow (Flat Structure)
+
+## Migration Rationale
+
+**As of [DATE], the 00OS-commands workflow has been flattened:**
+- All workflow, documentation, context, research, and user-directed files are now directly under `00reaper/` and its subfolders.
+- The previous `00OS-commands/` subdirectory has been removed for simplicity, clarity, and maintainability.
+- All references, scripts, and process files have been updated to use the new flat structure.
+
+**Benefits:**
+- Easier navigation and onboarding
+- Simpler reference paths in all documentation and process files
+- Unified, single-source-of-truth workflow folder for 00reaper
+
+---
 
 ## Core Command Pattern
 
@@ -10,7 +24,7 @@ Every 00OS command follows this simple pattern:
 
 This simplified pattern maintains the architectural integrity of 00OS while reducing implementation complexity. The architecture remains robust, but implementation is now focused on direct, minimal tool call sequences for clarity and maintainability.
 
-This directory serves as the central hub for creating, managing, and optimizing 00OS commands within the terminal-like interface (commands prefixed with `>`).
+This directory (`00reaper/`) serves as the central hub for creating, managing, and optimizing 00OS commands within the terminal-like interface (commands prefixed with `>`).
 
 ## Master Workflow Files
 
@@ -61,39 +75,39 @@ The 00OS-commands development follows a six-step structured cyclical approach:
 ```
 
 1. **Read User Request (REQ)**
-   * Read current request from user-directed/user_requests.md
-   * Update ONLY active-request.md with the requirements
+   * Read current request from `user-directed/user-requests.md`
+   * Update ONLY `active-request.md` with the requirements
 
 2. **Read Relevant Context**
-   * Review files in context-00OS-current-state/
-   * Check documentation/ for applicable templates and guides
+   * Review files in `context-00OS-current-state/`
+   * Check `documentation/` for applicable templates and guides
    * No file updates during this step (research only)
 
 3. **Update Core Workflow Files**
-   * Update ONLY implementation-plan.md with concrete plan
+   * Update ONLY `implementation-plan.md` with concrete plan
    * Map requirements to implementation steps
 
 4. **Make Changes to 00OS**
    * Implement changes per implementation plan
-   * Update ONLY cycle-status.md to track progress
+   * Update ONLY `cycle-status.md` to track progress
    * Create or modify processes in appropriate categories
 
 5. **Update Supporting Materials**
    * Update ONLY documentation files as needed
-   * Update ONLY cycle-status.md to track progress
+   * Update ONLY `cycle-status.md` to track progress
 
 6. **Reset Core Workflow Files & Sync Changes**
    * Clear ALL core workflow files for next cycle
-   * Run `> reaper-sync` to sync 00OS changes to .cursor/rules
-   * Update ONLY cycle-status.md for final status
+   * Run `> reaper-sync` to sync 00OS changes to `.cursor/rules`
+   * Update ONLY `cycle-status.md` for final status
 
-## Directory Structure
+## Directory Structure (Flat)
 
 ### Core Workflow Files (Root Directory)
-* **active-request.md**: Current REQ being implemented
-* **implementation-plan.md**: Concrete implementation plan
-* **cycle-status.md**: Progress tracking
-* **README.md**: Workflow overview
+* `active-request.md`: Current REQ being implemented
+* `implementation-plan.md`: Concrete implementation plan
+* `cycle-status.md`: Progress tracking
+* `README.md`: Workflow overview
 
 ### Specialized Subfolder Structure
 
@@ -124,12 +138,12 @@ User requests and agent instructions (used in Step 1)
 
 To begin a new development cycle:
 
-1. **Initialize**: Run `> reaper-read-files 00reaper/00OS-commands` to load context
-2. **Identify Focus**: Determine which REQ to address from user-requests.md
+1. **Initialize**: Run `> reaper-read-files 00reaper/` to load context
+2. **Identify Focus**: Determine which REQ to address from `user-directed/user-requests.md`
 3. **Update Core Files**:
-   * Step 1: Update ONLY active-request.md with REQ details
-   * Step 3: Update ONLY implementation-plan.md with implementation plan
-   * Steps 4-6: Update ONLY cycle-status.md for progress tracking
+   * Step 1: Update ONLY `active-request.md` with REQ details
+   * Step 3: Update ONLY `implementation-plan.md` with implementation plan
+   * Steps 4-6: Update ONLY `cycle-status.md` for progress tracking
 4. **Follow Implementation Plan**: Make changes to 00OS as outlined
 5. **Update Documentation**: Update relevant documentation files
 6. **Reset for Next Cycle**: Clear ALL core workflow files or archive them
@@ -138,14 +152,14 @@ To begin a new development cycle:
 
 To determine workflow status at any time:
 
-1. **FIRST CHECK**: cycle-status.md
+1. **FIRST CHECK**: `cycle-status.md`
    * "CURRENT CYCLE STAGE" field at the top
    * "Quick Status Summary" for current focus
    * "Current Cycle Progress" for detailed status
 
 2. **IF NEEDED**: Refer to other core files
-   * active-request.md: WHAT needs to be done
-   * implementation-plan.md: HOW it will be done
+   * `active-request.md`: WHAT needs to be done
+   * `implementation-plan.md`: HOW it will be done
 
 ## 00OS Process Categories
 
