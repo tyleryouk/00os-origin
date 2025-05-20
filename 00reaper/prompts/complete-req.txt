@@ -1,2 +1,0 @@
-Complete REQ-001. Iterate on changes to 00OS based on the documentation in 00reaper\00OS-commands.
-(Add user_request REQ lines to Context Pills)
