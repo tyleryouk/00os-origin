@@ -7,14 +7,47 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
 
 ## Step-by-Step Checklist
 
-### 1. Preparation & Backup
-- [ ] Backup the entire `00reaper/` directory
-- [ ] Notify collaborators of the planned migration and freeze changes during the process
+### 1. Preparation
+- [x] Commit the current state of `00reaper/` to git before starting the migration (for easy rollback)
 
 ### 2. Inventory & Categorization
 - [ ] List all files and folders in `00reaper/00OS-commands/` (user-directed, documentation, context-00OS-current-state, research-cursor, archive, README.md)
+    - user-directed/
+    - documentation/
+    - context-00OS-current-state/
+    - research-cursor/
+    - archive/
+    - README.md
 - [ ] List all files and folders in `00reaper/00OS-creation/` (for archival)
+    - user-rules-global.md
+    - understanding-00os.md
+    - 00OS-creation-summary.md
+    - REAMD.md
+    - 2023-06-10-context-management-research.md
+    - ai-terminal-research.md
+    - command-parser.md
+    - cursor-rule-research.md
+    - final-goal.md
+    - process-format.md
+    - process-implementation-strategy.md
+    - system-architecture.md
+    - terminal-implementation-plan.md
+    - terminal-interface-design.md
+    - terminal-interface-goals.md
+    - 00OS-implementation-summary.md
+    - 1000xrules-and-00OS.md
 - [ ] List all files in the base of `00reaper/` and `00scripts/` to check for reference dependencies
+    - 00reaper/:
+        - 00OS-commands/
+        - 00OS-creation/
+        - 00scripts/
+        - migration-plan-flatten-workflow.md
+    - 00scripts/:
+        - sync-reports/
+        - Sync-00OS.ps1
+        - Sync-00OS-Complete.ps1
+        - Clean-SyncReports.ps1
+        - rules-scripts/
 
 ### 3. Move Workflow Files
 - [ ] Move all subfolders and files from `00OS-commands/` to the base of `00reaper/`:
@@ -49,7 +82,6 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
 ### 7. Final Cleanup
 - [ ] Remove any empty folders left after the move
 - [ ] Ensure folder and file permissions are correct
-- [ ] Communicate the completion of the migration to all collaborators
 - [ ] Document the migration in the changelog or archive for future reference
 
 ---
