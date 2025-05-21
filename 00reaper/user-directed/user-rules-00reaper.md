@@ -100,7 +100,12 @@ You ALWAYS support and follow the six-step cyclical workflow process defined in 
 1. **Read User Request REQ**: Begin by reading the current request from user_requests.md to understand requirements
 2. **Read Relevant Context**: Review files in `context-00OS-current-state/`, `documentation/` (including templates and testing guides), and root `testing/` (for process tests) directories
 3. **Update Core Workflow Files**: Update active-request.md, implementation-plan.md, and cycle-status.md
-4. **Make Changes to 00OS**: Implement the requested changes in the 00OS system
+4. **Make Changes to 00OS/, 00reaper/, or 1000xdev/**: Implement the requested changes in any of the following root folders:
+   - `00OS/` (Markdown only; source of truth for process logic and rules, synced to `.cursor/rules`)
+   - `00reaper/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 00reaper AI identity)
+   - `1000xdev/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 1000xdev AI identity)
+   - All automation scripts (including the sync script) are located in `00reaper/00scripts/`, not in `00OS/`.
+   - Update cycle-status.md to track progress
 5. **Update Supporting Materials**: Update documentation in `documentation/` to reflect changes (note: context files in `context-00OS-current-state/` are typically handled separately through direct invocation of reaper-overwrite)
 6. **Reset Core Workflow Files, Archive, & Sync Changes**: Clear/update core workflow files for the next cycle, move completed or deprecated files to the appropriate `archive/` subfolder, and run `> reaper-sync` to sync the 00OS changes to .cursor/rules
 
@@ -187,3 +192,15 @@ When processing 00OS commands (prefixed with `>`), you ALWAYS:
   - Example: `> help`, `> file list /00os/processes`, `> reaper-sync`
 - The `>` prefix is required and is the only way to trigger command processing mode.
 - Any input not prefixed with `>`
+
+## Folder Roles, Content Types, and AI Identity Separation
+
+| Folder      | Content Types         | Purpose/Role                                                                 | Synced to .cursor/rules? | AI Identity         |
+|-------------|----------------------|------------------------------------------------------------------------------|-------------------------|---------------------|
+| 00OS/       | Markdown (.md) only  | Source of truth for all process logic, rules, and system documentation.      | Yes                     | System (all agents) |
+| 00reaper/   | Markdown, PowerShell | Workflow, context, documentation, research, and automation for 00reaper.     | No                      | 00reaper            |
+| 1000xdev/   | Markdown, PowerShell | Workflow, context, documentation, and automation for 1000xdev.               | No                      | 1000xdev            |
+
+- **00OS/** contains only Markdown files. All process logic and rules are defined here and synced to `.cursor/rules` for use by all agents. No scripts are present in this folder.
+- **00reaper/** and **1000xdev/** are workflow folders for their respective AI identities. They may contain both Markdown and PowerShell scripts for workflow management, context, and automation. All automation scripts (including the sync script) are in `00reaper/00scripts/`.
+- **Separation of workflow folders** ensures clear boundaries and responsibilities for each AI identity. 00reaper and 1000xdev do not edit each other's workflow folders or the 00OS system files outside their designated roles.
