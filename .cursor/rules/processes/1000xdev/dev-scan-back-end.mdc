@@ -1,0 +1,38 @@
+---
+description: System component - dev-scan-back-end
+globs: 
+alwaysApply: true
+type: agent
+---
+# Process: dev-scan-back-end
+
+USE WHEN you want to execute dev-scan-back-end
+
+## Execution
+
+This process scans and summarizes the back-end codebase:
+
+1. List the main back-end directory
+2. Search for key files and modules
+3. Summarize the structure and main features
+
+```javascript
+const dirResult = await tools.call('list_dir', {
+  relative_workspace_path: 'back-end/app',
+  explanation: 'List main back-end app directory'
+});
+const searchResult = await tools.call('codebase_search', {
+  query: 'main app structure OR key modules OR entry point',
+  target_directories: ['back-end/app'],
+  explanation: 'Search for main app structure and key modules'
+});
+return {
+  success: true,
+  summary: `Directory: ${JSON.stringify(dirResult)}\nKey modules: ${JSON.stringify(searchResult)}`
+};
+```
+
+## Examples
+
+> dev-scan-back-end
+✅ Back-end codebase scanned and summarized
