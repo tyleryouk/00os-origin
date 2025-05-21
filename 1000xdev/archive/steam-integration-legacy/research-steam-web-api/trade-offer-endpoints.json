@@ -1,0 +1,642 @@
+{
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/steam/api/trade/create",
+      "description": "📦 Create a Trade Offer on Steam",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/create?key=YOUR_API_KEY",
+      "details": [
+        "Initiates a new trade offer for a specific user.",
+        "Requires a valid `steamloginsecure`, retrievable from Steam cookies.",
+        "Supports sending items (`myitemassetids`) and requesting items (`partneritemassetids`).",
+        "Trade link and partner Steam ID ensure secure targeting.",
+        "Includes a custom message option for the trade."
+      ],
+      "usage_notes": [
+        "Provide required parameters in a JSON payload.",
+        "Use optional parameters like `game` for game-specific trade offers.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for initiating a new trade offer",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Cookie value for Steam authentication.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0...."
+          },
+          {
+            "name": "partneritemassetids",
+            "required": false,
+            "description": "Comma-separated list of asset IDs for items to request from partner.",
+            "example": "5533344212,23534354"
+          },
+          {
+            "name": "myitemassetids",
+            "required": false,
+            "description": "Comma-separated list of asset IDs for items to send to partner.",
+            "example": "43543323,2323423423"
+          },
+          {
+            "name": "tradelink",
+            "required": false,
+            "description": "Trade link of the user. Either tradelink or partnersteamid must be provided.",
+            "example": "https://steamcommunity.com/tradeoffer/new/?partner=123456789&token=123456789"
+          },
+          {
+            "name": "partnersteamid",
+            "required": false,
+            "description": "Steam ID of the trade partner. Either tradelink or partnersteamid must be provided.",
+            "example": "123456789"
+          },
+          {
+            "name": "message",
+            "required": false,
+            "description": "Optional message for the trade offer.",
+            "example": "This is a test message"
+          },
+          {
+            "name": "game",
+            "required": false,
+            "description": "Game for which the trade offer is being created.",
+            "example": "cs2",
+            "default": "cs2"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Trade offer successfully created."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access or invalid/expired steamloginsecure."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 404,
+          "description": "Specified game not found."
+        },
+        {
+          "code": 406,
+          "description": "Invalid asset ID provided or too many pending trade offers."
+        },
+        {
+          "code": 409,
+          "description": "Trade offer creation failed - too many cancellations."
+        },
+        {
+          "code": 410,
+          "description": "Unauthorized access due to invalid/expired steamloginsecure."
+        },
+        {
+          "code": 421,
+          "description": "Validation error for the request body."
+        },
+        {
+          "code": 422,
+          "description": "Validation error for JSON properties."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/steam/api/trade/accept",
+      "description": "🔒 Accept a Trade Offer on Steam",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/accept?key=YOUR_API_KEY",
+      "details": [
+        "Accepts a trade offer on Steam.",
+        "Requires Steam credentials and trade details.",
+        "Allows accepting trade offers programmatically.",
+        "Requires `2FA` if items are involved in the trade."
+      ],
+      "usage_notes": [
+        "Provide required parameters (`steamloginsecure`, `tradeofferid`, and `partnersteamid`) in the request body.",
+        "Authenticate using your API key for access.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for accepting a trade offer",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Cookie value from steamcommunity.com for authentication.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0...."
+          },
+          {
+            "name": "tradeofferid",
+            "required": true,
+            "description": "The ID of the trade offer to accept.",
+            "example": "1234567890"
+          },
+          {
+            "name": "partnersteamid",
+            "required": true,
+            "description": "The Steam ID of the trade partner.",
+            "example": "76561198071555942"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Trade offer successfully accepted."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access. Invalid or expired steamloginsecure."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 404,
+          "description": "Specified game not found."
+        },
+        {
+          "code": 410,
+          "description": "Unauthorized access due to invalid or expired steamloginsecure."
+        },
+        {
+          "code": 421,
+          "description": "Validation error for the request body."
+        },
+        {
+          "code": 422,
+          "description": "Validation error for JSON properties."
+        },
+        {
+          "code": 425,
+          "description": "Steam Error occurred."
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/steam/api/trade/history",
+      "description": "🔎 Retrieve Trade History",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/history?key=YOUR_API_KEY",
+      "details": [
+        "Retrieves the trade history of a user.",
+        "Provides a secure and efficient way to access all trades associated with the user.",
+        "Perfect for verifying trade success and tracking the user's trade activity.",
+        "Uses webhooks to deliver trade history data."
+      ],
+      "usage_notes": [
+        "Send the `steamloginsecure` cookie value from steamcommunity.com in the request body.",
+        "Provide a webhook URL where trade history updates will be sent.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for retrieving trade history",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Raw steamLoginSecure token from the cookie of steamcommunity.com. Use the raw steamLoginSecure from the cookie. Can also be retrieved automatically using our Extension.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0.eyAiaXNzIjogInI6MUI0RV8yNDQxRjRFNF9BQTUyQSIsICJzdWIiOiAiNzY1NjExOTgwNzE1NTU5NDIiLCAiYXVkIjogWyAid2ViOmNvbW11bml0eSIgXSwgImV4cCI6IDE3MTMxMDIzNTQsICJuYmYiOiAxNzA0Mzc0OTUxLCAiaWF0IjogMTcxMzAxNDk1MSwgImp0aSI6ICIxN0Y2XzI0NDFFRDZDX0RFNDZCIiwgIm9hdCI6IDE3MTMwMTQ5NTAsICJydF9leHAiOiAxNzMxMjQ3MTQyLCAicGVyIjogMCwgImlwX3N1YmplY3QiOiAiNDYuMTQyLjcyLjkxIidsadsalciI6ICI0Ni4xNDIuNzIuOTEiIH0.XxB_aqqd3IAjXfpABVIOvDyP6Nw_p7Czk3T3FsbnSaM9-Jr1ZNdsfscdN0OtW81kOjbZvuHNe1nCn1qXxgwwHAw"
+          },
+          {
+            "name": "webhook",
+            "required": true,
+            "description": "The URL where the trade history data is sent to.",
+            "example": "https://your-webhook-url.com"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Success - Trade history successfully retrieved."
+        },
+        {
+          "code": 400,
+          "description": "Bad request or missing parameters."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access due to missing or invalid steamloginsecure token."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 405,
+          "description": "Invalid steamloginsecure provided. Please verify your steamloginsecure and try again."
+        },
+        {
+          "code": 406,
+          "description": "Your steamloginsecure is expired. Please verify your steamloginsecure and try again."
+        },
+        {
+          "code": 407,
+          "description": "You must wait before making another request using this steamloginsecure to avoid being banned from steamcommunity.com."
+        },
+        {
+          "code": 408,
+          "description": "Invalid steamloginsecure provided. Please verify your steamloginsecure and try again."
+        },
+        {
+          "code": 421,
+          "description": "Missing required parameters or rate limit exceeded"
+        },
+        {
+          "code": 422,
+          "description": "Invalid JSON format in the request."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded for requests."
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/steam/api/trade/sent",
+      "description": "📜 List Sent Trade Offers",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/sent?key=YOUR_API_KEY",
+      "details": [
+        "Lists all outgoing trade offers made by a user.",
+        "Requires a valid `steamloginsecure` for authentication.",
+        "Optionally, you can specify `forcesteamids` to force Steam IDs for each trade offer, though this may result in slower responses."
+      ],
+      "usage_notes": [
+        "Provide the required parameters (`steamloginsecure`).",
+        "Optionally, include `forcesteamids` to force Steam IDs, which may affect performance.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for listing sent trade offers",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Cookie value from steamcommunity.com for authentication.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0...."
+          },
+          {
+            "name": "forcesteamids",
+            "required": false,
+            "description": "Force Steam IDs for each trade offer (slower response time).",
+            "example": "1 or 0 (default: 0)",
+            "default": "0"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Successfully retrieved sent trade offers."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access due to invalid or expired steamloginsecure."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 404,
+          "description": "No trade offers found."
+        },
+        {
+          "code": 421,
+          "description": "Validation error for the request body."
+        },
+        {
+          "code": 422,
+          "description": "Validation error for JSON properties."
+        },
+        {
+          "code": 425,
+          "description": "Steam Error occurred."
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/steam/api/trade/received",
+      "description": "💼 Retrieve Pending Trade Offers",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/received?key=YOUR_API_KEY",
+      "details": [
+        "Retrieve all incoming trade offers that are pending for acceptance.",
+        "This endpoint fetches all trade offers waiting for acceptance by the user.",
+        "Real-time Data: Fetch trade offers in real-time using the `steamloginsecure` token, ensuring you get up-to-date information directly from Steam.",
+        "Rate Limiting: Be mindful of the rate limits on the `steamloginsecure` token. If too many requests are made at once, delays may occur."
+      ],
+      "usage_notes": [
+        "Provide the `steamloginsecure` token (or use our Extension) to retrieve all pending trade offers for the authenticated user.",
+        "Optionally, include `forcesteamids` to get Steam IDs for all trade offers (may increase response time)."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for fetching pending trade offers",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Raw steamLoginSecure token from the steamcommunity.com cookie. You can also use our Extension for automatic token retrieval.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0.eyAiaXNzIjogInI6MUI0RV8yNDQxRjRFNF9BQTUyQSIsICJzdWIiOiAiNzY1NjExOTgwNzE1NTU5NDIiLCAiYXVkIjogWyAid2ViOmNvbW11bml0eSIgXSwgImV4cCI6IDE3MTMxMDIzNTQsICJuYmYiOiAxNzA0Mzc0OTUxLCAiaWF0IjogMTcxMzAxNDk1MSwgImp0aSI6ICIxN0Y2XzI0NDFFRDZDX0RFNDZCIiwgIm9hdCI6IDE3MTMwMTQ5NTAsICJydF9leHAiOiAxNzMxMjQ3MTQyLCAicGVyIjogMCwgImlwX3N1YmplY3QiOiAiNDYuMTQyLjcyLjkxIidsadsalciI6ICI0Ni4xNDIuNzIuOTEiIH0.XxB_aqqd3IAjXfpABVIOvDyP6Nw_p7Czk3T3FsbnSaM9-Jr1ZNdsfscdN0OtW81kOjbZvuHNe1nCn1qXxgwwHAw"
+          },
+          {
+            "name": "forcesteamids",
+            "required": false,
+            "description": "If enabled, forces the return of Steam IDs for each trade offer. This may result in slower response times.",
+            "example": "1 or 0 - default 0",
+            "default": "0"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Success - Pending trade offers successfully retrieved."
+        },
+        {
+          "code": 400,
+          "description": "Bad request or missing parameters."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access due to missing or invalid steamloginsecure token."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 421,
+          "description": "Missing required parameters or rate limit exceeded"
+        },
+        {
+          "code": 422,
+          "description": "Invalid JSON format in the request."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded for requests."
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/steam/api/trade/cancel",
+      "description": "❌ Cancel a Trade Offer on Steam",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/cancel?key=YOUR_API_KEY",
+      "details": [
+        "Cancels a trade offer on Steam.",
+        "Requires Steam credentials and the trade offer ID.",
+        "Allows programmatically canceling trade offers.",
+        "Provides secure authentication using `steamloginsecure`."
+      ],
+      "usage_notes": [
+        "Provide required parameters (`steamloginsecure` and `tradeofferid`) in the request body.",
+        "Authenticate using your API key to access the endpoint.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for canceling a trade offer",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Cookie value from steamcommunity.com for authentication.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0...."
+          },
+          {
+            "name": "tradeofferid",
+            "required": true,
+            "description": "The ID of the trade offer to cancel.",
+            "example": "1234567890"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Trade offer successfully canceled."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access. Invalid or expired steamloginsecure."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 404,
+          "description": "Specified game not found."
+        },
+        {
+          "code": 410,
+          "description": "Unauthorized access due to invalid or expired steamloginsecure."
+        },
+        {
+          "code": 421,
+          "description": "Validation error for the request body."
+        },
+        {
+          "code": 422,
+          "description": "Validation error for JSON properties."
+        },
+        {
+          "code": 425,
+          "description": "Steam Error occurred."
+        }
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/steam/api/trade/decline",
+      "description": "❌ Decline a Trade Offer on Steam",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/trade/decline?key=YOUR_API_KEY",
+      "details": [
+        "Declines an existing trade offer on Steam.",
+        "Requires Steam credentials and the trade offer ID.",
+        "Programmatically declines trade offers.",
+        "Requires a valid `steamloginsecure` for authentication."
+      ],
+      "usage_notes": [
+        "Provide the required parameters (`steamloginsecure` and `tradeofferid`) in the request body.",
+        "Authenticate using your API key for access to the endpoint.",
+        "Set `production=1` for production environments."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for declining a trade offer",
+        "properties": [
+          {
+            "name": "steamloginsecure",
+            "required": true,
+            "description": "Cookie value from steamcommunity.com for authentication.",
+            "example": "76561198271552942||eyAidHlwIjogIkpXVCIsICJhbGciOiAiRWREU0EiIH0...."
+          },
+          {
+            "name": "tradeofferid",
+            "required": true,
+            "description": "The ID of the trade offer you want to decline.",
+            "example": "1234567890"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Trade offer successfully declined."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access. Invalid or expired steamloginsecure."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 404,
+          "description": "Specified game not found."
+        },
+        {
+          "code": 410,
+          "description": "Unauthorized access due to invalid or expired steamloginsecure."
+        },
+        {
+          "code": 421,
+          "description": "Validation error for the request body."
+        },
+        {
+          "code": 422,
+          "description": "Validation error for JSON properties."
+        },
+        {
+          "code": 425,
+          "description": "Steam Error occurred."
+        }
+      ]
+    }
+  ]
+}

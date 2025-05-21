@@ -1,0 +1,459 @@
+{
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/steam/api/items",
+      "description": "🎯 Retrieve, search, and download game items - the best API for Steam items.",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/items?key=YOUR_API_KEY&game=cs2",
+      "details": [
+        "Retrieve all items for a specific game such as CS2, Rust, or Dota2.",
+        "Search for specific items using the search parameter.",
+        "Apply filters like price_min, price_max, item_group, or wear.",
+        "Retrieve detailed item information, including prices, metadata, and market data."
+      ],
+      "important_notes": [
+        "This endpoint can return a large amount of data. Use the max parameter to limit results.",
+        "For better performance, apply filters like search or price_min to narrow down the results."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": false,
+          "description": "Short name of the game.",
+          "default": "cs2"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "required": false,
+          "description": "Page number.",
+          "example": "1",
+          "default": "1"
+        },
+        {
+          "name": "max",
+          "location": "query",
+          "required": false,
+          "description": "Maximum number of items per page.",
+          "example": "50000",
+          "default": "50000"
+        },
+        {
+          "name": "sort_by",
+          "location": "query",
+          "required": false,
+          "description": "Sorting order: priceAz (Steam price asc, default), priceZa (Steam price desc), priceRealAz (Market price asc), priceRealZa (Market price desc), winLossAz (Win/loss asc), winLossZa (Win/loss desc), soldAz (Sold asc), soldZa (Sold desc), name, pointsAz (Market cap asc), pointsZa (Market cap desc), winner/loser (Real prices vs yesterday).",
+          "example": "priceAz",
+          "default": "priceAz"
+        },
+        {
+          "name": "search",
+          "location": "query",
+          "required": false,
+          "description": "Search string (minimum 3 characters)."
+        },
+        {
+          "name": "price_min",
+          "location": "query",
+          "required": false,
+          "description": "Minimum Steam price.",
+          "example": "0",
+          "default": "0"
+        },
+        {
+          "name": "price_max",
+          "location": "query",
+          "required": false,
+          "description": "Maximum Steam price.",
+          "example": "50000",
+          "default": "50000"
+        },
+        {
+          "name": "price_real_min",
+          "location": "query",
+          "required": false,
+          "description": "Minimum real market price.",
+          "example": "0",
+          "default": "0"
+        },
+        {
+          "name": "price_real_max",
+          "location": "query",
+          "required": false,
+          "description": "Maximum real market price.",
+          "example": "50000",
+          "default": "50000"
+        },
+        {
+          "name": "item_group",
+          "location": "query",
+          "required": false,
+          "description": "Item group name.",
+          "example": "rifle"
+        },
+        {
+          "name": "item_type",
+          "location": "query",
+          "required": false,
+          "description": "Item type name.",
+          "example": "AK-47"
+        },
+        {
+          "name": "item_name",
+          "location": "query",
+          "required": false,
+          "description": "Item name (e.g., 'Redline' from 'AK-47 | Redline (Minimal Wear)').",
+          "example": "Redline"
+        },
+        {
+          "name": "wear",
+          "location": "query",
+          "required": false,
+          "description": "Item wear state(s). Examples: 'fn', 'mw', 'ft', 'ww', 'bs'. Multiple allowed, comma-separated string.",
+          "example": "fn,mw"
+        },
+        {
+          "name": "select",
+          "location": "query",
+          "required": false,
+          "description": "Select specific fields to return (comma-separated). Reduces response size/time.",
+          "example": "name,priceLatest"
+        },
+        {
+          "name": "currency",
+          "location": "query",
+          "required": false,
+          "description": "Currency code.",
+          "default": "USD"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 if running in production. Default is 0. Will be required in the future.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and items are returned."
+        },
+        {
+          "code": 404,
+          "description": "Game not found. Default is 'cs2'."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/item",
+      "description": "📦 Retrieve Item Details with Pricing of all Markets and History",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/item?key=YOUR_API_KEY&market_hash_name=AK-47%20%7C%20Redline%20(Field-Tested)",
+      "details": [
+        "Retrieve details of a specific item using its market_hash_name, slug, or hashId.",
+        "Provides enriched details like pricing information, tags, metadata, and a brief price history."
+      ],
+      "use_case": "Focuses on a single item with detailed data for advanced use cases like market analytics or item tracking.",
+      "note": "Similar to /steam/api/items, but focuses on a single item with enriched details.",
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "market_hash_name",
+          "location": "query",
+          "required": true,
+          "description": "The market_hash_name of the item.",
+          "example": "AK-47 | Redline (Field-Tested)"
+        },
+        {
+          "name": "currency",
+          "location": "query",
+          "required": false,
+          "description": "The desired currency for price conversion (e.g., EUR, TRY, RUB, USD). Default is USD. See the Currency API for available codes.",
+          "example": "EUR",
+          "default": "USD"
+        },
+        {
+          "name": "with_groups",
+          "location": "query",
+          "required": false,
+          "description": "Set to true to retrieve all items within the same group.",
+          "example": "false",
+          "default": "false"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and item details are returned."
+        },
+        {
+          "code": 400,
+          "description": "Missing market_hash_name parameter."
+        },
+        {
+          "code": 404,
+          "description": "Item not found. Ensure the market_hash_name is correct."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/history",
+      "description": "📈 Price History of an Item with Daily Prices from Steam or Real Market Data",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/history?key=YOUR_API_KEY&market_hash_name=ITEM_NAME",
+      "details": [
+        "Retrieves the price history of an item based on specified parameters.",
+        "Provides daily prices from Steam or the lowest real market prices if 'markets' is passed as a parameter."
+      ],
+      "important_notes": [
+        "Use the interval parameter for optimized data queries.",
+        "Specifying 'markets' in origin results in slower responses but provides detailed real market data."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "market_hash_name",
+          "location": "query",
+          "required": true,
+          "description": "The market_hash_name of the item.",
+          "example": "AK-47 | Redline (Field-Tested)"
+        },
+        {
+          "name": "origin",
+          "location": "query",
+          "required": false,
+          "description": "Specify the data source. Use 'markets' for real price history (slower and consumes more credits).",
+          "example": "steamwebapi",
+          "default": "steamwebapi"
+        },
+        {
+          "name": "type",
+          "location": "query",
+          "required": false,
+          "description": "Specify the data type. Options: 'offer', 'median'.",
+          "example": "sell",
+          "default": "sell"
+        },
+        {
+          "name": "source",
+          "location": "query",
+          "required": false,
+          "description": "Specify the price source. Use 'skinport' for real prices (works only with type=offer).",
+          "example": "steam",
+          "default": "steam"
+        },
+        {
+          "name": "interval",
+          "location": "query",
+          "required": false,
+          "description": "Specify the interval for data retrieval.",
+          "example": "30",
+          "default": "30"
+        },
+        {
+          "name": "start_date",
+          "location": "query",
+          "required": false,
+          "description": "Specify the start date for data retrieval (Format: YYYY-MM-DD).",
+          "example": "2024-01-01"
+        },
+        {
+          "name": "end_date",
+          "location": "query",
+          "required": false,
+          "description": "Specify the end date for data retrieval (Format: YYYY-MM-DD).",
+          "example": "2024-12-31"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 if running in production. Default is 0. Will be required in the future.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and price history is returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid start or end date provided."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/float",
+      "description": "🔍 Retrieve Float Information for an Item",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/float?key=YOUR_API_KEY&url=INSPECT_LINK",
+      "details": [
+        "Retrieves float information for a specific item in CS:GO or CS2.",
+        "Requires the url parameter with a valid inspect link to retrieve the float data."
+      ],
+      "features": [
+        "Provides detailed float information for an item.",
+        "Supports real-time float retrieval using the item's inspect link."
+      ],
+      "usage": [
+        "Use the url parameter to provide the inspect link of the item.",
+        "Authenticate with your API key to retrieve the float data."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "url",
+          "location": "query",
+          "required": true,
+          "description": "The inspect link of the item, e.g., steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198042843401A35245796926D16321188872112797006. You can retrieve it from our Inventory API for example."
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 if running in production. Default is 0. Will be required in the future.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the float data for the item is returned."
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded (daily or monthly)."
+        },
+        {
+          "code": 406,
+          "description": "Invalid parameters or inspect link provided."
+        },
+        {
+          "code": 416,
+          "description": "Service overloaded or not unable to retrive float information. Please try again later."
+        },
+        {
+          "code": 417,
+          "description": "Unable to retrieve float information for the item."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/itemordersactivity",
+      "description": "📦 Retrieve Realtime Order Activity for a Steam Item",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/itemordersactivity?key=YOUR_API_KEY&nameid=UNIQUE_NAMEID",
+      "details": [
+        "Retrieves order activity details for a specified Steam item.",
+        "Includes information such as regional data (country), language-specific details, and price information (currency)."
+      ],
+      "usage": [
+        "Provide the market_hash_name parameter to specify the item.",
+        "Optionally, customize the country, language, and currency parameters for tailored results."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "market_hash_name",
+          "location": "query",
+          "required": true,
+          "description": "The market_hash_name of the item.",
+          "example": "AK-47 | Redline (Field-Tested)"
+        },
+        {
+          "name": "country",
+          "location": "query",
+          "required": false,
+          "description": "Country code for regional data.",
+          "example": "US",
+          "default": "EN"
+        },
+        {
+          "name": "language",
+          "location": "query",
+          "required": false,
+          "description": "Language code for localization.",
+          "example": "english",
+          "default": "english"
+        },
+        {
+          "name": "currency",
+          "location": "query",
+          "required": false,
+          "description": "Currency code for prices.",
+          "example": "1",
+          "default": "1"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 if running in production. Default is 0. Will be required in the future.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful"
+        },
+        {
+          "code": 400,
+          "description": "Invalid parameters provided."
+        },
+        {
+          "code": 404,
+          "description": "Item not found."
+        },
+        {
+          "code": 502,
+          "description": "Failed to fetch data from Steam API."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/explore/api/random",
+      "description": "🎲 Get Random Steam Profiles with Inventory Data",
+      "base_url_example": "https://www.steamwebapi.com/explore/api/random?key=YOUR_API_KEY&limit=5",
+      "details": [
+        "Fetches random Steam profiles with inventory information and items.",
+        "By default, 5 profiles are returned.",
+        "Adjustable profile count with the `limit` parameter.",
+        "Provides inventory and item data for each profile."
+      ],
+      "usage_notes": [
+        "Use your API key for authentication.",
+        "Optionally, set the `limit` parameter to specify the number of profiles to return (e.g., `limit=10`)."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "limit",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the maximum number of profiles to return.",
+          "example": "5",
+          "default": "5"
+        },
+        {
+          "name": "production",
+          "location": "query",
+          "required": false,
+          "description": "If you run in production, please set this to 1. Default is 0. This is in future required, and if not set, you will get a warning.",
+          "default": "0"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and random profiles are returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid or missing parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/explore/api/toplist",
+      "description": "🏆 Get Top Profiles by Inventory Value",
+      "base_url_example": "https://www.steamwebapi.com/explore/api/toplist?key=YOUR_API_KEY&limit=5",
+      "details": [
+        "Retrieves the top profiles based on the highest combined inventory value.",
+        "By default, 5 profiles are returned.",
+        "Adjustable profile count using the `limit` parameter (maximum: 50).",
+        "Provides detailed inventory information, including items and combined values.",
+        "Costs 2 credits per profile (e.g., `limit=5` costs 10 credits)."
+      ],
+      "usage_notes": [
+        "Use your API key for authentication.",
+        "Optionally, set the `limit` parameter to specify the number of profiles to retrieve."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "limit",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the maximum number of profiles to return. Default is 5, and the maximum allowed is 50. Each profile costs 2 credits (e.g., limit=5 costs 10 credits).",
+          "example": "5",
+          "default": "5"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the top profiles are returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid or missing parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/explore/api/last",
+      "description": "📜 Retrieve the Latest Steam Profiles with Inventory Data",
+      "base_url_example": "https://www.steamwebapi.com/explore/api/last?key=YOUR_API_KEY&limit=5",
+      "details": [
+        "Fetches the last Steam profiles added to the system with inventory information and items.",
+        "By default, 5 profiles are returned.",
+        "Adjustable profile count using the `limit` parameter (maximum: 50).",
+        "Provides inventory and item data for each profile."
+      ],
+      "usage_notes": [
+        "Use your API key for authentication.",
+        "Optionally, set the `limit` parameter to specify the number of profiles to return (e.g., `limit=10`)."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "limit",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the maximum number of profiles to return. Default is 5. Maximum allowed is 50.",
+          "example": "5",
+          "default": "5"
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and the latest profiles are returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid or missing parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/explore/api/profile",
+      "description": "🔍 Search Steam Profiles by Name, Country, or Worth",
+      "base_url_example": "https://www.steamwebapi.com/explore/api/profile?key=YOUR_API_KEY&search=example",
+      "details": [
+        "Searches for Steam profiles based on various criteria such as name, country, or inventory worth.",
+        "By default, retrieves profiles matching the provided search criteria.",
+        "Filter results using the `search`, `country`, or `worth` parameters.",
+        "Supports pagination with `limit` and `page` parameters.",
+        "Sort results by criteria like `personaname`, `timecreated`, `fame`, `worth`, or `size`."
+      ],
+      "usage_notes": [
+        "Use the `search` parameter for a name, account name, or description.",
+        "Optionally, filter by `country` or `worth` to refine your search.",
+        "Adjust `limit` and `page` for paginated results.",
+        "Use `order_by` to specify the sorting order (e.g., `worth` for inventory value)."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        },
+        {
+          "name": "search",
+          "location": "query",
+          "required": false,
+          "description": "Search string for profile name, account name, or description."
+        },
+        {
+          "name": "country",
+          "location": "query",
+          "required": false,
+          "description": "Country code (e.g., DE, US, UK) to filter profiles by country."
+        },
+        {
+          "name": "worth",
+          "location": "query",
+          "required": false,
+          "description": "Filter profiles by inventory worth as an integer value (e.g., 1 for $1, 1000 for $1000)."
+        },
+        {
+          "name": "limit",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the maximum number of profiles per page. Default is 5. Maximum allowed is 50.",
+          "example": "5",
+          "default": "5"
+        },
+        {
+          "name": "page",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the page number of the results.",
+          "example": "1",
+          "default": "1"
+        },
+        {
+          "name": "game",
+          "location": "query",
+          "required": false,
+          "description": "Filter profiles by a specific game name."
+        },
+        {
+          "name": "vac",
+          "location": "query",
+          "required": false,
+          "description": "Filter profiles by VAC status. Set to 1 to filter only VAC banned profiles."
+        },
+        {
+          "name": "order_by",
+          "location": "query",
+          "required": false,
+          "description": "Specifies the sorting order for the results. Options: - personaname: Sort by profile name. - timecreated: Sort by creation time. - fame: Sort by fame level. - worth: Sort by inventory worth. - size: Sort by inventory size. - updatedat: Sort by last update time."
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Request was successful, and matching profiles are returned."
+        },
+        {
+          "code": 400,
+          "description": "Invalid or missing parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded."
+        }
+      ]
+    }
+  ]
+}

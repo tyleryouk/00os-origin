@@ -1,26 +1,21 @@
-# Active Request: 1000xdev Workflow Empowerment & Command System Enhancement
+# REQ-2025-05-21: 1000xdev Workflow Flattening & Continuous Command System
 
-**Cycle Origin:** Based on `user-directed/final-goal.md` ([date])
+## Requirements
+1. **1000xdev Folder Refactor**
+   - Flatten the `1000xdev/` workflow folder structure for clarity and maintainability
+   - Migrate or archive legacy subfolders as needed
+   - Update all references and initialization logic to use the new flat structure
 
-## Requirements & Objectives
-- Implement new 00OS commands for 1000xdev in `/00os/processes/1000xdev/`:
-  - `> dev-init`: Load all relevant workflow, context, and standards for 1000xdev
-  - `> dev-scan-front-end`: Scan and summarize the front-end codebase
-  - `> dev-scan-back-end`: Scan and summarize the back-end codebase
-- Refactor and expand `1000xdev/steam-integration/` to serve as a model workflow folder:
-  - Ensure documentation, context, and process files are up-to-date, modular, and easy to navigate
-  - Integrate new context snapshots and standards as the workflow evolves
-- Establish a cyclical process for regular workflow review, improvement, and archiving
-- Archive completed cycles and goals for traceability
-- Encourage feedback and iteration from both AI and human collaborators
+2. **Continuous Command & Workflow Creation System**
+   - Design and implement a system for rapid, ongoing creation of 1000xdev commands
+   - Enable easy extension and enhancement of the 1000xdev workflow
+   - Document the process for future cycles and contributors
 
-## Success Criteria
-- All new 00OS commands for 1000xdev are implemented, tested, and documented
-- The workflow folder is clear, modular, and supports rapid onboarding and development
-- The system supports easy extension for future workflows, commands, and integrations
-- Feedback and improvement cycles are documented and actionable
+## Completion Criteria
+- [ ] `1000xdev/` folder is flattened and all legacy subfolders are migrated or archived
+- [ ] Initialization logic and documentation are updated for the new structure
+- [ ] System for continuous 1000xdev command/workflow creation is implemented and documented
 
-## Next Steps
-1. Draft an implementation plan in `implementation-plan.md`
-2. Track progress in `cycle-status.md`
-3. Begin command and workflow enhancements as outlined above 
+## Context References
+- **Key Files**: `1000xdev/`, `1000xdev/steam-integration/`, `reaper-init`, `dev-init`, `final-goal.md`
+- **Related Requests**: REQ-2025-05-18 - 00OS Command Expansion for 1000xdev 

@@ -4,6 +4,7 @@ globs:
 alwaysApply: true
 type: agent
 ---
+
 # Process: reaper-git
 
 USE WHEN you want to stage, commit, and push all changes to the 00reaper branch in git. The commit message is written by 00reaper unless a custom message is provided.
@@ -44,4 +45,4 @@ return { success: true, result: '✅ All changes committed and pushed to 00reape
 ✅ All changes committed and pushed to 00reaper branch.
 
 > reaper-git --message "Refactor: update process automation logic"
-✅ All changes committed and pushed to 00reaper branch with custom message.
+✅ All changes committed and pushed to 00reaper branch with custom message. 
