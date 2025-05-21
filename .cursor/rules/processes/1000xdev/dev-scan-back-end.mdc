@@ -4,6 +4,7 @@ globs:
 alwaysApply: true
 type: agent
 ---
+
 # Process: dev-scan-back-end
 
 USE WHEN you want to execute dev-scan-back-end
@@ -35,4 +36,4 @@ return {
 ## Examples
 
 > dev-scan-back-end
-✅ Back-end codebase scanned and summarized
+✅ Back-end codebase scanned and summarized 

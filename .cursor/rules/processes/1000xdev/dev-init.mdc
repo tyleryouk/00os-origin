@@ -4,6 +4,7 @@ globs:
 alwaysApply: true
 type: agent
 ---
+
 # Process: dev-init
 
 USE WHEN you want to execute dev-init
@@ -55,4 +56,4 @@ await tools.call('read_file', {
 ## Examples
 
 > dev-init
-✅ 1000xdev context initialized and all core files loaded
+✅ 1000xdev context initialized and all core files loaded 
