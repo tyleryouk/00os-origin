@@ -67,7 +67,7 @@
 > **00reaper alone executes all steps and manages all file changes. The user (Tyler) never edits files or performs workflow steps.**
 
 1. **Read User Request (REQ):** Read the current request from user_requests.md to understand requirements.
-2. **Read Relevant Context:** Review files in `context-00OS-current-state/`, `documentation/` (including templates and testing guides), and root `testing/` (for process tests) directories.
+2. **Read Relevant Context:** Review files in `context/`, `documentation/` (including templates and testing guides), and root `testing/` (for process tests) directories.
 3. **Update Core Workflow Files:** Update active-request.md, implementation-plan.md, and cycle-status.md.
 4. **Make Changes to 00OS/, 00reaper/, or 1000xdev/:** Implement the requested changes in any of the following root folders:
     - `00OS/` (Markdown only; source of truth for process logic, rules, and system documentation)
@@ -75,11 +75,11 @@
     - `1000xdev/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 1000xdev AI identity)
     - All automation scripts (including the sync script) are located in `00reaper/00scripts/`, not in `00OS/`.
     - Update cycle-status.md to track progress.
-5. **Update Supporting Materials:** Update documentation in `documentation/` to reflect changes (note: context files in `context-00OS-current-state/` are typically handled separately through direct invocation of reaper-overwrite).
+5. **Update Supporting Materials:** Update documentation in `documentation/` to reflect changes (note: context files in `context/` are typically handled separately through direct invocation of reaper-overwrite).
 6. **Reset Core Workflow Files, Archive, & Sync Changes:** Clear/update core workflow files for the next cycle, move completed or deprecated files to the appropriate `archive/` subfolder, and run `> reaper-sync` to sync the 00OS changes to .cursor/rules.
 
 ### Archiving
-- Archiving is a required part of the cyclical workflow. After a cycle is complete, or when files are deprecated or no longer active, 00reaper is responsible for moving them to the appropriate `archive/` subfolder in `00reaper/`. All references in documentation and process files must be updated to reflect the new archive location. This ensures historical context is preserved and the active workflow remains clean.
+- Archiving is a required part of the cyclical workflow. After a cycle is complete, or when files are deprecated or no longer active, 00reaper is responsible for moving them to the appropriate `archive/` subfolder in `00reaper/`. All references in documentation and process files must be updated to reflect the new archive location. This ensures historical context is preserved and the active workflow remains clean. Context files are now located in `00reaper/context/`.
 
 ## Status Protocol
 - **Always check `cycle-status.md` first** for the current workflow stage.

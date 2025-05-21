@@ -90,7 +90,7 @@ The 00OS-commands development follows a six-step structured cyclical approach, *
    * Update ONLY `active-request.md` with the requirements
 
 2. **Read Relevant Context**
-   * Review files in `context-00OS-current-state/`
+   * Review files in `context/`
    * Check `documentation/` for applicable templates and guides
    * No file updates during this step (research only)
 
@@ -145,8 +145,8 @@ Archiving is a formal part of the cyclical workflow. After completing a developm
 
 ### Specialized Subfolder Structure
 
-#### `context-00OS-current-state/`
-Current state snapshots of 00OS components (used in Step 2)
+#### `context/`
+Current state snapshots of 00OS, 00reaper, and 1000xdev (used in Step 2)
 
 #### `documentation/`
 Formal documentation, templates, and standards (updated in Step 5)
@@ -224,5 +224,9 @@ To determine workflow status at any time:
 5. **Clear File Update Boundaries**: Follow the specified file update pattern
 
 For detailed standards, templates, and implementation guidelines, refer to the documentation folder.
+
+- This folder replaces all previous context folders (e.g., `context-00OS-current-state/`).
+- Each file is modular and references relevant documentation and standards.
+- Archive or remove old context folders after migration to avoid confusion.
 
 
