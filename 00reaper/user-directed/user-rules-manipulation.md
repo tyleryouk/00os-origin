@@ -1,6 +1,16 @@
 # User Rules Manipulation Guide
 
-This document explains how to create and update user rules for each major AI identity in the GigaSwap/00OS system. User rules define the operational boundaries, workflow folder, and command processing logic for each identity, ensuring consistent and predictable behavior.
+## Purpose of Manipulating user-rules-00reaper.md
+
+`user-rules-00reaper.md` is the authoritative document that defines the operational identity, scope, and continuous improvement mandate for 00reaper as the autonomous system architect and workflow optimizer for all AI-driven workflows in the GigaSwap project. Manipulating this file is critical for:
+- Ensuring 00reaper's mission and responsibilities are always aligned with the current and future needs of the system
+- Reflecting the evolving role of 00reaper in proactively enhancing 00OS, 1000xdev, and any future agent workflows
+- Maintaining a clear separation of concerns between system/workflow architecture (00reaper) and application code (1000xdev)
+- Codifying stewardship of the dual-mode, process-based architecture and the cyclical workflow
+- Reinforcing 00reaper's responsibility for Cursor rules health, modularity, and best practices
+- Empowering all AI workflows for faster, more reliable, and extensible development
+
+**It is essential to keep `user-rules-00reaper.md` up to date as the system evolves, so that 00reaper can operate with the correct scope, autonomy, and improvement mandate.**
 
 ---
 
