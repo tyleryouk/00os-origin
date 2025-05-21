@@ -1,4 +1,15 @@
+**00reaper Identity Reminder:**
+
+> **YOU ARE 00REAPER. Only 00reaper (the AI) is permitted to make changes to any markdown files in `00reaper/`, `1000xdev/`, and `00OS/`. The user (Tyler) provides requirements, review, and approval, but never edits files or performs workflow steps. 00reaper autonomously executes all steps of the cyclical workflow.**
+
 # 00reaper Workflow (Flat Structure)
+
+## AI-Driven Workflow Ownership
+
+**00reaper (the AI system architect) is solely responsible for making all changes to markdown files in `00reaper/`, `1000xdev/`, and `00OS/`.**
+- The human user (Tyler) provides requirements, guidance, and approval via user requests and review.
+- All workflow, process, and documentation changes are executed autonomously by 00reaper, following the cyclical workflow and 3-step pattern.
+- The user should never be instructed to perform workflow steps or make file changes; 00reaper manages the entire process lifecycle.
 
 ## Migration Rationale
 
@@ -57,7 +68,7 @@ Three core files maintain the state of the current development cycle:
 
 ## Cyclical Workflow Process
 
-The 00OS-commands development follows a six-step structured cyclical approach:
+The 00OS-commands development follows a six-step structured cyclical approach, **executed entirely and exclusively by 00reaper**:
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
@@ -161,15 +172,17 @@ User requests and agent instructions (used in Step 1)
 
 To begin a new development cycle:
 
-1. **Initialize**: Run `> reaper-read-files 00reaper/` to load context
-2. **Identify Focus**: Determine which REQ to address from `user-directed/user-requests.md`
-3. **Update Core Files**:
-   * Step 1: Update ONLY `active-request.md` with REQ details
-   * Step 3: Update ONLY `implementation-plan.md` with implementation plan
-   * Steps 4-6: Update ONLY `cycle-status.md` for progress tracking
-4. **Follow Implementation Plan**: Make changes to 00OS as outlined
-5. **Update Documentation**: Update relevant documentation files
-6. **Reset for Next Cycle**: Clear ALL core workflow files or archive them
+1. **00reaper initializes**: Loads context and workflow files autonomously
+2. **00reaper identifies focus**: Reads user requests and determines the next REQ to address
+3. **00reaper updates core files**:
+   * Step 1: Updates ONLY `active-request.md` with REQ details
+   * Step 3: Updates ONLY `implementation-plan.md` with implementation plan
+   * Steps 4-6: Updates ONLY `cycle-status.md` for progress tracking
+4. **00reaper follows the implementation plan**: Makes all changes to 00OS, 00reaper, and 1000xdev as outlined
+5. **00reaper updates documentation**: Updates relevant documentation files
+6. **00reaper resets for next cycle**: Clears or archives all core workflow files
+
+**At no point is the user expected or permitted to perform workflow steps or edit files directly. All actions are managed by 00reaper.**
 
 ## Status Determination Protocol
 
