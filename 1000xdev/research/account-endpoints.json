@@ -1,0 +1,122 @@
+{
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/account/me",
+      "description": "📊 Retrieve Your Account and Usage Statistics",
+      "base_url_example": "https://www.steamwebapi.com/account/me",
+      "details": [
+        "Retrieve details about your account and usage statistics.",
+        "This endpoint provides comprehensive details about your account, including usage statistics and activity records.",
+        "Usage Tracking: The endpoint tracks your API usage and provides insights into your activity.",
+        "Rate Limiting: The request generates a usage record each time it is called.",
+        "Real-time Data: Get up-to-date information about your account's API usage in different time periods (minute, hour, day, week, month)."
+      ],
+      "usage_notes": [
+        "Usage Details: Track your API usage over the last minute, hour, day, week, and month.",
+        "Subscription Info: Get information about your subscription status and duration.",
+        "Provide your API key in the request to retrieve the data. The API will respond with a breakdown of your usage, subscription status, and the latest status of the Steam Web API."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "Your API key for authentication. Retrieve it from your Dashboard (top-right corner)."
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "Successfully retrieved account and usage statistics."
+        },
+        {
+          "code": 400,
+          "description": "Bad request or missing API key."
+        },
+        {
+          "code": 401,
+          "description": "Unauthorized access due to invalid or missing API key."
+        }
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/steam/api/steamloginsecure",
+      "description": "📦 Automate Steam Login Process",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/steamloginsecure",
+      "details": [
+        "Automates your Steam login process, including for trading, market, and other Steam Community features.",
+        "With the `steamLoginSecure` cookie, you can use our Trading API and build easy-to-use trading bots, market trackers, and more.",
+        "The login process is handled securely. No password is stored server-side.",
+        "Ideal for building trading bots, market analyzers, and automated session checkers."
+      ],
+      "usage_notes": [
+        "There are two ways to authenticate: Username + Password Login, or Refresh Token Login.",
+        "For Username + Password Login, send a POST request with your Steam `username` and `password` in the request body.",
+        "If your account is protected by Steam Guard, include the `code` parameter from your mobile authenticator.",
+        "For Refresh Token Login, provide a `steamrefreshtoken` (JWT) instead of username/password.",
+        "Do not provide both login credentials and `steamrefreshtoken` at the same time.",
+        "The `steamrefreshtoken` is typically valid for up to 6 months and can be used repeatedly to retrieve new `steamLoginSecure` cookies."
+      ],
+      "parameters": [],
+      "request_body": {
+        "content_type": "application/json",
+        "required": true,
+        "description": "JSON payload containing the required parameters for Steam login. There are two ways to authenticate: via username + password (optionally code from 2FA Mobile Authenticator), or via steamrefreshtoken only. You must provide either (username + password) or steamrefreshtoken – but not both.",
+        "properties": [
+          {
+            "name": "username",
+            "required": false,
+            "description": "Steam account username. Required if not using steamrefreshtoken.",
+            "example": "user123"
+          },
+          {
+            "name": "password",
+            "required": false,
+            "description": "Steam account password. Required if not using steamrefreshtoken.",
+            "example": "password123"
+          },
+          {
+            "name": "code",
+            "required": false,
+            "description": "Mobile authenticator code (2FA). Required if account has Steam Guard enabled and using username/password login.",
+            "example": "123456"
+          },
+          {
+            "name": "steamrefreshtoken",
+            "required": false,
+            "description": "JWT token returned from previous login. Can be used instead of username/password for reauthentication.",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          }
+        ]
+      },
+      "responses": [
+        {
+          "code": 200,
+          "description": "Successfully logged in to Steam. Cookies are returned."
+        },
+        {
+          "code": 411,
+          "description": "Invalid username or password provided."
+        },
+        {
+          "code": 412,
+          "description": "Failed to retrieve valid cookies from Steam."
+        },
+        {
+          "code": 413,
+          "description": "SteamLoginSecure is invalid."
+        },
+        {
+          "code": 421,
+          "description": "Invalid request body or missing required parameters."
+        },
+        {
+          "code": 429,
+          "description": "Rate limit exceeded. Try again later."
+        }
+      ]
+    }
+  ]
+}

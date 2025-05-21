@@ -1,43 +1,33 @@
-# Implementation Plan: 1000xdev Workflow Empowerment Cycle
+# Implementation Plan: 1000xdev Workflow Flattening & Continuous Command System
 
-**Cycle Origin:** See `active-request.md`
+## Step 1: Preparation & Context Alignment
 
-## 1. Implement New 1000xdev Commands
-- [x] Design process specs for:
-  - [x] `dev-init`
-  - [x] `dev-scan-front-end`
-  - [x] `dev-scan-back-end`
-- [x] Author process files in `/00os/processes/1000xdev/`
-- [x] Test each command for correct 3-step pattern and documentation
+1. **Review Requirements & Context**
+   - Confirm requirements in `active-request.md` and user-directed files
+   - Review `final-goal.md` and any related context or documentation
 
-## 2. Refactor & Enhance Workflow Folder
-- [x] Audit current `1000xdev/steam-integration/` structure
-- [x] Update or create documentation, context, and process files
-- [x] Integrate new context snapshots and standards
+2. **Audit 1000xdev Folder Structure**
+   - List all subfolders and files in `1000xdev/`
+   - Identify legacy subfolders to be archived or migrated
+   - Document current structure for traceability
 
-## 3. Consolidate Context
-- [x] Create modular context files for 00OS, 00reaper, and 1000xdev in `00reaper/context/`
-- [x] Update consolidated `README.md` to cross-link all context files
-- [x] New context folder is now the single source of truth
-- [ ] Archive old `context-00OS-current-state/` folder in the next step
+3. **Plan Flattening Strategy**
+   - All files and subfolders in `1000xdev/steam-integration/` will be moved to `1000xdev/archive/` for traceability
+   - The new flat structure will be created directly in `1000xdev/`
+   - Determine which files from the old structure should be immediately restored to the new flat structure (e.g., key documentation, context, user rules)
+   - Prepare a migration/archival checklist
 
-## 4. Documentation Cross-Linking
-- [x] Ensure all context files reference relevant documentation and standards
+4. **Update Initialization Logic**
+   - Identify all references to old structure in initialization logic (e.g., `dev-init`, `reaper-init`)
+   - Plan updates to point to the new flat structure
 
-## 5. Archive & Sync
-- [ ] Move old context folder to archive and update references if needed
-- [ ] Run `> reaper-sync` to sync all changes
+5. **Prepare for Continuous Command System**
+   - Outline requirements for a system enabling rapid creation of new 1000xdev commands
+   - Draft initial documentation/process for ongoing command/workflow creation
 
-## Step 2 Status
-- All relevant 1000xdev workflow, documentation, and context files have been reviewed, including:
-  - `README.md` (1000xdev identity, scope, and workflow)
-  - `steam-integration/documentation/` (workflow, goals, tool call processes, integration plans)
-  - `steam-integration/context-back-end-current-state/` and `context-front-end-current-state/` (codebase snapshots)
-  - `prompts/` (autonomous workflow support)
-  - `archive/` (historical user rules)
-- Ready to proceed to authoring and refactoring 00OS commands for 1000xdev, and to modularize and document the workflow folder as outlined in the requirements.
+## Next Steps
+- Execute folder flattening and archival (Step 2)
+- Update all references and initialization logic (Step 3)
+- Implement and document the continuous command creation system (Step 4)
 
-## Milestones
-- [ ] All commands implemented and tested
-- [ ] Workflow folder refactored and documented
-- [ ] Improvement and archiving process in place 
+*This file is cleared and ready for the next cycle. Add a new implementation plan after requirements are set in active-request.md.* 
