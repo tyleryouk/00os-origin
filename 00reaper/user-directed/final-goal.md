@@ -35,4 +35,8 @@ Establish a next-generation development workflow for 1000xdev that maximizes spe
 1. Author new requirements in `active-request.md`
 2. Draft an implementation plan in `implementation-plan.md`
 3. Track progress in `cycle-status.md`
-4. Begin command and workflow enhancements as outlined above 
+4. Begin command and workflow enhancements as outlined above
+
+---
+
+**Note:** The 1000xdev workflow folder will be flattened (like 00reaper) in an upcoming cycle. The `reaper-init` process and related initialization logic will be updated to reflect the new structure once this refactor is complete. 
