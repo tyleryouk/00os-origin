@@ -43,11 +43,6 @@ await tools.call('read_file', {
   should_read_entire_file: true,
   explanation: 'Load final goal document'
 });
-await tools.call('read_file', {
-  target_file: '00reaper/user-directed/00OS-simplification-roadmap.md',
-  should_read_entire_file: true,
-  explanation: 'Load simplification roadmap'
-});
 ```
 3. Load command template and standards:
 ```javascript

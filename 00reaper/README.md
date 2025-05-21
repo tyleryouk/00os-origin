@@ -67,11 +67,11 @@ The 00OS-commands development follows a six-step structured cyclical approach:
         ▲                                        └────────┬────────┘
         │                                                 │
         │                                                 ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│  6. Reset Core  │     │  5. Update      │     │  4. Make        │
-│     Workflow    │◄────│     Supporting  │◄────│     Changes     │
-│     Files       │     │     Materials   │     │     to 00OS     │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+┌─────────────────┐     ┌─────────────────┐     ┌────────────────────────────┐
+│  6. Reset Core  │     │  5. Update      │     │  4. Make Changes to        │
+│     Workflow    │◄────│     Supporting  │◄────│  00OS/, 00reaper/,         │
+│     Files       │     │     Materials   │     │  or 1000xdev/ (see below)  │
+└─────────────────┘     └─────────────────┘     └────────────────────────────┘
 ```
 
 1. **Read User Request (REQ)**
@@ -87,10 +87,15 @@ The 00OS-commands development follows a six-step structured cyclical approach:
    * Update ONLY `implementation-plan.md` with concrete plan
    * Map requirements to implementation steps
 
-4. **Make Changes to 00OS**
+4. **Make Changes to 00OS/, 00reaper/, or 1000xdev/**
    * Implement changes per implementation plan
+   * Edits may be made in any of the following root folders:
+     - `00OS/` (Markdown only; source of truth for process logic and rules, synced to `.cursor/rules`)
+     - `00reaper/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 00reaper AI identity)
+     - `1000xdev/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 1000xdev AI identity)
+   * All automation scripts (including the sync script) are located in `00reaper/00scripts/`, not in `00OS/`.
    * Update ONLY `cycle-status.md` to track progress
-   * Create or modify processes in appropriate categories
+   * Create or modify processes, documentation, or scripts as appropriate
 
 5. **Update Supporting Materials**
    * Update ONLY documentation files as needed
@@ -101,6 +106,20 @@ The 00OS-commands development follows a six-step structured cyclical approach:
    * Move completed, deprecated, or obsolete files to the appropriate `archive/` subfolder
    * Run `> reaper-sync` to sync 00OS changes to `.cursor/rules`
    * Update ONLY `cycle-status.md` for final status
+
+---
+
+## Folder Roles, Content Types, and AI Identity Separation
+
+| Folder      | Content Types         | Purpose/Role                                                                 | Synced to .cursor/rules? | AI Identity         |
+|-------------|----------------------|------------------------------------------------------------------------------|-------------------------|---------------------|
+| 00OS/       | Markdown (.md) only  | Source of truth for all process logic, rules, and system documentation.      | Yes                     | System (all agents) |
+| 00reaper/   | Markdown, PowerShell | Workflow, context, documentation, research, and automation for 00reaper.     | No                      | 00reaper            |
+| 1000xdev/   | Markdown, PowerShell | Workflow, context, documentation, and automation for 1000xdev.               | No                      | 1000xdev            |
+
+- **00OS/** contains only Markdown files. All process logic and rules are defined here and synced to `.cursor/rules` for use by all agents. No scripts are present in this folder.
+- **00reaper/** and **1000xdev/** are workflow folders for their respective AI identities. They may contain both Markdown and PowerShell scripts for workflow management, context, and automation. All automation scripts (including the sync script) are in `00reaper/00scripts/`.
+- **Separation of workflow folders** ensures clear boundaries and responsibilities for each AI identity. 00reaper and 1000xdev do not edit each other's workflow folders or the 00OS system files outside their designated roles.
 
 ## Archiving & Historical Records
 Archiving is a formal part of the cyclical workflow. After completing a development cycle, deprecating a process, or when files are no longer active, move them to the appropriate subfolder under `archive/` in `00reaper/`. This preserves historical context and keeps the active workflow clean. Always update references in documentation and process files to point to the new archive location. 00reaper is responsible for maintaining a well-organized archive and ensuring no active files are lost or orphaned.
