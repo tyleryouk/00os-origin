@@ -50,6 +50,13 @@ if (!flags['00os'] && !flags['1000xdev']) {
 ### Flag: --00os (00OS-Only Initialization)
 ```javascript
 if (flags['00os']) {
+  // Always load core workflow files
+  await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
+  await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
+  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
+  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
+  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+
   // List 00OS directories
   await tools.call('list_dir', { relative_workspace_path: '00OS/core', explanation: 'List 00OS core system files' });
   await tools.call('list_dir', { relative_workspace_path: '00OS/config', explanation: 'List 00OS config files' });
@@ -97,6 +104,13 @@ if (flags['00os']) {
 ### Flag: --1000xdev (1000xdev-Only Initialization)
 ```javascript
 if (flags['1000xdev']) {
+  // Always load core workflow files
+  await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
+  await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
+  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
+  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
+  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+
   // Read 1000xdev context
   await tools.call('read_file', { target_file: '00reaper/context/1000xdev.md', should_read_entire_file: true, explanation: 'Read 1000xdev context summary' });
   await tools.call('read_file', { target_file: '00reaper/context/README.md', should_read_entire_file: true, explanation: 'Read consolidated context overview' });
@@ -117,26 +131,23 @@ if (flags['1000xdev']) {
 
   // Read 1000xdev workflow and documentation
   await tools.call('read_file', { target_file: '1000xdev/README.md', should_read_entire_file: true, explanation: 'Read 1000xdev workflow README' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/documentation/workflow.md', should_read_entire_file: true, explanation: 'Read 1000xdev workflow documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/documentation/final-goals.md', should_read_entire_file: true, explanation: 'Read 1000xdev final goals documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/documentation/tool-call-processes.md', should_read_entire_file: true, explanation: 'Read 1000xdev tool call processes documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/documentation/items-endpoints-integration.md', should_read_entire_file: true, explanation: 'Read 1000xdev items/endpoints integration documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/documentation/endpoint-integration-progress.md', should_read_entire_file: true, explanation: 'Read 1000xdev endpoint integration progress' });
+  await tools.call('read_file', { target_file: '1000xdev/documentation/workflow.md', should_read_entire_file: true, explanation: 'Read 1000xdev workflow documentation' });
+  await tools.call('read_file', { target_file: '1000xdev/documentation/final-goals.md', should_read_entire_file: true, explanation: 'Read 1000xdev final goals documentation' });
+  await tools.call('read_file', { target_file: '1000xdev/documentation/tool-call-processes.md', should_read_entire_file: true, explanation: 'Read 1000xdev tool call processes documentation' });
+  await tools.call('read_file', { target_file: '1000xdev/documentation/items-endpoints-integration.md', should_read_entire_file: true, explanation: 'Read 1000xdev items/endpoints integration documentation' });
+  await tools.call('read_file', { target_file: '1000xdev/documentation/endpoint-integration-progress.md', should_read_entire_file: true, explanation: 'Read 1000xdev endpoint integration progress' });
 
   // Read 1000xdev backend context
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-back-end-current-state/steam.md', should_read_entire_file: true, explanation: 'Read backend Steam API integration context' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-back-end-current-state/steam-tests.md', should_read_entire_file: true, explanation: 'Read backend Steam API tests context' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-back-end-current-state/steam-routes.md', should_read_entire_file: true, explanation: 'Read backend Steam API routes context' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-back-end-current-state/steam-services.md', should_read_entire_file: true, explanation: 'Read backend Steam API services context' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-back-end-current-state/steam-models.md', should_read_entire_file: true, explanation: 'Read backend Steam API models context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/steam.md', should_read_entire_file: true, explanation: 'Read backend Steam API integration context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/steam-tests.md', should_read_entire_file: true, explanation: 'Read backend Steam API tests context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/steam-routes.md', should_read_entire_file: true, explanation: 'Read backend Steam API routes context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/steam-services.md', should_read_entire_file: true, explanation: 'Read backend Steam API services context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/steam-models.md', should_read_entire_file: true, explanation: 'Read backend Steam API models context' });
 
   // Read 1000xdev frontend context
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-front-end-current-state/context-front-end-api.md', should_read_entire_file: true, explanation: 'Read frontend API context' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-front-end-current-state/directory-structure-front-end-api.md', should_read_entire_file: true, explanation: 'Read frontend directory structure context' });
-  await tools.call('read_file', { target_file: '1000xdev/steam-integration/context-front-end-current-state/node-dependencies.md', should_read_entire_file: true, explanation: 'Read frontend node dependencies context' });
-
-  // Read 1000xdev prompts (for workflow automation/context building)
-  // NOTE: Prompts folder will be removed and the 1000xdev workflow folder will be flattened in a future cycle. Further updates to initialization logic will follow after that refactor.
+  await tools.call('read_file', { target_file: '1000xdev/context/context-front-end-api.md', should_read_entire_file: true, explanation: 'Read frontend API context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/directory-structure-front-end-api.md', should_read_entire_file: true, explanation: 'Read frontend directory structure context' });
+  await tools.call('read_file', { target_file: '1000xdev/context/node-dependencies.md', should_read_entire_file: true, explanation: 'Read frontend node dependencies context' });
 
   return { success: true, result: '1000xdev context initialized (flag: --1000xdev)' };
 }
@@ -147,6 +158,13 @@ if (flags['1000xdev']) {
 ### Flag: --self (00reaper Self-Enhancement Initialization)
 ```javascript
 if (flags['self']) {
+  // Always load core workflow files
+  await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
+  await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
+  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
+  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
+  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+
   // List 00reaper workflow and process directories
   await tools.call('list_dir', { relative_workspace_path: '00reaper', explanation: 'List 00reaper root workflow files and folders' });
   await tools.call('list_dir', { relative_workspace_path: '00reaper/context', explanation: 'List 00reaper context files' });
@@ -158,7 +176,6 @@ if (flags['self']) {
   // Read 00reaper context and workflow files
   await tools.call('read_file', { target_file: '00reaper/context/00reaper.md', should_read_entire_file: true, explanation: 'Read 00reaper context summary' });
   await tools.call('read_file', { target_file: '00reaper/context/README.md', should_read_entire_file: true, explanation: 'Read consolidated context overview' });
-  await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Read 00reaper workflow README' });
 
   // Read 00reaper process files
   await tools.call('read_file', { target_file: '00OS/processes/00reaper/reaper-init.md', should_read_entire_file: true, explanation: 'Read reaper-init process' });

@@ -1,0 +1,70 @@
+# Process: dev-git
+
+USE WHEN you want to stage, commit, and push all changes to the 1000xdev branch in git. The commit message is written by 00reaper unless a custom message is provided.
+
+## Execution
+
+This process executes the following tool calls:
+
+```javascript
+// 0. Detect the current branch
+const branchResult = await tools.call('run_terminal_cmd', {
+  command: 'git rev-parse --abbrev-ref HEAD',
+  is_background: false,
+  explanation: 'Detect the current git branch before switching.'
+});
+const currentBranch = branchResult && branchResult.stdout ? branchResult.stdout.trim() : '';
+
+// 1. If not already on 1000xdev, switch and merge previous branch into 1000xdev
+if (currentBranch !== '1000xdev') {
+  await tools.call('run_terminal_cmd', {
+    command: 'git checkout 1000xdev',
+    is_background: false,
+    explanation: 'Switch to the 1000xdev branch.'
+  });
+  const mergeResult = await tools.call('run_terminal_cmd', {
+    command: `git merge ${currentBranch}`,
+    is_background: false,
+    explanation: `Merge previous branch (${currentBranch}) into 1000xdev to keep both branches in sync.`
+  });
+  if (mergeResult && mergeResult.stderr && mergeResult.stderr.includes('CONFLICT')) {
+    throw new Error(`Merge conflict detected while merging ${currentBranch} into 1000xdev. Please resolve conflicts manually before running dev-git again.`);
+  }
+}
+// If already on 1000xdev, do nothing for switch/merge.
+
+// 2. Stage all changes
+await tools.call('run_terminal_cmd', {
+  command: 'git add .',
+  is_background: false,
+  explanation: 'Stage all changes for commit.'
+});
+
+// 3. Commit with a message (use provided message or generate one)
+const commitMessage = inputs.message || `Automated commit by 1000xdev: workflow/process update and sync (1000xdev)`;
+await tools.call('run_terminal_cmd', {
+  command: `git commit -m "${commitMessage}"`,
+  is_background: false,
+  explanation: 'Commit staged changes with a 00reaper-generated message.'
+});
+
+// 4. Push to the 1000xdev branch
+await tools.call('run_terminal_cmd', {
+  command: 'git push origin 1000xdev',
+  is_background: false,
+  explanation: 'Push committed changes to the remote 1000xdev branch.'
+});
+
+return { success: true, result: '✅ All changes merged (if needed), committed, and pushed to 1000xdev branch.' };
+```
+
+## Notes
+- When switching to 1000xdev, this process merges the previous branch into 1000xdev to keep both branches in sync. If already on 1000xdev, no merge is performed. If a merge conflict occurs, the process halts and you must resolve conflicts manually before running `dev-git` again.
+
+## Examples
+
+> dev-git
+✅ All changes merged (if needed), committed, and pushed to 1000xdev branch.
+
+> dev-git --message "Refactor: update 1000xdev workflow logic"
+✅ All changes merged (if needed), committed, and pushed to 1000xdev branch with custom message. 
