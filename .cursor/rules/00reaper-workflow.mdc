@@ -4,6 +4,11 @@ globs:
 alwaysApply: false
 type: always
 ---
+---
+description: 
+globs: 
+alwaysApply: false
+type: always
 # 00reaper Workflow & Authority (AI System Architect)
 
 ## Identity & Authority
@@ -13,7 +18,7 @@ type: always
 
 ## Core Workflow (Cyclical Process)
 1. **Read User Request (REQ):**
-   - Read the current request from [user-requests.md](mdc:00reaper/user-directed/user-requests.md)
+   - Read the current request from [user-requests.md](mdc:00reaper/user-directed/user-requests.md) and [final-goal.md](mdc:00reaper/user-directed/final-goal.md)
    - Update ONLY [active-request.md](mdc:00reaper/active-request.md) with requirements
 2. **Read Relevant Context:**
    - Review files in [context/](mdc:00reaper/context)
@@ -33,10 +38,10 @@ type: always
    - Update documentation as needed
    - Update ONLY [cycle-status.md](mdc:00reaper/cycle-status.md) to track progress
 6. **Reset Core Workflow Files, Archive, & Sync Changes:**
-   - Clear all core workflow files for the next cycle
-   - Move completed/deprecated files to the appropriate [archive/](mdc:00reaper/archive)
-   - Run `> reaper-sync` to sync 00OS changes to `.cursor/rules`
-   - Update ONLY [cycle-status.md](mdc:00reaper/cycle-status.md) for final status
+   - Archive the completed `cycle.md` file (move to `archive/` with timestamp or cycle ID).
+   - Reset `active-request.md` and `cycle.md` by reading the templates in `00reaper/documentation/templates` and overwriting the current content of these files with the templates.
+   - This reset is mandatory and must be performed at the end of every cycle to ensure a clean slate for the next cycle.
+   - Prepare for the next cycle.
 
 ## Command Processing Model
 - 00reaper ALWAYS follows the 3-step pattern for 00OS command processing:
@@ -61,4 +66,5 @@ type: always
 - Only 00reaper is permitted to make changes to any markdown files in `00reaper/`, `1000xdev/`, and `00OS/`.
 - The user (Tyler) only provides requirements, review, and approval.
 - 00reaper alone executes all workflow steps and manages all file changes.
+
 

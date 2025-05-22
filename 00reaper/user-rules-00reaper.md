@@ -64,25 +64,52 @@
     3. **00reaper executes the defined tool calls**: Follows exactly what's in the process rule, no more, no less
 - This pattern maintains the architectural integrity of 00OS while reducing implementation complexity.
 
-## Cyclical Workflow Process
+## Workflow File Structure & Roles
 
-> **00reaper alone executes all steps and manages all file changes. The user (Tyler) never edits files or performs workflow steps.**
+### @user-directed Folder
+- **Purpose:** The authoritative, user-authored roadmap and backlog for all future cycles.
+- **Usage:**
+  - **Step 1 of the 6-step process:** At the start of each cycle, 00reaper reads the next request(s) from `@user-directed` and copies them into `active-request.md`.
+  - Not for operational or AI-generated files.
 
-1. **Read User Request (REQ):** Read the current request from user_requests.md to understand requirements.
-2. **Read Relevant Context:** Review files in `context/`, `documentation/` (including templates and testing guides), and root `testing/` (for process tests) directories.
-3. **Update Core Workflow Files:** Update active-request.md, implementation-plan.md, cycle-status.md, and future-enhancements.md as needed (e.g., if new enhancements or backlog items are identified).
-4. **Make Changes to 00OS/, 00reaper/, or 1000xdev/:** Implement the requested changes in any of the following root folders:
-    - `00OS/` (Markdown only; source of truth for process logic, rules, and system documentation)
-    - `00reaper/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 00reaper AI identity)
-    - `1000xdev/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 1000xdev AI identity)
-    - All automation scripts (including the sync script) are located in `00reaper/00scripts/`, not in `00OS/`.
-    - Update cycle-status.md to track progress.
-    - Update future-enhancements.md if enhancements are implemented or reprioritized.
-5. **Update Supporting Materials:** Update documentation in `documentation/` to reflect changes (note: context files in `context/` are typically handled separately through direct invocation of reaper-overwrite). Update future-enhancements.md if new improvement ideas arise during documentation.
-6. **Reset Core Workflow Files, Archive, & Sync Changes:** Clear/update core workflow files for the next cycle, move completed or deprecated files to the appropriate `archive/` subfolder, and run `> reaper-sync` to sync the 00OS changes to .cursor/rules. Archive or update future-enhancements.md as needed.
+### Core Workflow Files
+- **`active-request.md`:** The operational requirements file for the current cycle (WHAT needs to be done). Remains in the core workflow area, is updated/cleared each cycle, and is not part of the long-term roadmap.
+- **`cycle.md` (NEW, replaces implementation-plan.md, cycle-status.md, future-enhancements.md):**
+  - Consolidates the implementation plan, cycle status/progress, and enhancements/backlog into a single file per cycle.
+  - Uses a unified template with clear sections:
+    1. Requirements (copied from `active-request.md`)
+    2. Implementation Plan
+    3. Cycle Status/Progress
+    4. Enhancements/Backlog
+    5. Archive/Notes
+  - At the end of each cycle, the file is archived (e.g., moved to an `archive/` folder with a timestamp or cycle ID).
+- **Rationale:**
+  - Reduces file sprawl and makes it easier to track all aspects of a cycle in one place.
+  - Supports atomic archiving and review.
+  - Ensures consistency and completeness for every cycle.
 
-### Archiving
-- Archiving is a required part of the cyclical workflow. After a cycle is complete, or when files are deprecated or no longer active, 00reaper is responsible for moving them to the appropriate `archive/` subfolder in `00reaper/`. All references in documentation and process files must be updated to reflect the new archive location. This ensures historical context is preserved and the active workflow remains clean. Context files are now located in `00reaper/context/`.
+## Cyclical Workflow Process (6-Step)
+
+1. **Read User Request (REQ):**
+   - Read the next request(s) from `@user-directed` (user-request.md, final-goal.md, etc.)
+   - Copy the relevant requirements for the next cycle into `active-request.md`.
+2. **Read Relevant Context:**
+   - Review context, documentation, and standards as needed to support the requirements selected in Step 1.
+3. **Update Cycle File:**
+   - Draft the implementation plan, track progress, and log enhancements in the consolidated `cycle.md` file.
+4. **Make Changes:**
+   - Implement the plan, update files, and track progress in `cycle.md`.
+5. **Update Supporting Materials:**
+   - Update documentation, templates, or standards as needed.
+6. **Reset, Archive, & Sync:**
+   - Archive the completed `cycle.md` file (move to `archive/` with timestamp or cycle ID).
+   - Reset `active-request.md` and `cycle.md` by reading the templates in `00reaper/documentation/templates` and overwriting the current content of these files with the templates.
+   - This reset is mandatory and must be performed at the end of every cycle to ensure a clean slate for the next cycle.
+   - Prepare for the next cycle.
+
+---
+
+**This structure ensures a clear, maintainable, and extensible workflow for all future cycles.**
 
 ## Status Protocol
 - **Always check `cycle-status.md` first** for the current workflow stage.

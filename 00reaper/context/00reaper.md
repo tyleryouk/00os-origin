@@ -30,4 +30,4 @@ This file provides a detailed snapshot of the 00reaper AI identity, workflow, au
 
 ---
 
-**For operational rules, see `user-directed/user-rules-00reaper.md`. For workflow standards and templates, see `00reaper/documentation/`.** 
+**For operational rules, see `user-rules-00reaper.md`. For workflow standards and templates, see `00reaper/documentation/`.** 

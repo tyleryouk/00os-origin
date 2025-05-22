@@ -40,7 +40,7 @@
 - Always verify command category and maintain process boundaries
 
 **Updating 00reaper User Rules:**
-- Edit `00reaper/user-directed/user-rules-00reaper.md`
+- Edit `00reaper/user-rules-00reaper.md`
 - Update workflow folder, responsibilities, or command processing logic as the system evolves
 - Document any major changes in the changelog or archive
 

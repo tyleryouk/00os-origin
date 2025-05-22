@@ -1,9 +1,10 @@
-# 00reaper Templates
+# 00reaper Template Files
 
-This folder contains templates for process, workflow, and request files used in the 00reaper workflow.
+This folder contains the templates for the core workflow files used in each development cycle.
 
-## Contents
-- **command-template-core.md**: Template for new 00OS command process files.
-- **implementation-plan-template.md**: Template for implementation plans.
-- **cycle-status-template.md**: Template for cycle status tracking.
-- **active-request-template.md**: Template for active request/requirements files. 
+## Templates
+
+- **active-request-template.md**: Template for `active-request.md`, the operational requirements file for the current cycle. Use this to copy requirements from the user-directed roadmap at the start of each cycle.
+- **cycle.md**: Template for the consolidated cycle file. Use this for each cycle to track requirements, implementation plan, status/progress, enhancements/backlog, and archival notes.
+
+These templates ensure consistency and clarity for every cycle in the 00reaper workflow. 

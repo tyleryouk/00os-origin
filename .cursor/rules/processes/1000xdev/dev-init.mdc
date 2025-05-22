@@ -1,7 +1,7 @@
 ---
-description: System component - dev-init
+description: USE WHEN you want to execute dev-init
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
 
