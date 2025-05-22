@@ -74,8 +74,8 @@
 
 ### Core Workflow Files
 - **`active-request.md`:** The operational requirements file for the current cycle (WHAT needs to be done). Remains in the core workflow area, is updated/cleared each cycle, and is not part of the long-term roadmap.
-- **`cycle.md` (NEW, replaces implementation-plan.md, cycle-status.md, future-enhancements.md):**
-  - Consolidates the implementation plan, cycle status/progress, and enhancements/backlog into a single file per cycle.
+- **`cycle.md` (Consolidated Core Workflow File):**
+  - Consolidates the implementation plan, cycle status/progress, enhancements/backlog, and archival notes into a single file per cycle.
   - Uses a unified template with clear sections:
     1. Requirements (copied from `active-request.md`)
     2. Implementation Plan

@@ -3,7 +3,7 @@ name: reaper-init
 description: Initialize 00reaper context and system understanding
 category: 00reaper
 author: 00reaper
-version: 2.3
+version: 2.4
 ---
 
 # Process: reaper-init
@@ -26,9 +26,7 @@ if (!flags['00os'] && !flags['1000xdev']) {
   // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
-  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
-  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
-  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+  await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
 
   // Load all documentation in 00OS-architecture
   const archDocs = [
@@ -99,9 +97,7 @@ if (flags['00os']) {
   // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
-  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
-  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
-  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+  await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
 
   // Load all documentation in 00OS-architecture
   const archDocs = [
@@ -171,9 +167,7 @@ if (flags['00os']) {
 if (flags['1000xdev']) {
   // Load core workflow files (mandatory)
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
-  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
-  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
-  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+  await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
 
   // Load essential 00reaper/00OS docs for workflow and standards
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
@@ -212,9 +206,7 @@ if (flags['self']) {
   // Always load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
-  await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
-  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
-  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+  await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
 
   // List 00reaper workflow and process directories
   await tools.call('list_dir', { relative_workspace_path: '00reaper', explanation: 'List 00reaper root workflow files and folders' });
