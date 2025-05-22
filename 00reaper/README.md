@@ -13,15 +13,17 @@
 
 ## Migration Rationale
 
-**As of [DATE], the 00OS-commands workflow has been flattened:**
+**As of [DATE], the 00OS-commands workflow has been flattened and consolidated:**
 - All workflow, documentation, context, research, and user-directed files are now directly under `00reaper/` and its subfolders.
 - The previous `00OS-commands/` subdirectory has been removed for simplicity, clarity, and maintainability.
-- All references, scripts, and process files have been updated to use the new flat structure.
+- The core workflow now uses a single consolidated file: `cycle.md`.
+- All references, scripts, and process files have been updated to use the new flat structure and consolidated workflow file.
 
 **Benefits:**
 - Easier navigation and onboarding
 - Simpler reference paths in all documentation and process files
 - Unified, single-source-of-truth workflow folder for 00reaper
+- **Atomic cycle tracking and archiving in one file**
 
 ---
 
@@ -39,8 +41,8 @@
 
 ### Core Workflow Files
 - **`active-request.md`:** The operational requirements file for the current cycle (WHAT needs to be done). Remains in the core workflow area, is updated/cleared each cycle, and is not part of the long-term roadmap.
-- **`cycle.md` (NEW, replaces implementation-plan.md, cycle-status.md, future-enhancements.md):**
-  - Consolidates the implementation plan, cycle status/progress, and enhancements/backlog into a single file per cycle.
+- **`cycle.md` (Consolidated Core Workflow File):**
+  - Consolidates the implementation plan, cycle status/progress, enhancements/backlog, and archival notes into a single file per cycle.
   - Uses a unified template with clear sections:
     1. Requirements (copied from `active-request.md`)
     2. Implementation Plan
@@ -79,27 +81,17 @@ This directory (`00reaper/`) serves as the central hub for creating, managing, a
 
 ## Core Workflow Files
 
-Three core files maintain the state of the current development cycle:
+Two core files maintain the state of the current development cycle:
 
 1. **active-request.md**: Requirements document (WHAT needs to be done)
    * Contains the complete REQ details being implemented
    * Updated ONLY during step 1 of the cycle
    * Serves as the stable requirements reference
 
-2. **implementation-plan.md**: Blueprint document (HOW it will be done)
-   * Documents the concrete implementation plan
-   * Updated ONLY during step 3 of the cycle
-   * Serves as the blueprint for implementation
-
-3. **cycle-status.md**: Progress tracking document (WHERE we are in the process)
-   * Tracks the current cycle stage and progress
-   * Updated continuously during steps 4-6
-   * Serves as the primary status indicator for the workflow
-
-4. **future-enhancements.md**: Backlog and planned improvements (authoritative enhancements tracker)
-   * Tracks enhancements and backlog items for 00reaper
-   * Updated during steps 4-6
-   * Serves as the authoritative backlog and improvement tracker
+2. **cycle.md**: Consolidated cycle file (HOW, status, backlog, archive)
+   * **Single source of truth** for the implementation plan, cycle status/progress, enhancements/backlog, and archival notes
+   * Updated throughout the cycle as progress is made
+   * Archived at the end of each cycle
 
 ## Cyclical Workflow Process (6-Step)
 
@@ -141,4 +133,4 @@ Archiving is a formal part of the cyclical workflow. After completing a developm
 
 ### Core Workflow Files (Root Directory)
 * `active-request.md`: Current REQ being implemented
-* `
+* `cycle.md`: Consolidated cycle file for the current development cycle

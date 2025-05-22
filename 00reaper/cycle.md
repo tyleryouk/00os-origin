@@ -1,21 +1,7 @@
-# Cycle 2025-05-XX: 1000xdev Workflow Enhancement & Modular Command System
+# Cycle YYYY-MM-DD: [Cycle Title]
 
 ## Requirements
-1. **1000xdev Workflow Enhancement**
-   - Design and document distinct workflow types for 1000xdev (e.g., feature, bugfix, refactor, test, integration)
-   - For each workflow type, define a clear, repeatable 6-step process (request, context loading, planning, implementation, testing, documentation/archiving)
-   - Integrate robust testing and validation steps for each workflow
-   - Ensure all processes are modular, extensible, and easy to follow for both AI and human collaborators
-
-2. **Centralized Workflow Documentation**
-   - Create or update a central `workflow.md` (or equivalent) in `1000xdev/`
-   - List all workflow types and their 6-step instructions
-   - Provide templates/checklists for each step
-   - Link to relevant standards, context, and command documentation
-
-3. **Feedback & Continuous Improvement System**
-   - Add a process for capturing feedback and proposing workflow improvements after each cycle
-   - Define how workflow enhancements are reviewed and implemented
+[Copied from active-request.md]
 
 ## Implementation Plan
 - [Step 1]
