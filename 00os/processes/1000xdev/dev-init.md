@@ -21,11 +21,11 @@ USE WHEN you want to execute dev-init
 This process loads all key workflow, documentation, and context files for 1000xdev:
 
 1. Load 1000xdev/README.md
-2. Load steam-integration/documentation/workflow.md
-3. Load steam-integration/documentation/final-goals.md
-4. Load steam-integration/documentation/tool-call-processes.md
-5. Load steam-integration/context-back-end-current-state/steam.md
-6. Load steam-integration/context-front-end-current-state/context-front-end-api.md
+2. Load 1000xdev/documentation/workflow.md
+3. Load 1000xdev/documentation/final-goals.md
+4. Load 1000xdev/documentation/tool-call-processes.md
+5. Load 1000xdev/context/steam.md
+6. Load 1000xdev/context/context-front-end-api.md
 
 ```javascript
 await tools.call('read_file', {
@@ -34,27 +34,27 @@ await tools.call('read_file', {
   explanation: 'Load 1000xdev workflow overview'
 });
 await tools.call('read_file', {
-  target_file: '1000xdev/steam-integration/documentation/workflow.md',
+  target_file: '1000xdev/documentation/workflow.md',
   should_read_entire_file: true,
   explanation: 'Load main workflow documentation'
 });
 await tools.call('read_file', {
-  target_file: '1000xdev/steam-integration/documentation/final-goals.md',
+  target_file: '1000xdev/documentation/final-goals.md',
   should_read_entire_file: true,
   explanation: 'Load final goals documentation'
 });
 await tools.call('read_file', {
-  target_file: '1000xdev/steam-integration/documentation/tool-call-processes.md',
+  target_file: '1000xdev/documentation/tool-call-processes.md',
   should_read_entire_file: true,
   explanation: 'Load tool call processes documentation'
 });
 await tools.call('read_file', {
-  target_file: '1000xdev/steam-integration/context-back-end-current-state/steam.md',
+  target_file: '1000xdev/context/steam.md',
   should_read_entire_file: true,
   explanation: 'Load backend context snapshot'
 });
 await tools.call('read_file', {
-  target_file: '1000xdev/steam-integration/context-front-end-current-state/context-front-end-api.md',
+  target_file: '1000xdev/context/context-front-end-api.md',
   should_read_entire_file: true,
   explanation: 'Load frontend context snapshot'
 });

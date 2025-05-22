@@ -17,6 +17,14 @@
    - Determine which files from the old structure should be immediately restored to the new flat structure (e.g., key documentation, context, user rules)
    - Prepare a migration/archival checklist
 
+## Step 3: Update References & Initialization Logic (In Progress)
+- Update all references in process files, documentation, and onboarding scripts to use the new flat structure:
+  - [x] Update `dev-init` process
+  - [x] Update `README.md`
+  - [x] Update `documentation/workflow.md`
+  - [x] Update any remaining onboarding or workflow scripts (user rules and user-request files updated)
+- Test initialization and command loading to confirm the new structure is fully functional
+
 4. **Update Initialization Logic**
    - Identify all references to old structure in initialization logic (e.g., `dev-init`, `reaper-init`)
    - Plan updates to point to the new flat structure
@@ -27,7 +35,7 @@
 
 ## Next Steps
 - Execute folder flattening and archival (Step 2)
-- Update all references and initialization logic (Step 3)
+- Update all references and initialization logic (Step 3) **[COMPLETE: All references and onboarding logic now point to the flat structure. User rules and user-request files updated.]**
 - Implement and document the continuous command creation system (Step 4)
 
 *This file is cleared and ready for the next cycle. Add a new implementation plan after requirements are set in active-request.md.* 

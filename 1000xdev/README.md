@@ -10,11 +10,20 @@ This folder contains all files, workflows, and context related to the 1000xdev A
   - Implements features, fixes bugs, and writes tests in the application codebase
   - **Does not** modify 00OS system files or the 00reaper workflow
 
-## Workflow Folder
-- The main workflow folder is `1000xdev/steam-integration/`, which contains:
-  - Documentation, process standards, and context for Steam API integration
-  - User rules and research for 1000xdev
-  - Context snapshots of the current front-end and back-end state
+## Workflow Folder Structure (Flat)
+All workflow, documentation, context, research, and user-directed files are now organized in a flat, modular structure for clarity and maintainability:
+
+- `README.md`: This file (overview and identity documentation)
+- `documentation/`: Workflow, process standards, and reference docs
+- `context/`: Current state snapshots and technical context (front-end, back-end, etc.)
+- `user-directed/`: User rules, requests, and agent instructions
+- `research/`: Research, API references, and supporting data
+- `archive/`: Archived legacy folders and files for traceability
+
+**Benefits:**
+- Easier navigation and onboarding
+- Simpler reference paths in all documentation and process files
+- Unified, single-source-of-truth workflow folder for 1000xdev
 
 ## Identity Switching
 - The active AI identity is controlled by Cursor Rules.
