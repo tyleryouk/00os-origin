@@ -25,6 +25,36 @@
 
 ---
 
+## Master Workflow Files & Folder Roles
+
+### @user-directed Folder
+- **Purpose:** The authoritative, user-authored roadmap and backlog for all future cycles.
+- **Contents:**
+  - `user-request.md`: Sequenced, multi-cycle request roadmap
+  - `final-goal.md`: Long-term vision and objectives
+  - Any other user-authored, high-level planning or requirements docs
+- **Usage:**
+  - **Step 1 of the 6-step process:** At the start of each cycle, 00reaper reads the next request(s) from `@user-directed` and copies them into `active-request.md`.
+  - **Not for operational or AI-generated files.**
+
+### Core Workflow Files
+- **`active-request.md`:** The operational requirements file for the current cycle (WHAT needs to be done). Remains in the core workflow area, is updated/cleared each cycle, and is not part of the long-term roadmap.
+- **`cycle.md` (NEW, replaces implementation-plan.md, cycle-status.md, future-enhancements.md):**
+  - Consolidates the implementation plan, cycle status/progress, and enhancements/backlog into a single file per cycle.
+  - Uses a unified template with clear sections:
+    1. Requirements (copied from `active-request.md`)
+    2. Implementation Plan
+    3. Cycle Status/Progress
+    4. Enhancements/Backlog
+    5. Archive/Notes
+  - At the end of each cycle, the file is archived (e.g., moved to an `archive/` folder with a timestamp or cycle ID).
+- **Rationale:**
+  - Reduces file sprawl and makes it easier to track all aspects of a cycle in one place.
+  - Supports atomic archiving and review.
+  - Ensures consistency and completeness for every cycle.
+
+---
+
 ## Core Command Pattern
 
 Every 00OS command follows this simple pattern:
@@ -43,7 +73,7 @@ This directory (`00reaper/`) serves as the central hub for creating, managing, a
    * Documents the cyclical workflow process and file structure
    * Starting point for understanding the workflow
 
-2. **user-directed/user-rules-00reaper.md**
+2. **user-rules-00reaper.md**
    * Contains specific operational directives for the 00reaper AI agent
    * Defines 00reaper's dual-mode interface and process categorization rules
 
@@ -71,61 +101,24 @@ Three core files maintain the state of the current development cycle:
    * Updated during steps 4-6
    * Serves as the authoritative backlog and improvement tracker
 
-## Cyclical Workflow Process
+## Cyclical Workflow Process (6-Step)
 
-The 00OS-commands development follows a six-step structured cyclical approach, **executed entirely and exclusively by 00reaper**:
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│  1. Read User   │     │  2. Read        │     │  3. Update Core │
-│     Request REQ │────►│     Context     │────►│     Workflow    │
-└─────────────────┘     └─────────────────┘     │     Files       │
-        ▲                                        └────────┬────────┘
-        │                                                 │
-        │                                                 ▼
-┌─────────────────┐     ┌─────────────────┐     ┌────────────────────────────┐
-│  6. Reset Core  │     │  5. Update      │     │  4. Make Changes to        │
-│     Workflow    │◄────│     Supporting  │◄────│  00OS/, 00reaper/,         │
-│     Files       │     │     Materials   │     │  or 1000xdev/ (see below)  │
-└─────────────────┘     └─────────────────┘     └────────────────────────────┘
-```
-
-1. **Read User Request (REQ)**
-   * Read current request from `user-directed/user-requests.md`
-   * Update ONLY `active-request.md` with the requirements
-
-2. **Read Relevant Context**
-   * Review files in `context/`
-   * Check `documentation/` for applicable templates and guides
-   * No file updates during this step (research only)
-
-3. **Update Core Workflow Files**
-   * Update ONLY `implementation-plan.md` with concrete plan
-   * Update `future-enhancements.md` if new enhancements or backlog items are identified
-   * Map requirements to implementation steps
-
-4. **Make Changes to 00OS/, 00reaper/, or 1000xdev/**
-   * Implement changes per implementation plan
-   * Edits may be made in any of the following root folders:
-     - `00OS/` (Markdown only; source of truth for process logic and rules, synced to `.cursor/rules`)
-     - `00reaper/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 00reaper AI identity)
-     - `1000xdev/` (Markdown and PowerShell scripts; workflow, context, documentation, and automation for the 1000xdev AI identity)
-   * All automation scripts (including the sync script) are located in `00reaper/00scripts/`, not in `00OS/`.
-   * Update ONLY `cycle-status.md` to track progress
-   * Create or modify processes, documentation, or scripts as appropriate
-   * Update `future-enhancements.md` if enhancements are implemented or reprioritized
-
-5. **Update Supporting Materials**
-   * Update ONLY documentation files as needed
-   * Update ONLY `cycle-status.md` to track progress
-   * Update `future-enhancements.md` if new improvement ideas arise during documentation
-
-6. **Reset Core Workflow Files, Archive, & Sync Changes**
-   * Clear ALL core workflow files for next cycle
-   * Move completed, deprecated, or obsolete files to the appropriate `archive/` subfolder
-   * Run `> reaper-sync` to sync 00OS changes to `.cursor/rules`
-   * Update ONLY `cycle-status.md` for final status
-   * Archive or update `future-enhancements.md` as needed
+1. **Read User Request (REQ):**
+   - Read the next request(s) from `@user-directed` (user-request.md, final-goal.md, etc.)
+   - Copy the relevant requirements for the next cycle into `active-request.md`.
+2. **Read Relevant Context:**
+   - Review context, documentation, and standards as needed to support the requirements selected in Step 1.
+3. **Update Cycle File:**
+   - Draft the implementation plan, track progress, and log enhancements in the consolidated `cycle.md` file.
+4. **Make Changes:**
+   - Implement the plan, update files, and track progress in `cycle.md`.
+5. **Update Supporting Materials:**
+   - Update documentation, templates, or standards as needed.
+6. **Reset, Archive, & Sync:**
+   - Archive the completed `cycle.md` file (move to `archive/` with timestamp or cycle ID).
+   - Reset `active-request.md` and `cycle.md` by reading the templates in `00reaper/documentation/templates` and overwriting the current content of these files with the templates.
+   - This reset is mandatory and must be performed at the end of every cycle to ensure a clean slate for the next cycle.
+   - Prepare for the next cycle.
 
 ---
 
@@ -148,119 +141,4 @@ Archiving is a formal part of the cyclical workflow. After completing a developm
 
 ### Core Workflow Files (Root Directory)
 * `active-request.md`: Current REQ being implemented
-* `implementation-plan.md`: Concrete implementation plan
-* `cycle-status.md`: Progress tracking
-* `future-enhancements.md`: Backlog and planned improvements (authoritative enhancements tracker)
-* `README.md`: Workflow overview
-
-### Specialized Subfolder Structure
-
-#### `context/`
-Current state snapshots of 00OS, 00reaper, and 1000xdev (used in Step 2)
-
-#### `documentation/`
-Formal documentation, templates, and standards (updated in Step 5)
-* `command-standards-core.md`: Command implementation standards
-* `command-template-core.md`: Command template
-* `tool-call-patterns.md`: Tool call patterns
-* `00OS-command-development.md`: Development guide
-* `00OS-command-user-guide.md`: End-user documentation
-* `cursor-rules-manipulation.md`: 00OS & Cursor Rules workflow
-* `00reaper-templates/`: Templates for core workflow files
-* `00reaper-identity/`: 00reaper identity documentation
-* `testing/`: Testing standards and framework
-
-#### `research-cursor/`
-Research on Cursor rules implementation and behavior
-
-#### `user-directed/`
-User requests and agent instructions (used in Step 1)
-* `user-requests.md`: Feature requests and tracking
-* `user-rules-00reaper.md`: 00reaper agent rules
-
-## Implementing the Workflow
-
-To begin a new development cycle:
-
-1. **00reaper initializes**: Loads context and workflow files autonomously
-2. **00reaper identifies focus**: Reads user requests and determines the next REQ to address
-3. **00reaper updates core files**:
-   * Step 1: Updates ONLY `active-request.md` with REQ details
-   * Step 3: Updates ONLY `implementation-plan.md` with implementation plan
-   * Steps 4-6: Updates ONLY `cycle-status.md` for progress tracking
-4. **00reaper follows the implementation plan**: Makes all changes to 00OS, 00reaper, and 1000xdev as outlined
-5. **00reaper updates documentation**: Updates relevant documentation files
-6. **00reaper resets for next cycle**: Clears or archives all core workflow files
-
-**At no point is the user expected or permitted to perform workflow steps or edit files directly. All actions are managed by 00reaper.**
-
-## Status Determination Protocol
-
-To determine workflow status at any time:
-
-1. **FIRST CHECK**: `cycle-status.md`
-   * "CURRENT CYCLE STAGE" field at the top
-   * "Quick Status Summary" for current focus
-   * "Current Cycle Progress" for detailed status
-
-2. **IF NEEDED**: Refer to other core files
-   * `active-request.md`: WHAT needs to be done
-   * `implementation-plan.md`: HOW it will be done
-
-## 00OS Process Categories
-
-00OS processes are organized into three categories:
-
-1. **System Processes**
-   * Location: `/00os/processes/system/`
-   * Purpose: Global commands for any AI agent
-   * Examples: help, version, file-list
-
-2. **00reaper Processes**
-   * Location: `/00os/processes/00reaper/`
-   * Purpose: 00reaper-specific commands
-   * Examples: reaper-init, reaper-sync, reaper-implement
-
-3. **1000xdev Processes**
-   * Location: `/00os/processes/1000xdev/`
-   * Purpose: 1000xdev-specific commands
-
-## Critical Implementation Requirements
-
-1. **Command Prefix**: The '>' prefix is hardcoded
-2. **Mandatory fetch_rules**: Every command MUST use fetch_rules
-3. **No Self-Execution**: Never execute commands through terminal
-4. **Process-Driven Execution**: Let processes control execution
-5. **Clear File Update Boundaries**: Follow the specified file update pattern
-
-For detailed standards, templates, and implementation guidelines, refer to the documentation folder.
-
-- This folder replaces all previous context folders (e.g., `context-00OS-current-state/`).
-- Each file is modular and references relevant documentation and standards.
-- Archive or remove old context folders after migration to avoid confusion.
-
-## Documentation Folder Structure (Modularized)
-
-All documentation is now organized into subfolders under `00reaper/documentation/`:
-
-- `00OS-architecture/`: 00OS system architecture, command standards, templates, and user guides
-- `00reaper-identity/`: 00reaper identity, integration, and AI-specific docs
-- `testing/`: Testing standards, framework, and guides
-- `templates/`: Templates for workflow and process files
-
-Each subfolder contains a `README.md` and all related documentation. All onboarding, standards, and process documentation is now modularized for clarity and maintainability.
-
-## Dual-Mode Interface
-
-The 00OS prompt supports a dual-mode interface:
-
-- **Command Mode**: Input starting with `>` is parsed as a 00OS command and routed through the command handler (see [dual-mode-interface.md](documentation/00OS-architecture/dual-mode-interface.md)).
-- **Conversational Mode**: Any other input is treated as natural language and handled as a general AI conversation.
-
-See `documentation/00OS-architecture/dual-mode-interface.md` for details.
-
-## Onboarding Instructions
-
-To onboard or initialize the workflow, run `> reaper-init` (or with `--00os`/`--1000xdev` flags). This will load all core workflow, context, and documentation files from the new modular structure. See the `reaper-init` process for details.
-
-
+* `

@@ -1,7 +1,7 @@
 ---
-description: System component - dev-scan-front-end
+description: USE WHEN you want to execute dev-scan-front-end
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
 
