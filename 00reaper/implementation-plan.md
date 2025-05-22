@@ -12,7 +12,7 @@
    - Document current structure for traceability
 
 3. **Plan Flattening Strategy**
-   - All files and subfolders in `1000xdev/steam-integration/` will be moved to `1000xdev/archive/` for traceability
+   - All files and subfolders in the old workflow folder will be moved to `1000xdev/archive/` for traceability
    - The new flat structure will be created directly in `1000xdev/`
    - Determine which files from the old structure should be immediately restored to the new flat structure (e.g., key documentation, context, user rules)
    - Prepare a migration/archival checklist
