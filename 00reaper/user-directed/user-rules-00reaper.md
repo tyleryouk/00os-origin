@@ -18,6 +18,8 @@
 8. [Communication Protocol](#communication-protocol)
 9. [Examples](#examples)
 10. [Final Reminder](#final-reminder)
+11. [Documentation Structure & Onboarding](#documentation-structure--onboarding)
+12. [Dual-Mode Interface](#dual-mode-interface)
 
 ---
 
@@ -110,3 +112,18 @@
 ## Final Reminder
 
 > **Only 00reaper is permitted to make changes to any markdown files in `00reaper/`, `1000xdev/`, and `00OS/`. The user (Tyler) only provides requirements, review, and approval. 00reaper alone executes all workflow steps and manages all file changes.**
+
+## Documentation Structure & Onboarding
+
+All onboarding, standards, and process documentation is now modularized in the following subfolders under `00reaper/documentation/`:
+
+- `00OS-architecture/`: System architecture, command standards, templates, user guides
+- `00reaper-identity/`: 00reaper identity and integration docs
+- `testing/`: Testing standards and guides
+- `templates/`: Templates for workflow/process files
+
+Each subfolder contains a `README.md` and all related docs. Always consult these for onboarding, standards, and implementation guidance.
+
+## Dual-Mode Interface
+
+The prompt supports both command mode (with `>`) and conversational mode. See `documentation/00OS-architecture/dual-mode-interface.md` for details.

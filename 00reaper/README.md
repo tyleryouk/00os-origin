@@ -239,4 +239,28 @@ For detailed standards, templates, and implementation guidelines, refer to the d
 - Each file is modular and references relevant documentation and standards.
 - Archive or remove old context folders after migration to avoid confusion.
 
+## Documentation Folder Structure (Modularized)
+
+All documentation is now organized into subfolders under `00reaper/documentation/`:
+
+- `00OS-architecture/`: 00OS system architecture, command standards, templates, and user guides
+- `00reaper-identity/`: 00reaper identity, integration, and AI-specific docs
+- `testing/`: Testing standards, framework, and guides
+- `templates/`: Templates for workflow and process files
+
+Each subfolder contains a `README.md` and all related documentation. All onboarding, standards, and process documentation is now modularized for clarity and maintainability.
+
+## Dual-Mode Interface
+
+The 00OS prompt supports a dual-mode interface:
+
+- **Command Mode**: Input starting with `>` is parsed as a 00OS command and routed through the command handler (see [dual-mode-interface.md](documentation/00OS-architecture/dual-mode-interface.md)).
+- **Conversational Mode**: Any other input is treated as natural language and handled as a general AI conversation.
+
+See `documentation/00OS-architecture/dual-mode-interface.md` for details.
+
+## Onboarding Instructions
+
+To onboard or initialize the workflow, run `> reaper-init` (or with `--00os`/`--1000xdev` flags). This will load all core workflow, context, and documentation files from the new modular structure. See the `reaper-init` process for details.
+
 
