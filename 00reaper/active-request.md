@@ -17,5 +17,5 @@
 - [ ] System for continuous 1000xdev command/workflow creation is implemented and documented
 
 ## Context References
-- **Key Files**: `1000xdev/`, `1000xdev/steam-integration/`, `reaper-init`, `dev-init`, `final-goal.md`
+- **Key Files**: `1000xdev/`, `reaper-init`, `dev-init`, `final-goal.md`
 - **Related Requests**: REQ-2025-05-18 - 00OS Command Expansion for 1000xdev 
