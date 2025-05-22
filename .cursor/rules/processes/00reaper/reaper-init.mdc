@@ -27,13 +27,58 @@ if (!flags['00os'] && !flags['1000xdev']) {
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
   await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
   await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
+  await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
+
+  // Load all documentation in 00OS-architecture
+  const archDocs = [
+    'tool-call-patterns.md',
+    'cursor-rules-manipulation.md',
+    'command-template-core.md',
+    'command-standards-core.md',
+    'ai-identity-map.md',
+    '00OS-command-development.md',
+    '00OS-command-user-guide.md',
+    'dual-mode-interface.md',
+    'README.md'
+  ];
+  for (const doc of archDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/00OS-architecture/${doc}`, should_read_entire_file: true, explanation: `Load 00OS architecture doc: ${doc}` });
+  }
+
+  // Load all documentation in 00reaper-identity
+  const reaperIdentityDocs = [
+    'identity.md',
+    '00os-integration.md',
+    'README.md'
+  ];
+  for (const doc of reaperIdentityDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/00reaper-identity/${doc}`, should_read_entire_file: true, explanation: `Load 00reaper identity doc: ${doc}` });
+  }
+
+  // Load all documentation in testing
+  const testingDocs = [
+    'testing-guide.md',
+    'testing-framework.md',
+    'README.md'
+  ];
+  for (const doc of testingDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/testing/${doc}`, should_read_entire_file: true, explanation: `Load testing doc: ${doc}` });
+  }
+
+  // Load all documentation in templates
+  const templateDocs = [
+    'command-template-core.md',
+    'implementation-plan-template.md',
+    'cycle-status-template.md',
+    'active-request-template.md',
+    'README.md'
+  ];
+  for (const doc of templateDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/templates/${doc}`, should_read_entire_file: true, explanation: `Load template doc: ${doc}` });
+  }
 
   // Load vision and roadmap documents
   await tools.call('read_file', { target_file: '00reaper/user-directed/final-goal.md', should_read_entire_file: true, explanation: 'Load final goal document' });
-
-  // Load command template and standards
-  await tools.call('read_file', { target_file: '00reaper/documentation/command-template-core.md', should_read_entire_file: true, explanation: 'Load command template' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/command-standards-core.md', should_read_entire_file: true, explanation: 'Load command standards' });
 
   // Load context state snapshots
   await tools.call('read_file', { target_file: '00reaper/context/00OS.md', should_read_entire_file: true, explanation: 'Load 00OS system context' });
@@ -50,52 +95,71 @@ if (!flags['00os'] && !flags['1000xdev']) {
 ### Flag: --00os (00OS-Only Initialization)
 ```javascript
 if (flags['00os']) {
-  // Always load core workflow files
+  // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
   await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
   await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
   await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
 
-  // List 00OS directories
-  await tools.call('list_dir', { relative_workspace_path: '00OS/core', explanation: 'List 00OS core system files' });
-  await tools.call('list_dir', { relative_workspace_path: '00OS/config', explanation: 'List 00OS config files' });
-  await tools.call('list_dir', { relative_workspace_path: '00OS/processes/system', explanation: 'List 00OS system process files' });
+  // Load all documentation in 00OS-architecture
+  const archDocs = [
+    'tool-call-patterns.md',
+    'cursor-rules-manipulation.md',
+    'command-template-core.md',
+    'command-standards-core.md',
+    'ai-identity-map.md',
+    '00OS-command-development.md',
+    '00OS-command-user-guide.md',
+    'dual-mode-interface.md',
+    'README.md'
+  ];
+  for (const doc of archDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/00OS-architecture/${doc}`, should_read_entire_file: true, explanation: `Load 00OS architecture doc: ${doc}` });
+  }
 
-  // Read 00OS context
-  await tools.call('read_file', { target_file: '00reaper/context/00OS.md', should_read_entire_file: true, explanation: 'Read 00OS context summary' });
+  // Load all documentation in 00reaper-identity
+  const reaperIdentityDocs = [
+    'identity.md',
+    '00os-integration.md',
+    'README.md'
+  ];
+  for (const doc of reaperIdentityDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/00reaper-identity/${doc}`, should_read_entire_file: true, explanation: `Load 00reaper identity doc: ${doc}` });
+  }
 
-  // Read 00OS documentation
-  await tools.call('read_file', { target_file: '00reaper/documentation/command-standards-core.md', should_read_entire_file: true, explanation: 'Read 00OS command standards' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/command-template-core.md', should_read_entire_file: true, explanation: 'Read 00OS command template' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/00OS-command-development.md', should_read_entire_file: true, explanation: 'Read 00OS command development guide' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/00OS-command-user-guide.md', should_read_entire_file: true, explanation: 'Read 00OS command user guide' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/cursor-rules-manipulation.md', should_read_entire_file: true, explanation: 'Read cursor rules manipulation guide' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/tool-call-patterns.md', should_read_entire_file: true, explanation: 'Read tool call patterns documentation' });
+  // Load all documentation in testing
+  const testingDocs = [
+    'testing-guide.md',
+    'testing-framework.md',
+    'README.md'
+  ];
+  for (const doc of testingDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/testing/${doc}`, should_read_entire_file: true, explanation: `Load testing doc: ${doc}` });
+  }
 
-  // Read 00OS research
-  await tools.call('read_file', { target_file: '00reaper/research-cursor/research-cursor-tool-call.md', should_read_entire_file: true, explanation: 'Read Cursor tool call research' });
-  await tools.call('read_file', { target_file: '00reaper/research-cursor/research-cursor-rules-manipulation.md', should_read_entire_file: true, explanation: 'Read Cursor rules manipulation research' });
-  await tools.call('read_file', { target_file: '00reaper/research-cursor/research-cursor-project-rules.md', should_read_entire_file: true, explanation: 'Read Cursor project rules research' });
-  await tools.call('read_file', { target_file: '00reaper/research-cursor/research-cursor-user-rules.md', should_read_entire_file: true, explanation: 'Read Cursor user rules research' });
+  // Load all documentation in templates
+  const templateDocs = [
+    'command-template-core.md',
+    'implementation-plan-template.md',
+    'cycle-status-template.md',
+    'active-request-template.md',
+    'README.md'
+  ];
+  for (const doc of templateDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/templates/${doc}`, should_read_entire_file: true, explanation: `Load template doc: ${doc}` });
+  }
 
-  // Read all 00OS core system files
-  await tools.call('read_file', { target_file: '00OS/core/command-handler.md', should_read_entire_file: true, explanation: 'Read 00OS command handler' });
-  await tools.call('read_file', { target_file: '00OS/core/command-registry.md', should_read_entire_file: true, explanation: 'Read 00OS command registry' });
-  await tools.call('read_file', { target_file: '00OS/core/executor.md', should_read_entire_file: true, explanation: 'Read 00OS executor' });
-  await tools.call('read_file', { target_file: '00OS/core/parser.md', should_read_entire_file: true, explanation: 'Read 00OS parser' });
-  await tools.call('read_file', { target_file: '00OS/core/permissions.md', should_read_entire_file: true, explanation: 'Read 00OS permissions' });
-  await tools.call('read_file', { target_file: '00OS/core/registry.md', should_read_entire_file: true, explanation: 'Read 00OS registry' });
-  await tools.call('read_file', { target_file: '00OS/core/state-manager.md', should_read_entire_file: true, explanation: 'Read 00OS state manager' });
+  // Load vision and roadmap documents
+  await tools.call('read_file', { target_file: '00reaper/user-directed/final-goal.md', should_read_entire_file: true, explanation: 'Load final goal document' });
 
-  // Read 00OS config
-  await tools.call('read_file', { target_file: '00OS/config/settings.md', should_read_entire_file: true, explanation: 'Read 00OS system settings' });
+  // Load context state snapshots
+  await tools.call('read_file', { target_file: '00reaper/context/00OS.md', should_read_entire_file: true, explanation: 'Load 00OS system context' });
+  await tools.call('read_file', { target_file: '00reaper/context/00reaper.md', should_read_entire_file: true, explanation: 'Load 00reaper context' });
+  await tools.call('read_file', { target_file: '00reaper/context/1000xdev.md', should_read_entire_file: true, explanation: 'Load 1000xdev workflow context' });
+  await tools.call('read_file', { target_file: '00reaper/context/README.md', should_read_entire_file: true, explanation: 'Load consolidated context overview' });
 
-  // Read 00OS system process files
-  await tools.call('read_file', { target_file: '00OS/processes/system/help.md', should_read_entire_file: true, explanation: 'Read 00OS help process' });
-  await tools.call('read_file', { target_file: '00OS/processes/system/version.md', should_read_entire_file: true, explanation: 'Read 00OS version process' });
-
-  return { success: true, result: '00OS context initialized (flag: --00os)' };
+  return { success: true, result: '00OS context initialized and all core files loaded' };
 }
 ```
 
@@ -104,52 +168,71 @@ if (flags['00os']) {
 ### Flag: --1000xdev (1000xdev-Only Initialization)
 ```javascript
 if (flags['1000xdev']) {
-  // Always load core workflow files
+  // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
   await tools.call('read_file', { target_file: '00reaper/implementation-plan.md', should_read_entire_file: true, explanation: 'Load implementation plan' });
   await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status' });
   await tools.call('read_file', { target_file: '00reaper/future-enhancements.md', should_read_entire_file: true, explanation: 'Load future enhancements' });
 
-  // Read 1000xdev context
-  await tools.call('read_file', { target_file: '00reaper/context/1000xdev.md', should_read_entire_file: true, explanation: 'Read 1000xdev context summary' });
-  await tools.call('read_file', { target_file: '00reaper/context/README.md', should_read_entire_file: true, explanation: 'Read consolidated context overview' });
-  await tools.call('read_file', { target_file: '00reaper/context/00OS.md', should_read_entire_file: true, explanation: 'Read 00OS context (for cross-domain reference)' });
-  await tools.call('read_file', { target_file: '00reaper/context/00reaper.md', should_read_entire_file: true, explanation: 'Read 00reaper context (for cross-domain reference)' });
+  // Load all documentation in 00OS-architecture
+  const archDocs = [
+    'tool-call-patterns.md',
+    'cursor-rules-manipulation.md',
+    'command-template-core.md',
+    'command-standards-core.md',
+    'ai-identity-map.md',
+    '00OS-command-development.md',
+    '00OS-command-user-guide.md',
+    'dual-mode-interface.md',
+    'README.md'
+  ];
+  for (const doc of archDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/00OS-architecture/${doc}`, should_read_entire_file: true, explanation: `Load 00OS architecture doc: ${doc}` });
+  }
 
-  // Read 1000xdev process files
-  await tools.call('read_file', { target_file: '00OS/processes/1000xdev/dev-init.md', should_read_entire_file: true, explanation: 'Read 1000xdev dev-init process' });
-  await tools.call('read_file', { target_file: '00OS/processes/1000xdev/dev-scan-front-end.md', should_read_entire_file: true, explanation: 'Read 1000xdev dev-scan-front-end process' });
-  await tools.call('read_file', { target_file: '00OS/processes/1000xdev/dev-scan-back-end.md', should_read_entire_file: true, explanation: 'Read 1000xdev dev-scan-back-end process' });
+  // Load all documentation in 00reaper-identity
+  const reaperIdentityDocs = [
+    'identity.md',
+    '00os-integration.md',
+    'README.md'
+  ];
+  for (const doc of reaperIdentityDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/00reaper-identity/${doc}`, should_read_entire_file: true, explanation: `Load 00reaper identity doc: ${doc}` });
+  }
 
-  // Read 1000xdev documentation
-  await tools.call('read_file', { target_file: '00reaper/documentation/tool-call-patterns.md', should_read_entire_file: true, explanation: 'Read tool call patterns documentation' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/command-standards-core.md', should_read_entire_file: true, explanation: 'Read command standards (for cross-domain reference)' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/command-template-core.md', should_read_entire_file: true, explanation: 'Read command template (for cross-domain reference)' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/cursor-rules-manipulation.md', should_read_entire_file: true, explanation: 'Read cursor rules manipulation guide (for cross-domain reference)' });
-  await tools.call('read_file', { target_file: '00reaper/documentation/ai-identity-map.md', should_read_entire_file: true, explanation: 'Read AI identity map (for agent roles)' });
+  // Load all documentation in testing
+  const testingDocs = [
+    'testing-guide.md',
+    'testing-framework.md',
+    'README.md'
+  ];
+  for (const doc of testingDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/testing/${doc}`, should_read_entire_file: true, explanation: `Load testing doc: ${doc}` });
+  }
 
-  // Read 1000xdev workflow and documentation
-  await tools.call('read_file', { target_file: '1000xdev/README.md', should_read_entire_file: true, explanation: 'Read 1000xdev workflow README' });
-  await tools.call('read_file', { target_file: '1000xdev/documentation/workflow.md', should_read_entire_file: true, explanation: 'Read 1000xdev workflow documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/documentation/final-goals.md', should_read_entire_file: true, explanation: 'Read 1000xdev final goals documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/documentation/tool-call-processes.md', should_read_entire_file: true, explanation: 'Read 1000xdev tool call processes documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/documentation/items-endpoints-integration.md', should_read_entire_file: true, explanation: 'Read 1000xdev items/endpoints integration documentation' });
-  await tools.call('read_file', { target_file: '1000xdev/documentation/endpoint-integration-progress.md', should_read_entire_file: true, explanation: 'Read 1000xdev endpoint integration progress' });
+  // Load all documentation in templates
+  const templateDocs = [
+    'command-template-core.md',
+    'implementation-plan-template.md',
+    'cycle-status-template.md',
+    'active-request-template.md',
+    'README.md'
+  ];
+  for (const doc of templateDocs) {
+    await tools.call('read_file', { target_file: `00reaper/documentation/templates/${doc}`, should_read_entire_file: true, explanation: `Load template doc: ${doc}` });
+  }
 
-  // Read 1000xdev backend context
-  await tools.call('read_file', { target_file: '1000xdev/context/steam.md', should_read_entire_file: true, explanation: 'Read backend Steam API integration context' });
-  await tools.call('read_file', { target_file: '1000xdev/context/steam-tests.md', should_read_entire_file: true, explanation: 'Read backend Steam API tests context' });
-  await tools.call('read_file', { target_file: '1000xdev/context/steam-routes.md', should_read_entire_file: true, explanation: 'Read backend Steam API routes context' });
-  await tools.call('read_file', { target_file: '1000xdev/context/steam-services.md', should_read_entire_file: true, explanation: 'Read backend Steam API services context' });
-  await tools.call('read_file', { target_file: '1000xdev/context/steam-models.md', should_read_entire_file: true, explanation: 'Read backend Steam API models context' });
+  // Load vision and roadmap documents
+  await tools.call('read_file', { target_file: '00reaper/user-directed/final-goal.md', should_read_entire_file: true, explanation: 'Load final goal document' });
 
-  // Read 1000xdev frontend context
-  await tools.call('read_file', { target_file: '1000xdev/context/context-front-end-api.md', should_read_entire_file: true, explanation: 'Read frontend API context' });
-  await tools.call('read_file', { target_file: '1000xdev/context/directory-structure-front-end-api.md', should_read_entire_file: true, explanation: 'Read frontend directory structure context' });
-  await tools.call('read_file', { target_file: '1000xdev/context/node-dependencies.md', should_read_entire_file: true, explanation: 'Read frontend node dependencies context' });
+  // Load context state snapshots
+  await tools.call('read_file', { target_file: '00reaper/context/00OS.md', should_read_entire_file: true, explanation: 'Load 00OS system context' });
+  await tools.call('read_file', { target_file: '00reaper/context/00reaper.md', should_read_entire_file: true, explanation: 'Load 00reaper context' });
+  await tools.call('read_file', { target_file: '00reaper/context/1000xdev.md', should_read_entire_file: true, explanation: 'Load 1000xdev workflow context' });
+  await tools.call('read_file', { target_file: '00reaper/context/README.md', should_read_entire_file: true, explanation: 'Load consolidated context overview' });
 
-  return { success: true, result: '1000xdev context initialized (flag: --1000xdev)' };
+  return { success: true, result: '1000xdev context initialized and all core files loaded' };
 }
 ```
 
@@ -217,10 +300,10 @@ if (flags['self']) {
 ✅ 00reaper context initialized and all core files loaded
 
 > reaper-init --00os
-✅ 00OS context initialized (flag: --00os)
+✅ 00OS context initialized and all core files loaded
 
 > reaper-init --1000xdev
-✅ 1000xdev context initialized (flag: --1000xdev)
+✅ 1000xdev context initialized and all core files loaded
 
 > reaper-init --self
 ✅ 00reaper self-enhancement context initialized (flag: --self) 
