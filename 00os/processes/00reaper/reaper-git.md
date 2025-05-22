@@ -25,6 +25,13 @@ USE WHEN you want to stage, commit, and push all changes to the 00reaper branch 
 This process executes the following tool calls:
 
 ```javascript
+// 0. Ensure we are on the correct branch ('00reaper')
+await tools.call('run_terminal_cmd', {
+  command: 'git checkout 00reaper',
+  is_background: false,
+  explanation: 'Ensure we are on the 00reaper branch before committing and pushing.'
+});
+
 // 1. Stage all changes
 await tools.call('run_terminal_cmd', {
   command: 'git add .',
