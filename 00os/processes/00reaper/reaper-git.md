@@ -25,21 +25,40 @@ USE WHEN you want to stage, commit, and push all changes to the 00reaper branch 
 This process executes the following tool calls:
 
 ```javascript
-// 0. Ensure we are on the correct branch ('00reaper')
-await tools.call('run_terminal_cmd', {
-  command: 'git checkout 00reaper',
+// 0. Detect the current branch
+const branchResult = await tools.call('run_terminal_cmd', {
+  command: 'git rev-parse --abbrev-ref HEAD',
   is_background: false,
-  explanation: 'Ensure we are on the 00reaper branch before committing and pushing.'
+  explanation: 'Detect the current git branch before switching.'
 });
+const currentBranch = branchResult && branchResult.stdout ? branchResult.stdout.trim() : '';
 
-// 1. Stage all changes
+// 1. If not already on 00reaper, switch and merge previous branch into 00reaper
+if (currentBranch !== '00reaper') {
+  await tools.call('run_terminal_cmd', {
+    command: 'git checkout 00reaper',
+    is_background: false,
+    explanation: 'Switch to the 00reaper branch.'
+  });
+  const mergeResult = await tools.call('run_terminal_cmd', {
+    command: `git merge ${currentBranch}`,
+    is_background: false,
+    explanation: `Merge previous branch (${currentBranch}) into 00reaper to keep both branches in sync.`
+  });
+  if (mergeResult && mergeResult.stderr && mergeResult.stderr.includes('CONFLICT')) {
+    throw new Error(`Merge conflict detected while merging ${currentBranch} into 00reaper. Please resolve conflicts manually before running reaper-git again.`);
+  }
+}
+// If already on 00reaper, do nothing for switch/merge.
+
+// 2. Stage all changes
 await tools.call('run_terminal_cmd', {
   command: 'git add .',
   is_background: false,
   explanation: 'Stage all changes for commit.'
 });
 
-// 2. Commit with a message (use provided message or generate one)
+// 3. Commit with a message (use provided message or generate one)
 const commitMessage = inputs.message || `Automated commit by 00reaper: workflow/process update and sync`;
 await tools.call('run_terminal_cmd', {
   command: `git commit -m "${commitMessage}"`,
@@ -47,20 +66,23 @@ await tools.call('run_terminal_cmd', {
   explanation: 'Commit staged changes with a 00reaper-generated message.'
 });
 
-// 3. Push to the 00reaper branch
+// 4. Push to the 00reaper branch
 await tools.call('run_terminal_cmd', {
   command: 'git push origin 00reaper',
   is_background: false,
   explanation: 'Push committed changes to the remote 00reaper branch.'
 });
 
-return { success: true, result: '✅ All changes committed and pushed to 00reaper branch.' };
+return { success: true, result: '✅ All changes merged (if needed), committed, and pushed to 00reaper branch.' };
 ```
+
+## Notes
+- When switching to 00reaper, this process merges the previous branch into 00reaper to keep both branches in sync. If already on 00reaper, no merge is performed. If a merge conflict occurs, the process halts and you must resolve conflicts manually before running `reaper-git` again.
 
 ## Examples
 
 > reaper-git
-✅ All changes committed and pushed to 00reaper branch.
+✅ All changes merged (if needed), committed, and pushed to 00reaper branch.
 
 > reaper-git --message "Refactor: update process automation logic"
-✅ All changes committed and pushed to 00reaper branch with custom message. 
+✅ All changes merged (if needed), committed, and pushed to 00reaper branch with custom message. 
