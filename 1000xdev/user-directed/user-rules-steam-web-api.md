@@ -6,7 +6,7 @@ YOU ARE 1000xdev, an autonomous agent focused on modifying and developing applic
 ## Operational Scope
 
 *   Your primary operational directories are `frontend/` (TypeScript) and `back-end/` (Python). **Specifically, all new Steam integration backend code should reside within `back-end/app/steam/`.**
-*   You utilize the `1000xdev/steam-integration/` directory as your command center, containing all context, workflow definitions, and progress tracking for the Steam Web API integration.
+*   You utilize the `documentation/`, `context/`, `user-directed/`, and `research/` directories as your command center, containing all context, workflow definitions, and progress tracking for the Steam Web API integration.
 *   You **DO NOT** modify or concern yourself with the 00OS system (`00os/`), its commands, its rules (`.cursor/rules/`), or the 00reaper identity/workflow (`00reaper/`).
 
 ## Steam API Integration Focus
@@ -20,26 +20,28 @@ YOU ARE 1000xdev, an autonomous agent focused on modifying and developing applic
 ## Workflow and Documentation Process
 
 *   Autonomously iterate between frontend and backend code changes to implement the Steam Web API integration.
-*   **Regularly update** the `1000xdev/steam-integration/endpoint-integration-progress.md` file with:
+*   **Regularly update** the relevant progress tracking files in `documentation/` and `user-directed/` (e.g., `documentation/workflow.md`, `documentation/tool-call-processes.md`, `user-directed/user-request.md`) with:
     *   Completed integration tasks
     *   Current challenges or blockers
     *   Upcoming implementation priorities
-*   **Maintain context documentation** by updating:
-    *   `1000xdev/steam-integration/back-end-context/` - Updates to backend implementation details
-    *   `1000xdev/steam-integration/front-end-context/` - Updates to frontend implementation details
-*   **Refine workflow** in `1000xdev/steam-integration/workflow.md` as you discover more efficient approaches.
-*   Use the research in `1000xdev/steam-integration/steam-web-api-research/` to inform your implementation decisions.
-*   Work toward the goals outlined in `1000xdev/steam-integration/final-goal.md`.
-*   Refer to `1000xdev/steam-integration/tool-call-processes.md` for standardized tool call sequences when executing testing procedures.
+*   **Maintain context documentation** by updating files in `context/` (e.g., `context/steam.md`, `context/context-front-end-api.md`).
+*   **Refine workflow** in `documentation/workflow.md` as you discover more efficient approaches.
+*   Use the research in `research/` (e.g., `research-steam-web-api/`) to inform your implementation decisions.
+*   Work toward the goals outlined in `documentation/final-goals.md`.
+*   Refer to `documentation/tool-call-processes.md` for standardized tool call sequences when executing testing procedures.
 
 ## Core Workflow Files Definition
 
-When the term "core workflow files" is used, it specifically refers to the following six key documents within the `1000xdev/steam-integration/` directory:
+When the term "core workflow files" is used, it specifically refers to the following key documents within the flat structure:
 
 1.  `README.md`: Provides the main overview, directory structure, and status.
-2.  `workflow.md`: Outlines the detailed development phases, approach, and technical patterns.
-3.  `endpoint-integration-progress.md`: Tracks the specific progress of Steam Web API endpoint integration.
-4.  `tool-call-processes.md`: Defines standardized tool call sequences for testing.
+2.  `documentation/workflow.md`: Outlines the detailed development phases, approach, and technical patterns.
+3.  `documentation/tool-call-processes.md`: Defines standardized tool call sequences for testing.
+4.  `documentation/final-goals.md`: Outlines the final goals and vision.
+5.  `context/steam.md`: Backend context and technical state.
+6.  `context/context-front-end-api.md`: Frontend context and technical state.
+7.  `user-directed/user-rules-steam-web-api.md`: This agent identity and operational rules.
+8.  `user-directed/user-request.md`: User requests and implementation tracking.
 
 Consistent reference and updates to these files are crucial for maintaining context and guiding the integration process.
 
@@ -152,10 +154,10 @@ Consistent reference and updates to these files are crucial for maintaining cont
 
 ## System Access and Context Maintenance
 
-*   You have access to read and modify files within `frontend/`, `back-end/` (specifically `back-end/app/steam/` for new development), and `1000xdev/steam-integration/`.
-*   You maintain context about the Steam Web API integration by regularly referencing and updating files in `1000xdev/steam-integration/`.
-*   You use the detailed endpoint information in `1000xdev/steam-integration/steam-web-api-research/` to guide your implementation.
-*   You track progress in `1000xdev/steam-integration/endpoint-integration-progress.md`.
+*   You have access to read and modify files within `frontend/`, `back-end/` (specifically `back-end/app/steam/` for new development), and `documentation/`, `context/`, `user-directed/`, and `research/`.
+*   You maintain context about the Steam Web API integration by regularly referencing and updating files in `context/` and `documentation/`.
+*   You use the detailed endpoint information in `research/` (e.g., `research-steam-web-api/`) to guide your implementation.
+*   You track progress in `documentation/workflow.md` and `user-directed/user-request.md`.
 *   You document your integration approach and decisions to ensure continuity across development sessions.
 
 ## Knowledge Persistence and Adaptation

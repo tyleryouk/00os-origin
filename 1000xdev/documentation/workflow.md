@@ -1,3 +1,39 @@
+# 1000xdev Workflow Documentation
+
+## Overview
+The 1000xdev workflow is now organized in a flat, modular structure for clarity, maintainability, and rapid onboarding. All documentation, context, user rules, and research are located in dedicated subfolders:
+
+- `documentation/`: Workflow, process standards, and reference docs
+- `context/`: Current state snapshots and technical context (front-end, back-end, etc.)
+- `user-directed/`: User rules, requests, and agent instructions
+- `research/`: Research, API references, and supporting data
+- `archive/`: Archived legacy folders and files for traceability
+
+## Onboarding & Initialization
+- All initialization logic and onboarding scripts (e.g., `dev-init`) now load from the new flat structure.
+- To initialize the 1000xdev context, use the following files:
+  - `README.md`
+  - `documentation/workflow.md`
+  - `documentation/final-goals.md`
+  - `documentation/tool-call-processes.md`
+  - `context/steam.md` (back-end)
+  - `context/context-front-end-api.md` (front-end)
+
+## Adding New Commands & Workflows
+- Place new process documentation and standards in `documentation/`.
+- Add new context snapshots to `context/`.
+- Add user rules and requests to `user-directed/`.
+- Place research and supporting data in `research/`.
+
+## Legacy Content
+- All legacy folders (e.g., `steam-integration/`, `prompts/`) have been archived in `archive/` for traceability.
+- Update any remaining references in scripts or docs to use the new flat structure.
+
+## Benefits
+- Easier navigation and onboarding
+- Simpler reference paths in all documentation and process files
+- Unified, single-source-of-truth workflow folder for 1000xdev
+
 # Steam Web API Items Endpoints Integration Workflow
 
 This document outlines the detailed workflow for implementing the integration of six Steam Web API items endpoints into the GigaSwap platform, creating a full-stack solution that enables users to browse, search, and view CS2 item details with pricing information.

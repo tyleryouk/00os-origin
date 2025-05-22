@@ -66,6 +66,11 @@ Three core files maintain the state of the current development cycle:
    * Updated continuously during steps 4-6
    * Serves as the primary status indicator for the workflow
 
+4. **future-enhancements.md**: Backlog and planned improvements (authoritative enhancements tracker)
+   * Tracks enhancements and backlog items for 00reaper
+   * Updated during steps 4-6
+   * Serves as the authoritative backlog and improvement tracker
+
 ## Cyclical Workflow Process
 
 The 00OS-commands development follows a six-step structured cyclical approach, **executed entirely and exclusively by 00reaper**:
@@ -96,6 +101,7 @@ The 00OS-commands development follows a six-step structured cyclical approach, *
 
 3. **Update Core Workflow Files**
    * Update ONLY `implementation-plan.md` with concrete plan
+   * Update `future-enhancements.md` if new enhancements or backlog items are identified
    * Map requirements to implementation steps
 
 4. **Make Changes to 00OS/, 00reaper/, or 1000xdev/**
@@ -107,16 +113,19 @@ The 00OS-commands development follows a six-step structured cyclical approach, *
    * All automation scripts (including the sync script) are located in `00reaper/00scripts/`, not in `00OS/`.
    * Update ONLY `cycle-status.md` to track progress
    * Create or modify processes, documentation, or scripts as appropriate
+   * Update `future-enhancements.md` if enhancements are implemented or reprioritized
 
 5. **Update Supporting Materials**
    * Update ONLY documentation files as needed
    * Update ONLY `cycle-status.md` to track progress
+   * Update `future-enhancements.md` if new improvement ideas arise during documentation
 
 6. **Reset Core Workflow Files, Archive, & Sync Changes**
    * Clear ALL core workflow files for next cycle
    * Move completed, deprecated, or obsolete files to the appropriate `archive/` subfolder
    * Run `> reaper-sync` to sync 00OS changes to `.cursor/rules`
    * Update ONLY `cycle-status.md` for final status
+   * Archive or update `future-enhancements.md` as needed
 
 ---
 
@@ -141,6 +150,7 @@ Archiving is a formal part of the cyclical workflow. After completing a developm
 * `active-request.md`: Current REQ being implemented
 * `implementation-plan.md`: Concrete implementation plan
 * `cycle-status.md`: Progress tracking
+* `future-enhancements.md`: Backlog and planned improvements (authoritative enhancements tracker)
 * `README.md`: Workflow overview
 
 ### Specialized Subfolder Structure
