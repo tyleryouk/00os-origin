@@ -26,6 +26,7 @@ if (!flags['00os'] && !flags['1000xdev']) {
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
   await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
+  await tools.call('read_file', { target_file: '00reaper/00reaper-brain.md', should_read_entire_file: true, explanation: 'Load master workflow file for 00reaper (central protocol for workflow enhancement)' });
 
   // Load all documentation in 00OS-architecture
   const archDocs = [
@@ -97,6 +98,7 @@ if (flags['00os']) {
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
   await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
+  await tools.call('read_file', { target_file: '00reaper/00reaper-brain.md', should_read_entire_file: true, explanation: 'Load master workflow file for 00reaper (central protocol for workflow enhancement)' });
 
   // Load all documentation in 00OS-architecture
   const archDocs = [
@@ -182,9 +184,9 @@ if (flags['1000xdev']) {
   // Load 1000xdev workflow, user rules, and user request files
   await tools.call('read_file', { target_file: '1000xdev/README.md', should_read_entire_file: true, explanation: 'Load 1000xdev workflow README' });
   await tools.call('read_file', { target_file: '1000xdev/documentation/workflow.md', should_read_entire_file: true, explanation: 'Load 1000xdev workflow doc' });
-  await tools.call('read_file', { target_file: '1000xdev/documentation/final-goals.md', should_read_entire_file: true, explanation: 'Load 1000xdev final goals' });
+  await tools.call('read_file', { target_file: '1000xdev/user-directed/final-goals.md', should_read_entire_file: true, explanation: 'Load 1000xdev final goals' });
+  await tools.call('read_file', { target_file: '1000xdev/user-rules-1000xdev.md', should_read_entire_file: true, explanation: 'Load 1000xdev user rules' });
   await tools.call('read_file', { target_file: '1000xdev/documentation/tool-call-processes.md', should_read_entire_file: true, explanation: 'Load 1000xdev tool call processes' });
-  await tools.call('read_file', { target_file: '1000xdev/user-directed/user-rules-1000xdev-global.md', should_read_entire_file: true, explanation: 'Load 1000xdev global user rules' });
   await tools.call('read_file', { target_file: '1000xdev/user-directed/user-request.md', should_read_entire_file: true, explanation: 'Load 1000xdev user request' });
 
   // Load 00OS 1000xdev process files

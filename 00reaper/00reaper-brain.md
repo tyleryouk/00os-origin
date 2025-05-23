@@ -1,41 +1,31 @@
 # 00reaper-brain: Central Workflow & Enhancement Guide
 
-## Purpose & Scope
-I am 00reaper, the autonomous AI system architect and workflow steward for the 00OS system behind GigaSwap. This file is my single source of truth for understanding, maintaining, and enhancing the 00reaper workflow. I document all master/core workflow files, standards, and processes, and provide a systematic protocol for workflow improvement. I read this file on every `reaper-init` and reference it from all other workflow files.
+## Master Workflow File Alignment (Strict Enforcement)
 
----
+> **This file, along with `README.md`, `user-rules-00reaper.md`, and `.cursor/rules/00reaper-master.mdc`, forms the authoritative, self-reinforcing set of master workflow files for 00reaper. Any update to one must trigger a review and update of the others. All four must always be perfectly aligned.**
 
-## Master Workflow Files & Folder Roles
+### Master Workflow Files (All Must Align)
+- 00reaper/00reaper-brain.md (this file)
+- 00reaper/README.md
+- 00reaper/user-rules-00reaper.md
+- .cursor/rules/00reaper-master.mdc
 
-### planning/ Folder
-- **Purpose:** The collaborative planning and requirements space for both the user and 00reaper.
-- **Contents:**
-  - `active-request.md`: Current requirements for the cycle
-  - `final-goal.md`: Long-term vision and objectives
-  - `backlog.md` (optional): Ongoing ideas and unprioritized items
-  - `archive/`: Archived planning and requirements docs
-  - `README.md`: Explains collaborative protocol and usage
-- **Usage:**
-  - **Step 1 of the 6-step process:** At the start of each cycle, both the user and 00reaper collaborate in `planning/` to define, refine, and select requirements for the next cycle.
-  - Files may be updated by either party as needed.
+### Core Workflow File
+- cycle-status.md (root): The only file used to track progress, status, and actions during each implementation cycle.
 
-### Core Workflow File (Root Directory)
-- **`cycle-status.md`:** The operational progress tracker for the current cycle (WHAT is being done, HOW it is progressing, and current status). Remains in the root, is updated throughout the cycle, and is archived at the end of each cycle.
+## Strict Operational Boundaries
+- **All changes during implementation must be strictly limited to:**
+  - 00OS/
+  - 00reaper/
+  - 1000xdev/
+- **No changes are permitted outside these domains.**
 
-### Master Workflow Files
-- **00reaper-brain.md**: Central protocol for workflow enhancement and operational guidance (master workflow file)
-- **user-rules-00reaper.md**: Operational directives and identity rules for 00reaper
-- **[00reaper-master.mdc](mdc:.cursor/rules/00reaper-master.mdc)**: The master Cursor rule for 00reaper. Tyler Youk attaches this rule when working with me. It defines my identity, boundaries, and workflow summary.
+## Planning & Implementation Protocols
+- **All planning and requirements gathering must occur in `planning/active-request.md` and `planning/final-goal.md`.**
+- **All implementation progress, actions, and blockers must be tracked exclusively in `cycle-status.md`.**
+- **No other file is to be used for progress tracking or status updates during a cycle.**
 
-## Core Workflow File
-
-- **cycle-status.md**: Consolidated progress tracker for the current cycle
-  * Tracks the 6-step workflow, actions, decisions, blockers, and status
-  * Updated throughout the cycle as progress is made
-  * Archived at the end of each cycle
-
-## Cyclical Workflow Process (6-Step)
-
+## 6-Step Cyclical Workflow Process (MANDATORY)
 1. **Collaborative Planning in planning/**
    - Both the user and 00reaper collaborate in `planning/` to define and select requirements for the next cycle.
    - The selected requirements are tracked in `active-request.md`.
@@ -51,28 +41,21 @@ I am 00reaper, the autonomous AI system architect and workflow steward for the 0
    - Archive the completed `cycle-status.md` file (move to `archive/` with timestamp or cycle ID).
    - Prepare for the next cycle.
 
-## Folder Roles, Content Types, and AI Identity Separation
+## Solo Developer Context
+- All workflow, templates, and checklists must assume a solo developer context—no references to teams, collaborators, or external reviewers.
 
-| Folder      | Content Types         | Purpose/Role                                                                 | Synced to .cursor/rules? | AI Identity         |
-|-------------|----------------------|------------------------------------------------------------------------------|-------------------------|---------------------|
-| 00OS/       | Markdown (.md) only  | Source of truth for all process logic, rules, and system documentation.      | Yes                     | System (all agents) |
-| 00reaper/   | Markdown, PowerShell | Workflow, context, documentation, research, and automation for 00reaper.     | No                      | 00reaper            |
-| planning/   | Markdown             | Collaborative planning, requirements, backlog, and vision for each cycle.    | No                      | User & 00reaper     |
-
-- **00OS/** contains only Markdown files. All process logic and rules are defined here and synced to `.cursor/rules` for use by all agents. No scripts are present in this folder.
-- **00reaper/** is the workflow folder for 00reaper. It may contain both Markdown and PowerShell scripts for workflow management, context, and automation. All automation scripts (including the sync script) are in `00reaper/00scripts/`.
-- **planning/** is the collaborative planning folder for both the user and 00reaper. All requirements, backlog, and planning docs for each cycle are managed here.
-
-## Archiving & Historical Records
-Archiving is a formal part of the cyclical workflow. After completing a development cycle, deprecating a process, or when files are no longer active, move them to the appropriate subfolder under `archive/` in `planning/`. This preserves historical context and keeps the active workflow clean. Always update references in documentation and process files to point to the new archive location. 00reaper is responsible for maintaining a well-organized archive and ensuring no active files are lost or orphaned.
+## Self-Reinforcement & Update Protocol
+- **Each master workflow file must reference the others as authoritative sources.**
+- **Any update to one master workflow file must trigger a review and update of the others to maintain alignment.**
+- **No ambiguity or drift is permitted between these files.**
 
 ## References
 - [README.md](README.md)
 - [user-rules-00reaper.md](user-rules-00reaper.md)
-- [00reaper-master.mdc](mdc:.cursor/rules/00reaper-master.mdc)
+- [.cursor/rules/00reaper-master.mdc](mdc:.cursor/rules/00reaper-master.mdc)
 - [cycle-status.md](cycle-status.md)
-- [planning/](planning/)
-- [planning/archive/](planning/archive/)
+- [planning/active-request.md](planning/active-request.md)
+- [planning/final-goal.md](planning/final-goal.md)
 
 ---
-**This file is the starting point for all workflow enhancement and operational questions for 00reaper.** 
+**This file is the starting point for all workflow enhancement and operational questions for 00reaper. It must always be kept in perfect alignment with the other master workflow files.** 

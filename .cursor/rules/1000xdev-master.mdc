@@ -2,6 +2,7 @@
 description: 
 globs: 
 alwaysApply: false
+type: always
 ---
 # 1000xdev Master Cursor Rule
 
