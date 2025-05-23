@@ -26,10 +26,10 @@ if (!flags['00os'] && !flags['1000xdev'] && !flags['self']) {
   // Load system rationale first
   await tools.call('read_file', { target_file: '00reaper/context/why-00os-and-cursor-rules.md', should_read_entire_file: true, explanation: 'Read system rationale and design philosophy' });
 
-  // Load core workflow files
+  // Load core and master workflow files
+  await tools.call('read_file', { target_file: '00reaper/planning/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
+  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status file' });
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
-  await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
-  await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
   await tools.call('read_file', { target_file: '00reaper/00reaper-brain.md', should_read_entire_file: true, explanation: 'Load master workflow file for 00reaper (central protocol for workflow enhancement)' });
 
   // Load all documentation in 00OS-architecture
@@ -58,27 +58,6 @@ if (!flags['00os'] && !flags['1000xdev'] && !flags['self']) {
     await tools.call('read_file', { target_file: `00reaper/documentation/00reaper-identity/${doc}`, should_read_entire_file: true, explanation: `Load 00reaper identity doc: ${doc}` });
   }
 
-  // Load all documentation in testing
-  const testingDocs = [
-    'testing-guide.md',
-    'testing-framework.md',
-    'README.md'
-  ];
-  for (const doc of testingDocs) {
-    await tools.call('read_file', { target_file: `00reaper/documentation/testing/${doc}`, should_read_entire_file: true, explanation: `Load testing doc: ${doc}` });
-  }
-
-  // Load all documentation in templates
-  const templateDocs = [
-    'command-template-core.md',
-    'implementation-plan-template.md',
-    'cycle-status-template.md',
-    'active-request-template.md',
-    'README.md'
-  ];
-  for (const doc of templateDocs) {
-    await tools.call('read_file', { target_file: `00reaper/documentation/templates/${doc}`, should_read_entire_file: true, explanation: `Load template doc: ${doc}` });
-  }
 
   // Load vision and roadmap documents
   await tools.call('read_file', { target_file: '00reaper/user-directed/final-goal.md', should_read_entire_file: true, explanation: 'Load final goal document' });
@@ -103,8 +82,8 @@ if (flags['00os']) {
 
   // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
-  await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
-  await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
+  await tools.call('read_file', { target_file: '00reaper/planning/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
+  await tools.call('read_file', { target_file: '00reaper/cycle-status.md', should_read_entire_file: true, explanation: 'Load cycle status file' });
   await tools.call('read_file', { target_file: '00reaper/00reaper-brain.md', should_read_entire_file: true, explanation: 'Load master workflow file for 00reaper (central protocol for workflow enhancement)' });
 
   // Load all documentation in 00OS-architecture
