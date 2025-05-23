@@ -22,7 +22,10 @@ This process initializes the context and documentation for 00reaper, 00OS, and 1
 
 ### Default: Full Initialization (No Flags)
 ```javascript
-if (!flags['00os'] && !flags['1000xdev']) {
+if (!flags['00os'] && !flags['1000xdev'] && !flags['self']) {
+  // Load system rationale first
+  await tools.call('read_file', { target_file: '00reaper/context/why-00os-and-cursor-rules.md', should_read_entire_file: true, explanation: 'Read system rationale and design philosophy' });
+
   // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
@@ -95,6 +98,9 @@ if (!flags['00os'] && !flags['1000xdev']) {
 ### Flag: --00os (00OS-Only Initialization)
 ```javascript
 if (flags['00os']) {
+  // Load system rationale first
+  await tools.call('read_file', { target_file: '00reaper/context/why-00os-and-cursor-rules.md', should_read_entire_file: true, explanation: 'Read system rationale and design philosophy' });
+
   // Load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
@@ -167,6 +173,9 @@ if (flags['00os']) {
 ### Flag: --1000xdev (1000xdev-Only Initialization)
 ```javascript
 if (flags['1000xdev']) {
+  // Load system rationale first
+  await tools.call('read_file', { target_file: '00reaper/context/why-00os-and-cursor-rules.md', should_read_entire_file: true, explanation: 'Read system rationale and design philosophy' });
+
   // Load core workflow files (mandatory)
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });
   await tools.call('read_file', { target_file: '00reaper/cycle.md', should_read_entire_file: true, explanation: 'Load cycle file' });
@@ -205,6 +214,9 @@ if (flags['1000xdev']) {
 ### Flag: --self (00reaper Self-Enhancement Initialization)
 ```javascript
 if (flags['self']) {
+  // Load system rationale first
+  await tools.call('read_file', { target_file: '00reaper/context/why-00os-and-cursor-rules.md', should_read_entire_file: true, explanation: 'Read system rationale and design philosophy' });
+
   // Always load core workflow files
   await tools.call('read_file', { target_file: '00reaper/README.md', should_read_entire_file: true, explanation: 'Load workflow README' });
   await tools.call('read_file', { target_file: '00reaper/active-request.md', should_read_entire_file: true, explanation: 'Load active request' });

@@ -10,7 +10,7 @@
 - [x] Step 2: Read Relevant Context — started: [now], completed: [now]
 - [x] Step 3: Update Cycle File — started: [now], completed: [now]
 - [x] Step 4: Make Changes — started: [now], completed: [now]
-- [ ] Step 5: Update Supporting Materials — started: [    ], completed: [    ]
+- [ ] Step 5: Update Supporting Materials — started: [now], completed: [    ]
 - [ ] Step 6: Reset, Archive, & Sync — started: [    ], completed: [    ]
 
 ## Visual Progress Bar
@@ -27,12 +27,63 @@ _Update the number in the URL (0-100) to reflect percent complete as steps are c
 | [now]               | Step 2 Complete      | Context reviewed: command standards, workflow, identity, templates. Ready to draft implementation plan. | None | Simplicity and 3-step pattern are mandatory |
 | [now]               | Step 3 Complete      | Implementation plan for reaper-plan, reaper-implement, and reaper-proceed documented. | None | |
 | [now]               | Step 4 Complete      | All three process rules created and aligned with cyclical workflow. Ready for supporting materials and archival. | None | Minimal, direct process rules are most maintainable |
+| [now]               | Step 5 Started       | Compiling comprehensive checklist of all files in context/ and documentation/ for review. | None | |
+| [now]               | Step 5: Pruning Plan | Aggressively pruning/merging context/ and documentation/ for conciseness and single-source-of-truth. | None | Outdated docs are worse than no docs |
+| [now]               | Step 5: Deleted testing/ | Outdated testing folder deleted. Not referenced by any master workflow file or process. | None | Removing unused folders reduces risk of confusion |
+| [now]               | Step 5: Checklist Updated | All files and folders in context/ and documentation/ listed for review. Checklist is now fully up to date. | None | |
 
 ## Current Status Summary
 
 - **Current Step:** Step 5 — Update Supporting Materials
-- **Outstanding Actions:** Review and update supporting documentation/templates if needed
+- **Outstanding Actions:** Prune/merge context/ and documentation/ for conciseness and single-source-of-truth
 - **Blockers:** None
+
+## Step 5: Supporting Materials Review Checklist
+
+### Pruning/Merging Plan
+- [x] Remove 00reaper/documentation/testing/ (folder deleted)
+- [ ] Review each file for necessity, redundancy, and reference in master workflow files
+- [ ] Merge deep-dive identity docs into a single, lean reference if not already covered by master workflow files or context
+- [ ] Archive or delete files not referenced or enforced by the current workflow
+- [ ] Update the maintenance protocol in master workflow files to require this audit every cycle
+
+### 00reaper/context/
+- [ ] 00reaper/context/why-00os-and-cursor-rules.md
+- [ ] 00reaper/context/00reaper.md
+- [ ] 00reaper/context/1000xdev.md
+- [ ] 00reaper/context/README.md
+- [ ] 00reaper/context/00OS.md
+
+### 00reaper/documentation/
+- [ ] 00reaper/documentation/cursor-rules-strategy.md
+
+#### 00OS-architecture/
+- [ ] 00reaper/documentation/00OS-architecture/00OS-rationale.md
+- [ ] 00reaper/documentation/00OS-architecture/README.md
+- [ ] 00reaper/documentation/00OS-architecture/00OS-command-user-guide.md
+- [ ] 00reaper/documentation/00OS-architecture/tool-call-patterns.md
+- [ ] 00reaper/documentation/00OS-architecture/00OS-command-development.md
+- [ ] 00reaper/documentation/00OS-architecture/user-rules-manipulation.md
+- [ ] 00reaper/documentation/00OS-architecture/ai-identity-map.md
+- [ ] 00reaper/documentation/00OS-architecture/command-standards-core.md
+- [ ] 00reaper/documentation/00OS-architecture/command-template-core.md
+- [ ] 00reaper/documentation/00OS-architecture/cursor-rules-manipulation.md
+- [ ] 00reaper/documentation/00OS-architecture/dual-mode-interface.md
+
+#### ai-identities/
+- [ ] 00reaper/documentation/ai-identities/README.md
+- [ ] 00reaper/documentation/ai-identities/00reaper.md
+- [ ] 00reaper/documentation/ai-identities/1000xdev.md
+- [ ] 00reaper/documentation/ai-identities/user.md
+
+#### 00reaper-identity/
+- [ ] 00reaper/documentation/00reaper-identity/README.md
+- [ ] 00reaper/documentation/00reaper-identity/identity.md
+- [ ] 00reaper/documentation/00reaper-identity/00os-integration.md
+
+---
+
+*Note: Templates are now located in planning/templates/ and will be reviewed during Step 6.*
 
 ## Final Summary
 
