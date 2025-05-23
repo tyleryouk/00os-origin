@@ -49,6 +49,10 @@
 - **Any update to one master workflow file must trigger a review and update of the others to maintain alignment.**
 - **No ambiguity or drift is permitted between these files.**
 
+## System Rationale & Philosophy
+- For the rationale and design philosophy behind 00OS and Cursor rules, see [context/why-00os-and-cursor-rules.md].
+- 00reaper reads this file on every reaper-init to maintain alignment with the system's design philosophy.
+
 ## References
 - [README.md](README.md)
 - [user-rules-00reaper.md](user-rules-00reaper.md)

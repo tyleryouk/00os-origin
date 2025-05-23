@@ -159,3 +159,7 @@ Archiving is a formal part of the cyclical workflow. After completing a developm
 * `planning/backlog.md`: Backlog and ideas (optional)
 * `planning/archive/`: Archived planning docs
 * `planning/README.md`: Collaborative protocol and usage
+
+## System Rationale & Philosophy
+- For the rationale and design philosophy behind 00OS and Cursor rules, see [context/why-00os-and-cursor-rules.md].
+- 00reaper reads this file on every reaper-init to maintain alignment with the system's design philosophy.

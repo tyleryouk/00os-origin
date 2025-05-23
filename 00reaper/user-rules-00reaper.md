@@ -75,6 +75,7 @@
 10. [Final Reminder](#final-reminder)
 11. [Documentation Structure & Onboarding](#documentation-structure--onboarding)
 12. [Dual-Mode Interface](#dual-mode-interface)
+13. [System Rationale & Philosophy](#system-rationale--philosophy)
 
 ---
 
@@ -217,3 +218,7 @@ Each subfolder contains a `README.md` and all related docs. I always consult the
 ## Dual-Mode Interface
 
 The prompt supports both command mode (with `>`) and conversational mode. See `documentation/00OS-architecture/dual-mode-interface.md` for details.
+
+## System Rationale & Philosophy
+- For the rationale and design philosophy behind 00OS and Cursor rules, see [context/why-00os-and-cursor-rules.md].
+- 00reaper reads this file on every reaper-init to maintain alignment with the system's design philosophy.

@@ -1,18 +1,8 @@
 # 00OS Command User Guide
 
-## Introduction
+> For the canonical rationale and design philosophy behind 00OS and Cursor rule manipulation, see [00OS-rationale.md].
 
-Welcome to 00OS, a terminal-like interface for AI-powered command execution. This guide explains how to use the available commands, understand the workflow, and get help.
-
-## The 3-Step Pattern (How 00OS Commands Work)
-
-Every 00OS command follows this simple pattern:
-
-1. **User sends a command**: `> command-name [arguments] [--flags]`
-2. **AI fetches the process rule**: The system loads the command definition
-3. **AI executes the defined tool calls**: The command runs exactly as defined, with no extra steps
-
-> **Tip:** All commands are designed to be simple, direct, and predictable. If you know the command name, you can use it immediately.
+Welcome to 00OS, a terminal-like interface for AI-powered command execution. This guide explains how to use available commands, understand the basic syntax, and get help.
 
 ## Command Syntax
 
@@ -68,50 +58,4 @@ Every 00OS command follows this simple pattern:
 
 ---
 
-**00OS is designed for clarity and ease of use. All commands follow the same 3-step pattern, so once you learn one, you can use them all!**
-
-## Available Commands
-
-*(This section will be populated with details for each available command)*
-
-### System Commands
-
-*   **`> help`**: Displays help information.
-    *   Usage: `> help [command-name]`
-*   **`> system status`**: Shows the current status and health of the 00OS system.
-    *   Usage: `> system status [--detailed]`
-*   **`> echo`**: Prints a message back to the console.
-    *   Usage: `> echo [message]`
-*   **`> version`**: Displays the current 00OS version.
-    *   Usage: `> version`
-
-### File Operations
-
-*   **`> file list`**: Lists files and directories at a specified path.
-    *   Usage: `> file list [path]`
-*   **`> file read`**: Displays the content of a specified file.
-    *   Usage: `> file read <file-path>`
-*   **`> file search`**: (Planned) Searches for files based on a pattern.
-    *   Usage: `> file search <pattern> [search-path]`
-
-### Context Management Commands (for 00reaper)
-
-*   **`> reaper-read-files`**: Reads all files within a specified directory.
-    *   Usage: `> reaper-read-files <path> [--recursive] [--max-depth=N] [--file-pattern=PATTERN]`
-
-*(Add other command categories and commands as they become available and tested)*
-
-## Examples
-
-*(Provide practical examples of common workflows)*
-
-*   Listing files in the current directory: `> file list .`
-*   Reading the first 10 lines of a file: *(Requires line limit feature)* `> file read my_document.md --lines=10`
-*   Getting help for the file list command: `> help file list`
-
-## Troubleshooting
-
-*   **Command Not Found**: Ensure the command name is spelled correctly. Use `> help` to see available commands.
-*   **Missing Argument**: Check the command's help (`> help [command-name]`) to see required arguments.
-*   **Permission Error**: Some commands require specific permissions. Contact the system administrator if you believe you need access.
-*   **Tool Call Error**: This indicates an internal issue. Please report the command and any error messages. 
+For details on the 00OS workflow, process structure, or developer standards, see the [master workflow file](../../README.md) and the developer documentation. 
