@@ -14,17 +14,23 @@ USE WHEN you want to execute dev-init
 This process loads all key workflow, documentation, and context files for 1000xdev:
 
 1. Load 1000xdev/README.md
-2. Load 1000xdev/documentation/workflow.md
-3. Load 1000xdev/documentation/final-goals.md
-4. Load 1000xdev/documentation/tool-call-processes.md
-5. Load 1000xdev/context/steam.md
-6. Load 1000xdev/context/context-front-end-api.md
+2. Load 1000xdev/1000xdev-brain.md
+3. Load 1000xdev/documentation/workflow.md
+4. Load 1000xdev/documentation/final-goals.md
+5. Load 1000xdev/documentation/tool-call-processes.md
+6. Load 1000xdev/context/steam.md
+7. Load 1000xdev/context/context-front-end-api.md
 
 ```javascript
 await tools.call('read_file', {
   target_file: '1000xdev/README.md',
   should_read_entire_file: true,
   explanation: 'Load 1000xdev workflow overview'
+});
+await tools.call('read_file', {
+  target_file: '1000xdev/1000xdev-brain.md',
+  should_read_entire_file: true,
+  explanation: 'Load master workflow file for 1000xdev (central protocol for workflow enhancement)'
 });
 await tools.call('read_file', {
   target_file: '1000xdev/documentation/workflow.md',
