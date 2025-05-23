@@ -1,0 +1,20 @@
+---
+description: System component - reaper-plan
+globs: 
+alwaysApply: true
+type: agent
+---
+# Process: reaper-plan
+
+USE WHEN you want to execute reaper-plan
+
+## Execution
+
+1. Read and display the contents of planning/active-request.md for review.
+2. Prompt the user: "Is the active request clear and ready to proceed? (confirm=true to continue)"
+3. If confirm is true, log the confirmation in cycle-status.md and return success.
+4. If confirm is false, return a message to clarify or update the active request before proceeding.
+
+## Examples
+
+> reaper-plan --confirm=true

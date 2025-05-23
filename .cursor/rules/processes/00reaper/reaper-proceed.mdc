@@ -1,0 +1,20 @@
+---
+description: System component - reaper-proceed
+globs: 
+alwaysApply: true
+type: agent
+---
+# Process: reaper-proceed
+
+USE WHEN you want to execute reaper-proceed
+
+## Execution
+
+1. Read cycle-status.md to determine the current step and completion status.
+2. If the current step is complete, advance to the next step and log the transition in cycle-status.md.
+3. If the current step is not complete, remain in the current step and provide a status update with next actions.
+4. Always return a clear status message indicating the current workflow state and what will happen next.
+
+## Examples
+
+> reaper-proceed
