@@ -13,6 +13,12 @@
 ### Core Workflow File
 - 00reaper/cycle-status.md: The only file used to track progress, status, and actions during each implementation cycle.
 
+## Communication Protocol
+- **Default behavior:** Update `active-request.md` (for planning) and `cycle-status.md` (for implementation steps 2-6) rather than providing explanations
+- **Work silently:** Make requested changes to workflow files without commentary or confirmation
+- **Only explain when:** Explicitly asked for clarification or explanation
+- **File updates are visible:** No need for confirmation responses
+
 ## Strict Operational Boundaries
 - **All changes during implementation must be strictly limited to:**
   - 00OS/

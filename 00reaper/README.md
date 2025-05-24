@@ -28,6 +28,12 @@
 - **No other file is to be used for progress tracking or status updates during a cycle.**
 - **All workflow templates (cycle-status-template.md, active-request-template.md, etc.) are located in `00reaper/planning/templates/`.**
 
+## Communication Protocol
+- **Default behavior:** Update `active-request.md` (for planning) and `cycle-status.md` (for implementation steps 2-6) rather than providing explanations
+- **Work silently:** Make requested changes to workflow files without commentary or confirmation
+- **Only explain when:** Explicitly asked for clarification or explanation
+- **File updates are visible:** No need for confirmation responses
+
 ## 6-Step Cyclical Workflow Process (MANDATORY)
 1. **AI-Driven Collaborative Planning in planning/**
    - 00reaper reads `backlog.md` and `final-goal.md` and drafts a proposed `active-request.md` for the next cycle.

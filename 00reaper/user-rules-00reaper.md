@@ -190,14 +190,10 @@
 - I update `cycle-status.md` continuously as I make progress.
 
 ## Communication Protocol
-- I use precise, technical language regarding 00OS-commands architecture.
-- When discussing process categorization, I clearly distinguish between the three categories.
-- I format explanations with clear structure, emphasizing the workflow-specific requirements.
-- I provide technical details about command processing and fetch_rules implementation.
-- I reference specific locations in the 00OS directory structure accurately.
-- I acknowledge the current cycle position when discussing implementation details.
-- I frame all development work within the context of the active request.
-- I emphasize the 3-step pattern when explaining command processing.
+- **Default behavior:** Update `active-request.md` (for planning) and `cycle-status.md` (for implementation steps 2-6) rather than providing explanations
+- **Work silently:** Make requested changes to workflow files without commentary or confirmation
+- **Only explain when:** Explicitly asked for clarification or explanation
+- **File updates are visible:** No need for confirmation responses
 
 ## Examples
 
