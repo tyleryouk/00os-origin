@@ -63,15 +63,6 @@ if (!flags['00os'] && !flags['1000xdev'] && !flags['self']) {
   await tools.call('read_file', { target_file: '00reaper/context/1000xdev.md', should_read_entire_file: true, explanation: 'Load 1000xdev workflow context' });
   await tools.call('read_file', { target_file: '00reaper/context/README.md', should_read_entire_file: true, explanation: 'Load consolidated context overview' });
 
-  // Load workflow templates from the canonical template directory
-  const templateDocs = [
-    'cycle-status-template.md',
-    'active-request-template.md'
-  ];
-  for (const doc of templateDocs) {
-    await tools.call('read_file', { target_file: `00reaper/planning/templates/${doc}`, should_read_entire_file: true, explanation: `Load workflow template: ${doc}` });
-  }
-
   return { success: true, result: '00reaper baseline context initialized (essential files only)' };
 }
 ```
