@@ -24,22 +24,26 @@
 - **All planning and requirements gathering must occur in `planning/active-request.md` and `planning/final-goal.md`.**
 - **All implementation progress, actions, and blockers must be tracked exclusively in `cycle-status.md`.**
 - **No other file is to be used for progress tracking or status updates during a cycle.**
+- **All workflow templates (cycle-status-template.md, active-request-template.md, etc.) are located in `00reaper/planning/templates/`.**
 
 ## 6-Step Cyclical Workflow Process (MANDATORY)
-1. **Collaborative Planning in planning/**
-   - Both the user and 00reaper collaborate in `planning/` to define and select requirements for the next cycle.
-   - The selected requirements are tracked in `active-request.md`.
+1. **Read User Request (REQ):**
+   - I read the next request(s) from `planning/backlog.md` and `planning/final-goal.md`.
+   - I copy the relevant requirements for the next cycle into `active-request.md` (only one active request at a time).
+   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
 2. **Read Relevant Context:**
-   - Review context, documentation, and standards as needed to support the requirements selected in Step 1.
-3. **Update Progress Tracker:**
-   - Track progress, log actions, and update status in `cycle-status.md`.
+   - I review context, documentation, and standards as needed to support the requirements selected in Step 1.
+3. **Update Cycle File:**
+   - I draft the implementation plan, track progress, and log enhancements in the consolidated `cycle-status.md` file.
 4. **Make Changes:**
-   - Implement the plan, update files, and track progress in `cycle-status.md`.
+   - I implement the plan, update files, and track progress in `cycle-status.md`.
 5. **Update Supporting Materials:**
-   - Update documentation, templates, or standards as needed.
+   - I update documentation, templates, or standards as needed.
 6. **Reset, Archive, & Sync:**
-   - Archive the completed `cycle-status.md` file (move to `archive/` with timestamp or cycle ID).
-   - Prepare for the next cycle.
+   - I archive the completed `active-request.md` and `00reaper/cycle-status.md` by moving them to a timestamped folder in `planning/archive/`.
+   - I run `> reaper-cycle-reset` to automate the archive and reset process.
+   - I run `> reaper-sync` to update all rules and ensure the system is in sync.
+   - I prepare for the next cycle.
 
 ## Solo Developer Context
 - All workflow, templates, and checklists must assume a solo developer context—no references to teams, collaborators, or external reviewers.
@@ -155,19 +159,21 @@
 ## Cyclical Workflow Process (6-Step)
 
 1. **Read User Request (REQ):**
-   - I read the next request(s) from `@user-directed` (user-request.md, final-goal.md, etc.)
-   - I copy the relevant requirements for the next cycle into `active-request.md`.
+   - I read the next request(s) from `planning/backlog.md` and `planning/final-goal.md`.
+   - I copy the relevant requirements for the next cycle into `active-request.md` (only one active request at a time).
+   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
 2. **Read Relevant Context:**
    - I review context, documentation, and standards as needed to support the requirements selected in Step 1.
 3. **Update Cycle File:**
-   - I draft the implementation plan, track progress, and log enhancements in the consolidated `cycle.md` file.
+   - I draft the implementation plan, track progress, and log enhancements in the consolidated `cycle-status.md` file.
 4. **Make Changes:**
-   - I implement the plan, update files, and track progress in `cycle.md`.
+   - I implement the plan, update files, and track progress in `cycle-status.md`.
 5. **Update Supporting Materials:**
    - I update documentation, templates, or standards as needed.
 6. **Reset, Archive, & Sync:**
-   - I archive the completed `cycle.md` file (move to `archive/` with timestamp or cycle ID).
-   - I reset `active-request.md` and `cycle.md` by reading the templates in `00reaper/documentation/templates` and overwriting the current content of these files with the templates.
+   - I archive the completed `active-request.md` and `00reaper/cycle-status.md` by moving them to a timestamped folder in `planning/archive/`.
+   - I run `> reaper-cycle-reset` to automate the archive and reset process.
+   - I run `> reaper-sync` to update all rules and ensure the system is in sync.
    - I prepare for the next cycle.
 
 ---
