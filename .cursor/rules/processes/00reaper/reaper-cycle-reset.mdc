@@ -4,6 +4,7 @@ globs:
 alwaysApply: true
 type: agent
 ---
+
 # Process: reaper-cycle-reset
 
 ## Description
@@ -24,4 +25,4 @@ Archive the current active-request.md and 00reaper/cycle-status.md to a timestam
 run_terminal_cmd:
   command: powershell -ExecutionPolicy Bypass -File "00reaper/00scripts/Reset-Cycle.ps1"
   is_background: false
-  explanation: Archive and reset active-request.md and 00reaper/cycle-status.md using the latest templates for Step 6 of the cyclical workflow.
+  explanation: Archive and reset active-request.md and 00reaper/cycle-status.md using the latest templates for Step 6 of the cyclical workflow. 
