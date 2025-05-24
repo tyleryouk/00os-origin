@@ -11,8 +11,8 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
 - [x] Commit the current state of `00reaper/` to git before starting the migration (for easy rollback)
 
 ### 2. Inventory & Categorization
-- [x] List all files and folders in `00reaper/00OS-commands/` (user-directed, documentation, context-00OS-current-state, research-cursor, archive, README.md)
-    - user-directed/
+- [x] List all files and folders in `00reaper/00OS-commands/` (planning, documentation, context-00OS-current-state, research-cursor, archive, README.md)
+    - planning/
     - documentation/
     - context-00OS-current-state/
     - research-cursor/
@@ -51,7 +51,7 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
 
 ### 3. Move Workflow Files
 - [x] Move all subfolders and files from `00OS-commands/` to the base of `00reaper/`:
-    - [x] `user-directed/`
+    - [x] `planning/`
     - [x] `documentation/`
     - [x] `context-00OS-current-state/`
     - [x] `research-cursor/`
@@ -67,7 +67,7 @@ Move all contents of `00OS-commands/` to the base of `00reaper/`, archive `00OS-
 - [x] Read every file in `00reaper/` and all subfolders (including scripts in `00scripts/`)
 - [x] Update all references to the old `00OS-commands/` path in:
     - [x] Documentation files
-    - [x] User rules and user-directed files
+    - [x] User rules and planning files
     - [x] Research and context files
     - [x] PowerShell scripts and automation tools
     - [x] Any process or system files referencing the old structure

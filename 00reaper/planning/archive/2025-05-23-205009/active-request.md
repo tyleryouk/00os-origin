@@ -124,7 +124,7 @@ Ensure that the four master workflow files for the 00reaper system are perfectly
      - The use of cycle-status.md as the sole progress tracker
 
 2. **Planning Protocol**
-   - All planning and requirements gathering must occur in the 00reaper/user-directed/ folder.
+   - All planning and requirements gathering must occur in the 00reaper/planning/ folder.
    - Only two files are used for collaboration with the user:
      - active-request.md: Operational requirements for the current cycle
      - final-goal.md: Long-term vision and objectives

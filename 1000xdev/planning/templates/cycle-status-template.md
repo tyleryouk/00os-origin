@@ -2,16 +2,14 @@
 
 # [Ready for next cycle]
 
-# (Insert new cycle progress here or copy from template)
-
 ## Cycle Progress Checklist
 
-- [ ] Step 1: Read User Request (REQ) — started: [    ], completed: [    ]
-- [ ] Step 2: Read Relevant Context — started: [    ], completed: [    ]
+- [ ] Step 1: AI-Driven Collaborative Planning — started: [    ], completed: [    ]
+- [ ] Step 2: Read Relevant Documentation — started: [    ], completed: [    ]
 - [ ] Step 3: Update Cycle File — started: [    ], completed: [    ]
-- [ ] Step 4: Make Changes — started: [    ], completed: [    ]
+- [ ] Step 4: Make Changes and Test — started: [    ], completed: [    ]
 - [ ] Step 5: Update Supporting Materials — started: [    ], completed: [    ]
-- [ ] Step 6: Reset, Archive, & Sync — started: [    ], completed: [    ]
+- [ ] Step 6: Reset, Archive, & Prepare for Next Cycle — started: [    ], completed: [    ]
 
 ## Visual Progress Bar
 
@@ -30,6 +28,13 @@ _Update the number in the URL (0-100) to reflect percent complete as steps are c
 - **Current Step:** [Step # — Description]
 - **Outstanding Actions:** [List]
 - **Blockers:** [List]
+- **User Actions Required:** [List any actions needed from the user, if any]
+
+## Domain-Specific Context Loaded
+
+- **Front-end:** [List key front-end documentation files reviewed]
+- **Back-end:** [List key back-end documentation files reviewed]
+- **Full-stack:** [List key full-stack workflow files reviewed]
 
 ## Planned Changes & Implementation Tasks
 
@@ -38,25 +43,50 @@ _Update the number in the URL (0-100) to reflect percent complete as steps are c
 - [ ] [Document any process or documentation improvements]
 - [ ] [Summarize test results and lessons learned]
 
-## Step 5: Supporting Materials Review Checklist
+## Documentation Update Checklist
 
-- [ ] Review all files in context/ and documentation/ for necessity and reference
-- [ ] Merge or archive outdated or redundant files
-- [ ] Update maintenance protocol in master workflow files
+The following documentation should be reviewed and updated as part of Step 5:
 
-## Final Summary
+- [ ] **Front-end documentation:**
+  - [ ] Component architecture documentation
+  - [ ] API integration documentation
+  - [ ] Testing standards documentation
 
-- (To be completed at the end of the cycle)
+- [ ] **Back-end documentation:**
+  - [ ] API endpoints documentation
+  - [ ] Database models documentation
+  - [ ] Authentication flow documentation
+
+- [ ] **Workflow documentation:**
+  - [ ] Tool call processes documentation
+  - [ ] Testing workflow documentation
+  - [ ] Environment setup documentation
 
 ## Implementation Plan
 
-- [ ] Draft plan for this cycle's requirements
-- [ ] Log all actions and decisions
+1. **Requirements Analysis**
+   - Review active-request.md requirements
+   - Identify dependencies and technical constraints
+   - Define implementation approach
+
+2. **Technical Implementation**
+   - Make focused, tactical changes to codebase
+   - Follow established patterns and conventions
+   - Add/update tests alongside code changes
+
+3. **Documentation Updates**
+   - Update relevant documentation to reflect changes
+   - Ensure documentation is clear, concise, and actionable
+   - Align documentation with current codebase structure
+
+4. **Validation & Testing**
+   - Verify all requirements are met
+   - Run relevant tests to confirm functionality
+   - Address any issues or edge cases
 
 ## References
-- [active-request.md](planning/active-request.md)
-- [cycle-status.md](cycle-status.md)
-- [00reaper-brain.md](00reaper-brain.md)
-- [README.md](README.md)
-- [user-rules-00reaper.md](user-rules-00reaper.md)
-- [.cursor/rules/00reaper-master.mdc](.cursor/rules/00reaper-master.mdc) 
+- [1000xdev-brain.md](../1000xdev-brain.md)
+- [README.md](../README.md)
+- [user-rules-1000xdev.md](../user-rules-1000xdev.md)
+- [active-request.md](active-request.md)
+- [documentation/](../documentation/) 

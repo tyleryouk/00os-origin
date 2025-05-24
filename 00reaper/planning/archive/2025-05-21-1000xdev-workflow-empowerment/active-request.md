@@ -4,7 +4,7 @@
 
 # Active Request: 1000xdev Workflow Empowerment & Command System Enhancement
 
-**Cycle Origin:** Based on `user-directed/final-goal.md` ([date])
+**Cycle Origin:** Based on `planning/final-goal.md` ([date])
 
 ## Requirements & Objectives
 - Implement new 00OS commands for 1000xdev in `/00os/processes/1000xdev/`:

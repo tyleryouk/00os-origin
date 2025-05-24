@@ -136,10 +136,10 @@
 
 ## Workflow File Structure & Roles
 
-### @user-directed Folder
+### @planning Folder
 - **Purpose:** The authoritative, user-authored roadmap and backlog for all future cycles.
 - **Usage:**
-  - **Step 1 of the 6-step process:** At the start of each cycle, I read the next request(s) from `@user-directed` and copy them into `active-request.md`.
+  - **Step 1 of the 6-step process:** At the start of each cycle, I read the next request(s) from `planning` and copy them into `active-request.md`.
   - Not for operational or AI-generated files.
 
 ### Core Workflow Files
