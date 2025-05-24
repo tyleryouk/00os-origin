@@ -9,19 +9,22 @@ Move completed or superseded requests to planning/archive/.
 
 ## Backlog Requests
 
-### REQ-001: 00reaper/1000xdev Workflow Enhancement: Next Cycle Request
-**Workflow Maintenance & Continuous Improvement**
-- Perform cycle hygiene: archive and reset `cycle.md` and `active-request.md` using templates. This involves revising the instructions for Step 6. 
-**This requires collaboration and planning between you and I to clearly document step 6, so that step 6 is clear**
+### REQ-003
+Enhance 1000xdev's documentation folder
+Update dev-init with flags to read documentation
+Update default dev-init to only read essential documentation, along with all workflow files
 
-- Review and refine all workflow templates and checklists in `documentation/`
-- Review and prioritize items in the self-improvement backlog (in `cycle-status.md`)
-- Review and update `00reaper-brain.md` and `1000xdev-brain.md` as needed
-- Improve onboarding and reference documentation for both agents
-- Review and update master cursor rules for clarity and accuracy
-- Invite collaborative notes or additions for further workflow/system improvement
 
-### REQ-002: Enhancing 1000xdev's workflow. 
-- Write clear 6 steps in active request.
-- Enforce clear 6 steps 
-- Enhance current 1000xdev processes, with particular emphasis on > dev-init . Let's work on flags as well, just like 00reaper.
+### REQ-004
+1. Merge context with documentation
+- move 00OS to 00os architecture or delete
+- move 00reaper to ai-identities, merge with 00reaper
+
+
+2. Update master workflow file instructions for step 2 and step 5
+During step 2, you only need to read relevant documentation from 00reaper/documentation 
+I also want to include that during step 2, you should make several list_dir and read_file tool calls to read relevant files in 00reaper/ 00os/ or 1000xdev/ depending on which folder you will be editing.
+During step 5, you only need to update relevant documentation from 00reaper/documentation
+
+3. Update master workflow file instructions for step 3
+Step 3 should be very clear and strict on creating an implementation plan within 00reaper/cycle-status.md. Right now, you tend to keep the implementation plan in your head. There should be a strict protocol for creating implementation plans for step 3. You may need to update the cycle-status-template.md file as well.

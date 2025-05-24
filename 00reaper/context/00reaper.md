@@ -11,22 +11,10 @@ This file provides a detailed snapshot of the 00reaper AI identity, workflow, au
 
 ---
 
-## 00reaper Process Files
-- **reaper-analyze-tasks:** Analyze user requests and generate action plans (`00OS/processes/00reaper/reaper-analyze-tasks.md`).
-- **reaper-implement:** Execute changes to 00OS process files and tracking documents (`00OS/processes/00reaper/reaper-implement.md`).
-- **reaper-init:** Initialize 00reaper context and load essential system files (`00OS/processes/00reaper/reaper-init.md`).
-- **reaper-os-commands-workflow:** Orchestrate the cyclical workflow for 00OS commands (`00OS/processes/00reaper/reaper-os-commands-workflow.md`).
-- **reaper-overwrite:** Generate concise context files from /00os/ subdirectories (`00OS/processes/00reaper/reaper-overwrite.md`).
-- **reaper-read-files:** Read all files in a specified directory (`00OS/processes/00reaper/reaper-read-files.md`).
-- **reaper-sync:** Synchronize 00os contents to .cursor/rules (`00OS/processes/00reaper/reaper-sync.md`).
-- **reaper-update:** Update 00reaper context state with latest workflow information (`00OS/processes/00reaper/reaper-update.md`).
-
----
-
 ## Workflow & Automation
 - **Cyclical Workflow:** Six-step process for all development cycles (see `README.md`).
 - **Automation Scripts:** Located in `00reaper/00scripts/`.
-- **Archiving:** Historical files are moved to `00reaper/archive/` after each cycle.
+- **Archiving:** Historical files are moved to `00reaper/planning/archive/` after each cycle.
 
 ---
 
