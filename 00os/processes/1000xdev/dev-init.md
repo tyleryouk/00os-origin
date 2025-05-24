@@ -64,12 +64,12 @@ const loadAll = !loadFrontend && !loadBackend && !loadSteam;
 // Load workflow documentation
 if (loadAll) {
   await tools.call('read_file', {
-    target_file: '1000xdev/documentation/workflow.md',
+    target_file: '1000xdev/documentation/full-stack-workflow/workflow.md',
     should_read_entire_file: true,
     explanation: 'Load main workflow documentation'
   });
   await tools.call('read_file', {
-    target_file: '1000xdev/documentation/tool-call-processes.md',
+    target_file: '1000xdev/documentation/full-stack-workflow/tool-call-processes.md',
     should_read_entire_file: true,
     explanation: 'Load tool call processes documentation'
   });
@@ -82,23 +82,44 @@ if (loadAll || loadFrontend) {
     should_read_entire_file: true,
     explanation: 'Load frontend architecture documentation'
   });
-}
-
-// Load back-end specific documentation
-if (loadAll || loadBackend) {
   await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/api-endpoints.md',
+    target_file: '1000xdev/documentation/front-end-architecture/context-front-end-api.md',
     should_read_entire_file: true,
-    explanation: 'Load backend API endpoints documentation'
+    explanation: 'Load frontend API context documentation'
+  });
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/front-end-architecture/node-dependencies.md',
+    should_read_entire_file: true,
+    explanation: 'Load frontend node dependencies documentation'
   });
 }
 
-// Load Steam API integration documentation
-if (loadAll || loadSteam) {
+// Load back-end/Steam specific documentation
+if (loadAll || loadBackend || loadSteam) {
   await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/steam-integration.md',
+    target_file: '1000xdev/documentation/back-end-architecture/steam.md',
     should_read_entire_file: true,
-    explanation: 'Load Steam API integration documentation'
+    explanation: 'Load backend Steam integration documentation'
+  });
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/back-end-architecture/steam-models.md',
+    should_read_entire_file: true,
+    explanation: 'Load backend Steam models documentation'
+  });
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/back-end-architecture/steam-routes.md',
+    should_read_entire_file: true,
+    explanation: 'Load backend Steam routes documentation'
+  });
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/back-end-architecture/steam-services.md',
+    should_read_entire_file: true,
+    explanation: 'Load backend Steam services documentation'
+  });
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/back-end-architecture/steam-tests.md',
+    should_read_entire_file: true,
+    explanation: 'Load backend Steam tests documentation'
   });
 }
 
