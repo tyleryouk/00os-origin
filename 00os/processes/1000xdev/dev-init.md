@@ -2,10 +2,22 @@
 name: dev-init
 description: Load all relevant workflow, context, and standards for 1000xdev
 author: 00reaper
-version: 1.0.0
+version: 1.1.0
 category: 1000xdev
 permissions: [basic]
-inputs: []
+inputs:
+  - name: front-end
+    type: boolean
+    required: false
+    description: Initialize only frontend-specific documentation
+  - name: back-end
+    type: boolean
+    required: false
+    description: Initialize only backend-specific documentation
+  - name: steam
+    type: boolean
+    required: false
+    description: Initialize Steam API integration specific documentation and research
 outputs:
   - name: result
     type: string
@@ -16,19 +28,22 @@ outputs:
 
 USE WHEN you want to execute dev-init
 
+## Description
+This process loads relevant workflow, documentation, and standards files for 1000xdev with optional flags to load domain-specific documentation only.
+
+## Flags
+- `--front-end`: Initialize only frontend-specific documentation
+- `--back-end`: Initialize only backend-specific documentation
+- `--steam`: Initialize Steam API integration specific documentation and research
+
 ## Execution
 
-This process loads all key workflow, documentation, and context files for 1000xdev:
-
-1. Load 1000xdev/README.md
-2. Load 1000xdev/1000xdev-brain.md
-3. Load 1000xdev/documentation/workflow.md
-4. Load 1000xdev/documentation/final-goals.md
-5. Load 1000xdev/documentation/tool-call-processes.md
-6. Load 1000xdev/context/steam.md
-7. Load 1000xdev/context/context-front-end-api.md
+1. Load core 1000xdev workflow files (always loaded)
+2. Load domain-specific files based on flags (if any)
+3. If no flags are specified, load all essential files
 
 ```javascript
+// Always load core files
 await tools.call('read_file', {
   target_file: '1000xdev/README.md',
   should_read_entire_file: true,
@@ -39,34 +54,76 @@ await tools.call('read_file', {
   should_read_entire_file: true,
   explanation: 'Load master workflow file for 1000xdev (central protocol for workflow enhancement)'
 });
-await tools.call('read_file', {
-  target_file: '1000xdev/documentation/workflow.md',
-  should_read_entire_file: true,
-  explanation: 'Load main workflow documentation'
-});
-await tools.call('read_file', {
-  target_file: '1000xdev/documentation/final-goals.md',
-  should_read_entire_file: true,
-  explanation: 'Load final goals documentation'
-});
-await tools.call('read_file', {
-  target_file: '1000xdev/documentation/tool-call-processes.md',
-  should_read_entire_file: true,
-  explanation: 'Load tool call processes documentation'
-});
-await tools.call('read_file', {
-  target_file: '1000xdev/context/steam.md',
-  should_read_entire_file: true,
-  explanation: 'Load backend context snapshot'
-});
-await tools.call('read_file', {
-  target_file: '1000xdev/context/context-front-end-api.md',
-  should_read_entire_file: true,
-  explanation: 'Load frontend context snapshot'
-});
+
+// Parse flags
+const loadFrontend = inputs['front-end'] === true;
+const loadBackend = inputs['back-end'] === true;
+const loadSteam = inputs['steam'] === true;
+const loadAll = !loadFrontend && !loadBackend && !loadSteam;
+
+// Load workflow documentation
+if (loadAll) {
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/workflow.md',
+    should_read_entire_file: true,
+    explanation: 'Load main workflow documentation'
+  });
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/tool-call-processes.md',
+    should_read_entire_file: true,
+    explanation: 'Load tool call processes documentation'
+  });
+}
+
+// Load front-end specific documentation
+if (loadAll || loadFrontend) {
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/front-end-architecture/directory-structure-front-end-api.md',
+    should_read_entire_file: true,
+    explanation: 'Load frontend architecture documentation'
+  });
+}
+
+// Load back-end specific documentation
+if (loadAll || loadBackend) {
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/back-end-architecture/api-endpoints.md',
+    should_read_entire_file: true,
+    explanation: 'Load backend API endpoints documentation'
+  });
+}
+
+// Load Steam API integration documentation
+if (loadAll || loadSteam) {
+  await tools.call('read_file', {
+    target_file: '1000xdev/documentation/back-end-architecture/steam-integration.md',
+    should_read_entire_file: true,
+    explanation: 'Load Steam API integration documentation'
+  });
+}
+
+// Return success message with loaded context details
+if (loadFrontend) {
+  return "✅ 1000xdev front-end specific documentation initialized";
+} else if (loadBackend) {
+  return "✅ 1000xdev back-end specific documentation initialized";
+} else if (loadSteam) {
+  return "✅ 1000xdev Steam API integration documentation initialized";
+} else {
+  return "✅ 1000xdev context initialized with all core documentation";
+}
 ```
 
 ## Examples
 
 > dev-init
-✅ 1000xdev context initialized and all core files loaded 
+✅ 1000xdev context initialized with all core documentation
+
+> dev-init --front-end
+✅ 1000xdev front-end specific documentation initialized
+
+> dev-init --back-end
+✅ 1000xdev back-end specific documentation initialized
+
+> dev-init --steam
+✅ 1000xdev Steam API integration documentation initialized 

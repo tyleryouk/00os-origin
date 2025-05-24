@@ -1,0 +1,42 @@
+---
+name: dev-cycle-reset
+description: Archive and reset the current active-request.md and 1000xdev/cycle-status.md using the latest templates. Automates Step 6 of the cyclical workflow.
+version: 1.0.0
+author: 1000xdev
+permissions: [basic, file-read, file-write, admin]
+inputs: []
+outputs:
+  - name: result
+    type: string
+    description: Reset status
+---
+
+# Process: dev-cycle-reset
+
+## Description
+Archive the current active-request.md and 1000xdev/cycle-status.md to a timestamped folder in planning/archive/, then reset both files using the templates in planning/templates/. Should be run together with > dev-sync at the end of each cycle.
+
+## Execution
+
+This process executes the following tool call:
+
+```javascript
+// Run the PowerShell script to archive and reset
+const result = await tools.call('run_terminal_cmd', {
+  command: 'powershell -ExecutionPolicy Bypass -File "1000xdev/1000xscripts/Reset-Cycle.ps1"',
+  is_background: false,
+  explanation: 'Archive and reset active-request.md and 1000xdev/cycle-status.md using the latest templates for Step 6 of the cyclical workflow.'
+});
+
+// Check for successful execution
+if (result && result.stderr && result.stderr.includes('ERROR')) {
+  return { success: false, result: `❌ Cycle reset failed. Error details:\n${result.stderr}` };
+} else {
+  return { success: true, result: '✅ Cycle reset completed. Ready for the next cycle.' };
+}
+```
+
+## Examples
+
+> dev-cycle-reset
+✅ Cycle reset completed. Ready for the next cycle. 

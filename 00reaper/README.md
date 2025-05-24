@@ -82,22 +82,6 @@
 - All workflow, process, and documentation changes are executed autonomously by 00reaper, following the cyclical workflow and 3-step pattern.
 - The user should never be instructed to perform workflow steps or make file changes; 00reaper manages the entire process lifecycle.
 
-## Migration Rationale
-
-**As of [DATE], the 00OS-commands workflow has been flattened and consolidated:**
-- All workflow, documentation, context, research, and collaborative planning files are now directly under `00reaper/` and its subfolders.
-- The previous `00OS-commands/` and `user-directed/` subdirectories have been removed for simplicity, clarity, and maintainability.
-- The core workflow now uses a single consolidated file: `cycle-status.md`.
-- All references, scripts, and process files have been updated to use the new flat structure and consolidated workflow file.
-
-**Benefits:**
-- Easier navigation and onboarding
-- Simpler reference paths in all documentation and process files
-- Unified, single-source-of-truth workflow folder for 00reaper
-- **Atomic cycle tracking and archiving in one file**
-
----
-
 ## Master Workflow Files & Folder Roles
 
 ### planning/ Folder
