@@ -27,10 +27,12 @@
 - **All workflow templates (cycle-status-template.md, active-request-template.md, etc.) are located in `00reaper/planning/templates/`.**
 
 ## 6-Step Cyclical Workflow Process (MANDATORY)
-1. **Read User Request (REQ):**
-   - I read the next request(s) from `planning/backlog.md` and `planning/final-goal.md`.
-   - I copy the relevant requirements for the next cycle into `active-request.md` (only one active request at a time).
-   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
+1. **AI-Driven Collaborative Planning in planning/**
+   - I (00reaper) read `backlog.md` and `final-goal.md` and draft a proposed `active-request.md` for the next cycle.
+   - The user reviews, provides feedback, and I iterate on the draft until the user approves.
+   - Only I edit `active-request.md`; the user never drafts requirements directly.
+   - All iterations and feedback are tracked in the planning files and action log.
+   - Approval is given by the user sending `> reaper-implement` to start the next step.
 2. **Read Relevant Context:**
    - I review context, documentation, and standards as needed to support the requirements selected in Step 1.
 3. **Update Cycle File:**
@@ -158,10 +160,12 @@
 
 ## Cyclical Workflow Process (6-Step)
 
-1. **Read User Request (REQ):**
-   - I read the next request(s) from `planning/backlog.md` and `planning/final-goal.md`.
-   - I copy the relevant requirements for the next cycle into `active-request.md` (only one active request at a time).
-   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
+1. **AI-Driven Collaborative Planning in planning/**
+   - I (00reaper) read `backlog.md` and `final-goal.md` and draft a proposed `active-request.md` for the next cycle.
+   - The user reviews, provides feedback, and I iterate on the draft until the user approves.
+   - Only I edit `active-request.md`; the user never drafts requirements directly.
+   - All iterations and feedback are tracked in the planning files and action log.
+   - Approval is given by the user sending `> reaper-implement` to start the next step.
 2. **Read Relevant Context:**
    - I review context, documentation, and standards as needed to support the requirements selected in Step 1.
 3. **Update Cycle File:**

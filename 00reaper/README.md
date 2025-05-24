@@ -29,10 +29,12 @@
 - **All workflow templates (cycle-status-template.md, active-request-template.md, etc.) are located in `00reaper/planning/templates/`.**
 
 ## 6-Step Cyclical Workflow Process (MANDATORY)
-1. **Collaborative Planning in planning/**
-   - Both the user and 00reaper collaborate in `planning/` to define and select requirements for the next cycle.
-   - The selected requirements for the current cycle are tracked in `active-request.md` (only one active request at a time).
-   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
+1. **AI-Driven Collaborative Planning in planning/**
+   - 00reaper reads `backlog.md` and `final-goal.md` and drafts a proposed `active-request.md` for the next cycle.
+   - The user reviews, provides feedback, and 00reaper iterates on the draft until the user approves.
+   - Only 00reaper edits `active-request.md`; the user never drafts requirements directly.
+   - All iterations and feedback are tracked in the planning files and action log.
+   - Approval is given by the user sending `> reaper-implement` to start the next step.
 2. **Read Relevant Context:**
    - Review context, documentation, and standards as needed to support the requirements selected in Step 1.
 3. **Update Progress Tracker:**
@@ -121,10 +123,12 @@ The single core file maintains the state of the current development cycle:
 
 ## Cyclical Workflow Process (6-Step)
 
-1. **Collaborative Planning in planning/**
-   - Both the user and 00reaper collaborate in `planning/` to define and select requirements for the next cycle.
-   - The selected requirements for the current cycle are tracked in `active-request.md` (only one active request at a time).
-   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
+1. **AI-Driven Collaborative Planning in planning/**
+   - 00reaper reads `backlog.md` and `final-goal.md` and drafts a proposed `active-request.md` for the next cycle.
+   - The user reviews, provides feedback, and 00reaper iterates on the draft until the user approves.
+   - Only 00reaper edits `active-request.md`; the user never drafts requirements directly.
+   - All iterations and feedback are tracked in the planning files and action log.
+   - Approval is given by the user sending `> reaper-implement` to start the next step.
 2. **Read Relevant Context:**
    - Review context, documentation, and standards as needed to support the requirements selected in Step 1.
 3. **Update Progress Tracker:**
