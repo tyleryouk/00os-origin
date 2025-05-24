@@ -11,7 +11,7 @@
 - .cursor/rules/00reaper-master.mdc
 
 ### Core Workflow File
-- cycle-status.md (root): The only file used to track progress, status, and actions during each implementation cycle.
+- 00reaper/cycle-status.md: The only file used to track progress, status, and actions during each implementation cycle.
 
 ## Strict Operational Boundaries
 - **All changes during implementation must be strictly limited to:**
@@ -21,24 +21,29 @@
 - **No changes are permitted outside these domains.**
 
 ## Planning & Implementation Protocols
-- **All planning and requirements gathering must occur in `planning/active-request.md` and `planning/final-goal.md`.**
-- **All implementation progress, actions, and blockers must be tracked exclusively in `cycle-status.md`.**
+- **All planning and requirements gathering must occur in `planning/active-request.md` (current cycle only) and `planning/backlog.md` (future/unprioritized requests) and `planning/final-goal.md`.**
+- **All implementation progress, actions, and blockers must be tracked exclusively in `00reaper/cycle-status.md`.**
 - **No other file is to be used for progress tracking or status updates during a cycle.**
+- **All workflow templates (cycle-status-template.md, active-request-template.md, backlog-template.md, etc.) are located in `00reaper/planning/templates/`.**
 
 ## 6-Step Cyclical Workflow Process (MANDATORY)
 1. **Collaborative Planning in planning/**
    - Both the user and 00reaper collaborate in `planning/` to define and select requirements for the next cycle.
-   - The selected requirements are tracked in `active-request.md`.
+   - The selected requirements for the current cycle are tracked in `active-request.md` (only one active request at a time).
+   - All future, unprioritized, or candidate requests are tracked in `backlog.md`.
 2. **Read Relevant Context:**
    - Review context, documentation, and standards as needed to support the requirements selected in Step 1.
 3. **Update Progress Tracker:**
-   - Track progress, log actions, and update status in `cycle-status.md`.
+   - Track progress, log actions, and update status in `00reaper/cycle-status.md`.
 4. **Make Changes:**
    - Implement the plan, update files, and track progress in `cycle-status.md`.
 5. **Update Supporting Materials:**
    - Update documentation, templates, or standards as needed.
 6. **Reset, Archive, & Sync:**
-   - Archive the completed `cycle-status.md` file (move to `archive/` with timestamp or cycle ID).
+   - Archive the completed `active-request.md` and `00reaper/cycle-status.md` by moving them to a timestamped folder in `planning/archive/`.
+   - Run `> reaper-cycle-reset` to automate the archive and reset process.
+   - Run `> reaper-sync` to update all rules and ensure the system is in sync.
+   - Fresh template-based files are created for the next cycle.
    - Prepare for the next cycle.
 
 ## Solo Developer Context
@@ -59,6 +64,7 @@
 - [.cursor/rules/00reaper-master.mdc](mdc:.cursor/rules/00reaper-master.mdc)
 - [cycle-status.md](cycle-status.md)
 - [planning/active-request.md](planning/active-request.md)
+- [planning/backlog.md](planning/backlog.md)
 - [planning/final-goal.md](planning/final-goal.md)
 
 ---

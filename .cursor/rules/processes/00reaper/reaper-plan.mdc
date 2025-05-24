@@ -1,9 +1,10 @@
 ---
-description: System component - reaper-plan
+description: USE WHEN you want to execute reaper-plan
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
+
 # Process: reaper-plan
 
 USE WHEN you want to execute reaper-plan
@@ -17,4 +18,4 @@ USE WHEN you want to execute reaper-plan
 
 ## Examples
 
-> reaper-plan --confirm=true
+> reaper-plan --confirm=true 

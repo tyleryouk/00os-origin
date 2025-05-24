@@ -1,9 +1,10 @@
 ---
-description: System component - reaper-proceed
+description: USE WHEN you want to execute reaper-proceed
 globs: 
-alwaysApply: true
+alwaysApply: false
 type: agent
 ---
+
 # Process: reaper-proceed
 
 USE WHEN you want to execute reaper-proceed
@@ -17,4 +18,4 @@ USE WHEN you want to execute reaper-proceed
 
 ## Examples
 
-> reaper-proceed
+> reaper-proceed 
