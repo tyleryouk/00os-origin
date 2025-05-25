@@ -11,6 +11,28 @@
 - [ ] Step 5: Update Supporting Materials — started: [    ], completed: [    ]
 - [ ] Step 6: Reset, Archive, & Prepare for Next Cycle — started: [    ], completed: [    ]
 
+## Status Checklist
+
+| Step | Description                        | Status   |
+|------|------------------------------------|----------|
+| 1    | AI-Driven Collaborative Planning   | [ ]      |
+| 2    | Read Relevant Documentation        | [ ]      |
+| 3    | Update Cycle File                  | [ ]      |
+| 4    | Make Changes and Test              | [ ]      |
+| 5    | Update Supporting Materials        | [ ]      |
+| 6    | Reset, Archive, & Prepare for Next | [ ]      |
+
+## Step 4: Make Changes and Test — Subtask Tracker
+
+| Subtask # | Description                                 | Status | Started      | Completed    | Notes                |
+|-----------|---------------------------------------------|--------|--------------|--------------|----------------------|
+| 4.1       | [Describe subtask 1]                        | [ ]    |              |              |                      |
+| 4.2       | [Describe subtask 2]                        | [ ]    |              |              |                      |
+| 4.3       | [Describe subtask 3]                        | [ ]    |              |              |                      |
+| ...       | ...                                         | ...    |              |              |                      |
+
+*Always mark the current in-progress subtask with [~]. Update the action log with subtask references (e.g., 'Step 4.2: Started ...').*
+
 ## Visual Progress Bar
 
 ![](https://geps.dev/progress/0)
@@ -48,19 +70,19 @@ _Update the number in the URL (0-100) to reflect percent complete as steps are c
 The following documentation should be reviewed and updated as part of Step 5:
 
 - [ ] **Front-end documentation:**
-  - [ ] Component architecture documentation
-  - [ ] API integration documentation
-  - [ ] Testing standards documentation
+  - [ ] front-end-context
+  - [ ] front-end-dependencies
+  - [ ] front-end-overview
 
 - [ ] **Back-end documentation:**
-  - [ ] API endpoints documentation
-  - [ ] Database models documentation
-  - [ ] Authentication flow documentation
+  - [ ] back-end-context
+  - [ ] back-end-dependencies
+  - [ ] back-end-overview
 
-- [ ] **Workflow documentation:**
-  - [ ] Tool call processes documentation
-  - [ ] Testing workflow documentation
-  - [ ] Environment setup documentation
+- [ ] **Full Stack documentation:**
+  - [ ] back-end-development
+  - [ ] front-end-development
+  - [ ] full-stack-standards
 
 ## Implementation Plan
 
