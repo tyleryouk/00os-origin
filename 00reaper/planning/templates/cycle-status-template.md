@@ -13,6 +13,28 @@
 - [ ] Step 5: Update Supporting Materials — started: [    ], completed: [    ]
 - [ ] Step 6: Reset, Archive, & Sync — started: [    ], completed: [    ]
 
+## Status Checklist
+
+| Step | Description                  | Status   |
+|------|------------------------------|----------|
+| 1    | Read User Request (REQ)      | [ ]      |
+| 2    | Read Relevant Context        | [ ]      |
+| 3    | Update Cycle File            | [ ]      |
+| 4    | Make Changes                 | [ ]      |
+| 5    | Update Supporting Materials  | [ ]      |
+| 6    | Reset, Archive, & Sync       | [ ]      |
+
+## Step 4: Make Changes — Subtask Tracker
+
+| Subtask # | Description                                 | Status | Started      | Completed    | Notes                |
+|-----------|---------------------------------------------|--------|--------------|--------------|----------------------|
+| 4.1       | [Describe subtask 1]                        | [ ]    |              |              |                      |
+| 4.2       | [Describe subtask 2]                        | [ ]    |              |              |                      |
+| 4.3       | [Describe subtask 3]                        | [ ]    |              |              |                      |
+| ...       | ...                                         | ...    |              |              |                      |
+
+*Always mark the current in-progress subtask with [~]. Update the action log with subtask references (e.g., 'Step 4.2: Started ...').*
+
 ## Visual Progress Bar
 
 ![](https://geps.dev/progress/0)

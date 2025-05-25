@@ -1,150 +1,123 @@
 ---
 name: dev-init
-description: Load all relevant workflow, context, and standards for 1000xdev
-author: 00reaper
-version: 1.1.0
-category: 1000xdev
-permissions: [basic]
+description: Initialize the context and documentation for 1000xdev. Each flag loads all docs in the corresponding documentation subfolder. The default (no flags) behavior loads only the four master workflow files and the current cycle-status and active-request files.
+version: 2.2.0
+author: 1000xdev
+permissions: [basic, file-read]
 inputs:
-  - name: front-end
+  - name: front-end-architecture
     type: boolean
     required: false
-    description: Initialize only frontend-specific documentation
-  - name: back-end
+    default: false
+    description: Only initialize front-end architecture documentation
+  - name: back-end-architecture
     type: boolean
     required: false
-    description: Initialize only backend-specific documentation
+    default: false
+    description: Only initialize back-end architecture documentation
+  - name: full-stack-workflow
+    type: boolean
+    required: false
+    default: false
+    description: Only initialize full-stack workflow documentation
   - name: steam
     type: boolean
     required: false
-    description: Initialize Steam API integration specific documentation and research
-outputs:
-  - name: result
-    type: string
-    description: Initialization status
+    default: false
+    description: Only initialize Steam API integration documentation
+  - name: cursor-rules
+    type: boolean
+    required: false
+    default: false
+    description: Only initialize cursor rules documentation
+  - name: 1000xdev-identity
+    type: boolean
+    required: false
+    default: false
+    description: Only initialize 1000xdev identity documentation
+outputs: []
+examples:
+  - command: "> dev-init"
+    description: Load all master workflow, status, and documentation files
+  - command: "> dev-init --front-end-architecture"
+    description: Load only front-end architecture documentation
+  - command: "> dev-init --back-end-architecture"
+    description: Load only back-end architecture documentation
+  - command: "> dev-init --steam"
+    description: Load only Steam API integration documentation
+  - command: "> dev-init --full-stack-workflow"
+    description: Load only full-stack workflow documentation
+  - command: "> dev-init --cursor-rules"
+    description: Load only cursor rules documentation
+  - command: "> dev-init --1000xdev-identity"
+    description: Load only 1000xdev identity documentation
 ---
 
 # Process: dev-init
 
-USE WHEN you want to execute dev-init
-
-## Description
-This process loads relevant workflow, documentation, and standards files for 1000xdev with optional flags to load domain-specific documentation only.
-
-## Flags
-- `--front-end`: Initialize only frontend-specific documentation
-- `--back-end`: Initialize only backend-specific documentation
-- `--steam`: Initialize Steam API integration specific documentation and research
+// This process initializes the context and documentation for 1000xdev. Each flag loads all docs in the corresponding documentation subfolder. The default (no flags) behavior loads only the four master workflow files and the current cycle-status and active-request files.
 
 ## Execution
 
-1. Load core 1000xdev workflow files (always loaded)
-2. Load domain-specific files based on flags (if any)
-3. If no flags are specified, load all essential files
-
 ```javascript
-// Always load core files
-await tools.call('read_file', {
-  target_file: '1000xdev/README.md',
-  should_read_entire_file: true,
-  explanation: 'Load 1000xdev workflow overview'
-});
-await tools.call('read_file', {
-  target_file: '1000xdev/1000xdev-brain.md',
-  should_read_entire_file: true,
-  explanation: 'Load master workflow file for 1000xdev (central protocol for workflow enhancement)'
-});
+// Always load the four master workflow files and the current cycle-status and active-request files
+const masterFiles = [
+  '1000xdev/1000xdev-brain.md',
+  '1000xdev/README.md',
+  '1000xdev/user-rules-1000xdev.md',
+  '.cursor/rules/1000xdev-master.mdc',
+  '1000xdev/cycle-status.md',
+  '1000xdev/planning/active-request.md'
+];
 
 // Parse flags
-const loadFrontend = inputs['front-end'] === true;
-const loadBackend = inputs['back-end'] === true;
-const loadSteam = inputs['steam'] === true;
-const loadAll = !loadFrontend && !loadBackend && !loadSteam;
+const flags = {
+  'front-end-architecture': inputs['front-end-architecture'] === true,
+  'back-end-architecture': inputs['back-end-architecture'] === true,
+  'full-stack-workflow': inputs['full-stack-workflow'] === true,
+  'steam': inputs['steam'] === true,
+  'cursor-rules': inputs['cursor-rules'] === true,
+  '1000xdev-identity': inputs['1000xdev-identity'] === true
+};
+const anyFlag = Object.values(flags).some(Boolean);
 
-// Load workflow documentation
-if (loadAll) {
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/full-stack-workflow/workflow.md',
-    should_read_entire_file: true,
-    explanation: 'Load main workflow documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/full-stack-workflow/tool-call-processes.md',
-    should_read_entire_file: true,
-    explanation: 'Load tool call processes documentation'
-  });
+// Helper to load all .md files in a subfolder
+tools.log = tools.log || (() => {});
+async function loadAllFilesInFolder(folder, explanationPrefix) {
+  const dirResult = await tools.call('list_dir', { relative_workspace_path: folder, explanation: `List all files in ${folder}` });
+  if (!dirResult || !dirResult.files) return;
+  for (const file of dirResult.files) {
+    if (file.endsWith('.md')) {
+      await tools.call('read_file', { target_file: `${folder}/${file}`, should_read_entire_file: true, explanation: `${explanationPrefix}: ${file}` });
+    }
+  }
 }
 
-// Load front-end specific documentation
-if (loadAll || loadFrontend) {
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/front-end-architecture/directory-structure-front-end-api.md',
-    should_read_entire_file: true,
-    explanation: 'Load frontend architecture documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/front-end-architecture/context-front-end-api.md',
-    should_read_entire_file: true,
-    explanation: 'Load frontend API context documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/front-end-architecture/node-dependencies.md',
-    should_read_entire_file: true,
-    explanation: 'Load frontend node dependencies documentation'
-  });
+// If no flags, load only master workflow and status files
+if (!anyFlag) {
+  for (const file of masterFiles) {
+    await tools.call('read_file', { target_file: file, should_read_entire_file: true, explanation: 'Load master workflow/status file' });
+  }
+  return { success: true, result: '✅ 1000xdev context initialized with all master workflow and documentation files' };
 }
 
-// Load back-end/Steam specific documentation
-if (loadAll || loadBackend || loadSteam) {
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/steam.md',
-    should_read_entire_file: true,
-    explanation: 'Load backend Steam integration documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/steam-models.md',
-    should_read_entire_file: true,
-    explanation: 'Load backend Steam models documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/steam-routes.md',
-    should_read_entire_file: true,
-    explanation: 'Load backend Steam routes documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/steam-services.md',
-    should_read_entire_file: true,
-    explanation: 'Load backend Steam services documentation'
-  });
-  await tools.call('read_file', {
-    target_file: '1000xdev/documentation/back-end-architecture/steam-tests.md',
-    should_read_entire_file: true,
-    explanation: 'Load backend Steam tests documentation'
-  });
+// If any flag is set, only load the flagged documentation subfolders
+const docFolders = {
+  'front-end-architecture': '1000xdev/documentation/front-end-architecture',
+  'back-end-architecture': '1000xdev/documentation/back-end-architecture',
+  'full-stack-workflow': '1000xdev/documentation/full-stack-workflow',
+  'steam': '1000xdev/documentation/steam',
+  'cursor-rules': '1000xdev/documentation/cursor-rules',
+  '1000xdev-identity': '1000xdev/documentation/1000xdev-identity'
+};
+for (const [flag, folder] of Object.entries(docFolders)) {
+  if (flags[flag]) {
+    await loadAllFilesInFolder(folder, `Load ${flag} documentation`);
+    return { success: true, result: `✅ 1000xdev ${flag.replace(/-/g, ' ')} documentation initialized` };
+  }
 }
 
-// Return success message with loaded context details
-if (loadFrontend) {
-  return "✅ 1000xdev front-end specific documentation initialized";
-} else if (loadBackend) {
-  return "✅ 1000xdev back-end specific documentation initialized";
-} else if (loadSteam) {
-  return "✅ 1000xdev Steam API integration documentation initialized";
-} else {
-  return "✅ 1000xdev context initialized with all core documentation";
-}
+return { success: false, result: 'No documentation loaded. Please specify a valid flag or run without flags for full context.' };
 ```
 
-## Examples
-
-> dev-init
-✅ 1000xdev context initialized with all core documentation
-
-> dev-init --front-end
-✅ 1000xdev front-end specific documentation initialized
-
-> dev-init --back-end
-✅ 1000xdev back-end specific documentation initialized
-
-> dev-init --steam
-✅ 1000xdev Steam API integration documentation initialized 
+</rewritten_file> 
