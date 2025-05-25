@@ -1,6 +1,33 @@
-# 1000xdev Documentation Hub (Global Overview)
+# 1000xdev Documentation Hub
 
-Welcome to the 1000xdev documentation hub. This folder is the living, evolving source of truth for onboarding, workflow, standards, and technical reference for all 1000xdev, front-end, and back-end development in the GigaSwap project.
+This documentation hub provides all standards, architecture, onboarding, and integration guides for the GigaSwap application codebase. The structure is designed for maximum clarity and maintainability, with front-end and back-end documentation kept in fully separate subfolders.
+
+## Structure Overview (2025-05)
+
+- **front-end/**: All front-end architecture, standards, dependencies, testing/logging, and extension points. Self-contained for front-end contributors.
+- **back-end/**: All back-end architecture, standards, dependencies, testing/logging, and extension points. Self-contained for back-end contributors.
+- **full-stack/**: Shared standards and integration docs that apply to both domains (e.g., API design, authentication, error handling).
+- **integration/**: Documentation for cross-cutting integrations (Steam, marketplace, external APIs). Each doc is self-contained.
+- **onboarding/**: Getting started guides and workflow checklists for new contributors.
+
+## Migration Notice
+
+The previous folders (`front-end-architecture/`, `back-end-architecture/`, `full-stack-workflow/`) are being migrated to this new structure. Legacy docs will be archived for reference.
+
+## Table of Contents
+
+- front-end/
+  - overview.md, context.md, dependencies.md, standards.md, testing-logging.md, extension-points.md, README.md
+- back-end/
+  - overview.md, context.md, dependencies.md, standards.md, testing-logging.md, extension-points.md, README.md
+- full-stack/
+  - standards.md, integration.md, README.md
+- integration/
+  - steam.md, marketplace.md, external-apis.md
+- onboarding/
+  - getting-started.md, workflow-checklists.md
+
+Each folder is self-contained and does not cross-link to other folders. All documentation is written to be standalone and safe to move or restructure as needed.
 
 ## 🌐 Purpose & Scope
 - This documentation hub is updated and improved every development cycle.
@@ -8,13 +35,6 @@ Welcome to the 1000xdev documentation hub. This folder is the living, evolving s
 - The structure and content of this folder will change as the system evolves and new requirements emerge.
 
 > **Important Note for 1000xdev:** You are expected and encouraged to revise, enhance, and expand this documentation as you develop and gain deeper understanding of the codebase. The current documentation serves as a starting point, and you should continuously refine it to reflect the evolving architecture and best practices you discover.
-
-## 📁 Structure
-- **front-end-architecture/**: Front-end guides, architecture, and integration docs
-- **back-end-architecture/**: Back-end guides, models, services, and integration docs
-- **full-stack-workflow/**: Workflow, process, and standards documentation
-- **cursor-rules/**: Cursor rules, user rules, and interface standards
-- **1000xdev-identity/**: Reserved for future identity-specific onboarding or standards
 
 ## 🚦 How to Use This Hub
 - **Always start here** for the latest onboarding and workflow entry points.
