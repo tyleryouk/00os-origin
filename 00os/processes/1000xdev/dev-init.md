@@ -79,7 +79,13 @@ const flags = {
   'cursor-rules': inputs['cursor-rules'] === true,
   '1000xdev-identity': inputs['1000xdev-identity'] === true
 };
-const anyFlag = Object.values(flags).some(Boolean);
+const flagKeys = Object.keys(flags).filter(k => flags[k]);
+const anyFlag = flagKeys.length > 0;
+
+// If more than one flag is set, return an error and do not proceed
+if (flagKeys.length > 1) {
+  return { success: false, result: '❌ Only one flag may be used at a time. Please specify a single documentation flag (e.g., --front-end-architecture) or run without flags for full context.' };
+}
 
 // Helper to load all .md files in a subfolder
 tools.log = tools.log || (() => {});
@@ -101,7 +107,7 @@ if (!anyFlag) {
   return { success: true, result: '✅ 1000xdev context initialized with all master workflow and documentation files' };
 }
 
-// If any flag is set, only load the flagged documentation subfolders
+// If exactly one flag is set, load the corresponding documentation subfolder
 const docFolders = {
   'front-end-architecture': '1000xdev/documentation/front-end-architecture',
   'back-end-architecture': '1000xdev/documentation/back-end-architecture',
@@ -110,14 +116,11 @@ const docFolders = {
   'cursor-rules': '1000xdev/documentation/cursor-rules',
   '1000xdev-identity': '1000xdev/documentation/1000xdev-identity'
 };
-for (const [flag, folder] of Object.entries(docFolders)) {
-  if (flags[flag]) {
-    await loadAllFilesInFolder(folder, `Load ${flag} documentation`);
-    return { success: true, result: `✅ 1000xdev ${flag.replace(/-/g, ' ')} documentation initialized` };
-  }
+const flag = flagKeys[0];
+if (flag && docFolders[flag]) {
+  await loadAllFilesInFolder(docFolders[flag], `Load ${flag} documentation`);
+  return { success: true, result: `✅ 1000xdev documentation initialized for --${flag}` };
 }
 
 return { success: false, result: 'No documentation loaded. Please specify a valid flag or run without flags for full context.' };
 ```
-
-</rewritten_file> 
