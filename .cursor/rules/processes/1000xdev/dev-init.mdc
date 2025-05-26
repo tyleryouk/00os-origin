@@ -31,7 +31,7 @@ const flags = {
   'full-stack': inputs['full-stack'] === true,
   'steam': inputs['steam'] === true,
   'cursor-rules': inputs['cursor-rules'] === true,
-  '1000xdev-identity': inputs['1000xdev-identity'] === true,
+  'identity-and-rules': inputs['identity-and-rules'] === true,
   'onboarding': inputs['onboarding'] === true,
   'integration': inputs['integration'] === true
 };
@@ -70,7 +70,7 @@ const docFolders = {
   'full-stack': '1000xdev/documentation/full-stack',
   'steam': '1000xdev/documentation/steam',
   'cursor-rules': '1000xdev/documentation/cursor-rules',
-  '1000xdev-identity': '1000xdev/documentation/1000xdev-identity',
+  'identity-and-rules': '1000xdev/documentation/identity-and-rules',
   'onboarding': '1000xdev/documentation/onboarding',
   'integration': '1000xdev/documentation/integration'
 };

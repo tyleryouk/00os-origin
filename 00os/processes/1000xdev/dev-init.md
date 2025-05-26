@@ -30,7 +30,7 @@ inputs:
     required: false
     default: false
     description: Only initialize cursor rules documentation
-  - name: 1000xdev-identity
+  - name: identity-and-rules
     type: boolean
     required: false
     default: false
@@ -57,10 +57,8 @@ examples:
     description: Load only Steam API integration documentation
   - command: "> dev-init --full-stack"
     description: Load only full-stack workflow documentation
-  - command: "> dev-init --cursor-rules"
-    description: Load only cursor rules documentation
-  - command: "> dev-init --1000xdev-identity"
-    description: Load only 1000xdev identity documentation
+  - command: "> dev-init --identity-and-rules"
+    description: Load only 1000xdev identity and cursor rules documentation
   - command: "> dev-init --onboarding"
     description: Load only onboarding documentation
   - command: "> dev-init --integration"
@@ -93,7 +91,7 @@ const flags = {
   'full-stack': inputs['full-stack'] === true,
   'steam': inputs['steam'] === true,
   'cursor-rules': inputs['cursor-rules'] === true,
-  '1000xdev-identity': inputs['1000xdev-identity'] === true,
+  'identity-and-rules': inputs['identity-and-rules'] === true,
   'onboarding': inputs['onboarding'] === true,
   'integration': inputs['integration'] === true
 };
@@ -132,7 +130,7 @@ const docFolders = {
   'full-stack': '1000xdev/documentation/full-stack',
   'steam': '1000xdev/documentation/steam',
   'cursor-rules': '1000xdev/documentation/cursor-rules',
-  '1000xdev-identity': '1000xdev/documentation/1000xdev-identity',
+  'identity-and-rules': '1000xdev/documentation/identity-and-rules',
   'onboarding': '1000xdev/documentation/onboarding',
   'integration': '1000xdev/documentation/integration'
 };
