@@ -1,31 +1,35 @@
 # Active Request
 
 <!--
-This file is drafted and updated by 1000xdev based on backlog.md and final-goal.md.
-The user reviews and provides feedback; 1000xdev iterates until approved.
-Only one request is ever present in this file.
------>
+This file is drafted and updated by 1000xdev based on backlog.md and final-goals.md. The user reviews and provides feedback; 1000xdev iterates until approved. Only one request is ever present.
+--->
 
-## Requirements: [Cycle Title]
+## Requirements: Back-End Endpoint Testing & Documentation
 
-1. [Requirement 1]
-   - [Sub-requirement 1.1]
-   - [Sub-requirement 1.2]
+1. Implement a seamless testing suite for all major endpoints in `back-end/`.
+   - Write or update tests for all public API endpoints.
+   - Ensure tests cover error handling, edge cases, and response formats.
+   - Validate endpoint reachability and data correctness using live HTTP requests to a running FastAPI instance.
+   - Use pytest and the `requests` library for live endpoint testing (not FastAPI TestClient mocks).
 
-2. [Requirement 2]
-   - [Sub-requirement 2.1]
-   - [Sub-requirement 2.2]
+2. Revise and enhance the documentation in `1000xdev/documentation/back-end/`.
+   - Document the testing workflow, including setup, execution, and coverage requirements.
+   - Ensure documentation is clear, concise, and actionable for future cycles.
+   - Update or create any missing files needed for a complete back-end testing reference.
 
-3. [Requirement 3]
-   - [Sub-requirement 3.1]
-   - [Sub-requirement 3.2]
+## Context References
+- **Key Files:**
+  - cycle-status.md
+  - 1000xdev-brain.md
+  - 1000xdev/planning/templates/
+  - 1000xdev/documentation/back-end/
+  - 1000xdev/planning/backlog.md
+  - 1000xdev/planning/final-goals.md
+- **Related Requests:**
+  - REQ-000 (this request)
+  - REQ-001 (full stack endpoint and testing process, next cycle)
 
 ## Domain-Specific Context
-
-- **Front-end Context:**
-  - Key components: [List relevant components]
-  - API integrations: [List relevant APIs]
-  - UI/UX considerations: [List key UI/UX requirements]
 
 - **Back-end Context:**
   - API endpoints: [List relevant endpoints]
