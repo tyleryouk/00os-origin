@@ -1,6 +1,6 @@
 # Back-End Dependencies
 
-> **[Migrated from back-end-architecture/back-end-dependencies.md, 2024-06-11]**
+> **[Updated 2025-06-26]**
 
 # Back-End Dependencies Overview
 
@@ -57,11 +57,20 @@ This document provides a comprehensive list of all dependencies used in the Giga
 
 - **Pytest**: `pytest==7.4.3` - Testing framework
 - **Pytest-AsyncIO**: `pytest-asyncio==0.21.1` - Pytest support for asyncio
+  - *Critical for testing async API endpoints against live servers*
+  - *Enables `@pytest.mark.asyncio` decorator for async test functions*
+  - *Required for our dual-approach testing strategy*
 - **Pytest-Cov**: `pytest-cov==4.1.0` - Coverage reporting for pytest
 - **HTTPX**: `httpx==0.25.2` - Async HTTP client (for testing APIs)
+  - *Essential for making async HTTP requests in tests*
+  - *Used in both formal test suites and script-based testing*
+  - *Provides AsyncClient for testing FastAPI endpoints against a live server*
+  - *More modern alternative to the requests library with async support*
 - **Python-Dotenv**: `python-dotenv>=1.0.0` - Environment variable loading from .env files
 - **Black**: `black==23.11.0` - Code formatter
 - **Flake8**: `flake8==6.1.0` - Linting tool
+- **Requests**: `requests==2.32.3` - HTTP client for synchronous API calls
+  - *Used primarily in script-based testing for simplicity*
 
 ## AWS Integration
 
@@ -72,6 +81,35 @@ This document provides a comprehensive list of all dependencies used in the Giga
 
 - **Pip-Chill**: `pip-chill==1.0.3` - Output installed packages without dependencies
 - **Pipreqs**: `pipreqs==0.4.13` - Generate requirements.txt based on imports
+
+## Testing Strategy Dependencies
+
+GigaSwap uses a dual-approach testing strategy that relies on specific packages:
+
+1. **Script-based Testing** (`/scripts`):
+   - **Requests**: Simple synchronous HTTP client for direct API testing
+   - **JSON**: Standard library for JSON handling
+   - **Dotenv**: For loading environment variables with API keys
+
+2. **Formal Test Suite** (`/tests`):
+   - **Pytest**: Core testing framework
+   - **Pytest-AsyncIO**: For async test support
+   - **HTTPX**: Modern async HTTP client
+   - **AsyncClient**: From HTTPX, for async requests to live server
+   - **Pytest-Cov**: For test coverage reporting
+
+### Installing Testing Dependencies
+
+```bash
+# Activate virtual environment
+.\.gigaland\Scripts\Activate.ps1
+
+# Install core testing dependencies
+pip install pytest pytest-asyncio httpx pytest-cov
+
+# Install additional dependencies for script-based testing
+pip install requests python-dotenv
+```
 
 ## Dependency Management Best Practices
 

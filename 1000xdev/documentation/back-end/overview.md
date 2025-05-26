@@ -183,20 +183,60 @@ async def create_order(order_data):
 
 ## Testing Strategy
 
-The application has a comprehensive testing strategy:
-- Unit tests for isolated components
-- Integration tests for connected components
-- API tests for endpoint validation
-- Mock objects for external dependencies
+The application uses a dual-approach testing strategy that combines flexibility with structure:
 
-Tests are implemented using pytest:
+### 1. Script-based Testing (`/scripts`)
+- **Purpose**: Direct API validation during development
+- **Tools**: Simple Python scripts using requests, JSON, and dotenv
+- **Advantages**: Quick to write, easy to modify, focused on specific endpoints
+- **Use Case**: Testing external API integrations (e.g., Steam Web API)
+- **Execution**: Run individually via `python scripts/test_script.py`
+
+### 2. Formal Test Suite (`/tests`)
+- **Purpose**: Comprehensive testing for CI/CD and regression testing
+- **Tools**: pytest, pytest-asyncio, httpx, pytest-cov
+- **Advantages**: Structured, reusable, supports coverage reporting
+- **Use Case**: System-wide testing, API contract validation
+- **Execution**: Run via `pytest tests/`
+
+### Testing Approaches
+The application supports two primary testing approaches:
+
+1. **TestClient (Isolated)**:
 ```python
-async def test_get_user(client, create_test_user):
-    user_id = await create_test_user("testuser")
-    response = await client.get(f"/users/{user_id}")
+from fastapi.testclient import TestClient
+from app.main import app
+
+client = TestClient(app)
+
+def test_get_user():
+    response = client.get("/users/123")
     assert response.status_code == 200
-    assert response.json()["username"] == "testuser"
+    assert "username" in response.json()
 ```
+
+2. **httpx with Live Server (Integration)**:
+```python
+import pytest
+import httpx
+from httpx import AsyncClient
+
+@pytest.mark.asyncio
+async def test_get_steam_profile():
+    async with AsyncClient(base_url="http://127.0.0.1:8000") as client:
+        response = await client.get("/api/steam/profile/76561199487496862")
+        assert response.status_code == 200
+        data = response.json()
+        assert "steam_id" in data
+```
+
+### External API Testing
+For external API integrations like Steam:
+- API responses are logged for debugging (`/logs/steam/`)
+- Direct API tests validate correct parameter structures
+- Endpoint-specific tests verify proper API response handling
+
+For more details, see [Testing and Logging](./testing-logging.md) and [Steam Tests](../steam/steam-tests.md).
 
 ## Extension Points
 

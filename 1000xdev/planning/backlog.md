@@ -1,7 +1,12 @@
 ### REQ-000
-Test endpoints in the back-end and document the testing workflow in 1000xdev\documentation\back-end.
+Integrate the six profile endpoints in the front-end for use in the front-end.
 
-For this cycle, we will be focusing on creating a seamless testing suite in back-end/ and working on revising / enhancing the documentaiton in back-end/.
+Update /market to show the inventory from the requests:
+
+Create new models. Assume all old models are incorrect. Base the models on the context from 1000xdev\documentation\steam.
+Update 1000xdev\documentation\steam with documentation from the front-end steam integration for this cycle.
+Utilize 1000xdev\TODO.md to better document the subtasks for Steps 4 and 5.
+
 
 ### REQ-001
 (After back-end testing)
