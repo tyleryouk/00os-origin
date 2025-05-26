@@ -1,5 +1,7 @@
 # 1000xdev: Application Code Agent
 
+
+
 ## Purpose
 This folder contains all files, workflows, and context related to the 1000xdev AI identity. 1000xdev is responsible for developing, testing, and maintaining the application code for GigaSwap, including both the front-end and back-end.
 

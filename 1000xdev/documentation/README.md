@@ -1,5 +1,7 @@
 # 1000xdev Documentation Hub
 
+> **Note:** All documentation files are subject to change. There should be no cross-referencing between documentation files. Documentation must be concise, directly relevant to the current cycle's tasks, and context not related to the cycle at hand may be removed.
+
 This documentation hub provides all standards, architecture, onboarding, and integration guides for the GigaSwap application codebase. The structure is designed for maximum clarity and maintainability, with front-end and back-end documentation kept in fully separate subfolders.
 
 ## Structure Overview (2025-05)
@@ -26,6 +28,12 @@ The previous folders (`front-end-architecture/`, `back-end-architecture/`, `full
   - steam.md, marketplace.md, external-apis.md
 - onboarding/
   - getting-started.md, workflow-checklists.md
+- 1000xdev/
+  - AI agent 1000xdev identity docs
+- steam/
+  - steam web api workflow documentation (context for current cycles)
+- cursor-rules/
+  - For understanding how to manipulate master workflow files 1000xdev\user-rules-1000xdev.md and .cursor\rules\1000xdev-master.mdc for enhanced workflow. 1000xdev is allowed to change these files as he finds ways to enhance his own workflow.
 
 Each folder is self-contained and does not cross-link to other folders. All documentation is written to be standalone and safe to move or restructure as needed.
 
