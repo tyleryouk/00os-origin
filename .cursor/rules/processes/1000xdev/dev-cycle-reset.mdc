@@ -1,8 +1,7 @@
 ---
-description: System component - dev-cycle-reset
+description: USE WHEN you want to execute dev-cycle-reset
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
 
 # Process: dev-cycle-reset

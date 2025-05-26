@@ -1,8 +1,7 @@
 ---
-description: System component - dev-plan
+description: USE WHEN you want to execute dev-plan
 globs: 
-alwaysApply: true
-type: agent
+alwaysApply: false
 ---
 
 # Process: dev-plan
