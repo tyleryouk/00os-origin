@@ -1,146 +1,150 @@
-# Current State of Steam API Integration - Root Folder Files 
+# Steam Web API Integration Documentation
 
-## Directory Structure
+> **[Updated 2025-06-26]** - **Simple Proxy Pattern Implementation**
 
-The `back-end/app/steam` directory contains the following root files:
+## Architecture Overview
+
+GigaSwap uses a **simple proxy pattern** for Steam API integration:
+
+- **No complex mapping/transformation** of responses
+- **Direct passthrough** of steamwebapi.com responses to frontend
+- **Frontend expects** steamwebapi.com response format directly
+- **Minimal backend logic** - just proxy with httpx
+
+## Environment Configuration
+
+**IMPORTANT:** The Steam Web API key is configured in the `.env` file located at `back-end\.env`:
+
+```
+STEAM_WEB_API_KEY={steam-web-api-key}
+```
+
+This API key is automatically loaded by the FastAPI application and used by all Steam proxy endpoints. Do not modify or remove this configuration.
+
+# Steam Proxy Implementation
+
+## Proxy Pattern Architecture
+
+The Steam integration now uses a **simple proxy pattern** instead of complex mapping/caching:
+
+```
+Frontend Request → FastAPI Proxy Endpoint → steamwebapi.com → Raw Response → Frontend
+```
+
+## Directory Structure (Simplified)
+
+The `back-end/app/steam` directory structure for proxy pattern:
 
 ```
 back-end/app/steam/
-├── __init__.py       # Module initialization and exports
-├── client.py         # Core SteamWebAPIClient implementation
-├── rate_limiter.py   # Rate limiting mechanism
-├── cache.py          # Redis-based caching system
-├── exceptions.py     # Custom exceptions for Steam API
-├── models/           # Data models (directory)
-├── routes/           # API endpoints (directory)
-├── services/         # Service clients (directory)
-└── __pycache__/      # Python cache files (directory)
+├── routes/           # Proxy endpoints (primary focus)
+│   └── profile.py    # Steam profile proxy endpoints
+├── models/           # Minimal models (if needed)
+├── services/         # Proxy service logic
+└── __init__.py       # Module initialization
 ```
 
-## Core Components
+**Note**: Complex components like `client.py`, `rate_limiter.py`, `cache.py` are **not needed** for the proxy pattern.
 
-### `__init__.py`
+## Proxy Implementation Components
 
-This file initializes the Steam API integration module and exports key components:
+### Profile Proxy Endpoints
 
-- **Purpose**: Module initialization and public API definition
-- **Exports**:
-  - Core components: `SteamWebAPIClient`, `RedisCache`, and exception classes
-  - Service clients: `ItemsClient`, `TradeClient`, `ProfileClient`, `InfoClient`, `ExploreClient`, `AccountClient`
-- **Current State**: Properly structured with well-defined exports
+The main implementation focuses on 6 Steam profile endpoints using simple proxy pattern:
 
-### `client.py`
+1. **`GET /api/steam/profile/{steam_id}`** → `steamwebapi.com/steam/api/profile`
+2. **`GET /api/steam/profile/inventory/{steam_id}`** → `steamwebapi.com/steam/api/inventory`
+3. **`GET /api/steam/profile/inventory/{steam_id}/items`** → `steamwebapi.com/steam/api/inventory` (parsed)
+4. **`GET /api/steam/profile/eligibility/{steam_id}`** → Custom eligibility logic
+5. **`GET /api/steam/profile/privacy/{steam_id}`** → `steamwebapi.com/steam/api/profile` (privacy fields)
+6. **`GET /api/steam/profile/friendlist/{steam_id}`** → `steamwebapi.com/steam/api/friendlist`
 
-The core client implementation for interacting with the Steam Web API:
+### Proxy Implementation Pattern
 
-- **Class**: `SteamWebAPIClient`
-- **Key Features**:
-  - Asynchronous request handling with retry logic
-  - Error handling with custom exceptions
-  - Rate limit tracking from response headers
-  - Configurable API key and base URL
-- **Functions**:
-  - `__init__`: Initializes the client with API key and base URL
-  - `_create_session`: Creates and configures the requests session
-  - `_request`: Core async method for making API requests with retries
-  - `_update_rate_limit`: Updates rate limit information from response headers
-  - `_check_rate_limit`: Checks rate limit status and waits if necessary
-- **Current Issues**:
-  - The error chain in `_request` could be simplified
-  - Some hardcoded values that could be configurable
+```python
+import httpx
+from fastapi import APIRouter
 
-### `rate_limiter.py`
+@router.get("/profile/{steam_id}")
+async def get_steam_profile(steam_id: str):
+    """Simple proxy to steamwebapi.com profile endpoint."""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(
+            f"https://steamwebapi.com/steam/api/profile",
+            params={"id": steam_id, "key": STEAM_API_KEY}
+        )
+        # Return raw response and status code
+        return response.json(), response.status_code
+```
 
-Implements rate limiting for Steam Web API calls:
+## Benefits of Proxy Pattern
 
-- **Classes**:
-  - `RateLimitExceededError`: Exception for rate limit errors
-  - `RateLimiter`: Main implementation using token bucket algorithm
-- **Key Features**:
-  - Token bucket algorithm for three time windows (second, minute, day)
-  - API call history tracking for monitoring
-  - Endpoint-specific statistics
-  - Automatic token bucket refill
-- **Functions**:
-  - `get_rate_limiter()`: Singleton factory for global rate limiter
-  - `rate_limited()`: Decorator for applying rate limiting to functions
-- **Implementation Details**:
-  - Thread-safe using async locks
-  - Configurable limits from environment/config
-  - Comprehensive monitoring capabilities
+### Simplicity
+- **No complex mapping** between steamwebapi.com and internal models
+- **No caching layer** to maintain and debug
+- **No rate limiting logic** - handled by steamwebapi.com
+- **Minimal code** - just httpx forwarding
 
-### `cache.py`
+### Frontend Compatibility
+- **Direct steamwebapi.com format** - frontend expects upstream response structure
+- **Consistent error handling** - upstream error codes and messages
+- **No transformation overhead** - responses passed through unchanged
 
-Redis-based caching system for Steam API responses:
+### Maintenance
+- **Fewer dependencies** - no Redis, complex client logic, or model validation
+- **Easier debugging** - direct passthrough makes issues easier to trace
+- **Faster development** - no need to map every field from upstream API
 
-- **Class**: `RedisCache`
-- **Key Features**:
-  - Redis integration with configurable prefix and TTL
-  - JSON serialization for complex data structures
-  - Adaptive TTL based on data volatility
-- **Methods**:
-  - `get`: Retrieve cached data
-  - `set`: Store data in cache with TTL
-  - `delete`: Remove data from cache
-  - `exists`: Check if key exists in cache
-  - `set_with_adaptive_ttl`: Smart caching with context-aware TTL
-- **Implementation Notes**:
-  - Robust error handling for Redis connection issues
-  - Detailed logging of cache operations
-  - Performance-optimized for Steam API use cases
+## Implementation Status
 
-### `exceptions.py`
+### Completed Endpoints (Proxy Pattern)
+- ✅ **`GET /api/steam/profile/{steam_id}`** - Profile data proxy
+- ✅ **`GET /api/steam/profile/eligibility/{steam_id}`** - Trade eligibility
+- ✅ **`GET /api/steam/profile/friendlist/{steam_id}`** - Friends list proxy
 
-Custom exception hierarchy for Steam API integration:
+### Remaining Endpoints (To Implement)
+- ⏳ **`GET /api/steam/profile/inventory/{steam_id}`** - Inventory proxy
+- ⏳ **`GET /api/steam/profile/inventory/{steam_id}/items`** - Inventory items proxy  
+- ⏳ **`GET /api/steam/profile/privacy/{steam_id}`** - Privacy settings proxy
 
-- **Base Exception**: `SteamAPIException`
-- **Specialized Exceptions**:
-  - `SteamAPIRateLimitException`: Rate limit exceeded (HTTP 429)
-  - `SteamAPIAuthenticationException`: Auth failures (HTTP 401/403)
-  - `SteamAPINotFoundException`: Resource not found (HTTP 404)
-  - `SteamAPIServerException`: Server errors (HTTP 5xx)
-  - `SteamAPIRequestException`: Other client errors (HTTP 4xx)
-- **Helper Function**:
-  - `raise_for_status_code()`: Maps HTTP status codes to appropriate exceptions
-- **Implementation Notes**:
-  - Detailed error messages with status codes
-  - Original exception tracking
-  - Support for retry-after information in rate limit errors
+### Testing Status
+- ✅ **Test suite updated** for steamwebapi.com response format expectations
+- ✅ **Logging implemented** for all proxy responses
+- ✅ **Status code validation** matches upstream API behavior
 
-## Integration with Other Components
+## Next Steps
 
-The root folder files establish the foundation for more specialized components:
+### Immediate Tasks
+1. **Implement remaining 3 proxy endpoints** using the same pattern as friendlist
+2. **Update tests** for inventory and privacy endpoints to expect steamwebapi.com format
+3. **Validate all 6 endpoints** work with the proxy pattern
 
-1. **Models** use these core components to define data structures for Steam API responses
-2. **Services** build upon the client and cache for specific API endpoints
-3. **Routes** expose the Steam API functionality through FastAPI endpoints
+### Implementation Pattern for Remaining Endpoints
 
-## Current Issues and Limitations
+```python
+# Example: Inventory proxy endpoint
+@router.get("/profile/inventory/{steam_id}")
+async def get_steam_inventory(steam_id: str):
+    """Proxy to steamwebapi.com inventory endpoint."""
+    async with httpx.AsyncClient(timeout=30.0) as client:
+        response = await client.get(
+            "https://steamwebapi.com/steam/api/inventory",
+            params={
+                "steam_id": steam_id,
+                "game": "cs2",
+                "key": STEAM_API_KEY
+            }
+        )
+        return Response(
+            content=response.content,
+            status_code=response.status_code,
+            headers={"content-type": "application/json"}
+        )
+```
 
-1. **Pydantic v2 Compatibility**: The files show errors with Pydantic v2 schema generation:
-   ```
-   pydantic.errors.PydanticSchemaGenerationError: Unable to generate pydantic-core schema for <class 'app.steam.models.item.OrderType'>
-   ```
-
-2. **Configuration Migration Warnings**:
-   ```
-   UserWarning: Valid config keys have changed in V2:
-   * 'allow_population_by_field_name' has been renamed to 'validate_by_name'
-   ```
-
-3. **Runtime Error**: The application fails to start due to these schema generation errors, which would prevent the Steam API integration from functioning correctly.
-
-## Implementation Patterns
-
-1. **Async/Await**: The codebase consistently uses async/await for I/O-bound operations
-2. **Robust Error Handling**: Comprehensive error handling with specialized exceptions
-3. **Caching Strategy**: Implements intelligent caching with adaptive TTLs
-4. **Rate Limiting**: Sophisticated rate limiting to prevent API quota exhaustion
-5. **Clean Separation**: Core components are well-separated with clear responsibilities
-
-## Future Development Areas
-
-1. **Fix Pydantic v2 Compatibility**: Resolve schema generation errors 
-2. **Enhanced Monitoring**: Add more detailed metrics and monitoring
-3. **Performance Optimization**: Optimize memory usage in high-throughput scenarios
-4. **Testing Coverage**: Expand test coverage for edge cases and error handling
+### Benefits of This Approach
+- **Eliminates complex mapping/caching/validation** that was causing Pydantic v2 errors
+- **Frontend gets expected format** directly from steamwebapi.com
+- **Faster development** - no need to maintain internal models
+- **Easier debugging** - direct passthrough of responses
+- **MVP-ready** - simple, working solution for marketplace integration
