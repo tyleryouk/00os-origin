@@ -4,42 +4,60 @@
 
 This documentation hub provides all standards, architecture, onboarding, and integration guides for the GigaSwap application codebase. The structure is designed for maximum clarity and maintainability, with front-end and back-end documentation kept in fully separate subfolders.
 
-## Structure Overview (2025-05)
+## Structure Overview (2025-06)
 
 - **front-end/**: All front-end architecture, standards, dependencies, testing/logging, and extension points. Self-contained for front-end contributors.
 - **back-end/**: All back-end architecture, standards, dependencies, testing/logging, and extension points. Self-contained for back-end contributors.
-- **full-stack/**: Shared standards and integration docs that apply to both domains (e.g., API design, authentication, error handling).
-- **integration/**: Documentation for cross-cutting integrations (Steam, marketplace, external APIs). Each doc is self-contained.
-- **onboarding/**: Getting started guides and workflow checklists for new contributors.
-
-## Migration Notice
-
-The previous folders (`front-end-architecture/`, `back-end-architecture/`, `full-stack-workflow/`) are being migrated to this new structure. Legacy docs will be archived for reference.
+- **steam/**: Steam Web API integration, models, routes, services, and tests.
+- **gigaswap/**: Marketplace, integration, and external API documentation.
+- **identity-and-rules/**: 1000xdev identity, user rules, and cursor rules manipulation docs.
 
 ## Table of Contents
 
 - front-end/
-  - overview.md, context.md, dependencies.md, standards.md, testing-logging.md, extension-points.md, README.md
+  - overview.md
+  - context.md
+  - dependencies.md
+  - standards.md
+  - testing-logging.md
+  - extension-points.md
+  - README.md
 - back-end/
-  - overview.md, context.md, dependencies.md, standards.md, testing-logging.md, extension-points.md, README.md
-- full-stack/
-  - standards.md, integration.md, README.md
-- integration/
-  - steam.md, marketplace.md, external-apis.md
-- onboarding/
-  - getting-started.md, workflow-checklists.md
-- 1000xdev/
-  - AI agent 1000xdev identity docs
+  - overview.md
+  - context.md
+  - dependencies.md
+  - standards.md
+  - testing-logging.md
+  - extension-points.md
+  - README.md
 - steam/
-  - steam web api workflow documentation (context for current cycles)
-- cursor-rules/
-  - For understanding how to manipulate master workflow files 1000xdev\user-rules-1000xdev.md and .cursor\rules\1000xdev-master.mdc for enhanced workflow. 1000xdev is allowed to change these files as he finds ways to enhance his own workflow.
+  - steam.md
+  - steam-api-client.md
+  - steam-models.md
+  - steam-routes.md
+  - steam-services.md
+  - steam-tests.md
+- gigaswap/
+  - standards.md
+  - integration.md
+  - external-apis.md
+  - marketplace.md
+  - steam.md
+  - README.md
+- identity-and-rules/
+  - 1000xdev-identity.md
+  - dual-mode-interface.md
+  - user-rules-manipulation.md
+  - cursor-rules-manipulation.md
+  - cursor-rules-strategy.md
+
+- TODO.md (root)
 
 Each folder is self-contained and does not cross-link to other folders. All documentation is written to be standalone and safe to move or restructure as needed.
 
 ## 🌐 Purpose & Scope
 - This documentation hub is updated and improved every development cycle.
-- It contains onboarding guides, workflow standards, technical references, and best practices for all domains (front-end, back-end, and full-stack).
+- It contains onboarding guides, workflow standards, technical references, and best practices for all domains (front-end, back-end, and integrations).
 - The structure and content of this folder will change as the system evolves and new requirements emerge.
 
 > **Important Note for 1000xdev:** You are expected and encouraged to revise, enhance, and expand this documentation as you develop and gain deeper understanding of the codebase. The current documentation serves as a starting point, and you should continuously refine it to reflect the evolving architecture and best practices you discover.
