@@ -4,6 +4,7 @@ globs:
 alwaysApply: true
 type: agent
 ---
+
 # Process: dev-plan
 
 // Canonical Planning Files (as of 2025-05-24)
@@ -42,4 +43,4 @@ return { success: true, result: 'Drafted/updated active-request.md for user revi
 
 ## Examples
 
-> dev-plan
+> dev-plan 

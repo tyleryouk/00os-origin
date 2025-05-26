@@ -5,17 +5,17 @@ version: 2.2.0
 author: 1000xdev
 permissions: [basic, file-read]
 inputs:
-  - name: front-end-architecture
+  - name: front-end
     type: boolean
     required: false
     default: false
-    description: Only initialize front-end architecture documentation
-  - name: back-end-architecture
+    description: Only initialize front-end documentation
+  - name: back-end
     type: boolean
     required: false
     default: false
-    description: Only initialize back-end architecture documentation
-  - name: full-stack-workflow
+    description: Only initialize back-end documentation
+  - name: full-stack
     type: boolean
     required: false
     default: false
@@ -35,22 +35,36 @@ inputs:
     required: false
     default: false
     description: Only initialize 1000xdev identity documentation
+  - name: onboarding
+    type: boolean
+    required: false
+    default: false
+    description: Only initialize onboarding documentation
+  - name: integration
+    type: boolean
+    required: false
+    default: false
+    description: Only initialize integration documentation
 outputs: []
 examples:
   - command: "> dev-init"
     description: Load all master workflow, status, and documentation files
-  - command: "> dev-init --front-end-architecture"
-    description: Load only front-end architecture documentation
-  - command: "> dev-init --back-end-architecture"
-    description: Load only back-end architecture documentation
+  - command: "> dev-init --front-end"
+    description: Load only front-end documentation
+  - command: "> dev-init --back-end"
+    description: Load only back-end documentation
   - command: "> dev-init --steam"
     description: Load only Steam API integration documentation
-  - command: "> dev-init --full-stack-workflow"
+  - command: "> dev-init --full-stack"
     description: Load only full-stack workflow documentation
   - command: "> dev-init --cursor-rules"
     description: Load only cursor rules documentation
   - command: "> dev-init --1000xdev-identity"
     description: Load only 1000xdev identity documentation
+  - command: "> dev-init --onboarding"
+    description: Load only onboarding documentation
+  - command: "> dev-init --integration"
+    description: Load only integration documentation
 ---
 
 # Process: dev-init
@@ -60,31 +74,35 @@ examples:
 ## Execution
 
 ```javascript
-// Always load the four master workflow files and the current cycle-status and active-request files
+// Always load the four master workflow files, cycle-status and active-request files, and root documentation files
 const masterFiles = [
   '1000xdev/1000xdev-brain.md',
   '1000xdev/README.md',
   '1000xdev/user-rules-1000xdev.md',
   '.cursor/rules/1000xdev-master.mdc',
   '1000xdev/cycle-status.md',
-  '1000xdev/planning/active-request.md'
+  '1000xdev/planning/active-request.md',
+  '1000xdev/documentation/README.md',
+  '1000xdev/documentation/TODO.md'
 ];
 
 // Parse flags
 const flags = {
-  'front-end-architecture': inputs['front-end-architecture'] === true,
-  'back-end-architecture': inputs['back-end-architecture'] === true,
-  'full-stack-workflow': inputs['full-stack-workflow'] === true,
+  'front-end': inputs['front-end'] === true,
+  'back-end': inputs['back-end'] === true,
+  'full-stack': inputs['full-stack'] === true,
   'steam': inputs['steam'] === true,
   'cursor-rules': inputs['cursor-rules'] === true,
-  '1000xdev-identity': inputs['1000xdev-identity'] === true
+  '1000xdev-identity': inputs['1000xdev-identity'] === true,
+  'onboarding': inputs['onboarding'] === true,
+  'integration': inputs['integration'] === true
 };
 const flagKeys = Object.keys(flags).filter(k => flags[k]);
 const anyFlag = flagKeys.length > 0;
 
 // If more than one flag is set, return an error and do not proceed
 if (flagKeys.length > 1) {
-  return { success: false, result: '❌ Only one flag may be used at a time. Please specify a single documentation flag (e.g., --front-end-architecture) or run without flags for full context.' };
+  return { success: false, result: '❌ Only one flag may be used at a time. Please specify a single documentation flag (e.g., --front-end) or run without flags for full context.' };
 }
 
 // Helper to load all .md files in a subfolder
@@ -109,12 +127,14 @@ if (!anyFlag) {
 
 // If exactly one flag is set, load the corresponding documentation subfolder
 const docFolders = {
-  'front-end-architecture': '1000xdev/documentation/front-end-architecture',
-  'back-end-architecture': '1000xdev/documentation/back-end-architecture',
-  'full-stack-workflow': '1000xdev/documentation/full-stack-workflow',
+  'front-end': '1000xdev/documentation/front-end',
+  'back-end': '1000xdev/documentation/back-end',
+  'full-stack': '1000xdev/documentation/full-stack',
   'steam': '1000xdev/documentation/steam',
   'cursor-rules': '1000xdev/documentation/cursor-rules',
-  '1000xdev-identity': '1000xdev/documentation/1000xdev-identity'
+  '1000xdev-identity': '1000xdev/documentation/1000xdev-identity',
+  'onboarding': '1000xdev/documentation/onboarding',
+  'integration': '1000xdev/documentation/integration'
 };
 const flag = flagKeys[0];
 if (flag && docFolders[flag]) {
