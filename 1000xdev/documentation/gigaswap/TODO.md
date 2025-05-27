@@ -10,8 +10,4 @@ This file tracks documentation files referenced in `back-end/overview.md` and ot
 - [ ] marketplace.md ← integration/marketplace.md, marketplace-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 - [ ] standards.md ← integration/standards.md, steam-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 
-## identity-and-rules/
-Need to enhance to better align with 1000xdev's workflow
-
 ---
-Add new checklist items here as additional documentation needs are identified. 

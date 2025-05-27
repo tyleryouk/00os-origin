@@ -97,30 +97,48 @@ The following 6-step cyclical workflow is required for all 1000xdev development 
    - 1000xdev loads relevant documentation based on task type (front-end, back-end, or full-stack).
 
 3. **Update Cycle File**
-   - 1000xdev drafts the implementation plan, tracks progress, and logs enhancements in `cycle-status.md`.
+   - 1000xdev updates `cycle-status.md` with high-level implementation plan and subtask checklist.
+   - 1000xdev creates detailed implementation plan in `TODO.md` with technical analysis, approach, and comprehensive task breakdowns.
+   - `cycle-status.md` tracks progress; `TODO.md` contains the implementation strategy and evolving thoughts.
 
 4. **Make Changes and Test**
    - 1000xdev implements the plan by making all necessary code, test, and documentation changes:
      - **Back-end:** Update or add Python code in `back-end/app/` (models, services, routes, etc.), and write/update tests in `back-end/tests/`.
      - **Front-end:** Update or add TypeScript/React code in `front-end/src/` (components, pages, hooks, etc.), and write/update tests in `front-end/src/__tests__/`.
+   - 1000xdev frequently updates `TODO.md` with implementation notes, discoveries, decisions, and technical details.
+   - 1000xdev updates `cycle-status.md` subtask completion status as work progresses.
    - 1000xdev ensures all changes follow best practices for code quality, modularity, and maintainability.
    - 1000xdev runs all relevant tests and addresses any failures before proceeding.
+   - **Step 4 Completion Criteria**: ALL subtasks in `cycle-status.md` Step 4 tracker must be completed (marked [x]) before proceeding to Step 5. No exceptions for "core functionality working" - every subtask must be finished.
 
 5. **Update Supporting Materials**
    - 1000xdev updates documentation in the `documentation/` folder as needed.
+   - 1000xdev continues updating `TODO.md` with final implementation notes and lessons learned.
+   - 1000xdev updates `cycle-status.md` subtask completion status for documentation tasks.
    - 1000xdev ensures documentation is modular, focused, and directly actionable.
    - 1000xdev maintains consistent documentation formats across domains.
+   - **Step 5 Completion Criteria**: ALL subtasks in `cycle-status.md` Step 5 tracker must be completed before proceeding to Step 6.
 
 6. **Reset, Archive, & Prepare for Next Cycle**
    - 1000xdev archives the completed `cycle-status.md` file to `archive/` with timestamp.
+   - 1000xdev archives the completed `TODO.md` file to `archive/` with the same timestamp.
    - 1000xdev resets `active-request.md` and `cycle-status.md` using templates.
    - 1000xdev runs `> dev-cycle-reset` to automate the archive and reset process.
    - 1000xdev runs `> dev-sync` to update all relevant rules.
    - 1000xdev prepares for the next cycle.
 
-**Boundary:**
-- Use `planning/` for collaborative planning and backlog management.
-- Use core workflow files (`active-request.md`, `cycle-status.md`, etc.) for operational execution and tracking of the current cycle.
+### Core Workflow File Relationships
+- **active-request.md**: The current requirements (WHAT needs to be done) for the active cycle.
+- **cycle-status.md**: High-level progress tracker with subtask checklists and step completion status. Focuses on tracking what's done vs. what remains.
+- **TODO.md**: Detailed implementation plan with comprehensive thoughts, notes, analysis, and technical details. Updated frequently during Steps 4 and 5 as implementation progresses.
+
+### Step Completion Standards
+- **No step is complete until ALL its subtasks are finished**
+- If critical blocking issues are discovered (like 404 errors), they must be added as high-priority subtasks and completed before step completion
+- "Core functionality working" does not constitute step completion if subtasks remain
+- Each step's completion status should accurately reflect whether ALL work for that step is done
+- Use `planning/` for collaborative planning and backlog management
+- Use core workflow files (`active-request.md`, `cycle-status.md`, `TODO.md`) for operational execution and tracking of the current cycle
 
 **Templates and checklists for each phase are available in the `planning/templates/` folder.**
 
