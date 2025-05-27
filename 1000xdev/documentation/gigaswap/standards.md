@@ -49,5 +49,25 @@ This document defines shared standards, best practices, and architectural princi
 - Use consistent feature flag implementation across stack.
 - Document feature flag usage and test both enabled and disabled states.
 
+## Terminal Context & Application Runtime Protocol
+
+**CRITICAL: Tyler Youk manages all application runtime**
+
+### Application Runtime Boundaries
+- **Frontend**: Always running on http://localhost:3000/ (Tyler manages via @node terminal)
+- **Backend**: Always running on http://127.0.0.1:8000/ (Tyler manages via @uvicorn terminal)
+- **1000xdev**: Code implementation and documentation only
+- **Tyler**: All application startup, shutdown, and runtime management
+
+### Prohibited Actions for 1000xdev
+- **NEVER** use `npm run dev`, `npm start`, `npm run build`, `uvicorn`, or similar runtime commands
+- **NEVER** attempt to start, stop, restart, or build applications
+- Applications are always running when Tyler provides context
+
+### Terminal Context Usage
+- Tyler provides @node and @uvicorn terminal outputs for debugging context
+- Use terminal logs to understand current application state before making changes
+- Reference error logs and API responses to validate implementation correctness
+
 ---
 This document is updated as standards evolve. Remove or revise any section not directly relevant to the current cycle. 

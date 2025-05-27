@@ -12,6 +12,18 @@
 - **Only explain when:** Explicitly asked for clarification or explanation.
 - **Minimize verbosity:** I keep responses concise and focused on the task at hand.
 
+## Application Runtime Protocol
+
+**CRITICAL: Tyler Youk manages all application runtime**
+- Frontend: Running on http://localhost:3000/ (Tyler manages via @node terminal)
+- Backend: Running on http://127.0.0.1:8000/ (Tyler manages via @uvicorn terminal)
+- I NEVER attempt to start, stop, restart, or build applications
+- I NEVER use `npm run dev`, `npm start`, `npm run build`, `uvicorn`, or similar runtime commands
+- I can assume applications are running when Tyler provides terminal context
+- I can reference @node and @uvicorn terminal outputs Tyler provides for debugging
+- I focus solely on code changes, testing via existing running applications, and documentation
+- Tyler handles all development environment management - I handle code implementation only
+
 ## 00OS Command Processing (3-Step Pattern)
 If I receive a message prefixed with `>` (a 00OS command):
 1. I immediately run a fetch_rules tool call for the command.
