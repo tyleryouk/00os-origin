@@ -54,18 +54,20 @@ How do I add a new API endpoint?
      - I follow a "just enough context" approach that minimizes reading while maximizing productivity.
      - I load relevant documentation based on task type (front-end, back-end, or full-stack).
   3. **Update Cycle File:**
-     - I draft the implementation plan, track progress, and log enhancements in `cycle-status.md`.
-     - I create or update `TODO.md` with comprehensive task breakdowns and critical issues for the current cycle.
-     - Both files work together to provide complete operational and planning context for the current cycle.
+     - I update `cycle-status.md` with high-level step completion tracking.
+     - I create detailed implementation plan in `TODO.md` with technical analysis, approach, comprehensive task breakdowns, and subtask checklists for Steps 4 & 5.
+     - `cycle-status.md` tracks step completion; `TODO.md` contains the implementation strategy, evolving thoughts, and detailed progress tracking.
   4. **Make Changes and Test:**
      - I implement the plan by making all necessary code, test, and documentation changes.
+     - I work primarily in `TODO.md`, frequently updating it with implementation notes, discoveries, decisions, technical details, and checking off subtasks as I complete them.
      - I run all relevant tests and address any failures before proceeding.
-     - **Step 4 Completion Criteria**: ALL subtasks in `cycle-status.md` Step 4 tracker must be completed (marked [x]) before proceeding to Step 5. No exceptions for "core functionality working" - every subtask must be finished.
+     - **Step 4 Completion Criteria**: ALL subtasks in `TODO.md` Step 4 section must be completed (marked [x]) before proceeding to Step 5. No exceptions for "core functionality working" - every subtask must be finished.
   5. **Update Supporting Materials:**
      - I update documentation in the `documentation/` folder as needed.
+     - I continue working in `TODO.md`, updating it with final implementation notes, lessons learned, and checking off Step 5 subtasks.
      - I ensure documentation is modular, focused, and directly actionable.
      - I maintain consistent documentation formats across domains.
-     - **Step 5 Completion Criteria**: ALL subtasks in `cycle-status.md` Step 5 tracker must be completed before proceeding to Step 6.
+     - **Step 5 Completion Criteria**: ALL subtasks in `TODO.md` Step 5 section must be completed before proceeding to Step 6.
   6. **Reset, Archive, & Prepare for Next Cycle:**
      - I archive the completed `cycle-status.md` file to `archive/` with timestamp.
      - I archive the completed `TODO.md` file to `archive/` with the same timestamp.
@@ -74,25 +76,25 @@ How do I add a new API endpoint?
      - I run `> dev-sync` to update all relevant rules.
      - I prepare for the next cycle.
 
-### Core Workflow File Relationships
+## Core Workflow Files & Relationships
 - **active-request.md**: The current requirements (WHAT needs to be done) for the active cycle.
-- **cycle-status.md**: The primary operational tracker for progress, actions, and enhancements in the current cycle. Contains detailed subtask breakdowns and step-by-step execution tracking.
-- **TODO.md**: Supplemental planning document for the current cycle that provides additional context, implementation phases, critical issues, and comprehensive task breakdowns for Step 4 and Step 5. Works alongside `cycle-status.md` to support current cycle execution.
+- **cycle-status.md**: High-level step completion tracker. Shows which of the 6 steps are complete and includes summary notes after each step completion.
+- **TODO.md**: Detailed implementation plan with comprehensive thoughts, notes, analysis, technical details, and subtask checklists for Steps 4 and 5. My primary working document during implementation.
 
-### Step Completion Standards
-- **No step is complete until ALL its subtasks are finished**
-- If critical blocking issues are discovered (like 404 errors), they must be added as high-priority subtasks and completed before step completion
-- "Core functionality working" does not constitute step completion if subtasks remain
+### File Relationship Guidelines
+- `cycle-status.md` is the high-level step tracker - shows which steps (1-6) are complete with summary notes
+- `TODO.md` is my working document - contains implementation plan, technical analysis, thoughts, notes, decisions, and subtask checklists for Steps 4 & 5
+- `cycle-status.md` focuses on "which steps are done" while `TODO.md` focuses on "how to implement and track detailed progress"
+- Both files are for the current cycle only and get archived together at cycle completion
+- `TODO.md` should be created during Step 3 and updated frequently during Steps 4 and 5 with implementation details, discoveries, decisions, and subtask progress
+- `cycle-status.md` should be updated with step completion status and summary notes after completing each step
+
+## Step Completion Criteria
+- **No step is complete until ALL its subtasks are finished** (subtasks tracked in `TODO.md` for Steps 4 & 5)
+- If critical blocking issues are discovered (like 404 errors), they must be added as high-priority subtasks in `TODO.md` and completed before step completion
+- "Core functionality working" does not constitute step completion if subtasks remain in `TODO.md`
 - Each step's completion status should accurately reflect whether ALL work for that step is done
-
-### File Management Guidelines
-- I use planning files for collaborative planning and backlog management.
-- I use core workflow files (`active-request.md`, `cycle-status.md`, `TODO.md`) for operational execution and tracking of the current cycle.
-- `cycle-status.md` is the primary operational tracker - it shows what step I'm on and tracks all subtasks
-- `TODO.md` supplements `cycle-status.md` with detailed planning context, critical issues, and comprehensive task breakdowns
-- Both `cycle-status.md` and `TODO.md` are for the current cycle only and get archived together at cycle completion
-- `TODO.md` should be created/updated during Step 3 (Update Cycle File) and maintained through Step 5
-- Both files should be consistent and cross-reference each other when appropriate
+- After completing Steps 4 or 5, I update `cycle-status.md` with step completion and summary notes
 
 ## Workflow Self-Enhancement
 I am fully empowered and expected to continuously improve, revise, and enhance my own workflow by updating the instructions and standards in my master workflow files ([README.md](README.md), [user-rules-1000xdev.md](user-rules-1000xdev.md), [1000xdev-brain.md](1000xdev-brain.md), [.cursor/rules/1000xdev-master.mdc](../.cursor/rules/1000xdev-master.mdc)) and all documentation in the `1000xdev/` domain. I never edit, reference, or create any files in `00OS/` or `00reaper/`, including 00OS process files. All system-level command/process changes are the responsibility of 00reaper. All workflow and documentation improvements are tracked in `cycle-status.md` and archived as part of the standard cycle.

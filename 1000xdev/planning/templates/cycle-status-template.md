@@ -1,6 +1,11 @@
 # Cycle Progress Tracker
 
-# [Ready for next cycle]
+## Current Cycle: [Cycle Name]
+
+**Status:** [Current Status] / 🔄 **[Current Stage]**
+
+**Start Date:** [Start Date]  
+**Current Stage:** [Current Step] - [Step Name] ([Status])
 
 ## Cycle Progress Checklist
 
@@ -11,104 +16,59 @@
 - [ ] Step 5: Update Supporting Materials — started: [    ], completed: [    ]
 - [ ] Step 6: Reset, Archive, & Prepare for Next Cycle — started: [    ], completed: [    ]
 
-## Status Checklist
-
-| Step | Description                        | Status   |
-|------|------------------------------------|----------|
-| 1    | AI-Driven Collaborative Planning   | [ ]      |
-| 2    | Read Relevant Documentation        | [ ]      |
-| 3    | Update Cycle File                  | [ ]      |
-| 4    | Make Changes and Test              | [ ]      |
-| 5    | Update Supporting Materials        | [ ]      |
-| 6    | Reset, Archive, & Prepare for Next | [ ]      |
-
-## Step 4: Make Changes and Test — Subtask Tracker
-
-| Subtask # | Description                                 | Status | Started      | Completed    | Notes                |
-|-----------|---------------------------------------------|--------|--------------|--------------|----------------------|
-| 4.1       | [Describe subtask 1]                        | [ ]    |              |              |                      |
-| 4.2       | [Describe subtask 2]                        | [ ]    |              |              |                      |
-| 4.3       | [Describe subtask 3]                        | [ ]    |              |              |                      |
-| ...       | ...                                         | ...    |              |              |                      |
-
-*Always mark the current in-progress subtask with [~]. Update the action log with subtask references (e.g., 'Step 4.2: Started ...').*
-
 ## Visual Progress Bar
 
 ![](https://geps.dev/progress/0)
 
-_Update the number in the URL (0-100) to reflect percent complete as steps are checked off._
+*Update the number in the URL (0-100) to reflect percent complete as steps are checked off.*
 
-## Action Log
+## Step Completion Summary
 
-| Date/Time           | Action                | Notes/Decisions                | Blockers         | Lessons Learned         |
-|---------------------|----------------------|-------------------------------|------------------|------------------------|
-|                     |                      |                               |                  |                        |
+### Step 1: AI-Driven Collaborative Planning
+- **Completed:** [Date or PENDING]
+- **Summary:** [Brief summary of planning activities and decisions]
 
-## Current Status Summary
+### Step 2: Read Relevant Documentation
+- **Completed:** [Date or PENDING]
+- **Summary:** [Brief summary of documentation reviewed and patterns identified]
 
-- **Current Step:** [Step # — Description]
-- **Outstanding Actions:** [List]
-- **Blockers:** [List]
-- **User Actions Required:** [List any actions needed from the user, if any]
+### Step 3: Update Cycle File
+- **Completed:** [Date or PENDING]
+- **Summary:** [Brief summary of cycle file updates and TODO.md creation]
 
-## Domain-Specific Context Loaded
+### Step 4: Make Changes and Test
+- **Completed:** [Date or PENDING]
+- **Summary:** [Brief summary of implementation work completed]
+- **Key Achievements:**
+  - [Achievement 1]
+  - [Achievement 2]
+  - [Achievement 3]
+  - [Achievement 4]
 
-- **Front-end:** [List key front-end documentation files reviewed]
-- **Back-end:** [List key back-end documentation files reviewed]
-- **Full-stack:** [List key full-stack workflow files reviewed]
+### Step 5: Update Supporting Materials
+- **Completed:** [Date or PENDING]
+- **Summary:** [Brief summary of documentation and supporting materials updated]
+- **Documentation Created:**
+  - `[documentation-file.md]` - [Description]
+  - `[documentation-file.md]` - [Description]
+  - [Other documentation updates]
 
-## Planned Changes & Implementation Tasks
+### Step 6: Reset, Archive, & Prepare for Next Cycle
+- **Completed:** [Date or PENDING]
+- **Summary:** [Brief summary of archival and reset activities]
 
-- [ ] [Describe each planned change or implementation task for this cycle]
-- [ ] [List files to be updated, tested, or reviewed]
-- [ ] [Document any process or documentation improvements]
-- [ ] [Summarize test results and lessons learned]
+## Current Cycle Achievements
 
-## Documentation Update Checklist
+- **[Achievement Category 1]:** [Description of achievement]
+- **[Achievement Category 2]:** [Description of achievement]
+- **[Achievement Category 3]:** [Description of achievement]
+- **[Achievement Category 4]:** [Description of achievement]
+- **[Achievement Category 5]:** [Description of achievement]
 
-The following documentation should be reviewed and updated as part of Step 5:
+## Lessons Learned
 
-- [ ] **Front-end documentation:**
-  - [ ] front-end-context
-  - [ ] front-end-dependencies
-  - [ ] front-end-overview
-
-- [ ] **Back-end documentation:**
-  - [ ] back-end-context
-  - [ ] back-end-dependencies
-  - [ ] back-end-overview
-
-- [ ] **Full Stack documentation:**
-  - [ ] back-end-development
-  - [ ] front-end-development
-  - [ ] full-stack-standards
-
-## Implementation Plan
-
-1. **Requirements Analysis**
-   - Review active-request.md requirements
-   - Identify dependencies and technical constraints
-   - Define implementation approach
-
-2. **Technical Implementation**
-   - Make focused, tactical changes to codebase
-   - Follow established patterns and conventions
-   - Add/update tests alongside code changes
-
-3. **Documentation Updates**
-   - Update relevant documentation to reflect changes
-   - Ensure documentation is clear, concise, and actionable
-   - Align documentation with current codebase structure
-
-4. **Validation & Testing**
-   - Verify all requirements are met
-   - Run relevant tests to confirm functionality
-   - Address any issues or edge cases
-
-## References
-- [1000xdev-brain.md](../1000xdev-brain.md)
-- [README.md](../README.md)
-- [user-rules-1000xdev.md](../user-rules-1000xdev.md)
-- [active-request.md](active-request.md)
-- [documentation/](../documentation/) 
+- [Lesson learned 1]
+- [Lesson learned 2]
+- [Lesson learned 3]
+- [Lesson learned 4]
+- [Lesson learned 5]

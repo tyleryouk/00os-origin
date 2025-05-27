@@ -19,9 +19,9 @@ const masterFiles = [
   '1000xdev/user-rules-1000xdev.md',
   '.cursor/rules/1000xdev-master.mdc',
   '1000xdev/cycle-status.md',
+  '1000xdev/TODO.md',
   '1000xdev/planning/active-request.md',
-  '1000xdev/documentation/README.md',
-  '1000xdev/documentation/TODO.md'
+  '1000xdev/documentation/README.md'
 ];
 
 // Parse flags

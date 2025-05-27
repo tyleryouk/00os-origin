@@ -41,16 +41,16 @@ I am 1000xdev, the autonomous application code agent for GigaSwap. This file is 
 
 ## Core Workflow Files & Relationships
 - **active-request.md**: The current requirements (WHAT needs to be done) for the active cycle.
-- **cycle-status.md**: High-level progress tracker with subtask checklists and step completion status. Focuses on tracking what's done vs. what remains.
-- **TODO.md**: Detailed implementation plan with comprehensive thoughts, notes, analysis, and technical details. Updated frequently during Steps 4 and 5 as implementation progresses.
+- **cycle-status.md**: High-level step completion tracker. Shows which of the 6 steps are complete and includes summary notes after each step completion.
+- **TODO.md**: Detailed implementation plan with comprehensive thoughts, notes, analysis, technical details, and subtask checklists for Steps 4 and 5. My primary working document during implementation.
 
 ### File Relationship Guidelines
-- `cycle-status.md` is the high-level operational tracker - shows current step, subtask completion status, and overall progress
-- `TODO.md` is the detailed implementation plan - contains technical analysis, implementation thoughts, notes, decisions, and comprehensive task breakdowns
-- `cycle-status.md` focuses on "what's complete" while `TODO.md` focuses on "how to implement and what we learned"
+- `cycle-status.md` is the high-level step tracker - shows which steps (1-6) are complete with summary notes
+- `TODO.md` is my working document - contains implementation plan, technical analysis, thoughts, notes, decisions, and subtask checklists for Steps 4 & 5
+- `cycle-status.md` focuses on "which steps are done" while `TODO.md` focuses on "how to implement and track detailed progress"
 - Both files are for the current cycle only and get archived together at cycle completion
-- `TODO.md` should be created during Step 3 and updated frequently during Steps 4 and 5 with implementation details, discoveries, and decisions
-- `cycle-status.md` should be updated with subtask completion status as work progresses
+- `TODO.md` should be created during Step 3 and updated frequently during Steps 4 and 5 with implementation details, discoveries, decisions, and subtask progress
+- `cycle-status.md` should be updated with step completion status and summary notes after completing each step
 
 ## Documentation & Context Standards
 - All standards, templates, and onboarding docs are in `documentation/` (see workflow, technical, and onboarding guides).
@@ -69,22 +69,20 @@ I am 1000xdev, the autonomous application code agent for GigaSwap. This file is 
      - I follow a "just enough context" approach that minimizes reading while maximizing productivity.
      - I load relevant documentation based on task type (front-end, back-end, or full-stack).
   3. **Update Cycle File:**
-     - I update `cycle-status.md` with high-level implementation plan and subtask checklist.
-     - I create detailed implementation plan in `TODO.md` with technical analysis, approach, and comprehensive task breakdowns.
-     - `cycle-status.md` tracks progress; `TODO.md` contains the implementation strategy and evolving thoughts.
+     - I update `cycle-status.md` with high-level step completion tracking.
+     - I create detailed implementation plan in `TODO.md` with technical analysis, approach, comprehensive task breakdowns, and subtask checklists for Steps 4 & 5.
+     - `cycle-status.md` tracks step completion; `TODO.md` contains the implementation strategy, evolving thoughts, and detailed progress tracking.
   4. **Make Changes and Test:**
      - I implement the plan by making all necessary code, test, and documentation changes.
-     - I frequently update `TODO.md` with implementation notes, discoveries, decisions, and technical details.
-     - I update `cycle-status.md` subtask completion status as work progresses.
+     - I work primarily in `TODO.md`, frequently updating it with implementation notes, discoveries, decisions, technical details, and checking off subtasks as I complete them.
      - I run all relevant tests and address any failures before proceeding.
-     - **Step 4 Completion Criteria**: ALL subtasks in `cycle-status.md` Step 4 tracker must be completed (marked [x]) before proceeding to Step 5. No exceptions for "core functionality working" - every subtask must be finished.
+     - **Step 4 Completion Criteria**: ALL subtasks in `TODO.md` Step 4 section must be completed (marked [x]) before proceeding to Step 5. No exceptions for "core functionality working" - every subtask must be finished.
   5. **Update Supporting Materials:**
      - I update documentation in the `documentation/` folder as needed.
-     - I continue updating `TODO.md` with final implementation notes and lessons learned.
-     - I update `cycle-status.md` subtask completion status for documentation tasks.
+     - I continue working in `TODO.md`, updating it with final implementation notes, lessons learned, and checking off Step 5 subtasks.
      - I ensure documentation is modular, focused, and directly actionable.
      - I maintain consistent documentation formats across domains.
-     - **Step 5 Completion Criteria**: ALL subtasks in `cycle-status.md` Step 5 tracker must be completed before proceeding to Step 6.
+     - **Step 5 Completion Criteria**: ALL subtasks in `TODO.md` Step 5 section must be completed before proceeding to Step 6.
   6. **Reset, Archive, & Prepare for Next Cycle:**
      - I archive the completed `cycle-status.md` file to `archive/` with timestamp.
      - I archive the completed `TODO.md` file to `archive/` with the same timestamp.
@@ -94,10 +92,11 @@ I am 1000xdev, the autonomous application code agent for GigaSwap. This file is 
      - I prepare for the next cycle.
 
 ### Step Completion Criteria
-- **No step is complete until ALL its subtasks are finished**
-- If critical blocking issues are discovered (like 404 errors), they must be added as high-priority subtasks and completed before step completion
-- "Core functionality working" does not constitute step completion if subtasks remain
+- **No step is complete until ALL its subtasks are finished** (subtasks tracked in `TODO.md` for Steps 4 & 5)
+- If critical blocking issues are discovered (like 404 errors), they must be added as high-priority subtasks in `TODO.md` and completed before step completion
+- "Core functionality working" does not constitute step completion if subtasks remain in `TODO.md`
 - Each step's completion status should accurately reflect whether ALL work for that step is done
+- After completing Steps 4 or 5, I update `cycle-status.md` with step completion and summary notes
 
 ## Protocol for Systematic Workflow Enhancement
 1. I review this file and all referenced standards/templates.

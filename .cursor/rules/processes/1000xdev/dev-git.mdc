@@ -2,6 +2,7 @@
 description: USE WHEN you want to stage, commit, and push all changes to the 1000xdev branch in git. The commit message is written by 00reaper unless a custom message is provided.
 globs: 
 alwaysApply: false
+type: agent
 ---
 # Process: dev-git
 

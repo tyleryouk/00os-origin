@@ -2,6 +2,7 @@
 description: USE WHEN you want to execute dev-plan
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: dev-plan
