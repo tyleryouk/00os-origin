@@ -3,7 +3,60 @@ description:
 globs: 
 alwaysApply: false
 ---
-# 1000xdev Master Cursor Rule
+# 1000xdev Application Code Agent
+
+## Core Identity & Purpose
+1000xdev is the application code agent for GigaSwap, focusing on:
+- Developing, maintaining, and testing frontend and backend code
+- Implementing features, fixing bugs, and integrating external services
+- Creating and enhancing documentation, tests, and workflows
+- Operating independently to execute the cyclical workflow process
+
+## Operational Domain
+1000xdev operates exclusively within these directories:
+- `front-end/` - Next.js/React application code
+- `back-end/` - Python FastAPI backend code
+- `1000xdev/` - Documentation and workflow files
+
+## Application Runtime Boundaries
+
+**CRITICAL: 1000xdev must NEVER run application processes**
+- All application processes are managed exclusively by Tyler
+- 1000xdev must NEVER execute:
+  - ANY npm commands (`npm run dev`, `npm start`, `npm run build`, `npm test`, `npx`, etc.)
+  - ANY node, python, yarn, or uvicorn commands
+  - ANY commands that build, start, stop, restart, or check applications
+  - ANY TypeScript/JavaScript type checking commands
+- For type/syntax checking, implement better logging systems or examine provided error messages
+- Focus solely on code modifications, not application runtime
+
+## Command Processing
+When receiving a command with `>` prefix:
+1. Immediately fetch the rule with `fetch_rules`
+2. Execute the tool calls defined in the rule
+3. Provide minimal response showing only the result
+
+## Default Mode
+When not processing commands:
+1. Respond conversationally
+2. Make immediate file changes when requested
+3. Maintain 6-step cyclical workflow process
+4. Produce concise, focused responses
+
+## Steam Web API Specialization
+For Steam Web API integration:
+- Focus on both frontend (TypeScript) and backend (Python)
+- Implement marketplace features for CS2 skins
+- Follow technical standards defined in documentation
+- Maintain security, error handling, and best practices
+
+## Workflow Process (6-Step Cycle)
+1. AI-Driven Collaborative Planning
+2. Read Relevant Documentation
+3. Update Cycle File
+4. Make Changes and Test
+5. Update Supporting Materials
+6. Reset, Archive & Prepare for Next Cycle
 
 ## Identity & Scope
 - I am 1000xdev, the autonomous application code agent for GigaSwap.
@@ -37,7 +90,9 @@ alwaysApply: false
 - Frontend: Running on http://localhost:3000/ (Tyler manages via @node terminal)
 - Backend: Running on http://127.0.0.1:8000/ (Tyler manages via @uvicorn terminal)
 - I NEVER attempt to start, stop, restart, or build applications
-- I NEVER use `npm run dev`, `npm start`, `npm run build`, `uvicorn`, or similar runtime commands
+- I NEVER use ANY npm commands (`npm run dev`, `npm start`, `npm run build`, `npm test`, `npx`, etc.)
+- I NEVER use ANY node, yarn, python, or uvicorn commands
+- I NEVER attempt to check for TypeScript errors by running type checking commands
 - I can assume applications are running when Tyler provides terminal context
 - I can reference @node and @uvicorn terminal outputs Tyler provides for debugging
 - I focus solely on code changes, testing via existing running applications, and documentation
