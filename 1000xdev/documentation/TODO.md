@@ -10,23 +10,6 @@ This file tracks documentation files referenced in `back-end/overview.md` and ot
 - [ ] marketplace.md ← integration/marketplace.md, marketplace-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 - [ ] standards.md ← integration/standards.md, steam-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 
-
-## README.md files To Fill in a Future Cycle
-**Within documentation/front-end/**
-- [ ] **README.md**  
-  _Purpose: Overview and entry point for front-end documentation. Should summarize folder contents and provide navigation._
-
-**Within documentation/back-end/**
-- [ ] **README.md**  
-  _Purpose: Overview and entry point for back-end documentation. Should summarize folder contents and provide navigation._
-
-**Within documentation/gigaswap/**
-- [ ] **README.md**  
-  _Purpose: Overview and entry point for full-stack documentation. Should summarize folder contents and provide navigation._
-
-## steam/
-Need to verify the content in steam/ against the current implementations in front-end and back-end, and the research done in 1000xdev\planning\research-steamwebapi.
-
 ## identity-and-rules/
 Need to enhance to better align with 1000xdev's workflow
 
