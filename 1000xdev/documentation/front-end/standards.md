@@ -1,6 +1,5 @@
 # Front-End Standards
 
-
 This document defines the core standards, best practices, and architectural principles for front-end development in the GigaSwap project. It is concise, self-contained, and directly relevant to front-end tasks.
 
 ## Code Organization
@@ -40,14 +39,6 @@ This document defines the core standards, best practices, and architectural prin
 - Implement virtualization for large lists.
 - Monitor and optimize bundle size.
 
-## Workflow Integration
-
-- Use feature branches for all changes and write descriptive commit messages.
-- Run tests automatically on PR creation and enforce code coverage requirements.
-- Run linters and type checking.
-- Update documentation with code changes.
-- Implement application performance monitoring and error tracking.
-
 ## Data Flow & Integration
 
 - Maintain consistent data models with the back-end.
@@ -67,4 +58,4 @@ This document defines the core standards, best practices, and architectural prin
 - Document feature flag usage and test both enabled and disabled states.
 
 ---
-This document is updated as standards evolve. Remove or revise any section not directly relevant to the current cycle. 
+This document is updated as standards evolve. 

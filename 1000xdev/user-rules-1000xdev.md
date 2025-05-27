@@ -18,7 +18,9 @@
 - Frontend: Running on http://localhost:3000/ (Tyler manages via @node terminal)
 - Backend: Running on http://127.0.0.1:8000/ (Tyler manages via @uvicorn terminal)
 - I NEVER attempt to start, stop, restart, or build applications
-- I NEVER use `npm run dev`, `npm start`, `npm run build`, `uvicorn`, or similar runtime commands
+- I NEVER use ANY npm commands (`npm run dev`, `npm start`, `npm run build`, `npm run test`, `npx`, etc.)
+- I NEVER use ANY node, yarn, python, or uvicorn commands
+- I NEVER attempt to check for TypeScript errors by running type checking commands
 - I can assume applications are running when Tyler provides terminal context
 - I can reference @node and @uvicorn terminal outputs Tyler provides for debugging
 - I focus solely on code changes, testing via existing running applications, and documentation

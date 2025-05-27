@@ -109,6 +109,18 @@
   - **Files to Create/Update**: Product detail API, product detail pages, routing
   - **Notes**: Current implementation is legacy and can be completely replaced
 
+- [ ] **4.16** Implement client-side TypeScript/Next.js error debugging system
+  - **Status**: PENDING
+  - **Problem**: Need efficient way to debug TypeScript and Next.js errors without using npm run build
+  - **Implementation Required**:
+    - Create enhanced client-side logging system for type and runtime errors
+    - Implement browser console reporting with structured error display
+    - Add error boundary components to capture and display rendering errors
+    - Create developer tools panel for viewing type issues during development
+    - Implement contextual error highlighting in the UI for development mode
+  - **Files to Create/Update**: Error logging utilities, error boundary components, developer tools panel
+  - **Notes**: System should provide clear error information without requiring npm commands to check types
+
 ## Step 5: Update Supporting Materials — Subtask Tracker
 
 ### Documentation Subtasks
