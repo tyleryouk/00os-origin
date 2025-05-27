@@ -2,6 +2,26 @@
 
 > **[Updated 2025-06-26]** - **Proxy Pattern Implementation**
 
+## ⚠️ CRITICAL: TERMINAL SETUP REQUIRED ⚠️
+
+**BEFORE running ANY Steam API tests or scripts, you MUST run these commands:**
+
+```powershell
+# 1. Change to back-end directory
+cd back-end
+
+# 2. Activate virtual environment
+.\.gigaland\Scripts\Activate.ps1
+
+# 3. Verify (.gigaland) appears in your prompt
+# Correct prompt: (.gigaland) PS C:\...\back-end>
+```
+
+**❌ WRONG:** Running `python scripts/test_*.py` from workspace root  
+**✅ CORRECT:** Running from back-end directory with virtual environment activated
+
+**This is documented here because it's required for ALL Steam testing work.**
+
 ## Overview
 
 GigaSwap uses a **simple proxy pattern** for Steam API integration with a dual-approach testing strategy:
