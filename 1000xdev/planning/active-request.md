@@ -1,62 +1,93 @@
 # Active Request
 
 <!--
-This file is drafted and updated by 1000xdev based on backlog.md and final-goals.md. The user reviews and provides feedback; 1000xdev iterates until approved. Only one request is ever present.
---->
+This file is drafted and updated by 1000xdev based on backlog.md and final-goals.md.
+The user reviews and provides feedback; 1000xdev iterates until approved.
+Only one request is ever present in this file.
+----->
 
-## Requirements: Back-End Endpoint Testing & Documentation
+## Requirements: Front-End Steam Inventory Integration for /market Page
 
-1. Implement a seamless testing suite for all major endpoints in `back-end/`.
-   - Write or update tests for all public API endpoints.
-   - Ensure tests cover error handling, edge cases, and response formats.
-   - Validate endpoint reachability and data correctness using live HTTP requests to a running FastAPI instance.
-   - Use pytest and the `requests` library for live endpoint testing (not FastAPI TestClient mocks).
+### Objective
+Integrate Steam inventory endpoints in the front-end to display CS2 skin inventories from two Skinport bots on the /market page, creating a functional marketplace interface.
 
-2. Revise and enhance the documentation in `1000xdev/documentation/back-end/`.
-   - Document the testing workflow, including setup, execution, and coverage requirements.
-   - Ensure documentation is clear, concise, and actionable for future cycles.
-   - Update or create any missing files needed for a complete back-end testing reference.
+### Primary Data Sources
+- **Skinport Bot #2331**: `GET /api/steam/profile/inventory/76561199562411448`
+- **Skinport Bot #3257**: `GET /api/steam/profile/inventory/76561199800276630`
 
-## Context References
-- **Key Files:**
-  - cycle-status.md
-  - 1000xdev-brain.md
-  - 1000xdev/planning/templates/
-  - 1000xdev/documentation/back-end/
-  - 1000xdev/planning/backlog.md
-  - 1000xdev/planning/final-goals.md
-- **Related Requests:**
-  - REQ-000 (this request)
-  - REQ-001 (full stack endpoint and testing process, next cycle)
+### Requirements
+
+1. **API Integration Layer**
+   - Create Steam API service module in `front-end/src/api/` for inventory endpoints
+   - Implement proper error handling for large response payloads (6MB+ each)
+   - Add loading states and timeout handling for large datasets
+   - Handle network errors and implement retry logic
+
+2. **Data Models & Types**
+   - Create TypeScript interfaces in `front-end/src/types/api/` based on steamwebapi.com inventory response format
+   - Model individual inventory items with pricing, rarity, condition, and image data
+   - Create aggregated inventory models for combined bot inventories
+   - Implement proper null/undefined handling for optional fields
+
+3. **Market Page Implementation**
+   - Update `/market` page to display combined inventory from both Skinport bots
+   - Implement inventory item cards with images, names, prices, and rarity information
+   - Add filtering capabilities (price range, rarity, condition, weapon type)
+   - Add sorting options (price ascending/descending, rarity, name)
+   - Implement search functionality across combined inventories
+   - Add basic pagination for thousands of items
+
+4. **User Experience**
+   - Add loading indicators for inventory fetching
+   - Implement error states for failed requests with retry options
+   - Add refresh functionality for real-time inventory updates
+   - Ensure responsive design for mobile and desktop
 
 ## Domain-Specific Context
 
+- **Front-end Context:**
+  - Key components: Market page, inventory item cards, filtering/sorting components
+  - API integrations: Steam inventory endpoints, existing API client patterns
+  - UI/UX considerations: Large dataset handling, responsive design, loading states
+
 - **Back-end Context:**
-  - API endpoints: [List relevant endpoints]
-  - Database models: [List relevant models]
-  - External services: [List external dependencies]
-
-## Documentation Needs
-
-- [List any documentation that should be created or updated]
-- [Identify gaps in existing documentation]
-- [Specify documentation format or standards to follow]
+  - API endpoints: Steam inventory proxy endpoints (already implemented)
+  - External services: steamwebapi.com integration
+  - Response format: Direct steamwebapi.com JSON arrays (no transformation)
 
 ## Technical Considerations
 
-- [Note any technical constraints or requirements]
-- [Highlight potential challenges]
-- [Suggest implementation approaches]
+- **Response Size**: Each endpoint returns 6MB+ JSON arrays with thousands of items
+- **Base URLs**: `http://127.0.0.1:8000` (development) / `https://gigaland-backend-537p.onrender.com` (production)
+- **Response Format**: Direct steamwebapi.com format (no backend transformation needed)
+- **Performance**: Basic handling of thousands of items (MVP approach)
 
 ## Testing Requirements
 
-- [Specify testing scope]
-- [List critical test cases]
-- [Note any specific testing frameworks or tools]
+- Unit tests for Steam API service functions
+- Component tests for inventory item cards and filtering
+- Integration tests for market page with mock data
+- Error handling tests for network failures
+
+## Documentation Needs
+
+- Update `1000xdev/documentation/steam/` with front-end integration patterns
+- Document TypeScript interfaces and API service implementation
+- Create front-end testing documentation for Steam endpoints
+- Update component documentation for market page
+
+## Success Criteria
+
+- `/market` page successfully displays combined inventory from both bots
+- Inventory items render with proper images, pricing, and metadata
+- Filtering, sorting, and search functionality works correctly
+- Page loads and displays inventory data successfully
+- Error handling and loading states provide good user experience
+- Responsive design works on mobile and desktop
+- Code follows established front-end patterns and standards
 
 ## References
-- [backlog.md](backlog.md)
-- [final-goal.md](final-goal.md)
-- [documentation/front-end-architecture/](../documentation/front-end-architecture/)
-- [documentation/back-end-architecture/](../documentation/back-end-architecture/)
-- [documentation/full-stack-workflow/](../documentation/full-stack-workflow/) 
+- [backlog.md](backlog.md) - REQ-000
+- [final-goals.md](final-goals.md) - Phase 2: Marketplace Foundations
+- [1000xdev/documentation/front-end/](../documentation/front-end/) - Front-end architecture and patterns
+- [1000xdev/documentation/steam/](../documentation/steam/) - Steam API integration documentation 

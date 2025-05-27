@@ -1,6 +1,30 @@
 # Back-End Overview
 
-> **[Migrated from back-end-architecture/back-end-overview.md, 2024-06-11]**
+## ⚠️ REQUIRED TERMINAL SETUP - READ THIS FIRST ⚠️
+
+**BEFORE running ANY back-end commands, scripts, or tests, you MUST:**
+
+```powershell
+# 1. Change to back-end directory
+cd back-end
+
+# 2. Activate virtual environment  
+.\.gigaland\Scripts\Activate.ps1
+
+# 3. Verify you see (.gigaland) in your prompt
+# Your prompt should look like: (.gigaland) PS C:\...\back-end>
+```
+
+**This applies to:**
+- ✅ Running any Python scripts (`python scripts/test_*.py`)
+- ✅ Running tests (`python -m pytest`)
+- ✅ Installing packages (`pip install`)
+- ✅ Starting the server (`uvicorn main:app --reload`)
+- ✅ ANY Python command in the back-end
+
+**If you don't see `(.gigaland)` in your prompt, the virtual environment is NOT activated!**
+
+---
 
 # Back-End Architecture Overview
 

@@ -8,7 +8,6 @@ This file tracks documentation files referenced in `back-end/overview.md` and ot
 - [ ] external-apis.md ← integration/external-apis.md, API-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 - [ ] integration.md -< integration-related sections related to full-stack development _(currently empty, to be filled in a future cycle)_
 - [ ] marketplace.md ← integration/marketplace.md, marketplace-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
-- [ ] steam.md ← integration/steam.md, steam-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 - [ ] standards.md ← integration/standards.md, steam-related sections of full-stack-workflow/ _(currently empty, to be filled in a future cycle)_
 
 

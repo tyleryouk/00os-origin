@@ -100,7 +100,7 @@ GigaSwap uses a dual-approach testing strategy that relies on specific packages:
 
 ### Installing Testing Dependencies
 
-```bash
+```powershell
 # Activate virtual environment
 .\.gigaland\Scripts\Activate.ps1
 

@@ -123,7 +123,7 @@ Ensuring the reliability, robustness, and correctness of the Steam API integrati
 
 ### Phase 2: Marketplace Foundations
 - [ ] Implement `/steam/api/items` endpoint from SteamWebAPI.com
-- [ ] Develop `/market` page with hardcoded list of popular CS2 skins
+- [ ] Develop `/market` page with list of inventory from skinport bots
 - [ ] Implement sorting by item_group, item_type, and item_name
 - [ ] Create basic item display components
 - [ ] Connect frontend components to backend API endpoints

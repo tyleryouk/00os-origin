@@ -454,6 +454,142 @@
           "description": "Failed to fetch data from Steam API."
         }
       ]
+    },
+    {
+      "method": "GET",
+      "path": "/steam/api/float/screenshot",
+      "description": "🖼️ Generate Screenshot with Float Information",
+      "base_url_example": "https://www.steamwebapi.com/steam/api/float/screenshot?url=steam://rungame/730/...&key=YOUR_API_KEY",
+      "details": [
+        "Generate a screenshot image with detailed float information for a specific item in CS:GO or CS2.",
+        "The float data is retrieved using the provided inspect link.",
+        "The response streams the generated image directly to the client.",
+        "Supports custom backgrounds, logos, and color schemes for branding.",
+        "Can return image as PNG stream, base64 string, or download format."
+      ],
+      "usage_notes": [
+        "Provide the item's inspect link using the `url` parameter.",
+        "Use `as_base64=1` for easier integration when you need base64 format.",
+        "Customize appearance with color schemes and custom backgrounds/logos.",
+        "Set `format=download` to trigger browser download of the image."
+      ],
+      "parameters": [
+        {
+          "name": "key",
+          "location": "query",
+          "required": true,
+          "description": "API key for authentication. Retrieve it from your Dashboard."
+        },
+        {
+          "name": "url",
+          "location": "query",
+          "required": true,
+          "description": "The inspect link of the item. Example: steam://rungame/730/....",
+          "example": "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561199562411448A38259147952D16613316513788263094"
+        },
+        {
+          "name": "as_base64",
+          "location": "query",
+          "required": false,
+          "description": "Set to 1 to return the image as a base64 string. Default is 0, base64 is sometimes helpful for easier integration.",
+          "default": "0"
+        },
+        {
+          "name": "color",
+          "location": "query",
+          "required": false,
+          "description": "Color scheme for the screenshot. Options: black, blue, green, orange, purple, red, white, yellow, gray.",
+          "default": "green",
+          "options": ["black", "blue", "green", "orange", "purple", "red", "white", "yellow", "gray"]
+        },
+        {
+          "name": "background_url",
+          "location": "query",
+          "required": false,
+          "description": "Custom background image URL (PNG format). Overrides default background."
+        },
+        {
+          "name": "logo_url",
+          "location": "query",
+          "required": false,
+          "description": "Custom logo image URL (PNG format). Overrides default logo."
+        },
+        {
+          "name": "logo_offset_start",
+          "location": "query",
+          "required": false,
+          "description": "Logo start position. Options: top left, top right, bottom left, bottom right.",
+          "default": "top left",
+          "options": ["top left", "top right", "bottom left", "bottom right"]
+        },
+        {
+          "name": "logo_offset_x",
+          "location": "query",
+          "required": false,
+          "description": "Horizontal offset for the logo.",
+          "default": "80"
+        },
+        {
+          "name": "logo_offset_y",
+          "location": "query",
+          "required": false,
+          "description": "Vertical offset for the logo.",
+          "default": "80"
+        },
+        {
+          "name": "logo_opacity",
+          "location": "query",
+          "required": false,
+          "description": "Opacity of the logo (0 to 1).",
+          "default": "1.0"
+        },
+        {
+          "name": "logo_width",
+          "location": "query",
+          "required": false,
+          "description": "Width of the logo in pixels (Max: 500).",
+          "default": "400"
+        },
+        {
+          "name": "format",
+          "location": "query",
+          "required": false,
+          "description": "Send a format - screen (default) for show, download for download the image, base64 for base64 image.",
+          "default": "screen",
+          "options": ["screen", "download", "base64"]
+        }
+      ],
+      "responses": [
+        {
+          "code": 200,
+          "description": "The image has been successfully generated and streamed to the client.",
+          "content_type": "image/png"
+        },
+        {
+          "code": 402,
+          "description": "Rate limit exceeded. Too many requests have been made within the allowed period."
+        },
+        {
+          "code": 404,
+          "description": "The requested item could not be found. Verify the inspect link or database."
+        },
+        {
+          "code": 406,
+          "description": "Invalid parameters or inspect link provided. Ensure the inspect link is correct."
+        },
+        {
+          "code": 416,
+          "description": "Service is overloaded or unable to retrieve float information. Try again later."
+        },
+        {
+          "code": 417,
+          "description": "Unable to retrieve float information for the item. Verify the inspect link."
+        },
+        {
+          "code": 424,
+          "description": "The image stream failed due to an internal issue. Contact support if the problem persists."
+        }
+      ]
     }
   ]
 }
