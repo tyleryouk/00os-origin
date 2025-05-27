@@ -2,6 +2,7 @@
 description: USE when you want to execute dev-update-cycle
 globs: 
 alwaysApply: false
+type: agent
 ---
 
 # Process: dev-update-cycle

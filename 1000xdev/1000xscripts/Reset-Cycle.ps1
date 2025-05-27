@@ -24,8 +24,10 @@ $ArchiveFolder = Join-Path $Archive $Timestamp
 # Files to move and reset
 $ActiveRequest = Join-Path $Planning 'active-request.md'
 $CycleStatus = Join-Path $DevRoot 'cycle-status.md'
+$TODO = Join-Path $DevRoot 'TOOD.md'
 $ActiveRequestTemplate = Join-Path $Templates 'active-request-template.md'
 $CycleStatusTemplate = Join-Path $Templates 'cycle-status-template.md'
+$TODOTemplate = Join-Path $Templates 'TODO-template.md'
 
 # Create archive folder if it doesn't exist
 if (!(Test-Path $Archive)) {
@@ -62,6 +64,17 @@ try {
     Write-Host "ERROR: Failed to copy cycle-status.md: $_"
 }
 
+try {
+    if (Test-Path $TODO) {
+        Copy-Item $TODO (Join-Path $ArchiveFolder 'TODO.md') -ErrorAction Stop
+        Write-Host "Copied TODO.md to $ArchiveFolder"
+    } else {
+        Write-Host "WARNING: TODO.md not found at $CycleStatus"
+    }
+} catch {
+    Write-Host "ERROR: Failed to copy TODO.md: $_"
+}
+
 # Copy templates to reset files
 try {
     if (Test-Path $ActiveRequestTemplate) {
@@ -83,6 +96,17 @@ try {
     }
 } catch {
     Write-Host "ERROR: Failed to reset cycle-status.md: $_"
+}
+
+try {
+    if (Test-Path $TODOTemplate) {
+        Copy-Item $TODOTemplate $TODO -Force
+        Write-Host "Copied TODO-template.md to 1000xdev/TODO.md"
+    } else {
+        Write-Host "ERROR: Template not found at $TODOTemplate"
+    }
+} catch {
+    Write-Host "ERROR: Failed to reset TODO.md: $_"
 }
 
 Write-Host "Cycle reset complete. Ready for the next cycle." 
