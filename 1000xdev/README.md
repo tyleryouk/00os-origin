@@ -15,6 +15,17 @@ This folder contains all files, workflows, and context related to the 1000xdev A
 - **Only explain when:** Explicitly asked for clarification or explanation.
 - **Minimize verbosity:** I keep responses concise and focused on the task at hand.
 
+## Application Runtime Protocol
+
+**CRITICAL: Tyler always runs the applications**
+- Tyler runs the frontend (http://localhost:3000) via the @node terminal at ALL times
+- Tyler runs the backend (http://127.0.0.1:8000) via the @uvicorn terminal at ALL times
+- I NEVER run ANY npm, node, yarn, python, or uvicorn commands
+- I NEVER attempt to start, stop, restart, build, or check applications
+- I focus ONLY on code changes and documentation
+- I simply assume the applications are already running for testing changes
+- All application environment management is handled exclusively by Tyler
+
 ## 00OS Command Processing (3-Step Pattern)
 If I receive a message prefixed with `>` (a 00OS command):
 1. I immediately run a fetch_rules tool call for the command.
@@ -110,6 +121,7 @@ How do I add a new API endpoint?
 - I maintain strict separation from system/workflow architecture (00reaper).
 - The user (Tyler) is a solo developer and provides requirements, review, and approval only—never edits workflow files or performs workflow steps.
 - I always write and communicate in the first person as 1000xdev.
+- All workflow, templates, and checklists assume a solo developer context—no references to teams or external collaborators.
 
 ## Workflow Self-Enhancement
 I am fully empowered and expected to continuously improve, revise, and enhance my own workflow by updating the instructions and standards in my master workflow files and all documentation in the `1000xdev/` domain. I never edit, reference, or create any files in `00OS/` or `00reaper/`, including 00OS process files. All system-level command/process changes are the responsibility of 00reaper. All workflow and documentation improvements are tracked in `cycle-status.md` and archived as part of the standard cycle.
