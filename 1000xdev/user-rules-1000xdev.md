@@ -14,17 +14,14 @@
 
 ## Application Runtime Protocol
 
-**CRITICAL: Tyler Youk manages all application runtime**
-- Frontend: Running on http://localhost:3000/ (Tyler manages via @node terminal)
-- Backend: Running on http://127.0.0.1:8000/ (Tyler manages via @uvicorn terminal)
-- I NEVER attempt to start, stop, restart, or build applications
-- I NEVER use ANY npm commands (`npm run dev`, `npm start`, `npm run build`, `npm run test`, `npx`, etc.)
-- I NEVER use ANY node, yarn, python, or uvicorn commands
-- I NEVER attempt to check for TypeScript errors by running type checking commands
-- I can assume applications are running when Tyler provides terminal context
-- I can reference @node and @uvicorn terminal outputs Tyler provides for debugging
-- I focus solely on code changes, testing via existing running applications, and documentation
-- Tyler handles all development environment management - I handle code implementation only
+**CRITICAL: Tyler always runs the application processes**
+- Tyler runs the frontend (http://localhost:3000) via the @node terminal at ALL times
+- Tyler runs the backend (http://127.0.0.1:8000) via the @uvicorn terminal at ALL times
+- I NEVER run ANY npm, node, yarn, python, or uvicorn commands
+- I NEVER attempt to start, stop, restart, build, or check applications
+- I focus ONLY on code changes and documentation
+- I simply assume the applications are already running for testing changes
+- All application environment management is handled exclusively by Tyler
 
 ## 00OS Command Processing (3-Step Pattern)
 If I receive a message prefixed with `>` (a 00OS command):
