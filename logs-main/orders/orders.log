@@ -1,0 +1,640 @@
+[2025-03-11 19:07:27,862] INFO - Order routes initialized
+[2025-03-11 19:09:38,016] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 19:09:38,435] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:42:59,871] INFO - Order routes initialized
+[2025-03-11 22:44:17,649] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:44:18,068] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:14,658] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:15,087] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:19,972] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:20,344] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:22,600] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:22,988] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:27,341] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:27,737] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:29,711] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:30,098] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:34,529] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:34,946] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:47:41,047] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:47:41,460] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:07,685] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-11 22:53:09,612] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:10,036] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:17,065] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:17,460] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:13,582] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:13,936] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:22,063] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:22,430] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:19,523] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-11 23:04:21,295] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:21,701] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:31,454] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:31,842] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:35,810] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:36,186] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:41:01,625] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-11 23:41:03,521] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:41:03,941] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:41:36,527] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:41:36,531] ERROR - Error in get_user_orders: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:36,532] ERROR - Error in get_user_orders_service: 
+[2025-03-11 23:41:37,614] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:38,624] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:39,751] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:40,779] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:41,797] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:42,820] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:43,859] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:45,890] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:46,918] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:47,950] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:48,980] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:53,014] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:54,034] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:55,053] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:56,078] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:26,449] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:27,515] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:28,530] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:29,545] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:30,559] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:31,572] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:32,597] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:33,622] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:35,644] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:36,662] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:37,677] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:38,692] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:17,863] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:18,919] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:19,930] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:20,944] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:21,973] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:22,992] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:24,008] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:25,022] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:56:51,862] INFO - Order routes initialized
+[2025-03-11 23:57:39,434] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:57:48,460] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:58:03,113] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:01:37,093] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:01:42,416] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:11:28,542] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 00:11:31,849] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:11:56,121] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:12:06,829] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:12:12,405] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:12:57,398] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:17:55,613] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:17:56,061] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:18:06,534] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:18:07,055] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:19:58,565] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:19:58,959] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:29,541] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:29,971] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:39,235] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:39,645] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:28:28,797] INFO - Order routes initialized
+[2025-03-12 00:29:41,918] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:42,347] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:48,260] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:48,620] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:53,354] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:53,742] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:57,354] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:57,755] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:35,825] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 00:39:37,795] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:38,208] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:45,244] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:45,678] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:29,679] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 00:45:32,570] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:32,979] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:39,405] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:39,811] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:46:41,055] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:39,212] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:54,856] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:50:01,363] INFO - Order routes initialized
+[2025-03-12 00:56:33,759] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:56:40,297] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:08:44,035] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 01:08:46,158] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:08:50,803] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:09:40,394] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:09:40,860] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:09:58,716] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:09:59,104] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:22,824] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:23,217] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:13:28,171] ERROR - Error in get_user_orders_service: Database connection failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[2025-03-12 01:13:28,171] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:29,190] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:30,214] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:31,223] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:32,244] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:33,255] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:34,268] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:13:35,277] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:17,138] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:18,169] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:19,188] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:20,205] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:21,246] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:22,271] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:23,286] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:24,311] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:26,337] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:27,354] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:28,371] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:29,387] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:33,412] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:34,436] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:35,456] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:36,478] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:39,423] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:14:49,803] INFO - Order routes initialized
+[2025-03-12 01:15:02,791] INFO - Order routes initialized
+[2025-03-12 01:15:31,931] INFO - Order routes initialized
+[2025-03-12 01:17:22,794] INFO - Order routes initialized
+[2025-03-12 01:18:00,565] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:18:10,326] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:13,805] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:17,699] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:24,603] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:48,948] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:23:18,634] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:23:19,249] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:25,713] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:30,410] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:50,658] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:55,474] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:45,512] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:48,833] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:29:15,981] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:29:18,768] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:18,690] INFO - Fetching orders for None 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:18,692] ERROR - Error in get_user_orders: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:18,692] ERROR - Error in get_user_orders_service: 
+[2025-03-12 01:30:19,710] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:20,721] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:21,736] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:22,760] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:23,774] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:24,780] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:25,793] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:27,817] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:28,844] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:29,854] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:30,874] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:34,893] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:35,908] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:36,927] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:37,945] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:04,772] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:05,782] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:06,787] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:07,796] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:08,825] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:09,853] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:10,866] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:11,884] ERROR - Error in get_user_orders_service: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:34:24,876] INFO - Order routes initialized
+[2025-03-12 01:39:57,916] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:06,420] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:44:24,804] INFO - Order routes initialized
+[2025-03-12 01:44:56,183] INFO - Order routes initialized
+[2025-03-12 01:44:59,658] INFO - Order routes initialized
+[2025-03-12 01:45:11,657] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:18,394] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:11:05,986] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 02:11:07,813] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:11:11,546] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:12:04,944] INFO - Order routes initialized
+[2025-03-12 02:12:13,786] INFO - Order routes initialized
+[2025-03-12 02:13:57,971] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:25:42,175] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 02:25:43,973] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:25:47,757] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:26:02,405] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:27:22,381] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:27:33,281] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:27:55,866] INFO - Fetching orders for None 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:28:06,398] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:06,850] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:11,405] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:11,781] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:18,349] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:18,785] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:29,897] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:30,312] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:55,157] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:55,553] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:38:16,161] INFO - Order routes initialized
+[2025-03-12 02:51:37,002] INFO - Order routes initialized
+[2025-03-12 02:54:27,266] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:27,697] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:44,509] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:44,925] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:55,052] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:55,440] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:55:05,358] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:55:05,775] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:55:07,724] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:55:08,108] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 11:57:12,262] INFO - Order routes initialized
+[2025-03-12 12:28:15,237] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:15,720] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:17,330] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:17,676] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:22,476] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:22,794] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 15:37:02,848] INFO - Order routes initialized
+[2025-03-14 10:20:15,009] INFO - Order routes initialized
+[2025-03-14 11:32:29,893] INFO - Order routes initialized
+[2025-03-14 11:43:43,357] INFO - Order routes initialized
+[2025-03-14 13:14:30,308] INFO - Order routes initialized
+[2025-03-14 15:27:19,085] INFO - Order routes initialized
+[2025-03-14 22:53:36,665] INFO - Order routes initialized
+[2025-03-15 15:43:58,892] INFO - Order routes initialized
+[2025-03-15 16:36:34,037] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:36:34,632] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:37:27,681] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:37:28,105] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 20:29:03,657] INFO - Order routes initialized
+[2025-03-15 22:09:59,052] INFO - Order routes initialized
+[2025-03-16 11:53:39,307] INFO - Order routes initialized
+[2025-03-16 14:48:05,621] INFO - Order routes initialized
+[2025-03-16 17:54:35,711] INFO - Order routes initialized
+[2025-03-16 18:11:37,916] INFO - Order routes initialized
+[2025-03-16 18:48:37,769] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:48:39,199] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:49:06,331] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:49:07,756] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 19:11:34,634] INFO - Order routes initialized
+[2025-03-17 00:03:16,651] INFO - Order routes initialized
+[2025-03-18 17:44:04,700] INFO - Order routes initialized
+[2025-03-18 17:47:04,324] INFO - Fetching orders for None 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:17:34,489] INFO - Order routes initialized
+[2025-03-18 18:24:14,861] INFO - Fetching orders for None 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:20,996] INFO - Fetching orders for None 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:25,133] INFO - Fetching orders for None 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:26,609] INFO - Fetching orders for None 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:40,879] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:41,292] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:47,666] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:48,007] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 19:30:03,057] INFO - Order routes initialized
+[2025-03-18 20:01:03,496] INFO - Order routes initialized
+[2025-03-19 22:15:58,967] INFO - Order routes initialized
+[2025-03-19 22:18:46,173] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-19 22:18:46,607] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:42:03,793] INFO - Order routes initialized
+[2025-03-20 05:43:34,764] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:43:35,170] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:20,356] ERROR - Error in get_user_orders_service: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-20 06:00:22,452] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:22,873] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:27,258] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:27,605] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:34:30,516] INFO - Order routes initialized
+[2025-03-20 06:34:45,320] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:34:45,857] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:35:48,534] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:35:48,939] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:36:10,742] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:36:11,104] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 08:10:37,629] INFO - Order routes initialized
+[2025-03-20 08:43:40,287] INFO - Order routes initialized
+[2025-03-20 09:03:14,337] INFO - Order routes initialized
+[2025-03-20 09:09:43,220] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:09:43,663] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:09:56,414] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:09:56,844] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:10:11,318] INFO - Fetching orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:10:11,774] INFO - Retrieved 2 orders for None 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 17:38:39,848] INFO - Order routes initialized
+[2025-03-21 16:36:23,626] INFO - Order routes initialized
+[2025-03-21 23:05:43,727] INFO - Order routes initialized
+[2025-03-23 15:08:48,114] INFO - Order routes initialized
+[2025-03-23 15:38:36,123] INFO - Order routes initialized
+[2025-03-23 16:23:33,062] INFO - Order routes initialized
+[2025-03-27 19:57:04,708] INFO - Order routes initialized
+[2025-04-01 16:58:51,067] INFO - Order routes initialized
+[2025-04-01 19:02:24,268] INFO - Order routes initialized
+[2025-04-02 18:28:42,574] INFO - Order routes initialized
+[2025-04-18 19:59:53,832] INFO - Order routes initialized
+[2025-04-18 20:25:31,296] INFO - Order routes initialized
+[2025-04-18 20:25:34,668] INFO - Order routes initialized
+[2025-04-18 20:26:05,573] INFO - Order routes initialized
+[2025-04-18 20:40:54,092] INFO - Order routes initialized
+[2025-04-18 20:40:57,652] INFO - Order routes initialized
+[2025-04-18 20:41:01,139] INFO - Order routes initialized
+[2025-04-18 20:41:04,497] INFO - Order routes initialized
+[2025-04-18 20:41:07,819] INFO - Order routes initialized
+[2025-04-18 20:58:12,199] INFO - Order routes initialized
+[2025-04-18 20:58:42,308] INFO - Order routes initialized
+[2025-04-18 20:58:45,508] INFO - Order routes initialized
+[2025-04-18 20:58:48,743] INFO - Order routes initialized
+[2025-04-18 23:25:36,230] INFO - Order routes initialized
+[2025-04-18 23:30:36,379] INFO - Order routes initialized
+[2025-04-18 23:30:39,383] INFO - Order routes initialized
+[2025-04-18 23:31:10,331] INFO - Order routes initialized
+[2025-04-18 23:31:13,263] INFO - Order routes initialized
+[2025-04-18 23:31:44,379] INFO - Order routes initialized
+[2025-04-18 23:31:47,265] INFO - Order routes initialized
+[2025-04-18 23:35:36,533] INFO - Order routes initialized
+[2025-04-18 23:35:39,768] INFO - Order routes initialized
+[2025-04-18 23:45:40,829] INFO - Order routes initialized
+[2025-04-18 23:45:44,140] INFO - Order routes initialized
+[2025-04-18 23:55:25,683] INFO - Order routes initialized
+[2025-04-18 23:55:28,950] INFO - Order routes initialized
+[2025-04-18 23:55:32,124] INFO - Order routes initialized
+[2025-04-18 23:55:35,619] INFO - Order routes initialized
+[2025-04-18 23:55:39,090] INFO - Order routes initialized
+[2025-04-18 23:55:42,333] INFO - Order routes initialized
+[2025-04-18 23:55:45,480] INFO - Order routes initialized
+[2025-04-18 23:56:16,618] INFO - Order routes initialized
+[2025-04-18 23:56:19,750] INFO - Order routes initialized
+[2025-04-18 23:56:23,047] INFO - Order routes initialized
+[2025-04-19 11:47:58,724] INFO - Order routes initialized
+[2025-04-19 11:48:29,970] INFO - Order routes initialized
+[2025-04-19 17:31:52,381] INFO - Order routes initialized
+[2025-04-19 17:32:04,503] INFO - Order routes initialized
+[2025-04-19 17:32:15,070] INFO - Order routes initialized
+[2025-04-19 17:32:45,472] INFO - Order routes initialized
+[2025-04-19 17:41:30,643] INFO - Order routes initialized
+[2025-04-19 17:42:05,274] INFO - Order routes initialized
+[2025-04-19 17:42:08,554] INFO - Order routes initialized
+[2025-04-19 17:43:38,481] INFO - Order routes initialized
+[2025-04-19 17:43:41,462] INFO - Order routes initialized
+[2025-04-19 17:46:33,774] INFO - Order routes initialized
+[2025-04-19 17:55:57,194] INFO - Order routes initialized
+[2025-04-19 17:56:00,276] INFO - Order routes initialized
+[2025-04-19 17:57:25,920] INFO - Order routes initialized
+[2025-04-19 17:57:39,001] INFO - Order routes initialized
+[2025-04-19 17:58:45,662] INFO - Order routes initialized
+[2025-04-19 17:58:48,378] INFO - Order routes initialized
+[2025-04-19 18:00:06,995] INFO - Order routes initialized
+[2025-04-19 18:00:10,067] INFO - Order routes initialized
+[2025-04-19 18:03:09,356] INFO - Order routes initialized
+[2025-04-19 18:03:12,296] INFO - Order routes initialized
+[2025-04-19 18:04:46,517] INFO - Order routes initialized
+[2025-04-19 18:04:49,371] INFO - Order routes initialized
+[2025-04-19 18:07:58,464] INFO - Order routes initialized
+[2025-04-19 18:08:38,948] INFO - Order routes initialized
+[2025-04-19 18:09:40,076] INFO - Order routes initialized
+[2025-04-19 18:09:43,123] INFO - Order routes initialized
+[2025-04-19 18:14:43,635] INFO - Order routes initialized
+[2025-04-19 19:39:43,531] INFO - Order routes initialized
+[2025-04-19 19:39:45,479] INFO - Order routes initialized
+[2025-04-19 19:45:07,632] INFO - Order routes initialized
+[2025-04-19 19:45:09,631] INFO - Order routes initialized
+[2025-04-19 19:45:11,645] INFO - Order routes initialized
+[2025-04-19 19:45:31,804] INFO - Order routes initialized
+[2025-04-19 19:45:33,795] INFO - Order routes initialized
+[2025-04-19 19:45:58,083] INFO - Order routes initialized
+[2025-04-19 19:45:59,968] INFO - Order routes initialized
+[2025-04-19 19:46:16,648] INFO - Order routes initialized
+[2025-04-19 19:46:18,724] INFO - Order routes initialized
+[2025-04-19 19:46:23,996] INFO - Order routes initialized
+[2025-04-19 19:46:34,604] INFO - Order routes initialized
+[2025-04-19 19:46:36,557] INFO - Order routes initialized
+[2025-04-19 19:47:15,696] INFO - Order routes initialized
+[2025-04-19 19:47:19,012] INFO - Order routes initialized
+[2025-04-19 19:47:21,038] INFO - Order routes initialized
+[2025-04-19 19:47:46,254] INFO - Order routes initialized
+[2025-04-19 19:47:48,185] INFO - Order routes initialized
+[2025-04-19 19:48:04,526] INFO - Order routes initialized
+[2025-04-19 19:49:26,402] INFO - Order routes initialized
+[2025-04-19 19:49:31,868] INFO - Order routes initialized
+[2025-04-19 19:49:42,181] INFO - Order routes initialized
+[2025-04-19 19:49:44,198] INFO - Order routes initialized
+[2025-04-19 19:49:53,081] INFO - Order routes initialized
+[2025-04-19 19:50:07,963] INFO - Order routes initialized
+[2025-04-19 19:50:15,505] INFO - Order routes initialized
+[2025-04-19 19:56:44,967] INFO - Order routes initialized
+[2025-04-19 19:56:46,821] INFO - Order routes initialized
+[2025-04-19 19:56:48,773] INFO - Order routes initialized
+[2025-04-19 19:57:00,426] INFO - Order routes initialized
+[2025-04-19 19:57:02,310] INFO - Order routes initialized
+[2025-04-19 19:57:05,839] INFO - Order routes initialized
+[2025-04-19 19:57:29,525] INFO - Order routes initialized
+[2025-04-19 19:57:31,350] INFO - Order routes initialized
+[2025-04-19 19:57:33,218] INFO - Order routes initialized
+[2025-04-19 20:00:30,684] INFO - Order routes initialized
+[2025-04-19 20:05:05,668] INFO - Order routes initialized
+[2025-04-19 20:05:07,659] INFO - Order routes initialized
+[2025-04-19 20:05:09,829] INFO - Order routes initialized
+[2025-04-19 20:05:16,502] INFO - Order routes initialized
+[2025-04-19 20:06:36,627] INFO - Order routes initialized
+[2025-04-19 20:06:41,863] INFO - Order routes initialized
+[2025-04-19 20:06:45,999] INFO - Order routes initialized
+[2025-04-19 20:33:19,192] INFO - Order routes initialized
+[2025-04-19 20:35:17,299] INFO - Order routes initialized
+[2025-04-19 20:35:19,035] INFO - Order routes initialized
+[2025-04-19 20:35:29,315] INFO - Order routes initialized
+[2025-04-19 20:35:47,977] INFO - Order routes initialized
+[2025-04-19 20:37:45,358] INFO - Order routes initialized
+[2025-04-19 20:37:47,319] INFO - Order routes initialized
+[2025-04-19 20:38:06,020] INFO - Order routes initialized
+[2025-04-19 20:38:07,943] INFO - Order routes initialized
+[2025-04-19 20:38:16,646] INFO - Order routes initialized
+[2025-04-19 20:38:18,479] INFO - Order routes initialized
+[2025-04-19 20:38:43,736] INFO - Order routes initialized
+[2025-04-19 20:38:45,740] INFO - Order routes initialized
+[2025-04-19 20:38:50,315] INFO - Order routes initialized
+[2025-04-19 20:38:52,358] INFO - Order routes initialized
+[2025-04-19 20:39:02,245] INFO - Order routes initialized
+[2025-04-19 20:39:04,168] INFO - Order routes initialized
+[2025-04-19 20:40:23,163] INFO - Order routes initialized
+[2025-04-19 20:40:31,125] INFO - Order routes initialized
+[2025-04-19 20:41:06,466] INFO - Order routes initialized
+[2025-04-19 20:41:08,524] INFO - Order routes initialized
+[2025-04-19 20:41:20,755] INFO - Order routes initialized
+[2025-04-19 20:41:45,639] INFO - Order routes initialized
+[2025-04-19 20:41:47,648] INFO - Order routes initialized
+[2025-04-19 20:41:49,640] INFO - Order routes initialized
+[2025-04-19 20:42:18,474] INFO - Order routes initialized
+[2025-04-19 20:42:20,324] INFO - Order routes initialized
+[2025-04-19 20:42:23,236] INFO - Order routes initialized
+[2025-04-19 20:42:41,859] INFO - Order routes initialized
+[2025-04-19 20:42:44,050] INFO - Order routes initialized
+[2025-04-19 20:42:46,063] INFO - Order routes initialized
+[2025-04-19 20:45:00,528] INFO - Order routes initialized
+[2025-04-19 20:45:02,725] INFO - Order routes initialized
+[2025-04-19 20:45:04,802] INFO - Order routes initialized
+[2025-04-19 20:45:37,355] INFO - Order routes initialized
+[2025-04-19 20:45:39,236] INFO - Order routes initialized
+[2025-04-19 20:45:50,400] INFO - Order routes initialized
+[2025-04-19 20:46:16,186] INFO - Order routes initialized
+[2025-04-19 20:46:18,221] INFO - Order routes initialized
+[2025-04-19 20:46:35,953] INFO - Order routes initialized
+[2025-04-19 20:46:39,055] INFO - Order routes initialized
+[2025-04-19 20:47:04,192] INFO - Order routes initialized
+[2025-04-19 20:47:07,064] INFO - Order routes initialized
+[2025-05-23 23:55:31,683] INFO - Order routes initialized
+[2025-05-26 13:13:58,354] INFO - Order routes initialized
+[2025-05-26 13:34:42,564] INFO - Order routes initialized
+[2025-05-26 13:38:12,094] INFO - Order routes initialized
+[2025-05-26 13:38:50,744] INFO - Order routes initialized
+[2025-05-26 13:39:37,721] INFO - Order routes initialized
+[2025-05-26 13:42:36,504] INFO - Order routes initialized
+[2025-05-26 13:53:37,219] INFO - Order routes initialized
+[2025-05-26 14:48:02,208] INFO - Order routes initialized
+[2025-05-26 15:04:42,748] INFO - Order routes initialized
+[2025-05-26 15:04:51,742] INFO - Order routes initialized
+[2025-05-26 15:17:50,335] INFO - Order routes initialized
+[2025-05-26 15:21:53,104] INFO - Order routes initialized
+[2025-05-26 15:21:57,071] INFO - Order routes initialized
+[2025-05-26 15:24:14,550] INFO - Order routes initialized
+[2025-05-26 15:24:17,787] INFO - Order routes initialized
+[2025-05-26 15:26:08,005] INFO - Order routes initialized
+[2025-05-26 15:26:12,737] INFO - Order routes initialized
+[2025-05-26 15:27:04,757] INFO - Order routes initialized
+[2025-05-26 15:27:07,952] INFO - Order routes initialized
+[2025-05-26 15:29:12,189] INFO - Order routes initialized
+[2025-05-26 15:29:16,350] INFO - Order routes initialized
+[2025-05-26 15:34:17,210] INFO - Order routes initialized
+[2025-05-26 15:34:20,541] INFO - Order routes initialized
+[2025-05-26 15:35:22,391] INFO - Order routes initialized
+[2025-05-26 15:35:27,006] INFO - Order routes initialized
+[2025-05-26 15:37:09,995] INFO - Order routes initialized
+[2025-05-26 15:37:11,964] INFO - Order routes initialized
+[2025-05-26 15:38:14,134] INFO - Order routes initialized
+[2025-05-26 15:38:17,485] INFO - Order routes initialized
+[2025-05-26 15:38:20,740] INFO - Order routes initialized
+[2025-05-26 15:43:10,378] INFO - Order routes initialized
+[2025-05-26 15:43:13,624] INFO - Order routes initialized
+[2025-05-26 15:48:14,228] INFO - Order routes initialized
+[2025-05-26 15:48:17,453] INFO - Order routes initialized
+[2025-05-26 16:05:19,388] INFO - Order routes initialized
+[2025-05-26 16:05:22,751] INFO - Order routes initialized
+[2025-05-26 16:06:57,694] INFO - Order routes initialized
+[2025-05-26 16:07:00,982] INFO - Order routes initialized
+[2025-05-26 16:14:52,504] INFO - Order routes initialized
+[2025-05-26 16:14:55,668] INFO - Order routes initialized
+[2025-05-26 16:15:23,490] INFO - Order routes initialized
+[2025-05-26 16:15:26,798] INFO - Order routes initialized
+[2025-05-26 16:20:27,342] INFO - Order routes initialized
+[2025-05-26 16:20:30,575] INFO - Order routes initialized
+[2025-05-26 16:25:31,191] INFO - Order routes initialized
+[2025-05-26 16:25:35,335] INFO - Order routes initialized
+[2025-05-26 16:26:11,722] INFO - Order routes initialized
+[2025-05-26 16:27:13,492] INFO - Order routes initialized
+[2025-05-26 16:27:18,810] INFO - Order routes initialized
+[2025-05-26 16:28:52,847] INFO - Order routes initialized
+[2025-05-26 16:28:55,789] INFO - Order routes initialized
+[2025-05-26 16:29:49,998] INFO - Order routes initialized
+[2025-05-26 16:29:53,391] INFO - Order routes initialized
+[2025-05-26 16:30:27,305] INFO - Order routes initialized
+[2025-05-26 16:36:26,951] INFO - Order routes initialized
+[2025-05-26 16:36:30,423] INFO - Order routes initialized
+[2025-05-26 16:38:13,783] INFO - Order routes initialized
+[2025-05-26 16:38:17,268] INFO - Order routes initialized
+[2025-05-26 16:38:20,516] INFO - Order routes initialized
+[2025-05-26 16:43:21,600] INFO - Order routes initialized
+[2025-05-26 16:43:24,909] INFO - Order routes initialized
+[2025-05-26 16:43:28,228] INFO - Order routes initialized
+[2025-05-26 16:45:04,357] INFO - Order routes initialized
+[2025-05-26 16:45:08,897] INFO - Order routes initialized
+[2025-05-26 16:50:08,862] INFO - Order routes initialized
+[2025-05-26 16:50:11,575] INFO - Order routes initialized
+[2025-05-26 16:52:23,498] INFO - Order routes initialized
+[2025-05-26 16:52:25,549] INFO - Order routes initialized
+[2025-05-26 16:53:05,737] INFO - Order routes initialized
+[2025-05-26 16:53:07,856] INFO - Order routes initialized
+[2025-05-26 16:53:13,968] INFO - Order routes initialized
+[2025-05-26 16:53:57,819] INFO - Order routes initialized
+[2025-05-26 16:53:59,713] INFO - Order routes initialized
+[2025-05-26 16:54:33,657] INFO - Order routes initialized
+[2025-05-26 16:54:35,739] INFO - Order routes initialized
+[2025-05-26 16:55:27,641] INFO - Order routes initialized
+[2025-05-26 16:56:17,589] INFO - Order routes initialized
+[2025-05-26 16:56:20,873] INFO - Order routes initialized
+[2025-05-26 17:01:21,456] INFO - Order routes initialized
+[2025-05-26 17:01:25,100] INFO - Order routes initialized
+[2025-05-26 17:14:16,316] INFO - Order routes initialized
+[2025-05-26 17:14:19,588] INFO - Order routes initialized
+[2025-05-26 17:17:15,134] INFO - Order routes initialized
+[2025-05-26 17:17:24,261] INFO - Order routes initialized
+[2025-05-26 17:18:33,686] INFO - Order routes initialized
+[2025-05-26 17:18:37,121] INFO - Order routes initialized
+[2025-05-26 17:20:54,557] INFO - Order routes initialized
+[2025-05-26 17:20:57,600] INFO - Order routes initialized
+[2025-05-26 17:21:35,783] INFO - Order routes initialized
+[2025-05-26 17:21:38,942] INFO - Order routes initialized
+[2025-05-26 17:22:11,575] INFO - Order routes initialized
+[2025-05-26 17:22:48,281] INFO - Order routes initialized
+[2025-05-26 17:22:51,559] INFO - Order routes initialized
+[2025-05-26 17:23:43,082] INFO - Order routes initialized
+[2025-05-26 17:24:02,966] INFO - Order routes initialized
+[2025-05-26 17:26:59,212] INFO - Order routes initialized
+[2025-05-26 17:27:02,271] INFO - Order routes initialized
+[2025-05-26 17:32:03,496] INFO - Order routes initialized
+[2025-05-26 17:32:06,733] INFO - Order routes initialized
+[2025-05-26 17:35:20,889] INFO - Order routes initialized
+[2025-05-26 17:35:23,905] INFO - Order routes initialized
+[2025-05-26 18:30:52,205] INFO - Order routes initialized
+[2025-05-26 18:33:31,288] INFO - Order routes initialized
+[2025-05-26 18:33:34,516] INFO - Order routes initialized
+[2025-05-26 18:33:37,613] INFO - Order routes initialized
+[2025-05-26 18:34:16,650] INFO - Order routes initialized
+[2025-05-26 18:34:21,548] INFO - Order routes initialized
+[2025-05-26 18:43:38,285] INFO - Order routes initialized
+[2025-05-26 18:43:41,537] INFO - Order routes initialized
+[2025-05-26 18:44:19,308] INFO - Order routes initialized
+[2025-05-26 18:44:46,563] INFO - Order routes initialized
+[2025-05-26 18:44:49,595] INFO - Order routes initialized
+[2025-05-26 18:45:56,966] INFO - Order routes initialized
+[2025-05-26 18:46:00,320] INFO - Order routes initialized
+[2025-05-26 18:46:38,397] INFO - Order routes initialized
+[2025-05-26 18:47:09,751] INFO - Order routes initialized
+[2025-05-26 18:47:12,932] INFO - Order routes initialized
+[2025-05-26 18:47:37,484] INFO - Order routes initialized
+[2025-05-26 18:47:40,641] INFO - Order routes initialized
+[2025-05-26 18:50:49,796] INFO - Order routes initialized
+[2025-05-26 18:50:53,304] INFO - Order routes initialized
+[2025-05-26 19:19:13,571] INFO - Order routes initialized
+[2025-05-26 19:19:16,705] INFO - Order routes initialized
+[2025-05-26 21:16:24,452] INFO - Order routes initialized
+[2025-05-26 22:09:41,569] INFO - Order routes initialized
+[2025-05-26 22:09:49,087] INFO - Order routes initialized
+[2025-05-26 22:14:48,856] INFO - Order routes initialized
+[2025-05-26 22:24:49,376] INFO - Order routes initialized
+[2025-05-26 22:24:56,083] INFO - Order routes initialized
+[2025-05-26 22:31:09,074] INFO - Order routes initialized
+[2025-05-26 22:31:15,182] INFO - Order routes initialized
+[2025-05-26 22:39:25,121] INFO - Order routes initialized
+[2025-05-26 22:39:51,839] INFO - Order routes initialized
+[2025-05-26 22:41:06,346] INFO - Order routes initialized
+[2025-05-26 22:41:10,427] INFO - Order routes initialized
+[2025-05-26 22:43:04,921] INFO - Order routes initialized
+[2025-05-26 22:43:08,073] INFO - Order routes initialized
+[2025-05-26 22:44:58,073] INFO - Order routes initialized
+[2025-05-26 22:47:14,844] INFO - Order routes initialized
+[2025-05-27 18:51:24,862] INFO - Order routes initialized
+[2025-05-27 19:10:44,760] INFO - Order routes initialized
+[2025-05-27 19:29:41,521] INFO - Order routes initialized
+[2025-05-27 19:43:54,731] INFO - Order routes initialized
+[2025-05-27 21:38:02,891] INFO - Order routes initialized

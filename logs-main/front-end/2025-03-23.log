@@ -1,0 +1,1046 @@
+[2025-03-23T19:02:48.526Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-23T19:02:48.526Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-23T19:03:16.618Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.618Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-23T19:03:16.738Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.738Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.739Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.739Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.810Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.810Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:03:16.811Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:03:16.811Z"
+}
+[2025-03-23T19:03:16.815Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:03:16.815Z"
+}
+[2025-03-23T19:03:16.816Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:03:16.816Z"
+}
+[2025-03-23T19:03:16.846Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.846Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.846Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.846Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.902Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.902Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.903Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.903Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.951Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.951Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:16.952Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:16.952Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:17.032Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.032Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:03:17.032Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.032Z"
+}
+[2025-03-23T19:03:17.033Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.033Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-23T19:03:17.097Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.097Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:17.098Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.098Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:03:17.134Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.134Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:03:17.136Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:03:17.135Z"
+}
+[2025-03-23T19:03:17.138Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:03:17.138Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:06:22.444Z] FRONTEND:CS2 - INFO: Navigation: none → cs2-rifles
+  Details: {
+  "component": "MarketNavbar",
+  "interactionType": "select",
+  "transitionDuration": 300,
+  "operation": "navigation",
+  "from": "none",
+  "to": "cs2-rifles",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:22.444Z"
+}
+[2025-03-23T19:06:26.207Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:06:26.207Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:06:26.208Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:06:26.208Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:06:26.259Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:06:26.259Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:06:26.259Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:06:26.259Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:06:26.316Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:06:26.316Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:06:26.317Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:06:26.317Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:06:26.363Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:26.363Z"
+}
+[2025-03-23T19:06:26.368Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-rifles",
+  "indicatorWidth": 108.4375,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:26.368Z"
+}
+[2025-03-23T19:06:26.369Z] FRONTEND:CS2 - INFO: Rendering 3 products with enhanced staggered animation
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:26.369Z"
+}
+[2025-03-23T19:06:26.370Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 3 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:26.370Z"
+}
+[2025-03-23T19:06:26.372Z] FRONTEND:CS2 - INFO: Rendering 3 products with enhanced staggered animation
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:26.372Z"
+}
+[2025-03-23T19:06:26.371Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:06:26.371Z"
+}
+[2025-03-23T19:08:10.606Z] FRONTEND:CS2 - INFO: Navigation: cs2-rifles → cs2-pistols
+  Details: {
+  "component": "MarketNavbar",
+  "interactionType": "select",
+  "transitionDuration": 300,
+  "operation": "navigation",
+  "from": "cs2-rifles",
+  "to": "cs2-pistols",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.606Z"
+}
+[2025-03-23T19:08:10.634Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-pistols",
+  "toCategory": "cs2-rifles",
+  "indicatorWidth": 121.109375,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.634Z"
+}
+[2025-03-23T19:08:10.731Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:10.731Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:10.732Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:10.732Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:10.781Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-pistols",
+  "toCategory": "cs2-pistols",
+  "indicatorWidth": 119.578125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.781Z"
+}
+[2025-03-23T19:08:10.782Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.782Z"
+}
+[2025-03-23T19:08:10.783Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 1 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.783Z"
+}
+[2025-03-23T19:08:10.784Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.784Z"
+}
+[2025-03-23T19:08:10.785Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:10.785Z"
+}
+[2025-03-23T19:08:11.423Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-pistols",
+  "indicatorWidth": 132.609375,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:11.423Z"
+}
+[2025-03-23T19:08:11.428Z] FRONTEND:CS2 - INFO: Navigation: cs2-pistols → cs2-smgs
+  Details: {
+  "component": "MarketNavbar",
+  "interactionType": "select",
+  "transitionDuration": 300,
+  "operation": "navigation",
+  "from": "cs2-pistols",
+  "to": "cs2-smgs",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:11.428Z"
+}
+[2025-03-23T19:08:11.450Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-smgs",
+  "toCategory": "cs2-pistols",
+  "indicatorWidth": 132.609375,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:11.450Z"
+}
+[2025-03-23T19:08:11.604Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:11.604Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:11.606Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:11.606Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:11.692Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-smgs",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 100.09375,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:11.692Z"
+}
+[2025-03-23T19:08:11.693Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 0 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 0,
+  "productIds": [],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:11.693Z"
+}
+[2025-03-23T19:08:11.694Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:11.694Z"
+}
+[2025-03-23T19:08:12.241Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.241Z"
+}
+[2025-03-23T19:08:12.575Z] FRONTEND:CS2 - INFO: Navigation: cs2-smgs → cs2-knives
+  Details: {
+  "component": "MarketNavbar",
+  "interactionType": "select",
+  "transitionDuration": 300,
+  "operation": "navigation",
+  "from": "cs2-smgs",
+  "to": "cs2-knives",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.575Z"
+}
+[2025-03-23T19:08:12.603Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-knives",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.603Z"
+}
+[2025-03-23T19:08:12.724Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:12.724Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:12.725Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:12.725Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:12.785Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-knives",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 112.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.785Z"
+}
+[2025-03-23T19:08:12.786Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.786Z"
+}
+[2025-03-23T19:08:12.787Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 1 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.787Z"
+}
+[2025-03-23T19:08:12.788Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.788Z"
+}
+[2025-03-23T19:08:12.788Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:12.788Z"
+}
+[2025-03-23T19:08:13.380Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 125.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:13.380Z"
+}
+[2025-03-23T19:08:23.653Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.653Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-23T19:08:23.707Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.707Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.708Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.708Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.740Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.740Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:23.740Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:23.740Z"
+}
+[2025-03-23T19:08:23.742Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:23.742Z"
+}
+[2025-03-23T19:08:23.743Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:23.743Z"
+}
+[2025-03-23T19:08:23.761Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.761Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.762Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.762Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.788Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.788Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.789Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.789Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.812Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.812Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.813Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.813Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.868Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.868Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.869Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.869Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:23.884Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.884Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:23.885Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:23.885Z"
+}
+[2025-03-23T19:08:23.886Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:23.886Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:45.425Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.425Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-23T19:08:45.532Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.532Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.533Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.533Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.625Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.625Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:45.626Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:45.626Z"
+}
+[2025-03-23T19:08:45.633Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:45.633Z"
+}
+[2025-03-23T19:08:45.635Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:45.635Z"
+}
+[2025-03-23T19:08:45.673Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.673Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.674Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.674Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.725Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.725Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.724Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.724Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.762Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.762Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.762Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.762Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.865Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.865Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.866Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.866Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:45.899Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.899Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:45.900Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:45.900Z"
+}
+[2025-03-23T19:08:45.902Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:45.902Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:50.387Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.386Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-23T19:08:50.468Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.468Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.469Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.469Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.520Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.520Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:50.520Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:50.520Z"
+}
+[2025-03-23T19:08:50.524Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:50.524Z"
+}
+[2025-03-23T19:08:50.525Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:50.525Z"
+}
+[2025-03-23T19:08:50.549Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.549Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.551Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.551Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.592Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.592Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.593Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.593Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.629Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.629Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.630Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.630Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.730Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.730Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.731Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.731Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-23T19:08:50.771Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.771Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T19:08:50.772Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-23T19:08:50.772Z"
+}
+[2025-03-23T19:08:50.773Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-23T19:08:50.773Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-23T20:26:46.811Z] FRONTEND:CLIENT - ERROR: Client Error: useAuth must be used within an AuthProvider
+  Details: {
+  "stack": "Error: useAuth must be used within an AuthProvider\n    at useAuth (webpack-internal:///(app-pages-browser)/./src/contexts/auth-context.tsx:316:15)\n    at HeaderConnect (webpack-internal:///(app-pages-browser)/./src/components/header/header-connect.tsx:26:87)\n    at react-stack-bottom-frame (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:23610:20)\n    at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:4646:22)\n    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:8032:19)\n    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:9689:18)\n    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:544:16)\n    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15064:22)\n    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14888:41)\n    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14868:11)\n    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14394:44)\n    at performWorkOnRootViaSchedulerTask (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15955:7)\n    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:44:48)",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-23T20:26:46.812Z] FRONTEND:CLIENT - ERROR: Client Error: useAuth must be used within an AuthProvider
+  Details: {
+  "stack": "Error: useAuth must be used within an AuthProvider\n    at useAuth (webpack-internal:///(app-pages-browser)/./src/contexts/auth-context.tsx:316:15)\n    at HeaderConnect (webpack-internal:///(app-pages-browser)/./src/components/header/header-connect.tsx:26:87)\n    at react-stack-bottom-frame (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:23610:20)\n    at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:4646:22)\n    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:8032:19)\n    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:9689:18)\n    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:544:16)\n    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15064:22)\n    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14888:41)\n    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14868:11)\n    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14394:44)\n    at performWorkOnRootViaSchedulerTask (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15955:7)\n    at MessagePort.performWorkUntilDeadline (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/scheduler/cjs/scheduler.development.js:44:48)",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-23T20:33:20.891Z] FRONTEND:CLIENT - ERROR: Client Error: useAuth must be used within an AuthProvider
+  Details: {
+  "stack": "Error: useAuth must be used within an AuthProvider\n    at useAuth (webpack-internal:///(app-pages-browser)/./src/contexts/auth-context.tsx:316:15)\n    at HeaderConnect (webpack-internal:///(app-pages-browser)/./src/components/header/header-connect.tsx:26:87)\n    at react-stack-bottom-frame (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:23610:20)\n    at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:4646:22)\n    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:8032:19)\n    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:9689:18)\n    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:544:16)\n    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15064:22)\n    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14888:41)\n    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14868:11)\n    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14394:44)\n    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15970:7)\n    at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15830:21)\n    at processRootScheduleInMicrotask (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15864:7)\n    at eval (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15986:13)",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-23T20:33:20.892Z] FRONTEND:CLIENT - ERROR: Client Error: useAuth must be used within an AuthProvider
+  Details: {
+  "stack": "Error: useAuth must be used within an AuthProvider\n    at useAuth (webpack-internal:///(app-pages-browser)/./src/contexts/auth-context.tsx:316:15)\n    at HeaderConnect (webpack-internal:///(app-pages-browser)/./src/components/header/header-connect.tsx:26:87)\n    at react-stack-bottom-frame (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:23610:20)\n    at renderWithHooks (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:4646:22)\n    at updateFunctionComponent (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:8032:19)\n    at beginWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:9689:18)\n    at runWithFiberInDEV (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:544:16)\n    at performUnitOfWork (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15064:22)\n    at workLoopSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14888:41)\n    at renderRootSync (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14868:11)\n    at performWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:14394:44)\n    at performSyncWorkOnRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15970:7)\n    at flushSyncWorkAcrossRoots_impl (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15830:21)\n    at processRootScheduleInMicrotask (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15864:7)\n    at eval (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.development.js:15986:13)",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}

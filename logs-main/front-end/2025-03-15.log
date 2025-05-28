@@ -1,0 +1,4840 @@
+[2025-03-15T02:54:28.318Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T02:54:28.318Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T02:54:28.476Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:54:28.476Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:54:28.478Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:54:28.478Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:54:28.802Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T02:54:28.802Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T02:54:28.809Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:54:28.809Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:54:28.811Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:54:28.811Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:54:46.295Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:54:46.295Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:54:46.296Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:54:46.296Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:16.835Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T02:55:16.835Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T02:55:16.906Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:55:16.906Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:16.906Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:55:16.906Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:17.003Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.003Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T02:55:17.010Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.010Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:17.011Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.011Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:17.050Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.050Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:17.051Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.051Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:55:17.071Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.071Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T02:55:17.104Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T02:55:17.104Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T02:58:30.156Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.156Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.191Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.191Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.191Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.191Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.222Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.222Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.223Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.223Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.156Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.156Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.255Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.255Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.256Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.256Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.292Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.292Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.292Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.292Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.312Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.312Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.312Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.312Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.331Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.331Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.332Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.332Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.880Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.880Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T02:58:30.880Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T02:58:30.880Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:20.619Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:06:20.619Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:20.620Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:06:20.620Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:20.862Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:06:20.862Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:06:20.886Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:06:20.886Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:06:27.864Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:06:27.864Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:06:28.053Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.053Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:28.054Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.054Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:28.116Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.116Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:06:28.157Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.157Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:28.157Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.157Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:06:28.254Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.254Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:06:28.257Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:06:28.257Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:15:15.570Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.570Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:15:15.721Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.721Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:15.722Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.722Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:15.788Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.788Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:15:15.836Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.836Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:15.837Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.837Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:15.869Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.869Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:15:15.877Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:15:15.877Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:15:30.105Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.105Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.106Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.106Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.142Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.142Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.143Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.143Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.170Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.170Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.171Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.171Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.206Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.206Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.205Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.205Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.387Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.387Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:30.387Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:30.387Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:32.981Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:32.981Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:32.982Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:32.982Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:34.691Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:34.691Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:15:34.692Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:15:34.692Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:40.668Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:16:40.668Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:16:40.823Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:40.823Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:40.824Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:40.824Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:40.977Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:40.977Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:40.987Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:40.987Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:40.987Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:40.987Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:41.048Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:41.048Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:41.048Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:41.048Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:41.074Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:41.074Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:41.105Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:41.105Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:44.265Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:44.265Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:44.266Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:44.266Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:47.837Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:16:47.837Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:16:47.996Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:47.996Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:47.997Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:47.997Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:48.059Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:48.059Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:48.094Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:48.094Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:48.094Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:48.094Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:48.153Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:48.153Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:48.156Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:48.156Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:53.532Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:53.532Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:53.532Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:16:53.532Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:16:53.713Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:53.713Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:16:53.722Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:16:53.722Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:17:00.095Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.095Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:17:00.220Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.220Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:17:00.220Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.220Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:17:00.295Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.295Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:17:00.347Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.347Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:17:00.348Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.348Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:17:00.399Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.399Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:17:00.404Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:17:00.404Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:20:31.412Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.412Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:20:31.462Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.462Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:20:31.462Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.462Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:20:31.529Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.529Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:20:31.533Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.533Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:20:31.534Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.534Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:20:31.562Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.562Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:20:31.563Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.563Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:20:31.578Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.578Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:20:31.608Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:20:31.608Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:30.507Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.507Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:21:30.684Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.684Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:30.685Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.685Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:30.756Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.756Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:30.839Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.839Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:30.840Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.840Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:30.899Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.899Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:30.912Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:30.912Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:34.579Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.579Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:21:34.737Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.737Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:34.738Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.738Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:34.789Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.789Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:34.822Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.822Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:34.822Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.822Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:34.882Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.882Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:34.888Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:34.888Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:37.262Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:37.262Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:37.262Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:37.262Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:37.445Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:37.445Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:37.456Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:37.456Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:47.676Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.676Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:21:47.735Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.735Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:47.735Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.735Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:47.825Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.825Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:47.831Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.831Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:47.832Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.832Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:47.871Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.871Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:47.871Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.871Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:21:47.887Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.887Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:21:47.911Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:21:47.911Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:23:41.450Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.450Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:23:41.549Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.549Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:23:41.550Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.550Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:23:41.672Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.672Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:23:41.678Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.678Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:23:41.679Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.679Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:23:41.719Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.719Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:23:41.719Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.719Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:23:41.741Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.741Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:23:41.775Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:23:41.775Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:06.953Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:24:06.953Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:24:07.188Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.188Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:07.189Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.189Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:07.284Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.284Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:07.359Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.358Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:07.360Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.360Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:07.405Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.405Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:07.418Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:07.418Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:29.522Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:24:29.522Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:24:29.758Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:29.758Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:29.759Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:29.759Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:29.864Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:29.864Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:29.930Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:29.930Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:29.931Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:29.931Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:30.043Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:30.043Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:30.055Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:30.055Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:34.177Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.177Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:24:34.342Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.342Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:34.343Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.343Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:34.403Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.403Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:34.441Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.441Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:34.441Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.441Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:24:34.498Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.498Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:24:34.503Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:24:34.503Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:25:11.337Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.337Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:25:11.762Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.762Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:25:11.763Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.763Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:25:11.837Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.837Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:25:11.876Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.876Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:25:11.876Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.876Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:25:11.939Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.939Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:25:11.943Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:25:11.943Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:27:59.559Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:27:59.559Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:27:59.560Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:27:59.560Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:27:59.576Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:27:59.576Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:29:35.304Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.304Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:29:35.456Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.456Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:29:35.456Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.456Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:29:35.512Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.512Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:29:35.546Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.546Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:29:35.546Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.546Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:29:35.593Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.593Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:29:35.598Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:29:35.598Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:30:01.439Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.439Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:30:01.624Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.624Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:30:01.624Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.624Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:30:01.689Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.689Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:30:01.721Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.721Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:30:01.721Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.721Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:30:01.773Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.773Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:30:01.777Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:30:01.777Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:32:33.846Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.846Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:32:33.846Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.846Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:32:33.905Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.905Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:32:33.346Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.346Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T03:32:33.948Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.948Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:32:33.948Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.948Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T03:32:33.972Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.972Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T03:32:33.978Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T03:32:33.978Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:44:51.369Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:44:51.368Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:44:51.517Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:44:51.517Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:44:51.519Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:44:51.519Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:44:51.854Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:44:51.853Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:44:51.860Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:44:51.860Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:44:51.861Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:44:51.861Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:47:22.352Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.352Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:47:22.353Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.353Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:47:22.419Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.419Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:47:22.218Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.218Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:47:22.451Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.451Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:47:22.451Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.451Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:47:22.472Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.472Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:47:22.475Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:47:22.475Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:48:49.547Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.547Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:48:49.770Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.770Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:48:49.770Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.770Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:48:49.854Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.854Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:48:49.896Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.896Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:48:49.896Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.896Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:48:49.955Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.955Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:48:49.961Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:48:49.961Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:50:29.708Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.708Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:29.708Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.708Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:29.794Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.794Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:50:29.441Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.441Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:50:29.836Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.836Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:29.836Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.836Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:29.868Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.868Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:50:29.874Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:50:29.874Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:50:38.242Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.242Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:50:38.450Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.450Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:38.450Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.450Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:38.505Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.505Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:50:38.535Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.535Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:38.536Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.536Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:50:38.593Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.593Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:50:38.599Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:50:38.599Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:51:13.575Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.575Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:51:13.771Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.771Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:13.772Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.772Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:13.841Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.841Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:51:13.887Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.887Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:13.888Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.888Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:13.958Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.958Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:51:13.964Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:51:13.964Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:51:29.277Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.277Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T19:51:29.476Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.476Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:29.476Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.476Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:29.556Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.556Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:51:29.610Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.610Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:29.611Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.611Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T19:51:29.684Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.684Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T19:51:29.690Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T19:51:29.690Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:20:33.441Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.441Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:33.442Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.442Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:33.519Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.519Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:20:33.388Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.388Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:20:33.525Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.525Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:33.525Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.525Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:33.559Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.559Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:33.560Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.560Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:33.576Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.576Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:20:33.606Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:20:33.606Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:20:40.295Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.295Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:20:40.405Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.405Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:40.406Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.406Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:40.495Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.495Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:20:40.566Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.566Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:40.566Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.566Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:20:40.593Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.593Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:20:40.600Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:20:40.600Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:21:14.987Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:21:14.987Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:21:15.140Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.140Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:21:15.139Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.139Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:21:15.325Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.325Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:21:15.333Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.333Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:21:15.334Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.334Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:21:15.398Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.398Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:21:15.399Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.399Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:21:15.426Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.426Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:21:15.469Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:21:15.469Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:23:29.063Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:23:29.063Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:24:34.266Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.266Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:24:34.455Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.455Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:24:34.456Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.456Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:24:34.535Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.535Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:24:34.585Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.585Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:24:34.586Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.586Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:24:34.650Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.650Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:24:34.655Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:24:34.655Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:25:58.166Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:25:58.166Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:27:56.476Z] FRONTEND:CLIENT - ERROR: Client Error: Loading chunk app/sales-2/layout failed.
+(timeout: http://localhost:3000/_next/static/chunks/app/sales-2/layout.js)
+  Details: {
+  "stack": "ChunkLoadError\n    at __webpack_require__.f.j (http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:863:29)\n    at http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:158:40\n    at Array.reduce (<anonymous>)\n    at __webpack_require__.e (http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:157:67)\n    at fn.e (http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:394:50)\n    at loadChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:126:34)\n    at preloadModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:93:31)\n    at resolveModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1555:20)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2064:11)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2059:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2262:17)",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-15T20:27:56.473Z] FRONTEND:CLIENT - ERROR: Client Error: Loading chunk app/sales-2/layout failed.
+(timeout: http://localhost:3000/_next/static/chunks/app/sales-2/layout.js)
+  Details: {
+  "stack": "ChunkLoadError\n    at __webpack_require__.f.j (http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:863:29)\n    at http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:158:40\n    at Array.reduce (<anonymous>)\n    at __webpack_require__.e (http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:157:67)\n    at fn.e (http://localhost:3000/_next/static/chunks/webpack.js?v=1742070348675:394:50)\n    at loadChunk (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:126:34)\n    at preloadModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:93:31)\n    at resolveModule (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1555:20)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2064:11)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2059:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2262:17)",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-15T20:29:13.373Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.373Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:29:13.602Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.602Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:29:13.603Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.603Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:29:13.699Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.699Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:29:13.761Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.761Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:29:13.761Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.761Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:29:13.843Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.843Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:29:13.848Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:29:13.848Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:29:52.008Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:29:52.008Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:29:52.010Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:29:52.010Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:29:52.411Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:29:52.411Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:29:52.442Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:29:52.442Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:30:36.185Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:30:36.185Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:30:36.187Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:30:36.187Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:30:36.543Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:30:36.543Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:30:36.558Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:30:36.558Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:30:50.553Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.553Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:30:50.716Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.716Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:30:50.716Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.716Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:30:50.805Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.805Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:30:50.883Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.883Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:30:50.884Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.884Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:30:50.924Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.924Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:30:50.930Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:30:50.930Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:32:35.886Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:32:35.886Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:32:36.017Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.017Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:32:36.018Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.018Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:32:36.193Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.193Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:32:36.204Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.204Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:32:36.205Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.205Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:32:36.273Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.273Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:32:36.274Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.274Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:32:36.315Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.315Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:32:36.384Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:32:36.384Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:33:05.355Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.355Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T20:33:05.356Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.356Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T20:33:05.357Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.357Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:33:05.358Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.358Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:33:05.376Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.376Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:33:05.377Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.377Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-15T20:33:05.377Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.377Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:33:05.382Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.382Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:33:05.394Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.394Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T20:33:05.395Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.395Z",
+  "exists": false
+}
+[2025-03-15T20:33:05.430Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.430Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:33:05.431Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.431Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:33:05.437Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.437Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:33:05.637Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.637Z",
+  "nonce": "752c9abb6b2b75d8408c017c89b9d02b6e6bab3dbfbabb81b5c04e089c0486da"
+}
+[2025-03-15T20:33:05.639Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.639Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:33:05.638Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:05.638Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:33:08.154Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.154Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "752c9abb6b2b75d8408c017c89b9d02b6e6bab3dbfbabb81b5c04e089c0486da"
+}
+[2025-03-15T20:33:08.155Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.155Z",
+  "exists": false
+}
+[2025-03-15T20:33:08.156Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.156Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:33:08.157Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.157Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:33:08.318Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.318Z",
+  "success": true
+}
+[2025-03-15T20:33:08.319Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.319Z",
+  "success": true
+}
+[2025-03-15T20:33:08.319Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.319Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-15T20:33:08.319Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.319Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:33:08.320Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.320Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:33:08.320Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.320Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:33:08.323Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:33:08.323Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:28.576Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:28.576Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:28.576Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:28.576Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:28.609Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:28.609Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:28.610Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:28.610Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:31.498Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.498Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:31.499Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.499Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:31.550Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.550Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-15T20:36:31.550Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.550Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:36:31.557Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:31.558Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:36:31.558Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:36:31.564Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:31.565Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:36:31.566Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:36:31.576Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.576Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:36:31.577Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:31.578Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:36:31.578Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:36:31.579Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:31.580Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:36:31.580Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:36:31.590Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.590Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:31.589Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:31.589Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:36:34.673Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:34.674Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:36:34.674Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:36:34.675Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Check
+  Details: {
+  "timestamp": "2025-03-15T20:36:34.675Z",
+  "is_authenticated": true,
+  "has_token": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "has_address": true
+}
+[2025-03-15T20:36:34.678Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:34.679Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:36:34.679Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:36:34.680Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Check
+  Details: {
+  "timestamp": "2025-03-15T20:36:34.680Z",
+  "is_authenticated": true,
+  "has_token": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "has_address": true
+}
+[2025-03-15T20:36:34.683Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:34.683Z",
+  "status": "allowed",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:36:34.684Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Render
+  Details: {
+  "timestamp": "2025-03-15T20:36:34.684Z",
+  "status": "allowed",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:23.189Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.189Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-15T20:37:23.457Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.457Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.457Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.457Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.493Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.493Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.493Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.493Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.525Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.525Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.525Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.525Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.552Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.552Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.552Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.552Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.573Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.573Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.573Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.573Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.690Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.690Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.691Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.691Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.707Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.707Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.708Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.708Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.739Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.739Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.739Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.739Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.760Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.760Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.759Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.759Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.781Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.781Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:23.781Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:23.781Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:27.563Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.562Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:27.563Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.563Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:27.604Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.604Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-15T20:37:27.605Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.605Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:27.612Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:27.613Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:37:27.613Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:37:27.618Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:27.619Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:37:27.619Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:37:27.628Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.628Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:27.628Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:27.629Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:37:27.629Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:37:27.631Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:27.632Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:37:27.632Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:37:27.642Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.642Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:27.643Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:27.643Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:28.123Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:28.124Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:37:28.125Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:37:28.126Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Check
+  Details: {
+  "timestamp": "2025-03-15T20:37:28.126Z",
+  "is_authenticated": true,
+  "has_token": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "has_address": true
+}
+[2025-03-15T20:37:28.129Z] FRONTEND:USER - INFO: Wallet readiness state updated
+  Details: {
+  "stable_connection": true,
+  "has_valid_address": true,
+  "is_ready": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:28.129Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-15T20:37:28.130Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-15T20:37:28.131Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Check
+  Details: {
+  "timestamp": "2025-03-15T20:37:28.131Z",
+  "is_authenticated": true,
+  "has_token": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "has_address": true
+}
+[2025-03-15T20:37:28.135Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:28.135Z",
+  "status": "allowed",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:28.136Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:28.136Z",
+  "status": "allowed",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:31.752Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.751Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-15T20:37:31.824Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.824Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:31.825Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.825Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:31.918Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.918Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:31.923Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.923Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:31.924Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.924Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:31.935Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.935Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:31.935Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.935Z"
+}
+[2025-03-15T20:37:31.935Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.935Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:31.959Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.959Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:31.959Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.959Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:31.977Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:31.977Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:32.005Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.005Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:32.460Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.460Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:32.460Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.460Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:32.464Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.464Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:32.791Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.791Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T20:37:32.791Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.791Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T20:37:32.791Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.791Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:32.792Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.792Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:32.796Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.796Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:37:32.797Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.797Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-15T20:37:32.797Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.797Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:32.798Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.798Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:32.798Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.798Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T20:37:32.799Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.799Z",
+  "exists": false
+}
+[2025-03-15T20:37:32.804Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.804Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:37:32.804Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.804Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:37:32.807Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.807Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:32.809Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.809Z",
+  "nonce": "73ebd908d0270b0d9d83acd84478d14aaa13c9edc19abe8a3a50d00ba030367d"
+}
+[2025-03-15T20:37:32.812Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.812Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:37:32.812Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:32.812Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:37:35.973Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-15T20:37:35.973Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "73ebd908d0270b0d9d83acd84478d14aaa13c9edc19abe8a3a50d00ba030367d"
+}
+[2025-03-15T20:37:35.975Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T20:37:35.975Z",
+  "exists": false
+}
+[2025-03-15T20:37:35.979Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:35.979Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:37:35.980Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:35.980Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T20:37:36.005Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.005Z",
+  "success": true
+}
+[2025-03-15T20:37:36.005Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.005Z",
+  "success": true
+}
+[2025-03-15T20:37:36.005Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.005Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-15T20:37:36.006Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.006Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:36.007Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.007Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:36.008Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.008Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:36.012Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:36.012Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:37.730Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.730Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:37.731Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.731Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:37.735Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.735Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:37:37.736Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.736Z"
+}
+[2025-03-15T20:37:37.737Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.737Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T20:37:37.762Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.762Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:37.761Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.761Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:37:37.765Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:37:37.765Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:41:48.634Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.634Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:41:48.734Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.733Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:41:48.734Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.734Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:41:48.835Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.835Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:41:48.842Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.842Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:41:48.843Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.843Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:41:48.893Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.893Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:41:48.893Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.893Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:41:48.918Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.918Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:41:48.955Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:41:48.955Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:43:27.198Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.198Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:43:27.304Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.304Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:43:27.304Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.304Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:43:27.453Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.453Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:43:27.467Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.467Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:43:27.468Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.468Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:43:27.534Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.534Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:43:27.536Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.536Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:43:27.579Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.579Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:43:27.656Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:43:27.656Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:46:40.768Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T20:46:40.768Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T20:46:40.827Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:46:40.827Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:46:40.828Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:46:40.828Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:46:40.947Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:46:40.947Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:46:40.956Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:46:40.956Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:46:40.957Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:46:40.957Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:46:41.029Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:46:41.029Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:46:41.030Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T20:46:41.030Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T20:46:41.076Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:46:41.076Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T20:46:41.114Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T20:46:41.114Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:09:47.051Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T21:09:47.051Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T21:09:47.525Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:09:47.525Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:09:47.526Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:09:47.526Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:09:47.755Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:09:47.755Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:11:27.095Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T21:11:27.095Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T21:11:27.198Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:27.198Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:27.199Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:27.199Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:27.578Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:11:27.578Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:11:27.589Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:27.589Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:27.590Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:27.590Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:36.003Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.003Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T21:11:36.004Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.004Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T21:11:36.004Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.004Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:36.005Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.005Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:36.015Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.015Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T21:11:36.015Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.015Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-15T21:11:36.016Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.016Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:11:36.017Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.017Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:11:36.034Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.034Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T21:11:36.034Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.034Z",
+  "exists": false
+}
+[2025-03-15T21:11:36.057Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.057Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:11:36.058Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.058Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:11:36.061Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.061Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:11:36.085Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.085Z",
+  "nonce": "a1f9bfa61f781b5fb3c0b20ab77f0c30567f6014ad0a9a6a868cc4c7a28b52fa"
+}
+[2025-03-15T21:11:36.086Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.086Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:11:36.087Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:36.087Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:11:37.940Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-15T21:11:37.940Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "a1f9bfa61f781b5fb3c0b20ab77f0c30567f6014ad0a9a6a868cc4c7a28b52fa"
+}
+[2025-03-15T21:11:37.941Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T21:11:37.941Z",
+  "exists": false
+}
+[2025-03-15T21:11:37.942Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:37.942Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:11:37.943Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:37.943Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:11:38.012Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.012Z",
+  "success": true
+}
+[2025-03-15T21:11:38.012Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.012Z",
+  "success": true
+}
+[2025-03-15T21:11:38.012Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.012Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-15T21:11:38.013Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.013Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:11:38.013Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.013Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:38.014Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.014Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:11:38.016Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:11:38.016Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:24.153Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.153Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-15T21:13:24.475Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.475Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:24.476Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.476Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:24.636Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.636Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:13:24.636Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.636Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:24.637Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.637Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:24.640Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.640Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:24.641Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.641Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:24.651Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:24.651Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:13:25.219Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.219Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T21:13:25.220Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.220Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T21:13:25.220Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.220Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:25.220Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.220Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:25.230Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.230Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T21:13:25.231Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.231Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-15T21:13:25.231Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.231Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:25.233Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.233Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:13:25.237Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.236Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-15T21:13:25.237Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.237Z",
+  "exists": false
+}
+[2025-03-15T21:13:25.241Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.241Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:13:25.242Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.242Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:13:25.253Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.253Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:13:25.255Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.255Z",
+  "nonce": "df5c99fb7263b93495917a20480a1c2c2fec24f02f11e84e67d9d7b23bca6dda"
+}
+[2025-03-15T21:13:25.258Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.258Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:13:25.259Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:25.259Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:13:27.613Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.613Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "df5c99fb7263b93495917a20480a1c2c2fec24f02f11e84e67d9d7b23bca6dda"
+}
+[2025-03-15T21:13:27.614Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.614Z",
+  "exists": false
+}
+[2025-03-15T21:13:27.615Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.615Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:13:27.615Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.615Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-15T21:13:27.638Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.638Z",
+  "success": true
+}
+[2025-03-15T21:13:27.638Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.638Z",
+  "success": true
+}
+[2025-03-15T21:13:27.638Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.638Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-15T21:13:27.639Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.639Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:27.639Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.639Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:27.640Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.640Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:27.644Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:27.644Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:29.477Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.477Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:29.477Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.477Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:29.480Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.480Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:13:29.480Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.480Z"
+}
+[2025-03-15T21:13:29.481Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.481Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-15T21:13:29.495Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.495Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:29.495Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.495Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:13:29.498Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:13:29.498Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:16:52.496Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-15T21:16:52.496Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-15T21:16:52.635Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:16:52.635Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:16:52.636Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:16:52.636Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:16:53.065Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-15T21:16:53.065Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-15T21:16:53.071Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:16:53.071Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-15T21:16:53.072Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-15T21:16:53.072Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}

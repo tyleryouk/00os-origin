@@ -1,0 +1,1567 @@
+[2025-05-24T03:55:44.904Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:44.904Z"
+}
+[2025-05-24T03:55:44.905Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:44.905Z"
+}
+[2025-05-24T03:55:44.906Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:44.906Z"
+}
+[2025-05-24T03:55:45.086Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-05-24T03:55:45.086Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-05-24T03:55:45.142Z] FRONTEND:CS2 - INFO: Paginated CS2 products: page 1 of 1
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "totalPages": 1,
+  "operation": "pagination",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.142Z"
+}
+[2025-05-24T03:55:45.143Z] FRONTEND:CS2 - INFO: Loaded 5 CS2 products successfully
+  Details: {
+  "products": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "count": 5,
+  "totalProducts": 5,
+  "page": 1,
+  "operation": "product_load",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.143Z"
+}
+[2025-05-24T03:55:45.145Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.145Z"
+}
+[2025-05-24T03:55:45.146Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.146Z"
+}
+[2025-05-24T03:55:45.149Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.149Z"
+}
+[2025-05-24T03:55:45.150Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.150Z"
+}
+[2025-05-24T03:55:45.151Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.151Z"
+}
+[2025-05-24T03:55:45.152Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.152Z"
+}
+[2025-05-24T03:55:45.155Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.155Z"
+}
+[2025-05-24T03:55:45.156Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.156Z"
+}
+[2025-05-24T03:55:45.158Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.158Z"
+}
+[2025-05-24T03:55:45.159Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.159Z"
+}
+[2025-05-24T03:55:45.160Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.160Z"
+}
+[2025-05-24T03:55:45.160Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.160Z"
+}
+[2025-05-24T03:55:45.162Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.162Z"
+}
+[2025-05-24T03:55:45.163Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.163Z"
+}
+[2025-05-24T03:55:45.164Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.164Z"
+}
+[2025-05-24T03:55:45.164Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.164Z"
+}
+[2025-05-24T03:55:45.165Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.165Z"
+}
+[2025-05-24T03:55:45.166Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.166Z"
+}
+[2025-05-24T03:55:45.187Z] FRONTEND:CS2 - INFO: Loaded 4 featured products for homepage
+  Details: {
+  "productCount": 4,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:45.187Z"
+}
+[2025-05-24T03:55:51.021Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.021Z"
+}
+[2025-05-24T03:55:51.023Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.023Z"
+}
+[2025-05-24T03:55:51.035Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.035Z"
+}
+[2025-05-24T03:55:51.036Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.036Z"
+}
+[2025-05-24T03:55:51.039Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.039Z"
+}
+[2025-05-24T03:55:51.040Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.040Z"
+}
+[2025-05-24T03:55:51.046Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.046Z"
+}
+[2025-05-24T03:55:51.046Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.046Z"
+}
+[2025-05-24T03:55:51.047Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.047Z"
+}
+[2025-05-24T03:55:51.047Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.047Z"
+}
+[2025-05-24T03:55:51.048Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.048Z"
+}
+[2025-05-24T03:55:51.048Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:51.048Z"
+}
+[2025-05-24T03:55:53.161Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.161Z"
+}
+[2025-05-24T03:55:53.162Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.162Z"
+}
+[2025-05-24T03:55:53.164Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.164Z"
+}
+[2025-05-24T03:55:53.165Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.165Z"
+}
+[2025-05-24T03:55:53.154Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.154Z"
+}
+[2025-05-24T03:55:53.167Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.167Z"
+}
+[2025-05-24T03:55:53.167Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:53.167Z"
+}
+[2025-05-24T03:55:57.432Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:57.432Z"
+}
+[2025-05-24T03:55:57.433Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:57.433Z"
+}
+[2025-05-24T03:55:57.433Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:57.433Z"
+}
+[2025-05-24T03:55:57.718Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.718Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-05-24T03:55:57.788Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.788Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.789Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.789Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.829Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.829Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-24T03:55:57.829Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:57.829Z"
+}
+[2025-05-24T03:55:57.846Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.846Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.846Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.846Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.872Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:57.872Z"
+}
+[2025-05-24T03:55:57.873Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:57.873Z"
+}
+[2025-05-24T03:55:57.884Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.884Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.884Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.884Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.906Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.906Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.907Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.907Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.928Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.928Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.929Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.929Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.982Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.982Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:57.983Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T03:55:57.983Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T03:55:58.013Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T03:55:58.013Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-24T03:55:58.014Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T03:55:58.014Z"
+}
+[2025-05-24T03:55:58.015Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T03:55:58.015Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-24T04:07:24.628Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.628Z"
+}
+[2025-05-24T04:07:24.629Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.629Z"
+}
+[2025-05-24T04:07:24.637Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.637Z"
+}
+[2025-05-24T04:07:24.638Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.638Z"
+}
+[2025-05-24T04:07:24.646Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.646Z"
+}
+[2025-05-24T04:07:24.647Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.647Z"
+}
+[2025-05-24T04:07:24.824Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.824Z"
+}
+[2025-05-24T04:07:24.829Z] FRONTEND:CS2 - INFO: Paginated CS2 products: page 1 of 1
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "totalPages": 1,
+  "operation": "pagination",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.829Z"
+}
+[2025-05-24T04:07:24.830Z] FRONTEND:CS2 - INFO: Loaded 5 CS2 products successfully
+  Details: {
+  "products": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "count": 5,
+  "totalProducts": 5,
+  "page": 1,
+  "operation": "product_load",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.830Z"
+}
+[2025-05-24T04:07:24.832Z] FRONTEND:CS2 - INFO: Paginated CS2 products: page 1 of 1
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "totalPages": 1,
+  "operation": "pagination",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.832Z"
+}
+[2025-05-24T04:07:24.832Z] FRONTEND:CS2 - INFO: Loaded 5 CS2 products successfully
+  Details: {
+  "products": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "count": 5,
+  "totalProducts": 5,
+  "page": 1,
+  "operation": "product_load",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.832Z"
+}
+[2025-05-24T04:07:24.851Z] FRONTEND:CS2 - INFO: Loaded 4 featured products for homepage
+  Details: {
+  "productCount": 4,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.851Z"
+}
+[2025-05-24T04:07:24.851Z] FRONTEND:CS2 - INFO: Loaded 4 featured products for homepage
+  Details: {
+  "productCount": 4,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:24.851Z"
+}
+[2025-05-24T04:07:25.189Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.189Z"
+}
+[2025-05-24T04:07:25.190Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.190Z"
+}
+[2025-05-24T04:07:25.191Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.191Z"
+}
+[2025-05-24T04:07:25.192Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.192Z"
+}
+[2025-05-24T04:07:25.203Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.203Z"
+}
+[2025-05-24T04:07:25.204Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.204Z"
+}
+[2025-05-24T04:07:25.207Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.207Z"
+}
+[2025-05-24T04:07:25.208Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.208Z"
+}
+[2025-05-24T04:07:25.215Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.215Z"
+}
+[2025-05-24T04:07:25.216Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.216Z"
+}
+[2025-05-24T04:07:25.218Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.218Z"
+}
+[2025-05-24T04:07:25.218Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.218Z"
+}
+[2025-05-24T04:07:25.220Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.220Z"
+}
+[2025-05-24T04:07:25.220Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:25.220Z"
+}
+[2025-05-24T04:07:32.838Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.837Z"
+}
+[2025-05-24T04:07:32.845Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.845Z"
+}
+[2025-05-24T04:07:32.846Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.846Z"
+}
+[2025-05-24T04:07:32.849Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.849Z"
+}
+[2025-05-24T04:07:32.850Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.850Z"
+}
+[2025-05-24T04:07:32.851Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.851Z"
+}
+[2025-05-24T04:07:32.852Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:32.852Z"
+}
+[2025-05-24T04:07:40.904Z] FRONTEND:CS2 - INFO: Changed to next slide: 2
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.904Z"
+}
+[2025-05-24T04:07:40.915Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.915Z"
+}
+[2025-05-24T04:07:40.915Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.915Z"
+}
+[2025-05-24T04:07:40.919Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.919Z"
+}
+[2025-05-24T04:07:40.917Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.917Z"
+}
+[2025-05-24T04:07:40.918Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.918Z"
+}
+[2025-05-24T04:07:40.919Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:40.919Z"
+}
+[2025-05-24T04:07:48.983Z] FRONTEND:CS2 - INFO: Changed to next slide: 0
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:48.983Z"
+}
+[2025-05-24T04:07:48.995Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:48.995Z"
+}
+[2025-05-24T04:07:48.997Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:48.997Z"
+}
+[2025-05-24T04:07:49.003Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:49.003Z"
+}
+[2025-05-24T04:07:48.999Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:48.999Z"
+}
+[2025-05-24T04:07:49.000Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:49.000Z"
+}
+[2025-05-24T04:07:49.003Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:49.003Z"
+}
+[2025-05-24T04:07:57.094Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.094Z"
+}
+[2025-05-24T04:07:57.102Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.102Z"
+}
+[2025-05-24T04:07:57.103Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.103Z"
+}
+[2025-05-24T04:07:57.106Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.106Z"
+}
+[2025-05-24T04:07:57.107Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.107Z"
+}
+[2025-05-24T04:07:57.111Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.111Z"
+}
+[2025-05-24T04:07:57.110Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:07:57.110Z"
+}
+[2025-05-24T04:08:05.199Z] FRONTEND:CS2 - INFO: Changed to next slide: 2
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.199Z"
+}
+[2025-05-24T04:08:05.209Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.209Z"
+}
+[2025-05-24T04:08:05.210Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.210Z"
+}
+[2025-05-24T04:08:05.215Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.215Z"
+}
+[2025-05-24T04:08:05.216Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.216Z"
+}
+[2025-05-24T04:08:05.221Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.221Z"
+}
+[2025-05-24T04:08:05.221Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:05.221Z"
+}
+[2025-05-24T04:08:13.323Z] FRONTEND:CS2 - INFO: Changed to next slide: 0
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.322Z"
+}
+[2025-05-24T04:08:13.332Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.332Z"
+}
+[2025-05-24T04:08:13.332Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.332Z"
+}
+[2025-05-24T04:08:13.333Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.333Z"
+}
+[2025-05-24T04:08:13.334Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.334Z"
+}
+[2025-05-24T04:08:13.335Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.335Z"
+}
+[2025-05-24T04:08:13.335Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:13.335Z"
+}
+[2025-05-24T04:08:21.420Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.420Z"
+}
+[2025-05-24T04:08:21.425Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.425Z"
+}
+[2025-05-24T04:08:21.426Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.426Z"
+}
+[2025-05-24T04:08:21.427Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.427Z"
+}
+[2025-05-24T04:08:21.427Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.427Z"
+}
+[2025-05-24T04:08:21.428Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.428Z"
+}
+[2025-05-24T04:08:21.428Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:21.428Z"
+}
+[2025-05-24T04:08:29.490Z] FRONTEND:CS2 - INFO: Changed to next slide: 2
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.490Z"
+}
+[2025-05-24T04:08:29.497Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.497Z"
+}
+[2025-05-24T04:08:29.498Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.498Z"
+}
+[2025-05-24T04:08:29.505Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.505Z"
+}
+[2025-05-24T04:08:29.507Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.507Z"
+}
+[2025-05-24T04:08:29.513Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.513Z"
+}
+[2025-05-24T04:08:29.514Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:29.514Z"
+}
+[2025-05-24T04:08:37.606Z] FRONTEND:CS2 - INFO: Changed to next slide: 0
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.606Z"
+}
+[2025-05-24T04:08:37.615Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.615Z"
+}
+[2025-05-24T04:08:37.616Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.616Z"
+}
+[2025-05-24T04:08:37.619Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.619Z"
+}
+[2025-05-24T04:08:37.619Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.619Z"
+}
+[2025-05-24T04:08:37.620Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.620Z"
+}
+[2025-05-24T04:08:37.621Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:37.621Z"
+}
+[2025-05-24T04:08:45.697Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.697Z"
+}
+[2025-05-24T04:08:45.702Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.702Z"
+}
+[2025-05-24T04:08:45.702Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.702Z"
+}
+[2025-05-24T04:08:45.703Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.703Z"
+}
+[2025-05-24T04:08:45.703Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.703Z"
+}
+[2025-05-24T04:08:45.704Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.704Z"
+}
+[2025-05-24T04:08:45.704Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:45.704Z"
+}
+[2025-05-24T04:08:53.788Z] FRONTEND:CS2 - INFO: Changed to next slide: 2
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.788Z"
+}
+[2025-05-24T04:08:53.798Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.798Z"
+}
+[2025-05-24T04:08:53.799Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.799Z"
+}
+[2025-05-24T04:08:53.798Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.798Z"
+}
+[2025-05-24T04:08:53.799Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.799Z"
+}
+[2025-05-24T04:08:53.803Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.803Z"
+}
+[2025-05-24T04:08:53.803Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:08:53.803Z"
+}
+[2025-05-24T04:09:01.888Z] FRONTEND:CS2 - INFO: Changed to next slide: 0
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.888Z"
+}
+[2025-05-24T04:09:01.894Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.894Z"
+}
+[2025-05-24T04:09:01.894Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.894Z"
+}
+[2025-05-24T04:09:01.897Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.897Z"
+}
+[2025-05-24T04:09:01.898Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.898Z"
+}
+[2025-05-24T04:09:01.899Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.899Z"
+}
+[2025-05-24T04:09:01.899Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:01.899Z"
+}
+[2025-05-24T04:09:09.956Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.956Z"
+}
+[2025-05-24T04:09:09.962Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.962Z"
+}
+[2025-05-24T04:09:09.963Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.963Z"
+}
+[2025-05-24T04:09:09.964Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.964Z"
+}
+[2025-05-24T04:09:09.964Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.964Z"
+}
+[2025-05-24T04:09:09.965Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.965Z"
+}
+[2025-05-24T04:09:09.965Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:09.965Z"
+}
+[2025-05-24T04:09:18.023Z] FRONTEND:CS2 - INFO: Changed to next slide: 2
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.023Z"
+}
+[2025-05-24T04:09:18.031Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.031Z"
+}
+[2025-05-24T04:09:18.031Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.031Z"
+}
+[2025-05-24T04:09:18.033Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.033Z"
+}
+[2025-05-24T04:09:18.033Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.033Z"
+}
+[2025-05-24T04:09:18.035Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.035Z"
+}
+[2025-05-24T04:09:18.037Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:18.037Z"
+}
+[2025-05-24T04:09:21.179Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.179Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T04:09:21.180Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.180Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T04:09:21.310Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.310Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-24T04:09:21.311Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:21.311Z"
+}
+[2025-05-24T04:09:21.312Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:21.312Z"
+}
+[2025-05-24T04:09:21.313Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:21.313Z"
+}
+[2025-05-24T04:09:21.314Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:21.314Z"
+}
+[2025-05-24T04:09:21.317Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.317Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-24T04:09:21.318Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:21.318Z"
+}
+[2025-05-24T04:09:21.428Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.428Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T04:09:21.430Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.430Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-24T04:09:21.503Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.503Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-24T04:09:21.504Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-05-24T04:09:21.504Z"
+}
+[2025-05-24T04:09:21.505Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-24T04:09:21.505Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}

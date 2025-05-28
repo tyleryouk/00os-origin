@@ -1,0 +1,1246 @@
+[2025-03-11 19:07:27,851] INFO - Auth routes module initialized
+[2025-03-11 19:08:55,355] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 19:08:55,355] INFO - Route called: POST /auth/request  200
+[2025-03-11 19:08:56,997] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 19:08:57,016] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:42:59,859] INFO - Auth routes module initialized
+[2025-03-11 22:43:43,659] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:43:43,660] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:43:57,189] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:43:57,191] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:43:59,280] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:43:59,303] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:45:15,574] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:15,574] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:45:17,025] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:17,025] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:45:17,721] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:17,723] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-11 22:45:17,723] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-11 22:45:18,372] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:18,383] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:45:23,392] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:23,394] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:45:24,826] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:24,827] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:45:25,271] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:25,271] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-11 22:45:25,271] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-11 22:45:25,769] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:25,778] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:45:30,210] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:30,210] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:45:31,597] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:45:31,607] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:53:08,188] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:08,188] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:53:10,039] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:10,040] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:53:10,701] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:10,703] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-11 22:53:10,703] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-11 22:53:11,405] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:11,414] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:53:26,511] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:53:26,512] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:54:06,279] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:06,280] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:54:11,350] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:11,362] INFO - Route called: POST /auth/verify  200
+[2025-03-11 22:54:22,932] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:22,932] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:54:24,253] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:24,255] INFO - Route called: POST /auth/request  200
+[2025-03-11 22:54:25,349] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:25,352] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-11 22:54:25,353] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-11 22:54:25,793] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 22:54:25,810] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:04:16,657] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:16,658] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:04:18,070] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:18,088] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:04:36,614] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:36,615] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:04:38,144] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:38,146] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:04:38,594] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:38,595] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-11 23:04:38,595] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-11 23:04:39,011] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:04:39,029] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:40:58,121] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:40:58,124] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:40:59,657] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:40:59,676] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:41:37,342] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:41:37,347] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:41:49,037] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:41:49,048] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:43:26,948] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:43:26,950] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:43:29,095] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:43:29,103] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:56:14,411] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:56:14,413] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:56:15,991] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-11 23:56:16,003] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:56:51,852] INFO - Auth routes module initialized
+[2025-03-11 23:57:04,338] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:57:04,340] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:57:05,932] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:57:05,962] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:57:49,475] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:57:49,476] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:57:53,678] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:57:53,689] INFO - Route called: POST /auth/verify  200
+[2025-03-11 23:58:03,936] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:58:03,937] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:58:05,241] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:58:05,241] INFO - Route called: POST /auth/request  200
+[2025-03-11 23:58:05,756] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:58:05,758] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-11 23:58:05,759] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-11 23:58:06,320] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-11 23:58:06,331] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:01:20,699] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:01:20,700] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:01:22,302] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:01:22,320] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:01:43,247] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:01:43,248] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:01:44,575] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:01:44,576] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:02:13,731] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:02:13,732] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:02:13,732] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:02:14,013] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:02:14,032] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:11:29,096] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:11:29,098] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:11:32,187] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:11:32,235] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:11:56,871] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:11:56,872] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:11:59,187] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:11:59,206] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:17:56,077] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:17:56,081] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:18:02,110] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:18:02,117] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:18:07,342] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:18:07,346] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:18:08,699] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:18:08,706] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:22:30,021] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:30,022] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:30,025] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:30,026] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:30,526] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:30,527] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:32,066] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:32,067] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:22:32,068] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:22:33,053] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:33,055] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:22:33,055] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:22:33,663] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:33,671] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:22:40,142] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:40,142] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:40,147] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:40,150] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:40,284] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:40,285] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:46,499] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:46,500] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:22:50,242] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:22:50,251] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:28:28,788] INFO - Auth routes module initialized
+[2025-03-12 00:29:15,829] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:15,830] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:29:22,418] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:22,419] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:29:24,092] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:24,139] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:29:49,292] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:49,293] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:29:50,793] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:50,793] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:29:51,155] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:51,156] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:29:51,156] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:29:52,071] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:52,083] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:29:58,131] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:58,131] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:29:59,350] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:59,351] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:29:59,680] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:29:59,681] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:29:59,681] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:30:00,133] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:30:00,147] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:39:45,757] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:45,758] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:39:47,455] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:47,455] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:39:47,706] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:47,708] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:39:47,709] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:39:48,342] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:39:48,350] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:45:26,244] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:26,245] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:45:27,816] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:27,826] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:45:30,190] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:30,191] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:45:32,986] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:32,995] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:45:36,619] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:36,620] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:45:37,934] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:37,946] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:45:39,816] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:39,819] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:45:40,875] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:40,876] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:45:41,417] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:41,419] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:45:41,419] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:45:42,028] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 00:45:42,037] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:46:15,033] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:46:15,034] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:46:17,319] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:46:17,328] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:46:41,532] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:46:41,532] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:46:43,045] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:46:43,046] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:46:46,162] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:46:46,163] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:46:46,163] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:46:46,577] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:46:46,600] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:48:34,136] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:34,138] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:48:37,091] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:37,107] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:48:39,660] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:39,662] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:48:40,811] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:40,813] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:48:45,520] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:45,521] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:48:45,521] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:48:48,158] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:48,167] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:48:55,316] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:55,318] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:48:56,472] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:56,474] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:48:56,659] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:56,660] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:48:56,661] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:48:57,163] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:48:57,175] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:49:26,965] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:49:26,967] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:49:38,960] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:49:38,972] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:50:01,353] INFO - Auth routes module initialized
+[2025-03-12 00:56:09,020] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:56:09,024] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:56:10,687] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:56:10,724] INFO - Route called: POST /auth/verify  200
+[2025-03-12 00:56:41,096] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:56:41,096] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:56:42,489] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:56:42,492] INFO - Route called: POST /auth/request  200
+[2025-03-12 00:57:05,530] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:57:05,531] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 00:57:05,531] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 00:57:05,880] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 00:57:05,892] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:08:40,070] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:08:40,071] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:08:42,013] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:08:42,031] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:08:52,216] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:08:52,217] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:08:54,427] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:08:54,433] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:09:06,757] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:09:06,758] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:09:08,834] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:09:08,841] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:10:00,420] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:10:00,422] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:10:01,864] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:10:01,876] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:12:23,221] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:23,222] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:12:24,616] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:24,616] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:12:25,430] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:25,431] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:12:25,431] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:12:25,958] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:25,970] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:12:41,161] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:12:41,162] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:13:00,384] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:13:00,405] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:13:28,171] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:13:28,171] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:13:35,117] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 01:13:35,136] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:13:56,529] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:13:56,530] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:13:59,529] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:13:59,540] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:14:49,787] INFO - Auth routes module initialized
+[2025-03-12 01:15:02,782] INFO - Auth routes module initialized
+[2025-03-12 01:15:31,915] INFO - Auth routes module initialized
+[2025-03-12 01:17:22,792] INFO - Auth routes module initialized
+[2025-03-12 01:17:42,331] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:17:42,332] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:17:44,355] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:17:44,370] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:18:11,778] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:18:11,778] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:18:14,010] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:18:14,022] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:22:14,102] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:14,102] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:22:15,052] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:15,054] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:22:15,675] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:15,675] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:22:15,677] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:22:16,403] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:16,420] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:22:26,138] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:26,141] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:22:27,835] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:22:27,847] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:23:20,865] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:23:20,866] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:23:22,722] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:23:22,741] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:24:08,897] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:24:08,897] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:24:10,617] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:24:10,630] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:25:14,755] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:14,756] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:16,495] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:16,513] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:25:21,632] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:21,634] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:23,677] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:23,686] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:25:30,912] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:30,914] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:32,138] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:32,139] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:32,141] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:32,142] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:32,822] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:32,823] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:25:32,824] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:25:33,379] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:33,381] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:25:33,381] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:25:33,943] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:33,951] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:25:46,517] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:46,518] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:48,217] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:48,224] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:25:55,790] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:55,790] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:56,920] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:56,921] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:25:56,921] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:25:56,922] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:27:08,067] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:27:08,070] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:28:41,194] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:41,196] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:28:43,187] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:43,207] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:28:49,186] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:49,187] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:28:50,307] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:50,308] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:28:50,312] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:50,312] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:28:51,041] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:51,043] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:28:51,043] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:28:51,539] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:51,540] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:28:51,540] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:28:52,274] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:28:52,284] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:29:11,630] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:29:11,631] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:29:13,754] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:29:13,765] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:29:19,109] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:29:19,111] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:29:20,192] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:29:20,193] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:29:20,193] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:29:20,194] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:30:15,244] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:15,245] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:30:15,246] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:30:15,946] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:15,946] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:30:15,946] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:30:15,969] INFO - Route called: POST /auth/request - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:15,971] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:30:16,301] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:16,302] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:30:16,303] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:30:16,964] INFO - Route called: POST /auth/verify - Wallet: 0xAbf4fb1AC5E3c0Db693deC235F9D9BE1a29bcDc9
+[2025-03-12 01:30:16,975] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:34:24,859] INFO - Auth routes module initialized
+[2025-03-12 01:39:33,969] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:39:33,969] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:39:36,737] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:39:36,762] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:40:06,708] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:06,709] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:40:08,102] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:08,103] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:40:08,104] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:08,104] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:40:26,823] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:26,824] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:40:26,825] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:40:27,159] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:27,159] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:40:27,159] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:40:27,173] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:27,173] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:40:27,597] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:27,598] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 01:40:27,598] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:40:28,250] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:40:28,264] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:44:24,795] INFO - Auth routes module initialized
+[2025-03-12 01:44:56,183] INFO - Auth routes module initialized
+[2025-03-12 01:44:59,646] INFO - Auth routes module initialized
+[2025-03-12 01:45:07,587] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:07,589] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:45:09,466] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:09,491] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:45:18,678] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:18,681] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:45:19,980] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:19,982] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:45:19,983] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:19,984] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:45:42,501] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:42,503] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:45:42,829] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:42,837] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:45:42,872] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:42,874] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:45:43,130] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:43,136] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 01:45:48,932] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:48,933] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:45:50,739] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:50,756] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:45:58,853] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:45:58,854] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:46:00,672] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:46:00,693] INFO - Route called: POST /auth/verify  200
+[2025-03-12 01:46:03,746] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:46:03,747] INFO - Route called: POST /auth/request  200
+[2025-03-12 01:46:04,888] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 01:46:04,895] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:11:05,997] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:11:05,998] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:11:08,160] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:11:08,207] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:12:04,914] INFO - Auth routes module initialized
+[2025-03-12 02:12:13,778] INFO - Auth routes module initialized
+[2025-03-12 02:13:54,465] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:13:54,474] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:13:56,546] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:13:56,628] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:25:42,188] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:25:42,190] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:25:44,342] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:25:44,360] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:25:58,502] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:25:58,504] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:26:00,290] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:26:00,308] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:27:48,712] INFO - Route called: POST /auth/request - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:27:48,713] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:27:50,688] INFO - Route called: POST /auth/verify - Wallet: 0x50629C71967908D5C871A5eDAdDC853E2782E809
+[2025-03-12 02:27:50,702] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:28:06,860] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:06,860] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:07,921] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:07,921] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:07,922] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:07,923] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:08,201] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:08,201] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 02:28:08,202] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 02:28:09,560] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:09,562] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 02:28:09,563] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 02:28:10,029] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:10,046] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:28:18,787] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:18,787] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:19,978] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:19,980] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:19,980] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:19,981] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:20,091] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:20,091] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 02:28:20,092] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 02:28:21,580] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:21,581] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 02:28:21,582] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 02:28:22,067] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:22,081] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:28:26,690] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:26,692] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:28,625] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:28,647] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:28:46,174] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:46,175] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:28:48,453] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:28:48,467] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:38:16,154] INFO - Auth routes module initialized
+[2025-03-12 02:39:01,621] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:39:01,622] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:39:19,687] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:39:19,726] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:39:30,307] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:39:30,309] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:39:32,401] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:39:32,417] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:48:14,412] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:48:14,414] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:48:22,790] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:48:22,807] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:48:25,982] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:48:25,983] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:48:27,650] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:48:27,677] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:48:32,920] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:48:32,921] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:48:35,111] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:48:35,133] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:50:43,718] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:50:43,718] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:50:45,880] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:50:45,898] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:51:36,993] INFO - Auth routes module initialized
+[2025-03-12 02:52:24,728] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:52:24,731] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:52:47,052] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:52:47,053] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:52:48,921] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:52:48,946] INFO - Route called: POST /auth/verify  200
+[2025-03-12 02:54:51,746] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:51,747] INFO - Route called: POST /auth/request  200
+[2025-03-12 02:54:53,499] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 02:54:53,506] INFO - Route called: POST /auth/verify  200
+[2025-03-12 11:57:12,243] INFO - Auth routes module initialized
+[2025-03-12 12:21:07,697] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:07,713] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:21:08,666] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:08,666] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:21:13,496] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:13,497] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 12:21:13,497] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 12:21:13,940] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:14,039] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:21:20,342] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:20,344] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:21:21,334] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:21,334] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:21:22,580] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:22,583] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 12:21:22,583] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 12:21:22,816] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:21:22,839] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:27:30,270] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:27:30,272] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:27:32,372] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:27:32,389] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:28:17,715] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:17,716] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:28:18,947] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:18,949] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:28:18,950] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:18,951] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:28:19,298] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:19,308] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 12:28:19,309] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 12:28:20,198] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:20,199] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-12 12:28:20,199] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-12 12:28:21,231] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:28:21,241] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:32:03,831] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:32:03,833] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:32:05,449] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:32:05,468] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:32:33,227] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:32:33,230] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:32:39,444] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:32:39,448] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:32:41,011] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:32:41,023] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:33:06,143] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:33:06,146] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:33:07,558] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:33:07,576] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:33:25,166] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:33:25,166] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:33:26,779] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:33:26,792] INFO - Route called: POST /auth/verify  200
+[2025-03-12 12:33:34,204] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:33:34,204] INFO - Route called: POST /auth/request  200
+[2025-03-12 12:33:36,229] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-12 12:33:36,241] INFO - Route called: POST /auth/verify  200
+[2025-03-12 15:37:02,832] INFO - Auth routes module initialized
+[2025-03-14 10:20:14,960] INFO - Auth routes module initialized
+[2025-03-14 11:32:29,842] INFO - Auth routes module initialized
+[2025-03-14 11:43:43,321] INFO - Auth routes module initialized
+[2025-03-14 13:14:30,276] INFO - Auth routes module initialized
+[2025-03-14 13:23:35,018] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-14 13:23:35,030] INFO - Route called: POST /auth/request  200
+[2025-03-14 13:23:38,721] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-14 13:23:38,833] INFO - Route called: POST /auth/verify  200
+[2025-03-14 13:30:34,971] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-14 13:30:34,973] INFO - Route called: POST /auth/request  200
+[2025-03-14 13:30:37,069] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-14 13:30:37,087] INFO - Route called: POST /auth/verify  200
+[2025-03-14 15:27:19,068] INFO - Auth routes module initialized
+[2025-03-14 22:53:36,648] INFO - Auth routes module initialized
+[2025-03-15 15:43:58,855] INFO - Auth routes module initialized
+[2025-03-15 16:33:05,562] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:33:05,615] INFO - Route called: POST /auth/request  200
+[2025-03-15 16:33:08,166] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:33:08,312] INFO - Route called: POST /auth/verify  200
+[2025-03-15 16:37:32,803] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:37:32,804] INFO - Route called: POST /auth/request  200
+[2025-03-15 16:37:35,986] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 16:37:35,999] INFO - Route called: POST /auth/verify  200
+[2025-03-15 17:11:36,078] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 17:11:36,081] INFO - Route called: POST /auth/request  200
+[2025-03-15 17:11:37,950] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 17:11:37,973] INFO - Route called: POST /auth/verify  200
+[2025-03-15 17:13:25,243] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 17:13:25,244] INFO - Route called: POST /auth/request  200
+[2025-03-15 17:13:27,623] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-15 17:13:27,635] INFO - Route called: POST /auth/verify  200
+[2025-03-15 20:29:03,610] INFO - Auth routes module initialized
+[2025-03-15 22:09:59,019] INFO - Auth routes module initialized
+[2025-03-16 11:53:39,261] INFO - Auth routes module initialized
+[2025-03-16 14:48:05,561] INFO - Auth routes module initialized
+[2025-03-16 17:54:35,673] INFO - Auth routes module initialized
+[2025-03-16 18:11:37,852] INFO - Auth routes module initialized
+[2025-03-16 18:32:43,736] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:32:43,751] INFO - Route called: POST /auth/request  200
+[2025-03-16 18:32:46,283] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:32:46,467] INFO - Route called: POST /auth/verify  200
+[2025-03-16 18:33:26,155] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:33:26,155] INFO - Route called: POST /auth/request  200
+[2025-03-16 18:33:28,129] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:33:28,150] INFO - Route called: POST /auth/verify  200
+[2025-03-16 18:48:22,890] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:48:22,906] INFO - Route called: POST /auth/request  200
+[2025-03-16 18:48:24,591] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:48:24,673] INFO - Route called: POST /auth/verify  200
+[2025-03-16 18:51:53,636] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:51:53,638] INFO - Route called: POST /auth/request  200
+[2025-03-16 18:51:55,597] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:51:55,610] INFO - Route called: POST /auth/verify  200
+[2025-03-16 18:51:59,652] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:51:59,652] INFO - Route called: POST /auth/request  200
+[2025-03-16 18:52:01,066] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:52:01,075] INFO - Route called: POST /auth/verify  200
+[2025-03-16 18:59:05,673] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:59:05,682] INFO - Route called: POST /auth/request  200
+[2025-03-16 18:59:07,400] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 18:59:07,432] INFO - Route called: POST /auth/verify  200
+[2025-03-16 19:11:34,566] INFO - Auth routes module initialized
+[2025-03-16 19:12:39,174] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 19:12:39,177] INFO - Route called: POST /auth/request  200
+[2025-03-16 19:12:40,760] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-16 19:12:40,796] INFO - Route called: POST /auth/verify  200
+[2025-03-17 00:03:16,618] INFO - Auth routes module initialized
+[2025-03-18 17:44:04,686] INFO - Auth routes module initialized
+[2025-03-18 17:45:17,675] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:17,696] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:17,781] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:17,783] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:21,062] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:21,064] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:45:21,064] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:45:30,757] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:30,759] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:30,759] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:30,760] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:30,846] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:30,848] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:30,849] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:30,851] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:33,659] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:33,661] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:45:33,661] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:45:33,978] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:33,981] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:45:33,982] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:45:34,403] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:34,404] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:45:34,405] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:45:34,951] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:35,085] INFO - Route called: POST /auth/verify  200
+[2025-03-18 17:45:49,917] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:49,920] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:50,114] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:50,117] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:45:51,592] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:51,594] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:45:51,596] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:45:51,844] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:45:51,878] INFO - Route called: POST /auth/verify  200
+[2025-03-18 17:47:05,242] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:05,243] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:47:09,311] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:09,313] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:47:09,316] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:09,317] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:47:37,182] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:37,184] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:47:37,185] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:47:37,448] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:37,449] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:47:37,449] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:47:37,707] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:37,708] INFO - Route called: POST /auth/request  200
+[2025-03-18 17:47:38,077] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:38,079] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 17:47:38,079] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 17:47:40,360] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 17:47:40,373] INFO - Route called: POST /auth/verify  200
+[2025-03-18 18:17:34,477] INFO - Auth routes module initialized
+[2025-03-18 18:24:13,124] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:13,127] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:15,180] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:15,185] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:16,813] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:16,814] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 18:24:16,815] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 18:24:16,969] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:16,970] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:16,971] INFO - Route called: POST /auth/request - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:16,972] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:17,804] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:17,806] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 18:24:17,806] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 18:24:18,372] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:18,374] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 18:24:18,375] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 18:24:18,673] INFO - Route called: POST /auth/verify - Wallet: 0xA1E82F804D00d7CDe0dc591fBa2AD5A8A22C45b4
+[2025-03-18 18:24:18,754] INFO - Route called: POST /auth/verify  200
+[2025-03-18 18:24:41,315] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:41,328] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:41,328] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:41,343] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:42,483] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:42,485] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:42,485] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:42,487] INFO - Route called: POST /auth/request  200
+[2025-03-18 18:24:43,313] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:43,315] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 18:24:43,315] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 18:24:44,233] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:44,235] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 18:24:44,235] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 18:24:45,296] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:45,298] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-18 18:24:45,299] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-18 18:24:45,842] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 18:24:45,873] INFO - Route called: POST /auth/verify  200
+[2025-03-18 19:30:03,043] INFO - Auth routes module initialized
+[2025-03-18 19:30:36,615] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 19:30:36,616] INFO - Route called: POST /auth/request  200
+[2025-03-18 19:30:40,195] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-18 19:30:40,231] INFO - Route called: POST /auth/verify  200
+[2025-03-18 20:01:03,487] INFO - Auth routes module initialized
+[2025-03-19 22:15:58,942] INFO - Auth routes module initialized
+[2025-03-19 22:17:59,055] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-19 22:17:59,076] INFO - Route called: POST /auth/request  200
+[2025-03-19 22:18:02,106] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-19 22:18:02,202] INFO - Route called: POST /auth/verify  200
+[2025-03-20 05:42:03,783] INFO - Auth routes module initialized
+[2025-03-20 05:43:02,845] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:43:02,847] INFO - Route called: POST /auth/request  200
+[2025-03-20 05:43:06,843] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:43:06,916] INFO - Route called: POST /auth/verify  200
+[2025-03-20 05:59:27,886] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:27,888] INFO - Route called: POST /auth/request  200
+[2025-03-20 05:59:27,901] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:27,902] INFO - Route called: POST /auth/request  200
+[2025-03-20 05:59:30,823] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:30,824] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-20 05:59:30,824] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-20 05:59:31,293] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:31,316] INFO - Route called: POST /auth/verify  200
+[2025-03-20 05:59:39,178] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:39,179] INFO - Route called: POST /auth/request  200
+[2025-03-20 05:59:39,186] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:39,188] INFO - Route called: POST /auth/request  200
+[2025-03-20 05:59:41,770] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:41,771] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-20 05:59:41,771] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-20 05:59:42,476] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 05:59:42,499] INFO - Route called: POST /auth/verify  200
+[2025-03-20 06:00:20,387] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:20,388] INFO - Route called: POST /auth/request  200
+[2025-03-20 06:00:20,390] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:20,391] INFO - Route called: POST /auth/request  200
+[2025-03-20 06:00:22,893] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:22,894] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-20 06:00:22,895] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-20 06:00:23,297] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:00:23,315] INFO - Route called: POST /auth/verify  200
+[2025-03-20 06:34:30,506] INFO - Auth routes module initialized
+[2025-03-20 06:35:49,184] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:35:49,186] INFO - Route called: POST /auth/request  200
+[2025-03-20 06:35:51,305] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 06:35:51,325] INFO - Route called: POST /auth/verify  200
+[2025-03-20 08:10:37,612] INFO - Auth routes module initialized
+[2025-03-20 08:13:15,585] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 08:13:15,596] INFO - Route called: POST /auth/request  200
+[2025-03-20 08:13:30,200] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 08:13:30,309] INFO - Route called: POST /auth/verify  200
+[2025-03-20 08:17:10,863] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 08:17:10,864] INFO - Route called: POST /auth/request  200
+[2025-03-20 08:17:12,750] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 08:17:12,774] INFO - Route called: POST /auth/verify  200
+[2025-03-20 08:43:40,278] INFO - Auth routes module initialized
+[2025-03-20 09:03:14,322] INFO - Auth routes module initialized
+[2025-03-20 09:08:27,062] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:08:27,066] INFO - Route called: POST /auth/request  200
+[2025-03-20 09:08:29,128] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:08:29,176] INFO - Route called: POST /auth/verify  200
+[2025-03-20 09:09:56,852] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:09:56,854] INFO - Route called: POST /auth/request  200
+[2025-03-20 09:09:58,824] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:09:58,834] INFO - Route called: POST /auth/verify  200
+[2025-03-20 09:10:06,084] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:10:06,086] INFO - Route called: POST /auth/request  200
+[2025-03-20 09:10:07,621] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-20 09:10:07,639] INFO - Route called: POST /auth/verify  200
+[2025-03-20 17:38:39,826] INFO - Auth routes module initialized
+[2025-03-21 16:36:23,603] INFO - Auth routes module initialized
+[2025-03-21 18:51:40,130] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:51:40,228] INFO - Route called: POST /auth/request  200
+[2025-03-21 18:51:43,260] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:51:43,491] INFO - Route called: POST /auth/verify  200
+[2025-03-21 18:58:16,437] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:58:16,439] INFO - Route called: POST /auth/request  200
+[2025-03-21 18:58:16,746] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:58:16,749] INFO - Route called: POST /auth/request  200
+[2025-03-21 18:58:16,753] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:58:16,754] INFO - Route called: POST /auth/request  200
+[2025-03-21 18:58:18,625] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:58:18,625] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-21 18:58:18,628] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-21 18:58:19,032] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:58:19,035] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-21 18:58:19,036] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-21 18:58:19,357] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 18:58:19,392] INFO - Route called: POST /auth/verify  200
+[2025-03-21 19:03:07,849] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:03:07,850] INFO - Route called: POST /auth/request  200
+[2025-03-21 19:03:22,426] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:03:22,434] INFO - Route called: POST /auth/verify  200
+[2025-03-21 19:05:30,915] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:05:30,917] INFO - Route called: POST /auth/request  200
+[2025-03-21 19:05:31,681] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:05:31,683] INFO - Route called: POST /auth/request  200
+[2025-03-21 19:05:31,688] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:05:31,690] INFO - Route called: POST /auth/request  200
+[2025-03-21 19:07:04,506] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:07:04,507] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-21 19:07:04,508] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-21 19:07:04,792] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:07:04,793] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-21 19:07:04,793] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-21 19:07:04,891] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:07:04,892] INFO - Route called: POST /auth/request  200
+[2025-03-21 19:07:05,364] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:07:05,365] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-03-21 19:07:05,365] ERROR - Route called: POST /auth/verify  500 - 
+[2025-03-21 19:07:05,962] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 19:07:05,971] INFO - Route called: POST /auth/verify  200
+[2025-03-21 21:42:48,176] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 21:42:48,181] INFO - Route called: POST /auth/request  200
+[2025-03-21 21:42:50,274] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 21:42:50,300] INFO - Route called: POST /auth/verify  200
+[2025-03-21 23:05:43,709] INFO - Auth routes module initialized
+[2025-03-21 23:22:28,056] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:22:28,060] INFO - Route called: POST /auth/request  200
+[2025-03-21 23:22:30,202] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:22:30,230] INFO - Route called: POST /auth/verify  200
+[2025-03-21 23:22:42,127] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:22:42,129] INFO - Route called: POST /auth/request  200
+[2025-03-21 23:22:45,730] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:22:45,747] INFO - Route called: POST /auth/verify  200
+[2025-03-21 23:27:29,719] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:27:29,722] INFO - Route called: POST /auth/request  200
+[2025-03-21 23:27:31,175] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:27:31,203] INFO - Route called: POST /auth/verify  200
+[2025-03-21 23:30:11,851] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:30:11,854] INFO - Route called: POST /auth/request  200
+[2025-03-21 23:30:13,831] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-21 23:30:13,843] INFO - Route called: POST /auth/verify  200
+[2025-03-23 15:08:48,101] INFO - Auth routes module initialized
+[2025-03-23 15:09:05,003] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-23 15:09:05,014] INFO - Route called: POST /auth/request  200
+[2025-03-23 15:09:07,232] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-03-23 15:09:07,294] INFO - Route called: POST /auth/verify  200
+[2025-03-23 15:38:36,107] INFO - Auth routes module initialized
+[2025-03-23 16:23:33,051] INFO - Auth routes module initialized
+[2025-03-27 19:57:04,696] INFO - Auth routes module initialized
+[2025-04-01 16:58:51,054] INFO - Auth routes module initialized
+[2025-04-01 17:56:14,617] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-04-01 17:56:14,641] INFO - Route called: POST /auth/request  200
+[2025-04-01 17:56:18,334] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-04-01 17:56:18,458] INFO - Route called: POST /auth/verify  200
+[2025-04-01 19:02:24,257] INFO - Auth routes module initialized
+[2025-04-01 19:03:21,813] INFO - Route called: POST /auth/request - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-04-01 19:03:21,817] INFO - Route called: POST /auth/request  200
+[2025-04-01 19:03:24,385] INFO - Route called: POST /auth/verify - Wallet: 0x0300B70e40F138927e3a988ce4A9a069Ff875336
+[2025-04-01 19:03:24,468] INFO - Route called: POST /auth/verify  200
+[2025-04-02 18:28:42,558] INFO - Auth routes module initialized
+[2025-04-18 19:59:53,817] INFO - Auth routes module initialized
+[2025-04-18 20:25:31,285] INFO - Auth routes module initialized
+[2025-04-18 20:25:34,659] INFO - Auth routes module initialized
+[2025-04-18 20:26:05,565] INFO - Auth routes module initialized
+[2025-04-18 20:40:54,080] INFO - Auth routes module initialized
+[2025-04-18 20:40:57,638] INFO - Auth routes module initialized
+[2025-04-18 20:41:01,127] INFO - Auth routes module initialized
+[2025-04-18 20:41:04,486] INFO - Auth routes module initialized
+[2025-04-18 20:41:07,808] INFO - Auth routes module initialized
+[2025-04-18 20:58:12,168] INFO - Auth routes module initialized
+[2025-04-18 20:58:42,299] INFO - Auth routes module initialized
+[2025-04-18 20:58:45,498] INFO - Auth routes module initialized
+[2025-04-18 20:58:48,731] INFO - Auth routes module initialized
+[2025-04-18 23:25:36,230] INFO - Auth routes module initialized
+[2025-04-18 23:30:36,363] INFO - Auth routes module initialized
+[2025-04-18 23:30:39,372] INFO - Auth routes module initialized
+[2025-04-18 23:31:10,330] INFO - Auth routes module initialized
+[2025-04-18 23:31:13,247] INFO - Auth routes module initialized
+[2025-04-18 23:31:44,378] INFO - Auth routes module initialized
+[2025-04-18 23:31:47,255] INFO - Auth routes module initialized
+[2025-04-18 23:35:36,521] INFO - Auth routes module initialized
+[2025-04-18 23:35:39,755] INFO - Auth routes module initialized
+[2025-04-18 23:45:40,817] INFO - Auth routes module initialized
+[2025-04-18 23:45:44,130] INFO - Auth routes module initialized
+[2025-04-18 23:55:25,683] INFO - Auth routes module initialized
+[2025-04-18 23:55:28,950] INFO - Auth routes module initialized
+[2025-04-18 23:55:32,116] INFO - Auth routes module initialized
+[2025-04-18 23:55:35,601] INFO - Auth routes module initialized
+[2025-04-18 23:55:39,074] INFO - Auth routes module initialized
+[2025-04-18 23:55:42,318] INFO - Auth routes module initialized
+[2025-04-18 23:55:45,467] INFO - Auth routes module initialized
+[2025-04-18 23:56:16,606] INFO - Auth routes module initialized
+[2025-04-18 23:56:19,733] INFO - Auth routes module initialized
+[2025-04-18 23:56:23,032] INFO - Auth routes module initialized
+[2025-04-19 11:47:58,703] INFO - Auth routes module initialized
+[2025-04-19 11:48:29,958] INFO - Auth routes module initialized
+[2025-04-19 17:31:52,369] INFO - Auth routes module initialized
+[2025-04-19 17:32:04,489] INFO - Auth routes module initialized
+[2025-04-19 17:32:15,057] INFO - Auth routes module initialized
+[2025-04-19 17:32:45,459] INFO - Auth routes module initialized
+[2025-04-19 17:41:30,631] INFO - Auth routes module initialized
+[2025-04-19 17:42:05,246] INFO - Auth routes module initialized
+[2025-04-19 17:42:08,542] INFO - Auth routes module initialized
+[2025-04-19 17:43:38,469] INFO - Auth routes module initialized
+[2025-04-19 17:43:41,454] INFO - Auth routes module initialized
+[2025-04-19 17:46:33,764] INFO - Auth routes module initialized
+[2025-04-19 17:55:57,183] INFO - Auth routes module initialized
+[2025-04-19 17:56:00,262] INFO - Auth routes module initialized
+[2025-04-19 17:57:25,909] INFO - Auth routes module initialized
+[2025-04-19 17:57:38,991] INFO - Auth routes module initialized
+[2025-04-19 17:58:45,653] INFO - Auth routes module initialized
+[2025-04-19 17:58:48,369] INFO - Auth routes module initialized
+[2025-04-19 18:00:06,984] INFO - Auth routes module initialized
+[2025-04-19 18:00:10,057] INFO - Auth routes module initialized
+[2025-04-19 18:03:09,346] INFO - Auth routes module initialized
+[2025-04-19 18:03:12,284] INFO - Auth routes module initialized
+[2025-04-19 18:04:46,508] INFO - Auth routes module initialized
+[2025-04-19 18:04:49,356] INFO - Auth routes module initialized
+[2025-04-19 18:07:58,449] INFO - Auth routes module initialized
+[2025-04-19 18:08:38,937] INFO - Auth routes module initialized
+[2025-04-19 18:09:40,064] INFO - Auth routes module initialized
+[2025-04-19 18:09:43,112] INFO - Auth routes module initialized
+[2025-04-19 18:14:43,627] INFO - Auth routes module initialized
+[2025-04-19 19:39:43,522] INFO - Auth routes module initialized
+[2025-04-19 19:39:45,470] INFO - Auth routes module initialized
+[2025-04-19 19:45:07,620] INFO - Auth routes module initialized
+[2025-04-19 19:45:09,621] INFO - Auth routes module initialized
+[2025-04-19 19:45:11,635] INFO - Auth routes module initialized
+[2025-04-19 19:45:31,793] INFO - Auth routes module initialized
+[2025-04-19 19:45:33,785] INFO - Auth routes module initialized
+[2025-04-19 19:45:58,072] INFO - Auth routes module initialized
+[2025-04-19 19:45:59,958] INFO - Auth routes module initialized
+[2025-04-19 19:46:16,637] INFO - Auth routes module initialized
+[2025-04-19 19:46:18,712] INFO - Auth routes module initialized
+[2025-04-19 19:46:23,985] INFO - Auth routes module initialized
+[2025-04-19 19:46:34,595] INFO - Auth routes module initialized
+[2025-04-19 19:46:36,547] INFO - Auth routes module initialized
+[2025-04-19 19:47:15,687] INFO - Auth routes module initialized
+[2025-04-19 19:47:18,999] INFO - Auth routes module initialized
+[2025-04-19 19:47:21,027] INFO - Auth routes module initialized
+[2025-04-19 19:47:46,243] INFO - Auth routes module initialized
+[2025-04-19 19:47:48,175] INFO - Auth routes module initialized
+[2025-04-19 19:48:04,515] INFO - Auth routes module initialized
+[2025-04-19 19:49:26,392] INFO - Auth routes module initialized
+[2025-04-19 19:49:31,857] INFO - Auth routes module initialized
+[2025-04-19 19:49:42,171] INFO - Auth routes module initialized
+[2025-04-19 19:49:44,188] INFO - Auth routes module initialized
+[2025-04-19 19:49:53,069] INFO - Auth routes module initialized
+[2025-04-19 19:50:07,953] INFO - Auth routes module initialized
+[2025-04-19 19:50:15,495] INFO - Auth routes module initialized
+[2025-04-19 19:56:44,957] INFO - Auth routes module initialized
+[2025-04-19 19:56:46,810] INFO - Auth routes module initialized
+[2025-04-19 19:56:48,762] INFO - Auth routes module initialized
+[2025-04-19 19:57:00,413] INFO - Auth routes module initialized
+[2025-04-19 19:57:02,297] INFO - Auth routes module initialized
+[2025-04-19 19:57:05,827] INFO - Auth routes module initialized
+[2025-04-19 19:57:29,514] INFO - Auth routes module initialized
+[2025-04-19 19:57:31,340] INFO - Auth routes module initialized
+[2025-04-19 19:57:33,207] INFO - Auth routes module initialized
+[2025-04-19 20:00:30,674] INFO - Auth routes module initialized
+[2025-04-19 20:05:05,656] INFO - Auth routes module initialized
+[2025-04-19 20:05:07,645] INFO - Auth routes module initialized
+[2025-04-19 20:05:09,815] INFO - Auth routes module initialized
+[2025-04-19 20:05:16,492] INFO - Auth routes module initialized
+[2025-04-19 20:06:36,616] INFO - Auth routes module initialized
+[2025-04-19 20:06:41,853] INFO - Auth routes module initialized
+[2025-04-19 20:06:45,990] INFO - Auth routes module initialized
+[2025-04-19 20:33:19,182] INFO - Auth routes module initialized
+[2025-04-19 20:35:17,290] INFO - Auth routes module initialized
+[2025-04-19 20:35:19,025] INFO - Auth routes module initialized
+[2025-04-19 20:35:29,305] INFO - Auth routes module initialized
+[2025-04-19 20:35:47,968] INFO - Auth routes module initialized
+[2025-04-19 20:37:45,348] INFO - Auth routes module initialized
+[2025-04-19 20:37:47,308] INFO - Auth routes module initialized
+[2025-04-19 20:38:06,007] INFO - Auth routes module initialized
+[2025-04-19 20:38:07,934] INFO - Auth routes module initialized
+[2025-04-19 20:38:16,637] INFO - Auth routes module initialized
+[2025-04-19 20:38:18,470] INFO - Auth routes module initialized
+[2025-04-19 20:38:43,725] INFO - Auth routes module initialized
+[2025-04-19 20:38:45,730] INFO - Auth routes module initialized
+[2025-04-19 20:38:50,303] INFO - Auth routes module initialized
+[2025-04-19 20:38:52,349] INFO - Auth routes module initialized
+[2025-04-19 20:39:02,235] INFO - Auth routes module initialized
+[2025-04-19 20:39:04,157] INFO - Auth routes module initialized
+[2025-04-19 20:40:23,148] INFO - Auth routes module initialized
+[2025-04-19 20:40:31,109] INFO - Auth routes module initialized
+[2025-04-19 20:41:06,443] INFO - Auth routes module initialized
+[2025-04-19 20:41:08,514] INFO - Auth routes module initialized
+[2025-04-19 20:41:20,745] INFO - Auth routes module initialized
+[2025-04-19 20:41:45,628] INFO - Auth routes module initialized
+[2025-04-19 20:41:47,638] INFO - Auth routes module initialized
+[2025-04-19 20:41:49,629] INFO - Auth routes module initialized
+[2025-04-19 20:42:18,465] INFO - Auth routes module initialized
+[2025-04-19 20:42:20,314] INFO - Auth routes module initialized
+[2025-04-19 20:42:23,222] INFO - Auth routes module initialized
+[2025-04-19 20:42:41,847] INFO - Auth routes module initialized
+[2025-04-19 20:42:44,036] INFO - Auth routes module initialized
+[2025-04-19 20:42:46,054] INFO - Auth routes module initialized
+[2025-04-19 20:45:00,516] INFO - Auth routes module initialized
+[2025-04-19 20:45:02,715] INFO - Auth routes module initialized
+[2025-04-19 20:45:04,791] INFO - Auth routes module initialized
+[2025-04-19 20:45:37,343] INFO - Auth routes module initialized
+[2025-04-19 20:45:39,226] INFO - Auth routes module initialized
+[2025-04-19 20:45:50,385] INFO - Auth routes module initialized
+[2025-04-19 20:46:16,175] INFO - Auth routes module initialized
+[2025-04-19 20:46:18,209] INFO - Auth routes module initialized
+[2025-04-19 20:46:35,942] INFO - Auth routes module initialized
+[2025-04-19 20:46:39,042] INFO - Auth routes module initialized
+[2025-04-19 20:47:04,182] INFO - Auth routes module initialized
+[2025-04-19 20:47:07,053] INFO - Auth routes module initialized
+[2025-05-23 23:55:31,657] INFO - Auth routes module initialized
+[2025-05-26 13:13:58,324] INFO - Auth routes module initialized
+[2025-05-26 13:34:42,551] INFO - Auth routes module initialized
+[2025-05-26 13:38:12,081] INFO - Auth routes module initialized
+[2025-05-26 13:38:50,733] INFO - Auth routes module initialized
+[2025-05-26 13:39:37,709] INFO - Auth routes module initialized
+[2025-05-26 13:42:36,494] INFO - Auth routes module initialized
+[2025-05-26 13:53:37,207] INFO - Auth routes module initialized
+[2025-05-26 14:48:02,193] INFO - Auth routes module initialized
+[2025-05-26 15:04:42,725] INFO - Auth routes module initialized
+[2025-05-26 15:04:42,955] INFO - Route called: POST /auth/request - Wallet: 0x1234567890abcdef
+[2025-05-26 15:04:42,966] INFO - Route called: POST /auth/request  200
+[2025-05-26 15:04:42,970] INFO - Route called: POST /auth/request - Wallet: not_a_wallet
+[2025-05-26 15:04:42,970] INFO - Route called: POST /auth/request  200
+[2025-05-26 15:04:43,128] INFO - Route called: POST /auth/verify - Wallet: 0x1234567890abcdef
+[2025-05-26 15:04:43,128] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-05-26 15:04:43,128] ERROR - Route called: POST /auth/verify  500 - 400: Invalid or expired nonce
+[2025-05-26 15:04:51,731] INFO - Auth routes module initialized
+[2025-05-26 15:04:51,924] INFO - Route called: POST /auth/request - Wallet: 0x1234567890abcdef
+[2025-05-26 15:04:51,925] INFO - Route called: POST /auth/request  200
+[2025-05-26 15:04:51,929] INFO - Route called: POST /auth/request - Wallet: not_a_wallet
+[2025-05-26 15:04:51,930] INFO - Route called: POST /auth/request  200
+[2025-05-26 15:04:52,049] INFO - Route called: POST /auth/verify - Wallet: 0x1234567890abcdef
+[2025-05-26 15:04:52,049] ERROR - Route called: POST /auth/verify  400 - Invalid or expired nonce
+[2025-05-26 15:04:52,049] ERROR - Route called: POST /auth/verify  500 - 400: Invalid or expired nonce
+[2025-05-26 15:17:50,326] INFO - Auth routes module initialized
+[2025-05-26 15:21:53,092] INFO - Auth routes module initialized
+[2025-05-26 15:21:57,062] INFO - Auth routes module initialized
+[2025-05-26 15:24:14,539] INFO - Auth routes module initialized
+[2025-05-26 15:24:17,777] INFO - Auth routes module initialized
+[2025-05-26 15:26:07,997] INFO - Auth routes module initialized
+[2025-05-26 15:26:12,727] INFO - Auth routes module initialized
+[2025-05-26 15:27:04,748] INFO - Auth routes module initialized
+[2025-05-26 15:27:07,942] INFO - Auth routes module initialized
+[2025-05-26 15:29:12,180] INFO - Auth routes module initialized
+[2025-05-26 15:29:16,335] INFO - Auth routes module initialized
+[2025-05-26 15:34:17,199] INFO - Auth routes module initialized
+[2025-05-26 15:34:20,531] INFO - Auth routes module initialized
+[2025-05-26 15:35:22,381] INFO - Auth routes module initialized
+[2025-05-26 15:35:26,996] INFO - Auth routes module initialized
+[2025-05-26 15:37:09,985] INFO - Auth routes module initialized
+[2025-05-26 15:37:11,954] INFO - Auth routes module initialized
+[2025-05-26 15:38:14,125] INFO - Auth routes module initialized
+[2025-05-26 15:38:17,475] INFO - Auth routes module initialized
+[2025-05-26 15:38:20,727] INFO - Auth routes module initialized
+[2025-05-26 15:43:10,367] INFO - Auth routes module initialized
+[2025-05-26 15:43:13,614] INFO - Auth routes module initialized
+[2025-05-26 15:48:14,213] INFO - Auth routes module initialized
+[2025-05-26 15:48:17,443] INFO - Auth routes module initialized
+[2025-05-26 16:05:19,373] INFO - Auth routes module initialized
+[2025-05-26 16:05:22,741] INFO - Auth routes module initialized
+[2025-05-26 16:06:57,686] INFO - Auth routes module initialized
+[2025-05-26 16:07:00,970] INFO - Auth routes module initialized
+[2025-05-26 16:14:52,495] INFO - Auth routes module initialized
+[2025-05-26 16:14:55,659] INFO - Auth routes module initialized
+[2025-05-26 16:15:23,482] INFO - Auth routes module initialized
+[2025-05-26 16:15:26,788] INFO - Auth routes module initialized
+[2025-05-26 16:20:27,334] INFO - Auth routes module initialized
+[2025-05-26 16:20:30,566] INFO - Auth routes module initialized
+[2025-05-26 16:25:31,182] INFO - Auth routes module initialized
+[2025-05-26 16:25:35,325] INFO - Auth routes module initialized
+[2025-05-26 16:26:11,713] INFO - Auth routes module initialized
+[2025-05-26 16:27:13,483] INFO - Auth routes module initialized
+[2025-05-26 16:27:18,798] INFO - Auth routes module initialized
+[2025-05-26 16:28:52,837] INFO - Auth routes module initialized
+[2025-05-26 16:28:55,780] INFO - Auth routes module initialized
+[2025-05-26 16:29:49,987] INFO - Auth routes module initialized
+[2025-05-26 16:29:53,380] INFO - Auth routes module initialized
+[2025-05-26 16:30:27,296] INFO - Auth routes module initialized
+[2025-05-26 16:36:26,940] INFO - Auth routes module initialized
+[2025-05-26 16:36:30,412] INFO - Auth routes module initialized
+[2025-05-26 16:38:13,774] INFO - Auth routes module initialized
+[2025-05-26 16:38:17,258] INFO - Auth routes module initialized
+[2025-05-26 16:38:20,506] INFO - Auth routes module initialized
+[2025-05-26 16:43:21,591] INFO - Auth routes module initialized
+[2025-05-26 16:43:24,900] INFO - Auth routes module initialized
+[2025-05-26 16:43:28,219] INFO - Auth routes module initialized
+[2025-05-26 16:45:04,346] INFO - Auth routes module initialized
+[2025-05-26 16:45:08,889] INFO - Auth routes module initialized
+[2025-05-26 16:50:08,852] INFO - Auth routes module initialized
+[2025-05-26 16:50:11,565] INFO - Auth routes module initialized
+[2025-05-26 16:52:23,489] INFO - Auth routes module initialized
+[2025-05-26 16:52:25,534] INFO - Auth routes module initialized
+[2025-05-26 16:53:05,727] INFO - Auth routes module initialized
+[2025-05-26 16:53:07,845] INFO - Auth routes module initialized
+[2025-05-26 16:53:13,956] INFO - Auth routes module initialized
+[2025-05-26 16:53:57,808] INFO - Auth routes module initialized
+[2025-05-26 16:53:59,703] INFO - Auth routes module initialized
+[2025-05-26 16:54:33,646] INFO - Auth routes module initialized
+[2025-05-26 16:54:35,730] INFO - Auth routes module initialized
+[2025-05-26 16:55:27,631] INFO - Auth routes module initialized
+[2025-05-26 16:56:17,580] INFO - Auth routes module initialized
+[2025-05-26 16:56:20,863] INFO - Auth routes module initialized
+[2025-05-26 17:01:21,446] INFO - Auth routes module initialized
+[2025-05-26 17:01:25,091] INFO - Auth routes module initialized
+[2025-05-26 17:14:16,307] INFO - Auth routes module initialized
+[2025-05-26 17:14:19,572] INFO - Auth routes module initialized
+[2025-05-26 17:17:15,126] INFO - Auth routes module initialized
+[2025-05-26 17:17:24,252] INFO - Auth routes module initialized
+[2025-05-26 17:18:33,669] INFO - Auth routes module initialized
+[2025-05-26 17:18:37,112] INFO - Auth routes module initialized
+[2025-05-26 17:20:54,547] INFO - Auth routes module initialized
+[2025-05-26 17:20:57,591] INFO - Auth routes module initialized
+[2025-05-26 17:21:35,774] INFO - Auth routes module initialized
+[2025-05-26 17:21:38,932] INFO - Auth routes module initialized
+[2025-05-26 17:22:11,565] INFO - Auth routes module initialized
+[2025-05-26 17:22:48,270] INFO - Auth routes module initialized
+[2025-05-26 17:22:51,547] INFO - Auth routes module initialized
+[2025-05-26 17:23:43,069] INFO - Auth routes module initialized
+[2025-05-26 17:24:02,953] INFO - Auth routes module initialized
+[2025-05-26 17:26:59,202] INFO - Auth routes module initialized
+[2025-05-26 17:27:02,261] INFO - Auth routes module initialized
+[2025-05-26 17:32:03,485] INFO - Auth routes module initialized
+[2025-05-26 17:32:06,723] INFO - Auth routes module initialized
+[2025-05-26 17:35:20,881] INFO - Auth routes module initialized
+[2025-05-26 17:35:23,896] INFO - Auth routes module initialized
+[2025-05-26 18:30:52,184] INFO - Auth routes module initialized
+[2025-05-26 18:33:31,278] INFO - Auth routes module initialized
+[2025-05-26 18:33:34,506] INFO - Auth routes module initialized
+[2025-05-26 18:33:37,602] INFO - Auth routes module initialized
+[2025-05-26 18:34:16,641] INFO - Auth routes module initialized
+[2025-05-26 18:34:21,535] INFO - Auth routes module initialized
+[2025-05-26 18:43:38,273] INFO - Auth routes module initialized
+[2025-05-26 18:43:41,528] INFO - Auth routes module initialized
+[2025-05-26 18:44:19,299] INFO - Auth routes module initialized
+[2025-05-26 18:44:46,554] INFO - Auth routes module initialized
+[2025-05-26 18:44:49,585] INFO - Auth routes module initialized
+[2025-05-26 18:45:56,955] INFO - Auth routes module initialized
+[2025-05-26 18:46:00,309] INFO - Auth routes module initialized
+[2025-05-26 18:46:38,387] INFO - Auth routes module initialized
+[2025-05-26 18:47:09,741] INFO - Auth routes module initialized
+[2025-05-26 18:47:12,921] INFO - Auth routes module initialized
+[2025-05-26 18:47:37,474] INFO - Auth routes module initialized
+[2025-05-26 18:47:40,629] INFO - Auth routes module initialized
+[2025-05-26 18:50:49,782] INFO - Auth routes module initialized
+[2025-05-26 18:50:53,295] INFO - Auth routes module initialized
+[2025-05-26 19:19:13,561] INFO - Auth routes module initialized
+[2025-05-26 19:19:16,694] INFO - Auth routes module initialized
+[2025-05-26 21:16:24,441] INFO - Auth routes module initialized
+[2025-05-26 22:09:41,557] INFO - Auth routes module initialized
+[2025-05-26 22:09:49,076] INFO - Auth routes module initialized
+[2025-05-26 22:14:48,846] INFO - Auth routes module initialized
+[2025-05-26 22:24:49,366] INFO - Auth routes module initialized
+[2025-05-26 22:24:56,071] INFO - Auth routes module initialized
+[2025-05-26 22:31:09,059] INFO - Auth routes module initialized
+[2025-05-26 22:31:15,169] INFO - Auth routes module initialized
+[2025-05-26 22:39:25,107] INFO - Auth routes module initialized
+[2025-05-26 22:39:51,829] INFO - Auth routes module initialized
+[2025-05-26 22:41:06,332] INFO - Auth routes module initialized
+[2025-05-26 22:41:10,413] INFO - Auth routes module initialized
+[2025-05-26 22:43:04,911] INFO - Auth routes module initialized
+[2025-05-26 22:43:08,062] INFO - Auth routes module initialized
+[2025-05-26 22:44:58,064] INFO - Auth routes module initialized
+[2025-05-26 22:47:14,835] INFO - Auth routes module initialized
+[2025-05-27 18:51:24,851] INFO - Auth routes module initialized
+[2025-05-27 19:10:44,748] INFO - Auth routes module initialized
+[2025-05-27 19:29:41,506] INFO - Auth routes module initialized
+[2025-05-27 19:43:54,721] INFO - Auth routes module initialized
+[2025-05-27 21:38:02,882] INFO - Auth routes module initialized

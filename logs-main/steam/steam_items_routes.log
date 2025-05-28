@@ -1,0 +1,26 @@
+[2025-04-19 17:56:01,368] INFO - Request to get item categories for app ID: 730
+[2025-04-19 17:56:01,368] ERROR - Failed to get categories for app ID 730
+[2025-04-19 17:57:23,757] INFO - Request to get item categories for app ID: 730
+[2025-04-19 17:57:23,757] ERROR - Failed to get categories for app ID 730
+[2025-04-19 17:58:08,634] INFO - Request to get item categories for app ID: 730
+[2025-04-19 17:58:08,640] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 17:59:28,334] INFO - Request to get item categories for app ID: 730
+[2025-04-19 17:59:28,337] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:00:04,647] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:00:04,725] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:00:29,051] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:00:29,055] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:03:06,843] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:03:06,936] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:03:20,885] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:03:21,241] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:07:58,734] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:07:59,008] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:08:39,157] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:08:39,516] INFO - Retrieved 0 categories for app ID 730
+[2025-04-19 18:08:39,523] INFO - Request to get item categories for app ID: 730
+[2025-04-19 18:08:39,523] INFO - Retrieved 5 categories for app ID 730
+[2025-05-26 13:53:38,344] INFO - Request to get item categories for app ID: 730
+[2025-05-26 13:53:39,270] INFO - Retrieved 0 categories for app ID 730
+[2025-05-26 13:53:39,290] INFO - Request to get float info for inspect link: steam://rungame/730/7656120225...
+[2025-05-26 13:53:39,728] WARNING - Float information not found for inspect link: steam://rungame/730/7656120225...

@@ -1,0 +1,105 @@
+[2025-03-21T22:58:18.634Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=56d510f6593058f081d92dd190e8e8f7382bf48828e2c70c02a23094498a8d4f",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-21T22:58:18.636Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-21T22:58:18.636Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T22:58:18.636Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-21T22:58:18.636Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T22:58:19.050Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=8cee96db5e933916b7812cf04473d809968c68f31c04feb12e9c96f681fb7a4e",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-21T22:58:19.051Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-21T22:58:19.051Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T22:58:19.052Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-21T22:58:19.052Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T23:07:04.515Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=a0a5b9014a6246d4628a49d2a1cb89f42827ea175d197abde7e14652da024958",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-21T23:07:04.520Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-21T23:07:04.520Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T23:07:04.522Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-21T23:07:04.522Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T23:07:04.799Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=4fc0873af10eded92f5978e106f1beb963551bf89005563bd81383515c3b0d94",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-21T23:07:04.801Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-21T23:07:04.801Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T23:07:04.803Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-21T23:07:04.803Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T23:07:05.371Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=462d7cabee79eeff2b89f3e093d30f045b757536e8b693feeeea820cbe8376ce",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-21T23:07:05.373Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-21T23:07:05.373Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-21T23:07:05.374Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-21T23:07:05.374Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}

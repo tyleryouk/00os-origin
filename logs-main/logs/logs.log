@@ -1,0 +1,16 @@
+[2025-05-26 13:14:00,161] INFO - Test log from frontend
+[2025-05-26 13:14:00,176] ERROR - Test error from frontend
+[2025-05-26 13:14:00,195] INFO - 
+[2025-05-26 13:14:00,214] ERROR - Error processing log entry: Expecting value: line 1 column 1 (char 0)
+[2025-05-26 13:53:37,848] INFO - Test log from frontend
+[2025-05-26 13:53:37,852] ERROR - Test error from frontend
+[2025-05-26 13:53:37,864] INFO - 
+[2025-05-26 13:53:37,871] ERROR - Error processing log entry: Expecting value: line 1 column 1 (char 0)
+[2025-05-26 14:48:02,604] INFO - Test log from frontend
+[2025-05-26 14:48:02,614] ERROR - Test error from frontend
+[2025-05-26 14:48:02,619] INFO - 
+[2025-05-26 14:48:02,626] ERROR - Error processing log entry: Expecting value: line 1 column 1 (char 0)
+[2025-05-26 15:04:52,054] INFO - Test log from frontend
+[2025-05-26 15:04:52,061] ERROR - Test error from frontend
+[2025-05-26 15:04:52,068] INFO - 
+[2025-05-26 15:04:52,072] ERROR - Error processing log entry: Expecting value: line 1 column 1 (char 0)

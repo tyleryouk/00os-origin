@@ -1,0 +1,186 @@
+[2025-05-26 16:53:15,269] INFO - FriendsService initialized
+[2025-05-26 16:56:22,174] INFO - FriendsService initialized
+[2025-05-26 17:05:54,416] INFO - FriendsService initialized
+[2025-05-26 17:05:55,099] INFO - FriendsService initialized
+[2025-05-26 17:05:58,528] INFO - FriendsService initialized
+[2025-05-26 17:06:00,955] INFO - FriendsService initialized
+[2025-05-26 17:06:58,817] INFO - FriendsService initialized
+[2025-05-26 17:06:59,397] INFO - FriendsService initialized
+[2025-05-26 17:07:01,168] INFO - FriendsService initialized
+[2025-05-26 17:07:03,078] INFO - FriendsService initialized
+[2025-05-26 17:12:36,433] INFO - FriendsService initialized
+[2025-05-26 17:12:37,546] INFO - FriendsService initialized
+[2025-05-26 17:12:39,546] INFO - FriendsService initialized
+[2025-05-26 17:12:41,531] INFO - FriendsService initialized
+[2025-05-26 17:14:13,047] INFO - FriendsService initialized
+[2025-05-26 17:14:20,816] INFO - FriendsService initialized
+[2025-05-26 17:14:22,409] INFO - FriendsService initialized
+[2025-05-26 17:14:23,669] INFO - FriendsService initialized
+[2025-05-26 17:16:32,182] INFO - FriendsService initialized
+[2025-05-26 17:16:32,728] INFO - FriendsService initialized
+[2025-05-26 17:16:34,657] INFO - FriendsService initialized
+[2025-05-26 17:16:36,313] INFO - FriendsService initialized
+[2025-05-26 17:17:12,635] INFO - FriendsService initialized
+[2025-05-26 17:17:16,424] INFO - FriendsService initialized
+[2025-05-26 17:17:18,539] INFO - FriendsService initialized
+[2025-05-26 17:17:20,462] INFO - FriendsService initialized
+[2025-05-26 17:18:30,890] INFO - FriendsService initialized
+[2025-05-26 17:20:51,845] INFO - FriendsService initialized
+[2025-05-26 17:20:58,734] INFO - FriendsService initialized
+[2025-05-26 17:21:00,458] INFO - FriendsService initialized
+[2025-05-26 17:21:01,864] INFO - FriendsService initialized
+[2025-05-26 17:21:04,580] INFO - FriendsService initialized
+[2025-05-26 17:21:04,781] INFO - FriendsService initialized
+[2025-05-26 17:21:06,177] INFO - FriendsService initialized
+[2025-05-26 17:21:09,034] INFO - FriendsService initialized
+[2025-05-26 17:21:09,270] INFO - FriendsService initialized
+[2025-05-26 17:21:11,026] INFO - FriendsService initialized
+[2025-05-26 17:21:11,570] INFO - FriendsService initialized
+[2025-05-26 17:21:11,773] INFO - FriendsService initialized
+[2025-05-26 17:21:13,308] INFO - FriendsService initialized
+[2025-05-26 17:21:33,179] INFO - FriendsService initialized
+[2025-05-26 17:21:40,627] INFO - FriendsService initialized
+[2025-05-26 17:21:42,676] INFO - FriendsService initialized
+[2025-05-26 17:21:45,292] INFO - FriendsService initialized
+[2025-05-26 17:21:47,866] INFO - FriendsService initialized
+[2025-05-26 17:21:48,071] INFO - FriendsService initialized
+[2025-05-26 17:21:49,931] INFO - FriendsService initialized
+[2025-05-26 17:21:52,918] INFO - FriendsService initialized
+[2025-05-26 17:21:53,117] INFO - FriendsService initialized
+[2025-05-26 17:22:12,744] INFO - FriendsService initialized
+[2025-05-26 17:22:13,271] INFO - FriendsService initialized
+[2025-05-26 17:22:13,481] INFO - FriendsService initialized
+[2025-05-26 17:22:16,903] INFO - FriendsService initialized
+[2025-05-26 17:22:17,614] INFO - FriendsService initialized
+[2025-05-26 17:22:17,833] INFO - FriendsService initialized
+[2025-05-26 17:22:19,818] INFO - FriendsService initialized
+[2025-05-26 17:22:19,818] INFO - Fetching friend list from API for user 76561199562411448
+[2025-05-26 17:22:20,549] ERROR - Error in get_friend_list for 76561199562411448: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 92, in get_friend_list
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 68, in get_friend_list
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:22:45,806] INFO - FriendsService initialized
+[2025-05-26 17:22:53,809] INFO - FriendsService initialized
+[2025-05-26 17:22:55,397] INFO - FriendsService initialized
+[2025-05-26 17:22:57,618] INFO - FriendsService initialized
+[2025-05-26 17:23:01,233] INFO - FriendsService initialized
+[2025-05-26 17:23:01,762] INFO - FriendsService initialized
+[2025-05-26 17:23:03,907] INFO - FriendsService initialized
+[2025-05-26 17:23:08,302] INFO - FriendsService initialized
+[2025-05-26 17:23:08,986] INFO - FriendsService initialized
+[2025-05-26 17:23:10,572] INFO - FriendsService initialized
+[2025-05-26 17:23:11,099] INFO - FriendsService initialized
+[2025-05-26 17:23:11,316] INFO - FriendsService initialized
+[2025-05-26 17:23:12,956] INFO - FriendsService initialized
+[2025-05-26 17:23:13,394] INFO - FriendsService initialized
+[2025-05-26 17:23:13,601] INFO - FriendsService initialized
+[2025-05-26 17:23:15,502] INFO - FriendsService initialized
+[2025-05-26 17:23:15,502] INFO - Fetching friend list from API for user 76561199562411448
+[2025-05-26 17:23:16,065] ERROR - Error in get_friend_list for 76561199562411448: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 85, in get_friend_list
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 68, in get_friend_list
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:23:40,379] INFO - FriendsService initialized
+[2025-05-26 17:23:44,761] INFO - FriendsService initialized
+[2025-05-26 17:23:46,331] INFO - FriendsService initialized
+[2025-05-26 17:23:48,488] INFO - FriendsService initialized
+[2025-05-26 17:23:51,211] INFO - FriendsService initialized
+[2025-05-26 17:23:51,466] INFO - FriendsService initialized
+[2025-05-26 17:23:53,079] INFO - FriendsService initialized
+[2025-05-26 17:23:55,763] INFO - FriendsService initialized
+[2025-05-26 17:23:56,025] INFO - FriendsService initialized
+[2025-05-26 17:23:57,765] INFO - FriendsService initialized
+[2025-05-26 17:23:58,308] INFO - FriendsService initialized
+[2025-05-26 17:23:58,577] INFO - FriendsService initialized
+[2025-05-26 17:24:00,427] INFO - FriendsService initialized
+[2025-05-26 17:24:04,041] INFO - FriendsService initialized
+[2025-05-26 17:24:04,260] INFO - FriendsService initialized
+[2025-05-26 17:24:06,054] INFO - FriendsService initialized
+[2025-05-26 17:24:06,054] INFO - Fetching friend list from API for user 76561199562411448
+[2025-05-26 17:24:06,986] ERROR - Error in get_friend_list for 76561199562411448: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 85, in get_friend_list
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 68, in get_friend_list
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:26:56,609] INFO - FriendsService initialized
+[2025-05-26 17:27:03,354] INFO - FriendsService initialized
+[2025-05-26 17:27:04,945] INFO - FriendsService initialized
+[2025-05-26 17:27:06,745] INFO - FriendsService initialized
+[2025-05-26 17:27:08,466] INFO - FriendsService initialized
+[2025-05-26 17:27:08,711] INFO - FriendsService initialized
+[2025-05-26 17:27:10,875] INFO - FriendsService initialized
+[2025-05-26 17:27:12,516] INFO - FriendsService initialized
+[2025-05-26 17:27:12,720] INFO - FriendsService initialized
+[2025-05-26 17:27:14,066] INFO - FriendsService initialized
+[2025-05-26 17:27:14,639] INFO - FriendsService initialized
+[2025-05-26 17:27:14,849] INFO - FriendsService initialized
+[2025-05-26 17:27:16,306] INFO - FriendsService initialized
+[2025-05-26 17:27:16,837] INFO - FriendsService initialized
+[2025-05-26 17:27:17,057] INFO - FriendsService initialized
+[2025-05-26 17:27:18,787] INFO - FriendsService initialized
+[2025-05-26 17:27:18,787] INFO - Fetching friend list from API for user 76561199562411448
+[2025-05-26 17:27:19,292] ERROR - Error in get_friend_list for 76561199562411448: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 85, in get_friend_list
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 68, in get_friend_list
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:32:58,483] INFO - FriendsService initialized
+[2025-05-26 17:32:58,483] INFO - Fetching friend list from API for user 76561199562411448
+[2025-05-26 17:32:59,206] ERROR - Error in get_friend_list for 76561199562411448: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 85, in get_friend_list
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\friends_service.py", line 68, in get_friend_list
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:49:30,664] INFO - FriendsService initialized
+[2025-05-26 18:49:31,279] INFO - FriendsService initialized
+[2025-05-26 18:49:32,651] INFO - FriendsService initialized
+[2025-05-26 18:49:44,157] INFO - FriendsService initialized
+[2025-05-26 18:49:44,703] INFO - FriendsService initialized
+[2025-05-26 18:49:44,911] INFO - FriendsService initialized
+[2025-05-26 18:49:55,259] INFO - FriendsService initialized
+[2025-05-26 18:50:02,067] INFO - FriendsService initialized
+[2025-05-26 18:50:02,384] INFO - FriendsService initialized
+[2025-05-26 18:50:47,120] INFO - FriendsService initialized
+[2025-05-26 18:50:54,466] INFO - FriendsService initialized
+[2025-05-26 18:51:08,755] INFO - FriendsService initialized
+[2025-05-26 18:51:20,467] INFO - FriendsService initialized
+[2025-05-26 18:51:21,002] INFO - FriendsService initialized
+[2025-05-26 18:51:21,270] INFO - FriendsService initialized
+[2025-05-26 18:51:30,653] INFO - FriendsService initialized
+[2025-05-26 18:51:36,885] INFO - FriendsService initialized
+[2025-05-26 18:51:37,123] INFO - FriendsService initialized
+[2025-05-26 19:19:08,942] INFO - FriendsService initialized
+[2025-05-26 21:16:19,496] INFO - FriendsService initialized
+[2025-05-26 22:09:53,668] INFO - FriendsService initialized

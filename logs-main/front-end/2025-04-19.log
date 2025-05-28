@@ -1,0 +1,964 @@
+[2025-04-19T00:00:20.464Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:20.464Z"
+}
+[2025-04-19T00:00:20.465Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:20.465Z"
+}
+[2025-04-19T00:00:20.465Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:20.465Z"
+}
+[2025-04-19T00:00:21.011Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-04-19T00:00:21.011Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-04-19T00:00:21.148Z] FRONTEND:CS2 - INFO: Paginated CS2 products: page 1 of 1
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "totalPages": 1,
+  "operation": "pagination",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.148Z"
+}
+[2025-04-19T00:00:21.149Z] FRONTEND:CS2 - INFO: Loaded 5 CS2 products successfully
+  Details: {
+  "products": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "count": 5,
+  "totalProducts": 5,
+  "page": 1,
+  "operation": "product_load",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.149Z"
+}
+[2025-04-19T00:00:21.156Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.156Z"
+}
+[2025-04-19T00:00:21.154Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.154Z"
+}
+[2025-04-19T00:00:21.163Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.163Z"
+}
+[2025-04-19T00:00:21.164Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.164Z"
+}
+[2025-04-19T00:00:21.169Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.169Z"
+}
+[2025-04-19T00:00:21.170Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.170Z"
+}
+[2025-04-19T00:00:21.179Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.179Z"
+}
+[2025-04-19T00:00:21.180Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.180Z"
+}
+[2025-04-19T00:00:21.186Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.186Z"
+}
+[2025-04-19T00:00:21.187Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.187Z"
+}
+[2025-04-19T00:00:21.191Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.191Z"
+}
+[2025-04-19T00:00:21.192Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.192Z"
+}
+[2025-04-19T00:00:21.201Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.201Z"
+}
+[2025-04-19T00:00:21.202Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.202Z"
+}
+[2025-04-19T00:00:21.207Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.207Z"
+}
+[2025-04-19T00:00:21.208Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.208Z"
+}
+[2025-04-19T00:00:21.213Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.213Z"
+}
+[2025-04-19T00:00:21.212Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: Loading...
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "Loading...",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.212Z"
+}
+[2025-04-19T00:00:21.269Z] FRONTEND:CS2 - INFO: Loaded 4 featured products for homepage
+  Details: {
+  "productCount": 4,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:21.269Z"
+}
+[2025-04-19T00:00:27.208Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.208Z"
+}
+[2025-04-19T00:00:27.209Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.209Z"
+}
+[2025-04-19T00:00:27.212Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.212Z"
+}
+[2025-04-19T00:00:27.212Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.212Z"
+}
+[2025-04-19T00:00:27.225Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.225Z"
+}
+[2025-04-19T00:00:27.225Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.225Z"
+}
+[2025-04-19T00:00:27.227Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.227Z"
+}
+[2025-04-19T00:00:27.238Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.238Z"
+}
+[2025-04-19T00:00:27.227Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.227Z"
+}
+[2025-04-19T00:00:27.239Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.239Z"
+}
+[2025-04-19T00:00:27.241Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.241Z"
+}
+[2025-04-19T00:00:27.242Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.242Z"
+}
+[2025-04-19T00:00:27.246Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.246Z"
+}
+[2025-04-19T00:00:27.246Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:27.246Z"
+}
+[2025-04-19T00:00:29.159Z] FRONTEND:CS2 - INFO: Changed to next slide: 1
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.159Z"
+}
+[2025-04-19T00:00:29.174Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.174Z"
+}
+[2025-04-19T00:00:29.175Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.175Z"
+}
+[2025-04-19T00:00:29.182Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.182Z"
+}
+[2025-04-19T00:00:29.184Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.183Z"
+}
+[2025-04-19T00:00:29.191Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.191Z"
+}
+[2025-04-19T00:00:29.191Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:29.191Z"
+}
+[2025-04-19T00:00:37.328Z] FRONTEND:CS2 - INFO: Changed to next slide: 2
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.328Z"
+}
+[2025-04-19T00:00:37.337Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.337Z"
+}
+[2025-04-19T00:00:37.337Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.337Z"
+}
+[2025-04-19T00:00:37.340Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.340Z"
+}
+[2025-04-19T00:00:37.340Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.340Z"
+}
+[2025-04-19T00:00:37.341Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.341Z"
+}
+[2025-04-19T00:00:37.342Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:37.342Z"
+}
+[2025-04-19T00:00:45.442Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.442Z"
+}
+[2025-04-19T00:00:45.443Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.443Z"
+}
+[2025-04-19T00:00:45.442Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.442Z"
+}
+[2025-04-19T00:00:45.444Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.444Z"
+}
+[2025-04-19T00:00:45.439Z] FRONTEND:CS2 - INFO: Changed to next slide: 0
+  Details: {
+  "component": "HomePage",
+  "action": "nextSlide",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.439Z"
+}
+[2025-04-19T00:00:45.447Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.447Z"
+}
+[2025-04-19T00:00:45.448Z] FRONTEND:CS2 - WARN: Using ModelViewer fallback for: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "ModelFallback",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:45.448Z"
+}
+[2025-04-19T00:00:48.269Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.269Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:00:48.269Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.269Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:00:48.339Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.339Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:00:48.339Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:48.339Z"
+}
+[2025-04-19T00:00:48.363Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:48.363Z"
+}
+[2025-04-19T00:00:48.364Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:48.364Z"
+}
+[2025-04-19T00:00:48.366Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:48.366Z"
+}
+[2025-04-19T00:00:48.369Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.369Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:00:48.370Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:48.370Z"
+}
+[2025-04-19T00:00:48.457Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.457Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:00:48.457Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.457Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:00:48.501Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.501Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:00:48.501Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:00:48.501Z"
+}
+[2025-04-19T00:00:48.502Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:00:48.502Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:14:18.156Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:18.156Z"
+}
+[2025-04-19T00:14:18.156Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:18.156Z"
+}
+[2025-04-19T00:14:18.156Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:18.156Z"
+}
+[2025-04-19T00:14:18.789Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-04-19T00:14:18.789Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-04-19T00:14:18.889Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:18.889Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:18.890Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:18.890Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:18.978Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:14:18.978Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:14:18.979Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:18.979Z"
+}
+[2025-04-19T00:14:19.010Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.010Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.011Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.011Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.066Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:19.066Z"
+}
+[2025-04-19T00:14:19.067Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:19.067Z"
+}
+[2025-04-19T00:14:19.089Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.089Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.090Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.090Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.152Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.152Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.153Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.153Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.203Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.203Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.204Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.204Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.320Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.320Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.320Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.320Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:14:19.384Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.383Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:14:19.384Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:14:19.384Z"
+}
+[2025-04-19T00:14:19.386Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:14:19.386Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:29:24.163Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/awp_counter_strike_2.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/awp_counter_strike_2.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.163Z"
+}
+[2025-04-19T00:29:24.163Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/weapons/sandstorm_-_gunblade.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/weapons/sandstorm_-_gunblade.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.163Z"
+}
+[2025-04-19T00:29:24.164Z] FRONTEND:CS2 - INFO: Validating model path: /assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb
+  Details: {
+  "component": "HomePage",
+  "modelPath": "/assets/models/cs2/knives/cs2_knife_-_case_hardened__free.glb",
+  "exists": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.164Z"
+}
+[2025-04-19T00:29:24.475Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.475Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-04-19T00:29:24.534Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.534Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.535Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.535Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.577Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.577Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:29:24.577Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.577Z"
+}
+[2025-04-19T00:29:24.596Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.596Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.595Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.595Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.621Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.621Z"
+}
+[2025-04-19T00:29:24.622Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.622Z"
+}
+[2025-04-19T00:29:24.633Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.632Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.633Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.633Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.660Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.660Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.660Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.660Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.679Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.679Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.680Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.680Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.733Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.733Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.734Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.734Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-04-19T00:29:24.760Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.760Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-04-19T00:29:24.760Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-04-19T00:29:24.760Z"
+}
+[2025-04-19T00:29:24.766Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-04-19T00:29:24.766Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}

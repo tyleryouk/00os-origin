@@ -1,0 +1,373 @@
+[2025-03-18T21:45:17.833Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T21:45:17.833Z",
+  "error": "The current chain of the connector (id: 137) does not match the connection's chain (id: 8453).\n\nCurrent Chain ID:  137\nExpected Chain ID: 8453\n\nVersion: @wagmi/core@2.16.4",
+  "stack": "ConnectorChainMismatchError\n    at getConnectorClient (webpack-internal:///(app-pages-browser)/./node_modules/@wagmi/core/dist/esm/actions/getConnectorClient.js:41:15)\n    at async signMessage (webpack-internal:///(app-pages-browser)/./node_modules/@wagmi/core/dist/esm/actions/signMessage.js:18:18)"
+}
+[2025-03-18T21:45:21.068Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=33a011804810f1cfc920a5269ac520fb192150e7816f4dc7c6f7737b8e0ced1e",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T21:45:21.071Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T21:45:21.071Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:21.072Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T21:45:21.072Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:33.675Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=dabf02050d74e601bbcdee689b3ae1e387b704be7f6b78ab80d8f1bb87719b3e",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T21:45:33.676Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T21:45:33.676Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:33.677Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T21:45:33.677Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:33.988Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=66277967f1480aa6719c6f0efe8dc4eec205744d3af16ed937f98d9cfaf0ec51",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T21:45:33.990Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T21:45:33.990Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:33.991Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T21:45:33.991Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:34.409Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=71f16a3ce48df38db3f48f56da7225f62643463ae5f6c3e7952bace69cc346ce",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T21:45:34.410Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T21:45:34.410Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:34.412Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T21:45:34.412Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:51.600Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=c40f380bae7248f459bea1dd10b50238de4998137e50fdc2f1be0ab506c1ec06",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T21:45:51.602Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T21:45:51.602Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:45:51.602Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T21:45:51.602Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T21:47:04.298Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T21:47:04.298Z"
+}
+[2025-03-18T21:47:04.727Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T21:47:04.727Z"
+}
+[2025-03-18T22:24:14.213Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T22:24:14.213Z"
+}
+[2025-03-18T22:24:16.824Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=455d7ed62f5f161a31d629987a5fdec3c30abb2f4fd05c00d72c83a6a1959fd1",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T22:24:16.831Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T22:24:16.831Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:16.833Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T22:24:16.833Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:17.813Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=137f6d3b5129ac689793d8b1d684da58787b16e10dadbb26e2966df155173850",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T22:24:17.814Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T22:24:17.814Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:17.815Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T22:24:17.815Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:18.398Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=0932276fe950ad86372262db60fbfb8fa961f898f317f62e9401fb6aa72bad38",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T22:24:18.400Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T22:24:18.400Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:18.401Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T22:24:18.401Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:20.981Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T22:24:20.981Z"
+}
+[2025-03-18T22:24:21.338Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T22:24:21.338Z"
+}
+[2025-03-18T22:24:40.861Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T22:24:40.861Z"
+}
+[2025-03-18T22:24:43.334Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=6533ce96d2cfbce07f5310bdfcf236bedad93319aa680d4ebebc9dd48e83f3a8",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T22:24:43.337Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T22:24:43.337Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:43.338Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T22:24:43.338Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:44.241Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=bb95e64bb4bc02a0638adc4bffe478dff94c3f73780e0895ba5fa8b255d60433",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T22:24:44.243Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T22:24:44.243Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:44.244Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T22:24:44.244Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:45.304Z] FRONTEND:AUTH - ERROR: Auth API Response Error
+  Details: {
+  "status": 500,
+  "url": "/verify?nonce=3b67fddfce3f0d5d4b48ea3d2763958a4daa6b4249a083ea451805ca53bd2843",
+  "method": "post",
+  "has_retry": false
+}
+[2025-03-18T22:24:45.305Z] FRONTEND:AUTH - ERROR: Auth Error - Verify Signature
+  Details: {
+  "timestamp": "2025-03-18T22:24:45.305Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:45.306Z] FRONTEND:AUTH - ERROR: Auth Error - Authentication failed
+  Details: {
+  "timestamp": "2025-03-18T22:24:45.306Z",
+  "error": "Request failed with status code 500",
+  "code": "ERR_BAD_RESPONSE",
+  "stack": "AxiosError: Request failed with status code 500\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async verifySignature (webpack-internal:///(app-pages-browser)/./src/api/auth.ts:130:26)\n    at async useWalletAuth.useCallback[authenticate] (webpack-internal:///(app-pages-browser)/./src/hooks/useWalletAuth.ts:128:40)"
+}
+[2025-03-18T22:24:47.628Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T22:24:47.628Z"
+}
+[2025-03-18T22:24:48.031Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-18T22:24:48.031Z"
+}
+[2025-03-18T23:45:39.706Z] FRONTEND:CLIENT - ERROR: Client Error: Event handlers cannot be passed to Client Component props.
+  <... fill={true} alt=... sizes=... src=... onError={function onError}>
+                                                     ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+  Details: {
+  "stack": "Error: Event handlers cannot be passed to Client Component props.\n  <... fill={true} alt=... sizes=... src=... onError={function onError}>\n                                                     ^^^^^^^^^^^^^^^^^^\nIf you need interactivity, consider converting part of this to a Client Component.\n    at resolveErrorDev (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1845:46)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2225:17)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2213:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2459:17)",
+  "digest": "2984846227",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-18T23:45:39.710Z] FRONTEND:CLIENT - ERROR: Client Error: Event handlers cannot be passed to Client Component props.
+  <... fill={true} alt=... sizes=... src=... onError={function onError}>
+                                                     ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+  Details: {
+  "stack": "Error: Event handlers cannot be passed to Client Component props.\n  <... fill={true} alt=... sizes=... src=... onError={function onError}>\n                                                     ^^^^^^^^^^^^^^^^^^\nIf you need interactivity, consider converting part of this to a Client Component.\n    at resolveErrorDev (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1845:46)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2225:17)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2213:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2459:17)",
+  "digest": "2984846227",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-18T23:47:32.881Z] FRONTEND:CLIENT - ERROR: Client Error: Event handlers cannot be passed to Client Component props.
+  <... fill={true} alt=... sizes=... src=... onError={function onError}>
+                                                     ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+  Details: {
+  "stack": "Error: Event handlers cannot be passed to Client Component props.\n  <... fill={true} alt=... sizes=... src=... onError={function onError}>\n                                                     ^^^^^^^^^^^^^^^^^^\nIf you need interactivity, consider converting part of this to a Client Component.\n    at resolveErrorDev (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1845:46)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2225:17)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2213:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2459:17)",
+  "digest": "2984846227",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-18T23:47:32.883Z] FRONTEND:CLIENT - ERROR: Client Error: Event handlers cannot be passed to Client Component props.
+  <... fill={true} alt=... sizes=... src=... onError={function onError}>
+                                                     ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+  Details: {
+  "stack": "Error: Event handlers cannot be passed to Client Component props.\n  <... fill={true} alt=... sizes=... src=... onError={function onError}>\n                                                     ^^^^^^^^^^^^^^^^^^\nIf you need interactivity, consider converting part of this to a Client Component.\n    at resolveErrorDev (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1845:46)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2225:17)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2213:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2459:17)",
+  "digest": "2984846227",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}

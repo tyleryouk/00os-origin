@@ -1,0 +1,161 @@
+[2025-04-19 17:56:01,367] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 17:57:23,757] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 17:58:08,634] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 17:58:08,635] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 17:58:08,636] ERROR - Error in get_item_categories for app_id 730: 'super' object has no attribute 'request'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 322, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 114, in _request
+    response = self.session.request(
+        method,
+    ...<4 lines>...
+        **kwargs
+    )
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 62, in <lambda>
+    session.request = lambda method, url, **kwargs: super(type(session), session).request(
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'request'
+[2025-04-19 17:59:28,333] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 17:59:28,334] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 17:59:28,335] ERROR - Error in get_item_categories for app_id 730: 'super' object has no attribute 'request'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 114, in _request
+    response = self.session.request(
+        method,
+    ...<4 lines>...
+        **kwargs
+    )
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 62, in <lambda>
+    session.request = lambda method, url, **kwargs: super(type(session), session).request(
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'request'
+[2025-04-19 18:00:04,647] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 18:00:04,722] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 18:00:04,723] ERROR - Error in get_item_categories for app_id 730: 'super' object has no attribute 'request'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 114, in _request
+    response = self.session.request(
+        method,
+    ...<4 lines>...
+        **kwargs
+    )
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 62, in <lambda>
+    session.request = lambda method, url, **kwargs: super(type(session), session).request(
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'request'
+[2025-04-19 18:00:29,051] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 18:00:29,052] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 18:00:29,052] ERROR - Error in get_item_categories for app_id 730: 'super' object has no attribute 'request'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 114, in _request
+    response = self.session.request(
+        method,
+    ...<4 lines>...
+        **kwargs
+    )
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 62, in <lambda>
+    session.request = lambda method, url, **kwargs: super(type(session), session).request(
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'request'
+[2025-04-19 18:03:06,843] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 18:03:06,934] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 18:03:06,934] ERROR - Error in get_item_categories for app_id 730: 'super' object has no attribute 'request'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 114, in _request
+        timeout=timeout, # Pass timeout directly
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    # Check for HTTP errors and raise custom exceptions
+    ^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 62, in <lambda>
+    # Timeouts will be handled directly in the _request method
+AttributeError: 'super' object has no attribute 'request'
+[2025-04-19 18:03:20,884] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 18:03:20,885] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 18:03:21,238] ERROR - Error in get_item_categories for app_id 730: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 174, in _request
+    raise e # Re-raise immediately
+    ^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 133, in _request
+    raise_for_status_code(response.status_code, error_message, original_exception=None)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\exceptions.py", line 57, in raise_for_status_code
+    raise SteamAPIAuthenticationException(message, status_code=status_code, original_exception=original_exception)
+app.steam.exceptions.SteamAPIAuthenticationException: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+[2025-04-19 18:07:58,734] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 18:07:58,734] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 18:07:59,007] ERROR - Error in get_item_categories for app_id 730: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 174, in _request
+    raise e # Re-raise immediately
+    ^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 133, in _request
+    raise_for_status_code(response.status_code, error_message, original_exception=None)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\exceptions.py", line 57, in raise_for_status_code
+    raise SteamAPIAuthenticationException(message, status_code=status_code, original_exception=original_exception)
+app.steam.exceptions.SteamAPIAuthenticationException: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+[2025-04-19 18:08:39,157] INFO - ItemsClient initialized with Redis cache
+[2025-04-19 18:08:39,157] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-04-19 18:08:39,515] ERROR - Error in get_item_categories for app_id 730: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 321, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 174, in _request
+    raise e # Re-raise immediately
+    ^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 133, in _request
+    raise_for_status_code(response.status_code, error_message, original_exception=None)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\exceptions.py", line 57, in raise_for_status_code
+    raise SteamAPIAuthenticationException(message, status_code=status_code, original_exception=original_exception)
+app.steam.exceptions.SteamAPIAuthenticationException: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+[2025-05-26 13:53:38,343] INFO - ItemsClient initialized with Redis cache
+[2025-05-26 13:53:38,345] INFO - Fetching item sample from API to determine categories for app_id: 730
+[2025-05-26 13:53:39,226] ERROR - Error in get_item_categories for app_id 730: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 322, in get_item_categories
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 174, in _request
+    raise e # Re-raise immediately
+    ^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 133, in _request
+    raise_for_status_code(response.status_code, error_message, original_exception=None)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\exceptions.py", line 57, in raise_for_status_code
+    raise SteamAPIAuthenticationException(message, status_code=status_code, original_exception=original_exception)
+app.steam.exceptions.SteamAPIAuthenticationException: SteamAPIAuthenticationException: HTTP Error 401 for https://steamwebapi.com/steam/api/items: {"status":401,"message":"API Key missing"} (Status Code: 401)
+[2025-05-26 13:53:39,290] INFO - ItemsClient initialized with Redis cache
+[2025-05-26 13:53:39,291] INFO - Fetching float info from API for inspect link
+[2025-05-26 13:53:39,727] ERROR - Error in get_float_info: 'int' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\items.py", line 478, in get_float_info
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 125, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'

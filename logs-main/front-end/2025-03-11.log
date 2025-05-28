@@ -1,0 +1,365 @@
+[2025-03-11T23:08:54.819Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:54.819Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false
+}
+[2025-03-11T23:08:54.820Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:54.820Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false
+}
+[2025-03-11T23:08:54.827Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Cleanup
+  Details: {
+  "timestamp": "2025-03-11T23:08:54.827Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "mount_count": 5
+}
+[2025-03-11T23:08:54.829Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth State Change
+  Details: {
+  "timestamp": "2025-03-11T23:08:54.829Z",
+  "prevState": {
+    "isConnected": false,
+    "isAuthenticated": false
+  },
+  "currentState": {
+    "isConnected": true,
+    "isAuthenticated": false
+  },
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:54.830Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Mount
+  Details: {
+  "timestamp": "2025-03-11T23:08:54.830Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "mount_count": 6
+}
+[2025-03-11T23:08:54.830Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auto-authentication triggered
+  Details: {
+  "timestamp": "2025-03-11T23:08:54.830Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:55.342Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.342Z",
+  "exists": false
+}
+[2025-03-11T23:08:55.342Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.342Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:55.344Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.344Z",
+  "exists": false
+}
+[2025-03-11T23:08:55.359Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.359Z",
+  "nonce": "db815e7300f06bc7430d5a5d122bc49cdb572dc3732fa451cd020a4120812830"
+}
+[2025-03-11T23:08:55.360Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Request Response
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.360Z",
+  "nonce": "db815e7300f06bc7430d5a5d122bc49cdb572dc3732fa451cd020a4120812830",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:55.362Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.362Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false
+}
+[2025-03-11T23:08:55.363Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:55.363Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false
+}
+[2025-03-11T23:08:56.990Z] FRONTEND:AUTH - DEBUG: Auth Flow - Message Signed
+  Details: {
+  "timestamp": "2025-03-11T23:08:56.990Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:56.991Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-11T23:08:56.991Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "db815e7300f06bc7430d5a5d122bc49cdb572dc3732fa451cd020a4120812830"
+}
+[2025-03-11T23:08:56.991Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-11T23:08:56.991Z",
+  "exists": false
+}
+[2025-03-11T23:08:56.992Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:56.992Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false
+}
+[2025-03-11T23:08:56.993Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:56.993Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false
+}
+[2025-03-11T23:08:57.060Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.060Z",
+  "success": true
+}
+[2025-03-11T23:08:57.061Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.061Z",
+  "success": true
+}
+[2025-03-11T23:08:57.062Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.062Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-11T23:08:57.062Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication Complete
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.062Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "success": true
+}
+[2025-03-11T23:08:57.062Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication End
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.062Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:57.063Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.063Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true
+}
+[2025-03-11T23:08:57.064Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.064Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true
+}
+[2025-03-11T23:08:57.066Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Cleanup
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.066Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "mount_count": 6
+}
+[2025-03-11T23:08:57.067Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth State Change
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.067Z",
+  "prevState": {
+    "isConnected": true,
+    "isAuthenticated": false
+  },
+  "currentState": {
+    "isConnected": true,
+    "isAuthenticated": true
+  },
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:08:57.067Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Mount
+  Details: {
+  "timestamp": "2025-03-11T23:08:57.067Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "mount_count": 7
+}
+[2025-03-11T23:09:37.739Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:09:37.739Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true
+}
+[2025-03-11T23:09:37.739Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-11T23:09:37.739Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true
+}
+[2025-03-11T23:09:37.770Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Cleanup
+  Details: {
+  "timestamp": "2025-03-11T23:09:37.770Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "mount_count": 7
+}
+[2025-03-11T23:09:37.777Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Mount
+  Details: {
+  "timestamp": "2025-03-11T23:09:37.777Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "mount_count": 1
+}
+[2025-03-11T23:09:37.778Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-11T23:09:37.779Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-11T23:09:37.785Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Cleanup
+  Details: {
+  "timestamp": "2025-03-11T23:09:37.785Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "mount_count": 1
+}
+[2025-03-11T23:09:37.789Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-11T23:09:37.789Z] FRONTEND:AUTH - DEBUG: Auth Flow - Hook Mount
+  Details: {
+  "timestamp": "2025-03-11T23:09:37.789Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "mount_count": 2
+}
+[2025-03-11T23:09:37.790Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-11T23:09:38.445Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-11T23:09:38.445Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-11T23:09:38.445Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Check
+  Details: {
+  "timestamp": "2025-03-11T23:09:38.445Z",
+  "is_authenticated": true,
+  "has_token": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "has_address": true
+}
+[2025-03-11T23:09:38.446Z] FRONTEND:USER - INFO: Wallet state updated
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true,
+  "has_effective_address": true,
+  "is_using_auth_wallet": false
+}
+[2025-03-11T23:09:38.446Z] FRONTEND:USER - INFO: Wallet hook initialized
+  Details: {
+  "is_connected": true,
+  "is_connecting": false,
+  "is_disconnected": false,
+  "status": "connected",
+  "chain_id": 137,
+  "has_address": true,
+  "is_authenticated": true,
+  "has_auth_wallet": true
+}
+[2025-03-11T23:09:38.446Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Check
+  Details: {
+  "timestamp": "2025-03-11T23:09:38.446Z",
+  "is_authenticated": true,
+  "has_token": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "has_address": true
+}
+[2025-03-11T23:09:38.447Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Render
+  Details: {
+  "timestamp": "2025-03-11T23:09:38.447Z",
+  "status": "allowed",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-11T23:09:38.448Z] FRONTEND:AUTH - DEBUG: Auth Flow - Route Protection Render
+  Details: {
+  "timestamp": "2025-03-11T23:09:38.448Z",
+  "status": "allowed",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}

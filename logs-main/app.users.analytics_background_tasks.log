@@ -1,0 +1,616 @@
+[2025-03-11 19:07:28,713] INFO - Analytics background task scheduler started
+[2025-03-11 19:28:33,047] INFO - Analytics background task scheduler stopped
+[2025-03-11 22:43:00,800] INFO - Analytics background task scheduler started
+[2025-03-11 23:43:00,814] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-11 23:43:00,815] ERROR - Error fetching active wallets: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:43:00,815] INFO - Found 0 active wallets for analytics update
+[2025-03-11 23:43:00,818] INFO - Completed analytics update for 0 wallets in 0.00 seconds
+[2025-03-11 23:56:25,545] INFO - Analytics background task scheduler stopped
+[2025-03-11 23:56:52,736] INFO - Analytics background task scheduler started
+[2025-03-12 00:22:58,367] INFO - Analytics background task scheduler stopped
+[2025-03-12 00:28:29,662] INFO - Analytics background task scheduler started
+[2025-03-12 00:49:54,166] INFO - Analytics background task scheduler stopped
+[2025-03-12 00:50:02,240] INFO - Analytics background task scheduler started
+[2025-03-12 01:14:40,291] INFO - Analytics background task scheduler stopped
+[2025-03-12 01:17:24,095] INFO - Analytics background task scheduler started
+[2025-03-12 01:34:12,028] INFO - Analytics background task scheduler stopped
+[2025-03-12 01:34:25,720] INFO - Analytics background task scheduler started
+[2025-03-12 01:44:22,678] INFO - Analytics background task scheduler stopped
+[2025-03-12 01:44:25,692] INFO - Analytics background task scheduler started
+[2025-03-12 01:44:53,755] INFO - Analytics background task scheduler stopped
+[2025-03-12 01:44:57,052] INFO - Analytics background task scheduler started
+[2025-03-12 01:44:57,052] INFO - Analytics background task scheduler stopped
+[2025-03-12 01:45:00,618] INFO - Analytics background task scheduler started
+[2025-03-12 02:11:57,259] INFO - Analytics background task scheduler stopped
+[2025-03-12 02:12:06,541] INFO - Analytics background task scheduler started
+[2025-03-12 02:12:06,541] INFO - Analytics background task scheduler stopped
+[2025-03-12 02:12:14,610] INFO - Analytics background task scheduler started
+[2025-03-12 02:38:11,488] INFO - Analytics background task scheduler stopped
+[2025-03-12 02:38:17,026] INFO - Analytics background task scheduler started
+[2025-03-12 02:51:32,034] INFO - Analytics background task scheduler stopped
+[2025-03-12 02:51:37,954] INFO - Analytics background task scheduler started
+[2025-03-12 02:56:11,968] INFO - Analytics background task scheduler stopped
+[2025-03-12 11:57:13,805] INFO - Analytics background task scheduler started
+[2025-03-12 12:57:13,823] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-12 12:57:13,826] ERROR - Error fetching active wallets: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-12 12:57:13,826] INFO - Found 0 active wallets for analytics update
+[2025-03-12 12:57:13,827] INFO - Completed analytics update for 0 wallets in 0.00 seconds
+[2025-03-12 13:34:35,864] INFO - Analytics background task scheduler stopped
+[2025-03-12 15:37:04,718] INFO - Analytics background task scheduler started
+[2025-03-12 16:37:04,750] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-12 16:37:05,733] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-12 16:37:05,733] INFO - Found 0 active wallets for analytics update
+[2025-03-12 16:37:05,733] INFO - Completed analytics update for 0 wallets in 0.97 seconds
+[2025-03-12 17:37:04,740] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-12 17:37:05,757] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-12 17:37:05,763] INFO - Found 0 active wallets for analytics update
+[2025-03-12 17:37:05,764] INFO - Completed analytics update for 0 wallets in 1.02 seconds
+[2025-03-12 17:44:04,432] INFO - Analytics background task scheduler stopped
+[2025-03-14 10:20:16,567] INFO - Analytics background task scheduler started
+[2025-03-14 11:32:31,675] INFO - Analytics background task scheduler started
+[2025-03-14 11:36:08,025] INFO - Analytics background task scheduler stopped
+[2025-03-14 11:43:44,635] INFO - Analytics background task scheduler started
+[2025-03-14 12:43:44,664] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-14 12:43:45,617] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-14 12:43:45,617] INFO - Found 0 active wallets for analytics update
+[2025-03-14 12:43:45,617] INFO - Completed analytics update for 0 wallets in 0.95 seconds
+[2025-03-14 12:48:45,447] INFO - Analytics background task scheduler stopped
+[2025-03-14 13:14:32,229] INFO - Analytics background task scheduler started
+[2025-03-14 14:14:32,223] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-14 14:14:33,324] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-14 14:14:33,324] INFO - Found 0 active wallets for analytics update
+[2025-03-14 14:14:33,324] INFO - Completed analytics update for 0 wallets in 1.09 seconds
+[2025-03-14 15:14:32,218] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-14 15:14:34,583] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-14 15:14:34,583] INFO - Found 0 active wallets for analytics update
+[2025-03-14 15:14:34,583] INFO - Completed analytics update for 0 wallets in 2.36 seconds
+[2025-03-14 15:27:10,503] INFO - Analytics background task scheduler stopped
+[2025-03-14 15:27:20,327] INFO - Analytics background task scheduler started
+[2025-03-14 16:19:10,624] INFO - Analytics background task scheduler stopped
+[2025-03-14 22:53:38,036] INFO - Analytics background task scheduler started
+[2025-03-14 23:32:49,069] INFO - Analytics background task scheduler stopped
+[2025-03-15 15:44:00,609] INFO - Analytics background task scheduler started
+[2025-03-15 16:44:00,622] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-15 16:44:00,626] ERROR - Error fetching active wallets: Database connection failed: SSL connection has been closed unexpectedly
+
+[2025-03-15 16:44:00,627] INFO - Found 0 active wallets for analytics update
+[2025-03-15 16:44:00,627] INFO - Completed analytics update for 0 wallets in 0.00 seconds
+[2025-03-15 17:19:50,180] INFO - Analytics background task scheduler stopped
+[2025-03-15 20:29:05,232] INFO - Analytics background task scheduler started
+[2025-03-15 21:29:05,232] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-15 21:29:06,288] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-15 21:29:06,289] INFO - Found 0 active wallets for analytics update
+[2025-03-15 21:29:06,289] INFO - Completed analytics update for 0 wallets in 1.06 seconds
+[2025-03-15 22:10:00,188] INFO - Analytics background task scheduler started
+[2025-03-15 23:10:00,205] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-15 23:10:01,203] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-15 23:10:01,203] INFO - Found 0 active wallets for analytics update
+[2025-03-15 23:10:01,203] INFO - Completed analytics update for 0 wallets in 1.00 seconds
+[2025-03-16 00:10:00,205] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-16 00:10:01,247] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-16 00:10:01,247] INFO - Found 0 active wallets for analytics update
+[2025-03-16 00:10:01,247] INFO - Completed analytics update for 0 wallets in 1.04 seconds
+[2025-03-16 00:36:01,328] INFO - Analytics background task scheduler stopped
+[2025-03-16 11:53:41,297] INFO - Analytics background task scheduler started
+[2025-03-16 12:53:41,360] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-16 12:53:42,685] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-16 12:53:42,685] INFO - Found 0 active wallets for analytics update
+[2025-03-16 12:53:42,685] INFO - Completed analytics update for 0 wallets in 1.32 seconds
+[2025-03-16 13:53:41,297] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-16 13:53:44,540] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-16 13:53:44,540] INFO - Found 0 active wallets for analytics update
+[2025-03-16 13:53:44,540] INFO - Completed analytics update for 0 wallets in 3.24 seconds
+[2025-03-16 14:47:28,724] INFO - Analytics background task scheduler stopped
+[2025-03-16 14:48:09,322] INFO - Analytics background task scheduler started
+[2025-03-16 15:48:09,335] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-16 15:48:10,558] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-16 15:48:10,558] INFO - Found 0 active wallets for analytics update
+[2025-03-16 15:48:10,558] INFO - Completed analytics update for 0 wallets in 1.22 seconds
+[2025-03-16 16:48:09,314] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-16 16:48:10,475] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-16 16:48:10,475] INFO - Found 0 active wallets for analytics update
+[2025-03-16 16:48:10,475] INFO - Completed analytics update for 0 wallets in 1.16 seconds
+[2025-03-16 17:36:53,841] INFO - Analytics background task scheduler stopped
+[2025-03-16 17:54:38,622] INFO - Analytics background task scheduler started
+[2025-03-16 18:08:33,903] INFO - Analytics background task scheduler stopped
+[2025-03-16 18:11:40,280] INFO - Analytics background task scheduler started
+[2025-03-16 19:02:53,057] INFO - Analytics background task scheduler stopped
+[2025-03-16 19:11:37,229] INFO - Analytics background task scheduler started
+[2025-03-16 19:22:17,684] INFO - Analytics background task scheduler stopped
+[2025-03-17 00:03:18,432] INFO - Analytics background task scheduler started
+[2025-03-17 01:03:18,451] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-17 01:03:21,147] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-17 01:03:21,147] INFO - Found 0 active wallets for analytics update
+[2025-03-17 01:03:21,158] INFO - Completed analytics update for 0 wallets in 2.69 seconds
+[2025-03-17 01:33:40,531] INFO - Analytics background task scheduler stopped
+[2025-03-18 17:44:06,052] INFO - Analytics background task scheduler started
+[2025-03-18 17:48:47,920] INFO - Analytics background task scheduler stopped
+[2025-03-18 18:17:35,434] INFO - Analytics background task scheduler started
+[2025-03-18 18:38:13,647] INFO - Analytics background task scheduler stopped
+[2025-03-18 19:30:04,046] INFO - Analytics background task scheduler started
+[2025-03-18 20:01:04,378] INFO - Analytics background task scheduler started
+[2025-03-18 20:02:28,419] INFO - Analytics background task scheduler stopped
+[2025-03-19 22:16:00,464] INFO - Analytics background task scheduler started
+[2025-03-19 22:21:23,982] INFO - Analytics background task scheduler stopped
+[2025-03-20 05:42:04,738] INFO - Analytics background task scheduler started
+[2025-03-20 06:01:44,138] INFO - Analytics background task scheduler stopped
+[2025-03-20 06:34:31,468] INFO - Analytics background task scheduler started
+[2025-03-20 06:38:34,582] INFO - Analytics background task scheduler stopped
+[2025-03-20 08:10:38,999] INFO - Analytics background task scheduler started
+[2025-03-20 08:43:41,196] INFO - Analytics background task scheduler started
+[2025-03-20 08:57:26,447] INFO - Analytics background task scheduler stopped
+[2025-03-20 09:03:15,292] INFO - Analytics background task scheduler started
+[2025-03-20 09:12:40,877] INFO - Analytics background task scheduler stopped
+[2025-03-20 17:38:41,262] INFO - Analytics background task scheduler started
+[2025-03-20 18:38:41,266] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-20 18:38:42,211] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-20 18:38:42,211] INFO - Found 0 active wallets for analytics update
+[2025-03-20 18:38:42,212] INFO - Completed analytics update for 0 wallets in 0.95 seconds
+[2025-03-20 19:38:41,265] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-20 19:38:42,171] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-20 19:38:42,173] INFO - Found 0 active wallets for analytics update
+[2025-03-20 19:38:42,173] INFO - Completed analytics update for 0 wallets in 0.91 seconds
+[2025-03-20 20:38:41,266] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-20 20:38:42,018] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-20 20:38:42,019] INFO - Found 0 active wallets for analytics update
+[2025-03-20 20:38:42,020] INFO - Completed analytics update for 0 wallets in 0.75 seconds
+[2025-03-20 21:38:41,272] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-20 21:38:42,046] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-20 21:38:42,047] INFO - Found 0 active wallets for analytics update
+[2025-03-20 21:38:42,047] INFO - Completed analytics update for 0 wallets in 0.78 seconds
+[2025-03-20 22:38:41,272] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-20 22:38:42,411] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-20 22:38:42,411] INFO - Found 0 active wallets for analytics update
+[2025-03-20 22:38:42,411] INFO - Completed analytics update for 0 wallets in 1.14 seconds
+[2025-03-20 22:43:44,347] INFO - Analytics background task scheduler stopped
+[2025-03-21 16:36:25,042] INFO - Analytics background task scheduler started
+[2025-03-21 17:36:25,046] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-21 17:36:26,857] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-21 17:36:26,857] INFO - Found 0 active wallets for analytics update
+[2025-03-21 17:36:26,864] INFO - Completed analytics update for 0 wallets in 1.81 seconds
+[2025-03-21 18:36:25,047] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-21 18:36:28,617] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-21 18:36:28,617] INFO - Found 0 active wallets for analytics update
+[2025-03-21 18:36:28,617] INFO - Completed analytics update for 0 wallets in 3.57 seconds
+[2025-03-21 19:36:25,045] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-21 19:36:27,083] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-21 19:36:27,084] INFO - Found 0 active wallets for analytics update
+[2025-03-21 19:36:27,085] INFO - Completed analytics update for 0 wallets in 2.04 seconds
+[2025-03-21 20:36:25,053] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-21 20:36:26,923] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-21 20:36:26,924] INFO - Found 0 active wallets for analytics update
+[2025-03-21 20:36:26,925] INFO - Completed analytics update for 0 wallets in 1.87 seconds
+[2025-03-21 21:36:25,056] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-21 21:36:26,412] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-21 21:36:26,413] INFO - Found 0 active wallets for analytics update
+[2025-03-21 21:36:26,413] INFO - Completed analytics update for 0 wallets in 1.36 seconds
+[2025-03-21 22:36:25,055] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-21 22:36:26,571] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-21 22:36:26,572] INFO - Found 0 active wallets for analytics update
+[2025-03-21 22:36:26,572] INFO - Completed analytics update for 0 wallets in 1.52 seconds
+[2025-03-21 23:05:34,072] INFO - Analytics background task scheduler stopped
+[2025-03-21 23:05:46,522] INFO - Analytics background task scheduler started
+[2025-03-21 23:39:07,041] INFO - Analytics background task scheduler stopped
+[2025-03-23 15:08:49,389] INFO - Analytics background task scheduler started
+[2025-03-23 15:09:22,284] INFO - Analytics background task scheduler stopped
+[2025-03-23 15:38:37,170] INFO - Analytics background task scheduler started
+[2025-03-23 16:23:26,353] INFO - Analytics background task scheduler stopped
+[2025-03-23 16:23:34,084] INFO - Analytics background task scheduler started
+[2025-03-23 17:23:34,101] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-23 17:23:36,321] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-23 17:23:36,321] INFO - Found 0 active wallets for analytics update
+[2025-03-23 17:23:36,322] INFO - Completed analytics update for 0 wallets in 2.22 seconds
+[2025-03-23 18:23:34,088] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-23 18:23:34,919] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-23 18:23:34,920] INFO - Found 0 active wallets for analytics update
+[2025-03-23 18:23:34,920] INFO - Completed analytics update for 0 wallets in 0.83 seconds
+[2025-03-23 18:33:53,700] INFO - Analytics background task scheduler stopped
+[2025-03-27 19:57:06,222] INFO - Analytics background task scheduler started
+[2025-03-27 20:57:06,232] INFO - Starting scheduled analytics update for all active wallets
+[2025-03-27 20:57:07,139] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-03-27 20:57:07,139] INFO - Found 0 active wallets for analytics update
+[2025-03-27 20:57:07,144] INFO - Completed analytics update for 0 wallets in 0.91 seconds
+[2025-03-27 21:50:39,874] INFO - Analytics background task scheduler stopped
+[2025-04-01 16:58:52,398] INFO - Analytics background task scheduler started
+[2025-04-01 17:58:52,392] INFO - Starting scheduled analytics update for all active wallets
+[2025-04-01 17:58:53,233] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-04-01 17:58:53,233] INFO - Found 0 active wallets for analytics update
+[2025-04-01 17:58:53,234] INFO - Completed analytics update for 0 wallets in 0.84 seconds
+[2025-04-01 18:18:48,279] INFO - Analytics background task scheduler stopped
+[2025-04-01 19:02:25,627] INFO - Analytics background task scheduler started
+[2025-04-01 20:02:25,633] INFO - Starting scheduled analytics update for all active wallets
+[2025-04-01 20:02:26,545] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-04-01 20:02:26,546] INFO - Found 0 active wallets for analytics update
+[2025-04-01 20:02:26,548] INFO - Completed analytics update for 0 wallets in 0.91 seconds
+[2025-04-01 21:02:25,645] INFO - Starting scheduled analytics update for all active wallets
+[2025-04-01 21:02:26,614] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-04-01 21:02:26,614] INFO - Found 0 active wallets for analytics update
+[2025-04-01 21:02:26,614] INFO - Completed analytics update for 0 wallets in 0.97 seconds
+[2025-04-01 21:41:17,544] INFO - Analytics background task scheduler stopped
+[2025-04-02 18:28:44,638] INFO - Analytics background task scheduler started
+[2025-04-02 18:28:49,555] INFO - Analytics background task scheduler stopped
+[2025-04-18 19:59:55,256] INFO - Analytics background task scheduler started
+[2025-04-18 20:25:26,690] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:25:32,270] INFO - Analytics background task scheduler started
+[2025-04-18 20:25:32,271] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:25:35,553] INFO - Analytics background task scheduler started
+[2025-04-18 20:26:03,594] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:26:06,439] INFO - Analytics background task scheduler started
+[2025-04-18 20:40:49,553] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:40:55,094] INFO - Analytics background task scheduler started
+[2025-04-18 20:40:55,099] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:40:58,574] INFO - Analytics background task scheduler started
+[2025-04-18 20:40:58,576] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:41:02,091] INFO - Analytics background task scheduler started
+[2025-04-18 20:41:02,091] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:41:05,436] INFO - Analytics background task scheduler started
+[2025-04-18 20:41:05,436] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:41:08,758] INFO - Analytics background task scheduler started
+[2025-04-18 20:41:08,759] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:58:13,240] INFO - Analytics background task scheduler started
+[2025-04-18 20:58:40,101] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:58:43,212] INFO - Analytics background task scheduler started
+[2025-04-18 20:58:43,213] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:58:46,345] INFO - Analytics background task scheduler started
+[2025-04-18 20:58:46,345] INFO - Analytics background task scheduler stopped
+[2025-04-18 20:58:49,643] INFO - Analytics background task scheduler started
+[2025-04-18 20:58:49,644] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:25:37,197] INFO - Analytics background task scheduler started
+[2025-04-18 23:30:34,096] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:30:37,298] INFO - Analytics background task scheduler started
+[2025-04-18 23:30:37,298] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:30:40,299] INFO - Analytics background task scheduler started
+[2025-04-18 23:31:08,231] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:31:11,279] INFO - Analytics background task scheduler started
+[2025-04-18 23:31:11,279] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:31:14,229] INFO - Analytics background task scheduler started
+[2025-04-18 23:31:42,139] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:31:45,276] INFO - Analytics background task scheduler started
+[2025-04-18 23:31:45,276] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:31:48,171] INFO - Analytics background task scheduler started
+[2025-04-18 23:35:34,114] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:35:37,558] INFO - Analytics background task scheduler started
+[2025-04-18 23:35:37,559] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:35:40,756] INFO - Analytics background task scheduler started
+[2025-04-18 23:45:38,049] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:45:41,956] INFO - Analytics background task scheduler started
+[2025-04-18 23:45:41,958] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:45:45,082] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:22,365] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:26,746] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:26,747] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:29,896] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:29,898] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:33,101] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:33,101] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:36,621] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:36,622] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:40,067] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:40,068] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:43,269] INFO - Analytics background task scheduler started
+[2025-04-18 23:55:43,271] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:55:46,442] INFO - Analytics background task scheduler started
+[2025-04-18 23:56:14,280] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:56:17,530] INFO - Analytics background task scheduler started
+[2025-04-18 23:56:17,531] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:56:20,784] INFO - Analytics background task scheduler started
+[2025-04-18 23:56:20,784] INFO - Analytics background task scheduler stopped
+[2025-04-18 23:56:24,067] INFO - Analytics background task scheduler started
+[2025-04-19 00:56:24,078] INFO - Starting scheduled analytics update for all active wallets
+[2025-04-19 00:56:24,997] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-04-19 00:56:24,997] INFO - Found 0 active wallets for analytics update
+[2025-04-19 00:56:24,997] INFO - Completed analytics update for 0 wallets in 0.92 seconds
+[2025-04-19 17:41:31,711] INFO - Analytics background task scheduler started
+[2025-04-19 17:42:03,099] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:42:06,394] INFO - Analytics background task scheduler started
+[2025-04-19 17:42:06,395] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:42:09,493] INFO - Analytics background task scheduler started
+[2025-04-19 17:43:36,283] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:43:39,532] INFO - Analytics background task scheduler started
+[2025-04-19 17:43:39,532] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:43:42,346] INFO - Analytics background task scheduler started
+[2025-04-19 17:46:28,003] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:46:34,874] INFO - Analytics background task scheduler started
+[2025-04-19 17:55:54,895] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:55:58,109] INFO - Analytics background task scheduler started
+[2025-04-19 17:55:58,109] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:56:01,229] INFO - Analytics background task scheduler started
+[2025-04-19 17:57:23,918] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:57:26,823] INFO - Analytics background task scheduler started
+[2025-04-19 17:57:37,269] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:57:39,989] INFO - Analytics background task scheduler started
+[2025-04-19 17:58:43,787] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:58:46,530] INFO - Analytics background task scheduler started
+[2025-04-19 17:58:46,530] INFO - Analytics background task scheduler stopped
+[2025-04-19 17:58:49,310] INFO - Analytics background task scheduler started
+[2025-04-19 18:00:04,850] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:00:08,001] INFO - Analytics background task scheduler started
+[2025-04-19 18:00:08,002] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:00:11,011] INFO - Analytics background task scheduler started
+[2025-04-19 18:03:07,150] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:03:10,407] INFO - Analytics background task scheduler started
+[2025-04-19 18:03:10,408] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:03:13,234] INFO - Analytics background task scheduler started
+[2025-04-19 18:04:44,534] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:04:47,500] INFO - Analytics background task scheduler started
+[2025-04-19 18:04:47,501] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:04:50,378] INFO - Analytics background task scheduler started
+[2025-04-19 18:09:37,918] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:09:41,065] INFO - Analytics background task scheduler started
+[2025-04-19 18:09:41,066] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:09:44,115] INFO - Analytics background task scheduler started
+[2025-04-19 18:14:41,504] INFO - Analytics background task scheduler stopped
+[2025-04-19 18:14:44,590] INFO - Analytics background task scheduler started
+[2025-04-19 19:14:44,611] INFO - Starting scheduled analytics update for all active wallets
+[2025-04-19 19:14:45,487] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-04-19 19:14:45,487] INFO - Found 0 active wallets for analytics update
+[2025-04-19 19:14:45,487] INFO - Completed analytics update for 0 wallets in 0.88 seconds
+[2025-04-19 19:39:40,934] INFO - Analytics background task scheduler stopped
+[2025-04-19 20:46:37,071] INFO - Analytics background task scheduler started
+[2025-04-19 20:46:37,072] INFO - Analytics background task scheduler stopped
+[2025-04-19 20:46:40,084] INFO - Analytics background task scheduler started
+[2025-04-19 20:47:02,075] INFO - Analytics background task scheduler stopped
+[2025-04-19 20:47:05,256] INFO - Analytics background task scheduler started
+[2025-04-19 20:47:05,256] INFO - Analytics background task scheduler stopped
+[2025-04-19 20:47:08,066] INFO - Analytics background task scheduler started
+[2025-05-23 23:55:33,233] INFO - Analytics background task scheduler started
+[2025-05-24 00:15:32,481] INFO - Analytics background task scheduler stopped
+[2025-05-26 13:34:44,080] INFO - Analytics background task scheduler started
+[2025-05-26 13:36:21,667] INFO - Analytics background task scheduler stopped
+[2025-05-26 13:38:13,359] INFO - Analytics background task scheduler started
+[2025-05-26 13:38:39,200] INFO - Analytics background task scheduler stopped
+[2025-05-26 13:38:51,927] INFO - Analytics background task scheduler started
+[2025-05-26 13:39:28,838] INFO - Analytics background task scheduler stopped
+[2025-05-26 13:39:39,098] INFO - Analytics background task scheduler started
+[2025-05-26 13:39:56,189] INFO - Analytics background task scheduler stopped
+[2025-05-26 13:42:37,646] INFO - Analytics background task scheduler started
+[2025-05-26 13:55:31,970] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:17:51,624] INFO - Analytics background task scheduler started
+[2025-05-26 15:21:51,023] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:21:54,475] INFO - Analytics background task scheduler started
+[2025-05-26 15:21:54,475] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:21:58,985] INFO - Analytics background task scheduler started
+[2025-05-26 15:24:12,591] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:24:15,786] INFO - Analytics background task scheduler started
+[2025-05-26 15:24:15,787] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:24:21,560] INFO - Analytics background task scheduler started
+[2025-05-26 15:26:05,577] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:26:10,880] INFO - Analytics background task scheduler started
+[2025-05-26 15:26:10,881] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:26:14,071] INFO - Analytics background task scheduler started
+[2025-05-26 15:27:02,654] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:27:05,978] INFO - Analytics background task scheduler started
+[2025-05-26 15:27:05,979] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:27:09,161] INFO - Analytics background task scheduler started
+[2025-05-26 15:29:10,029] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:29:14,267] INFO - Analytics background task scheduler started
+[2025-05-26 15:29:14,268] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:29:18,005] INFO - Analytics background task scheduler started
+[2025-05-26 15:34:14,833] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:34:18,543] INFO - Analytics background task scheduler started
+[2025-05-26 15:34:18,545] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:34:21,781] INFO - Analytics background task scheduler started
+[2025-05-26 15:35:20,047] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:35:24,971] INFO - Analytics background task scheduler started
+[2025-05-26 15:35:24,971] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:35:28,225] INFO - Analytics background task scheduler started
+[2025-05-26 15:37:07,790] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:38:15,485] INFO - Analytics background task scheduler started
+[2025-05-26 15:38:15,485] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:38:18,734] INFO - Analytics background task scheduler started
+[2025-05-26 15:38:18,734] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:38:21,928] INFO - Analytics background task scheduler started
+[2025-05-26 15:43:07,993] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:43:11,565] INFO - Analytics background task scheduler started
+[2025-05-26 15:43:11,565] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:43:14,950] INFO - Analytics background task scheduler started
+[2025-05-26 15:48:12,103] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:48:15,662] INFO - Analytics background task scheduler started
+[2025-05-26 15:48:15,663] INFO - Analytics background task scheduler stopped
+[2025-05-26 15:48:18,674] INFO - Analytics background task scheduler started
+[2025-05-26 16:05:16,881] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:05:20,683] INFO - Analytics background task scheduler started
+[2025-05-26 16:05:20,683] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:05:24,166] INFO - Analytics background task scheduler started
+[2025-05-26 16:06:55,734] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:06:59,192] INFO - Analytics background task scheduler started
+[2025-05-26 16:06:59,192] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:07:02,176] INFO - Analytics background task scheduler started
+[2025-05-26 16:14:50,043] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:14:53,787] INFO - Analytics background task scheduler started
+[2025-05-26 16:14:53,788] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:14:56,853] INFO - Analytics background task scheduler started
+[2025-05-26 16:15:21,142] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:15:24,820] INFO - Analytics background task scheduler started
+[2025-05-26 16:15:24,820] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:15:28,132] INFO - Analytics background task scheduler started
+[2025-05-26 16:20:25,266] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:20:28,623] INFO - Analytics background task scheduler started
+[2025-05-26 16:20:28,624] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:20:31,726] INFO - Analytics background task scheduler started
+[2025-05-26 16:25:29,024] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:25:32,950] INFO - Analytics background task scheduler started
+[2025-05-26 16:25:32,950] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:26:15,655] INFO - Analytics background task scheduler started
+[2025-05-26 16:27:11,494] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:27:16,925] INFO - Analytics background task scheduler started
+[2025-05-26 16:27:16,926] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:27:19,965] INFO - Analytics background task scheduler started
+[2025-05-26 16:28:50,776] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:28:54,005] INFO - Analytics background task scheduler started
+[2025-05-26 16:28:54,006] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:28:57,020] INFO - Analytics background task scheduler started
+[2025-05-26 16:29:48,071] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:29:51,286] INFO - Analytics background task scheduler started
+[2025-05-26 16:29:51,287] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:29:54,488] INFO - Analytics background task scheduler started
+[2025-05-26 16:30:25,334] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:30:28,513] INFO - Analytics background task scheduler started
+[2025-05-26 16:36:24,627] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:36:28,399] INFO - Analytics background task scheduler started
+[2025-05-26 16:36:28,400] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:36:31,915] INFO - Analytics background task scheduler started
+[2025-05-26 16:38:11,161] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:38:15,001] INFO - Analytics background task scheduler started
+[2025-05-26 16:38:15,001] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:38:18,581] INFO - Analytics background task scheduler started
+[2025-05-26 16:38:18,582] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:38:21,755] INFO - Analytics background task scheduler started
+[2025-05-26 16:43:18,970] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:43:22,919] INFO - Analytics background task scheduler started
+[2025-05-26 16:43:22,919] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:43:26,268] INFO - Analytics background task scheduler started
+[2025-05-26 16:43:26,268] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:43:29,406] INFO - Analytics background task scheduler started
+[2025-05-26 16:45:01,901] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:45:05,995] INFO - Analytics background task scheduler started
+[2025-05-26 16:45:05,995] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:45:10,359] INFO - Analytics background task scheduler started
+[2025-05-26 16:50:06,437] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:53:15,263] INFO - Analytics background task scheduler started
+[2025-05-26 16:53:55,697] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:56:18,942] INFO - Analytics background task scheduler started
+[2025-05-26 16:56:18,943] INFO - Analytics background task scheduler stopped
+[2025-05-26 16:56:22,165] INFO - Analytics background task scheduler started
+[2025-05-26 17:01:19,418] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:01:22,713] INFO - Analytics background task scheduler started
+[2025-05-26 17:01:22,714] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:01:26,149] INFO - Analytics background task scheduler started
+[2025-05-26 17:14:13,574] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:14:17,491] INFO - Analytics background task scheduler started
+[2025-05-26 17:14:17,493] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:14:20,808] INFO - Analytics background task scheduler started
+[2025-05-26 17:17:13,188] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:17:16,415] INFO - Analytics background task scheduler started
+[2025-05-26 17:17:22,274] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:17:25,420] INFO - Analytics background task scheduler started
+[2025-05-26 17:18:31,568] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:18:34,969] INFO - Analytics background task scheduler started
+[2025-05-26 17:18:34,970] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:18:38,289] INFO - Analytics background task scheduler started
+[2025-05-26 17:20:52,356] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:20:55,676] INFO - Analytics background task scheduler started
+[2025-05-26 17:20:55,677] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:20:58,711] INFO - Analytics background task scheduler started
+[2025-05-26 17:21:33,738] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:21:36,944] INFO - Analytics background task scheduler started
+[2025-05-26 17:21:36,945] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:21:40,619] INFO - Analytics background task scheduler started
+[2025-05-26 17:22:09,124] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:22:12,735] INFO - Analytics background task scheduler started
+[2025-05-26 17:22:46,357] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:22:49,492] INFO - Analytics background task scheduler started
+[2025-05-26 17:22:49,493] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:22:53,800] INFO - Analytics background task scheduler started
+[2025-05-26 17:23:41,003] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:23:44,750] INFO - Analytics background task scheduler started
+[2025-05-26 17:24:00,868] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:24:04,032] INFO - Analytics background task scheduler started
+[2025-05-26 17:26:57,153] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:27:00,337] INFO - Analytics background task scheduler started
+[2025-05-26 17:27:00,338] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:27:03,343] INFO - Analytics background task scheduler started
+[2025-05-26 17:32:00,821] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:32:04,705] INFO - Analytics background task scheduler started
+[2025-05-26 17:32:04,706] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:32:07,951] INFO - Analytics background task scheduler started
+[2025-05-26 17:35:19,024] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:35:22,197] INFO - Analytics background task scheduler started
+[2025-05-26 17:35:22,198] INFO - Analytics background task scheduler stopped
+[2025-05-26 17:35:25,063] INFO - Analytics background task scheduler started
+[2025-05-26 18:30:48,218] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:30:53,721] INFO - Analytics background task scheduler started
+[2025-05-26 18:33:29,161] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:33:32,453] INFO - Analytics background task scheduler started
+[2025-05-26 18:33:32,454] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:33:35,779] INFO - Analytics background task scheduler started
+[2025-05-26 18:33:35,780] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:33:38,760] INFO - Analytics background task scheduler started
+[2025-05-26 18:34:14,757] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:34:18,900] INFO - Analytics background task scheduler started
+[2025-05-26 18:34:18,901] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:34:22,867] INFO - Analytics background task scheduler started
+[2025-05-26 18:43:35,826] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:43:39,574] INFO - Analytics background task scheduler started
+[2025-05-26 18:43:39,575] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:43:42,720] INFO - Analytics background task scheduler started
+[2025-05-26 18:44:17,389] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:44:20,556] INFO - Analytics background task scheduler started
+[2025-05-26 18:44:44,441] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:44:47,834] INFO - Analytics background task scheduler started
+[2025-05-26 18:44:47,835] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:44:50,752] INFO - Analytics background task scheduler started
+[2025-05-26 18:45:55,057] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:45:58,315] INFO - Analytics background task scheduler started
+[2025-05-26 18:45:58,315] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:46:01,591] INFO - Analytics background task scheduler started
+[2025-05-26 18:46:36,491] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:46:39,526] INFO - Analytics background task scheduler started
+[2025-05-26 18:47:07,425] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:47:11,035] INFO - Analytics background task scheduler started
+[2025-05-26 18:47:11,036] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:47:14,247] INFO - Analytics background task scheduler started
+[2025-05-26 18:47:35,507] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:47:38,720] INFO - Analytics background task scheduler started
+[2025-05-26 18:47:38,720] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:47:41,827] INFO - Analytics background task scheduler started
+[2025-05-26 18:50:47,661] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:50:51,053] INFO - Analytics background task scheduler started
+[2025-05-26 18:50:51,054] INFO - Analytics background task scheduler stopped
+[2025-05-26 18:50:54,459] INFO - Analytics background task scheduler started
+[2025-05-26 19:19:10,949] INFO - Analytics background task scheduler stopped
+[2025-05-26 19:19:14,814] INFO - Analytics background task scheduler started
+[2025-05-26 19:19:14,815] INFO - Analytics background task scheduler stopped
+[2025-05-26 19:19:17,857] INFO - Analytics background task scheduler started
+[2025-05-26 20:19:17,860] INFO - Starting scheduled analytics update for all active wallets
+[2025-05-26 20:19:18,753] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-05-26 20:19:18,754] INFO - Found 0 active wallets for analytics update
+[2025-05-26 20:19:18,754] INFO - Completed analytics update for 0 wallets in 0.89 seconds
+[2025-05-26 21:16:20,892] INFO - Analytics background task scheduler stopped
+[2025-05-26 21:16:25,770] INFO - Analytics background task scheduler started
+[2025-05-26 22:09:37,865] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:09:44,991] INFO - Analytics background task scheduler started
+[2025-05-26 22:09:44,992] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:09:53,660] INFO - Analytics background task scheduler started
+[2025-05-26 22:14:45,495] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:14:51,261] INFO - Analytics background task scheduler started
+[2025-05-26 22:24:46,063] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:24:53,434] INFO - Analytics background task scheduler started
+[2025-05-26 22:24:53,436] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:25:00,480] INFO - Analytics background task scheduler started
+[2025-05-26 22:31:05,146] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:31:12,452] INFO - Analytics background task scheduler started
+[2025-05-26 22:31:12,453] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:31:18,823] INFO - Analytics background task scheduler started
+[2025-05-26 22:39:21,944] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:39:26,527] INFO - Analytics background task scheduler started
+[2025-05-26 22:39:49,765] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:39:53,014] INFO - Analytics background task scheduler started
+[2025-05-26 22:41:04,418] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:41:07,629] INFO - Analytics background task scheduler started
+[2025-05-26 22:41:07,630] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:41:12,425] INFO - Analytics background task scheduler started
+[2025-05-26 22:43:03,032] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:43:06,251] INFO - Analytics background task scheduler started
+[2025-05-26 22:43:06,252] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:43:09,196] INFO - Analytics background task scheduler started
+[2025-05-26 22:44:56,001] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:44:59,234] INFO - Analytics background task scheduler started
+[2025-05-26 22:47:12,173] INFO - Analytics background task scheduler stopped
+[2025-05-26 22:47:16,106] INFO - Analytics background task scheduler started
+[2025-05-26 23:47:16,106] INFO - Starting scheduled analytics update for all active wallets
+[2025-05-26 23:47:16,511] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-05-26 23:47:16,511] INFO - Found 0 active wallets for analytics update
+[2025-05-26 23:47:16,512] INFO - Completed analytics update for 0 wallets in 0.40 seconds
+[2025-05-26 23:51:48,217] INFO - Analytics background task scheduler stopped
+[2025-05-27 18:51:26,247] INFO - Analytics background task scheduler started
+[2025-05-27 19:10:27,851] INFO - Analytics background task scheduler stopped
+[2025-05-27 19:10:46,141] INFO - Analytics background task scheduler started
+[2025-05-27 19:28:35,854] INFO - Analytics background task scheduler stopped
+[2025-05-27 19:29:42,831] INFO - Analytics background task scheduler started
+[2025-05-27 19:38:17,320] INFO - Analytics background task scheduler stopped
+[2025-05-27 19:43:56,006] INFO - Analytics background task scheduler started
+[2025-05-27 20:40:45,739] INFO - Analytics background task scheduler stopped
+[2025-05-27 21:38:04,107] INFO - Analytics background task scheduler started
+[2025-05-27 22:05:18,957] INFO - Analytics background task scheduler stopped

@@ -1,0 +1,502 @@
+[2025-03-11 19:07:26,702] INFO - Database connection pool initialized successfully
+[2025-03-11 22:42:58,570] INFO - Database connection pool initialized successfully
+[2025-03-11 22:53:07,684] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-11 23:04:19,523] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-11 23:41:01,624] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-11 23:41:36,528] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:36,528] ERROR - Error executing query: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-11 23:41:37,613] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:38,624] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:39,751] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:40,778] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:41,795] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:42,818] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:43,858] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:45,888] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:46,917] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:47,950] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:48,979] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:53,013] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:54,033] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:55,052] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:41:56,078] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:00,815] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:26,448] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:27,514] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:28,529] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:29,545] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:30,559] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:31,572] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:32,596] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:33,621] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:35,644] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:36,662] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:37,677] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:43:38,691] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:17,863] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:18,919] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:19,929] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:20,943] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:21,973] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:22,992] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:24,008] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:25,022] ERROR - Database connection error: connection pool exhausted
+[2025-03-11 23:56:50,666] INFO - Database connection pool initialized successfully
+[2025-03-12 00:11:28,542] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 00:28:27,830] INFO - Database connection pool initialized successfully
+[2025-03-12 00:39:35,825] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 00:45:29,679] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 00:50:00,211] INFO - Database connection pool initialized successfully
+[2025-03-12 01:08:44,035] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 01:13:28,171] ERROR - Database connection error: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+[2025-03-12 01:13:28,171] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:29,190] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:30,212] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:31,223] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:32,244] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:33,255] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:34,268] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:13:35,277] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:17,138] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:18,169] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:19,188] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:20,205] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:21,246] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:22,271] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:23,286] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:24,311] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:26,337] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:27,354] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:28,371] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:29,387] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:33,412] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:34,436] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:35,456] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:36,477] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:39,423] ERROR - Database connection error: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:48,771] ERROR - Failed to initialize connection pool: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:14:49,855] ERROR - Connection pool not initialized
+[2025-03-12 01:15:01,854] ERROR - Failed to initialize connection pool: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:15:02,845] ERROR - Connection pool not initialized
+[2025-03-12 01:15:31,026] ERROR - Failed to initialize connection pool: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: No such host is known. 
+
+[2025-03-12 01:15:31,979] ERROR - Connection pool not initialized
+[2025-03-12 01:17:21,745] INFO - Database connection pool initialized successfully
+[2025-03-12 01:30:18,690] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:18,692] ERROR - Error executing query: cannot access local variable 'conn' where it is not associated with a value
+[2025-03-12 01:30:19,710] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:20,720] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:21,736] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:22,760] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:23,774] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:24,780] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:25,793] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:27,817] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:28,844] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:29,854] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:30,874] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:34,893] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:35,908] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:36,927] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:30:37,945] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:04,772] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:05,782] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:06,787] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:07,796] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:08,825] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:09,853] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:10,865] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:11,884] ERROR - Database connection error: connection pool exhausted
+[2025-03-12 01:34:23,565] INFO - Database connection pool initialized successfully
+[2025-03-12 01:44:23,770] INFO - Database connection pool initialized successfully
+[2025-03-12 01:44:54,802] INFO - Database connection pool initialized successfully
+[2025-03-12 01:44:58,384] INFO - Database connection pool initialized successfully
+[2025-03-12 02:11:05,986] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 02:11:59,702] INFO - Database connection pool initialized successfully
+[2025-03-12 02:12:12,745] INFO - Database connection pool initialized successfully
+[2025-03-12 02:25:42,174] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 02:38:15,043] INFO - Database connection pool initialized successfully
+[2025-03-12 02:51:35,714] INFO - Database connection pool initialized successfully
+[2025-03-12 11:57:08,011] INFO - Database connection pool initialized successfully
+[2025-03-12 12:57:13,825] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-12 15:37:01,183] INFO - Database connection pool initialized successfully
+[2025-03-14 10:20:12,052] INFO - Database connection pool initialized successfully
+[2025-03-14 11:32:26,620] INFO - Database connection pool initialized successfully
+[2025-03-14 11:43:40,494] INFO - Database connection pool initialized successfully
+[2025-03-14 13:14:22,231] INFO - Database connection pool initialized successfully
+[2025-03-14 15:27:17,660] INFO - Database connection pool initialized successfully
+[2025-03-14 22:53:35,349] INFO - Database connection pool initialized successfully
+[2025-03-15 15:43:52,036] INFO - Database connection pool initialized successfully
+[2025-03-15 16:44:00,624] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-15 20:28:57,615] INFO - Database connection pool initialized successfully
+[2025-03-15 22:09:57,467] INFO - Database connection pool initialized successfully
+[2025-03-16 11:53:32,741] INFO - Database connection pool initialized successfully
+[2025-03-16 14:47:55,586] INFO - Database connection pool initialized successfully
+[2025-03-16 17:54:32,768] INFO - Database connection pool initialized successfully
+[2025-03-16 18:11:35,873] INFO - Database connection pool initialized successfully
+[2025-03-16 19:11:29,844] INFO - Database connection pool initialized successfully
+[2025-03-17 00:03:08,870] INFO - Database connection pool initialized successfully
+[2025-03-18 17:44:00,815] INFO - Database connection pool initialized successfully
+[2025-03-18 18:17:32,817] INFO - Database connection pool initialized successfully
+[2025-03-18 19:30:01,228] INFO - Database connection pool initialized successfully
+[2025-03-18 20:01:02,155] INFO - Database connection pool initialized successfully
+[2025-03-19 22:15:54,742] INFO - Database connection pool initialized successfully
+[2025-03-20 05:42:02,440] INFO - Database connection pool initialized successfully
+[2025-03-20 06:00:20,355] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-03-20 06:34:29,270] INFO - Database connection pool initialized successfully
+[2025-03-20 08:10:34,252] INFO - Database connection pool initialized successfully
+[2025-03-20 08:43:39,079] INFO - Database connection pool initialized successfully
+[2025-03-20 09:03:12,534] INFO - Database connection pool initialized successfully
+[2025-03-20 17:38:35,327] INFO - Database connection pool initialized successfully
+[2025-03-21 16:36:19,404] INFO - Database connection pool initialized successfully
+[2025-03-21 23:05:41,827] INFO - Database connection pool initialized successfully
+[2025-03-23 15:08:44,774] INFO - Database connection pool initialized successfully
+[2025-03-23 15:38:34,713] INFO - Database connection pool initialized successfully
+[2025-03-23 16:23:31,967] INFO - Database connection pool initialized successfully
+[2025-03-27 19:57:00,994] INFO - Database connection pool initialized successfully
+[2025-04-01 16:58:47,708] INFO - Database connection pool initialized successfully
+[2025-04-01 19:02:20,470] INFO - Database connection pool initialized successfully
+[2025-04-02 18:28:38,734] INFO - Database connection pool initialized successfully
+[2025-04-18 19:59:50,061] INFO - Database connection pool initialized successfully
+[2025-04-18 20:25:29,783] INFO - Database connection pool initialized successfully
+[2025-04-18 20:25:33,567] INFO - Database connection pool initialized successfully
+[2025-04-18 20:26:04,357] INFO - Database connection pool initialized successfully
+[2025-04-18 20:40:52,801] INFO - Database connection pool initialized successfully
+[2025-04-18 20:40:56,201] INFO - Database connection pool initialized successfully
+[2025-04-18 20:40:59,681] INFO - Database connection pool initialized successfully
+[2025-04-18 20:41:03,117] INFO - Database connection pool initialized successfully
+[2025-04-18 20:41:06,457] INFO - Database connection pool initialized successfully
+[2025-04-18 20:58:10,692] INFO - Database connection pool initialized successfully
+[2025-04-18 20:58:41,089] INFO - Database connection pool initialized successfully
+[2025-04-18 20:58:44,212] INFO - Database connection pool initialized successfully
+[2025-04-18 20:58:47,438] INFO - Database connection pool initialized successfully
+[2025-04-18 23:25:35,108] INFO - Database connection pool initialized successfully
+[2025-04-18 23:30:35,146] INFO - Database connection pool initialized successfully
+[2025-04-18 23:30:38,186] INFO - Database connection pool initialized successfully
+[2025-04-18 23:31:09,085] INFO - Database connection pool initialized successfully
+[2025-04-18 23:31:12,113] INFO - Database connection pool initialized successfully
+[2025-04-18 23:31:42,998] INFO - Database connection pool initialized successfully
+[2025-04-18 23:31:46,106] INFO - Database connection pool initialized successfully
+[2025-04-18 23:35:35,196] INFO - Database connection pool initialized successfully
+[2025-04-18 23:35:38,540] INFO - Database connection pool initialized successfully
+[2025-04-18 23:45:39,584] INFO - Database connection pool initialized successfully
+[2025-04-18 23:45:43,009] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:24,423] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:27,697] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:30,917] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:34,083] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:37,695] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:41,069] INFO - Database connection pool initialized successfully
+[2025-04-18 23:55:44,267] INFO - Database connection pool initialized successfully
+[2025-04-18 23:56:15,334] INFO - Database connection pool initialized successfully
+[2025-04-18 23:56:18,549] INFO - Database connection pool initialized successfully
+[2025-04-18 23:56:21,845] INFO - Database connection pool initialized successfully
+[2025-04-19 11:47:58,055] INFO - Database connection pool initialized successfully
+[2025-04-19 11:48:29,878] INFO - Database connection pool initialized successfully
+[2025-04-19 17:31:52,259] INFO - Database connection pool initialized successfully
+[2025-04-19 17:32:04,390] INFO - Database connection pool initialized successfully
+[2025-04-19 17:32:14,942] INFO - Database connection pool initialized successfully
+[2025-04-19 17:32:45,374] ERROR - Failed to initialize connection pool: could not translate host name "ep-withered-lake-a50r5a9i.us-east-2.aws.neon.tech" to address: Name or service not known
+
+[2025-04-19 17:41:29,702] INFO - Database connection pool initialized successfully
+[2025-04-19 17:42:04,180] INFO - Database connection pool initialized successfully
+[2025-04-19 17:42:07,536] INFO - Database connection pool initialized successfully
+[2025-04-19 17:43:37,390] INFO - Database connection pool initialized successfully
+[2025-04-19 17:43:40,475] INFO - Database connection pool initialized successfully
+[2025-04-19 17:46:31,245] INFO - Database connection pool initialized successfully
+[2025-04-19 17:55:56,029] INFO - Database connection pool initialized successfully
+[2025-04-19 17:55:59,191] INFO - Database connection pool initialized successfully
+[2025-04-19 17:57:24,885] INFO - Database connection pool initialized successfully
+[2025-04-19 17:57:38,106] INFO - Database connection pool initialized successfully
+[2025-04-19 17:58:44,694] INFO - Database connection pool initialized successfully
+[2025-04-19 17:58:47,460] INFO - Database connection pool initialized successfully
+[2025-04-19 18:00:05,884] INFO - Database connection pool initialized successfully
+[2025-04-19 18:00:09,029] INFO - Database connection pool initialized successfully
+[2025-04-19 18:03:08,244] INFO - Database connection pool initialized successfully
+[2025-04-19 18:03:11,350] INFO - Database connection pool initialized successfully
+[2025-04-19 18:04:45,427] INFO - Database connection pool initialized successfully
+[2025-04-19 18:04:48,374] INFO - Database connection pool initialized successfully
+[2025-04-19 18:07:58,331] INFO - Database connection pool initialized successfully
+[2025-04-19 18:08:38,807] INFO - Database connection pool initialized successfully
+[2025-04-19 18:09:38,917] INFO - Database connection pool initialized successfully
+[2025-04-19 18:09:42,039] INFO - Database connection pool initialized successfully
+[2025-04-19 18:14:42,630] INFO - Database connection pool initialized successfully
+[2025-04-19 19:39:42,503] INFO - Database connection pool initialized successfully
+[2025-04-19 19:39:44,556] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:06,526] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:08,634] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:10,627] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:30,692] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:32,790] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:57,038] INFO - Database connection pool initialized successfully
+[2025-04-19 19:45:59,041] INFO - Database connection pool initialized successfully
+[2025-04-19 19:46:15,547] INFO - Database connection pool initialized successfully
+[2025-04-19 19:46:17,664] INFO - Database connection pool initialized successfully
+[2025-04-19 19:46:22,971] INFO - Database connection pool initialized successfully
+[2025-04-19 19:46:33,603] INFO - Database connection pool initialized successfully
+[2025-04-19 19:46:35,619] INFO - Database connection pool initialized successfully
+[2025-04-19 19:47:14,572] INFO - Database connection pool initialized successfully
+[2025-04-19 19:47:17,990] INFO - Database connection pool initialized successfully
+[2025-04-19 19:47:19,986] INFO - Database connection pool initialized successfully
+[2025-04-19 19:47:45,126] INFO - Database connection pool initialized successfully
+[2025-04-19 19:47:47,217] INFO - Database connection pool initialized successfully
+[2025-04-19 19:48:03,419] INFO - Database connection pool initialized successfully
+[2025-04-19 19:49:25,175] INFO - Database connection pool initialized successfully
+[2025-04-19 19:49:30,859] INFO - Database connection pool initialized successfully
+[2025-04-19 19:49:41,008] INFO - Database connection pool initialized successfully
+[2025-04-19 19:49:43,196] INFO - Database connection pool initialized successfully
+[2025-04-19 19:49:52,035] INFO - Database connection pool initialized successfully
+[2025-04-19 19:50:06,812] INFO - Database connection pool initialized successfully
+[2025-04-19 19:50:14,492] INFO - Database connection pool initialized successfully
+[2025-04-19 19:56:43,808] INFO - Database connection pool initialized successfully
+[2025-04-19 19:56:45,883] INFO - Database connection pool initialized successfully
+[2025-04-19 19:56:47,782] INFO - Database connection pool initialized successfully
+[2025-04-19 19:56:59,301] INFO - Database connection pool initialized successfully
+[2025-04-19 19:57:01,367] INFO - Database connection pool initialized successfully
+[2025-04-19 19:57:04,772] INFO - Database connection pool initialized successfully
+[2025-04-19 19:57:28,455] INFO - Database connection pool initialized successfully
+[2025-04-19 19:57:30,429] INFO - Database connection pool initialized successfully
+[2025-04-19 19:57:32,271] INFO - Database connection pool initialized successfully
+[2025-04-19 20:00:29,370] INFO - Database connection pool initialized successfully
+[2025-04-19 20:05:04,558] INFO - Database connection pool initialized successfully
+[2025-04-19 20:05:06,598] INFO - Database connection pool initialized successfully
+[2025-04-19 20:05:08,817] INFO - Database connection pool initialized successfully
+[2025-04-19 20:05:15,508] INFO - Database connection pool initialized successfully
+[2025-04-19 20:06:35,379] INFO - Database connection pool initialized successfully
+[2025-04-19 20:06:40,852] INFO - Database connection pool initialized successfully
+[2025-04-19 20:06:45,091] INFO - Database connection pool initialized successfully
+[2025-04-19 20:33:18,202] INFO - Database connection pool initialized successfully
+[2025-04-19 20:35:16,353] INFO - Database connection pool initialized successfully
+[2025-04-19 20:35:18,157] INFO - Database connection pool initialized successfully
+[2025-04-19 20:35:28,318] INFO - Database connection pool initialized successfully
+[2025-04-19 20:35:46,941] INFO - Database connection pool initialized successfully
+[2025-04-19 20:37:44,158] INFO - Database connection pool initialized successfully
+[2025-04-19 20:37:46,283] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:05,038] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:06,982] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:15,742] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:17,539] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:42,702] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:44,716] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:49,202] INFO - Database connection pool initialized successfully
+[2025-04-19 20:38:51,450] INFO - Database connection pool initialized successfully
+[2025-04-19 20:39:01,010] INFO - Database connection pool initialized successfully
+[2025-04-19 20:39:03,221] INFO - Database connection pool initialized successfully
+[2025-04-19 20:40:22,047] INFO - Database connection pool initialized successfully
+[2025-04-19 20:40:30,126] INFO - Database connection pool initialized successfully
+[2025-04-19 20:41:05,207] INFO - Database connection pool initialized successfully
+[2025-04-19 20:41:07,518] INFO - Database connection pool initialized successfully
+[2025-04-19 20:41:19,721] INFO - Database connection pool initialized successfully
+[2025-04-19 20:41:44,639] INFO - Database connection pool initialized successfully
+[2025-04-19 20:41:46,622] INFO - Database connection pool initialized successfully
+[2025-04-19 20:41:48,637] INFO - Database connection pool initialized successfully
+[2025-04-19 20:42:17,489] INFO - Database connection pool initialized successfully
+[2025-04-19 20:42:19,389] INFO - Database connection pool initialized successfully
+[2025-04-19 20:42:22,292] INFO - Database connection pool initialized successfully
+[2025-04-19 20:42:40,771] INFO - Database connection pool initialized successfully
+[2025-04-19 20:42:42,992] INFO - Database connection pool initialized successfully
+[2025-04-19 20:42:45,083] INFO - Database connection pool initialized successfully
+[2025-04-19 20:44:59,340] INFO - Database connection pool initialized successfully
+[2025-04-19 20:45:01,543] INFO - Database connection pool initialized successfully
+[2025-04-19 20:45:03,832] INFO - Database connection pool initialized successfully
+[2025-04-19 20:45:36,376] INFO - Database connection pool initialized successfully
+[2025-04-19 20:45:38,329] INFO - Database connection pool initialized successfully
+[2025-04-19 20:45:49,391] INFO - Database connection pool initialized successfully
+[2025-04-19 20:46:15,109] INFO - Database connection pool initialized successfully
+[2025-04-19 20:46:17,224] INFO - Database connection pool initialized successfully
+[2025-04-19 20:46:34,758] INFO - Database connection pool initialized successfully
+[2025-04-19 20:46:38,047] INFO - Database connection pool initialized successfully
+[2025-04-19 20:47:03,187] INFO - Database connection pool initialized successfully
+[2025-04-19 20:47:06,166] INFO - Database connection pool initialized successfully
+[2025-05-23 23:55:27,768] INFO - Database connection pool initialized successfully
+[2025-05-26 13:13:57,143] INFO - Database connection pool initialized successfully
+[2025-05-26 13:34:39,870] INFO - Database connection pool initialized successfully
+[2025-05-26 13:38:08,647] INFO - Database connection pool initialized successfully
+[2025-05-26 13:38:49,365] INFO - Database connection pool initialized successfully
+[2025-05-26 13:39:36,296] INFO - Database connection pool initialized successfully
+[2025-05-26 13:42:35,613] INFO - Database connection pool initialized successfully
+[2025-05-26 13:53:37,012] INFO - Database connection pool initialized successfully
+[2025-05-26 14:48:01,614] INFO - Database connection pool initialized successfully
+[2025-05-26 15:04:42,592] INFO - Database connection pool initialized successfully
+[2025-05-26 15:04:51,611] INFO - Database connection pool initialized successfully
+[2025-05-26 15:17:49,432] INFO - Database connection pool initialized successfully
+[2025-05-26 15:21:52,079] INFO - Database connection pool initialized successfully
+[2025-05-26 15:21:56,162] INFO - Database connection pool initialized successfully
+[2025-05-26 15:24:13,609] INFO - Database connection pool initialized successfully
+[2025-05-26 15:24:16,846] INFO - Database connection pool initialized successfully
+[2025-05-26 15:26:07,147] INFO - Database connection pool initialized successfully
+[2025-05-26 15:26:11,815] INFO - Database connection pool initialized successfully
+[2025-05-26 15:27:03,609] INFO - Database connection pool initialized successfully
+[2025-05-26 15:27:07,065] INFO - Database connection pool initialized successfully
+[2025-05-26 15:29:11,022] INFO - Database connection pool initialized successfully
+[2025-05-26 15:29:15,346] INFO - Database connection pool initialized successfully
+[2025-05-26 15:34:16,203] INFO - Database connection pool initialized successfully
+[2025-05-26 15:34:19,581] INFO - Database connection pool initialized successfully
+[2025-05-26 15:35:21,352] INFO - Database connection pool initialized successfully
+[2025-05-26 15:35:26,036] INFO - Database connection pool initialized successfully
+[2025-05-26 15:37:08,762] INFO - Database connection pool initialized successfully
+[2025-05-26 15:37:11,066] INFO - Database connection pool initialized successfully
+[2025-05-26 15:38:13,058] INFO - Database connection pool initialized successfully
+[2025-05-26 15:38:16,465] INFO - Database connection pool initialized successfully
+[2025-05-26 15:38:19,756] INFO - Database connection pool initialized successfully
+[2025-05-26 15:43:09,241] INFO - Database connection pool initialized successfully
+[2025-05-26 15:43:12,627] INFO - Database connection pool initialized successfully
+[2025-05-26 15:48:13,248] INFO - Database connection pool initialized successfully
+[2025-05-26 15:48:16,575] INFO - Database connection pool initialized successfully
+[2025-05-26 16:05:18,473] INFO - Database connection pool initialized successfully
+[2025-05-26 16:05:21,768] INFO - Database connection pool initialized successfully
+[2025-05-26 16:06:56,678] INFO - Database connection pool initialized successfully
+[2025-05-26 16:07:00,071] INFO - Database connection pool initialized successfully
+[2025-05-26 16:14:51,526] INFO - Database connection pool initialized successfully
+[2025-05-26 16:14:54,754] INFO - Database connection pool initialized successfully
+[2025-05-26 16:15:22,449] INFO - Database connection pool initialized successfully
+[2025-05-26 16:15:25,789] INFO - Database connection pool initialized successfully
+[2025-05-26 16:20:26,341] INFO - Database connection pool initialized successfully
+[2025-05-26 16:20:29,577] INFO - Database connection pool initialized successfully
+[2025-05-26 16:25:30,013] INFO - Database connection pool initialized successfully
+[2025-05-26 16:25:34,468] INFO - Database connection pool initialized successfully
+[2025-05-26 16:25:35,499] ERROR - Database connection error: SSL connection has been closed unexpectedly
+
+[2025-05-26 16:26:10,836] INFO - Database connection pool initialized successfully
+[2025-05-26 16:27:12,495] INFO - Database connection pool initialized successfully
+[2025-05-26 16:27:17,874] INFO - Database connection pool initialized successfully
+[2025-05-26 16:28:51,846] INFO - Database connection pool initialized successfully
+[2025-05-26 16:28:54,954] INFO - Database connection pool initialized successfully
+[2025-05-26 16:29:49,078] INFO - Database connection pool initialized successfully
+[2025-05-26 16:29:52,385] INFO - Database connection pool initialized successfully
+[2025-05-26 16:30:26,356] INFO - Database connection pool initialized successfully
+[2025-05-26 16:36:26,038] INFO - Database connection pool initialized successfully
+[2025-05-26 16:36:29,427] INFO - Database connection pool initialized successfully
+[2025-05-26 16:38:12,821] INFO - Database connection pool initialized successfully
+[2025-05-26 16:38:16,233] INFO - Database connection pool initialized successfully
+[2025-05-26 16:38:19,550] INFO - Database connection pool initialized successfully
+[2025-05-26 16:43:20,647] INFO - Database connection pool initialized successfully
+[2025-05-26 16:43:23,899] INFO - Database connection pool initialized successfully
+[2025-05-26 16:43:27,312] INFO - Database connection pool initialized successfully
+[2025-05-26 16:45:03,299] INFO - Database connection pool initialized successfully
+[2025-05-26 16:45:07,899] INFO - Database connection pool initialized successfully
+[2025-05-26 16:50:07,682] INFO - Database connection pool initialized successfully
+[2025-05-26 16:50:10,639] INFO - Database connection pool initialized successfully
+[2025-05-26 16:52:22,390] INFO - Database connection pool initialized successfully
+[2025-05-26 16:52:24,562] INFO - Database connection pool initialized successfully
+[2025-05-26 16:53:04,603] INFO - Database connection pool initialized successfully
+[2025-05-26 16:53:06,875] INFO - Database connection pool initialized successfully
+[2025-05-26 16:53:12,859] INFO - Database connection pool initialized successfully
+[2025-05-26 16:53:56,768] INFO - Database connection pool initialized successfully
+[2025-05-26 16:53:58,788] INFO - Database connection pool initialized successfully
+[2025-05-26 16:54:32,498] INFO - Database connection pool initialized successfully
+[2025-05-26 16:54:34,832] INFO - Database connection pool initialized successfully
+[2025-05-26 16:55:26,480] INFO - Database connection pool initialized successfully
+[2025-05-26 16:56:16,573] INFO - Database connection pool initialized successfully
+[2025-05-26 16:56:19,955] INFO - Database connection pool initialized successfully
+[2025-05-26 17:01:20,436] INFO - Database connection pool initialized successfully
+[2025-05-26 17:01:24,186] INFO - Database connection pool initialized successfully
+[2025-05-26 17:14:15,199] INFO - Database connection pool initialized successfully
+[2025-05-26 17:14:18,494] INFO - Database connection pool initialized successfully
+[2025-05-26 17:17:14,129] INFO - Database connection pool initialized successfully
+[2025-05-26 17:17:23,302] INFO - Database connection pool initialized successfully
+[2025-05-26 17:18:32,717] INFO - Database connection pool initialized successfully
+[2025-05-26 17:18:36,034] INFO - Database connection pool initialized successfully
+[2025-05-26 17:20:53,581] INFO - Database connection pool initialized successfully
+[2025-05-26 17:20:56,668] INFO - Database connection pool initialized successfully
+[2025-05-26 17:21:34,765] INFO - Database connection pool initialized successfully
+[2025-05-26 17:21:38,002] INFO - Database connection pool initialized successfully
+[2025-05-26 17:22:10,599] INFO - Database connection pool initialized successfully
+[2025-05-26 17:22:47,313] INFO - Database connection pool initialized successfully
+[2025-05-26 17:22:50,608] INFO - Database connection pool initialized successfully
+[2025-05-26 17:23:41,989] INFO - Database connection pool initialized successfully
+[2025-05-26 17:24:01,896] INFO - Database connection pool initialized successfully
+[2025-05-26 17:26:58,193] INFO - Database connection pool initialized successfully
+[2025-05-26 17:27:01,289] INFO - Database connection pool initialized successfully
+[2025-05-26 17:32:02,461] INFO - Database connection pool initialized successfully
+[2025-05-26 17:32:05,702] INFO - Database connection pool initialized successfully
+[2025-05-26 17:35:19,896] INFO - Database connection pool initialized successfully
+[2025-05-26 17:35:23,085] INFO - Database connection pool initialized successfully
+[2025-05-26 18:30:50,618] INFO - Database connection pool initialized successfully
+[2025-05-26 18:33:30,189] INFO - Database connection pool initialized successfully
+[2025-05-26 18:33:33,509] INFO - Database connection pool initialized successfully
+[2025-05-26 18:33:36,712] INFO - Database connection pool initialized successfully
+[2025-05-26 18:34:15,757] INFO - Database connection pool initialized successfully
+[2025-05-26 18:34:20,433] INFO - Database connection pool initialized successfully
+[2025-05-26 18:43:37,160] INFO - Database connection pool initialized successfully
+[2025-05-26 18:43:40,577] INFO - Database connection pool initialized successfully
+[2025-05-26 18:44:18,422] INFO - Database connection pool initialized successfully
+[2025-05-26 18:44:45,616] INFO - Database connection pool initialized successfully
+[2025-05-26 18:44:48,706] INFO - Database connection pool initialized successfully
+[2025-05-26 18:45:56,062] INFO - Database connection pool initialized successfully
+[2025-05-26 18:45:59,364] INFO - Database connection pool initialized successfully
+[2025-05-26 18:46:37,482] INFO - Database connection pool initialized successfully
+[2025-05-26 18:47:08,728] INFO - Database connection pool initialized successfully
+[2025-05-26 18:47:11,978] INFO - Database connection pool initialized successfully
+[2025-05-26 18:47:36,536] INFO - Database connection pool initialized successfully
+[2025-05-26 18:47:39,654] INFO - Database connection pool initialized successfully
+[2025-05-26 18:50:48,809] INFO - Database connection pool initialized successfully
+[2025-05-26 18:50:52,312] INFO - Database connection pool initialized successfully
+[2025-05-26 19:19:12,568] INFO - Database connection pool initialized successfully
+[2025-05-26 19:19:15,800] INFO - Database connection pool initialized successfully
+[2025-05-26 21:16:23,293] INFO - Database connection pool initialized successfully
+[2025-05-26 22:09:40,314] INFO - Database connection pool initialized successfully
+[2025-05-26 22:09:48,160] INFO - Database connection pool initialized successfully
+[2025-05-26 22:14:47,927] INFO - Database connection pool initialized successfully
+[2025-05-26 22:24:48,236] INFO - Database connection pool initialized successfully
+[2025-05-26 22:24:54,935] INFO - Database connection pool initialized successfully
+[2025-05-26 22:31:07,540] INFO - Database connection pool initialized successfully
+[2025-05-26 22:31:14,044] INFO - Database connection pool initialized successfully
+[2025-05-26 22:39:23,936] INFO - Database connection pool initialized successfully
+[2025-05-26 22:39:50,755] INFO - Database connection pool initialized successfully
+[2025-05-26 22:41:05,395] INFO - Database connection pool initialized successfully
+[2025-05-26 22:41:09,456] INFO - Database connection pool initialized successfully
+[2025-05-26 22:43:04,046] INFO - Database connection pool initialized successfully
+[2025-05-26 22:43:07,208] INFO - Database connection pool initialized successfully
+[2025-05-26 22:44:57,162] INFO - Database connection pool initialized successfully
+[2025-05-26 22:47:13,880] INFO - Database connection pool initialized successfully
+[2025-05-27 18:51:22,419] INFO - Database connection pool initialized successfully
+[2025-05-27 19:10:43,683] INFO - Database connection pool initialized successfully
+[2025-05-27 19:29:40,567] INFO - Database connection pool initialized successfully
+[2025-05-27 19:43:53,664] INFO - Database connection pool initialized successfully
+[2025-05-27 21:38:01,753] INFO - Database connection pool initialized successfully

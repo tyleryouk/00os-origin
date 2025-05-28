@@ -1,0 +1,841 @@
+[2025-04-18 21:12:53,500] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-18 21:12:53,521] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:12:53,532] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:12:53,537] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:12:53,565] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:12:53,570] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:12:53,584] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:12:53,732] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,027] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-18 21:13:10,036] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,039] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,044] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,051] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,071] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,075] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-18 21:13:10,187] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:04,760] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:32:04,767] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:04,775] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:04,783] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:04,789] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:04,795] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:04,800] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:32:05,095] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-04-19 17:56:01,367] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:57:23,757] INFO - Redis cache initialized with prefix 'steam:items:' and default TTL 3600s
+[2025-04-19 17:58:08,633] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:58:08,635] WARNING - Redis connection not available for cache.get
+[2025-04-19 17:59:28,333] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:59:28,334] WARNING - Redis connection not available for cache.get
+[2025-04-19 18:00:04,647] INFO - Redis cache initialized with prefix 'steam:items:' and default TTL 3600s
+[2025-04-19 18:00:04,722] ERROR - Error retrieving from cache for key categories:730: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:00:29,051] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:00:29,052] WARNING - Redis connection not available for cache.get
+[2025-04-19 18:03:06,843] INFO - Redis cache initialized with prefix 'steam:items:' and default TTL 3600s
+[2025-04-19 18:03:06,934] ERROR - Error retrieving from cache for key categories:730: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:03:20,884] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:03:20,885] WARNING - Redis connection not available for cache.get
+[2025-04-19 18:07:58,734] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:07:58,734] WARNING - Redis connection not available for cache.get
+[2025-04-19 18:08:39,157] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:08:39,157] WARNING - Redis connection not available for cache.get
+[2025-05-26 13:53:38,343] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 13:53:38,345] WARNING - Redis connection not available for cache.get
+[2025-05-26 13:53:39,290] INFO - Redis cache initialized with prefix 'steam:items:' and default TTL 3600s
+[2025-05-26 13:53:39,291] ERROR - Error retrieving from cache for key float_info:steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198042843401A35245796926D16321188872112797006: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 15:27:02,025] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 15:27:02,025] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 15:27:02,026] WARNING - Redis connection not available for cache.get
+[2025-05-26 15:29:24,411] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 15:29:24,412] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 15:29:24,412] WARNING - Redis connection not available for cache.get
+[2025-05-26 15:29:31,929] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 15:29:31,929] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 15:29:32,006] ERROR - Error retrieving from cache for key profile:76561199487496862: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 15:29:36,679] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 15:29:36,679] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 15:29:36,743] ERROR - Error retrieving from cache for key profile:76561199487496862: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:24,545] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:24,545] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:24,545] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:24,546] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:03:25,256] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:25,256] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:25,256] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:25,257] ERROR - Error retrieving from cache for key profile:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:26,892] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:26,892] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:26,892] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:26,892] ERROR - Error retrieving from cache for key profile:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:28,885] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:28,885] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:28,885] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:28,942] ERROR - Error retrieving from cache for key inventory:76561199487496862:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:30,894] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:30,894] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:30,894] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:30,895] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:31,477] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:31,477] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:31,477] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:31,477] ERROR - Error retrieving from cache for key inventory:76561199000000000:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:33,549] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:33,549] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:33,549] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:33,549] ERROR - Error retrieving from cache for key inventory:76561199487496862:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:35,329] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:35,329] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:35,329] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:35,360] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:35,873] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:35,873] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:35,873] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:35,874] ERROR - Error retrieving from cache for key inventory:76561199000000000:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:36,688] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:36,688] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:36,689] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:36,689] ERROR - Error retrieving from cache for key trade_eligibility:76561199487496862: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:37,239] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:37,239] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:37,239] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:37,239] ERROR - Error retrieving from cache for key trade_eligibility:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:37,640] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:37,640] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:37,640] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:37,640] ERROR - Error retrieving from cache for key trade_eligibility:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:38,175] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:38,175] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:38,175] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:38,176] ERROR - Error retrieving from cache for key inventory_privacy:76561199487496862: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:38,732] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:38,732] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:38,732] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:38,732] ERROR - Error retrieving from cache for key inventory_privacy:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:39,253] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:39,253] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:39,253] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:39,253] ERROR - Error retrieving from cache for key inventory_privacy:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:39,762] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:39,763] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:39,763] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:39,962] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:39,962] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:39,962] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:40,189] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:40,189] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:40,189] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:40,394] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:40,395] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:40,395] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:40,680] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:40,680] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:40,680] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:03:40,903] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:03:40,903] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:03:40,903] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:05:16,737] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:05:16,737] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:05:16,737] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:06:55,511] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:06:55,511] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:06:55,511] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:07:02,248] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:07:02,249] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:07:02,249] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:07:35,071] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:07:35,071] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:07:35,071] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:14:49,312] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:14:49,312] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:14:49,312] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:14:49,494] ERROR - Error retrieving from cache for key profile:76561199487496862: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:15:13,144] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:15:13,145] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:15:13,145] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:15:13,146] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:15:39,276] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:15:39,276] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:15:39,276] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:16:02,968] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:16:02,968] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:16:02,968] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:16:03,107] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:16:12,185] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:16:12,185] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:16:12,185] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:16:12,211] ERROR - Error retrieving from cache for key friendlist:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:27:10,981] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:27:10,981] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:27:10,981] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:27:10,981] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:28:16,428] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:28:16,428] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:28:16,428] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:28:16,428] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:28:16,778] WARNING - Redis connection not available for cache.set
+[2025-05-26 16:28:24,984] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:28:24,984] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:28:24,984] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:28:25,048] ERROR - Error retrieving from cache for key profile:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:28:25,372] ERROR - Error setting cache for key profile:76561199562411448: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:28:50,209] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:28:50,209] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:28:50,209] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:28:50,228] ERROR - Error retrieving from cache for key profile:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:28:50,550] ERROR - Error setting cache for key profile:76561199562411448: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:29:47,239] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:29:47,239] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:29:47,239] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:29:47,239] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:29:47,863] WARNING - Redis connection not available for cache.set
+[2025-05-26 16:30:05,079] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:30:05,079] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:30:05,079] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:30:05,079] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:30:21,516] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:30:21,517] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:30:21,517] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:40,263] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:40,264] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:40,264] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:40,264] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:33:40,580] WARNING - Redis connection not available for cache.set
+[2025-05-26 16:33:40,802] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:40,802] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:40,802] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:40,802] ERROR - Error retrieving from cache for key profile:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:42,125] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:42,125] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:42,125] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:42,126] ERROR - Error retrieving from cache for key profile:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:43,847] ERROR - Error setting cache for key profile:76561199000000000: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:33:44,188] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:44,188] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:44,188] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:44,189] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:46,103] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:46,103] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:46,103] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:46,178] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:46,867] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:46,867] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:46,867] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:46,867] ERROR - Error retrieving from cache for key inventory:76561199000000000:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:47,663] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:47,663] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:47,663] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:47,664] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:49,445] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:49,445] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:49,445] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:49,445] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:50,001] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:50,001] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:50,001] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:50,001] ERROR - Error retrieving from cache for key inventory:76561199000000000:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:51,683] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:51,683] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:51,683] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:51,758] ERROR - Error retrieving from cache for key inventory_privacy:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:52,323] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:52,323] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:52,323] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:52,323] ERROR - Error retrieving from cache for key inventory_privacy:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:52,924] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:52,924] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:52,924] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:52,924] ERROR - Error retrieving from cache for key inventory_privacy:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:53,507] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:53,507] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:53,507] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:53,507] ERROR - Error retrieving from cache for key friendlist:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:54,381] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:54,381] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:54,381] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:54,381] ERROR - Error retrieving from cache for key friendlist:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:55,867] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:55,867] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:55,867] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:33:55,868] ERROR - Error retrieving from cache for key friendlist:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:57,343] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:33:57,344] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:33:57,344] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:34:00,524] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:34:00,525] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:34:00,525] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:34:01,141] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:34:01,141] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:34:01,141] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:23,378] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:23,378] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:23,378] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:23,562] ERROR - Error retrieving from cache for key profile:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:24,408] ERROR - Error setting cache for key profile:76561199562411448: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:36:31,947] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:31,947] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:31,948] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:31,948] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:36:37,434] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:37,434] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:37,434] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:37,459] ERROR - Error retrieving from cache for key profile:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:39,824] ERROR - Error setting cache for key profile:76561199000000000: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:36:40,179] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:40,179] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:40,179] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:40,182] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:42,030] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:42,030] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:42,030] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:42,110] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:42,716] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:42,716] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:42,716] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:42,716] ERROR - Error retrieving from cache for key inventory:76561199000000000:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:43,566] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:43,566] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:43,566] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:43,566] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:45,313] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:45,313] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:45,313] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:45,313] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:45,906] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:45,906] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:45,906] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:45,906] ERROR - Error retrieving from cache for key inventory:76561199000000000:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:46,748] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:46,748] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:46,748] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:47,040] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:47,040] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:47,040] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:47,282] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:47,282] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:47,282] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:47,559] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:47,559] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:47,559] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:47,586] ERROR - Error retrieving from cache for key inventory_privacy:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:48,220] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:48,220] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:48,220] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:48,220] ERROR - Error retrieving from cache for key inventory_privacy:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:48,797] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:48,797] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:48,797] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:48,797] ERROR - Error retrieving from cache for key inventory_privacy:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:49,342] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:49,342] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:49,342] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:49,343] ERROR - Error retrieving from cache for key friendlist:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:50,336] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:50,336] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:50,336] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:50,336] ERROR - Error retrieving from cache for key friendlist:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:51,350] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:51,350] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:51,350] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:51,350] ERROR - Error retrieving from cache for key friendlist:76561199000000000: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:52,240] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:52,240] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:52,240] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:54,527] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:54,527] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:54,527] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:36:55,137] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:36:55,137] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:36:55,137] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:38:09,100] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:38:09,100] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:38:09,100] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:38:09,241] ERROR - Error retrieving from cache for key profile:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:38:21,828] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:38:21,828] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:38:21,828] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:38:29,295] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:38:29,295] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:38:29,295] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:38:29,316] ERROR - Error retrieving from cache for key profile:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:49,210] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:49,210] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:49,210] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:49,281] ERROR - Error retrieving from cache for key profile:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:49,785] ERROR - Error setting cache for key profile:76561199562411448: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:41:50,005] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:50,005] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:50,005] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:50,006] ERROR - Error retrieving from cache for key profile:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:52,288] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:52,288] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:52,288] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:52,288] ERROR - Error retrieving from cache for key profile:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:53,972] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:53,972] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:53,972] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:54,045] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:55,728] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:55,728] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:55,728] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:55,731] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:56,413] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:56,414] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:56,414] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:56,414] ERROR - Error retrieving from cache for key inventory:76561199999999999:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:41:58,341] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:41:58,341] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:41:58,341] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:41:58,342] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:00,048] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:00,048] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:00,048] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:00,112] ERROR - Error retrieving from cache for key inventory:invalid-steam-id:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:00,667] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:00,667] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:00,667] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:00,668] ERROR - Error retrieving from cache for key inventory:76561199999999999:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:02,445] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:02,445] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:02,445] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:02,445] ERROR - Error retrieving from cache for key profile:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:02,789] ERROR - Error setting cache for key profile:76561199562411448: Object of type HttpUrl is not JSON serializable
+[2025-05-26 16:42:03,014] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:03,014] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:03,014] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:03,241] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:03,241] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:03,241] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:03,241] ERROR - Error retrieving from cache for key profile:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:05,237] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:05,237] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:05,237] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:05,312] ERROR - Error retrieving from cache for key inventory_privacy:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:05,816] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:05,816] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:05,816] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:05,817] ERROR - Error retrieving from cache for key inventory_privacy:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:06,320] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:06,320] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:06,320] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:06,320] ERROR - Error retrieving from cache for key inventory_privacy:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:06,863] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:06,863] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:06,863] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:06,863] ERROR - Error retrieving from cache for key friendlist:76561199562411448: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:07,690] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:07,690] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:07,690] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:07,690] ERROR - Error retrieving from cache for key friendlist:invalid-steam-id: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:08,489] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:08,489] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:08,489] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:08,489] ERROR - Error retrieving from cache for key friendlist:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:09,303] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:09,303] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:09,303] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:09,303] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:10,882] ERROR - Error retrieving from cache for key inventory:76561199487496862:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:11,826] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:11,826] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:11,826] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:12,045] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:42:12,045] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:42:12,045] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:42:12,045] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:42:13,496] ERROR - Error retrieving from cache for key inventory:76561199999999999:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:45:01,377] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:45:01,377] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:45:01,377] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:45:01,377] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:45:01,683] WARNING - Redis connection not available for cache.set
+[2025-05-26 16:45:10,452] ERROR - Failed to initialize Redis cache: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:45:10,452] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:45:10,452] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:45:10,453] WARNING - Redis connection not available for cache.get
+[2025-05-26 16:45:12,097] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:45:12,097] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:45:12,097] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:45:12,097] ERROR - Error retrieving from cache for key profile:76561199999999999: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:45:14,441] INFO - Redis cache initialized with prefix 'steam:profile:' and default TTL 3600s
+[2025-05-26 16:45:14,441] INFO - Redis cache initialized with prefix 'steam:inventory:' and default TTL 1800s
+[2025-05-26 16:45:14,441] INFO - Redis cache initialized with prefix 'steam:friends:' and default TTL 3600s
+[2025-05-26 16:45:14,442] ERROR - Error retrieving from cache for key inventory:76561199562411448:730:2: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:53:15,268] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 16:53:15,269] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 16:53:15,269] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 16:56:22,174] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 16:56:22,174] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 16:56:22,174] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:05:54,416] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:05:54,416] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:05:54,416] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:05:55,099] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:05:55,099] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:05:55,099] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:05:58,528] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:05:58,528] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:05:58,528] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:06:00,954] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:06:00,954] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:06:00,955] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:06:58,817] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:06:58,817] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:06:58,817] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:06:59,397] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:06:59,397] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:06:59,397] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:07:01,167] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:07:01,167] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:07:01,167] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:07:03,078] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:07:03,078] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:07:03,078] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:12:36,432] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:12:36,433] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:12:36,433] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:12:37,546] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:12:37,546] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:12:37,546] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:12:39,546] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:12:39,546] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:12:39,546] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:12:41,531] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:12:41,531] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:12:41,531] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:14:13,047] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:14:13,047] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:14:13,047] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:14:20,816] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:14:20,816] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:14:20,816] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:14:22,408] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:14:22,409] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:14:22,409] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:14:23,669] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:14:23,669] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:14:23,669] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:16:32,181] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:16:32,181] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:16:32,181] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:16:32,728] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:16:32,728] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:16:32,728] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:16:34,657] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:16:34,657] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:16:34,657] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:16:36,313] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:16:36,313] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:16:36,313] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:17:12,634] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:17:12,634] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:17:12,634] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:17:16,423] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:17:16,424] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:17:16,424] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:17:18,538] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:17:18,538] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:17:18,538] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:17:20,462] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:17:20,462] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:17:20,462] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:18:30,889] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:18:30,889] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:18:30,890] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:20:51,845] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:20:51,845] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:20:51,845] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:20:58,734] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:20:58,734] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:20:58,734] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:00,458] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:00,458] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:00,458] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:01,864] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:01,864] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:01,864] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:04,579] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:04,580] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:04,580] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:04,781] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:04,781] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:04,781] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:06,176] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:06,176] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:06,176] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:09,034] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:09,034] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:09,034] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:09,270] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:09,270] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:09,270] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:11,026] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:11,026] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:11,026] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:11,570] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:11,570] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:11,570] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:11,773] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:11,773] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:11,773] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:13,308] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:13,308] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:13,308] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:33,179] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:33,179] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:33,179] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:40,626] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:40,627] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:40,627] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:42,675] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:42,675] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:42,675] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:45,292] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:45,292] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:45,292] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:47,866] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:47,866] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:47,866] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:48,071] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:48,071] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:48,071] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:49,931] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:49,931] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:49,931] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:52,918] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:52,918] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:52,918] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:21:53,117] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:21:53,117] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:21:53,117] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:12,744] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:12,744] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:12,744] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:13,271] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:13,271] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:13,271] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:13,481] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:13,481] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:13,481] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:16,903] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:16,903] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:16,903] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:17,614] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:17,614] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:17,614] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:17,833] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:17,833] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:17,833] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:19,818] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:19,818] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:19,818] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:45,806] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:45,806] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:45,806] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:53,808] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:53,808] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:53,809] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:55,397] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:55,397] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:55,397] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:22:57,618] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:22:57,618] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:22:57,618] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:01,232] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:01,232] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:01,233] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:01,762] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:01,762] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:01,762] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:03,906] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:03,907] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:03,907] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:08,301] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:08,301] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:08,301] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:08,986] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:08,986] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:08,986] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:10,572] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:10,572] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:10,572] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:11,099] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:11,099] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:11,099] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:11,316] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:11,316] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:11,316] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:12,956] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:12,956] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:12,956] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:13,394] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:13,394] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:13,394] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:13,601] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:13,601] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:13,601] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:15,502] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:15,502] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:15,502] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:40,379] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:40,379] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:40,379] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:44,761] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:44,761] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:44,761] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:46,331] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:46,331] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:46,331] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:48,488] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:48,488] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:48,488] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:51,210] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:51,210] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:51,210] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:51,465] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:51,465] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:51,465] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:53,079] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:53,079] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:53,079] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:55,763] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:55,763] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:55,763] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:56,024] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:56,025] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:56,025] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:57,765] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:57,765] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:57,765] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:58,308] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:58,308] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:58,308] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:23:58,577] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:23:58,577] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:23:58,577] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:24:00,427] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:24:00,427] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:24:00,427] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:24:04,041] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:24:04,041] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:24:04,041] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:24:04,260] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:24:04,260] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:24:04,260] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:24:06,054] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:24:06,054] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:24:06,054] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:26:56,609] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:26:56,609] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:26:56,609] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:03,353] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:03,354] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:03,354] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:04,945] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:04,945] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:04,945] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:06,745] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:06,745] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:06,745] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:08,466] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:08,466] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:08,466] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:08,711] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:08,711] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:08,711] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:10,875] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:10,875] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:10,875] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:12,516] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:12,516] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:12,516] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:12,720] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:12,720] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:12,720] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:14,066] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:14,066] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:14,066] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:14,639] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:14,639] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:14,639] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:14,849] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:14,849] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:14,849] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:16,306] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:16,306] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:16,306] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:16,837] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:16,837] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:16,837] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:17,057] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:17,057] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:17,057] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:27:18,787] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:27:18,787] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:27:18,787] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 17:32:58,483] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 17:32:58,483] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 17:32:58,483] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:30,664] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:30,664] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:30,664] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:31,279] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:31,279] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:31,279] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:32,651] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:32,651] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:32,651] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:44,157] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:44,157] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:44,157] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:44,703] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:44,703] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:44,703] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:44,911] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:44,911] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:44,911] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:49:55,258] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:49:55,259] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:49:55,259] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:50:02,067] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:50:02,067] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:50:02,067] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:50:02,384] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:50:02,384] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:50:02,384] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:50:47,120] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:50:47,120] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:50:47,120] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:50:54,466] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:50:54,466] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:50:54,466] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:08,755] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:08,755] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:08,755] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:20,467] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:20,467] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:20,467] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:21,002] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:21,002] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:21,002] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:21,270] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:21,270] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:21,270] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:30,653] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:30,653] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:30,653] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:36,884] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:36,884] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:36,884] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 18:51:37,123] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 18:51:37,123] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 18:51:37,123] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 19:19:08,941] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 19:19:08,941] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 19:19:08,942] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 21:16:19,495] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 21:16:19,495] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 21:16:19,495] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s
+[2025-05-26 22:09:53,668] INFO - Initialized Redis cache with prefix 'steam:profile:' and TTL 3600s
+[2025-05-26 22:09:53,668] INFO - Initialized Redis cache with prefix 'steam:inventory:' and TTL 1800s
+[2025-05-26 22:09:53,668] INFO - Initialized Redis cache with prefix 'steam:friends:' and TTL 3600s

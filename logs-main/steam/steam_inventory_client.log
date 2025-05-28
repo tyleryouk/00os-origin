@@ -1,0 +1,63 @@
+[2025-04-18 21:12:53,500] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,515] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:12:53,516] INFO - Successfully fetched and cached inventory for user 76561198012345678 with 2 items
+[2025-04-18 21:12:53,521] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,522] INFO - Cache hit: Returning cached inventory for user 76561198012345678
+[2025-04-18 21:12:53,532] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,534] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:12:53,534] INFO - Successfully fetched and cached inventory for user 76561198012345678 with 2 items
+[2025-04-18 21:12:53,537] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,549] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:12:53,549] WARNING - No inventory data found for user 76561198012345678
+[2025-04-18 21:12:53,566] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,568] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:12:53,568] ERROR - Unexpected inventory response structure: dict_keys(['invalid'])
+[2025-04-18 21:12:53,570] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,580] INFO - Fetching trade eligibility from API for user 76561198012345678
+[2025-04-18 21:12:53,580] INFO - Successfully fetched and cached trade eligibility for user 76561198012345678
+[2025-04-18 21:12:53,584] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:12:53,595] INFO - Fetching privacy settings from API for user 76561198012345678
+[2025-04-18 21:12:53,596] INFO - Successfully fetched and cached privacy settings for user 76561198012345678
+[2025-04-18 21:12:53,732] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,027] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,031] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:13:10,032] INFO - Successfully fetched and cached inventory for user 76561198012345678 with 2 items
+[2025-04-18 21:13:10,036] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,037] INFO - Cache hit: Returning cached inventory for user 76561198012345678
+[2025-04-18 21:13:10,040] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,041] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:13:10,041] INFO - Successfully fetched and cached inventory for user 76561198012345678 with 2 items
+[2025-04-18 21:13:10,044] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,046] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:13:10,046] WARNING - No inventory data found for user 76561198012345678
+[2025-04-18 21:13:10,052] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,053] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-18 21:13:10,053] ERROR - Unexpected inventory response structure: dict_keys(['invalid'])
+[2025-04-18 21:13:10,071] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,073] INFO - Fetching trade eligibility from API for user 76561198012345678
+[2025-04-18 21:13:10,073] INFO - Successfully fetched and cached trade eligibility for user 76561198012345678
+[2025-04-18 21:13:10,076] INFO - InventoryClient initialized with Redis cache
+[2025-04-18 21:13:10,077] INFO - Fetching privacy settings from API for user 76561198012345678
+[2025-04-18 21:13:10,077] INFO - Successfully fetched and cached privacy settings for user 76561198012345678
+[2025-04-18 21:13:10,187] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,760] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,761] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-19 17:32:04,763] INFO - Successfully fetched and cached inventory for user 76561198012345678 with 2 items
+[2025-04-19 17:32:04,767] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,769] INFO - Cache hit: Returning cached inventory for user 76561198012345678
+[2025-04-19 17:32:04,775] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,776] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-19 17:32:04,777] INFO - Successfully fetched and cached inventory for user 76561198012345678 with 2 items
+[2025-04-19 17:32:04,783] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,784] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-19 17:32:04,784] WARNING - No inventory data found for user 76561198012345678
+[2025-04-19 17:32:04,789] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,790] INFO - Fetching inventory from API for user 76561198012345678 (app: 730)
+[2025-04-19 17:32:04,790] ERROR - Unexpected inventory response structure: dict_keys(['invalid'])
+[2025-04-19 17:32:04,795] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,796] INFO - Fetching trade eligibility from API for user 76561198012345678
+[2025-04-19 17:32:04,796] INFO - Successfully fetched and cached trade eligibility for user 76561198012345678
+[2025-04-19 17:32:04,800] INFO - InventoryClient initialized with Redis cache
+[2025-04-19 17:32:04,801] INFO - Fetching privacy settings from API for user 76561198012345678
+[2025-04-19 17:32:04,801] INFO - Successfully fetched and cached privacy settings for user 76561198012345678
+[2025-04-19 17:32:05,095] INFO - InventoryClient initialized with Redis cache

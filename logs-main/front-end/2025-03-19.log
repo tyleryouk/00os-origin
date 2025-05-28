@@ -1,0 +1,40 @@
+[2025-03-19T00:01:58.880Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-19T00:01:58.879Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-19T00:02:00.356Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-19T00:02:00.356Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-19T00:02:00.357Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-19T00:02:00.357Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-19T00:02:00.529Z] FRONTEND:CLIENT - ERROR: Client Error: Event handlers cannot be passed to Client Component props.
+  <... fill={true} alt=... sizes=... src=... onError={function onError}>
+                                                     ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+  Details: {
+  "stack": "Error: Event handlers cannot be passed to Client Component props.\n  <... fill={true} alt=... sizes=... src=... onError={function onError}>\n                                                     ^^^^^^^^^^^^^^^^^^\nIf you need interactivity, consider converting part of this to a Client Component.\n    at resolveErrorDev (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1845:46)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2225:17)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2213:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2459:17)",
+  "digest": "2984846227",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}
+[2025-03-19T00:02:00.531Z] FRONTEND:CLIENT - ERROR: Client Error: Event handlers cannot be passed to Client Component props.
+  <... fill={true} alt=... sizes=... src=... onError={function onError}>
+                                                     ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+  Details: {
+  "stack": "Error: Event handlers cannot be passed to Client Component props.\n  <... fill={true} alt=... sizes=... src=... onError={function onError}>\n                                                     ^^^^^^^^^^^^^^^^^^\nIf you need interactivity, consider converting part of this to a Client Component.\n    at resolveErrorDev (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:1845:46)\n    at processFullStringRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2225:17)\n    at processFullBinaryRow (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2213:7)\n    at progress (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-client.browser.development.js:2459:17)",
+  "digest": "2984846227",
+  "location": "global-error-boundary",
+  "errorType": "unhandled-error"
+}

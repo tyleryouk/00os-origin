@@ -1,0 +1,1868 @@
+[2025-03-15T02:55:17.003Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:55:17.003Z"
+}
+[2025-03-15T02:55:17.006Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:55:17.006Z"
+}
+[2025-03-15T02:55:17.007Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:55:17.007Z"
+}
+[2025-03-15T02:55:17.072Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:55:17.072Z"
+}
+[2025-03-15T02:58:30.923Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:58:30.923Z"
+}
+[2025-03-15T02:58:30.924Z] FRONTEND:CS2 - INFO: Rendered 3 products in ProductList
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:58:30.924Z"
+}
+[2025-03-15T02:58:30.925Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 3 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:58:30.925Z"
+}
+[2025-03-15T02:58:30.925Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:58:30.925Z"
+}
+[2025-03-15T02:58:30.926Z] FRONTEND:CS2 - INFO: Rendered 3 products in ProductList
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T02:58:30.926Z"
+}
+[2025-03-15T03:06:28.117Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:06:28.117Z"
+}
+[2025-03-15T03:06:28.122Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:06:28.122Z"
+}
+[2025-03-15T03:06:28.123Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:06:28.123Z"
+}
+[2025-03-15T03:06:28.254Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:06:28.254Z"
+}
+[2025-03-15T03:14:34.754Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:14:34.754Z"
+}
+[2025-03-15T03:15:06.549Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:06.549Z"
+}
+[2025-03-15T03:15:06.550Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:06.550Z"
+}
+[2025-03-15T03:15:06.548Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:06.548Z"
+}
+[2025-03-15T03:15:15.789Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:15.789Z"
+}
+[2025-03-15T03:15:15.794Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:15.794Z"
+}
+[2025-03-15T03:15:15.794Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:15.794Z"
+}
+[2025-03-15T03:15:15.870Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:15.870Z"
+}
+[2025-03-15T03:15:30.406Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:30.406Z"
+}
+[2025-03-15T03:15:30.408Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 0 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 0,
+  "productIds": [],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:30.408Z"
+}
+[2025-03-15T03:15:30.410Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:30.410Z"
+}
+[2025-03-15T03:15:33.008Z] FRONTEND:CS2 - INFO: Rendered 1 products in ProductList
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:33.008Z"
+}
+[2025-03-15T03:15:33.009Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 1 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:33.009Z"
+}
+[2025-03-15T03:15:33.010Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:33.010Z"
+}
+[2025-03-15T03:15:33.011Z] FRONTEND:CS2 - INFO: Rendered 1 products in ProductList
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-deagle-printstream-minimal-wear"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:33.011Z"
+}
+[2025-03-15T03:15:34.735Z] FRONTEND:CS2 - INFO: Rendered 3 products in ProductList
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:34.735Z"
+}
+[2025-03-15T03:15:34.736Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 3 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:34.736Z"
+}
+[2025-03-15T03:15:34.736Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:34.736Z"
+}
+[2025-03-15T03:15:34.737Z] FRONTEND:CS2 - INFO: Rendered 3 products in ProductList
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:15:34.737Z"
+}
+[2025-03-15T03:16:40.979Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "cs2-rifles",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:40.979Z"
+}
+[2025-03-15T03:16:40.984Z] FRONTEND:CS2 - INFO: Rendered 3 products in ProductList
+  Details: {
+  "productCount": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:40.984Z"
+}
+[2025-03-15T03:16:40.984Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 3 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 3,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:40.984Z"
+}
+[2025-03-15T03:16:41.075Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "cs2-rifles",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:41.075Z"
+}
+[2025-03-15T03:16:44.302Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:44.302Z"
+}
+[2025-03-15T03:16:44.303Z] FRONTEND:CS2 - INFO: Rendered 1 products in ProductList
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:44.303Z"
+}
+[2025-03-15T03:16:44.304Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 1 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:44.304Z"
+}
+[2025-03-15T03:16:44.305Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:44.304Z"
+}
+[2025-03-15T03:16:44.305Z] FRONTEND:CS2 - INFO: Rendered 1 products in ProductList
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:44.305Z"
+}
+[2025-03-15T03:16:48.059Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:48.059Z"
+}
+[2025-03-15T03:16:48.068Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:48.068Z"
+}
+[2025-03-15T03:16:48.068Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:48.068Z"
+}
+[2025-03-15T03:16:48.153Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:48.153Z"
+}
+[2025-03-15T03:16:52.761Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:16:52.761Z"
+}
+[2025-03-15T03:17:00.296Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:17:00.296Z"
+}
+[2025-03-15T03:17:00.305Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:17:00.305Z"
+}
+[2025-03-15T03:17:00.305Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:17:00.305Z"
+}
+[2025-03-15T03:17:00.400Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:17:00.400Z"
+}
+[2025-03-15T03:20:31.529Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:20:31.529Z"
+}
+[2025-03-15T03:20:31.532Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:20:31.532Z"
+}
+[2025-03-15T03:20:31.532Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:20:31.532Z"
+}
+[2025-03-15T03:20:31.579Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:20:31.579Z"
+}
+[2025-03-15T03:21:30.757Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:30.757Z"
+}
+[2025-03-15T03:21:30.772Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:30.772Z"
+}
+[2025-03-15T03:21:30.773Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:30.773Z"
+}
+[2025-03-15T03:21:30.900Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:30.900Z"
+}
+[2025-03-15T03:21:34.789Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:34.789Z"
+}
+[2025-03-15T03:21:34.795Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:34.795Z"
+}
+[2025-03-15T03:21:34.795Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:34.795Z"
+}
+[2025-03-15T03:21:34.883Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:34.883Z"
+}
+[2025-03-15T03:21:36.636Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:36.636Z"
+}
+[2025-03-15T03:21:47.826Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:47.826Z"
+}
+[2025-03-15T03:21:47.829Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:47.829Z"
+}
+[2025-03-15T03:21:47.830Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:47.830Z"
+}
+[2025-03-15T03:21:47.887Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:21:47.887Z"
+}
+[2025-03-15T03:23:41.673Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:23:41.673Z"
+}
+[2025-03-15T03:23:41.675Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:23:41.675Z"
+}
+[2025-03-15T03:23:41.676Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:23:41.676Z"
+}
+[2025-03-15T03:23:41.742Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:23:41.742Z"
+}
+[2025-03-15T03:24:07.284Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:07.284Z"
+}
+[2025-03-15T03:24:07.296Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:07.296Z"
+}
+[2025-03-15T03:24:07.296Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:07.295Z"
+}
+[2025-03-15T03:24:07.407Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:07.407Z"
+}
+[2025-03-15T03:24:29.865Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:29.865Z"
+}
+[2025-03-15T03:24:29.879Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:29.879Z"
+}
+[2025-03-15T03:24:29.880Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:29.880Z"
+}
+[2025-03-15T03:24:30.044Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:30.044Z"
+}
+[2025-03-15T03:24:34.404Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:34.404Z"
+}
+[2025-03-15T03:24:34.411Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:34.411Z"
+}
+[2025-03-15T03:24:34.412Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:34.412Z"
+}
+[2025-03-15T03:24:34.499Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:24:34.499Z"
+}
+[2025-03-15T03:25:11.838Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:25:11.838Z"
+}
+[2025-03-15T03:25:11.845Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:25:11.845Z"
+}
+[2025-03-15T03:25:11.845Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:25:11.845Z"
+}
+[2025-03-15T03:25:11.939Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:25:11.939Z"
+}
+[2025-03-15T03:27:00.636Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:27:00.636Z"
+}
+[2025-03-15T03:27:00.637Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:27:00.637Z"
+}
+[2025-03-15T03:27:00.634Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:27:00.634Z"
+}
+[2025-03-15T03:29:35.512Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:29:35.512Z"
+}
+[2025-03-15T03:29:35.517Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:29:35.517Z"
+}
+[2025-03-15T03:29:35.518Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:29:35.518Z"
+}
+[2025-03-15T03:29:35.593Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:29:35.593Z"
+}
+[2025-03-15T03:30:01.690Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:30:01.690Z"
+}
+[2025-03-15T03:30:01.697Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:30:01.697Z"
+}
+[2025-03-15T03:30:01.696Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:30:01.696Z"
+}
+[2025-03-15T03:30:01.773Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:30:01.773Z"
+}
+[2025-03-15T03:32:33.905Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:32:33.905Z"
+}
+[2025-03-15T03:32:33.912Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:32:33.912Z"
+}
+[2025-03-15T03:32:33.912Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:32:33.912Z"
+}
+[2025-03-15T03:32:33.973Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T03:32:33.973Z"
+}
+[2025-03-15T19:47:22.419Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:47:22.419Z"
+}
+[2025-03-15T19:47:22.425Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:47:22.425Z"
+}
+[2025-03-15T19:47:22.426Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:47:22.426Z"
+}
+[2025-03-15T19:47:22.472Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:47:22.472Z"
+}
+[2025-03-15T19:48:49.855Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:48:49.855Z"
+}
+[2025-03-15T19:48:49.860Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:48:49.860Z"
+}
+[2025-03-15T19:48:49.861Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:48:49.861Z"
+}
+[2025-03-15T19:48:49.955Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:48:49.955Z"
+}
+[2025-03-15T19:50:29.795Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:29.795Z"
+}
+[2025-03-15T19:50:29.802Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:29.802Z"
+}
+[2025-03-15T19:50:29.803Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:29.803Z"
+}
+[2025-03-15T19:50:29.869Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:29.869Z"
+}
+[2025-03-15T19:50:38.505Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:38.505Z"
+}
+[2025-03-15T19:50:38.510Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:38.510Z"
+}
+[2025-03-15T19:50:38.511Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:38.511Z"
+}
+[2025-03-15T19:50:38.594Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:50:38.594Z"
+}
+[2025-03-15T19:51:13.841Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:13.841Z"
+}
+[2025-03-15T19:51:13.852Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:13.852Z"
+}
+[2025-03-15T19:51:13.853Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:13.853Z"
+}
+[2025-03-15T19:51:13.958Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:13.958Z"
+}
+[2025-03-15T19:51:29.556Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:29.556Z"
+}
+[2025-03-15T19:51:29.566Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:29.566Z"
+}
+[2025-03-15T19:51:29.567Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:29.567Z"
+}
+[2025-03-15T19:51:29.684Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T19:51:29.684Z"
+}
+[2025-03-15T20:20:33.519Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:33.519Z"
+}
+[2025-03-15T20:20:33.522Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:33.522Z"
+}
+[2025-03-15T20:20:33.522Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:33.522Z"
+}
+[2025-03-15T20:20:33.577Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:33.577Z"
+}
+[2025-03-15T20:20:40.495Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:40.495Z"
+}
+[2025-03-15T20:20:40.503Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:40.503Z"
+}
+[2025-03-15T20:20:40.505Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:40.505Z"
+}
+[2025-03-15T20:20:40.594Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:20:40.594Z"
+}
+[2025-03-15T20:21:15.325Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:21:15.325Z"
+}
+[2025-03-15T20:21:15.329Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:21:15.329Z"
+}
+[2025-03-15T20:21:15.330Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:21:15.330Z"
+}
+[2025-03-15T20:21:15.427Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:21:15.427Z"
+}
+[2025-03-15T20:24:34.536Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:24:34.536Z"
+}
+[2025-03-15T20:24:34.544Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:24:34.544Z"
+}
+[2025-03-15T20:24:34.545Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:24:34.545Z"
+}
+[2025-03-15T20:24:34.651Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:24:34.651Z"
+}
+[2025-03-15T20:29:13.700Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:13.700Z"
+}
+[2025-03-15T20:29:13.711Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:13.710Z"
+}
+[2025-03-15T20:29:13.711Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:13.711Z"
+}
+[2025-03-15T20:29:13.844Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:13.844Z"
+}
+[2025-03-15T20:29:52.401Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:52.401Z"
+}
+[2025-03-15T20:29:52.413Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:52.413Z"
+}
+[2025-03-15T20:29:52.416Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:29:52.416Z"
+}
+[2025-03-15T20:30:36.545Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:30:36.545Z"
+}
+[2025-03-15T20:30:36.544Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:30:36.544Z"
+}
+[2025-03-15T20:30:50.805Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:30:50.805Z"
+}
+[2025-03-15T20:30:50.814Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:30:50.814Z"
+}
+[2025-03-15T20:30:50.813Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:30:50.813Z"
+}
+[2025-03-15T20:30:50.924Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:30:50.924Z"
+}
+[2025-03-15T20:32:36.194Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:32:36.194Z"
+}
+[2025-03-15T20:32:36.200Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:32:36.200Z"
+}
+[2025-03-15T20:32:36.201Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:32:36.201Z"
+}
+[2025-03-15T20:32:36.316Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:32:36.316Z"
+}
+[2025-03-15T20:35:55.472Z] FRONTEND:CS2 - DEBUG: SalesTwoPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:35:55.472Z"
+}
+[2025-03-15T20:37:31.918Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:37:31.918Z"
+}
+[2025-03-15T20:37:31.921Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:37:31.921Z"
+}
+[2025-03-15T20:37:31.921Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:37:31.921Z"
+}
+[2025-03-15T20:37:31.977Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:37:31.977Z"
+}
+[2025-03-15T20:41:48.836Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:41:48.836Z"
+}
+[2025-03-15T20:41:48.839Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:41:48.839Z"
+}
+[2025-03-15T20:41:48.840Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:41:48.840Z"
+}
+[2025-03-15T20:41:48.918Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:41:48.918Z"
+}
+[2025-03-15T20:43:27.454Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:43:27.454Z"
+}
+[2025-03-15T20:43:27.460Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:43:27.460Z"
+}
+[2025-03-15T20:43:27.462Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:43:27.462Z"
+}
+[2025-03-15T20:43:27.580Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:43:27.580Z"
+}
+[2025-03-15T20:46:40.948Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:46:40.948Z"
+}
+[2025-03-15T20:46:40.953Z] FRONTEND:CS2 - INFO: Rendered 5 products in ProductList
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:46:40.953Z"
+}
+[2025-03-15T20:46:40.954Z] FRONTEND:CS2 - INFO: SalesTwoPageView mounted with 5 products
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:46:40.954Z"
+}
+[2025-03-15T20:46:41.077Z] FRONTEND:CS2 - INFO: Sales navbar mounted with enhanced Skinport style
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced",
+  "log_destination": "sales-2",
+  "timestamp": "2025-03-15T20:46:41.077Z"
+}

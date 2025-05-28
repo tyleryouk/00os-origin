@@ -1,0 +1,650 @@
+[2025-05-26 16:53:15,269] INFO - ProfileService initialized
+[2025-05-26 16:53:15,269] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 16:53:15,736] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 16:56:22,174] INFO - ProfileService initialized
+[2025-05-26 16:56:22,175] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 16:56:22,511] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:05:54,416] INFO - ProfileService initialized
+[2025-05-26 17:05:54,416] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:05:54,876] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:05:55,099] INFO - ProfileService initialized
+[2025-05-26 17:05:55,099] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:05:58,314] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:05:58,528] INFO - ProfileService initialized
+[2025-05-26 17:05:58,528] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:06:00,722] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:06:00,955] INFO - ProfileService initialized
+[2025-05-26 17:06:58,817] INFO - ProfileService initialized
+[2025-05-26 17:06:58,818] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:06:59,153] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:06:59,397] INFO - ProfileService initialized
+[2025-05-26 17:06:59,398] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:07:00,942] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:07:01,167] INFO - ProfileService initialized
+[2025-05-26 17:07:01,168] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:07:02,860] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:07:03,078] INFO - ProfileService initialized
+[2025-05-26 17:12:36,433] INFO - ProfileService initialized
+[2025-05-26 17:12:36,433] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:12:37,275] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:12:37,546] INFO - ProfileService initialized
+[2025-05-26 17:12:37,546] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:12:39,306] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:12:39,546] INFO - ProfileService initialized
+[2025-05-26 17:12:39,547] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:12:41,287] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:12:41,531] INFO - ProfileService initialized
+[2025-05-26 17:14:13,047] INFO - ProfileService initialized
+[2025-05-26 17:14:13,047] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:14:13,366] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:14:20,816] INFO - ProfileService initialized
+[2025-05-26 17:14:20,816] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:14:22,184] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:14:22,409] INFO - ProfileService initialized
+[2025-05-26 17:14:22,409] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:14:23,436] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:14:23,669] INFO - ProfileService initialized
+[2025-05-26 17:16:32,181] INFO - ProfileService initialized
+[2025-05-26 17:16:32,182] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:16:32,513] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:16:32,728] INFO - ProfileService initialized
+[2025-05-26 17:16:32,728] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:16:34,421] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:16:34,657] INFO - ProfileService initialized
+[2025-05-26 17:16:34,657] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:16:36,083] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:16:36,313] INFO - ProfileService initialized
+[2025-05-26 17:17:12,635] INFO - ProfileService initialized
+[2025-05-26 17:17:12,635] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:17:12,967] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:17:16,424] INFO - ProfileService initialized
+[2025-05-26 17:17:16,424] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:17:18,294] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:17:18,538] INFO - ProfileService initialized
+[2025-05-26 17:17:18,539] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:17:20,243] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:17:20,462] INFO - ProfileService initialized
+[2025-05-26 17:18:30,890] INFO - ProfileService initialized
+[2025-05-26 17:18:30,890] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:18:31,356] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:20:51,845] INFO - ProfileService initialized
+[2025-05-26 17:20:51,845] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:20:52,146] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:20:58,734] INFO - ProfileService initialized
+[2025-05-26 17:20:58,735] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:21:00,226] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:21:00,458] INFO - ProfileService initialized
+[2025-05-26 17:21:00,458] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:21:01,655] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:21:01,864] INFO - ProfileService initialized
+[2025-05-26 17:21:04,580] INFO - ProfileService initialized
+[2025-05-26 17:21:04,781] INFO - ProfileService initialized
+[2025-05-26 17:21:06,176] INFO - ProfileService initialized
+[2025-05-26 17:21:09,034] INFO - ProfileService initialized
+[2025-05-26 17:21:09,270] INFO - ProfileService initialized
+[2025-05-26 17:21:11,026] INFO - ProfileService initialized
+[2025-05-26 17:21:11,026] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:21:11,361] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:21:11,570] INFO - ProfileService initialized
+[2025-05-26 17:21:11,773] INFO - ProfileService initialized
+[2025-05-26 17:21:11,773] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:21:13,094] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:21:13,308] INFO - ProfileService initialized
+[2025-05-26 17:21:13,309] INFO - Fetching inventory privacy from API for user 76561199562411448
+[2025-05-26 17:21:13,309] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:21:13,629] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:21:13,629] INFO - Successfully created and cached inventory privacy for user 76561199562411448
+[2025-05-26 17:21:33,179] INFO - ProfileService initialized
+[2025-05-26 17:21:33,179] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:21:33,520] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:21:40,627] INFO - ProfileService initialized
+[2025-05-26 17:21:40,627] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:21:42,451] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:21:42,676] INFO - ProfileService initialized
+[2025-05-26 17:21:42,676] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:21:45,069] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:21:45,292] INFO - ProfileService initialized
+[2025-05-26 17:21:47,866] INFO - ProfileService initialized
+[2025-05-26 17:21:48,071] INFO - ProfileService initialized
+[2025-05-26 17:21:49,931] INFO - ProfileService initialized
+[2025-05-26 17:21:52,918] INFO - ProfileService initialized
+[2025-05-26 17:21:53,117] INFO - ProfileService initialized
+[2025-05-26 17:22:12,744] INFO - ProfileService initialized
+[2025-05-26 17:22:12,744] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:22:13,066] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:22:13,271] INFO - ProfileService initialized
+[2025-05-26 17:22:13,481] INFO - ProfileService initialized
+[2025-05-26 17:22:13,482] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:22:16,697] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:22:16,903] INFO - ProfileService initialized
+[2025-05-26 17:22:16,903] INFO - Fetching inventory privacy from API for user 76561199562411448
+[2025-05-26 17:22:16,903] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:22:17,402] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:22:17,402] INFO - Successfully created and cached inventory privacy for user 76561199562411448
+[2025-05-26 17:22:17,614] INFO - ProfileService initialized
+[2025-05-26 17:22:17,833] INFO - ProfileService initialized
+[2025-05-26 17:22:17,833] INFO - Fetching inventory privacy from API for user 76561199999999999
+[2025-05-26 17:22:17,833] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:22:19,610] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:22:19,612] WARNING - Profile not found for user 76561199999999999, cannot get privacy settings
+[2025-05-26 17:22:19,818] INFO - ProfileService initialized
+[2025-05-26 17:22:45,806] INFO - ProfileService initialized
+[2025-05-26 17:22:45,806] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:22:46,150] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:22:53,809] INFO - ProfileService initialized
+[2025-05-26 17:22:53,809] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:22:55,176] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:22:55,397] INFO - ProfileService initialized
+[2025-05-26 17:22:55,397] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:22:57,373] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:22:57,618] INFO - ProfileService initialized
+[2025-05-26 17:23:01,233] INFO - ProfileService initialized
+[2025-05-26 17:23:01,762] INFO - ProfileService initialized
+[2025-05-26 17:23:03,907] INFO - ProfileService initialized
+[2025-05-26 17:23:08,301] INFO - ProfileService initialized
+[2025-05-26 17:23:08,986] INFO - ProfileService initialized
+[2025-05-26 17:23:10,572] INFO - ProfileService initialized
+[2025-05-26 17:23:10,572] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:23:10,887] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:23:11,099] INFO - ProfileService initialized
+[2025-05-26 17:23:11,316] INFO - ProfileService initialized
+[2025-05-26 17:23:11,316] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:23:12,726] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:23:12,956] INFO - ProfileService initialized
+[2025-05-26 17:23:12,956] INFO - Fetching inventory privacy from API for user 76561199562411448
+[2025-05-26 17:23:12,956] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:23:13,179] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:23:13,179] INFO - Successfully created and cached inventory privacy for user 76561199562411448
+[2025-05-26 17:23:13,394] INFO - ProfileService initialized
+[2025-05-26 17:23:13,601] INFO - ProfileService initialized
+[2025-05-26 17:23:13,601] INFO - Fetching inventory privacy from API for user 76561199999999999
+[2025-05-26 17:23:13,601] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:23:15,286] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:23:15,287] WARNING - Profile not found for user 76561199999999999, cannot get privacy settings
+[2025-05-26 17:23:15,502] INFO - ProfileService initialized
+[2025-05-26 17:23:40,379] INFO - ProfileService initialized
+[2025-05-26 17:23:40,379] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:23:40,780] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:23:44,761] INFO - ProfileService initialized
+[2025-05-26 17:23:44,762] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:23:46,086] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:23:46,331] INFO - ProfileService initialized
+[2025-05-26 17:23:46,331] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:23:48,272] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:23:48,488] INFO - ProfileService initialized
+[2025-05-26 17:23:51,210] INFO - ProfileService initialized
+[2025-05-26 17:23:51,466] INFO - ProfileService initialized
+[2025-05-26 17:23:53,079] INFO - ProfileService initialized
+[2025-05-26 17:23:55,763] INFO - ProfileService initialized
+[2025-05-26 17:23:56,025] INFO - ProfileService initialized
+[2025-05-26 17:23:57,765] INFO - ProfileService initialized
+[2025-05-26 17:23:57,766] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:23:58,078] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:23:58,308] INFO - ProfileService initialized
+[2025-05-26 17:23:58,577] INFO - ProfileService initialized
+[2025-05-26 17:23:58,577] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:24:00,214] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:24:00,427] INFO - ProfileService initialized
+[2025-05-26 17:24:00,427] INFO - Fetching inventory privacy from API for user 76561199562411448
+[2025-05-26 17:24:00,427] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:24:00,756] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:24:00,756] INFO - Successfully created and cached inventory privacy for user 76561199562411448
+[2025-05-26 17:24:04,041] INFO - ProfileService initialized
+[2025-05-26 17:24:04,260] INFO - ProfileService initialized
+[2025-05-26 17:24:04,261] INFO - Fetching inventory privacy from API for user 76561199999999999
+[2025-05-26 17:24:04,261] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:24:05,835] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:24:05,838] WARNING - Profile not found for user 76561199999999999, cannot get privacy settings
+[2025-05-26 17:24:06,054] INFO - ProfileService initialized
+[2025-05-26 17:26:56,609] INFO - ProfileService initialized
+[2025-05-26 17:26:56,609] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:26:56,928] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:27:03,354] INFO - ProfileService initialized
+[2025-05-26 17:27:03,354] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 17:27:04,714] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:27:04,945] INFO - ProfileService initialized
+[2025-05-26 17:27:04,945] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:27:06,541] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:27:06,745] INFO - ProfileService initialized
+[2025-05-26 17:27:08,466] INFO - ProfileService initialized
+[2025-05-26 17:27:08,711] INFO - ProfileService initialized
+[2025-05-26 17:27:10,875] INFO - ProfileService initialized
+[2025-05-26 17:27:12,516] INFO - ProfileService initialized
+[2025-05-26 17:27:12,720] INFO - ProfileService initialized
+[2025-05-26 17:27:14,066] INFO - ProfileService initialized
+[2025-05-26 17:27:14,066] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:27:14,402] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:27:14,639] INFO - ProfileService initialized
+[2025-05-26 17:27:14,849] INFO - ProfileService initialized
+[2025-05-26 17:27:14,849] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:27:16,103] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:27:16,306] INFO - ProfileService initialized
+[2025-05-26 17:27:16,307] INFO - Fetching inventory privacy from API for user 76561199562411448
+[2025-05-26 17:27:16,307] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 17:27:16,626] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 17:27:16,626] INFO - Successfully created and cached inventory privacy for user 76561199562411448
+[2025-05-26 17:27:16,837] INFO - ProfileService initialized
+[2025-05-26 17:27:17,057] INFO - ProfileService initialized
+[2025-05-26 17:27:17,058] INFO - Fetching inventory privacy from API for user 76561199999999999
+[2025-05-26 17:27:17,058] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 17:27:18,542] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 17:27:18,545] WARNING - Profile not found for user 76561199999999999, cannot get privacy settings
+[2025-05-26 17:27:18,787] INFO - ProfileService initialized
+[2025-05-26 17:32:58,483] INFO - ProfileService initialized
+[2025-05-26 18:49:30,664] INFO - ProfileService initialized
+[2025-05-26 18:49:30,665] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 18:49:31,064] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 18:49:31,279] INFO - ProfileService initialized
+[2025-05-26 18:49:31,279] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 18:49:32,444] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:49:32,651] INFO - ProfileService initialized
+[2025-05-26 18:49:32,651] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 18:49:35,372] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:49:44,157] INFO - ProfileService initialized
+[2025-05-26 18:49:44,158] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 18:49:44,484] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 18:49:44,703] INFO - ProfileService initialized
+[2025-05-26 18:49:44,911] INFO - ProfileService initialized
+[2025-05-26 18:49:44,911] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 18:49:46,894] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:49:55,259] INFO - ProfileService initialized
+[2025-05-26 18:50:02,067] INFO - ProfileService initialized
+[2025-05-26 18:50:02,384] INFO - ProfileService initialized
+[2025-05-26 18:50:47,120] INFO - ProfileService initialized
+[2025-05-26 18:50:47,120] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 18:50:47,447] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 18:50:54,466] INFO - ProfileService initialized
+[2025-05-26 18:50:54,466] INFO - Fetching profile from API for user invalid-steam-id
+[2025-05-26 18:51:08,538] ERROR - Error in get_user_profile for invalid-steam-id: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:51:08,755] INFO - ProfileService initialized
+[2025-05-26 18:51:08,756] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 18:51:10,977] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:51:20,467] INFO - ProfileService initialized
+[2025-05-26 18:51:20,467] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 18:51:20,794] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 18:51:21,002] INFO - ProfileService initialized
+[2025-05-26 18:51:21,270] INFO - ProfileService initialized
+[2025-05-26 18:51:21,270] INFO - Fetching profile from API for user 76561199999999999
+[2025-05-26 18:51:22,806] ERROR - Error in get_user_profile for 76561199999999999: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 77, in get_user_profile
+    raise api_error
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\services\profile_service.py", line 69, in get_user_profile
+    response_data = await self.client._request("GET", endpoint, params=params)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ethde\Desktop\GigaSwap\back-end\app\steam\client.py", line 135, in _request
+    error_detail = response.json().get("error", {}).get("message", response.text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+[2025-05-26 18:51:30,653] INFO - ProfileService initialized
+[2025-05-26 18:51:36,885] INFO - ProfileService initialized
+[2025-05-26 18:51:37,123] INFO - ProfileService initialized
+[2025-05-26 19:19:08,942] INFO - ProfileService initialized
+[2025-05-26 19:19:08,942] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 19:19:09,266] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 21:16:19,495] INFO - ProfileService initialized
+[2025-05-26 21:16:19,497] INFO - Fetching profile from API for user 76561199562411448
+[2025-05-26 21:16:19,823] INFO - Successfully fetched and cached profile for user 76561199562411448
+[2025-05-26 22:09:53,668] INFO - ProfileService initialized
+[2025-05-26 22:09:53,668] INFO - Fetching profile from API for user 76561199487496862
+[2025-05-26 22:09:54,410] INFO - Successfully fetched and cached profile for user 76561199487496862

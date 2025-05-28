@@ -1,0 +1,2430 @@
+[2025-03-22T01:42:44.297Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:44.297Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:44.306Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:44.305Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:44.825Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:44.825Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:44.826Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T01:42:44.826Z"
+}
+[2025-03-22T01:42:44.833Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T01:42:44.833Z"
+}
+[2025-03-22T01:42:43.909Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-22T01:42:43.909Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T01:42:44.835Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T01:42:44.835Z"
+}
+[2025-03-22T01:42:44.896Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:44.896Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:44.897Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:44.897Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.018Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.018Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.026Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.026Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.206Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.206Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.207Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.207Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.379Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.379Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:45.380Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.380Z"
+}
+[2025-03-22T01:42:45.381Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.381Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T01:42:45.694Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.694Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.701Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.701Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:45.961Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.961Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:45.962Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T01:42:45.962Z"
+}
+[2025-03-22T01:42:45.967Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:45.967Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:46.681Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:46.681Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:46.683Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:46.683Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:46.717Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:46.717Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:48.097Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.097Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T01:42:48.098Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.098Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T01:42:48.098Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.098Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:48.099Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.099Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:48.125Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.125Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-22T01:42:48.126Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.126Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-22T01:42:48.127Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.127Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T01:42:48.130Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.130Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:48.134Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.134Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T01:42:48.135Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.135Z",
+  "exists": false
+}
+[2025-03-22T01:42:48.142Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.142Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T01:42:48.140Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.140Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T01:42:48.277Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.277Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T01:42:48.280Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.280Z",
+  "nonce": "c5c577cbef5921fcdcc2f03bdc70e0bcc2b379c8a73ab4fb70da18aa365c414f"
+}
+[2025-03-22T01:42:48.304Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.304Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T01:42:48.306Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:48.306Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T01:42:50.266Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.266Z",
+  "exists": false
+}
+[2025-03-22T01:42:50.265Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.265Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "c5c577cbef5921fcdcc2f03bdc70e0bcc2b379c8a73ab4fb70da18aa365c414f"
+}
+[2025-03-22T01:42:50.274Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.273Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T01:42:50.281Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.281Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T01:42:50.314Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.314Z",
+  "success": true
+}
+[2025-03-22T01:42:50.315Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.315Z",
+  "success": true
+}
+[2025-03-22T01:42:50.316Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.316Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-22T01:42:50.316Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.316Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T01:42:50.317Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.317Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:50.319Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.319Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T01:42:50.512Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T01:42:50.512Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T02:55:09.709Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:55:09.709Z"
+}
+[2025-03-22T02:56:36.569Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:36.569Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:37.077Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.077Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T02:56:37.078Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.078Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T02:56:37.080Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:56:37.080Z"
+}
+[2025-03-22T02:56:37.109Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:56:37.109Z"
+}
+[2025-03-22T02:56:36.568Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:36.568Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:37.111Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:56:37.111Z"
+}
+[2025-03-22T02:56:37.113Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:56:37.113Z"
+}
+[2025-03-22T02:56:37.115Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.115Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T02:56:37.116Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:56:37.116Z"
+}
+[2025-03-22T02:56:37.149Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.149Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:37.151Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.151Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:37.988Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.988Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:37.993Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:37.993Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:38.395Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T02:56:38.395Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T02:56:38.396Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T02:56:38.396Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T02:56:38.398Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T02:56:38.398Z"
+}
+[2025-03-22T02:56:38.403Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T02:56:38.403Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T02:56:38.447Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:38.447Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T02:56:38.448Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T02:56:38.448Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.378Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.378Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.379Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.379Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.479Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.479Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:26.480Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:26.480Z"
+}
+[2025-03-22T03:22:26.485Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:26.485Z"
+}
+[2025-03-22T03:22:26.234Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.234Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T03:22:26.487Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:26.487Z"
+}
+[2025-03-22T03:22:26.522Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.522Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.523Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.523Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.562Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.562Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.563Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.563Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.602Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.602Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.603Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.603Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.685Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.685Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:26.685Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.685Z"
+}
+[2025-03-22T03:22:26.685Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.685Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:26.752Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.752Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.753Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.753Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:26.795Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.795Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:26.795Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:26.795Z"
+}
+[2025-03-22T03:22:26.801Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:26.801Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:27.297Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:27.297Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:27.298Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:27.298Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:27.303Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:27.303Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:28.000Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.000Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:22:28.001Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.001Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:22:28.001Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.001Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:28.002Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.002Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:28.025Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.025Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-22T03:22:28.027Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.027Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-22T03:22:28.028Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.028Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:28.031Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.031Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:28.035Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.035Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:22:28.036Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.036Z",
+  "exists": false
+}
+[2025-03-22T03:22:28.043Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.043Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:28.043Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.043Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:28.057Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.057Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:28.096Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.096Z",
+  "nonce": "d18136802de320fbd5bcf92f6d45ed6719af51c7aa3fd85fcbfda355aeb270dd"
+}
+[2025-03-22T03:22:28.110Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.110Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:28.111Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:28.111Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:30.193Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.193Z",
+  "exists": false
+}
+[2025-03-22T03:22:30.192Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.192Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "d18136802de320fbd5bcf92f6d45ed6719af51c7aa3fd85fcbfda355aeb270dd"
+}
+[2025-03-22T03:22:30.195Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.195Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:30.196Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.196Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:30.234Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.234Z",
+  "success": true
+}
+[2025-03-22T03:22:30.234Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.234Z",
+  "success": true
+}
+[2025-03-22T03:22:30.235Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.235Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-22T03:22:30.235Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.235Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:30.237Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.237Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:30.237Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.237Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:30.243Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:30.243Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:33.270Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:33.270Z"
+}
+[2025-03-22T03:22:41.566Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.565Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T03:22:41.623Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.623Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.623Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.623Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.669Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.669Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:41.670Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:41.670Z"
+}
+[2025-03-22T03:22:41.674Z] FRONTEND:CS2 - INFO: Rendering 5 products with enhanced staggered animation
+  Details: {
+  "productCount": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:41.674Z"
+}
+[2025-03-22T03:22:41.675Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 5 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 5,
+  "productIds": [
+    "cs2-awp-crakow-minimal-wear",
+    "cs2-ak47-asiimov-factory-new",
+    "cs2-m4a4-howl-field-tested",
+    "cs2-deagle-printstream-minimal-wear",
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:41.675Z"
+}
+[2025-03-22T03:22:41.694Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.694Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.694Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.694Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.718Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.718Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.718Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.718Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.745Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.745Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.745Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.745Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.779Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.779Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:41.779Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.779Z"
+}
+[2025-03-22T03:22:41.779Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.779Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:41.802Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.802Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.825Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.825Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:41.802Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.802Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:41.825Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "none",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:22:41.825Z"
+}
+[2025-03-22T03:22:41.827Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:41.827Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:42.043Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.043Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:42.043Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.043Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:42.046Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.046Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:42.110Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.110Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:22:42.111Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.111Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:22:42.111Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.111Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:42.111Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.111Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:42.117Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.117Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-22T03:22:42.118Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.118Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-22T03:22:42.118Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.118Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:42.119Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.119Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:42.121Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.121Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:22:42.123Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.123Z",
+  "exists": false
+}
+[2025-03-22T03:22:42.128Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.128Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:42.129Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.129Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:42.139Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.139Z",
+  "nonce": "6b32fa9fce3a170169b823bdb262e3f43ed0875b80f1200d5e6eb54312112d45"
+}
+[2025-03-22T03:22:42.143Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.143Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:22:42.144Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.144Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:42.145Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:42.145Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:45.716Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.716Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "6b32fa9fce3a170169b823bdb262e3f43ed0875b80f1200d5e6eb54312112d45"
+}
+[2025-03-22T03:22:45.717Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.717Z",
+  "exists": false
+}
+[2025-03-22T03:22:45.721Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.721Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:45.723Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.723Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:22:45.752Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.752Z",
+  "success": true
+}
+[2025-03-22T03:22:45.753Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.753Z",
+  "success": true
+}
+[2025-03-22T03:22:45.754Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.754Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-22T03:22:45.754Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.754Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:22:45.756Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.756Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:45.757Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.757Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:22:45.763Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:22:45.763Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:27:21.662Z] FRONTEND:CS2 - INFO: Navigation: none → cs2-knives
+  Details: {
+  "component": "MarketNavbar",
+  "interactionType": "select",
+  "transitionDuration": 300,
+  "operation": "navigation",
+  "from": "none",
+  "to": "cs2-knives",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:21.662Z"
+}
+[2025-03-22T03:27:21.927Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:21.927Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:21.928Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:21.928Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:21.984Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:21.984Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:21.985Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:21.985Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:22.060Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:22.060Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:22.061Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:22.061Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:22.111Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.111Z"
+}
+[2025-03-22T03:27:22.118Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-knives",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 112.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.118Z"
+}
+[2025-03-22T03:27:22.119Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.119Z"
+}
+[2025-03-22T03:27:22.119Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 1 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.119Z"
+}
+[2025-03-22T03:27:22.120Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.120Z"
+}
+[2025-03-22T03:27:22.120Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.120Z"
+}
+[2025-03-22T03:27:22.477Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 125.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:22.477Z"
+}
+[2025-03-22T03:27:28.775Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.775Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T03:27:28.844Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.844Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.844Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.844Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.896Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.896Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:28.897Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "cs2-smgs",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:28.897Z"
+}
+[2025-03-22T03:27:28.899Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:28.899Z"
+}
+[2025-03-22T03:27:28.900Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 0 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 0,
+  "productIds": [],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:28.900Z"
+}
+[2025-03-22T03:27:28.916Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.916Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.917Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.917Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.936Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.936Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.936Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.936Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.949Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.949Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.950Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.950Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:28.971Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.971Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:28.972Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.972Z"
+}
+[2025-03-22T03:27:28.972Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-22T03:27:28.972Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:27:29.008Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.008Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:29.009Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.009Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:29.032Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.032Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:29.032Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "cs2-smgs",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:29.032Z"
+}
+[2025-03-22T03:27:29.035Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:29.035Z"
+}
+[2025-03-22T03:27:29.038Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.038Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:29.039Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:29.039Z"
+}
+[2025-03-22T03:27:29.247Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.247Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:29.248Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.248Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:29.251Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.251Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:29.694Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.694Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:27:29.694Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.694Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:27:29.695Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.695Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:29.695Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.695Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:29.705Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.705Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-22T03:27:29.706Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.706Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-22T03:27:29.707Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.707Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:27:29.710Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.710Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:29.713Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.713Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:27:29.713Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.713Z",
+  "exists": false
+}
+[2025-03-22T03:27:29.722Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.722Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:29.723Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.723Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:29.730Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.730Z",
+  "nonce": "65e4b5514afecaa9e4c9ca6c43a30ae687566acceb1b76d65f88e70975695d5a"
+}
+[2025-03-22T03:27:29.732Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.732Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:27:29.733Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.733Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:29.734Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:29.734Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:29.766Z] FRONTEND:CS2 - INFO: Navigation: cs2-smgs → cs2-knives
+  Details: {
+  "component": "MarketNavbar",
+  "interactionType": "select",
+  "transitionDuration": 300,
+  "operation": "navigation",
+  "from": "cs2-smgs",
+  "to": "cs2-knives",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:29.766Z"
+}
+[2025-03-22T03:27:29.780Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "cs2-knives",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:29.780Z"
+}
+[2025-03-22T03:27:30.576Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-smgs",
+  "indicatorWidth": 112.78125,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.576Z"
+}
+[2025-03-22T03:27:30.678Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:30.678Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:30.678Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:30.678Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:30.748Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.748Z"
+}
+[2025-03-22T03:27:30.752Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 112.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.752Z"
+}
+[2025-03-22T03:27:30.753Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.753Z"
+}
+[2025-03-22T03:27:30.754Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 1 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.754Z"
+}
+[2025-03-22T03:27:30.755Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.755Z"
+}
+[2025-03-22T03:27:30.756Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:27:30.756Z"
+}
+[2025-03-22T03:27:31.167Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.167Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "65e4b5514afecaa9e4c9ca6c43a30ae687566acceb1b76d65f88e70975695d5a"
+}
+[2025-03-22T03:27:31.168Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.168Z",
+  "exists": false
+}
+[2025-03-22T03:27:31.170Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.170Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:31.171Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.171Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:27:31.215Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.215Z",
+  "success": true
+}
+[2025-03-22T03:27:31.215Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.215Z",
+  "success": true
+}
+[2025-03-22T03:27:31.216Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.216Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-22T03:27:31.216Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.216Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:27:31.217Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.217Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:31.218Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.218Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:27:31.226Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:27:31.226Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:30:10.679Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-03-22T03:30:10.679Z",
+  "has_token": true,
+  "has_user": true
+}
+[2025-03-22T03:30:10.836Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:10.836Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:10.838Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:10.837Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:10.949Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:10.949Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:10.950Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "cs2-knives",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:10.950Z"
+}
+[2025-03-22T03:30:10.955Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 125.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:10.955Z"
+}
+[2025-03-22T03:30:10.957Z] FRONTEND:CS2 - INFO: Rendering 1 products with enhanced staggered animation
+  Details: {
+  "productCount": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:10.957Z"
+}
+[2025-03-22T03:30:10.959Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 1 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 1,
+  "productIds": [
+    "cs2-butterfly-doppler-factory-new"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:10.959Z"
+}
+[2025-03-22T03:30:11.015Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.015Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.016Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.016Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.076Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.076Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.077Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.077Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.120Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.120Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.121Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.121Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.181Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.181Z",
+  "is_connected": false,
+  "is_authenticated": true,
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:11.181Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect - Wallet Disconnected while Authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.181Z"
+}
+[2025-03-22T03:30:11.183Z] FRONTEND:AUTH - DEBUG: Auth Flow - Logout
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.183Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:30:11.259Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.259Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.260Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.260Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.306Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.306Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:11.307Z] FRONTEND:CS2 - INFO: Market navbar mounted with enhanced Skinport style and animations
+  Details: {
+  "categoriesCount": 4,
+  "currentCategory": "cs2-knives",
+  "style": "text-only-enhanced-animated",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:11.307Z"
+}
+[2025-03-22T03:30:11.312Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 125.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:11.312Z"
+}
+[2025-03-22T03:30:11.317Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.317Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:11.318Z] FRONTEND:CS2 - INFO: Category indicator animation
+  Details: {
+  "fromCategory": "none",
+  "toCategory": "cs2-knives",
+  "indicatorWidth": 125.265625,
+  "transitionType": "indicator-animation",
+  "log_destination": "market",
+  "timestamp": "2025-03-22T03:30:11.318Z"
+}
+[2025-03-22T03:30:11.653Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.653Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.655Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.655Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.668Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.668Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:11.820Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.820Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:30:11.821Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication needed - not authenticated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.821Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:30:11.822Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.822Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.823Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.823Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:11.838Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth Check
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.838Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-03-22T03:30:11.839Z] FRONTEND:AUTH - DEBUG: Auth Flow - Starting authentication
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.839Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "initial_check_done": true
+}
+[2025-03-22T03:30:11.839Z] FRONTEND:AUTH - DEBUG: Auth Flow - Request Signature
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.839Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:30:11.842Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.842Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:11.845Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state restoration failed - triggering authentication
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.845Z",
+  "address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true
+}
+[2025-03-22T03:30:11.845Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.845Z",
+  "exists": false
+}
+[2025-03-22T03:30:11.853Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.853Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:30:11.854Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.854Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:30:11.904Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Requested
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.904Z",
+  "nonce": "c854a9604e22373352e194546dc60ab9b91dd3b42beef65bd00526956480845e"
+}
+[2025-03-22T03:30:11.908Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.908Z",
+  "is_connected": true,
+  "is_authenticated": false,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": true,
+  "initial_check_done": true,
+  "needs_reauthentication": true,
+  "last_authenticated_address": null
+}
+[2025-03-22T03:30:11.909Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.909Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:30:11.910Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:11.910Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:30:13.819Z] FRONTEND:AUTH - DEBUG: Auth Flow - Verify Signature
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.819Z",
+  "walletAddress": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "nonce": "c854a9604e22373352e194546dc60ab9b91dd3b42beef65bd00526956480845e"
+}
+[2025-03-22T03:30:13.820Z] FRONTEND:AUTH - DEBUG: Auth Flow - Token Retrieval
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.820Z",
+  "exists": false
+}
+[2025-03-22T03:30:13.823Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.823Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:30:13.824Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.824Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": false,
+  "is_authenticating": true
+}
+[2025-03-22T03:30:13.848Z] FRONTEND:AUTH - INFO: Token Operation - store
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.848Z",
+  "success": true
+}
+[2025-03-22T03:30:13.848Z] FRONTEND:AUTH - DEBUG: Auth Flow - Signature Verified
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.848Z",
+  "success": true
+}
+[2025-03-22T03:30:13.849Z] FRONTEND:AUTH - DEBUG: Auth Flow - Login
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.849Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "token_length": 188
+}
+[2025-03-22T03:30:13.849Z] FRONTEND:AUTH - DEBUG: Auth Flow - Authentication successful
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.849Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}
+[2025-03-22T03:30:13.850Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.850Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:13.850Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.850Z",
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_connected": true,
+  "is_authenticated": true,
+  "is_authenticating": false
+}
+[2025-03-22T03:30:13.855Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-03-22T03:30:13.855Z",
+  "is_connected": true,
+  "is_authenticated": true,
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "auth_wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "is_authenticating": false,
+  "initial_check_done": true,
+  "needs_reauthentication": false,
+  "last_authenticated_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336"
+}

@@ -1,0 +1,326 @@
+[2025-03-15T20:36:31.559Z] FRONTEND:ORDERS - DEBUG: Fetching order count
+  Details: {
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.559Z"
+}
+[2025-03-15T20:36:31.567Z] FRONTEND:ORDERS - INFO: Orders page initialized
+  Details: {
+  "is_connected": true,
+  "is_ready": false,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.567Z"
+}
+[2025-03-15T20:36:31.568Z] FRONTEND:ORDERS - INFO: Fetching orders
+  Details: {
+  "wallet_address": "0x0300...",
+  "page": 1,
+  "limit": 10,
+  "has_search": false,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.568Z"
+}
+[2025-03-15T20:36:31.569Z] FRONTEND:ORDERS - DEBUG: Fetching user orders
+  Details: {
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "page": 1,
+  "limit": 10,
+  "url": "/orders/user/0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.569Z"
+}
+[2025-03-15T20:36:31.578Z] FRONTEND:ORDERS - DEBUG: Fetching order count
+  Details: {
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.578Z"
+}
+[2025-03-15T20:36:31.580Z] FRONTEND:ORDERS - INFO: Orders page initialized
+  Details: {
+  "is_connected": true,
+  "is_ready": false,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.580Z"
+}
+[2025-03-15T20:36:31.584Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.584Z"
+}
+[2025-03-15T20:36:31.610Z] FRONTEND:ORDERS - INFO: Wallet state changed in orders page
+  Details: {
+  "is_connected": true,
+  "is_ready": true,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:31.610Z"
+}
+[2025-03-15T20:36:34.656Z] FRONTEND:ORDERS - DEBUG: Successfully fetched user orders
+  Details: {
+  "orderCount": 2,
+  "total": 2,
+  "page": 1,
+  "limit": 10,
+  "firstOrderId": "ORD-001-TEST",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.656Z"
+}
+[2025-03-15T20:36:34.658Z] FRONTEND:ORDERS - INFO: Orders fetched successfully
+  Details: {
+  "wallet_address": "0x0300...",
+  "order_count": 2,
+  "total_orders": 2,
+  "page": 1,
+  "limit": 10,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.658Z"
+}
+[2025-03-15T20:36:34.660Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.660Z"
+}
+[2025-03-15T20:36:34.676Z] FRONTEND:ORDERS - INFO: Orders loaded
+  Details: {
+  "total_orders": 2,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.676Z"
+}
+[2025-03-15T20:36:34.731Z] FRONTEND:ORDERS - INFO: OrderList component initialized
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.731Z"
+}
+[2025-03-15T20:36:34.731Z] FRONTEND:ORDERS - INFO: OrderList orders updated
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.731Z"
+}
+[2025-03-15T20:36:34.732Z] FRONTEND:ORDERS - INFO: OrderList component initialized
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.732Z"
+}
+[2025-03-15T20:36:34.732Z] FRONTEND:ORDERS - INFO: OrderList orders updated
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:36:34.732Z"
+}
+[2025-03-15T20:37:27.614Z] FRONTEND:ORDERS - DEBUG: Fetching order count
+  Details: {
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.614Z"
+}
+[2025-03-15T20:37:27.620Z] FRONTEND:ORDERS - INFO: Orders page initialized
+  Details: {
+  "is_connected": true,
+  "is_ready": false,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.620Z"
+}
+[2025-03-15T20:37:27.620Z] FRONTEND:ORDERS - INFO: Fetching orders
+  Details: {
+  "wallet_address": "0x0300...",
+  "page": 1,
+  "limit": 10,
+  "has_search": false,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.620Z"
+}
+[2025-03-15T20:37:27.621Z] FRONTEND:ORDERS - DEBUG: Fetching user orders
+  Details: {
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "page": 1,
+  "limit": 10,
+  "url": "/orders/user/0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.621Z"
+}
+[2025-03-15T20:37:27.629Z] FRONTEND:ORDERS - DEBUG: Fetching order count
+  Details: {
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.629Z"
+}
+[2025-03-15T20:37:27.633Z] FRONTEND:ORDERS - INFO: Orders page initialized
+  Details: {
+  "is_connected": true,
+  "is_ready": false,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.633Z"
+}
+[2025-03-15T20:37:27.638Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.638Z"
+}
+[2025-03-15T20:37:27.674Z] FRONTEND:ORDERS - INFO: Wallet state changed in orders page
+  Details: {
+  "is_connected": true,
+  "is_ready": true,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:27.674Z"
+}
+[2025-03-15T20:37:28.112Z] FRONTEND:ORDERS - DEBUG: Successfully fetched user orders
+  Details: {
+  "orderCount": 2,
+  "total": 2,
+  "page": 1,
+  "limit": 10,
+  "firstOrderId": "ORD-001-TEST",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.111Z"
+}
+[2025-03-15T20:37:28.112Z] FRONTEND:ORDERS - INFO: Orders fetched successfully
+  Details: {
+  "wallet_address": "0x0300...",
+  "order_count": 2,
+  "total_orders": 2,
+  "page": 1,
+  "limit": 10,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.112Z"
+}
+[2025-03-15T20:37:28.115Z] FRONTEND:ORDERS - ERROR: Order Error: Request failed with status code 403
+  Details: {
+  "stack": "AxiosError: Request failed with status code 403\n    at settle (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/settle.js:24:12)\n    at XMLHttpRequest.onloadend (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/adapters/xhr.js:73:66)\n    at Axios.request (webpack-internal:///(app-pages-browser)/./node_modules/axios/lib/core/Axios.js:57:41)\n    at async eval (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:160:32)\n    at async makeRequest (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:41:16)\n    at async Object.getOrderCount (webpack-internal:///(app-pages-browser)/./src/api/orders.ts:159:30)\n    at async Navigation.useEffect.fetchOrderCount (webpack-internal:///(app-pages-browser)/./src/components/layouts/customer-dashboard/navigation.tsx:81:43)",
+  "status": 403,
+  "url": "http://127.0.0.1:8000/orders/summary/",
+  "method": "get",
+  "response_data": {
+    "detail": "Not authenticated"
+  },
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.115Z"
+}
+[2025-03-15T20:37:28.128Z] FRONTEND:ORDERS - INFO: Orders loaded
+  Details: {
+  "total_orders": 2,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.127Z"
+}
+[2025-03-15T20:37:28.178Z] FRONTEND:ORDERS - INFO: OrderList component initialized
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.178Z"
+}
+[2025-03-15T20:37:28.179Z] FRONTEND:ORDERS - INFO: OrderList orders updated
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.179Z"
+}
+[2025-03-15T20:37:28.181Z] FRONTEND:ORDERS - INFO: OrderList component initialized
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.181Z"
+}
+[2025-03-15T20:37:28.182Z] FRONTEND:ORDERS - INFO: OrderList orders updated
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 2,
+  "log_destination": "orders",
+  "timestamp": "2025-03-15T20:37:28.182Z"
+}

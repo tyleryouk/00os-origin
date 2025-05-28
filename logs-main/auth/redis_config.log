@@ -1,0 +1,54 @@
+[2025-04-18 21:12:53,500] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-18 21:12:53,500] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-18 21:13:10,026] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-18 21:13:10,026] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 17:32:04,726] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:32:04,760] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 17:56:01,367] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:56:01,367] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 17:58:08,633] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:58:08,633] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 17:59:28,333] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 17:59:28,333] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 18:00:29,050] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:00:29,051] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 18:03:20,884] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:03:20,884] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 18:07:58,734] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:07:58,734] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-04-19 18:08:39,157] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-04-19 18:08:39,157] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 13:53:38,341] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 13:53:38,342] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 15:27:02,024] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 15:27:02,025] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 15:29:24,410] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 15:29:24,411] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:03:24,544] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:03:24,545] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:06:55,511] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:06:55,511] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:07:02,246] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:07:02,247] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:15:13,144] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:15:13,144] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:15:39,276] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:15:39,276] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:27:10,981] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:27:10,981] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:28:16,428] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:28:16,428] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:29:47,238] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:29:47,239] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:30:05,079] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:30:05,079] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:33:40,263] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:33:40,263] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:36:31,947] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:36:31,947] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:38:21,827] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:38:21,828] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:45:01,377] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:45:01,377] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>
+[2025-05-26 16:45:10,451] ERROR - Redis connection failed with error: Error 11001 connecting to redis-14997.c326.us-east-1-3.ec2.redns.redis-cloud.com:14997. getaddrinfo failed.
+[2025-05-26 16:45:10,452] ERROR - Error type: <class 'redis.exceptions.ConnectionError'>

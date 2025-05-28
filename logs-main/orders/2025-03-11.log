@@ -1,0 +1,129 @@
+[2025-03-11T23:09:37.779Z] FRONTEND:ORDERS - INFO: Orders page initialized
+  Details: {
+  "is_connected": true,
+  "is_ready": false,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:37.779Z"
+}
+[2025-03-11T23:09:37.780Z] FRONTEND:ORDERS - INFO: Fetching orders
+  Details: {
+  "wallet_address": "0x0300...",
+  "page": 1,
+  "limit": 10,
+  "has_search": false,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:37.780Z"
+}
+[2025-03-11T23:09:37.780Z] FRONTEND:ORDERS - DEBUG: Fetching user orders
+  Details: {
+  "wallet_address": "0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "page": 1,
+  "limit": 10,
+  "url": "/orders/user/0x0300B70e40F138927e3a988ce4A9a069Ff875336",
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:37.780Z"
+}
+[2025-03-11T23:09:37.791Z] FRONTEND:ORDERS - INFO: Orders page initialized
+  Details: {
+  "is_connected": true,
+  "is_ready": false,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:37.791Z"
+}
+[2025-03-11T23:09:37.797Z] FRONTEND:ORDERS - INFO: Wallet state changed in orders page
+  Details: {
+  "is_connected": true,
+  "is_ready": true,
+  "has_address": true,
+  "has_effective_address": true,
+  "using_auth_wallet": false,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:37.797Z"
+}
+[2025-03-11T23:09:38.442Z] FRONTEND:ORDERS - DEBUG: Successfully fetched user orders
+  Details: {
+  "orderCount": 2,
+  "total": 2,
+  "page": 1,
+  "limit": 10,
+  "firstOrderId": "ORD-001-TEST",
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.442Z"
+}
+[2025-03-11T23:09:38.442Z] FRONTEND:ORDERS - INFO: Orders fetched successfully
+  Details: {
+  "wallet_address": "0x0300...",
+  "order_count": 2,
+  "total_orders": 2,
+  "page": 1,
+  "limit": 10,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.442Z"
+}
+[2025-03-11T23:09:38.446Z] FRONTEND:ORDERS - INFO: Orders loaded
+  Details: {
+  "total_orders": 2,
+  "status_filter": "all",
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.446Z"
+}
+[2025-03-11T23:09:38.476Z] FRONTEND:ORDERS - INFO: OrderList component initialized
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 0,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.476Z"
+}
+[2025-03-11T23:09:38.477Z] FRONTEND:ORDERS - INFO: OrderList orders updated
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 0,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.477Z"
+}
+[2025-03-11T23:09:38.477Z] FRONTEND:ORDERS - INFO: OrderList component initialized
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 0,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.477Z"
+}
+[2025-03-11T23:09:38.478Z] FRONTEND:ORDERS - INFO: OrderList orders updated
+  Details: {
+  "has_orders": true,
+  "order_count": 2,
+  "is_array": true,
+  "is_null": false,
+  "is_undefined": false,
+  "current_page": 1,
+  "total_pages": 1,
+  "total_orders": 0,
+  "log_destination": "orders",
+  "timestamp": "2025-03-11T23:09:38.478Z"
+}
