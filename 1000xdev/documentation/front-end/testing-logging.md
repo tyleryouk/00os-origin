@@ -1,39 +1,29 @@
-# Front-End Testing & Logging
+# Runtime Errors & Logging
 
-This document provides concise, actionable guidance for front-end testing and logging in the GigaSwap project.
+This document provides concise, actionable guidance for runtime error resolution and logging in the GigaSwap project.
 
-## Testing
+## Runtime Error Resolution
 
-### Testing Architecture
-- **Unit Tests**: Test individual functions and components in isolation
-- **Component Tests**: Test React components with their immediate dependencies
-- **Integration Tests**: Test interactions between multiple components
+### Process
+- **Error Discovery**: Runtime errors are identified by Tyler in the live development environment
+- **Error Communication**: Errors are sent to 1000xdev via screenshots showing the Next.js error overlay
+- **Error Resolution**: 1000xdev analyzes the error information and implements fixes directly in the code
+- **No Build Commands**: 1000xdev never runs `npm run build` or any other npm/build commands to check for errors
 
-### Mock Strategies
-- Use Jest for mocking API calls and context
-- Use MSW (Mock Service Worker) for API mocking in integration tests
+### Next.js Error Information
+Runtime errors typically include:
+- Error message and type
+- Stack trace with file locations
+- Component tree (for React errors)
+- Line numbers and code context
 
-### Example: Unit Test
-```typescript
-import { formatPrice } from './price-formatter';
-describe('formatPrice', () => {
-  it('formats prices with 2 decimal places', () => {
-    expect(formatPrice(10.5)).toBe('$10.50');
-  });
-});
-```
-
-### Example: Component Test
-```typescript
-import { render, screen } from '@testing-library/react';
-import ProductCard from './ProductCard';
-describe('ProductCard', () => {
-  it('renders product information', () => {
-    render(<ProductCard product={{ id: '1', name: 'Test', price: 10 }} />);
-    expect(screen.getByText('Test')).toBeInTheDocument();
-  });
-});
-```
+### Resolution Workflow
+1. Tyler identifies runtime error in the browser
+2. Tyler takes screenshot of the error overlay
+3. Tyler sends screenshot to 1000xdev
+4. 1000xdev analyzes the error details
+5. 1000xdev implements fix in the relevant files
+6. Tyler confirms fix in the running application
 
 ## Logging
 
