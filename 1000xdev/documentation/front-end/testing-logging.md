@@ -27,21 +27,29 @@ Runtime errors typically include:
 
 ## Logging
 
-### Logger Implementation
-- Use a centralized logger service for consistent logging
-- Log levels: ERROR, WARN, INFO, DEBUG
-- In production, send logs to the server using Beacon API or fetch
+### ConsolidatedLogger Implementation
+- **Centralized Logging**: All logs written to `/logs-main` directory
+- **Category-based Organization**: API, AUTH, USER, ORDERS, CS2, MOCK categories
+- **Development Console Output**: Configurable console logging for development
+- **Retry Logic**: Failed log entries queued and retried
 
-### Usage Example
+### Usage Examples
 ```typescript
-import { logger } from '@/services/logger';
-logger.info('User logged in successfully');
-logger.error('Failed to load product data', { context: { productId: '123' } });
+import { ConsolidatedLogger } from '@/utils/consolidated-logger';
+
+// Standard logging
+ConsolidatedLogger.log('INFO', 'CS2', 'Market page loaded', { productCount: 20 });
+
+// Specialized methods
+ConsolidatedLogger.logCS2('Category filter applied', 'INFO', { category: 'rifles' });
+ConsolidatedLogger.logAuth('Wallet connected', { address: '0x...' });
+ConsolidatedLogger.logAPIError(error, '/api/steam/inventory');
 ```
 
 ### Error Tracking
-- Use error boundaries in React to catch component errors
-- Implement global error handlers for unhandled promise rejections and uncaught exceptions
+- **Error Boundaries**: React error boundaries with ConsolidatedLogger integration
+- **Global Error Handlers**: Unhandled promise rejections and uncaught exceptions
+- **Next.js Error Overlay**: Fixed z-index issues for development visibility
 
 ---
 This document is updated as practices evolve. 
