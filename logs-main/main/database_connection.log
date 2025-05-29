@@ -500,3 +500,5 @@ server closed the connection unexpectedly
 [2025-05-27 19:29:40,567] INFO - Database connection pool initialized successfully
 [2025-05-27 19:43:53,664] INFO - Database connection pool initialized successfully
 [2025-05-27 21:38:01,753] INFO - Database connection pool initialized successfully
+[2025-05-27 22:16:02,344] INFO - Database connection pool initialized successfully
+[2025-05-29 11:42:38,500] INFO - Database connection pool initialized successfully

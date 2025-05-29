@@ -5420,3 +5420,283 @@
   "log_destination": "market",
   "timestamp": "2025-05-28T02:04:06.058Z"
 }
+[2025-05-28T02:16:15.497Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.497Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.498Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.498Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.630Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.630Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.630Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.630Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.710Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.710Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.441Z] FRONTEND:AUTH - DEBUG: Auth Flow - Initial Auth State Check
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.441Z",
+  "has_token": false,
+  "has_user": false
+}
+[2025-05-28T02:16:15.710Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.710Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.750Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.750Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:15.750Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:15.750Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:16.653Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.653Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:16.654Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.653Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:16.686Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.686Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-28T02:16:16.687Z] FRONTEND:CS2 - INFO: Market navbar mounted with 16 Steam categories
+  Details: {
+  "categoriesCount": 16,
+  "currentCategory": "none",
+  "categories": [
+    "Rifles",
+    "Pistols",
+    "SMGs",
+    "Shotguns",
+    "Sniper Rifles",
+    "Machine Guns",
+    "Knives",
+    "Gloves",
+    "Stickers",
+    "Agents",
+    "Patches",
+    "Music Kits",
+    "Cases",
+    "Keys",
+    "Tools",
+    "Graffiti"
+  ],
+  "log_destination": "market",
+  "timestamp": "2025-05-28T02:16:16.687Z"
+}
+[2025-05-28T02:16:16.693Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.693Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-28T02:16:16.766Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.766Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:16.766Z] FRONTEND:AUTH - DEBUG: Auth Flow - HeaderConnect Render
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.766Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false
+}
+[2025-05-28T02:16:16.795Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.795Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-28T02:16:16.796Z] FRONTEND:CS2 - INFO: Market navbar mounted with 16 Steam categories
+  Details: {
+  "categoriesCount": 16,
+  "currentCategory": "none",
+  "categories": [
+    "Rifles",
+    "Pistols",
+    "SMGs",
+    "Shotguns",
+    "Sniper Rifles",
+    "Machine Guns",
+    "Knives",
+    "Gloves",
+    "Stickers",
+    "Agents",
+    "Patches",
+    "Music Kits",
+    "Cases",
+    "Keys",
+    "Tools",
+    "Graffiti"
+  ],
+  "log_destination": "market",
+  "timestamp": "2025-05-28T02:16:16.796Z"
+}
+[2025-05-28T02:16:16.796Z] FRONTEND:AUTH - DEBUG: Auth Flow - Auth state updated
+  Details: {
+  "timestamp": "2025-05-28T02:16:16.796Z",
+  "is_connected": false,
+  "is_authenticated": false,
+  "is_authenticating": false,
+  "initial_check_done": false,
+  "needs_reauthentication": false,
+  "last_authenticated_address": null
+}
+[2025-05-28T02:16:18.998Z] FRONTEND:CS2 - INFO: MarketPageView mounted with 20 products and enhanced animations
+  Details: {
+  "page": 1,
+  "pageSize": 20,
+  "totalProducts": 808,
+  "productIds": [
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "45dd43ba",
+    "6eedda04",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "9924a945",
+    "441c8935",
+    "47510819",
+    "0b6f114f",
+    "7ac4709f"
+  ],
+  "transitionType": "initial-mount",
+  "animationsEnabled": true,
+  "log_destination": "market",
+  "timestamp": "2025-05-28T02:16:18.998Z"
+}
+[2025-05-28T02:16:18.999Z] FRONTEND:CS2 - DEBUG: MarketPageView unmounted
+  Details: {
+  "page": 1,
+  "log_destination": "market",
+  "timestamp": "2025-05-28T02:16:18.999Z"
+}
+[2025-05-28T02:16:19.000Z] FRONTEND:CS2 - INFO: Rendering 20 products with enhanced staggered animation
+  Details: {
+  "productCount": 20,
+  "productIds": [
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "45dd43ba",
+    "6eedda04",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "9924a945",
+    "441c8935",
+    "47510819",
+    "0b6f114f",
+    "7ac4709f"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-05-28T02:16:18.999Z"
+}
+[2025-05-28T02:16:18.998Z] FRONTEND:CS2 - INFO: Rendering 20 products with enhanced staggered animation
+  Details: {
+  "productCount": 20,
+  "productIds": [
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "6fee917f",
+    "45dd43ba",
+    "6eedda04",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "fbe7d78d",
+    "9924a945",
+    "441c8935",
+    "47510819",
+    "0b6f114f",
+    "7ac4709f"
+  ],
+  "animationEnabled": true,
+  "staggerType": "wave",
+  "baseDelay": "35ms",
+  "log_destination": "market",
+  "timestamp": "2025-05-28T02:16:18.998Z"
+}
