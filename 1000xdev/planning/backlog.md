@@ -1,17 +1,11 @@
-### REQ-000: Styling for front-end
+### REQ-000: Steam Authentication
+Create a login with steam button. 
+Create back-end authentication logic using steam. 
+Review 
 
-**Context**: Previously integrated Steam inventory endpoints in the front-end to display CS2 skin inventories from two Skinport bots on the /market page.
-
-**Primary Data Sources**:
-- **Skinport Bot #2331**: `GET /api/steam/profile/inventory/76561199562411448`
-- **Skinport Bot #3257**: `GET /api/steam/profile/inventory/76561199800276630`
-
-**Styling workflow**
-I will send screenshots and work with you on specific front-end styling issues. I will always have the front-end server running. I will also have the node and uvicorn terminal in the context so that you can understand the logs as well.
 
 ### REQ-001: Better documentation for market page (ensure 100% accuracy)
-Remove all legacy references to "CS2 Guns" and related models
-
+Remove all legacy references to "CS2 Guns" and related models should be removed
 
 ### REQ-002
 (After full stack testing)
