@@ -625,3 +625,7 @@
 [2025-05-29 13:34:10,800] INFO - Completed analytics update for 0 wallets in 0.82 seconds
 [2025-05-29 14:26:35,312] INFO - Analytics background task scheduler stopped
 [2025-05-29 14:28:47,897] INFO - Analytics background task scheduler started
+[2025-05-29 15:28:47,897] INFO - Starting scheduled analytics update for all active wallets
+[2025-05-29 15:28:48,734] ERROR - Error fetching active wallets: 'psycopg2.extensions.connection' object does not support the asynchronous context manager protocol
+[2025-05-29 15:28:48,734] INFO - Found 0 active wallets for analytics update
+[2025-05-29 15:28:48,735] INFO - Completed analytics update for 0 wallets in 0.84 seconds
