@@ -1695,3 +1695,17 @@
 [2025-05-29 18:41:12,898] WARNING - Table 'order_items' does not exist
 [2025-05-29 18:41:12,898] INFO - Database verification complete
 [2025-05-29 18:41:13,860] INFO - Database initialization complete
+[2025-05-29 18:53:32,178] INFO - Table 'users' verified
+[2025-05-29 18:53:32,213] INFO - Table 'sessions' verified
+[2025-05-29 18:53:32,252] INFO - Table 'migration_versions' verified
+[2025-05-29 18:53:32,295] INFO - Table 'orders' verified
+[2025-05-29 18:53:32,327] WARNING - Table 'order_items' does not exist
+[2025-05-29 18:53:32,327] INFO - Database verification complete
+[2025-05-29 18:53:33,044] INFO - Database initialization complete
+[2025-05-29 19:00:51,939] INFO - Table 'users' verified
+[2025-05-29 19:00:51,973] INFO - Table 'sessions' verified
+[2025-05-29 19:00:52,010] INFO - Table 'migration_versions' verified
+[2025-05-29 19:00:52,044] INFO - Table 'orders' verified
+[2025-05-29 19:00:52,082] WARNING - Table 'order_items' does not exist
+[2025-05-29 19:00:52,082] INFO - Database verification complete
+[2025-05-29 19:00:52,988] INFO - Database initialization complete
