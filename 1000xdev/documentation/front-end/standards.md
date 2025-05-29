@@ -1,6 +1,6 @@
 # Front-End Standards
 
-This document defines the core standards, best practices, and architectural principles for front-end development in the GigaSwap project based on actual implementation patterns.
+Core standards, best practices, and architectural principles for front-end development in the GigaSwap project based on actual implementation patterns.
 
 ## Code Organization
 
@@ -151,19 +151,6 @@ ConsolidatedLogger.logAPIError(error, '/api/steam/inventory');
 - **Direct Code Fixes**: Implement fixes directly in code without build commands
 - **Error Overlay Fixes**: Ensure Next.js errors are visible above UI elements
 
-## Styling Standards
-
-### Material-UI Integration
-- **MUI Components**: Use Material-UI components as base
-- **Custom Theming**: Extend MUI theme for brand consistency
-- **Responsive Design**: Mobile-first approach with MUI breakpoints
-- **CSS-in-JS**: Use MUI's sx prop for component styling
-
-### Global Styles
-- **globals.css**: Global styles and CSS variables
-- **Error Overlay Fixes**: CSS fixes for Next.js error visibility
-- **Z-index Management**: Consistent z-index hierarchy
-
 ## Performance Standards
 
 ### Optimization Patterns
@@ -192,4 +179,4 @@ ConsolidatedLogger.logAPIError(error, '/api/steam/inventory');
 - **Documentation**: Document complex logic and API integrations
 
 ---
-This document is updated as standards evolve. 
+For styling-specific standards, see [styling.md](./styling.md). This document is updated as standards evolve. 

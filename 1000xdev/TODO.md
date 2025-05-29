@@ -73,11 +73,11 @@
 - [x] **4.8.2** Fix React key prop error causing popup overlay
   - **Status**: COMPLETED
   - **Problem**: React error popup "Each child in a list should have a unique 'key' prop" blocking all page interactions
-  - **Root Cause**: Next.js error overlay blocking all page interactions, AND error indicator button not clickable, AND potential duplicate keys in product list generation
-  - **Solution**: Targeted CSS fix that makes overlay non-blocking while preserving error indicator button functionality, plus improved unique key generation for products
+  - **Root Cause**: Next.js error overlay blocking all page interactions, AND error indicator button not clickable, AND potential duplicate keys in product list generation and category filter components
+  - **Solution**: Targeted CSS fix that makes overlay non-blocking while preserving error indicator button functionality, plus improved unique key generation for products and category filters
   - **Files Updated**: 
-    - `front-end/src/app/market/page.tsx` - Added index to product IDs and slugs for uniqueness, then improved to use assetid+classid for truly unique keys
-    - `front-end/src/pages-sections/market/components/category-filter.tsx` - Fixed activeFilters map key uniqueness
+    - `front-end/src/app/market/page.tsx` - **UPDATED**: Enhanced product ID generation with assetid+classid+instanceid+index for truly unique keys, improved slug generation with timestamp
+    - `front-end/src/pages-sections/market/components/category-filter.tsx` - **UPDATED**: Fixed activeFilters map key uniqueness by adding category.id to key generation
     - `front-end/src/app/globals.css` - **FINAL**: Consolidated all Next.js error overlay handling logic
     - `front-end/src/app/layout.tsx` - Removed import for deleted error-overlay-fix.js
     - `front-end/src/components/test/error-overlay-test.tsx` - Updated to reflect CSS-only approach
@@ -89,7 +89,9 @@
     - **Overlay Handling**: Make full-screen overlay non-blocking while keeping error dialog clickable
     - **CSS Selectors**: Target multiple possible error indicator selectors for compatibility
     - **Consolidation**: All error overlay logic moved to globals.css, error-overlay-fix.ts deleted
-    - **Result**: Users can now click the error indicator to view runtime errors while page remains interactive
+    - **Product Keys**: Enhanced unique ID generation using `${assetid}-${classid}-${instanceid}-${index}` format
+    - **Category Keys**: Fixed duplicate key issue in active filters by including category.id in key generation
+    - **Result**: Users can now click the error indicator to view runtime errors while page remains interactive, and all React key prop warnings are resolved
 
 - [x] **4.8.3** Fix layout width alignment across topbar, navbar, and footer
   - **Status**: COMPLETED
@@ -111,14 +113,32 @@
     - **Responsive**: Maintains proper spacing and alignment across all breakpoints
   - **Result**: All layout components now have consistent width and alignment, with improved content distribution and better space utilization throughout the header area
 
-- [ ] **4.9** Implement category-specific filtering
-  - **Status**: PENDING
-  - **Implementation Required**:
-    - Add category filter controls to market page
-    - Implement filtering logic in Steam API service
-    - Update URL parameters for category filtering
-    - Add category-specific page routes
-  - **Files to Update**: Market page, Steam API service, routing
+- [x] **4.9** Implement category-specific filtering with Skinport.com-style sidebar
+  - **Status**: COMPLETED
+  - **Implementation**: Created comprehensive sidebar filter component matching Skinport.com layout with full filtering logic
+  - **Features Implemented**:
+    - Left sidebar filter panel with accordion sections
+    - Price range filter with slider and text inputs ($0-$10,000)
+    - Exterior/wear level checkboxes (Factory New, Minimal Wear, Field-Tested, Well-Worn, Battle-Scarred)
+    - Extras filters (StatTrak™, Souvenir, Sticker, Charm, Name Tag, Vanilla)
+    - Trade locked filter (less than 8 days locked)
+    - Rarity filters with color-coded options (Consumer Grade through Contraband)
+    - Weapon type filters using correct steam-categories.ts (16 categories: rifles, pistols, smgs, shotguns, snipers, machineguns, knives, gloves, stickers, agents, patches, musickits, cases, keys, tools, graffiti)
+    - URL parameter integration for filter persistence (weapon_types, exterior, rarity, price_min, price_max, extras, trade_locked)
+    - Active filter chips with individual removal capability
+    - Apply filters button and clear all functionality
+    - Comprehensive logging integration
+  - **Data Structure Analysis**: 
+    - **Steam Inventory Fields Used**: `itemgroup`, `tag1`, `tag2`, `itemtype`, `markethashname`, `itemname`, `rarity`, `tag6`, `wear`, `tag5`, `pricereal`, `pricelatest`, `isstattrak`, `issouvenir`, `markettradablerestriction`
+    - **Category Mapping**: Uses `mapSteamItemToCategory()` function with `itemgroup` and `tag1` as primary fields, fallback to `markethashname` pattern matching
+    - **Filter Logic**: Comprehensive filtering in market page covering all sidebar filter parameters
+  - **Files Updated**: 
+    - `front-end/src/pages-sections/market/components/sidebar-filter.tsx` - **UPDATED**: Now uses correct steam-categories.ts, removed legacy Category model dependency, added active filter chips display
+    - `front-end/src/pages-sections/market/market.tsx` - **UPDATED**: Removed cs2Categories import, updated SidebarFilter component usage
+    - `front-end/src/app/market/page.tsx` - **UPDATED**: Added comprehensive filtering logic for all sidebar parameters (weapon_types, exterior, rarity, price range, extras, trade_locked)
+  - **Layout Changes**: Moved from horizontal filter bar to left sidebar layout matching Skinport.com design
+  - **Build Fix**: Resolved legacy category data usage by switching to steam-categories.ts
+  - **Filter Integration**: All sidebar filters now properly affect the product display with URL parameter persistence
 
 - [ ] **4.10** Add search functionality
   - **Status**: PENDING
@@ -201,14 +221,23 @@
   - **Status**: COMPLETED
   - **Notes**: All supporting materials updated for cycle completion
 
-- [ ] **5.6** Update documentation for new features
-  - **Status**: PENDING
-  - **Implementation Required**:
-    - Document 16-category system implementation
-    - Create search functionality documentation
-    - Document pagination and filtering systems
-    - Update API documentation for new endpoints
-  - **Files to Update**: Technical documentation, API docs, user guides
+- [x] **5.6** Update documentation for new features
+  - **Status**: COMPLETED
+  - **Implementation**: Created comprehensive market page data structures documentation
+  - **Files Updated**: 
+    - `1000xdev/documentation/front-end/data-structures.md` - **CREATED**: Complete market page data structures section with Steam inventory interfaces, filtering structures, category mapping, and React key generation strategies
+  - **Documentation Includes**:
+    - Raw Steam API Response Item interface (50+ fields from actual steamwebapi.com data)
+    - Processed Inventory Item interface (internal format)
+    - Product Model interface (UI compatibility layer)
+    - Steam Categories and filtering data structures
+    - Sidebar filter state and URL parameter interfaces
+    - Category mapping logic with itemgroup/tag1 field usage
+    - Filter application examples (wear, rarity, extras matching)
+    - React key generation strategies for preventing duplicate key errors
+    - Complete data flow from Steam API to UI components
+  - **Based on Real Implementation**: All interfaces derived from actual Steam inventory data structure and current filtering implementation
+  - **Notes**: Provides complete reference for market page data structures, making future development and debugging more efficient
 
 ## 🚨 Critical Issues Status
 
