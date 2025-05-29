@@ -284,6 +284,29 @@
     - Update any development documentation that references mock services
     - Document the new approach to handling test data if applicable
 
+- [x] **4.8.11** Fix 404 errors for `/api/layout` API calls
+  - Identified the issue:
+    - The `/api/layout` endpoint is called by the frontend but not implemented in the backend
+    - Multiple frontend components make this API call during page loading
+    - The API call is failing with 404 errors but the UI works because of fallback data
+  - Considered implementation options:
+    - Option 1: Create a proper backend endpoint for layout data
+    - Option 2: Remove API calls and use static data directly
+  - Implemented option 2 (simpler solution):
+    - Modified `front-end/src/api/layout.ts` to remove API call to `/api/layout`
+    - Replaced API call with direct use of static layout data
+    - Renamed `getFallbackLayoutData()` to `getStaticLayoutData()`
+    - Updated error handling to be appropriate for static data
+    - Fixed type compatibility issues in the layout data structure
+  - Verified solution:
+    - The 404 errors for `/api/layout` no longer occur
+    - All pages using layout data continue to work correctly
+    - Simplified the codebase by removing unnecessary API calls
+  - Documentation and cleanup:
+    - Updated code comments to reflect the new approach
+    - Maintained TypeScript type checking for layout data
+    - Simplified error handling for static data usage
+
 **Important Grep Search Instructions for Component Removal:**
 
 When removing sales components and legacy files, follow this thorough search process to find all references:

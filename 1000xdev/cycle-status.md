@@ -25,6 +25,8 @@ Key accomplishments:
   - `data/counter-strike-database.ts`
   - `data/cs2-categories.ts`
 - Created comprehensive plan for removing legacy files and refactoring affected components
+- Fixed 404 errors for `/api/layout` API calls by modifying the frontend to use static layout data directly instead of making unnecessary API calls to a non-existent endpoint
+
 
 These changes lay the groundwork for a cleaner, more maintainable codebase with proper separation of concerns between market and sales components, and a transition to using the Steam API directly instead of legacy mock data.
 
