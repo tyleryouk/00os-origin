@@ -140,14 +140,91 @@
   - **Build Fix**: Resolved legacy category data usage by switching to steam-categories.ts
   - **Filter Integration**: All sidebar filters now properly affect the product display with URL parameter persistence
 
-- [ ] **4.10** Add search functionality
-  - **Status**: PENDING
-  - **Implementation Required**:
-    - Add search input component to market page
-    - Implement search logic across item names, descriptions, tags
-    - Add search result highlighting
-    - Update URL parameters for search state
-  - **Files to Update**: Market page, search components, Steam API service
+- [ ] **4.10** Implement homepage as rifles market page (TRUE MIRROR APPROACH)
+  - **Status**: NEEDS PROPER IMPLEMENTATION
+  - **Previous Attempt**: Failed due to incorrect data structure usage and complex shared function approach
+  - **New Approach**: True Mirror - Make homepage directly use market page logic with rifles filter
+  
+  ## IMPLEMENTATION PLAN: True Mirror Approach
+  
+  ### **Goal**: Make homepage (/) essentially be the market page (/market) with rifles filter
+  
+  ### **Core Principle**: Single Source of Truth
+  - Homepage should be a wrapper that renders the market page with rifles filter
+  - Any changes to /market automatically reflect in homepage
+  - No code duplication or separate data fetching logic
+  - Maintain / URL while showing market content
+  
+  ### **Implementation Steps**:
+  
+  #### **Step 1: Revert Previous Changes**
+  - [x] Delete `front-end/src/lib/market-data.ts` (already done)
+  - [ ] Ensure market page works correctly before proceeding
+  
+  #### **Step 2: Implement True Mirror**
+  - [ ] Update `front-end/src/app/page.tsx` to use MarketPage component directly
+  - [ ] Pass `{ category: 'rifles' }` as searchParams to MarketPage for rifles filter
+  - [ ] Test that homepage shows rifles market content by default
+  
+  #### **Step 3: Verify Mirror Behavior**
+  - [ ] Confirm changes to market page logic reflect in homepage
+  - [ ] Test that filtering works on both pages
+  - [ ] Verify URL parameters work correctly
+  - [ ] Ensure no code duplication exists
+  - [ ] Confirm rifles filter is applied by default on homepage
+  
+  ### **Technical Implementation**:
+  
+  ```typescript
+  // front-end/src/app/page.tsx (RIFLES FILTER APPROACH)
+  import MarketPage from "./market/page";
+  
+  export default function HomePage() {
+    // True mirror with rifles filter: Shows rifles by default
+    return <MarketPage searchParams={{ category: 'rifles' }} />;
+  }
+  ```
+  
+  ### **Benefits of True Mirror Approach with Rifles Filter**:
+  - ✅ Single source of truth (market page logic)
+  - ✅ Automatic synchronization of changes
+  - ✅ No code duplication
+  - ✅ Maintains existing data structures
+  - ✅ Simple implementation
+  - ✅ Easy to maintain and debug
+  - ✅ **Immediate value: Users see relevant rifle products on homepage**
+  - ✅ **Better UX: Focused content instead of overwhelming all items**
+  
+  ### **Data Structure Compliance**:
+  - Use existing Steam inventory data structures from `data-structures.md`
+  - No custom Product model violations
+  - Leverage existing category mapping logic (itemgroup/tag1 fields)
+  - Maintain compatibility with existing filtering system
+  - Rifles filter uses existing category='rifles' parameter
+  
+  ### **Files to Modify**:
+  - `front-end/src/app/page.tsx` - Simple wrapper for MarketPage with rifles filter
+  - No changes to market page logic required
+  
+  ### **Testing Checklist**:
+  - [ ] Homepage loads and shows rifles by default
+  - [ ] Market page continues to work normally (shows all items)
+  - [ ] Filtering works on both pages
+  - [ ] URL parameters function correctly
+  - [ ] No TypeScript errors
+  - [ ] No data structure violations
+  - [ ] Performance is acceptable
+  - [ ] Rifles filter is properly applied on homepage
+  - [ ] Users can still navigate to other categories from homepage
+  
+  ### **Success Criteria**:
+  - Homepage at / shows market content filtered to rifles by default
+  - Market page at /market continues to work unchanged (shows all items)
+  - Any updates to market logic automatically apply to homepage
+  - No code duplication between pages
+  - Clean, maintainable implementation
+  - **Homepage provides immediate value with focused rifle content**
+  - **Users can still access full market functionality from homepage**
 
 - [ ] **4.11** Add pagination for large datasets
   - **Status**: PENDING

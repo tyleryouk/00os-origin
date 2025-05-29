@@ -1205,3 +1205,5 @@
 [2025-05-29 12:34:08,797] INFO - Main application starting
 [2025-05-29 12:34:08,810] INFO - Application starting up
 [2025-05-29 12:34:09,978] INFO - Analytics background tasks initialized
+[2025-05-29 14:26:35,312] INFO - Application shutting down
+[2025-05-29 14:26:35,312] INFO - Analytics background tasks stopped
