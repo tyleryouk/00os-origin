@@ -87,7 +87,7 @@ ConsolidatedLogger.logAPIError(error, '/api/steam/inventory');
 ## Next.js Error Overlay System
 
 ### Implementation Files
-- **error-overlay-fix.js**: JavaScript utility to fix z-index conflicts
+- **globals.css**: Contains all error overlay handling logic (consolidated from previous JavaScript implementation)
 - **emergency-css-injector.js**: CSS injection for error overlay visibility
 - **ErrorOverlayTest**: React component for testing error overlay functionality
 

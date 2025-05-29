@@ -1674,3 +1674,10 @@
 [2025-05-29 11:42:43,660] WARNING - Table 'order_items' does not exist
 [2025-05-29 11:42:43,660] INFO - Database verification complete
 [2025-05-29 11:42:44,528] INFO - Database initialization complete
+[2025-05-29 12:34:08,975] INFO - Table 'users' verified
+[2025-05-29 12:34:09,008] INFO - Table 'sessions' verified
+[2025-05-29 12:34:09,049] INFO - Table 'migration_versions' verified
+[2025-05-29 12:34:09,084] INFO - Table 'orders' verified
+[2025-05-29 12:34:09,113] WARNING - Table 'order_items' does not exist
+[2025-05-29 12:34:09,113] INFO - Database verification complete
+[2025-05-29 12:34:09,971] INFO - Database initialization complete
