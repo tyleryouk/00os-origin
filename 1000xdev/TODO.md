@@ -73,30 +73,19 @@
 - [x] **4.8.2** Fix React key prop error causing popup overlay
   - **Status**: COMPLETED
   - **Problem**: React error popup "Each child in a list should have a unique 'key' prop" blocking all page interactions
-  - **Root Cause**: Next.js error overlay blocking all page interactions, even when errors are handled
-  - **Solution**: Non-blocking error overlay system that keeps errors visible but allows page interaction
+  - **Root Cause**: Next.js error overlay blocking all page interactions, AND error indicator button not clickable
+  - **Solution**: Targeted CSS fix that makes overlay non-blocking while preserving error indicator button functionality
   - **Files Updated**: 
     - `front-end/src/app/market/page.tsx` - Added index to product IDs and slugs for uniqueness
     - `front-end/src/pages-sections/market/components/category-filter.tsx` - Fixed activeFilters map key uniqueness
-    - `front-end/src/utils/error-overlay-fix.ts` - **UPDATED**: Non-blocking error overlay system
-    - `front-end/src/app/globals.css` - Updated CSS rules for non-blocking overlay positioning
-    - `front-end/src/app/layout.tsx` - Already imports error-overlay-fix.ts
+    - `front-end/src/utils/error-overlay-fix.ts` - **FINAL**: Targeted error overlay fix
+    - `front-end/src/app/globals.css` - **FINAL**: Targeted CSS rules for error handling
   - **Technical Details**:
-    - **Key Fixes**: Steam API items could have duplicate IDs causing React key conflicts
-    - **Non-Blocking Overlay**: Multi-layered approach to make Next.js error overlay non-blocking
-      - Repositions error overlay to top-right corner (400px width, auto height)
-      - Removes pointer-events from overlay container but keeps dialog content interactive
-      - Adds close button functionality (click header to dismiss)
-      - Enhanced error styling with dark theme and red border
-      - Maintains error visibility while allowing page interactions
-    - **Error Handling**: Errors still visible in overlay AND enhanced console logging with stack traces
-    - **User Experience**: Errors appear as dismissible notifications instead of blocking modals
-  - **Future Reference**: 
-    - Always ensure unique keys in map functions, especially with external API data
-    - Error overlay can be reverted to blocking by removing error-overlay-fix.ts import from layout.tsx
-    - Based on GitHub discussion: https://github.com/vercel/next.js/discussions/13387
-    - Overlay appears in top-right corner and can be dismissed by clicking the header
-  - **Notes**: This provides the best of both worlds - visible error information without blocking page interactions
+    - **Key Issue**: The red "1 Issue" button in bottom-left was not clickable due to CSS pointer-events
+    - **Solution**: Specifically target and preserve clickability of error indicator button
+    - **Overlay Handling**: Make full-screen overlay non-blocking while keeping error dialog clickable
+    - **CSS Selectors**: Target multiple possible error indicator selectors for compatibility
+    - **Result**: Users can now click the error indicator to view runtime errors while page remains interactive
 
 - [ ] **4.9** Implement category-specific filtering
   - **Status**: PENDING
