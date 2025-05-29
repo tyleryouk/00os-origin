@@ -67,7 +67,7 @@ examples:
 
 # Process: dev-init
 
-// This process initializes the context and documentation for 1000xdev. Each flag loads all docs in the corresponding documentation subfolder. The default (no flags) behavior loads only the four master workflow files and the current cycle-status and active-request files.
+// This process initializes the context and documentation for 1000xdev. Each flag loads all docs in the corresponding documentation subfolder. The default (no flags) behavior loads only the four master workflow files, along with the current cycle-status, TODO and active-request files.
 
 ## Execution
 
@@ -77,7 +77,10 @@ const masterFiles = [
   '1000xdev/1000xdev-brain.md',
   '1000xdev/README.md',
   '1000xdev/user-rules-1000xdev.md',
-  '.cursor/rules/1000xdev-master.mdc',
+  '.cursor/rules/1000xdev-master.mdc'
+];
+
+const workflowFiles = [
   '1000xdev/cycle-status.md',
   '1000xdev/TODO.md',
   '1000xdev/planning/active-request.md',
@@ -118,9 +121,12 @@ async function loadAllFilesInFolder(folder, explanationPrefix) {
 // If no flags, load only master workflow and status files
 if (!anyFlag) {
   for (const file of masterFiles) {
-    await tools.call('read_file', { target_file: file, should_read_entire_file: true, explanation: 'Load master workflow/status file' });
+    await tools.call('read_file', { target_file: file, should_read_entire_file: true, explanation: 'Load master file' });
   }
-  return { success: true, result: '✅ 1000xdev context initialized with all master workflow and documentation files' };
+  for (const file of workflowFiles) {
+    await tools.call('read_file', { target_file: file, should_read_entire_file: true, explanation: 'Load workflow file' });
+  }
+  return { success: true, result: '✅ 1000xdev context initialized with all master and workflow files' };
 }
 
 // If exactly one flag is set, load the corresponding documentation subfolder
