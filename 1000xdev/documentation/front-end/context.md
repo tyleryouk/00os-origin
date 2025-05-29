@@ -38,17 +38,33 @@ This document provides essential context about the GigaSwap front-end codebase b
 ## Steam API Integration
 
 ### Current Implementation
-- **steamInventoryAPI**: Client for fetching CS2 inventory data
-- **Category Mapping**: Maps Steam items to application categories
-- **Real-time Data**: Live pricing and item condition information
-- **Server-side Rendering**: Market page pre-renders with Steam data
+- **Backend API Endpoint**: `/api/steam/profile/inventory/{steamId}` - Backend endpoint that fetches Steam data
+- **Frontend API Client**: `steamInventoryAPI` object in `src/api/steam.ts` with comprehensive methods
+- **Type Definitions**: Complete type system in `src/types/api/steam.ts` for Steam inventory data
+- **Category Mapping**: Maps Steam items to application categories using `mapSteamItemToCategory()`
+- **Real-time Data**: Live pricing and item condition information from steamwebapi.com
+- **Server-side Rendering**: Market page pre-renders with Steam data via backend API
+- **Caching**: React cache() for optimized data fetching and performance
+
+### steamInventoryAPI Methods
+- **getInventory(steamId)**: Fetch Steam inventory for specific Steam ID with validation and fallback
+- **getCombinedInventory(request)**: Fetch and combine inventories from multiple Skinport bots with filtering, sorting, and pagination
+- **getInventoryStats()**: Calculate comprehensive inventory statistics including rarity and condition breakdowns
 
 ### Data Flow
-1. Market page requests Steam inventory data
-2. API client fetches from Steam endpoints
-3. Items mapped to Product interface for compatibility
-4. Category filtering applied based on URL parameters
-5. Paginated results rendered with MUI components
+1. Market page calls `steamInventoryAPI.getInventory()` or `steamInventoryAPI.getCombinedInventory()`
+2. Frontend makes HTTP request to `/api/steam/profile/inventory/{steamId}` backend endpoint
+3. Backend fetches data from steamwebapi.com and returns processed Steam inventory
+4. Frontend processes items using `processInventoryItem()` function to create ProcessedInventoryItem objects
+5. Category filtering applied based on URL parameters using Steam category mapping
+6. Paginated results rendered with MUI components
+
+### Type System
+- **SteamInventoryItem**: Raw Steam inventory data from steamwebapi.com (comprehensive pricing, tags, descriptions)
+- **ProcessedInventoryItem**: Processed Steam items for display with pricing and metadata
+- **InventoryFilters**: Type-safe filtering options (search, rarity, condition, weapon type, etc.)
+- **InventorySortOptions**: Sorting configuration with field and direction
+- **InventoryPagination**: Pagination parameters for large inventories
 
 ## Logging System
 
