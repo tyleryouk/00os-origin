@@ -43,17 +43,18 @@ Use the `hooks/` directory for state management:
 ## Steam Integration Extensions
 
 ### Current Steam Implementation
-- **steamInventoryAPI**: Fetches CS2 inventory data from Steam
-- **Category Mapping**: Maps Steam items to application categories
-- **CS2Gun Model**: Extends Product with Steam-specific fields
-- **Market Page**: Server-side rendering with real Steam data
+- **steamInventoryAPI**: Comprehensive API client in `src/api/steam.ts` with caching and error handling
+- **Type System**: Complete type definitions in `src/types/api/steam.ts` for Steam inventory data
+- **Category Mapping**: Maps Steam items to application categories using `mapSteamItemToCategory()`
+- **ProcessedInventoryItem**: Processed Steam items for display with pricing and metadata
+- **Market Page**: Server-side rendering with real Steam data from steamwebapi.com
 
 ### Extension Opportunities
-1. **Enhanced Item Data**: Add more Steam API fields to CS2Gun model
-2. **User Inventories**: Personal Steam inventory management
-3. **Trading System**: Steam item trading functionality
-4. **Price Analytics**: Historical pricing and market trends
-5. **Item Inspection**: 3D model viewing and detailed item information
+1. **Enhanced Item Data**: Add more Steam API fields to SteamInventoryItem interface
+2. **User Inventories**: Personal Steam inventory management using steamInventoryAPI
+3. **Trading System**: Steam item trading functionality with ProcessedInventoryItem
+4. **Price Analytics**: Historical pricing and market trends using Steam pricing data
+5. **Item Inspection**: 3D model viewing and detailed item information from Steam descriptions
 
 ## Authentication Extensions
 

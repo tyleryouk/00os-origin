@@ -2,6 +2,140 @@
 
 Styling patterns and guidelines for the GigaSwap front-end based on current implementation.
 
+## Homepage Styling Analysis
+
+### Overview
+The homepage uses a "true mirror" approach where it renders the MarketPage component with a rifles filter, wrapped in the same MarketLayout as the market page. However, there are subtle styling differences due to the path prop and component hierarchy.
+
+### Key Styling Differences
+
+#### 1. MarketNavbar Path Prop
+**Root Cause**: The MarketNavbar component receives different `path` props:
+- **Homepage**: `path="/"` 
+- **Market Page**: `path="/market"`
+
+This affects the URL generation for category links:
+```typescript
+// Homepage links: /?category=rifles
+// Market page links: /market?category=rifles
+```
+
+#### 2. Component Hierarchy Differences
+**Homepage Structure**:
+```
+RootLayout (providers only)
+└── HomePage
+    └── MarketLayout (topbar, navbar, footer)
+        └── MarketNavbar (path="/")
+            └── MarketPage (content)
+```
+
+**Market Page Structure**:
+```
+RootLayout (providers only)
+└── MarketLayout (topbar, navbar, footer)
+    └── MarketNavbar (path="/market")
+        └── MarketPageContent
+```
+
+#### 3. Styling Files Involved
+
+**Primary Styling Files**:
+- `front-end/src/pages-sections/market/styles.ts` - MarketNavItem, CS2NavbarContainer styling
+- `front-end/src/pages-sections/market/components/market-navbar.tsx` - Navbar component logic
+- `front-end/src/components/layouts/market-layout/market-layout.tsx` - Layout wrapper
+- `front-end/src/app/globals.css` - Global styles and error overlay fixes
+
+**Theme Configuration**:
+- `front-end/src/theme/theme-colors.ts` - Color palette definitions
+- `front-end/src/theme/theme-provider.tsx` - Theme provider setup
+
+### MarketNavbar Styling Details
+
+#### Color Scheme
+```typescript
+// From styles.ts - MarketNavItem
+backgroundColor: selected ? alpha('#9B66F3', 0.95) : alpha('#121212', 0.4)
+color: selected ? '#FFFFFF' : alpha(theme.palette.text.primary, 0.8)
+border: selected 
+  ? '1px solid rgba(255,255,255,0.3)' 
+  : '1px solid rgba(155, 102, 243, 0.15)'
+```
+
+#### Container Background
+```typescript
+// From styles.ts - CS2NavbarContainer
+backgroundColor: "#0a0a0a"
+backgroundImage: "linear-gradient(to bottom, rgba(155, 102, 243, 0.08), rgba(155, 102, 243, 0.02))"
+```
+
+#### Responsive Sizing
+```typescript
+// Category button sizing
+fontSize: { xs: '0.55rem', sm: '0.6rem', md: '0.65rem', lg: '0.7rem' }
+padding: { xs: '0.2rem 0.4rem', sm: '0.22rem 0.45rem', md: '0.25rem 0.5rem', lg: '0.28rem 0.55rem' }
+minWidth: { xs: '45px', sm: '50px', md: '55px', lg: '60px' }
+maxWidth: { xs: '80px', sm: '90px', md: '100px', lg: '110px' }
+```
+
+### Visual Effects
+
+#### Glow Effects
+- **Selected Items**: Purple glow with `boxShadow: 0 4px 15px rgba(155, 102, 243, 0.6)`
+- **Hover Effects**: Enhanced glow and transform animations
+- **Ripple Animation**: Custom ripple effect on category selection
+
+#### Animations
+- **Category Indicator**: Animated bottom border that slides between active categories
+- **Transition Effects**: Smooth category switching with cubic-bezier easing
+- **Product Grid**: Staggered fade-in animations for product cards
+
+### Files to Edit for Homepage Styling
+
+#### To Modify Homepage-Specific Styling:
+1. **`front-end/src/app/page.tsx`** - Homepage component and MarketLayout wrapper
+2. **`front-end/src/pages-sections/market/components/market-navbar.tsx`** - Path-specific logic and URL generation
+
+#### To Modify Shared Market Styling:
+1. **`front-end/src/pages-sections/market/styles.ts`** - MarketNavItem, CS2NavbarContainer, and animation styles
+2. **`front-end/src/components/layouts/market-layout/market-layout.tsx`** - Layout structure and header components
+3. **`front-end/src/pages-sections/market/market.tsx`** - Main market content wrapper
+
+#### To Modify Global Styling:
+1. **`front-end/src/app/globals.css`** - Global styles, error overlay fixes
+2. **`front-end/src/theme/theme-colors.ts`** - Color palette and theme definitions
+3. **`front-end/src/theme/theme-provider.tsx`** - Theme configuration
+
+### Styling Consistency Notes
+
+#### What's Identical:
+- Layout structure (topbar, navbar, footer)
+- Color scheme and theme
+- Component styling and animations
+- Responsive behavior
+
+#### What's Different:
+- URL generation for category links (path prop)
+- Component nesting depth (minimal impact)
+- Category selection state management
+
+### Recommended Styling Approach
+
+#### For Homepage-Specific Changes:
+```typescript
+// In market-navbar.tsx, add path-specific styling
+const isHomepage = path === "/";
+const navbarStyles = {
+  // Homepage-specific overrides
+  ...(isHomepage && {
+    // Custom styles for homepage
+  })
+};
+```
+
+#### For Shared Changes:
+Modify the styles.ts file to affect both homepage and market page simultaneously, maintaining the true mirror approach.
+
 ## Layout System
 
 ### Container Patterns

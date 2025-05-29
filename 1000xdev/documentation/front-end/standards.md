@@ -95,15 +95,69 @@ export default function ComponentName({ data, onAction }: ComponentProps) {
 
 ### API Function Pattern
 ```typescript
-export async function fetchSteamInventory(params: InventoryParams): Promise<ApiResponse<InventoryData>> {
-  try {
-    const response = await apiClient.get('/steam/inventory', { params });
-    return response.data;
-  } catch (error) {
-    ConsolidatedLogger.logAPIError(error, '/steam/inventory');
-    throw error;
-  }
-}
+// Steam Inventory API pattern (from src/api/steam.ts)
+export const steamInventoryAPI = {
+  /**
+   * Get Steam inventory for a specific Steam ID
+   * @param steamId Steam ID to fetch inventory for
+   * @returns Promise with inventory data
+   */
+  getInventory: cache(async (steamId: string): Promise<GetInventoryResponse> => {
+    try {
+      console.log(`Fetching Steam inventory for Steam ID: ${steamId}`);
+      const response = await apiClient.get(`/api/steam/profile/inventory/${steamId}`);
+      
+      if (!response.data || !Array.isArray(response.data)) {
+        throw new Error('Invalid inventory response format');
+      }
+
+      // Validate inventory items
+      const validItems = response.data.filter(isSteamInventoryItem);
+      
+      return {
+        success: true,
+        data: validItems
+      };
+    } catch (error) {
+      console.error('Steam inventory API error:', error);
+      return getFallbackInventory(steamId);
+    }
+  }),
+
+  /**
+   * Get combined inventory from both Skinport bots
+   * @param request Optional filters, sorting, and pagination
+   * @returns Promise with combined inventory data
+   */
+  getCombinedInventory: cache(async (
+    request: GetCombinedInventoryRequest = {}
+  ): Promise<GetCombinedInventoryResponse> => {
+    try {
+      // Fetch inventories from both bots in parallel
+      const [bot2331Response, bot3257Response] = await Promise.allSettled([
+        steamInventoryAPI.getInventory(STEAM_BOT_IDS.SKINPORT_BOT_2331),
+        steamInventoryAPI.getInventory(STEAM_BOT_IDS.SKINPORT_BOT_3257)
+      ]);
+
+      // Process and combine inventories with filtering, sorting, pagination
+      const combinedItems = processCombinedInventory(bot2331Response, bot3257Response, request);
+
+      return {
+        success: true,
+        data: combinedItems
+      };
+    } catch (error) {
+      return getFallbackCombinedInventory();
+    }
+  })
+};
+
+// Usage in market page
+const inventoryData = await steamInventoryAPI.getCombinedInventory({
+  filters: { rarity: ['Covert', 'Classified'] },
+  sort: { field: 'price', direction: 'desc' },
+  pagination: { page: 1, limit: 20, offset: 0 }
+});
 ```
 
 ## State Management

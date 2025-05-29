@@ -120,7 +120,7 @@ interface ProcessedInventoryItem {
 }
 ```
 
-#### Product Model (for compatibility)
+#### Product Model (UI Compatibility Layer)
 ```typescript
 interface Product {
   // Unique identifiers
@@ -140,6 +140,7 @@ interface Product {
   
   // Categorization
   category: string;             // Mapped Steam category (using mapSteamItemToCategory)
+  categories: string[];         // Array of categories for filtering
   brand: string;                // Always "Steam"
   
   // Metadata
@@ -147,6 +148,22 @@ interface Product {
   stock: number;                // Always 1
   created_at: string;           // ISO timestamp
   updated_at: string;           // ISO timestamp
+
+  // Steam-specific data (attached for ProductCard1 component)
+  steamData?: {
+    assetid: string;
+    classid: string;
+    instanceid: string;
+    rarity: string;
+    condition: string;
+    weaponType: string;
+    wear?: number;
+    tradable: boolean;
+    marketable: boolean;
+    name: string;
+    marketHashName: string;
+    tags: SteamTag[];
+  };
 }
 ```
 
@@ -394,4 +411,22 @@ const filterKey = `active-filter-${filter}-${category.id}-${index}`;
 const chipKey = type; // Uses the filter type directly (already unique)
 ```
 
-This data structure documentation covers all the key interfaces and types used in the market page implementation, from raw Steam API data to processed UI components.
+### ProductCard1 Component Data Usage
+
+#### Steam Data Access Pattern
+```typescript
+// ProductCard1 component accesses Steam data directly via steamData object
+const steamData = (product as any).steamData;
+const hasSteamData = !!steamData;
+
+// Direct access to Steam inventory properties
+const rarityType = steamData?.rarity?.toLowerCase() || "default";
+const weaponType = steamData?.weaponType || "";
+const condition = steamData?.condition || "";
+const wear = steamData?.wear;
+const isTradable = steamData?.tradable ?? true;
+
+// No legacy CS2Gun model references - all data comes from steamData
+```
+
+This data structure documentation covers all the key interfaces and types used in the current market page implementation, focusing exclusively on the Steam inventory data structures without any legacy CS2Gun model references.
