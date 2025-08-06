@@ -9,6 +9,21 @@ Move completed or superseded requests to planning/archive/.
 
 ## Backlog Requests
 
+### REQ-000
+Highest priority:
+Create a set of 1000xdev 00commands. These processes will include tool calls to run terminal commands to read the front-end and back-end logs. The tool calling processes should be strict and should be for step 4 of the cycle. 
+
+00OS command `> dev-iterate-back-end`
+This command will run a terminal command read the back-end logs, read the active_request, then read relevant files in the codebase and make edits. This will be an iterative process in which 1000xdev will continue to run terminal commands for the back-end until all tasks in the TODO.md are done. The TODO.md must contain tasks for the back-end application, and only code changes to the back-end application may be made. There must be some type of error handling to ensure that only back-end code changes and back-end terminal commands are made.
+
+00OS command `> dev-iterate-front-end`
+This command will be the same as dev-iterate-back-end but for iterative terminal commands to view the front-end logs along with changes to the front-end
+
+00OS command `> dev-iterate-full-stack`
+This command will be like dev-iterate-back-end and dev-iterate-front-end, except 1000xdev will be making terminal commands to view the logs of both the back-end and front-end and making changes to the back-end and front-end respectively.
+
+You need to deeply analyze the code for back-end and front-end to understand the architecture before making these tool call 00OS processes.
+
 ### REQ-003
 Enhance 1000xdev's documentation folder
 Update dev-init with flags to read documentation

@@ -51,5 +51,15 @@ ConsolidatedLogger.logAPIError(error, '/api/steam/inventory');
 - **Global Error Handlers**: Unhandled promise rejections and uncaught exceptions
 - **Next.js Error Overlay**: Fixed z-index issues for development visibility
 
+### 00OS Log Analysis Command
+
+Need a quick health check on front-end logs?
+
+| Command | Flags | Purpose |
+|---------|-------|---------|
+| `> dev-analyze-logs --front-end [--edit]` | `--front-end` (required), `--edit` (optional) | Analyze latest front-end logs once. Add `--edit` to apply a single pass of automated fixes based on the analysis. |
+
+Use this instead of manually grepping logs when speed matters.
+
 ---
 This document is updated as practices evolve. 

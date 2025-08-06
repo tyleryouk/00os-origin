@@ -88,6 +88,43 @@ You are encouraged to make changes to enhance the workflow as a whole. This incl
 
 Remember that documentation is a crucial part of development, not an afterthought. Quality documentation accelerates onboarding, improves consistency, and reduces technical debt.
 
+## 🆕 Iterative Development Commands (Added 2025-01-08)
+
+Four new 00OS commands were added this cycle to automate iterative development tasks across both domains:
+
+| Command | Domain | Purpose |
+|---------|--------|---------|
+| `> dev-iterate-back-end` | back-end | Reads back-end logs, analyses TODO.md, makes iterative code edits until all back-end tasks are complete |
+| `> dev-iterate-front-end` | front-end | Reads front-end logs, analyses TODO.md, makes iterative code edits until all front-end tasks are complete |
+| `> dev-iterate-full-stack` | full-stack | Coordinates changes across back-end and front-end, ensuring API contracts and UI integration stay in sync |
+| `> dev-analyze-logs` | back-end / front-end (flagged) | One-off command: analyze logs once, optionally edit files once (`--edit`) |
+
+### Key Features:
+- **Automated log analysis**: Commands automatically read and parse error logs from both applications
+- **TODO.md integration**: Tasks are pulled from TODO.md and processed iteratively
+- **Domain boundaries**: Each command respects domain boundaries (back-end only edits back-end files, etc.)
+- **Error handling**: Robust error detection and recovery mechanisms
+- **Flag system**: `dev-analyze-logs` uses `--front-end` or `--back-end` flags with optional `--edit` flag
+
+### Usage Examples:
+```bash
+> dev-iterate-back-end       # Iteratively fix back-end issues until TODO.md tasks complete
+> dev-iterate-front-end      # Iteratively fix front-end issues until TODO.md tasks complete
+> dev-iterate-full-stack     # Handle both domains with coordination
+> dev-analyze-logs --back-end          # Analyze back-end logs once (no edits)
+> dev-analyze-logs --front-end --edit  # Analyze front-end logs and make one edit cycle
+```
+
+All PowerShell commands inside these processes now start with:
+
+```
+cd C:\Users\ethde\Desktop\GigaSwap;
+```
+
+ensuring the correct working directory regardless of where the agent starts.
+
+Refer to `00OS/processes/1000xdev/` for full implementation details.
+
 ---
 
 **For the latest onboarding, workflow, and technical information, always begin with this README and explore the relevant subfolders.**

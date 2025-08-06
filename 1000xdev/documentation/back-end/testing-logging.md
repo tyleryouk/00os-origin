@@ -49,5 +49,15 @@ logger.info("Profile retrieved successfully", extra={"steam_id": "76561199487496
 - Log exceptions with stack traces for debugging
 - Include relevant context in log messages
 
+### 00OS Log Analysis Command
+
+A new 00OS command is available for quick one-off back-end log analysis and optional automated fixes:
+
+| Command | Flags | Purpose |
+|---------|-------|---------|
+| `> dev-analyze-logs --back-end [--edit]` | `--back-end` (required), `--edit` (optional) | Analyze back-end logs once. Add `--edit` to automatically apply a single round of fixes based on the analysis. |
+
+Use this command instead of ad-hoc log searches when you want a fast summary or automated one-shot remediation.
+
 ---
 This document is updated as practices evolve. 
